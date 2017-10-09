@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template.xhtml">
+
+    <ui:define name="header">
+        常见问题解答
+    </ui:define>
+
+    <ui:define name="workspace">
+        <script>
+
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)!="micromessenger" &amp;&amp; ua.indexOf("alipay")==-1) {
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+            }
+            window.onload=function(){
+
+                /*  $('#Termsbox').height($(window).height()*0.84);
+                 console.log($("#move").height())
+
+                 var swiper = new Swiper('.swiper-container', {
+                 scrollbar: '.swiper-scrollbar',
+                 direction: 'vertical',
+                 slidesPerView: 'auto',
+                 mousewheelControl: true,
+                 freeMode: true,
+                 observer:true,
+                 observeParents:true
+                 });*/
+
+                // 展开 收缩
+                $('.Termstit').each(function(i,btn){
+                    $(btn).click(function(){
+//                        $(".swiper-slide").height($("#move").height());
+                        console.log($('#move').height())
+                        console.log($(".swiper-slide").height())
+                        if($(this).hasClass('Termstit1')){
+                            $('.textbox').hide();
+                            $('.Termstit').removeClass('Termstit2')
+                            $('.Termstit').addClass('Termstit1')
+                            $(this).removeClass('Termstit1')
+                            $(this).addClass('Termstit2')
+                            $('.textbox').eq(i).show();
+                        }else{
+                            $('.textbox').hide();
+                            $(this).removeClass('Termstit2')
+                            $(this).addClass('Termstit1')
+                        }
+                        /*if(parseInt($("#move").css('marginTop'))&lt;$('#Termsbox').height()-$('#move').height()){
+                         slide($('#Termsbox').height()-$('#move').height())
+                         return false;
+                         }*/
+                    })
+                })
+            }
+            function toTermsOfService(){
+                window.location.href = "https://www.cntelematics.com/htib2c-mobile/views/termsOfService.pdf";
+            }
+
+        </script>
+
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="Termsbox">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <!--<div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">-->
+
+                <div id="txtlist">
+                    <div id="move">
+                        <h2><span onclick = "toTermsOfService()"> 服务条款与条件</span></h2>
+                        <div class="Termstit Termstit1" id="Termstit1">
+                            <span>智能互联续约套餐和价格</span> <div class="btn"></div>
+                        </div>
+                        <div class="textbox">
+                            <ul>
+                                <li><a href="faq/package/package01.xhtml" style="font-size: 22px;">智能互联续约套餐和价格</a></li>
+                            </ul>
+                        </div>
+                        <div class="Termstit Termstit1">
+                            <span>多媒体服务（WiFi）套餐和价格</span> <div class="btn"></div>
+                        </div>
+                        <div class="textbox">
+                            <ul>
+                                <li><a href="faq/package/package02.xhtml" style="font-size: 22px;">多媒体服务（WiFi）套餐和价格</a></li>
+                            </ul>
+                        </div>
+                        <div class="Termstit Termstit1">
+                            <span>续约渠道</span> <div class="btn"></div>
+                        </div>
+                        <div class="textbox">
+                            <ol>
+                                <li> <a href="faq/q015.xhtml" style="font-size: 22px;">我应该怎么买套餐？/ 你们的购买流程是怎么样的？</a></li>
+                                <li> <a href="faq/q029.xhtml" style="font-size: 22px;">智能互联套餐费用包含道路救援费用吗？</a></li>
+                                <li> <a href="faq/q030.xhtml" style="font-size: 22px;">我现在的服务什么时候会到期？</a></li>
+                                <li> <a href="faq/q031.xhtml" style="font-size: 22px;">新旧服务切换的时候，智能互联服务会中断吗？</a></li>
+                                <li> <a href="faq/q032.xhtml" style="font-size: 22px;">新服务启动的时候，会影响我驾驶或者其他车辆功能吗？</a></li>
+                                <li> <a href="faq/q033.xhtml" style="font-size: 22px;">如果智能互联服务到期了/不续约，剩余的Wi-Fi服务还能继续使用吗？</a></li>
+                                <li> <a href="faq/q022.xhtml" style="font-size: 22px;">我怎么查询支付是否成功了呢？</a></li>
+                                <li> <a href="faq/q023.xhtml" style="font-size: 22px;">我怎么查询套餐开通进度呢？</a></li>
+                                <li> <a href="faq/q016.xhtml" style="font-size: 22px;">为什么银行转账的收款公司是北京东方和讯智能科技有限公司，而不是奔驰？</a></li>
+                                <li> <a href="faq/q017.xhtml" style="font-size: 22px;">我们公司想要批量购买你们的多媒体付费套餐，应该怎么操作呢？</a></li>
+                                <li> <a href="faq/q018.xhtml" style="font-size: 22px;">
+                                    我能为其他人购买套餐吗？/其他人能帮我购买套餐吗？</a></li>
+                            </ol>
+                        </div>
+                        <div class="Termstit Termstit1">
+                            <span>WiFi设置和设备接入</span> <div class="btn"></div>
+                        </div>
+                        <div class="textbox">
+                            <ol>
+                                <li> <a href="faq/q001.xhtml"
+                                        style="font-size: 22px;">如何在车载导航屏上设置WiFi ?</a></li>
+                                <li> <a href="faq/q002.xhtml" style="font-size: 22px;">如何生成一个新的WiFi密码 (安全码)？</a></li>
+                                <li> <a href="faq/q003.xhtml" style="font-size: 22px;">如何更改WLAN / WiFi热点名称（SSID）?</a></li>
+                                <li> <a href="faq/q004.xhtml" style="font-size: 22px;">断开车载无线热点后，下次连接需要重新设置/连接吗？</a></li>
+                                <li> <a href="faq/q005.xhtml" style="font-size: 22px;">如何关闭车载无线热点？</a></li>
+                                <li> <a href="faq/q006.xhtml" style="font-size: 22px;">车载无线热点安全吗？</a></li>
+                                <li> <a href="faq/q007.xhtml" style="font-size: 22px;">哪些通讯设备可以使用车载无线热点？</a></li>
+                                <li> <a href="faq/q008.xhtml" style="font-size: 22px;">如何在我的通讯设备上设置无线？</a></li>
+                                <li> <a href="faq/q009.xhtml" style="font-size: 22px;">车辆引擎关闭时是否可以使用车载无线热点及多媒体</a></li>
+                                <li> <a href="faq/q010.xhtml" style="font-size: 22px;">在车外也可以连接车载无线热点吗？</a></li>
+                                <li> <a href="faq/q011.xhtml" style="font-size: 22px;">驾驶途中可以使用车载无线热点及多媒体信息服务吗？</a></li>
+                                <li> <a href="faq/q012.xhtml" style="font-size: 22px;">为什么设备上显示WiFi已成功连接，但是无法上网？</a></li>
+                            </ol>
+                        </div>
+                        <div class="Termstit Termstit1">
+                            <span>网速、套餐流量和有效期</span> <div class="btn"></div>
+                        </div>
+                        <div class="textbox">
+                            <ol>
+                                <li>  <a href="faq/q013.xhtml" style="font-size: 22px;">车载无线热点和多媒体信息服务提供的上网速度如何？</a></li>
+                                <li> <a href="faq/q014.xhtml" style="font-size: 22px;">为什么上网速度慢？</a></li>
+                                <li> <a href="faq/q019.xhtml" style="font-size: 22px;">车载无线热点及多媒体信息服务有数据流量限制吗？</a></li>
+                                <li> <a href="faq/q020.xhtml" style="font-size: 22px;">如何查询套餐剩余数据流量？</a></li>
+                                <li> <a href="faq/q021.xhtml" style="font-size: 22px;">我购买的套餐什么时候到期？</a></li>
+                                <li> <a href="faq/q034.xhtml" style="font-size: 22px;">套餐到期后，剩余流量可以转存吗？</a></li>
+                            </ol>
+                        </div>
+                        <div class="Termstit Termstit1">
+                            <span>智能互联基础产品和服务介绍</span> <div class="btn"></div>
+                        </div>
+                        <div class="textbox">
+                            <ol>
+                                <li> <a href="faq/MBConnect/19.xhtml" style="font-size: 22px;">梅赛德斯-奔驰智能互联服务免费期多长？免费期结束后怎么办？</a></li>
+                                <li> <a href="faq/MBConnect/20.xhtml" style="font-size: 22px;">你们能看到我的车辆位置吗？</a></li>
+                                <li> <a href="faq/MBConnect/21.xhtml" style="font-size: 22px;">道路救援是什么？会收费吗？</a></li>
+                                <li> <a href="faq/MBConnect/22.xhtml" style="font-size: 22px;">如何添加其他驾驶人？</a></li>
+                                <li> <a href="faq/MBConnect/01.xhtml" style="font-size: 22px;">什么是梅赛德斯-奔驰智能互联服务？具体包含哪些服务内容？</a></li>
+                                <li> <a href="faq/MBConnect/02.xhtml" style="font-size: 22px;">梅赛德斯-奔驰智能互联（车载智能信息系统）如何装入车内？</a></li>
+                                <li> <a href="faq/MBConnect/18.xhtml" style="font-size: 22px;">如何激活梅赛德斯-奔驰 智能互联服务？</a></li>
+                                <li> <a href="faq/MBConnect/03.xhtml" style="font-size: 22px;">如果我的车辆已出售，还能继续享受梅赛德斯-奔驰智能互联服务吗？</a></li>
+                                <li> <a href="faq/MBConnect/04.xhtml" style="font-size: 22px;">如何在车内断开 (资讯服务或紧急救援) 呼叫？</a></li>
+                                <li> <a href="faq/MBConnect/05.xhtml" style="font-size: 22px;">什么是个人密码（PIN）? 什么时候可以创建我的个人密码（PIN）? 我可以更改个人密码（PIN）吗？</a></li>
+                                <li> <a href="faq/MBConnect/06.xhtml" style="font-size: 22px;">什么是自动警报通知服务？</a></li>
+                                <li> <a href="faq/MBConnect/08.xhtml" style="font-size: 22px;">什么是碰撞自动求助系统？</a></li>
+                                <li> <a href="faq/MBConnect/09.xhtml" style="font-size: 22px;">什么是紧急救援服务？</a></li>
+                                <li> <a href="faq/MBConnect/10.xhtml" style="font-size: 22px;">什么是被盗车辆定位服务？（我车丢了怎么办？打什么电话联系你们?）</a></li>
+                                <li> <a href="faq/MBConnect/11.xhtml" style="font-size: 22px;">礼宾服务都包含哪些服务项目？</a></li>
+                                <li> <a href="faq/MBConnect/13.xhtml" style="font-size: 22px;">什么是梅赛德斯-奔驰车载应用？</a></li>
+                                <li> <a href="faq/MBConnect/14.xhtml" style="font-size: 22px;">什么是梅赛德斯-奔驰 智能互联手机应用客户端？都提供哪些服务？</a></li>
+                            </ol>
+                        </div>
+                        <div class="Termstit Termstit1">
+                            <span>车载无线热点及多媒体信息服务介绍</span> <div class="btn"></div>
+                        </div>
+                        <div class="textbox">
+                            <ol>
+                                <li> <a href="faq/q024.xhtml" style="font-size: 22px;">什么是车载无线热点及多媒体信息服务？</a></li>
+                                <li> <a href="faq/q025.xhtml" style="font-size: 22px;">什么是车载无线热点？</a></li>
+                                <li> <a href="faq/q026.xhtml" style="font-size: 22px;">我的车支持车载无线热点及多媒体信息服务吗？我的车有无线（WiFi）吗？</a></li>
+                                <li> <a href="faq/q027.xhtml" style="font-size: 22px;">我的车辆不支持车载无线热点及多媒体信息服务，我可以将车内设备升级后获得该服务吗？</a></li>
+                                <li> <a href="faq/q028.xhtml" style="font-size: 22px;">车载无线热点及多媒体信息服务可以在中国大陆以外地区使用吗？</a></li>
+                            </ol>
+                        </div>
+                        <div id="Termsboxicptxt">网站备案号：京ICP备11011340号</div>
+                    </div>
+                    <!--    </div>
+                    </div>
+                </div>
+                &lt;!&ndash; Add Scroll Bar &ndash;&gt;
+                <div class="swiper-scrollbar"></div>-->
+
+                </div>
+            </div>
+        </div>
+
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

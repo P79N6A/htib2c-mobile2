@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../template.xhtml">
+
+    <ui:define name="header">
+
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="infobox">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <div id="move">
+                    <h3 class="ui-title">我购买的套餐什么时候到期？</h3>
+                    <hr/>
+                    <p>
+                        套餐截至有效期届满或数据流量用尽，以先到者为准。<br/><br/>
+                        您会在多媒体服务套餐开通时、套餐数据流量剩余50%、20%、数据流量用尽、服务套餐到期前一个月和服务套餐过期时，收到短信通知。您也可以通过【<strong>在线订购-我的帐户</strong>】版块查询所有服务的到期时间，或按下车顶的【i】按钮或拨打<a href="tel:4008980050" style="font-size: 18px;">400-898-0050</a>致电梅赛德斯-奔驰 智能互联服务中心查询。<br/>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../../template.xhtml">
+
+    <ui:define name="header">
+
+    </ui:define>
+
+    <ui:define name="workspace">
+
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="infobox">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <div id="move">
+                    <h3 class="ui-title">多媒体服务（WiFi）套餐</h3>
+                    <hr/>
+                    <ul>
+                        <li>套餐详情和价格</li>
+                    </ul>
+                    <table border="1">
+                        <tr>
+                            <td class="faq_table_head">多媒体服务套餐详情</td>
+                            <td class="faq_table_head">乐享套餐</td>
+                            <td class="faq_table_head">畅享套餐</td>
+                            <td class="faq_table_head">尊享套餐</td>
+                        </tr>
+                        <tr>
+                            <td class="faq_table_row_head">车载无线热点</td>
+                            <td class="faq_table_conent">√</td>
+                            <td class="faq_table_conent">√</td>
+                            <td class="faq_table_conent">√</td>
+                        </tr>
+                        <tr>
+                            <td class="faq_table_row_head">车内浏览器</td>
+                            <td class="faq_table_conent">√</td>
+                            <td class="faq_table_conent">√</td>
+                            <td class="faq_table_conent">√</td>
+                        </tr>
+                        <tr>
+                            <td class="faq_table_row_head">数据流量 (一年有效)</td>
+                            <td class="faq_table_conent">6G</td>
+                            <td class="faq_table_conent">12G</td>
+                            <td class="faq_table_conent">24G</td>
+                        </tr>
+                        <tr>
+                            <td class="faq_table_row_head">套餐价格</td>
+                            <td class="faq_table_conent">￥450</td>
+                            <td class="faq_table_conent">￥750</td>
+                            <td class="faq_table_conent">￥1100</td>
+                        </tr>
+                    </table>
+                    <p>
+                        注1：订购多媒体服务套餐之前，请确认您的车型具有车载无线热点（WiFi）功能。<br/>
+                        注2：多媒体服务不对非智能互联用户单独提供。如您的智能互联服务已过期，需先续订智能互联套餐，方可订购多媒体服务套餐。同时，在智能互联套餐先到期的情况下，您仍可继续享用已有多媒体服务套餐直至有效期届满或数据流量用尽，以先到者为准。<br/>
+                        注3：如果您在当前多媒体服务套餐尚未结束时购买了新的套餐，当前套餐的数据流量将自动滚动到最新的套餐内，有效期以最新的套餐为准。<br/>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

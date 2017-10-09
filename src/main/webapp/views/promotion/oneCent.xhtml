@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../template.xhtml">
+
+    <ui:define name="header">
+        <h2 class="ui-title">一元钱专享活动已结束</h2>
+    </ui:define>
+
+    <ui:define name="workspace">
+        <!--<h:outputLink value="../orderEntry.xhtml">-->
+            <img src="../../resources/images/promotion/onecent_2.png" width="100%"/>
+        <!--</h:outputLink>-->
+        <br/><br/>
+        为庆祝“<font color="#FF8000"><strong>车载多媒体服务</strong></font>”微信公众号上线，微信支付1元钱即可抢购100MB车载Wi-Fi流量，该流量用于您的车载多媒体服务。
+        关注微信公众号“<font color="#FF8000"><strong>车载多媒体服务</strong></font>”，点击上方活动图片或者下方“立即参与”，只需4步即可轻松完成订购。
+        您也可通过车内后视镜上方的【i】按钮致电或拨打
+        <a href="tel:4008980050" style="font-size: 18px;color:white;">400-898-0050</a>了解更多信息。<br/><br/>
+        活动规则：<br/>
+        1、活动时间：2015年8月20日-2015年9月13日。<br/>
+        2、本活动只适用于具有Wi-Fi功能的车辆，数量有限，先到先得。<br/>
+        3、活动期间，每车限购一次。<br/>
+        4、本活动仅限微信支付。<br/>
+        5、本次活动“一元钱专享”套餐有效期为1个月。<br/>
+        6、本活动最终解释权归北京东方和讯智能科技有限公司所有。<br/><br/>
+
+        <div class="ui-grid-a">
+            <div class="ui-block-a"><a href="./oneCentSteps.xhtml"  style="font-size: 18px;">订购步骤</a></div>
+            <!--<div class="ui-block-b"><a href="../orderEntry.xhtml"  style="font-size: 18px;">立即参与</a></div>-->
+        </div>
+        <br/><br/>
+        <img src="../../resources/images/promotion/barcode.jpg"/><br/>
+        微信扫一扫<br/>
+        关注该公众号<br/>
+
+        <script type="text/javascript">
+            function showExpired() {
+                alert("对不起，该活动已经结束！");
+            }
+        </script>
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

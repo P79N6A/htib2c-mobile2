@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template.xhtml">
+
+    <ui:define name="header">
+        优惠活动
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/jquery-labelauty.css" />
+        <script src="#{facesContext.externalContext.request.contextPath}/resources/js/jquery.mobile-1.4.5.min.js"/>
+        <div class="ui-body ui-body-a">
+
+            <h1 style="text-align: center;">优惠活动即将推出，敬请期待</h1>
+
+        </div><br/><br/>
+
+
+
+
+        <script>
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)!="micromessenger" &amp;&amp; ua.indexOf("alipay")==-1) {
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+            }
+        </script>
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

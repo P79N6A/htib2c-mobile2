@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../../template.xhtml">
+
+    <ui:define name="header">
+
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="infobox">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <div id="move">
+                    <h3 class="ui-title">什么是个人密码（PIN）？什么时候可以创建我的个人密码（PIN）?我可以更改个人密码（PIN）吗？</h3>
+                    <hr/>
+                    <p>
+                        个人密码（PIN）是身份识别码，是与梅赛德斯-奔驰 智能互联账户关联的安全密码。您在使用部分智能互联服务时，可能被要求提供个人密码（PIN）。例如，当您要求更新账户信息、登录手机客户端或网页客户端时。当服务请求涉及车辆安全时，提供个人密码（PIN）尤为重要，例如当您申请远程车门解锁时。<br/>
+                        个人密码（PIN）一般在激活智能互联服务时设置。您可以通过梅赛德斯-奔驰 智能互联服务中心（通过车顶【i】按钮致电）修改或重设。<br/>
+                        <strong>注意</strong>：您有义务保管好个人隐私信息，包括智能互联账号、个人密码等信息，并应及时按需撤销帐户。由您导致的信息泄露，您应承担相应责任和损失。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

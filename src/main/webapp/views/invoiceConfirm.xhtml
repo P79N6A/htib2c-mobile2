@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="./template.xhtml">
+    <ui:define name="header">
+        发票申请
+    </ui:define>
+
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+
+        <h:form id="invoiceConfirm">
+            <!--<h:messages infoClass="info" errorClass="error" warnClass="warn" />-->
+
+            <div class="page">
+                <div id="fri_top">
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+                </div>
+                <div id="shenqing_mod" class="sqmod">
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line2.jpg" id="linebot"/>
+                    <div class="aotu">
+                        <p class="pp p1 p3" style="padding-top:15px;">请仔细确认下列信息是否正确，发票申请一旦提交，信息将不可更改</p>
+                        <ul id="ull">
+                            <li class="pt_10">发票类型：</li>
+                            <li class="pt_1"><h:outputText value="增值税普通发票"/></li>
+                            <li class="pt_10">客户类型：</li>
+                            <li class="pt_1"><h:outputText value="#{invoiceBackingBean.invoiceType} "/></li>
+                            <li class="pt_10" >发票抬头：</li>
+                            <li class="pt_1"><h:outputText value="#{invoiceBackingBean.invoiceAccount}"/></li>
+                            <li class="pt_10">寄送地址：</li>
+                            <li class="pt_1"><h:outputText value="#{invoiceBackingBean.street}"/></li>
+                            <li class="pt_10" >邮编：</li>
+                            <li class="pt_1"><h:outputText value="#{invoiceBackingBean.zipcode}"/></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="fri_bottom" class="fribot">
+                    <div class="empty" id="service">
+                        <div class="long_btn "  id="long_btn1" ><h:commandButton value="确认提交" action="#{invoiceBackingBean.toInvoiceSuccess}" style="margin-left:0%;" />
+                        </div>
+                    </div>
+                    <div id="keytxt">网站备案号：京ICP备11011340号</div>
+                </div>
+            </div>
+        </h:form>
+        <!--弹窗文字-->
+        <h:inputHidden id="invoiceConfirmPop" value="#{invoiceBackingBean.invoiceConfirmPop}"  >
+            <f:passThroughAttribute name="val" value="invoiceConfirmPop"/>
+        </h:inputHidden>
+        <!--弹窗-->
+        <div class="alert" id="sn_err" style="display:none">
+            <div class="a_txt" id="perro"></div>
+            <div class="m_btn m_btn1"><input type="button" value="确 &#160; 认"
+                                             onclick="hideLogOff()" class="csinput"/></div>
+        </div>
+        <div id="filer"  style="display:none"></div>
+        <script type="text/javascript">
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)!="micromessenger" &amp;&amp; ua.indexOf("alipay")==-1) {
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+            }
+            window.onload=function(){
+                var value = $("input[val='invoiceConfirmPop']").val();
+                if(!(value == null || value == "")){
+                    $('#perro').html(value);
+                    $('#filer').show();
+                    $('#sn_err').show();
+                }
+            }
+            function hideLogOff() {
+                $('#filer').hide();
+                $('#sn_err').hide();
+            }
+        </script>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

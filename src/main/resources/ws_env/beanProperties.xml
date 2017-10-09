@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+    <bean
+            class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="locations">
+            <list>
+                <!-- standard config -->
+                <value>classpath*:/ws_env/Staging.URL.properties</value>
+                <!--<value>classpath*:/ws_env/Prod.URL.properties</value>-->
+            </list>
+        </property>
+
+    </bean>
+
+
+    <bean id="configureInfo" class="com.htichina.common.web.ConfigureInfo">
+        <property name="B2CPaymentServiceEndPoint" value="${B2C.PaymentServiceEndPoint}" />
+        <property name="wechatAppid" value="${wechat.appid}" />
+        <property name="wechatAppSecret" value="${wechat.appsecret}" />
+        <property name="wechatPartner" value="${wechat.partner}" />
+        <property name="wechatPartnerKey" value="${wechat.partnerkey}" />
+        <property name="wechatNotifyUrl" value="${wechat.notifyUrl}" />
+        <property name="wechatPayFailedUrl" value="${wechat.payFailedUrl}" />
+
+        <property name="alipayAppid" value="${alipay.appid}" />
+        <property name="alipayPartner" value="${alipay.partner}" />
+        <property name="alipaySellerEmail" value="${alipay.seller_email}" />
+        <property name="alipayAppPrivateKey" value="${alipay.app_private_key}" />
+        <property name="alipayAppPublicKey" value="${alipay.app_public_key}" />
+        <property name="alipayAliPublicKey" value="${alipay.ali_public_key}" />
+        <property name="alipayPaymentPublicKey" value="${alipay.payment_public_key}" />
+        <property name="alipayNotifyUrl" value="${alipay.notifyUrl}" />
+        <property name="alipayCallbackUrl" value="${alipay.callbackUrl}" />
+        <property name="alipayPayFailedUrl" value="${alipay.payFailedUrl}" />
+
+        <!--add by liuning-->
+        <property name="getUserInfoUrl" value="${getUserInfo_url}" />
+        <property name="flashlightsUrl" value="${flashlights_url}" />
+        <property name="locatevehicleUrl" value="${locatevehicle_url}" />
+        <property name="locatevehiclefinalreqUrl" value="${locatevehiclefinalreq_url}" />
+        <property name="doorlockunlockurl" value="${doorlockunlock_url}" />
+        <property name="senddestinationUrl" value="${senddestination_url}" />
+
+
+
+        <!-- 20170825 get user mobile / send sms to get validate code / validate the code -->
+        <property name="deliverymethodsUrl" value="${deliverymethods_url}" />
+        <property name="registrationUrl" value="${registration_url}" />
+        <property name="validateregistrationUrl" value="${validateregistration_url}" />
+        <property name="mobiledeviceregistrationapikey" value="${mobiledeviceregistration_apikey}" />
+
+
+    </bean>
+</beans>
+ 

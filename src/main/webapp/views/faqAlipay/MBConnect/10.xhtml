@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../../template.xhtml">
+
+    <ui:define name="header">
+
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="infobox">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <div id="move">
+                    <h3 class="ui-title">什么是被盗车辆定位服务？（我车丢了怎么办？打什么电话联系你们？）</h3>
+                    <hr/>
+                    <p>
+                        如果车辆丢失，您可以拨打<a href="tel:4008980050" style="font-size: 18px;">400-898-0050</a>致电梅赛德斯-奔驰 智能互联服务中心。请首先报警并告知警方提供有效的协查函。紧急救援中心在收到警方提供的有效的协查函后，会建立被盗车辆定位任务，协助警方进行车辆追踪。出于隐私和安全考虑，梅赛德斯-奔驰紧急救援中心仅向警方提供被盗车辆追踪信息，如有需要请您向警方咨询。<br/><br/>
+                        <strong>注意</strong>：警方提供的协查函应包含以下信息：<br/>
+                        1.	车辆信息：车架号及车牌号<br/>
+                        2.	案件负责警官的姓名及联系方式<br/>
+                        3.	案件负责警官的警官证复印件<br/>
+                        4.	加盖警局公章<br/>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

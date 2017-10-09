@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template.xhtml">
+
+    <ui:define name="header">
+        输入账户信息
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+        <h:form id="condition" onsubmit="sub();">
+            <script type="text/javascript">
+                /*var ua = navigator.userAgent.toLowerCase();
+                if(ua.match(/MicroMessenger/i)!="micromessenger" &amp;&amp; ua.indexOf("alipay")==-1) {
+                    window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+                }*/
+                var mobile;
+                var accountNum;
+                var vin;
+                $(document).ready(function(){
+                    mobile = $("input[init='mobile']").val();
+                    var mobileVal = $("input[val='mobile']").val();
+                    if (mobile != mobileVal){
+                        $("input[val='mobile']").val(mobile);
+                    }
+                    if(mobile != null){
+                        if(mobile.length >= 11) {
+                            var fdStart = mobile.indexOf("86");
+                            if(fdStart == 0) mobile = mobile.substring(2);
+                            mobile = mobile.substring(0,3) + "****" + mobile.substring(mobile.length - 4);
+                        }
+                    }
+
+                    accountNum = $("input[init='accountNum']").val();
+
+                    var accountNumVal = $("input[val='accountNum']").val();
+                    if (accountNum != accountNumVal){
+                        $("input[val='accountNum']").val(accountNum);
+                    }
+                    if(accountNum != null){
+                        if(accountNum.length > 5) {
+                            accountNum = accountNum.substring(0,2) + "****" + accountNum.substring(accountNum.length - 2);
+                        }
+                    }
+
+                    vin = $("input[init='vin']").val();
+                    var vinVal = $("input[val='vin']").val();
+                    if (vin != vinVal){
+                        $("input[val='vin']").val(vin);
+                    }
+                    if(vin != null){
+                        if(vin.length >= 7) {
+                            vin = "***********" + vin.substring(vin.length - 6);
+                        }
+                    }
+
+                    $("input[clear='clearAccountNum']").val(accountNum);
+                    $("input[clear='clearTel']").val(mobile);
+                    $("input[clear='clearVin']").val(vin);
+                });
+                function sub(){
+                    var clearAccountNum = $("input[clear='clearAccountNum']").val();
+                    if(clearAccountNum != accountNum){
+                        $("input[val='accountNum']").val(clearAccountNum);
+                    }
+
+                    var clearTel = $("input[clear='clearTel']").val();
+                    if(clearTel != mobile){
+                        $("input[val='mobile']").val(clearTel);
+                    }
+
+                    var clearVin = $("input[clear='clearVin']").val();
+                    if(clearVin != vin){
+                        $("input[val='vin']").val(clearVin);
+                    }
+
+                }
+
+                function clearInput() {
+                    $("input[clear='clearAccountNum']").val("");
+                    $("input[val='accountNum']").val("");
+                    $("input[clear='clearTel']").val("");
+                    $("input[val='mobile']").val("");
+                    $("input[clear='clearVin']").val("");
+                    $("input[val='vin']").val("");
+                }
+            </script>
+            <!--<h:messages infoClass="info" errorClass="error" warnClass="warn" />-->
+            <div class="page">
+                <div id="fri_top">
+                    <img
+                            src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+                </div>
+                <div id="fri_mod">
+                    <img
+                            src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                    <img
+                            src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line2.jpg" id="linebot"/>
+                    <img
+                            src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/xuding.png" id="fuwu"/>
+
+                    <h5>以下信息请任选一项输入</h5>
+
+                    <h:inputText id="orderEntryPop"  value="#{orderBackingBean.orderEntryPop}" style="display: none">
+                        <f:passThroughAttribute name="nm2" value="orderEntryPop" />
+                    </h:inputText>
+
+                    <ul>
+                        <li class="pt_10">智能互联客户编号</li>
+                        <li>
+
+                            <h:inputText id="accountNumDis" maxlength="8">
+                                <f:passThroughAttribute name="placeholder" value="8位数字" />
+                                <f:passThroughAttribute name="type" value="tel"/>
+                                <f:passThroughAttribute name="clear" value="clearAccountNum"/>
+                                <f:passThroughAttribute name="onchange" value="accountNumChange()"/>
+                                <f:converter converterId="AccountNumConverter"/>
+                            </h:inputText>
+                            <h:inputHidden id="accountNumInit" value="#{orderBackingBean.accountNum}"  >
+                                <f:passThroughAttribute name="init" value="accountNum"/>
+                            </h:inputHidden>
+                            <h:inputHidden id="accountNum" value="#{orderBackingBean.accountNum}"  >
+                                <f:passThroughAttribute name="val" value="accountNum"/>
+                            </h:inputHidden></li>
+                        <li class="pt_10">智能互联关联手机号码</li>
+                        <li><h:inputText id="mobilePhoneDis" maxlength="11">
+                            <f:passThroughAttribute name="placeholder" value="11位数字" />
+                            <f:passThroughAttribute name="type" value="tel"/>
+                            <f:passThroughAttribute name="clear" value="clearTel"/>
+                            <f:passThroughAttribute name="onchange" value="mobileChange()"/>
+                            <f:converter converterId="MobilePhoneConverter"/>
+                        </h:inputText>
+                            <h:inputHidden id="mobilePhoneInit" value="#{orderBackingBean.mobilePhone}">
+                                <f:passThroughAttribute name="init" value="mobile"/>
+                            </h:inputHidden>
+                            <h:inputHidden id="mobilePhone" value="#{orderBackingBean.mobilePhone}">
+                                <f:passThroughAttribute name="val" value="mobile"/>
+                            </h:inputHidden></li>
+                        <li class="pt_10" id="chehao">车架号</li>
+                        <li><h:inputText id="vinDis"
+                                         onkeyup="this.value=this.value.toUpperCase()" lang="en" maxlength="17">
+                            <f:passThroughAttribute name="placeholder" value="17位数字" ></f:passThroughAttribute>
+                            <f:passThroughAttribute name="clear" value="clearVin"/>
+                            <f:passThroughAttribute name="onchange" value="vinChange()"/>
+                            <f:converter converterId="VinConverter"/>
+                        </h:inputText>
+                            <h:inputHidden id="vinInit" value="#{orderBackingBean.vin}">
+                                <f:passThroughAttribute name="init" value="vin"/>
+                            </h:inputHidden>
+                            <h:inputHidden id="vin" value="#{orderBackingBean.vin}">
+                                <f:passThroughAttribute name="val" value="vin"/>
+                            </h:inputHidden></li>
+                    </ul>
+                </div>
+                <div id="fri_bottom">
+                    <c:if test="#{not empty orderBackingBean.accountNum || not empty orderBackingBean.mobilePhone || not empty orderBackingBean.vin}">
+                        <h6>为当前登录账户续订请点击“下一步”,为其他账户续订请点击“为其他账户续订”</h6>
+                    </c:if>
+                    <div class="empty" id="service">
+                        <c:if test="#{not empty orderBackingBean.accountNum || not empty orderBackingBean.mobilePhone || not empty orderBackingBean.vin}">
+                            <div class="s_btn s_btn1 "  ><h:commandButton value="下一步" action="#{orderBackingBean.toOrderPackage}" /></div>
+                            <div class="s_btn s_btn2 "  >
+                                <!--<c:if test="#{orderBackingBean.accountNum != null || orderBackingBean.mobilePhone != null || orderBackingBean.vin != null}">-->
+                                <!--<input type="button" onclick="clearInput()" value="为其他账户续订" />-->
+                                <!--</c:if>-->
+                                <input type="button" onclick="clearInput()" value="为其他账户续订" />
+                            </div>
+                        </c:if>
+                        <c:if test="#{!(not empty orderBackingBean.accountNum || not empty orderBackingBean.mobilePhone || not empty orderBackingBean.vin)}">
+                            <div class="long_btn " style="margin-top:90px;"><h:commandButton value="下一步" action="#{orderBackingBean.toOrderPackage}" style="margin-left:0%;"/></div>
+                        </c:if>
+                    </div>
+                    <div id="keytxt">网站备案号：京ICP备11011340号</div>
+                </div>
+            </div>
+            <div class="alert" id="sn_err" style="display:none">
+                <div class="a_txt" id="perro">您的密码不正确<br/>
+                    请重试或致电<span style="text-decoration: underline;">400-898-0050</span><br/>
+                    联系梅赛德斯-奔驰智能互联<br/>
+                    服务中心寻求帮助</div>
+                <div class="m_btn m_btn1"><input type="button" value="重 &#160; 试"
+                                                 onclick="hideLogOff()" class="csinput"/></div>
+            </div>
+            <div id="filer"  style="display:none"></div>
+            <script type="text/javascript">
+                var orderEntryPopVal = $("input[nm2='orderEntryPop']").val();
+                console.log(orderEntryPopVal);
+                //                        alert(orderEntryPopVal);
+                if(orderEntryPopVal == null || orderEntryPopVal == ""){
+                    $('#filer').hide();
+                    $('#sn_err').hide();
+                }else{
+                    $('#filer').show();
+                    $('#sn_err').show();
+                    $('#perro').html(orderEntryPopVal);
+                    /*alert(orderEntryPopVal);*/
+
+                }
+                function hideLogOff() {
+                    $('#filer').hide();
+                    $('#sn_err').hide();
+                }
+                $(function() {
+                    pushHistory();
+                    window.addEventListener("popstate", function(e) {
+                        var ua = navigator.userAgent.toLowerCase();
+                        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+                            WeixinJSBridge.call('closeWindow');
+                        } else if(ua.indexOf("alipay")!=-1){
+                            AlipayJSBridge.call('closeWebview');
+                        }else if(ua.indexOf("baidu")!=-1){
+                            BLightApp.closeWindow();
+                        }
+                        else{
+                            window.close();
+                        }
+                    }, false);
+                    function pushHistory() {
+                        var state = {
+                            title : "title",
+                            url : "#"
+                        };
+                        window.history.pushState(state, "title", "#");
+                    }
+                });
+            </script>
+        </h:form>
+
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

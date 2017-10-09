@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../../template.xhtml">
+
+    <ui:define name="header">
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+        <script>
+            $(function () {
+                $(document.body).bind('touchmove', function (event) {
+                    event.preventDefault();
+                })
+                var sh = document.body.clientHeight;
+                var mytouchele = document.getElementById("move");
+                var ey = 0;//起始点纵坐标
+                var cur = 0;//当前的屏数0,1,2……
+                var dy = 0;//滑动距离
+                var ct;//
+                var os = 10, ts = 10;//滑动超过os像素或间隔时间小于ts
+                var mytouchele = document.getElementById("move");
+                mytouchele.addEventListener("touchstart", touchStart, false);
+                mytouchele.addEventListener("touchmove", touchMove, false);
+                mytouchele.addEventListener("touchend", touchEnd, false);
+                var movetop;//
+                function touchStart(e) {
+                    movetop = $("#move").css('marginTop')
+                    ct = new Date().getTime();
+                    ey = e.touches[0].pageY;
+                    console.log(ey)
+                }
+
+                function touchMove(e) {
+                    if (parseInt(movetop) > 0) (
+                        alert(1)
+                    )
+                    dy = e.touches[0].pageY;
+                    if (parseInt(movetop) == $('#move').height() - $('#infobox').height()) { return false;}//disable swipeDown on lastdeck最后一屏禁止下滑
+                    $("#move").css({
+                        marginTop: parseInt(movetop) - (ey - dy) + "px"
+                    });
+
+                }
+
+                function touchEnd(e) {
+                    var movetopstop = $("#move").css('marginTop')
+                    //alert(parseInt(movetopstop))
+                    dt = new Date().getTime() - ct;
+                    if (dy == 0) {return false;}
+                    if (parseInt(movetopstop) > 0) {
+                        slide(0)
+                        return false;
+                    }
+                    if (parseInt(movetopstop) &lt; $('#infobox').height() - $('#move').height()) {
+                        slide($('#infobox').height() - $('#move').height())
+                        return false;
+                    }
+                    console.log()
+                }
+
+                function slide(x) {
+                    $("#move").animate({
+                        marginTop: x + "px"
+                    }, "fast");
+                }
+            });
+        </script>
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="infobox">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <div id="move">
+                    <h3 class="ui-title">什么是梅赛德斯-奔驰 智能互联服务？具体包含哪些服务内容？</h3>
+                    <hr/>
+                    <p>
+                        梅赛德斯-奔驰 智能互联服务将GPS技术、计算机技术、无线通信技术和呼叫中心支持结合为一体，通过与车辆“智能互联”，为用户提供以下服务：<br/>
+                        <ul>
+                            <li><b>安全服务</b>，包括：</li>
+                            <ul>
+                                <li >碰撞自动求助系统</li>
+                                <li>SOS紧急救援协助</li>
+                                <li>被盗车辆定位</li>
+                                <li>自动警报通知</li>
+                                <li>道路救援</li>
+                                <li>远程车门解锁/锁止</li>
+                                <li>远程闪灯鸣笛</li>
+                                <li>梅赛德斯-奔驰 智能互联手机应用客户端</li>
+                            </ul>
+
+                            <li><b>便捷服务</b>，包括：</li>
+                            <ul>
+                                <li>- 兴趣点目的地下载</li>
+                                <li>- 发送到汽车</li>
+                                <li>- 礼宾服务</li>
+                                <li>- 停车位置提示</li>
+                                <li>- 经销商信息</li>
+                            </ul>
+
+                            <li><b>信息娱乐服务</b>，包括：</li>
+                            <ul>
+                                <li>车载无线热点及多媒体信息服务</li>
+                                <ul>
+                                    <li>车载无线热点</li>
+                                    <li>车内浏览器</li>
+                                </ul>
+                                <li>实时路况信息</li>
+                                <li>梅赛德斯-奔驰车载应用</li>
+                                <ul>
+                                    <li>搜索周边（内置“百度街景”）</li>
+                                    <li>天气</li>
+                                    <li>新闻</li>
+                                    <li>实时停车场信息（内置“百度街景”）</li>
+                                    <li>财经</li>
+                                    <li>美食推荐（内置“百度街景”）</li>
+                                    <li>兴趣点下载（内置“百度街景”）</li>
+                                    <li>加油站信息（内置“百度街景”）</li>
+                                    <li>新浪微博</li>
+                                    <li>路况简图</li>
+                                </ul>
+                            </ul>
+                        </ul>
+                        <b>注意</b>：车型不同，信息娱乐服务内容有所不同。
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

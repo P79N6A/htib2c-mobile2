@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template.xhtml">
+
+    <ui:define name="header">
+        远程控制
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/poccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/pocswiper.css" />
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width"/>
+        <title>按起终点经纬度规划路线</title>
+        <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+        <style type="text/css">
+            #panel {
+                position: fixed;
+                background-color: white;
+                max-height: 90%;
+                overflow-y: auto;
+                top: 10px;
+                right: 10px;
+                width: 280px;
+            }
+        </style>
+        <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&amp;key=44200735b473ed56391f733ed5aac613&amp;plugin=AMap.Walking"></script>
+        <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+        <!--<script type='application/javascript' src='#{facesContext.externalContext.request.contextPath}/resources/js/fastclick.js'></script>-->
+        <script type="text/javascript">
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)!="micromessenger") {
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowserAli.xhtml";
+            }
+            var map = new AMap.Map("container", {
+                resizeEnable: true,//地图中心点
+                zoom: 13 //地图显示的缩放级别
+            });
+            //步行导航
+            var walking = new AMap.Walking({
+                map: map,
+                panel: "panel"
+            });
+            var marker0 = new AMap.Marker({
+                position: [116.399028, 39.845042]
+            });
+            var marker1 = new AMap.Marker({
+                position: [116.436281, 39.880719]
+            });
+            marker0.setMap(map);
+            marker1.setMap(map);
+            // 设置鼠标划过点标记显示的文字提示
+            marker0.setTitle('您的位置');
+
+            // 设置label标签
+            marker0.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
+                offset: new AMap.Pixel(-33,-25),//修改label相对于maker的位置
+                content: "您的位置"
+            });
+            // 设置鼠标划过点标记显示的文字提示
+            marker1.setTitle('车辆位置');
+
+            // 设置label标签
+            marker1.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
+                offset: new AMap.Pixel(-33,-25),//修改label相对于maker的位置
+                content: "车辆位置"
+            });
+            //根据起终点坐标规划步行路线
+            walking.search([116.399028, 39.845042], [116.436281, 39.880719]);
+        </script>
+        <div id="container"></div>
+        <div id="panel"></div>
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>
