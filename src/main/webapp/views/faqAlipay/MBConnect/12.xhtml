@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../../template.xhtml">
+
+    <ui:define name="header">
+
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="infobox">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <div id="move">
+                    <h3 class="ui-title">如何登录网页客户端？我需要提供哪些数据？</h3>
+                    <hr/>
+                    <p>
+                        您可以通过网址<a href="http://connect.mercedes-benz.com.cn" style="font-size: 18px;" target="_blank">connect.mercedes-benz.com.cn</a>登录，需要输入智能互联账号和个人密码（PIN）。
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

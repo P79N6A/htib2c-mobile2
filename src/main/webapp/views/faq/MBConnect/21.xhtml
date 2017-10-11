@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../../template.xhtml">
+
+    <ui:define name="header">
+
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="infobox">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <div id="move">
+                    <h3 class="ui-title">道路救援是什么？会收费吗？</h3>
+                    <hr/>
+                    <p>
+                        当您车辆出现故障， 例如爆胎、启动有问题时，您可以通过道路救援中心（7x24小时）获得帮助。激活智能互联服务前，您可以通过<a href="tel:4006504688" style="font-size: 18px;">400-650-4688</a>致电获得服务；激活智能互联服务后，您可以通过车内【扳手】按钮直接致电。<br/>
+                        道路救援是否收费以及收费标准如何，还请您直接咨询该中心工作人员。
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

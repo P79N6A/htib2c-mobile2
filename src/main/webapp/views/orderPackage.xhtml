@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<body>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="./template.xhtml">
+    <ui:define name="header">
+        在线订购
+    </ui:define>
+
+    <ui:define name="workspace">
+        <h:form id="packageSelection">
+            <link rel="stylesheet"
+                  href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css?v=20170704" />
+            <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+
+            <!--<h:messages infoClass="info" errorClass="error" warnClass="warn" />-->
+
+            <script>
+                $(function () {
+                    $(":radio").each(function () {
+                        $(this).click(function () {
+
+                            if($(this).attr("checked")){
+                                $(this).attr("checked" , false);
+                            }else{
+                                $(this).attr("checked" , true);
+                            }
+                        })
+                    });
+
+
+                    $('.dabluebtn').click(function(){
+                        if($(this).find('.btn').hasClass('btn1')){
+                            $(this).find('.btn').removeClass('btn1');
+                            $(this).find('.btn').addClass('btn2');
+                            $(this).find('.btn').parent().parent().find('.dabluebtntxt').slideDown();
+                        }else{
+                            $(this).find('.btn').removeClass('btn2');
+                            $(this).find('.btn').addClass('btn1');
+                            $(this).find('.btn').parent().parent().find('.dabluebtntxt').slideUp();
+
+                        }
+                    })
+                    $('.sixbtn div').each(function(i,div){
+                        $(div).click(function(){
+                            $('.sixbtn div').removeClass('ac')
+                            $(this).addClass('ac')
+                            $('.sixlist').hide();
+                            $('#'+ $(div).attr('dataid')).show();
+                            $("#sixlisttxt").css('marginTop',0)
+                        })
+                    })
+                    /*  $(":submit").each(function () {
+                     $(this).click(function () {
+                     var index = $(":submit").index($(this));
+
+
+                     alert(index);
+                     console.log(index);
+                     console.log($(".example"))
+
+                     $(":radio").eq(index).attr("checked" , true);
+                     $(":radio").eq(index).parent().siblings().find("input").attr('checked',false);
+
+                     })
+                     });*/
+
+                    /* $(":submit").each(function () {
+                     $(this).click(function () {
+                     var index = $(":submit").index(this);
+                     alert(index);
+                     console.log(index);
+                     $(":radio").each(function () {
+                     $(":radio").eq(index).attr("checked" , true);
+                     $(":radio").eq(index).parent().siblings().find("input").attr('checked',false);;
+                     console.log($(":radio").eq(index).parent().siblings().find("input"));
+                     })
+
+
+                     })
+                     });*/
+                    /*var priceVal = $("output[nprice1='price']").val();
+                     alert(priceVal)
+                     var promotionPriceVal = $("output[nprice3='promotionPrice']").val();
+                     alert(promotionPriceVal)
+                     if(priceVal = promotionPriceVal ){
+                     $('.acurrency').show();
+                     $('.bcurrency').hide();
+                     $('.priceDiv').hide();
+                     }else{
+                     $('.acurrency').show();
+                     $('.bcurrency').show();
+                     $('.priceDiv').show();
+                     }*/
+
+                });
+
+                window.onload=function() {
+                    /*var orderPackagePopVal = $("input[nm2='orderPackagePop']").val();
+                     if(orderPackagePopVal == null || orderPackagePopVal == ""){
+                     $('#filer').hide();
+                     $('#sn_err').hide();
+                     }else{
+                     $('#filer').show();
+                     $('#sn_err').show();
+                     $('#perro').html(orderPackagePopVal);
+                     /!*alert(orderEntryPopVal);*!/
+
+                     }*/
+                    function hideLogOff() {
+                        $('#filer').hide();
+                        $('#sn_err').hide();
+                    }
+                    /*   var priceVal = $("input[price='price']").val();
+
+                     //                    alert(prodShortNameVal);
+                     //                   console.log(prodShortNameVal);
+
+                     console.log(priceVal)
+                     var promotionPriceVal = $("input[price='promotionPrice']").val();
+                     //alert(promotionPriceVal)
+                     if (priceVal = promotionPriceVal) {
+                     $('.acurrency').show();
+                     $('.bcurrency').hide();
+                     $('.priceDiv').hide();
+                     $(".sixlistbg .num .toAdd").addClass("addiv");
+                     $(".sixlistbg .num .toAdd").removeClass("addiv2");
+                     } else {
+                     $('.acurrency').show();
+                     $('.bcurrency').show();
+                     $('.priceDiv').show();
+                     $(".sixlistbg .num .toAdd").removeClass("addiv");
+                     $(".sixlistbg .num .toAdd").addClass("addiv2");
+                     }*/
+
+                    //var flag1 = true;
+                    //var flag2 = true;
+                    $("input[pname='prodShortName']").each(function () {
+//                        console.log($("input[pname='prodShortName']"))
+                        var prodShortNameVal = $(this).val()
+//                        console.log(prodShortNameVal)
+                        if(prodShortNameVal.substring(0, 1) == '早'){
+                            $(this).parent().parent().find(".zhekou").html("9折");
+                            $(this).parent().parent().find(".zs").hide();
+                        }
+                        if(prodShortNameVal.substring(0, 1) == '勿'){
+                            $(this).parent().parent().find(".uloli").hide();
+
+                            if(prodShortNameVal.substring(5, 6) == '一'){
+                                $(this).parent().parent().find(".zs").html("6个月");
+                                $(this).parent().parent().find(".leftjt ").html("赠送");
+                                $(this).parent().parent().find(".oli").html("额外赠送6个月服务期");
+                            } else if(prodShortNameVal.substring(5, 6) == '两'){
+                                $(this).parent().parent().find(".zs").html("12个月");
+                                $(this).parent().parent().find(".leftjt ").html("赠送");
+                                $(this).parent().parent().find(".oli").html("额外赠送12个月服务期");
+                            } else if(prodShortNameVal.substring(5, 6) == '三'){
+                                $(this).parent().parent().find(".zs").html("18个月");
+                                $(this).parent().parent().find(".leftjt ").html("赠送");
+                                $(this).parent().parent().find(".oli").html("额外赠送18个月服务期");
+                            }
+                        }
+                        if (prodShortNameVal.substring(2, 3) == '赠') {
+                            //flag1 = false;
+//                            console.log(prodShortNameVal)
+//                            console.log($(this).parent().parent())
+                            $("#list2").append($(this).parent().parent())
+                            $(this).parent().parent().find(".zhekou").html("8折");
+                            /* if(prodShortNameVal.substring(14,15)=='一'){
+                             if(prodShortNameVal.substring(12,13)=='优'){
+                             $(this).parent().parent().find(".toAdd").html("¥888");
+                             }else if(prodShortNameVal.substring(12,13)=='尊'){
+                             $(this).parent().parent().find(".toAdd").html("¥1688");
+                             }
+                             }else if(prodShortNameVal.substring(14,15)=='两'){
+                             if(prodShortNameVal.substring(12,13)=='优'){
+                             $(this).parent().parent().find(".toAdd").html("¥1588");
+                             }else if(prodShortNameVal.substring(12,13)=='尊'){
+                             $(this).parent().parent().find(".toAdd").html("¥2988");
+                             }
+                             }else if(prodShortNameVal.substring(14,15)=='三'){
+                             if(prodShortNameVal.substring(12,13)=='优'){
+                             $(this).parent().parent().find(".toAdd").html("¥2288");
+                             }else if(prodShortNameVal.substring(12,13)=='尊'){
+                             $(this).parent().parent().find(".toAdd").html("¥4288");
+                             }
+                             }*/
+
+
+                        } else if (prodShortNameVal.substring(0, 1) == '国') {
+                            $("#list1").append($(this).parent().parent())
+                            $(this).parent().parent().find(".zs").hide();
+                            $(this).parent().parent().find(".enddate").html("有效期至2017年7月31日止");
+                            if (prodShortNameVal.substring(6, 7) == '一') {
+                                $(this).parent().parent().find(".zhekou").html("7折");
+                                /* $(this).parent().parent().find(".oli").html("并额外赠送2个月服务期");*/
+                                if (prodShortNameVal.substring(4, 5) == '优') {
+                                    /*$(this).parent().parent().find(".oli").html("并额外赠送1个月服务期");*/
+                                } else if (prodShortNameVal.substring(4, 5) == '尊') {
+                                    /*$(this).parent().parent().find(".oli").html("并额外赠送2个月服务期");*/
+                                }
+
+                            } else if (prodShortNameVal.substring(6, 7) == '两') {
+                                $(this).parent().parent().find(".zhekou").html("7折");
+                                /*$(this).parent().parent().find(".oli").html("并额外赠送4个月服务期");*/
+                                if (prodShortNameVal.substring(4, 5) == '优') {
+                                    /*$(this).parent().parent().find(".oli").html("并额外赠送2个月服务期");*/
+
+                                } else if (prodShortNameVal.substring(4, 5) == '尊') {
+                                    /*$(this).parent().parent().find(".oli").html("并额外赠送4个月服务期");*/
+                                }
+
+                            } else if (prodShortNameVal.substring(6, 7) == '三') {
+                                $(this).parent().parent().find(".zhekou").html("7折");
+                                /* $(this).parent().parent().find(".oli").html("并额外赠送6个月服务期");*/
+                                if (prodShortNameVal.substring(4, 5) == '优') {
+                                    /*$(this).parent().parent().find(".oli").html("并额外赠送3个月服务期");*/
+
+                                } else if (prodShortNameVal.substring(4, 5) == '尊') {
+                                    /*$(this).parent().parent().find(".oli").html("并额外赠送6个月服务期");*/
+                                }
+
+                            }
+                        }
+                        else if (prodShortNameVal.substring(0, 1) == '金') {
+                            $("#list1").append($(this).parent().parent())
+                            $(this).parent().parent().find(".zs").hide();
+                            $(this).parent().parent().find(".enddate").html("有效期至2017年7月31日止");
+                            if (prodShortNameVal.substring(6, 7) == '一') {
+                                $(this).parent().parent().find(".zhekou").html("85折");
+                                /* $(this).parent().parent().find(".oli").html("并额外赠送2个月服务期");*/
+                                if (prodShortNameVal.substring(4, 5) == '优') {
+                                    /*$(this).parent().parent().find(".oli").html("并额外赠送1个月服务期");*/
+                                } else if (prodShortNameVal.substring(4, 5) == '尊') {
+                                   /* $(this).parent().parent().find(".oli").html("并额外赠送2个月服务期");*/
+                                }
+
+                            } else if (prodShortNameVal.substring(6, 7) == '两') {
+                                $(this).parent().parent().find(".zhekou").html("8折");
+                                /*$(this).parent().parent().find(".oli").html("并额外赠送4个月服务期");*/
+                                if (prodShortNameVal.substring(4, 5) == '优') {
+                                    /*$(this).parent().parent().find(".oli").html("并额外赠送2个月服务期");*/
+
+                                } else if (prodShortNameVal.substring(4, 5) == '尊') {
+                                    /*$(this).parent().parent().find(".oli").html("并额外赠送4个月服务期");*/
+                                }
+
+                            } else if (prodShortNameVal.substring(6, 7) == '三') {
+                                $(this).parent().parent().find(".zhekou").html("8折");
+                                /* $(this).parent().parent().find(".oli").html("并额外赠送6个月服务期");*/
+                                if (prodShortNameVal.substring(4, 5) == '优') {
+                                    /*$(this).parent().parent().find(".oli").html("并额外赠送3个月服务期");*/
+
+                                } else if (prodShortNameVal.substring(4, 5) == '尊') {
+                                    /*$(this).parent().parent().find(".oli").html("并额外赠送6个月服务期");*/
+                                }
+
+                            }
+                        }
+                    });
+                    /*  if (flag1) {
+                     /!*$(".msds").hide();
+                     $(".zhinengfoot").hide();
+                     $(".xiaoshi").hide();
+                     $(".xiaoshi").removeAttr("class");*!/
+                     $(".xiaoshi").remove();
+                     $('div .ac .btns .showbtns .xiaoshi1').css('width',600)
+                     } else {
+                     $(".msds").show();
+                     $(".xiaoshi").show();
+                     //$('div .ac .btns .showbtns .xiaoshi').css('width',290)
+                     }
+                     if (flag2) {
+                     $(".xiaoshi1").remove();
+                     $('div .ac .btns .showbtns .xiaoshi').css('width',600)
+
+                     } else {
+                     $(".msds").show();
+                     $(".xiaoshi1").show();
+                     //$('div .ac .btns .showbtns .xiaoshi1').css('width',290)
+                     }*/
+
+                    /*if($(".sixlist").html()==""){
+                     $(".msds").hide();
+                     $(".zhinengfoot").hide();
+                     $(".xiaoshi").hide();
+                     }else{
+                     $(".msds").show();
+                     $(".zhinengfoot").show();
+                     $(".xiaoshi").show();
+                     }*/
+
+
+
+
+                    /*if (flag1) {
+                     /!*$(".msds").hide();
+                     $(".zhinengfoot").hide();
+                     $(".xiaoshi").hide();
+                     $(".xiaoshi").removeAttr("class");*!/
+                     $(".xiaoshi").remove();
+                     } else {
+                     $(".msds").show();
+                     $(".zhinengfoot").show();
+                     $(".xiaoshi").show();
+                     //$('.sixbtn>div.btns').css('width',290)
+                     }
+                     if (flag2) {
+                     $(".xiaoshi1").remove();
+
+                     } else {
+                     $(".msds").show();
+                     $(".zhinengfoot").show();
+                     $(".xiaoshi1").show();
+                     //$('.sixbtn>div.btns').css('width',600)
+                     }
+                     */
+
+                    if($("#list1 .sixlistbg").html()==undefined){
+                        //$(".msds").hide();
+                        $(".xiaoshi1").remove();
+
+                        showhide();
+
+                    }else{
+                        $(".msds").show();
+                        $(".xiaoshi1").show();
+
+                    }
+                    if($("#list2 .sixlistbg").html()==undefined){
+                        //$(".msds").hide();
+                        $(".xiaoshi").remove();
+
+                        showhide();
+                    }else{
+                        console.log($("#list2 .sixlistbg").html())
+                        $(".msds").show();
+                        $(".xiaoshi").show();
+
+                    }
+                    if($("#list3 .sixlistbg").html()==undefined){
+                        //$(".msds").hide();
+                        $(".xiaoshi2").remove();
+
+                        showhide();
+                    }else{
+                        $(".msds").show();
+                        $(".xiaoshi2").show();
+
+                    }
+                    if($("#list4 .sixlistbg").html()==undefined){
+                        //$(".msds").hide();
+                        $(".xiaoshi3").remove();
+
+                        showhide();
+                    }else{
+                        console.log($("#list2 .sixlistbg").html())
+                        $(".msds").show();
+                        $(".xiaoshi3").show();
+
+                    }
+                    $(".btns")[0].click();
+                }
+            </script>
+
+
+
+            <div class="page">
+                <div id="fri_top">
+                    <img
+                            src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+                </div>
+                <div id="zhinengbox">
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                    <div id="zhinengnav">
+                        <div id="btnbox_">
+                            <div id="btnsbox" class="zhinengbtnbox1">
+                                <div class="showbtns btn1 gradient">智能互联套餐</div>
+                                <div class="  btn3">联合营销套餐</div>
+                                <c:if test="#{orderBackingBean.wifiFlag}"><div
+                                        class="showbtns btn2">
+                                    多媒体套餐（车载WiFi）</div></c:if>
+                            </div>
+                        </div>
+                        <div class="long_btn" id="showbtn" style="margin:auto;"></div>
+                        <div class="sixbtn">
+                            <c:if test="#{!orderBackingBean.CFlag}">
+                                <div  dataid="list1" id="list11" class="ac btns showbtns xiaoshi1">国庆钜惠</div>
+                            </c:if>
+                            <c:if test="#{orderBackingBean.CFlag}">
+                                <div  dataid="list1"  class="ac btns showbtns xiaoshi1">金秋献礼</div>
+                            </c:if>
+                            <div  dataid="list2" id="list22" class="btns showbtns xiaoshi">8折赠WiFi
+                            </div>
+                            <div  dataid="list3" class="btns showbtns xiaoshi2">早订优惠</div>
+                            <div  dataid="list4" class="btns showbtns xiaoshi3">勿忘我</div>
+                            <!-- <div  dataid="list5" class="btns showbtns">早鸟套餐</div>
+                            <div  dataid="list6" class="btns showbtns">Winback</div>-->
+                        </div>
+                    </div>
+                    <h:inputText id="orderPackagePop"
+                                 value="#{orderBackingBean.orderPackagePop}" style="display: none">
+                        <f:passThroughAttribute name="nm3" value="orderPackagePop" />
+                    </h:inputText>
+                    <div id="zhinengpage">
+                        <div id="move0">
+                            <div id="sixbox">
+                                <div id="sixlisttxt">
+                                    <div class="sixlist" id="list2"></div>
+                                    <div class="sixlist" id="list3">  <c:forEach items="#{orderBackingBean.productInfo.earlybirdProductList}" var="baseProduct" varStatus="loop">
+
+                                        <div class="sixlistbg">
+                                            <h2 ><!--<h:outputText
+                                                        value="#{baseProduct.prodShortName.substring(0,5)}"/>
+                                                    <h:panelGroup rendered="#{baseProduct.prodShortName.length() > 5}">
+                                                        <h:outputText value="#{baseProduct.prodShortName.substring(5)}"/>
+                                                    </h:panelGroup>-->
+                                                <h:outputText
+                                                        value="#{baseProduct.prodShortName.substring(baseProduct.prodShortName.length()-5,baseProduct.prodShortName.length())}"/>
+
+                                                <h:inputHidden value
+                                                                       ="#{baseProduct.prodShortName}">
+                                                    <f:passThroughAttribute
+                                                            name="pname"
+                                                            value="prodShortName"/>
+                                                </h:inputHidden>
+                                            </h2>
+                                            <div class="num">
+                                                <div class="toAdd" style="font-size: 30px;margin-left: -22px;">
+                                                    <!-- <span class="acurrency">¥</span>-->
+                                                    <h:outputText
+                                                            rendered="#{baseProduct.price eq
+                                                            baseProduct.promotionPrice}"
+                                                            value="¥#{baseProduct.price}" style="text-align: center;display: block">
+                                                        <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
+                                                    </h:outputText>
+                                                    <h:outputText
+                                                            rendered="#{not(baseProduct.price
+                                                                 eq baseProduct.promotionPrice)}"
+                                                            value="¥#{baseProduct.price}" style="text-decoration:line-through;margin-left: -25px;">
+                                                        <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
+                                                    </h:outputText>
+                                                    <h:inputHidden value
+                                                                           ="#{baseProduct.price}">
+                                                        <f:passThroughAttribute
+                                                                name="price"
+                                                                value="price"/>
+                                                    </h:inputHidden>
+                                                </div>
+                                                <h:outputText class = "priceDiv" rendered="#{not(baseProduct.price eq baseProduct.promotionPrice)}"
+                                                              style="background: url(#{facesContext.externalContext.request.contextPath}/resources/images/img2/rightjt.png) center no-repeat;width: 30px;height: 30px;position: absolute;left: 63px;top:5px;">
+
+                                                </h:outputText>
+                                                <!--<h:outputText
+                                                        rendered="#{baseProduct.price eq
+                                                        baseProduct.promotionPrice}"
+                                                        value="⇨" >
+                                                </h:outputText>-->
+                                                <div>
+                                                    <!--<span class="bcurrency">¥</span>-->
+                                                    <h:outputText rendered="#{not(baseProduct.price eq baseProduct.promotionPrice)}" value="¥#{baseProduct.promotionPrice}">
+                                                        <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
+                                                    </h:outputText>
+                                                    <h:inputHidden value
+                                                                           ="#{baseProduct.promotionPrice}">
+                                                        <f:passThroughAttribute
+                                                                name="price"
+                                                                value="promotionPrice"/>
+                                                    </h:inputHidden>
+                                                </div>
+                                            </div>
+                                            <div class="leftjt">
+                                                    <span class="zhekou"><!--<h:outputText
+                                                            value="#{baseProduct.prodShortName.substring(0)}"/>--></span>
+                                            </div>
+                                            <div class="zs">送<h:outputText
+                                                    value="#{baseProduct.prodShortName.substring(3,5)}"/>G</div>
+                                            <div class="btn">
+                                                <h:commandButton value="立即购买"
+                                                                 action="#{orderBackingBean.toOrderAccountInfo('base',baseProduct.prodId)}">
+                                                </h:commandButton>
+                                            </div>
+                                            <ul >
+                                                <li class="uloli">享受<span class="zhekou"><!--<h
+                                                    :outputText
+                                                            value="#{baseProduct.prodShortName.substring(0,1)}"/>--></span>优惠</li>
+                                                <li class="oli"><!--并额外赠送2个月服务期--></li>
+                                                <li class="enddate" style="display: none;"><!--有效期自2017年6月1日起--></li>
+                                                <!--<li><h:outputText
+                                                        value="#{baseProduct.promotionRule.promotionStartDate}-&ndash;&gt;"/></li>
+                                                <li><h:outputText
+                                                        value="#{baseProduct.promotionRule.promotionEndDate}"/></li>-->
+                                            </ul>
+                                        </div>
+
+                                    </c:forEach></div>
+                                    <div class="sixlist" id="list4"> <c:forEach items="#{orderBackingBean.productInfo.winbackProductList}" var="baseProduct" varStatus="loop">
+
+                                        <div class="sixlistbg">
+                                            <h2 ><!--<h:outputText
+                                                        value="#{baseProduct.prodShortName.substring(0,5)}"/>
+                                                    <h:panelGroup rendered="#{baseProduct.prodShortName.length() > 5}">
+                                                        <h:outputText value="#{baseProduct.prodShortName.substring(5)}"/>
+                                                    </h:panelGroup>-->
+                                                <h:outputText
+                                                        value="#{baseProduct.prodShortName.substring(baseProduct.prodShortName.length()-5,baseProduct.prodShortName.length())}"/>
+
+                                                <h:inputHidden value
+                                                                       ="#{baseProduct.prodShortName}">
+                                                    <f:passThroughAttribute
+                                                            name="pname"
+                                                            value="prodShortName"/>
+                                                </h:inputHidden>
+                                            </h2>
+                                            <div class="num">
+                                                <div class="toAdd" style="font-size: 30px;margin-left: -22px;">
+                                                    <!-- <span class="acurrency">¥</span>-->
+                                                    <h:outputText
+                                                            rendered="#{baseProduct.price eq
+                                                            baseProduct.promotionPrice}"
+                                                            value="¥#{baseProduct.price}" style="text-align: center;display: block">
+                                                        <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
+                                                    </h:outputText>
+                                                    <h:outputText
+                                                            rendered="#{not(baseProduct.price
+                                                                 eq baseProduct.promotionPrice)}"
+                                                            value="¥#{baseProduct.price}" style="text-decoration:line-through;margin-left: -25px;">
+                                                        <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
+                                                    </h:outputText>
+                                                    <h:inputHidden value
+                                                                           ="#{baseProduct.price}">
+                                                        <f:passThroughAttribute
+                                                                name="price"
+                                                                value="price"/>
+                                                    </h:inputHidden>
+                                                </div>
+                                                <h:outputText class = "priceDiv" rendered="#{not(baseProduct.price eq baseProduct.promotionPrice)}"
+                                                              style="background: url(#{facesContext.externalContext.request.contextPath}/resources/images/img2/rightjt.png) center no-repeat;width: 30px;height: 30px;position: absolute;left: 63px;top:5px;">
+
+                                                </h:outputText>
+                                                <!--<h:outputText
+                                                        rendered="#{baseProduct.price eq
+                                                        baseProduct.promotionPrice}"
+                                                        value="⇨" >
+                                                </h:outputText>-->
+                                                <div>
+                                                    <!--<span class="bcurrency">¥</span>-->
+                                                    <h:outputText rendered="#{not(baseProduct.price eq baseProduct.promotionPrice)}" value="¥#{baseProduct.promotionPrice}">
+                                                        <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
+                                                    </h:outputText>
+                                                    <h:inputHidden value
+                                                                           ="#{baseProduct.promotionPrice}">
+                                                        <f:passThroughAttribute
+                                                                name="price"
+                                                                value="promotionPrice"/>
+                                                    </h:inputHidden>
+                                                </div>
+                                            </div>
+                                            <div class="leftjt">
+                                                    <span class="zhekou"><!--<h:outputText
+                                                            value="#{baseProduct.prodShortName.substring(0)}"/>--></span>
+                                            </div>
+                                            <div class="zs">送<h:outputText
+                                                    value="#{baseProduct.prodShortName.substring(3,5)}"/>G</div>
+                                            <div class="btn">
+                                                <h:commandButton value="立即购买"
+                                                                 action="#{orderBackingBean.toOrderAccountInfo('base',baseProduct.prodId)}">
+                                                </h:commandButton>
+                                            </div>
+                                            <ul >
+                                                <li class="uloli">享受<span class="zhekou"><!--<h
+                                                    :outputText
+                                                            value="#{baseProduct.prodShortName.substring(0,1)}"/>--></span>优惠</li>
+                                                <li class="oli"><!--并额外赠送2个月服务期--></li>
+                                                <li class="enddate" style="display: none;"><!--有效期自2017年6月1日起--></li>
+                                                <!--<li><h:outputText
+                                                        value="#{baseProduct.promotionRule.promotionStartDate}-&ndash;&gt;"/></li>
+                                                <li><h:outputText
+                                                        value="#{baseProduct.promotionRule.promotionEndDate}"/></li>-->
+                                            </ul>
+                                        </div>
+
+                                    </c:forEach></div>
+                                    <!--<div class="sixlist" id="list5">早鸟套餐</div>
+                                    <div class="sixlist" id="list6">Winback </div>-->
+                                    <div class="sixlist" id="list1">
+
+                                        <c:forEach items="#{orderBackingBean.productInfo.baseProductList}" var="baseProduct" varStatus="loop">
+
+                                            <div class="sixlistbg">
+                                                <h2 ><!--<h:outputText
+                                                        value="#{baseProduct.prodShortName.substring(0,5)}"/>
+                                                    <h:panelGroup rendered="#{baseProduct.prodShortName.length() > 5}">
+                                                        <h:outputText value="#{baseProduct.prodShortName.substring(5)}"/>
+                                                    </h:panelGroup>-->
+                                                    <h:outputText
+                                                            value="#{baseProduct.prodShortName.substring(baseProduct.prodShortName.length()-5,baseProduct.prodShortName.length())}"/>
+
+                                                    <h:inputHidden value
+                                                                           ="#{baseProduct.prodShortName}">
+                                                        <f:passThroughAttribute
+                                                                name="pname"
+                                                                value="prodShortName"/>
+                                                    </h:inputHidden>
+                                                </h2>
+                                                <div class="num">
+                                                    <div class="toAdd" style="font-size: 30px;margin-left: -22px;">
+                                                        <!-- <span class="acurrency">¥</span>-->
+                                                        <h:outputText
+                                                                rendered="#{baseProduct.price eq
+                                                            baseProduct.promotionPrice}"
+                                                                value="¥#{baseProduct.price}" style="text-align: center;display: block">
+                                                            <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
+                                                        </h:outputText>
+                                                        <h:outputText
+                                                                rendered="#{not(baseProduct.price
+                                                                 eq baseProduct.promotionPrice)}"
+                                                                value="¥#{baseProduct.price}" style="text-decoration:line-through;margin-left: -25px;">
+                                                            <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
+                                                        </h:outputText>
+                                                        <h:inputHidden value
+                                                                               ="#{baseProduct.price}">
+                                                            <f:passThroughAttribute
+                                                                    name="price"
+                                                                    value="price"/>
+                                                        </h:inputHidden>
+                                                    </div>
+                                                    <h:outputText class = "priceDiv" rendered="#{not(baseProduct.price eq baseProduct.promotionPrice)}"
+                                                                  style="background: url(#{facesContext.externalContext.request.contextPath}/resources/images/img2/rightjt.png) center no-repeat;width: 30px;height: 30px;position: absolute;left: 63px;top:5px;">
+
+                                                    </h:outputText>
+                                                    <!--<h:outputText
+                                                            rendered="#{baseProduct.price eq
+                                                            baseProduct.promotionPrice}"
+                                                            value="⇨" >
+                                                    </h:outputText>-->
+                                                    <div>
+                                                        <!--<span class="bcurrency">¥</span>-->
+                                                        <h:outputText rendered="#{not(baseProduct.price eq baseProduct.promotionPrice)}" value="¥#{baseProduct.promotionPrice}">
+                                                            <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
+                                                        </h:outputText>
+                                                        <h:inputHidden value
+                                                                               ="#{baseProduct.promotionPrice}">
+                                                            <f:passThroughAttribute
+                                                                    name="price"
+                                                                    value="promotionPrice"/>
+                                                        </h:inputHidden>
+                                                    </div>
+                                                </div>
+                                                <div class="leftjt">
+                                                    <span class="zhekou"><!--<h:outputText
+                                                            value="#{baseProduct.prodShortName.substring(0)}"/>--></span>
+                                                </div>
+                                                <div class="zs">送<h:outputText
+                                                        value="#{baseProduct.prodShortName.substring(3,5)}"/>G</div>
+                                                <div class="btn">
+                                                    <h:commandButton value="立即购买"
+                                                                     action="#{orderBackingBean.toOrderAccountInfo('base',baseProduct.prodId)}">
+                                                    </h:commandButton>
+                                                </div>
+                                                <ul >
+                                                    <li class="uloli">享受<span class="zhekou"><!--<h
+                                                    :outputText
+                                                            value="#{baseProduct.prodShortName.substring(0,1)}"/>--></span>优惠</li>
+                                                    <li class="oli"><!--并额外赠送2个月服务期--></li>
+                                                    <li class="enddate" style="display: none;"><!--有效期自2017年6月1日起--></li>
+                                                    <!--<li><h:outputText
+                                                            value="#{baseProduct.promotionRule.promotionStartDate}-&ndash;&gt;"/></li>
+                                                    <li><h:outputText
+                                                            value="#{baseProduct.promotionRule.promotionEndDate}"/></li>-->
+                                                </ul>
+                                            </div>
+
+                                        </c:forEach>
+                                    </div>
+                                    <div class="msds">
+                                        <div class="dabluebtn" style="bottom:30px;">
+                                            <span>梅赛德斯-奔驰智能互联套餐</span><br/>
+                                            （简称“智能互联服务套餐”）介绍
+                                            <div class="btn btn1"> </div>
+                                        </div>
+                                        <div class="dabluebtntxt" style="margin-top: -30px;">
+
+                                            <table>
+                                                <tr >
+                                                    <td class="tab_L f19 ">智能互联产品和服务详情</td>
+                                                    <td class="f19 tab_m">智能互联优享套餐</td>
+                                                    <td class="f19">智能互联尊享套餐</td>
+                                                </tr>
+                                                <tr  >
+                                                    <td colspan="3" class="f19">座席人工服务</td>
+                                                </tr>
+                                                <tr >
+                                                    <td  class="tab_L">兴趣点搜索和推荐</td>
+                                                    <td >&#160;</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f17">梅赛德斯-奔驰旅程咨询服务</td>
+                                                    <td>&#160;</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f17">经销商信息</td>
+                                                    <td>&#160;</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f17">远程车门解锁</td>
+                                                    <td>&#160;</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f17">远程车门锁止</td>
+                                                    <td>&#160;</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f17">远程闪灯鸣笛</td>
+                                                    <td>&#160;</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f17">车载语音电话</td>
+                                                    <td></td>
+                                                    <td>即将上线 </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3">车载应用服务</td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f17">实时路况信息<br/>
+                                                        （仅限部分车型）</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="tab_L f17">梅赛德斯<br/>
+                                                        -奔驰智能互联车载应用</td>
+                                                    <td class="f15">仅提供<br/>
+                                                        兴趣点下载应用</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="tab_L f17">车载无线热点<br/>
+                                                        及多媒体信息服务</td>
+                                                    <td class="f15">需单独购买<br/>
+                                                        多媒体服务套餐包</td>
+                                                    <td class="f15">需单独购买<br/>
+                                                        多媒体服务套餐包</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3" class="f19">网页客户端服务</td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">网页客户端服务</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">经销商信息</td>
+                                                    <td ><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">远程车门解锁</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">远程车门锁止</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">远程闪灯鸣笛</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">账户管理</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3" class="f19">手机应用客户端服务</td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">发送到汽车</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">经销商信息</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="f19 tab_L">远程车门解锁</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">远程车门锁止</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">远程闪灯鸣笛</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">停车位置提示</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">PHEV管理<br/>
+                                                        （仅限插电式混合动力车型）</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3" class="f19">安全服务</td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">碰撞自动求助系统</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="f19 tab_L">SOS紧急救援</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">自动警报通知</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">道路救援转接*</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td  class="tab_L f19">被盗车辆定位</td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                    <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                </tr>
+                                            </table>
+                                            <div class="zhinengfoot">
+                                                *道路救援转接：该服务仅包含将您的电话转接至道路救援中心，<br/>
+                                                不包括救援过程中可能产生的费用，<br/>
+                                                收费标准详询道路救援中心工作人员。
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <c:if test="#{orderBackingBean.wifiFlag}">
+                            <div id="move">
+                                <!--<div class=" wifiBtn" style="display: block">
+                                    <div class="ac">早鸟套餐</div>
+                                    &lt;!&ndash;<div class="ac">8折赠WiFi</div>&ndash;&gt;
+                                    <div>待定</div>
+                                    &lt;!&ndash;<div>正价延服务期</div>&ndash;&gt;
+                                    &lt;!&ndash;<div>折扣延服务期</div>&ndash;&gt;
+                                    &lt;!&ndash;<div>早鸟套餐</div>&ndash;&gt;
+                                    &lt;!&ndash;<div>Winback</div>&ndash;&gt;
+                                </div>-->
+                                <div id="sixbox1">
+                                    <div id="sixlisttxt1">
+                                        <div class="wifilist" id="wifilist2" style="display: none">折扣套餐</div>
+                                        <div class="wifilist" id="wifilist1">
+                                            <div id="wifiBtn">
+                                                <c:forEach items="#{orderBackingBean.productInfo.wifiProductList}" var="wifiProduct" varStatus="loop">
+                                                    <div class="wifilistbg">
+                                                        <!--<label for="selectWifiProdId#{wifiProduct.prodId}" style="width: 100%;text-align: left;">
+                                                        <input type="radio" name="selectWifiProdId" id="selectWifiProdId#{wifiProduct.prodId}"
+                                                               value="#{wifiProduct.prodId}" data-role="button"/>-->
+                                                        <h2> <h:outputText value="#{wifiProduct.prodShortName}"/>
+                                                            <h:outputText value="#{wifiProduct.duration}">
+                                                                <f:converter converterId="DurationConverter"/>
+                                                            </h:outputText></h2>
+                                                        <div class="jg">价格：<span> <h:outputText  value="#{wifiProduct.price}">
+                                                            <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
+                                                        </h:outputText>
+                                                            <!--<h:outputText  value="#{wifiProduct.promotionPrice}">
+                                                                <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
+                                                            </h:outputText>--></span></div>
+                                                        <div class="wifilistbtnbg"><h:commandButton
+                                                                value="立即购买"
+                                                                action="#{orderBackingBean.toOrderAccountInfo('wifi',wifiProduct.prodId)}">
+                                                        </h:commandButton></div>
+                                                        <!--</label>-->
+                                                    </div>
+                                                </c:forEach>
+                                                <div class="bot30">
+                                                    <div class="dabluebtn">
+                                                        <span style="line-height: 64px;">多媒体服务（WiFi）套餐</span>
+                                                        <div class="btn btn1"> </div>
+                                                    </div>
+                                                    <div class="dabluebtntxt">
+
+                                                        <table style="border: solid #fff; border-width: 1px 0px 0px 1px; width: 100%;box-sizing: border-box;">
+                                                            <tr  class="tab_bgcolor">
+                                                                <td class="f19 tab_bgcolor" colspan="4">多媒体服务套餐</td>
+                                                            </tr>
+                                                            <tr  class="tab_bgcolor">
+                                                                <td class="f19">多媒体服务套餐</td>
+                                                                <td class="f19">乐享套餐</td>
+                                                                <td class="f19">畅享套餐</td>
+                                                                <td class="f19">尊享套餐</td>
+                                                            </tr>
+                                                            <tr >
+                                                                <td  class=" ">车载无线热点</td>
+                                                                <td ><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                                <td ><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                                <td ><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td  class="f17">车内浏览器</td>
+                                                                <td ><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                                <td ><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                                <td ><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td  class="f17">数据流量 (一年有效)</td>
+                                                                <td >6GB</td>
+                                                                <td>12GB</td>
+                                                                <td>24GB</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td  class="f17">套餐价格</td>
+                                                                <td >￥450</td>
+                                                                <td>￥750</td>
+                                                                <td>￥1100</td>
+                                                            </tr>
+                                                        </table>
+                                                        <p style="margin: 10px 0;font-size: 18px;line-height: 20px;padding-top: 10px;">注1：订购多媒体服务套餐之前，请确认您的车型具有车载无线热点（WiFi
+                                                            ）功能。</p>
+                                                        <p style="margin: 10px 0;font-size: 18px;line-height: 20px;padding-top: 10px;">注2
+                                                            ：多媒体服务不对非智能互联用户单独提供。如您的智能互联服务已过期，需先续订智能互联套餐，方可订购多媒体服务套餐。同时，在智能互联套餐先到期的情况下，您仍可继续享用已有多媒体服务套餐直至有效期届满或数据流量用尽，以先到者为准。</p>
+                                                        <p style="margin: 10px 0;font-size: 18px;line-height: 20px;padding-top: 10px;">注3
+                                                            ：如果您在当前多媒体服务套餐尚未结束时购买了新的套餐，当前套餐的数据流量将自动滚动到最新的套餐内，有效期以最新的套餐为准。</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Add Scroll Bar -->
+                            </div>
+                        </c:if>
+                    </div>
+                </div>
+            </div>
+            <div class="alert" id="sn_err" style="display:none">
+                <div class="a_txt" id="perro">您的密码不正确<br/>
+                    请重试或致电<span style="text-decoration: underline;" class="span2">400-898-0050</span><br/>
+                    联系梅赛德斯-奔驰智能互联<br/>
+                    服务中心寻求帮助</div>
+                <div class="m_btn m_btn1"><input type="button" value="重 &#160; 试"
+                                                 onclick="hideLogOff()" class="csinput"/></div>
+            </div>
+            <div class="alert3" id="xiexie" style="display:none">
+                <div class="a_txt" style="line-height:33px;">
+                    <p>
+                        感谢您选择我们的服务，由于微信当日支付限额3000人民币，您暂时无法通过微信购买总额超过3000元的套餐。
+                    </p>
+                    <p>
+                        建议您通过车内【i】按键或者致电<span style="text-decoration: underline;" class="span2">400-898-0050</span>联系客服中心，我们的服务人员将协助您通过其他支付渠道完成订单。
+                    </p>
+                    <p>
+                        我们正努力解决支付限额问题，再次感谢您一贯的支持和信任。
+                    </p>
+                </div>
+                <div class="m_btn m_btn1"><input type="button" value="重 &#160; 试"
+                                                 onclick="hide3000Pop()" class="csinput" style="width: 348px;height: 60px;border: none;margin-left: 15%;line-height: 60px; text-align: center;background: #116ab7;font-size: 26px;color: #fff;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-modify: read-write-plaintext-only;
+    -webkit-appearance: none;
+    outline: none; margin-top: -25px;"/></div>
+            </div>
+            <div id="filer"  style="display:none"></div>
+            <script type="text/javascript">
+                var orderPackagePopVal = $("input[nm3='orderPackagePop']").val();
+                if(orderPackagePopVal == null || orderPackagePopVal == ""){
+                    $('#filer').hide();
+                    $('#sn_err').hide();
+                }else{
+                    if(orderPackagePopVal == "3000limit"){
+                        $('#filer').show();
+                        $('#xiexie').show();
+                    }
+                    else{
+                        $('#filer').show();
+                        $('#sn_err').show();
+                        $('#perro').html(orderPackagePopVal);
+                    }
+                }
+                function hideLogOff() {
+                    $('#filer').hide();
+                    $('#sn_err').hide();
+                }
+                function hide3000Pop(){
+                    $('#filer').hide();
+                    $('#xiexie').hide();
+                }
+                var off_=1;
+
+                move()
+                function move(){
+                    var ey = 0;//起始点纵坐标
+                    var cur = 0;//当前的屏数0,1,2……
+                    var dy = 0;//滑动距离
+                    var ct;//
+                    var os = 30, ts = 30;//滑动超过os像素或间隔时间小于ts
+                    var od=document.getElementById('zhinengbox');
+                    od.addEventListener("touchstart", touchStart, false);
+                    od.addEventListener("touchmove", touchMove, false);
+                    //od.addEventListener("touchend", touchEnd, false);
+                    function touchStart(e){
+
+                        ct = new Date().getTime();
+                        ey = e.touches[0].pageY;
+                    }
+                    function touchMove(e){
+                        dy = e.touches[0].pageY;
+                        //console.log(dyx)
+                        if( dy > ey){
+                            if(off_==1){
+                                $('#btnbox_').show();
+                                $('.sixbtn').show();
+                                $('#showbtn').hide();
+                                $('#zhinengpage').css('top',$('#zhinengnav').height()+25)
+                            }else{
+                                $('#btnbox_').show();
+                                $('#showbtn').hide();
+                                $('#zhinengpage').css('top',$('#zhinengnav').height()+25)
+                            }
+
+                        }else{
+                            if(off_==1){
+                                $('#btnbox_').hide();
+                                $('.sixbtn').hide();
+                                $('#showbtn').show();
+                                $('#showbtn').html($('.sixbtn .ac').html())
+                                $('#zhinengpage').css('top',$('#zhinengnav').height()+25)
+                            }else
+                            if(off_==2){
+                                $('#btnbox_').hide();
+                                $('.sixbtn').hide();
+                                $('#showbtn').show();
+                                $('#showbtn').html('多媒体套餐（车载WiFi）')
+                                $('#zhinengpage').css('top',$('#zhinengnav').height()+25)
+                            }/*else
+                             if(off_==3){
+                             $('#btnbox_').hide();
+                             $('.sixbtn').hide();
+                             $('#showbtn').show();
+                             $('#showbtn').html('联合营销套餐')
+                             $('#zhinengpage').css('top',$('#zhinengnav').height()+25)
+                             }*/
+
+                        }
+
+                    }
+                    function touchEnd(e){
+                        dt = new Date().getTime() - ct;
+                        if(dy == 0){return false;}
+                        if(dy - ey &lt; -os || (dy - ey &lt; 0 &amp;&amp; dt &lt; ts)){
+                            dy = 0;
+                            return false;
+                        }
+                        if(dy - ey > os || (dy - ey > 0 &amp;&amp; dt &lt; ts)){
+                            dy = 0;
+                            return false;
+                        }
+                        dy = 0;
+                    }
+
+                }
+                function showhide(){
+                    var btns=$('.sixbtn .showbtns').length;
+                    console.log(btns)
+                    if(btns==1){
+                        $('.sixbtn>div.btns').css('width',600)
+                    }else
+                    if(btns==2){
+                        $('.sixbtn>div.btns').css('width',290)
+                    }else
+                    if(btns==3){
+                        $('.sixbtn>div.btns').css('width',187)
+                    }else
+                    if(btns==4){
+                        $('.sixbtn>div.btns').css('width',290)
+                    }else
+                    if(btns==5) {
+                        $('.sixbtn>div.btns').css('width', 187)
+                    }else
+                    if(btns==6) {
+                        $('.sixbtn>div.btns').css('width', 187)
+                    }
+                    $('#zhinengpage').css('top',$('#zhinengnav').height()+25)
+                }
+
+                showhide();
+
+
+                var btnsbox_btn=$('#btnsbox .showbtns').length;
+                if(btnsbox_btn==1){
+                    $('#btnsbox>div').css('width',616)
+                    $('#btnsbox').addClass('zhinengbtnbox3')
+                    $('#btnsbox').removeClass('zhinengbtnbox1')
+                    $('#btnsbox').removeClass('zhinengbtnbox2')
+                    $('#btnsbox>div').click(function(){
+                        $('#btnsbox>div').removeClass('gradient')
+                        $(this).addClass('gradient')
+                        $('#zhinengpage').scrollTop(0)
+                        if($(this).hasClass('btn2')){
+                            $('#btnsbox').addClass('zhinengbtnbox3')
+                            $('#btnsbox').removeClass('zhinengbtnbox1')
+                            $('#btnsbox').removeClass('zhinengbtnbox2')
+                            $('#btnsbox').removeClass('zhinengbtnbox4')
+                            $('#btnsbox').removeClass('zhinengbtnbox5')
+                            $('#move').show();
+                            $('#move0').hide();
+                            $('.sixbtn').hide();
+                            $('#showbtn').hide();
+                            $('#zhinengpage').scrollTop(0)
+                            off_=2
+                        }else
+                        if($(this).hasClass('btn1')){
+                            $('#btnsbox').addClass('zhinengbtnbox3')
+                            $('#btnsbox').removeClass('zhinengbtnbox2')
+                            $('#btnsbox').removeClass('zhinengbtnbox2')
+                            $('#btnsbox').removeClass('zhinengbtnbox4')
+                            $('#btnsbox').removeClass('zhinengbtnbox5')
+                            $('#move0').show();
+                            $('#move').hide();
+                            $('.sixbtn').show();
+                            off_=1
+                        }else
+                        if($(this).hasClass('btn3')) {
+                            $('#btnsbox').addClass('zhinengbtnbox3')
+                            $('#btnsbox').removeClass('zhinengbtnbox1')
+                            $('#btnsbox').removeClass('zhinengbtnbox2')
+                            $('#btnsbox').removeClass('zhinengbtnbox4')
+                            $('#btnsbox').removeClass('zhinengbtnbox5')
+                            $('#move').hide();
+                            $('#move0').hide();
+                            $('.sixbtn').hide();
+                            $('#showbtn').hide();
+                            $('#zhinengpage').scrollTop(0)
+                            off_=3
+                        }
+                        $('#zhinengpage').css('top',$('#zhinengnav').height()+25)
+                    })
+                }else
+                if(btnsbox_btn==2){
+                    $('#btnsbox>div').css('width',300)
+                    $('#btnsbox>div').click(function(){
+                        $('#btnsbox>div').removeClass('gradient')
+                        $(this).addClass('gradient')
+                        $('#zhinengpage').scrollTop(0)
+                        if($(this).hasClass('btn2')){
+                            $('#btnsbox').addClass('zhinengbtnbox5')
+                            $('#btnsbox').removeClass('zhinengbtnbox1')
+                            $('#btnsbox').removeClass('zhinengbtnbox2')
+                            $('#btnsbox').removeClass('zhinengbtnbox3')
+                            $('#btnsbox').removeClass('zhinengbtnbox4')
+                            $('#move').show();
+                            $('#move0').hide();
+                            $('.sixbtn').hide();
+                            $('#showbtn').hide();
+                            $('#zhinengpage').scrollTop(0)
+                            off_=2
+                        }else
+                        if($(this).hasClass('btn1')){
+                            $('#btnsbox').addClass('zhinengbtnbox4')
+                            $('#btnsbox').removeClass('zhinengbtnbox1')
+                            $('#btnsbox').removeClass('zhinengbtnbox2')
+                            $('#btnsbox').removeClass('zhinengbtnbox3')
+                            $('#btnsbox').removeClass('zhinengbtnbox5')
+                            $('#move0').show();
+                            $('#move').hide();
+                            $('.sixbtn').show();
+                            off_=1
+                        }else
+                        if($(this).hasClass('btn3')) {
+                            $('#btnsbox').addClass('zhinengbtnbox3')
+                            $('#btnsbox').removeClass('zhinengbtnbox1')
+                            $('#btnsbox').removeClass('zhinengbtnbox2')
+                            $('#btnsbox').removeClass('zhinengbtnbox4')
+                            $('#btnsbox').removeClass('zhinengbtnbox5')
+                            $('#move').hide();
+                            $('#move0').hide();
+                            $('.sixbtn').hide();
+                            $('#showbtn').hide();
+                            $('#zhinengpage').scrollTop(0)
+                            off_=3
+                        }
+                        $('#zhinengpage').css('top',$('#zhinengnav').height()+25)
+                    })
+                }
+                $(function() {
+                    pushHistory();
+                    window.addEventListener("popstate", function(e) {
+                        var ua = navigator.userAgent.toLowerCase();
+                        if(ua.indexOf("alipay")!=-1){
+                            window.location.href = window.location.href;
+                        }
+                    }, false);
+                    function pushHistory() {
+                        var state = {
+                            title : "title",
+                            url : "#"
+                        };
+                        window.history.pushState(state, "title", "#");
+                    }
+                });
+            </script>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</body>
+</html>
+

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template.xhtml">
+
+    <ui:define name="header">
+        远程控制
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/poccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/pocswiper.css" />
+        <script type="text/javascript">
+            if("1" == broserNum){
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+            }
+            window.onload=function(){
+
+                var flag = $("input[nm='flag']").val();
+
+                if(flag != null){
+                    if(flag == "F"){
+                        $("#popDiv").html("操作失败&lt;br/>请稍后重试");
+                        exit();
+                    }
+                    else if(flag == "T"){
+                        $("#popDiv").html("远程车门锁止请求&lt;br/>已发送");
+                        exit();
+                    }
+                }
+
+                var pinFlag = $("input[nm='pinFlag']").val();
+
+                if(pinFlag != null){
+                    if(pinFlag == "T"){
+                        showExit();
+                    }
+                    else if(pinFlag == "F"){
+                        wrong();
+                    }
+                }
+            }
+            function checkPin(){
+                /*var vin = $("input[nm='vin']").val();
+                var value = $("#keytc").text();*/
+                /*if(vin == value){
+                    showExit();
+                    setTimeout( function() {
+                        $("input[nm='subBtn']").click();
+                    }, 500)
+                }
+                else{
+                    wrong();
+                }*//*if(vin == value){
+                    showExit();
+                    setTimeout( function() {
+                        $("input[nm='subBtn']").click();
+                    }, 500)
+                }
+                else{
+                    wrong();
+                }*/
+                var pin = $("#keyPW").text();
+                $("input[nm='pin']").val(pin);
+                var accountNum = $("input[nm='lAccountNum']").val();
+                $("input[nm='lockAccountNum']").val(accountNum);
+                var openId = $("input[nm='lOpenId']").val();
+                $("input[nm='lockOpenId']").val(openId);
+                $("input[nm='checkPin']").click();
+            }
+            function  showExit() {
+                $('#suozhiload').css('display', 'block');
+                $('#filer').css('display', 'block');
+                setTimeout( function() {
+                    $("input[nm='subBtn']").click();
+                }, 500)
+            }
+            function exit(){
+                $('#suozhiload').css('display', 'none');
+                $('#Unbound_acc').css('display', 'block');
+                $('#filer').css('display', 'block');
+                setTimeout( function() {
+                    location.href = "#{facesContext.externalContext.request.contextPath}/views/key.xhtml";
+                }, 3000)
+            }
+            function ex(){
+                $('#Unbound_acc').css('display', 'none');
+                $('#filer').css('display', 'none');
+                location.href = "#{facesContext.externalContext.request.contextPath}/views/key.xhtml";
+            }
+            function wrong(){
+                $('#sn_err').css('display', 'block');
+                $('#filer').css('display', 'block');
+            }
+            function retry(){
+                $('#sn_err').css('display', 'none');
+                $('#filer').css('display', 'none');
+            }
+            function backToKey(){
+                $("#backToKey").click();
+            }
+            function lockHelp(){
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/lock_help.xhtml";
+            }
+            /*$(function() {
+                pushHistory();
+                window.addEventListener("popstate", function(e) {
+                    //此处已经捕获返回事件，可以写自己的跳转代码
+                    location.href = "#{facesContext.externalContext.request.contextPath}/views/key.xhtml";
+                }, false);
+                function pushHistory() {
+                    var state = {
+                        title : "title",
+                        url : "#"
+                    };
+                    window.history.pushState(state, "title", "#");
+                }
+            });*/
+        </script>
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/logo.png" id="logo"/>
+            </div>
+            <div id="keybot">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line.jpg" id="linetop"/>
+                <div id="keyboxtxt">
+                    <h1>车门锁止步骤</h1>
+                    <p>1.请输入密码。<br/>
+                        2.按下面的“完成”按钮。<br/>3.等待接收“远程车门锁止请求已发送”的确认。</p>
+                    <div  id="keytc"></div>
+                    <div type="text" id="keyPW" style="display:none"></div>
+                </div>
+                <div id="keybox">
+                    <div id="censel">
+                        <div class="help textshadow" onclick="lockHelp()">帮助</div>
+                        <span class="textshadow">取消</span>
+                    </div>
+                    <ul>
+                        <li class="bot3">
+                            <div class="numbtn numbtn213 r3 h92 " datanum="1">1</div>
+                            <div class="numbtn numbtn208 r3 h92 "  datanum="2">2</div>
+                            <div class="numbtn numbtn213 h92  "  datanum="3">3</div>
+                        </li>
+                        <li class="bot3">
+                            <div class="numbtn numbtn213 r3 h91 "  datanum="4">4</div>
+                            <div class="numbtn numbtn208 r3 h91 " datanum="5">5</div>
+                            <div class="numbtn numbtn213 h91  "  datanum="6">6</div>
+                        </li>
+                        <li class="bot3">
+                            <div class="numbtn numbtn213 r3 h90 "  datanum="7">7</div>
+                            <div class="numbtn numbtn208 r3 h90 " datanum="8">8</div>
+                            <div class="numbtn numbtn213 h90  "  datanum="9">9</div>
+                        </li>
+                        <li >
+                            <div class="numbtn numbtn213 r3 h90 ">
+                                <div  onclick="checkPin();">完成</div>
+                                <h:form  id="condition" style="display: none">
+                                    <h:inputHidden id="pin" value="#{lockBean.pin}"
+                                                   style="display: none">
+                                        <f:passThroughAttribute name="nm" value="pin"/>
+                                    </h:inputHidden>
+                                    <h:inputHidden id="lAccountNum" value="#{loginBackingBean.accountNum}"
+                                                   style="display: none">
+                                        <f:passThroughAttribute name="nm" value="lAccountNum"/>
+                                    </h:inputHidden>
+                                    <h:inputHidden id="hAccountNum" value="#{lockBean.accountNum}"
+                                                   style="display: none">
+                                        <f:passThroughAttribute name="nm" value="lockAccountNum"/>
+                                    </h:inputHidden>
+                                    <h:inputHidden id="lOpenId" value="#{loginBackingBean.openId}"
+                                                   style="display: none">
+                                        <f:passThroughAttribute name="nm" value="lOpenId"/>
+                                    </h:inputHidden>
+                                    <h:inputHidden id="hOpenId" value="#{lockBean.openId}"
+                                                   style="display: none">
+                                        <f:passThroughAttribute name="nm" value="lockOpenId"/>
+                                    </h:inputHidden>
+                                    <h:commandButton  value="完成"  action="#{lockBean.checkPin()}">
+                                        <f:passThroughAttribute name="nm" value="checkPin"/>
+                                    </h:commandButton>
+                                    <h:commandButton  value="完成"  action="#{lockBean.Lock()}">
+                                        <f:passThroughAttribute name="nm" value="subBtn"/>
+                                    </h:commandButton>
+                                </h:form>
+                            </div>
+                            <div class="numbtn numbtn208 r3 h90 "  datanum="0">0</div>
+                            <div class="numbtn numbtn213 h90  " data="backspace"><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/backspace.png" id="backspace"/></div>
+                        </li>
+                    </ul>
+                    <div id="icptxt">网站备案号：京ICP备11011340号</div>
+                    <h:inputText id="flag" value="#{lockBean.flag}"
+                                 style="display: none">
+                        <f:passThroughAttribute name="nm" value="flag"/>
+                    </h:inputText>
+                    <h:inputText id="pinFlag" value="#{lockBean.pinFlag}"
+                                 style="display: none">
+                        <f:passThroughAttribute name="nm" value="pinFlag"/>
+                    </h:inputText>
+                </div>
+            </div>
+        </div>
+        <!--密码正确时弹窗-->
+        <div class="alert"  id="suozhiload" style="display: none">
+        <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/suozhiload.png"/>
+        <div class="load_bg" id="load_bg3"></div>
+    </div>
+        <!--<div class="alert"  id="suozhiload"   >
+            <img src="img/suozhiload.png">
+            <div class="load_bg" id="load_bg3"></div>
+        </div>-->
+        <!-- 密码错误 -->
+        <div class="alert" id="sn_err"  style="display: none">
+            <div class="a_txt"><span class="span1">身份验证失败</span><br/>
+                请重试或致电<span style="text-decoration: underline;" class="span2">400-898-0050</span>联系<br/>
+                梅赛德斯-奔驰智能互联服务中心寻求帮助</div>
+            <div class="m_btn m_btn1" onclick="retry()">重&#160;&#160;试</div>
+        </div>
+        <!--操作失败时弹窗-->
+        <div class="alert2" id="Unbound_acc" style="display: none">
+            <div class="a_txt" id="popDiv">
+            </div>
+            <div class="m_btn m_btn1" onclick="ex()">确&#160;&#160;定</div>
+        </div>
+        <div id="filer" style="display: none"></div>
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

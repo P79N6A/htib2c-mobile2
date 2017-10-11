@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template.xhtml">
+
+    <ui:define name="header">
+        车辆定位帮助
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/css.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+        <style>
+            #fri_mod ul li{ background: url("../resources/images/img2/help_li_bg.png") 0px center no-repeat; padding-left: 20px; padding-top: 0px; line-height: 50px; font-size: 27px;}
+            #listtitle{  font-size: 30px;  box-sizing: border-box; padding-left: 85px; padding-top: 85px; line-height: 130px; color: #fff;}
+        </style>
+        <h:form  id="condition">
+            <div class="page">
+                <div id="fri_top">
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/logo.png"
+                         id="logo" />
+                </div>
+                <div id="fri_mod">
+                    <img src="../resources/images/img2/fri_line.jpg" id="linetop"/>
+                    <img src="../resources/images/img2/fri_line2.jpg" id="linebot"/>
+                    <div id="listtitle">车辆定位注意事项：</div>
+                    <ul>
+                        <li class="pt_10">车辆在电信运营商信号覆盖范围内。</li>
+                        <li class="pt_10">车辆蓄电池工作状态正常。</li>
+                        <li class="pt_10" >车辆发动机在过去的4天内发动过。</li>
+                    </ul>
+                </div>
+                <div id="fri_bottom">
+                    <div class="empty">
+                        <a style="text-decoration:none;font-size: 26px;color: white" href="tel:4008980050"><div class="long_btn" id="long_btn1">联系客服专员</div></a>
+                    </div>
+                    <div id="keytxt">网站备案号：京ICP备11011340号</div>
+                </div>
+            </div>
+        </h:form>
+        <script>
+            if("1" == broserNum){
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+            }
+        </script>
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

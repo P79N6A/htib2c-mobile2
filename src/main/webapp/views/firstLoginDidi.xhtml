@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template.xhtml">
+
+    <ui:define name="header">
+        “专”心为您，无微不“智”
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/css.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+
+        <meta name="format-detection" content="telephone=no"/>
+        <style>
+            .aotu{ width: 100%; height: 100%; overflow: auto;  -webkit-overflow-scrolling : touch;}
+            html,body{ width: 100%; height: 100%; overflow: hidden}
+            html,body,p,ul,h1,h2,h3,h4{ margin: 0px; padding: 0px; list-style: none;}
+            .page{ height: 100%; zoom: 1; overflow: hidden; }
+            .empty{ width: 100%; height: auto; overflow: hidden;}
+            #fri_top{ width: 100%; height: 16%; position: relative; background: url("../resources/images/img/fri_top.jpg"); background-size: 100% 100%; z-index: 2}
+            #fri_bottom{ width: 100%; height: 27%; position: relative; background: url("../resources/images/img/fri_bottom.jpg"); background-size: 100% 100%; }
+            #keytxt{ position:absolute; left:75px; bottom: 3rem; color: #fff; font-size:1.1rem;}
+            #keytxt span{ font-size:1.5rem;}
+            #shuru_mod1{ width: 100%; height:79%; position: relative; background: url("../resources/images/img/SpecialCar.jpg"); background-size: 100% 100%;    }
+            #shuru_mod1 p{ color: #fff; font-size: 25px; text-align: center; padding-top: 35px;}
+            #fri_bottom{ height: 11%; min-height: 80px; text-align: center}
+            #keytxt{  left:135px; bottom:2rem}
+            #fri_top{ text-align: center; max-height:123px;}
+            #logo2{ padding-top: 6%;}
+            #SpecialCar_icon{ position: absolute; left: 80px; top: 88px;}
+            #long_btn{ margin-top: 95%;}
+
+        </style>
+        <h:form  id="condition">
+            <div class="page">
+                <div id="fri_top">
+                    <img src="../resources/images/img/logo_2.png" id="logo2"/>
+                </div>
+                <div id="shuru_mod1">
+                    <img src="../resources/images/img/fri_line.jpg" id="linetop"/>
+                    <img src="../resources/images/img/fri_line2.jpg" id="linebot"/>
+                    <div class="aotu">
+                        <img src="../resources/images/img/SpecialCar_icon.png" id="SpecialCar_icon"/>
+                        <div class="long_btn" id="long_btn" onclick="tofirstLoginDidi()">专属礼遇 即刻前往</div>
+                    </div>
+                </div>
+                <div id="fri_bottom">
+                    <div id="keytxt">
+                        本活动解释权归梅赛德斯—奔驰智能互联所有<br/>
+                        网站备案号：京ICP备11011340号
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+        <script>
+
+            if("1" == broserNum){
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+            }
+            var winH=$(window).height();
+            $('#shuru_mod').height(winH-$('#fri_top').height()-$('#fri_bottom').height())
+
+            function tofirstLoginDidi(){
+                window.location.href="https://gsactivity.diditaxi.com.cn/gulfstream/activity/v2/giftpackage/index?g_channel=137bf3e0d83a967956805e1dfb620d79";;
+            }
+        </script>
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

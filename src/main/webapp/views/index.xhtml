@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="./template.xhtml">
+
+    <ui:define name="header">
+        梅赛德斯-奔驰 智能互联
+    </ui:define>
+
+    <ui:define name="workspace">
+        <h6>欢迎来到梅赛德斯-奔驰 智能互联:</h6>
+        在线订购<br/><br/>
+          - <a href="accountLogin.xhtml">我的账户</a><br/><br/>
+          - <a href="orderEntry.xhtml">服务续订</a><br/><br/>
+        <a href="promotion.xhtml" style="font-size: 16px;">优惠活动</a><br/><br/>
+        更多信息<br/><br/>
+          - <a href="faq.xhtml">常见问题</a><br/><br/>
+          - <a href="invoiceEntry.xhtml">发票申请</a><br/><br/>
+          - <a href="orderInstruction.xhtml">微信订购指南</a><br/><br/>
+        测试功能<br/><br/>
+        - <a href="tagTest.xhtml" data-role="button">标签</a><br/><br/>
+        - <a href="key.xhtml" data-role="button">远程控制</a><br/><br/>
+    </ui:define>
+
+    <ui:define name="footer">
+        <!--<a href="orderPackage.xhtml" data-role="button">在线订购</a>-->
+        <!--<a href="promotion.xhtml" data-role="button">优惠活动</a>-->
+        <!--<a href="faq.xhtml" data-role="button">常见问题</a>-->
+        在线订购<br/><br/>
+        - <a href="accountLogin.xhtml" data-role="button">我的账户</a><br/><br/>
+        - <a href="orderEntry.xhtml" data-role="button">服务续订</a><br/><br/>
+        <a href="promotion.xhtml" style="font-size: 16px;" data-role="button">优惠活动</a><br/><br/>
+        更多信息<br/><br/>
+        - <a href="faq.xhtml" data-role="button">常见问题</a><br/><br/>
+        - <a href="invoiceEntry.xhtml" data-role="button">发票申请</a><br/><br/>
+        - <a href="orderInstruction.xhtml" data-role="button">微信订购指南</a><br/><br/>
+        测试功能<br/><br/>
+        - <a href="tagTest.xhtml" data-role="button">标签</a><br/><br/>
+
+    </ui:define>
+</ui:composition>
+</body>
+</html>

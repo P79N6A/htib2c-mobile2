@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:head>
+		<title>
+				<ui:insert name="header">
+					模板默认标题
+				</ui:insert>
+		</title>
+		<meta http-equiv="expires" content="0"/>
+		<meta http-equiv="pragma" content="no-cache"/>
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta charset="utf-8"/>
+		<meta name="globalsign-domain-verification" content="YV493IHNoLvzMMy3Ae1nMKzw7PeKjtVrKDJX2JLnrd" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="format-detection" content="telephone=no" />
+	   <link rel="shortcut icon" href="#{facesContext.externalContext.request.contextPath}/resources/images/favicon.ico" />
+		<link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/hti5.min.css" />
+		<link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/jquery.mobile.icons.min.css" />
+		<link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/jquery.mobile.structure-1.4.5.min.css" />
+		<!--<link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/jquery-labelauty.css" />-->
+		<link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/custom.css" />
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>
+		<!--<script src="#{facesContext.externalContext.request.contextPath}/resources/js/jquery.mobile-1.4.5.min.js"></script>-->
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/js/custom.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/js/js.js?v=20170801"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/js/swiper.min.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/js/iscroll.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/js/v.js"></script>
+
+		<!--<script src="#{facesContext.externalContext.request.contextPath}/resources/js/jquery-labelauty.js"></script>-->
+	</h:head>
+
+    <h:body>
+		<script>
+			var broserNum = 0;
+			/*var js = document.createElement("script");
+			js.src = "test.js?random" + Math.random();
+			document.body.appendChild(js);*/
+			var ua = navigator.userAgent.toLowerCase();
+			if(ua.match(/MicroMessenger/i)!="micromessenger" &amp;&amp; ua.indexOf("alipay")==-1) {
+				/*window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";*/
+				broserNum = 0;
+			}
+		</script>
+		<div data-role="page" data-theme="a">
+
+
+			<div data-role="content" data-theme="a">
+				<a4j:outputPanel id="workspace">
+					<ui:insert name="workspace">
+						模板默认内容
+					</ui:insert>
+				</a4j:outputPanel>
+			</div>
+
+			<!--<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-theme="a" style="text-align: center;">
+				<a4j:outputPanel id="footer" layout="block">
+					<ui:insert name="footer">
+						<span style="font-size: 14px"> 京ICP备11011340号</span>
+					</ui:insert>
+				</a4j:outputPanel>
+			</div>-->
+		</div>
+
+    </h:body>
+</html>

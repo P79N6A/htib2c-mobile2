@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../../template.xhtml">
+
+    <ui:define name="header">
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="infobox">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <div id="move">
+                    <h3 class="ui-title">如何在车内断开（资讯服务或紧急救援）呼叫？</h3>
+                    <hr/>
+                    <p>
+                        对于资讯服务呼叫（【i】按钮），您可以按下方向盘或拨号盘上的结束呼叫按钮。<br/>
+                        对于紧急救援呼叫（【SOS】按钮），为最大程度保障您的生命安全，呼叫在任何情况下都不应被断开。如果您无需紧急救援或误按SOS按钮，紧急情况应答专员将帮助您断开呼叫。
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

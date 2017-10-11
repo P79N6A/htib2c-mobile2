@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template.xhtml">
+
+    <ui:define name="header">
+        订购成功
+    </ui:define>
+
+    <ui:define name="workspace">
+
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="infobox" style="height:57%">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line2.jpg" id="linebot"/>
+                <div id="move">
+                    <div
+                            style="text-align: center;font-size: 26px;color: #fff;padding-top:
+                            25px;">恭喜您，订购成功!
+                    </div>
+                    <br/>
+                    <!--<div class="ui-body ui-body-a">-->
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"
+                             style="color: #f57e24;font-size: 20px"><span>您的订单号:</span></div>
+                        <div class="ui-block-b"><span><h:outputText value="#{orderBackingBean.WIDout_trade_no.substring(13)}"/></span></div>
+                    </div>
+                    <br/>
+                    <div style="font-size: 18px;color: #fff;line-height: 25px;">
+                        如果您需要发票，请记录订单号<h:outputText value="#{orderBackingBean.WIDout_trade_no.substring(13)}" style="color: #f57e24;"/>，
+                        在付款成功后30天内通过 “更多信息-发票申请” 菜单提出申请，过期不再受理。
+                        <br/>
+                        建议您登陆账号以便更好享受我们为您提供的优质服务!
+                    </div>
+                    <!--</div>-->
+
+
+                </div>
+            </div>
+            <div id="fri_bottom">
+                <div class="empty" id="service">
+                    <div class="long_btn "  id="long_btn1" >
+                        <h:form><h:commandButton value="登录账号" action="#{loginBackingBean.login(null,'orderSuccess.xhtml',orderBackingBean.openId,orderBackingBean.targetPage)}" style="margin-left: 0%;"/></h:form></div>
+                </div>
+                <div id="keytxt">网站备案号：京ICP备11011340号</div>
+            </div>
+        </div>
+<script>
+
+    if("1" == broserNum){
+        window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+    }
+</script>
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

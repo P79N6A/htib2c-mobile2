@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="./template.xhtml">
+    <ui:define name="header">
+        发票申请
+    </ui:define>
+
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+        <h:form id="invoiceVatChoose">
+            <h:messages infoClass="info" errorClass="error" warnClass="warn" />
+
+            <div class="page">
+                <div id="fri_top">
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+                </div>
+                <div id="sq_mod">
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line2.jpg" id="linebot"/>
+                    <div class="aotu">
+                        <div id="sq_bg2">
+                            <h3>请选择发票类型：</h3>
+                            <div class="sbtns ac" id="sbtns2_1" data="增值税专用发票" onclick = 'changeInvoiceVatType("增值税专用发票")'>
+                                <div class="ra">
+                                    <div></div>
+                                    <!--<h:selectOneRadio value="#{invoiceBackingBean.invoiceVatType}">
+                                        <f:selectItem itemValue="增值税普通发票" itemLabel="增值税普通发票" />
+                                    </h:selectOneRadio>-->
+                                </div>
+                                增值税<br/>
+                                专用发票
+                            </div>
+                            <div class="sbtns" id="sbtns2_2" data="增值税普通发票" onclick = 'changeInvoiceVatType("增值税普通发票")'>
+                                <div class="ra">
+                                    <div></div>
+                                    <!--<h:selectOneRadio value="#{invoiceBackingBean.invoiceVatType}">
+                                        <f:selectItem itemValue="增值税专用发票" itemLabel="增值税专用发票" />
+                                    </h:selectOneRadio>-->
+                                </div>
+                                增值税<br/>
+                                普通发票
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="fri_bottom">
+                    <div class="empty" id="service">
+                        <h:inputHidden id="invoiceVatType" value="#{invoiceBackingBean.invoiceVatType}"  >
+                            <f:passThroughAttribute name="invoiceVatType" value="invoiceVatType"/>
+                        </h:inputHidden>
+                        <div class="long_btn "  id="long_btn1" ><h:commandButton value="下一步" action="#{invoiceBackingBean.toInvoiceVatTypeSelected}" style="margin-left:0%;"/></div>
+                    </div>
+                    <div id="keytxt">网站备案号：京ICP备11011340号</div>
+                </div>
+            </div>
+            <script>
+                if("1" == broserNum){
+                    window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+                }
+                window.onload=function() {
+                    $('input[invoiceVatType="invoiceVatType"]').val("增值税专用发票");
+                }
+
+                $('#sq_bg2 .sbtns').click(function(){
+                    $('#sq_bg2 .sbtns').removeClass('ac')
+                    $(this).addClass('ac')
+                    //alert('您选择了'+$(this).attr('data'))
+                })
+                function changeInvoiceVatType(invoiceVatType){
+                    $('input[invoiceVatType="invoiceVatType"]').val(invoiceVatType);
+                }
+            </script>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

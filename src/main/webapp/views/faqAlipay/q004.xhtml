@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../template.xhtml">
+
+    <ui:define name="header">
+
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="infobox">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <div id="move">
+                    <h3 class="ui-title">断开车载无线热点后，下次连接需要重新设置/连接吗？</h3>
+                    <hr/>
+                    <p>
+                        只要车载无线热点名称和密码没有改变，再次连接时通讯设备将自动连接原车载无线，无需重新设置。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

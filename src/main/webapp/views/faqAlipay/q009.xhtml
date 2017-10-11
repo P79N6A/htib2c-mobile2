@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../template.xhtml">
+
+    <ui:define name="header">
+
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="infobox">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <div id="move">
+                    <h3 class="ui-title">车辆引擎关闭时是否可以使用车载无线热点及多媒体信息服务？</h3>
+                    <hr/>
+                    <p>
+                        可以，只要车辆处于通电模式即可。发动机关闭，但是电源没有关闭的情况下可以使用Wi-Fi，但不建议您这样做，消耗电瓶的电量会导致车辆无法启动等问题。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

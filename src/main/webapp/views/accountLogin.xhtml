@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template.xhtml">
+
+    <ui:define name="header">
+        我的账户
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/css.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+        <h:form  id="condition">
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/logo.png"
+                     id="logo" />
+            </div>
+
+            <div id="fri_mod">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line.jpg"
+                     id="linetop"/>
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line2.jpg"
+                     id="linebot"/>
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_my.png"
+                     id="fri_my"/>
+                <ul>
+
+                    <li class="pt_10"></li>
+                    <li style="padding-top:60px"><h:inputText id="accountNum"
+                                     value="#{loginBackingBean.accountNum}" maxlength="8">
+                        <f:passThroughAttribute name="placeholder" value="智能互联客户编号8位数字" />
+                        <f:passThroughAttribute name="type"
+                                                value="tel"/>
+                    </h:inputText>
+                    </li>
+                    <li class="pt_10"></li>
+                    <li style="padding-top:30px"><h:inputSecret id="pin"
+                                       value="#{loginBackingBean.pin}" maxlength="4" style="-webkit-text-security:disc;
+            text-security:disc">
+                        <h:inputText id="repMessage"
+                                       value="#{loginBackingBean.repMessage}"
+                                       style="display: none">
+                            <f:passThroughAttribute name="nm" value="repMessage"/>
+                        </h:inputText>
+                        <f:passThroughAttribute name="placeholder" value="个人密码4位数字" />
+                        <f:passThroughAttribute name="pattern"
+                                                value="[0-9]*"/>
+                        <f:passThroughAttribute name="type"
+                                                value="tel"/>
+                    </h:inputSecret></li>
+                    <li class="pt_10"
+                        id="tellme">忘记客户编号或个人密码？<br/>
+                        请致电<span id="helptel">400-898-0050</span>寻求帮助
+                    </li>
+                </ul>
+            </div>
+            <div id="fri_bottom">
+                <div class="empty">
+                    <h:commandButton value="登&#160;&#160;录"
+                                     action="#{loginBackingBean.validateLogin(loginBackingBean.targetPg)}" onclick="showLogOff()" />
+                </div>
+                <div id="keytxt">网站备案号：京ICP备11011340号</div>
+            </div>
+        </div>
+            <!-- 密码错误 -->
+            <div class="alert" id="sn_err" style="display:none">
+                <div class="a_txt" id="perro">您的密码不正确<br/>
+                    请重试或致电<span class="span2">400-898-0050</span><br/>
+                    联系梅赛德斯-奔驰智能互联<br/>
+                    服务中心寻求帮助</div>
+                <div id = "retryBtn" class="m_btn m_btn1" onclick="hideLogOff()">重 &#160; 试</div>
+            </div>
+            <!--账户过期-->
+            <div class="alert" id="fuwuxuding" style="display:none">
+                <div class="a_txt">您的梅赛德斯-奔驰智能互联服务<br/>
+                    已过期。紧急救援、被盗车辆定位、<br/>
+                    目的地下载等服务即将中断，<br/>
+                    请立刻点击<span class="span2">“服务续订”</span><br/>
+                    或按下车顶上方[i]键续约，<br/>以保障您的权利
+                </div>
+                <div class="m_btn m_btn1" onclick="toOrder()">服务续订</div>
+            </div>
+            <div id="filer"  style="display:none"></div>
+            <script type="text/javascript">
+                if("1" == broserNum){
+                    window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+                }
+                        var repMessageVal = $("input[nm='repMessage']").val();
+                        console.log(repMessageVal);
+//                        alert(repMessageVal);
+                        if(repMessageVal == null || repMessageVal == ""){
+                            $('#filer').hide();
+                            $('#sn_err').hide();
+                        }else{
+                            $('#filer').show();
+                            $('#sn_err').show();
+                            if(repMessageVal == "overTime"){
+                                $('#filer').show();
+                                $('#fuwuxuding').show();
+                            }
+                            else{
+                                $('#perro').html(repMessageVal);
+                            }
+                            /*alert(repMessageVal);*/
+
+                        }
+
+                   /* function showLogOff() {
+                        console.log(document.getElementById("condition:repMessage").value)
+                        var repMessageVal = document.getElementById("condition:repMessage").value;
+                        console.log(repMessageVal)
+
+                    };*/
+                    function hideLogOff() {
+                        $('#filer').hide();
+                        $('#sn_err').hide();
+                    }
+                function toOrder(){
+                    window.location.href = "#{facesContext.externalContext.request.contextPath}/views/orderEntry.xhtml"
+                }
+                        $(function() {
+                            pushHistory();
+                            window.addEventListener("popstate", function(e) {
+                                var ua = navigator.userAgent.toLowerCase();
+                                if(ua.match(/MicroMessenger/i)=="micromessenger") {
+                                    WeixinJSBridge.call('closeWindow');
+                                } else if(ua.indexOf("alipay")!=-1){
+                                    AlipayJSBridge.call('closeWebview');
+                                }else if(ua.indexOf("baidu")!=-1){
+                                    BLightApp.closeWindow();
+                                }
+                                else{
+                                    window.close();
+                                }
+                            }, false);
+                            function pushHistory() {
+                                var state = {
+                                    title : "title",
+                                    url : "#"
+                                };
+                                window.history.pushState(state, "title", "#");
+                            }
+                        });
+
+            </script>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

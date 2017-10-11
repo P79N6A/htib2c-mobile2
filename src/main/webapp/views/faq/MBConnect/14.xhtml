@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../../template.xhtml">
+
+    <ui:define name="header">
+
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="infobox">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <div id="move">
+                    <h3 class="ui-title">什么是梅赛德斯-奔驰 智能互联手机应用客户端？都提供哪些服务？</h3>
+                    <hr/>
+                    <p>
+                        梅赛德斯-奔驰 智能互联手机应用客户端与iPhone和安卓手机兼容，并提供以下服务和功能：<br/>
+                        <ul>
+                            <li>服务：</li>
+                            <ul>
+                                <li>远程闪灯鸣笛</li>
+                                <li>远程车门解锁</li>
+                                <li>远程车门锁止</li>
+                                <li>停车位置提示</li>
+                                <li>发送到汽车</li>
+                                <li>经销商信息</li>
+                            </ul>
+                            <li>功能：</li>
+                            <ul>
+                                <li>连接至梅赛德斯-奔驰道路救援中心</li>
+                                <li>连接至梅赛德斯-奔驰 智能互联服务中心</li>
+                                <li>查看并连接至购车经销商</li>
+                                <li>查询本地经销商信息</li>
+                                <li>查看梅赛德斯-奔驰 智能互联账户信息</li>
+                                <li>设置语言</li>
+                            </ul>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

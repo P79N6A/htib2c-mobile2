@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template.xhtml">
+
+    <ui:define name="header">
+        短信验证
+    </ui:define>
+
+    <ui:define name="workspace">
+
+        <script type="text/javascript">
+            if("1" == broserNum){
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+            }
+
+            function se(){
+                var seconds = 10;
+                var interval = setInterval(function(){
+                    $("#sendMessage").removeAttr("value");
+                    $("#sendMessage").attr("value",seconds+"秒后重新发送");
+                    if(0 == seconds){
+                        clearInterval(interval);
+                        $("#sendMessage").removeAttr("disabled");
+                        $("#sendMessage").removeAttr("value");
+                        $("#sendMessage").removeAttr("style");
+                        $("#sendMessage").attr("value","发送");
+                        seconds = 10;
+                    }
+                    seconds = seconds-1;
+                }, 1000);
+            }
+            window.onload=function(){
+                var POCMessageFlag = $("#POCMessageFlag").val();
+                console.log(POCMessageFlag);
+                if(""!=POCMessageFlag &amp;&amp; null != POCMessageFlag){
+                    $("#checkMessage").removeAttr("disabled");
+                    $("#checkMessage").removeAttr("style");
+                }
+                if("sendOk" == POCMessageFlag){
+                    $("#sendMessage").attr("disabled","disabled");
+                    $("#sendMessage").attr("style","background:grey;");
+                    window.setTimeout(se(),1);
+                }
+                else if("sendFaile" == POCMessageFlag){
+                    $("#message").html("短信发送失败");
+                    $('#filer').show();
+                    $('#sn_err').show();
+                }
+                else if("sendFaile" != POCMessageFlag){
+                    $('#filer').hide();
+                    $('#sn_err').hide();
+                }
+                if("checkOk" == POCMessageFlag){
+                    window.location.href="#{facesContext.externalContext.request.contextPath}/views/key.xhtml";
+                }
+                if("checkFaile" == POCMessageFlag){
+                    $("#message").html("短信验证码错误");
+                    $('#filer').show();
+                    $('#sn_err').show();
+                }
+                if("checkFaile" != POCMessageFlag){
+                    $('#filer').hide();
+                    $('#sn_err').hide();
+                }
+                $('#shuru_mod1 .shr').click(function(){
+                    $('#shuru_mod1 .shr').removeClass('ac')
+                    $(this).addClass('ac');
+                })
+                $($('#shuru_mod1 .shr')[0]).addClass('ac');
+                $('input[sel="selVin"]').val($($('input[name="radio"]')[0]).val());
+
+            }
+            function hideLogOff(){
+                $('#filer').hide();
+                $('#sn_err').hide();
+            }
+            function changeCheck(changeDiv){
+                var index = $(changeDiv).attr("data");
+                var cName = "radio"+index;
+                var radios = $('input[name="radio"]');
+                /*for (var i = 0;radios.length >= i; i++){
+                 $(radios[i]).removeAttr("checked")
+                 }*/
+                for (var i = 0;radios.length >= i; i++){
+                    if($(radios[i]).attr("checkName") == cName){
+                        $('input[sel="selVin"]').val($(radios[i]).val());
+                        $(radios[i]).attr("checked","true");
+                    }
+                    else{
+                        $(radios[i]).removeAttr("checked");
+                        $(radios[i]).attr("checked","false");
+                    }
+                }
+            }
+            function sendMessage(){
+                $("input[nm='subBtn']").click();
+            }
+            function checkMessage(){
+                $('input[sel="registrationCode"]').val($('input[message="message"]').val());
+                $("input[nm='subBtn1']").click();
+            }
+        </script>
+        <style>
+            /*输入账户信息*/
+            #shuru_mod1{ width: 100%; height:37%; position: relative; background: url("#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_m.jpg"); background-size: 100% 100%;    }
+            #shuru_mod1 p{ color: #fff; font-size: 25px; text-align: center; padding-top: 35px;}
+            .shr{ box-sizing: border-box; width: 496px; height: 100px; border: 1px solid #a5a5a3; margin:25px auto; border-radius: 5px; background: #242424; position: relative;}
+            .shr .ra{ width: 20px; height: 20px; overflow: hidden; background: #116ab7; border-radius: 50%; position: absolute; left: 26px; top: 37px;}
+            .srxx_inp_bg{ background: url("#{facesContext.externalContext.request.contextPath}/resources/images/img/srxx_inp_bg.png"); text-align: center;  line-height: 20px; line-height: 50px; color: #fff; height: 62px; width: 403px; position: absolute; left: 73px; top: 23px;font-size: 28px;}
+
+
+
+            #shuru_mod1 .shr .ra{width: 20px; height: 20px; overflow: hidden; background: #116ab7; border-radius: 50%; position: absolute; left: 30px; top: 50%; margin-top: -10px;}
+            #shuru_mod1 .shr .ra>div {width: 12px;height: 12px;background: #d0e1ef;margin: 4px;border-radius: 50%;
+                overflow: hidden;}
+            #shuru_mod1 .shr .ra>div{display: none;}
+            #shuru_mod1 .ac .ra>div {display: block;}
+        </style>
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+        <div class="page">
+            <h:inputText id="POCMessageFlag"  value="#{loginBackingBean.POCMessageFlag}" style="display: none"></h:inputText>
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/logo.png" id="logo"/>
+            </div>
+            <h:form id="vehicleSelection">
+                <div id="shuru_mod1" style="height:579px">
+
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line.jpg" id="linetop"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line2.jpg" id="linebot"/>
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="aotu">
+                                    <p>根据您输入的智能互联客户编号查询到<br/>
+                                        以下手机号码，请根据需要进行选择，<br/>
+                                        点击“发送”接收短信，点击“确定”进行验证。</p>
+                                    <c:forEach items="#{loginBackingBean.POCMobile}" var="mobile" varStatus="loop">
+                                        <div class="shr">
+                                            <div class="sbtns" id="sbtns2_1" data="${loop.index}" onclick = "changeCheck(this)">
+                                                <div class="ra">
+                                                    <div></div>
+                                                </div>
+                                                <input  checkName="radio${loop.index}" name="radio"  value="#{mobile.communicationToken}" style="display:none"/>
+                                            </div>
+                                            <div class="srxx_inp_bg" style="line-height: 60px">
+                                                手机号：
+                                                <h:outputText value="#{mobile.number}">
+                                                    <f:converter converterId="VinConverter"/>
+                                                </h:outputText>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+                                <h:inputHidden id="selectVin" value="#{loginBackingBean.communicationToken}">
+                                    <f:passThroughAttribute name="sel" value="selVin"/>
+                                </h:inputHidden>
+                                <h:inputHidden id="registrationCode" value="#{loginBackingBean.registrationCode}">
+                                    <f:passThroughAttribute name="sel" value="registrationCode"/>
+                                </h:inputHidden>
+                                <h:commandButton value="发送" action="#{loginBackingBean.sendMessage}" style="display: none">
+                                    <f:passThroughAttribute name="nm" value="subBtn"/>
+                                </h:commandButton>
+                                <h:commandButton value="确定" action="#{loginBackingBean.checkMessage}" style="display: none">
+                                    <f:passThroughAttribute name="nm" value="subBtn1"/>
+                                </h:commandButton>
+                            </div>
+                        </div>
+                        <!-- Add Scroll Bar -->
+                        <div class="swiper-scrollbar"></div>
+                    </div>
+                </div>
+
+
+
+
+
+            </h:form>
+            <div id="fri_bottom">
+                <div class="empty" id="service">
+
+                    <div class="s_btn s_btn1 ">
+                        <input id="sendMessage" type="button" onclick="sendMessage()" value="发送"/></div>
+                    <div class="s_btn s_btn2 ">
+                        <input id="checkMessage" type="button" onclick="checkMessage()" value="确定" disabled="disabled" style="background:grey"/>
+                    </div>
+                    <div style="margin-top:40px;margin-left:75px;width:1px;position: relative" id="fri_mod">
+                        <h:inputText id="accountNumDis" maxlength="8">
+                            <f:passThroughAttribute name="placeholder" value="请输入短信验证码" />
+                            <f:passThroughAttribute name="message" value="message"/>
+                        </h:inputText>
+                    </div>
+
+                </div>
+                <div id="keytxt">网站备案号：京ICP备11011340号</div>
+            </div>
+
+        </div>
+        <div class="alert" id="sn_err" style="display:none">
+            <div class="a_txt" id="perro"><span id="message">短信发送失败</span><br/>
+                请重试或致电<span class="span2">400-898-0050</span><br/>
+                联系梅赛德斯-奔驰智能互联<br/>
+                服务中心寻求帮助</div>
+            <div class="m_btn m_btn1"><input type="button" value="重 &#160; 试"
+                                             onclick="hideLogOff()" class="csinput"/></div>
+        </div>
+        <div id="filer"  style="display:none"></div>
+        <script>
+            $('#shuru_mod').height($(window).height()*0.34);
+            var swiper = new Swiper('.swiper-container', {
+                scrollbar: '.swiper-scrollbar',
+                direction: 'vertical',
+                slidesPerView: 'auto',
+                mousewheelControl: true,
+                freeMode: true
+            });
+        </script>
+    </ui:define>
+
+</ui:composition>
+</body>
+
+</html>
