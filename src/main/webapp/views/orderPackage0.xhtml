@@ -126,16 +126,16 @@
                                 <c:if test="${baseProduct.productCategoryId == 1}">
                                     <div class="sixbtn" secIndex="${x.count}">
                                         <c:forEach items="#{baseProduct.productCategoryList}" var="productCategory" varStatus="y">
-                                        <c:if test="${y.count == 1}">
-                                            <div productCategoryId="${baseProduct.productCategoryId}" yCount="${y.count}" divIndex="secDiv" secIndex="${x.count}" dataid="list${length}"  class="ac btns showbtns xiaoshi1">
-                                                #{productCategory.promotionCategoryName}
-                                            </div>
-                                        </c:if>
-                                        <c:if test="${y.count != 1}">
-                                            <div productCategoryId="${baseProduct.productCategoryId}" yCount="${y.count}" divIndex="secDiv" secIndex="${x.count}" dataid="list${length}"  class="btns showbtns xiaoshi1">
-                                                #{productCategory.promotionCategoryName}
-                                            </div>
-                                        </c:if><c:set var="length"  value="${length+1}"/>
+                                            <c:if test="${y.count == 1}">
+                                                <div productCategoryId="${baseProduct.productCategoryId}" yCount="${y.count}" divIndex="secDiv" secIndex="${x.count}" dataid="list${length}"  class="ac btns showbtns xiaoshi1">
+                                                    #{productCategory.promotionCategoryName}
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${y.count != 1}">
+                                                <div productCategoryId="${baseProduct.productCategoryId}" yCount="${y.count}" divIndex="secDiv" secIndex="${x.count}" dataid="list${length}"  class="btns showbtns xiaoshi1">
+                                                    #{productCategory.promotionCategoryName}
+                                                </div>
+                                            </c:if><c:set var="length"  value="${length+1}"/>
                                         </c:forEach>
                                     </div>
                                 </c:if>
@@ -173,51 +173,51 @@
                                                     <c:forEach items="#{productCategory.promotionCategoryList}" var="promotionCategory" varStatus="z">
                                                         <c:if test="${baseProduct.productCategoryId != 3}">
                                                             <div class="sixlistbg">
-                                                            <h2 >
-                                                                <h:outputText value="#{promotionCategory.shortMarketName}"/>
-                                                                <h:inputHidden value ="#{promotionCategory.shortMarketName}">
-                                                                    <f:passThroughAttribute name="pname" value="prodShortName"/>
-                                                                </h:inputHidden>
-                                                            </h2>
-                                                            <div class="num">
-                                                                <div class="toAdd" style="font-size: 30px;margin-left: -22px;">
-                                                                    <h:outputText rendered="#{promotionCategory.promotionDesc5A eq promotionCategory.promotionDesc5B}" value="¥#{promotionCategory.promotionDesc5A}" style="text-align: center;display: block">
-                                                                        <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
-                                                                    </h:outputText>
-                                                                    <h:outputText rendered="#{not(promotionCategory.promotionDesc5A eq promotionCategory.promotionDesc5B)}" value="¥#{promotionCategory.promotionDesc5A}" style="text-decoration:line-through;margin-left: -25px;">
-                                                                        <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
-                                                                    </h:outputText>
-                                                                    <h:inputHidden value  ="#{promotionCategory.promotionDesc5A}">
-                                                                        <f:passThroughAttribute name="price" value="price"/>
+                                                                <h2 >
+                                                                    <h:outputText value="#{promotionCategory.shortMarketName}"/>
+                                                                    <h:inputHidden value ="#{promotionCategory.shortMarketName}">
+                                                                        <f:passThroughAttribute name="pname" value="prodShortName"/>
                                                                     </h:inputHidden>
-                                                                </div>
-                                                                <h:outputText class = "priceDiv" rendered="#{not(promotionCategory.promotionDesc5A eq promotionCategory.promotionDesc5B)}"
-                                                                              style="background: url(#{facesContext.externalContext.request.contextPath}/resources/images/img2/rightjt.png) center no-repeat;width: 30px;height: 30px;position: absolute;left: 63px;top:5px;">
+                                                                </h2>
+                                                                <div class="num">
+                                                                    <div class="toAdd" style="font-size: 30px;margin-left: -22px;">
+                                                                        <h:outputText rendered="#{promotionCategory.promotionDesc5A eq promotionCategory.promotionDesc5B}" value="¥#{promotionCategory.promotionDesc5A}" style="text-align: center;display: block">
+                                                                            <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
+                                                                        </h:outputText>
+                                                                        <h:outputText rendered="#{not(promotionCategory.promotionDesc5A eq promotionCategory.promotionDesc5B)}" value="¥#{promotionCategory.promotionDesc5A}" style="text-decoration:line-through;margin-left: -25px;">
+                                                                            <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
+                                                                        </h:outputText>
+                                                                        <h:inputHidden value  ="#{promotionCategory.promotionDesc5A}">
+                                                                            <f:passThroughAttribute name="price" value="price"/>
+                                                                        </h:inputHidden>
+                                                                    </div>
+                                                                    <h:outputText class = "priceDiv" rendered="#{not(promotionCategory.promotionDesc5A eq promotionCategory.promotionDesc5B)}"
+                                                                                  style="background: url(#{facesContext.externalContext.request.contextPath}/resources/images/img2/rightjt.png) center no-repeat;width: 30px;height: 30px;position: absolute;left: 63px;top:5px;">
 
-                                                                </h:outputText>
-                                                                <div>
-                                                                    <h:outputText rendered="#{not(promotionCategory.promotionDesc5A eq promotionCategory.promotionDesc5B)}" value="¥#{promotionCategory.promotionDesc5B}">
-                                                                        <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
                                                                     </h:outputText>
-                                                                    <h:inputHidden value ="#{promotionCategory.promotionDesc5A}">
-                                                                        <f:passThroughAttribute name="price" value="promotionPrice"/>
-                                                                    </h:inputHidden>
+                                                                    <div>
+                                                                        <h:outputText rendered="#{not(promotionCategory.promotionDesc5A eq promotionCategory.promotionDesc5B)}" value="¥#{promotionCategory.promotionDesc5B}">
+                                                                            <f:convertNumber type="currency" currencySymbol="¥" maxFractionDigits="2" minFractionDigits="0" pattern="###,###.##"/>
+                                                                        </h:outputText>
+                                                                        <h:inputHidden value ="#{promotionCategory.promotionDesc5A}">
+                                                                            <f:passThroughAttribute name="price" value="promotionPrice"/>
+                                                                        </h:inputHidden>
+                                                                    </div>
                                                                 </div>
+                                                                <div class="leftjt">
+                                                                    <span class="zhekou">#{promotionCategory.promotionDesc1A}</span>
+                                                                </div>
+                                                                <div class="zs"><h:outputText value="#{promotionCategory.promotionDesc1B}"/></div>
+                                                                <div class="btn">
+                                                                    <h:commandButton value="立即购买" action="#{orderBackingBean.toOrderAccountInfo(baseProduct.productCategoryId,promotionCategory.pkgId)}"/>
+                                                                </div>
+                                                                <ul >
+                                                                    <li class="uloli">#{promotionCategory.promotionDesc2}</li>
+                                                                    <li class="oli">#{promotionCategory.promotionDesc3}</li>
+                                                                    <li class="enddate">#{promotionCategory.promotionDesc4}</li>
+                                                                </ul>
+                                                                <div class="toAdd" style="font-size: 30px;margin-left: 300px;padding-top:120px;width:266px">#{promotionCategory.promotionDesc6}</div>
                                                             </div>
-                                                            <div class="leftjt">
-                                                                <span class="zhekou">#{promotionCategory.promotionDesc1A}</span>
-                                                            </div>
-                                                            <div class="zs"><h:outputText value="#{promotionCategory.promotionDesc1B}"/></div>
-                                                            <div class="btn">
-                                                                <h:commandButton value="立即购买" action="#{orderBackingBean.toOrderAccountInfo(baseProduct.productCategoryId,promotionCategory.pkgId)}"/>
-                                                            </div>
-                                                            <ul >
-                                                                <li class="uloli">#{promotionCategory.promotionDesc2}</li>
-                                                                <li class="oli">#{promotionCategory.promotionDesc3}</li>
-                                                                <li class="enddate">#{promotionCategory.promotionDesc4}</li>
-                                                            </ul>
-                                                            <div class="toAdd" style="font-size: 30px;margin-left: 300px;padding-top:120px;width:266px">#{promotionCategory.promotionDesc6}</div>
-                                                        </div>
                                                         </c:if>
                                                         <c:if test="${baseProduct.productCategoryId == 3}">
                                                             <div class="wifilistbg">
@@ -297,7 +297,7 @@
                                             <tr>
                                                 <td  class="tab_L f17">实时路况信息<br/>
                                                     （仅限部分车型）</td>
-                                                <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
+                                                <td></td>
                                                 <td><img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/true.png"/></td>
                                             </tr>
                                             <tr>
@@ -600,13 +600,13 @@
                     var btns = 0;
                     for(var i=0;div.length>i;i++){
                         if($(div.get(i)).hasClass('gradient')){
-                           var index = $(div.get(i)).attr('firindex');
-                           var sixbtns = $('.sixbtn div');
-                           for(var j=0;sixbtns.length>j;j++ ){
-                               if(index == $(sixbtns.get(j)).attr('secindex')){
-                                   btns++;
-                               }
-                           }
+                            var index = $(div.get(i)).attr('firindex');
+                            var sixbtns = $('.sixbtn div');
+                            for(var j=0;sixbtns.length>j;j++ ){
+                                if(index == $(sixbtns.get(j)).attr('secindex')){
+                                    btns++;
+                                }
+                            }
                         }
                     }
                     /*var btns=$('.sixbtn .showbtns').length;*/
