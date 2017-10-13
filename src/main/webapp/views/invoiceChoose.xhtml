@@ -69,18 +69,20 @@
             if("1" == broserNum){
                 window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
             }
-            window.onload=function(){
-            $('input[invoiceType="invoiceType"]').val("个人");
-            $('#sq_bg1 .sbtns').click(function(){
-                $('#sq_bg1 .sbtns').removeClass('ac')
-                $(this).addClass('ac')
-                //alert('您选择了'+$(this).attr('data'))
-            })
+            window.onload=function() {
+                $('input[invoiceType="invoiceType"]').val("个人");
+                $('#sq_bg1 .sbtns').click(function () {
+                    $('#sq_bg1 .sbtns').removeClass('ac')
+                    $(this).addClass('ac')
+                    //alert('您选择了'+$(this).attr('data'))
+                })
 
-            function changeInvoiceType(invoiceType){
-                $('input[invoiceType="invoiceType"]').val(invoiceType);
+                function changeInvoiceType(invoiceType) {
+                    $('input[invoiceType="invoiceType"]').val(invoiceType);
 
+                }
             }
+
         </script>
     </ui:define>
 </ui:composition>
