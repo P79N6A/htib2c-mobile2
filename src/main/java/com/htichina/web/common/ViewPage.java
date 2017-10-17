@@ -40,6 +40,7 @@ public class ViewPage {
     public static final String LINK2LOCATION = "/views/location.xhtml?showwxpaytitle=1";
     public static final String LINK2LOCATIONMAP = "/views/locationMap.xhtml?showwxpaytitle=1";
     public static final String LINK2KEY = "/views/key.xhtml?showwxpaytitle=1";
+    public static final String LINK2VIOLATIONINQUIRY = "/views/violationInquiry.xhtml?showwxpaytitle=1";
 
     public static final String LINK2Zhineng = "/views/zhineng.html?showwxpaytitle=1";
 

@@ -182,6 +182,14 @@ public class WechatServlet extends HttpServlet {
 				LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
 				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2KEY)).forward(req, resp);
 			}
+
+            //违章查询
+            else if(state.equalsIgnoreCase(Constant.VIOLATION_INQUIRY)){
+                System.out.print("+++++++++"+state);
+                logger.debug("wechatServlet start violation inquiry");
+                LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
+                req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2VIOLATIONINQUIRY)).forward(req, resp);
+            }
 		}
 	}
 
