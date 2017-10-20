@@ -54,7 +54,7 @@ public class LoginFilter implements Filter {
 			if (null == httpRequest.getSession().getAttribute(CURRENT_USER)) {
 				if (isinterceptor(httpRequest.getRequestURL().toString(),
 						"firstLoginDidi.xhtml","hornLight_help.xhtml","hornLight.xhtml","key.xhtml","location.xhtml","locationMap.xhtml","lock.xhtml","lock_help.xhtml","myAccount.xhtml",
-						"newFollowDidi.xhtml","POCTelCheck.xhtml","unLock.xhtml","unLock_help.xhtml")) {
+						"POCTelCheck.xhtml","unLock.xhtml","unLock_help.xhtml")) {
 
 					StringBuffer Path1 = httpRequest.getRequestURL();
 					logger.info("Path ===>>"+Path1);
