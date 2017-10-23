@@ -161,7 +161,7 @@
                 <div id="keybox">
                     <div id="censel">
                         <div class="help textshadow">帮助</div>
-                        <span class="textshadow">取消</span>
+                        <div class="cancel textshadow">取消</div>
                     </div>
                     <ul>
                         <li class="bot3">
@@ -181,7 +181,7 @@
                         </li>
                         <li >
                             <div class="numbtn numbtn213 r3 h90 ">
-                                <div  onclick="checkPin();">完成</div>
+                                <div class="finish" onclick="checkPin();">完成</div>
                                 <h:form  id="condition" style="display: none">
                                     <h:inputHidden id="pin" value="#{locationBean.pin}"
                                                    style="display: none">
