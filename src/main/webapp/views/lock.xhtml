@@ -109,7 +109,7 @@
             function lockHelp(){
                 window.location.href="#{facesContext.externalContext.request.contextPath}/views/lock_help.xhtml";
             }
-            /*$(function() {
+            $(function() {
                 pushHistory();
                 window.addEventListener("popstate", function(e) {
                     //此处已经捕获返回事件，可以写自己的跳转代码
@@ -122,7 +122,7 @@
                     };
                     window.history.pushState(state, "title", "#");
                 }
-            });*/
+            });
         </script>
         <div class="page">
             <div id="fri_top">
@@ -140,7 +140,7 @@
                 <div id="keybox">
                     <div id="censel">
                         <div class="help textshadow" onclick="lockHelp()">帮助</div>
-                        <span class="textshadow">取消</span>
+                        <div class="finish textshadow">取消</div>
                     </div>
                     <ul>
                         <li class="bot3">
@@ -160,7 +160,7 @@
                         </li>
                         <li >
                             <div class="numbtn numbtn213 r3 h90 ">
-                                <div  onclick="checkPin();">完成</div>
+                                <div onclick="checkPin();">完成</div>
                                 <h:form  id="condition" style="display: none">
                                     <h:inputHidden id="pin" value="#{lockBean.pin}"
                                                    style="display: none">
@@ -228,6 +228,10 @@
             </div>
             <div class="m_btn m_btn1" onclick="ex()">确&#160;&#160;定</div>
         </div>
+        
+        
+        
+        
         <div id="filer" style="display: none"></div>
     </ui:define>
 
