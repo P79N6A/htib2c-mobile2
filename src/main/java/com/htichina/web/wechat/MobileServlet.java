@@ -52,7 +52,7 @@ public class MobileServlet extends HttpServlet {
 		logger.info("price=" + ESAPI.encoder().encodeForHTML(price));
 		
 		String pkgname;
-		if(pkg=="1"){
+		if("1".equals(pkg)){
 			pkgname="乐享套餐";
 		}else{
 			pkgname="尊享套餐";
@@ -136,25 +136,28 @@ public class MobileServlet extends HttpServlet {
 		return sign;
 
 	}
-
-	public static String convertStreamToString(InputStream is) {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-		StringBuilder sb = new StringBuilder();
-
-		String line = null;
-		try {
-			while ((line = reader.readLine()) != null) {
-				sb.append(line + "\n");
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				is.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return sb.toString();
-	}
+//
+//	public static String convertStreamToString(InputStream is) {
+//		InputStreamReader inputstreamreader = new InputStreamReader(is);
+//		BufferedReader reader = new BufferedReader(inputstreamreader);
+//		StringBuilder sb = new StringBuilder();
+//
+//		String line = null;
+//		try {
+//			while ((line = reader.readLine()) != null) {
+//				sb.append(line + "\n");
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		} finally {
+//			try {
+//				is.close();
+//				inputstreamreader.close();
+//				
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		return sb.toString();
+//	}
 }

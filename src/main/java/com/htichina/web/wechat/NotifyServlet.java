@@ -6,6 +6,8 @@ import com.htichina.web.common.ViewPage;
 import com.htichina.wsclient.payment.PaymentResponse;
 import com.htichina.wsclient.payment.PaymentResultMessage;
 import com.tencent.common.RequestHandler;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -70,7 +72,8 @@ public class NotifyServlet extends HttpServlet {
 			
 //			System.out.println("Notify: " + notifyXml);
 			logger.info("Notify: " + ESAPI.encoder().encodeForHTML(notifyXml));
-			if(notifyXml != "" && notifyXml != null){
+			
+			if(!StringUtils.isEmpty(notifyXml)){
 				SortedMap<String, String> m = parseXmlToList2(notifyXml);
 				WxPayResult wpr = new WxPayResult();
 				wpr.setSign(m.get("sign").toString());

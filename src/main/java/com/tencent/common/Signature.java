@@ -1,5 +1,6 @@
 package com.tencent.common;
 
+import org.apache.commons.lang.StringUtils;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -98,7 +99,7 @@ public class Signature {
         Util.log(map.toString());
 
         String signFromAPIResponse = map.get("sign").toString();
-        if(signFromAPIResponse=="" || signFromAPIResponse == null){
+        if(StringUtils.isEmpty(signFromAPIResponse)){
             Util.log("API返回的数据签名数据不存在，有可能被第三方篡改!!!");
             return false;
         }
