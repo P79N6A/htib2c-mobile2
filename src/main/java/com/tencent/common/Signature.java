@@ -98,7 +98,8 @@ public class Signature {
         Util.log(map.toString());
 
         String signFromAPIResponse = map.get("sign").toString();
-        if(signFromAPIResponse=="" || signFromAPIResponse == null){
+        /*2017-10-25;Alex:将==变成equal，！=""变成!isEmpty();CR-代码规范-->*/
+        if(signFromAPIResponse == null||signFromAPIResponse.isEmpty()){
             Util.log("API返回的数据签名数据不存在，有可能被第三方篡改!!!");
             return false;
         }

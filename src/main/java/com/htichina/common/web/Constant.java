@@ -220,5 +220,8 @@ public class Constant {
     public static final String HTTPS_TCUTYPE="tcuType";
     public static final String HTTPS_TCUID="tcuId";
     public static final String LOCATEPARAMTERKEY = "LOCATEPARAMTERKEY";
+    
+    //新增空字符串静态变量
+    public static final String EMPTY_STRING = "";
 
 }

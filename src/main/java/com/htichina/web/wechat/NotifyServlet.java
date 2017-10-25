@@ -70,7 +70,8 @@ public class NotifyServlet extends HttpServlet {
 			
 //			System.out.println("Notify: " + notifyXml);
 			logger.info("Notify: " + ESAPI.encoder().encodeForHTML(notifyXml));
-			if(notifyXml != "" && notifyXml != null){
+			/*2017-10-25;Alex:==换成equal！=""换成！isEmpty();CR-代码规范-->*/
+			if(notifyXml != null&&!notifyXml.isEmpty()){
 				SortedMap<String, String> m = parseXmlToList2(notifyXml);
 				WxPayResult wpr = new WxPayResult();
 				wpr.setSign(m.get("sign").toString());
@@ -122,8 +123,9 @@ public class NotifyServlet extends HttpServlet {
 									+ "<return_msg><![CDATA[报文为空]]></return_msg>"
 									+ "</xml> ";
 						}
-
-						order = neworder;
+						/*2017-10-25;Alex:添加临时变量转换变量传值;CR-代码规范-->*/
+						String temp = neworder;
+						order = temp;
 //				System.out.println(order);
 						logger.info(ESAPI.encoder().encodeForHTML(order));
 //				System.out.println(resXml);
