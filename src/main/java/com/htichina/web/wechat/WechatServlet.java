@@ -111,7 +111,9 @@ public class WechatServlet extends HttpServlet {
 				int i = str.indexOf("openid");
 				int j = str.indexOf("scope");
 				String openId = str.substring(i + 9, j - 3);
-				oId = openId;
+				/*2017-10-25;Alex:添加临时变量转换变量传值;CR-代码规范-->*/
+				String temp = openId;
+				oId = temp;
 //			System.out.println("openId: " + openId);
 				logger.info("openId: " + ESAPI.encoder().encodeForHTML(openId));
 
@@ -140,11 +142,26 @@ public class WechatServlet extends HttpServlet {
 
 //			FacesUtils.setManagedBeanInSession(Constant.OPEN_ID, openId);
 //			FacesUtils.setManagedBeanInSession(Constant.PAYMENT_PLATFORM, Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
-				req.getSession().setAttribute(Constant.OPEN_ID, openId);
-				req.getSession().setAttribute(Constant.WECHAT_USER_INFO, userInfo);
+				/*2017-10-25;Alex:判空变量，设置空变量值为静态变量空字符串;CR-代码规范-->*/
+				if(openId.isEmpty()){
+					req.getSession().setAttribute(Constant.OPEN_ID, Constant.EMPTY_STRING);
+				}else{
+					req.getSession().setAttribute(Constant.OPEN_ID, openId);
+				}
+				
+				if(userInfo.isEmpty()){
+					req.getSession().setAttribute(Constant.WECHAT_USER_INFO, Constant.EMPTY_STRING);
+				}else{
+					req.getSession().setAttribute(Constant.WECHAT_USER_INFO, userInfo);
+				}
 //			req.getSession().setAttribute(Constant.WECHAT_USER_INFO, nickname);
 				req.getSession().setAttribute(Constant.PAYMENT_PLATFORM, Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
-				req.getSession().setAttribute(Constant.WECHAT_STATE, state);
+				if(state.isEmpty()){
+					req.getSession().setAttribute(Constant.WECHAT_STATE, Constant.EMPTY_STRING);
+				}else{
+					req.getSession().setAttribute(Constant.WECHAT_STATE, state);
+				}
+				/*2017-10-25;Alex:判空变量，设置空变量值为静态变量空字符串;CR-代码规范<--*/
 //			System.out.println("payment platform: " + Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
 				logger.info("payment platform: " + ESAPI.encoder().encodeForHTML(Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY));
 			}

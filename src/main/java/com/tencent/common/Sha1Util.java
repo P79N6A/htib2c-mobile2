@@ -3,11 +3,10 @@ package com.tencent.common;
 
 
 
-import java.net.URLDecoder;
 import java.security.MessageDigest;
+import java.security.SecureRandom;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 import java.util.SortedMap;
 
@@ -20,10 +19,11 @@ import java.util.SortedMap;
 '*/
 public class Sha1Util {
 
-	public static String getNonceStr() {
-		Random random = new Random();
+	/*2017-10-25;Alex:该方法没有调用，去掉;CR-代码规范-->*/
+	/*public static String getNonceStr() {
+		SecureRandom random = new SecureRandom();
 		return MD5Util.MD5Encode(String.valueOf(random.nextInt(10000)), "UTF-8");
-	}
+	}*/
 	public static String getTimeStamp() {
 		return String.valueOf(System.currentTimeMillis() / 1000);
 	}
