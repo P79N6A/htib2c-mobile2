@@ -99,10 +99,11 @@ public class LoginBackingBean implements Serializable {
         openId = oId;
         targetPg = targetPage;
         String an = null;
-        logger.info("Login bakcing oId ==>"+oId);
+        //CR 代码规范
+        logger.info("Login bakcing oId ==>"+ESAPI.encoder().decodeForHTML(oId) );
         if(!Strings.isNullOrEmpty(oId)){
            an = PaymentServiceClient.getInstance().getActiveAccountByOpenId(oId);
-            logger.info("Login bakcing an ==>"+an);
+            logger.info("Login bakcing an ==>"+ESAPI.encoder().decodeForHTML(an));
         }
         else {
             logger.info("return to login");
