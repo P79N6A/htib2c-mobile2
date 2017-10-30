@@ -34,7 +34,7 @@
             #keytxt{  left:135px; bottom:2rem}
             #fri_top{ text-align: center; max-height:123px;}
             #logo2{ padding-top: 6%;}
-            #SpecialCar_icon{ position: absolute; left: 1px; top: 88px;}
+            #SpecialCar_icon{ position: absolute; width: 500px; left: 80px; top: 68px;}
             #tel{ background: url("../resources/images/img/taix_inputbg.png"); width: 362px; height: 59px; position: absolute; left: 84px; top: 595px;}
             #tel input{ background: none;border: none; line-height: 58px;  font-size: 30px; color: #808080; padding: 0px 10px; box-sizing: border-box; width: 100%; outline: none;}
             .btn{ width: 105px; height: 59px; text-align: center; line-height: 58px; color: #fff; font-size: 26px; position: absolute; top: 595px; left: 452px; background: #166ab8;}
@@ -81,6 +81,8 @@
                         <div id="teltxt">输入手机号码验证车主信息，即刻领取优质服务大礼包</div>
                     </div>
                 </div>
+                <div style="text-align: center; width: 100%; position: absolute; top: 870px; font-size: 21px; color: #fff;">
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/didiMessage.png" alt=""></img></div>
                 <div id="fri_bottom">
                     <div id="keytxt">
                         本活动解释权归梅赛德斯—奔驰智能互联所有<br/>
@@ -103,7 +105,8 @@
                 $('#sn_err').hide();
             }else{
                 if("true" == flag){
-                    window.location.href="https://dc.tt/Rhv6"
+//                    window.location.href="https://dc.tt/Rhv6"
+                    window.location.href="https://gsactivity.diditaxi.com.cn/gulfstream/activity/v2/giftpackage/index?g_channel=56a55e6cfbb5aaf0457abf8d90a9de4d";
                 }
                 else if("false" == flag){
                     $('#message').html("您的输入的手机号已领取");
