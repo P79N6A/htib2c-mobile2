@@ -52,8 +52,7 @@ public class MobileServlet extends HttpServlet {
 		logger.info("price=" + ESAPI.encoder().encodeForHTML(price));
 		
 		String pkgname;
-		/*2017-10-25;Alex:==换成equal，去掉;CR-代码规范-->*/
-		if("1".equals(pkg)){
+		if(pkg=="1"){
 			pkgname="乐享套餐";
 		}else{
 			pkgname="尊享套餐";

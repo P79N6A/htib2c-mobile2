@@ -1,25 +1,10 @@
 package com.tencent.service;
 
-import static java.lang.Thread.sleep;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URISyntaxException;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.UnrecoverableKeyException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
+import com.htichina.common.web.ConfigureInfo;
+import com.htichina.common.web.Constant;
+import com.htichina.web.POC.ResultBean;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.config.RequestConfig;
@@ -29,9 +14,22 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.springframework.stereotype.Component;
 
-import com.htichina.common.web.ConfigureInfo;
-import com.htichina.common.web.Constant;
-import com.htichina.web.POC.ResultBean;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URISyntaxException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
+import static java.lang.Thread.sleep;
 
 /**
  * User: liuning
@@ -333,8 +331,7 @@ public class HttpsURLRequest  {
     public static String getTransactionId() {
 
         final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        /*2017-10-25;Alex:将random变成SecureRandom;CR-代码规范-->*/
-        SecureRandom rnd = new SecureRandom();
+        Random rnd = new Random();
         StringBuilder transactionId = new StringBuilder(15);
         for (int i = 0; i < 15; i++)
             transactionId.append(AB.charAt(rnd.nextInt(AB.length())));

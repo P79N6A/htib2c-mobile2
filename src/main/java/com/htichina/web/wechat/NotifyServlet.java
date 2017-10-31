@@ -125,9 +125,8 @@ public class NotifyServlet extends HttpServlet {
 									+ "<return_msg><![CDATA[报文为空]]></return_msg>"
 									+ "</xml> ";
 						}
-						/*2017-10-25;Alex:添加临时变量转换变量传值;CR-代码规范-->*/
-						String temp = neworder;
-						order = temp;
+
+						order = neworder;
 //				System.out.println(order);
 						logger.info(ESAPI.encoder().encodeForHTML(order));
 //				System.out.println(resXml);

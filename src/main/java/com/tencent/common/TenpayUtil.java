@@ -4,7 +4,6 @@ package com.tencent.common;
 
 
 
-import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -78,9 +77,7 @@ public class TenpayUtil {
 	 */
 	public static int buildRandom(int length) {
 		int num = 1;
-		/*2017-10-25;Alex:将random变成SecureRandom;CR-代码规范-->*/
-		SecureRandom rnd = new SecureRandom();
-		double random = rnd.nextDouble();
+		double random = Math.random();
 		if (random < 0.1) {
 			random = random + 0.1;
 		}

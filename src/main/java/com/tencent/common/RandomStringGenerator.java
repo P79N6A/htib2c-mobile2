@@ -1,6 +1,6 @@
 package com.tencent.common;
 
-import java.security.SecureRandom;
+import java.util.Random;
 
 /**
  * User: rizenguo
@@ -16,8 +16,7 @@ public class RandomStringGenerator {
      */
     public static String getRandomStringByLength(int length) {
         String base = "abcdefghijklmnopqrstuvwxyz0123456789";
-        /*2017-10-25;Alex:将random变成SecureRandom;CR-代码规范-->*/
-        SecureRandom random = new SecureRandom();
+        Random random = new Random();
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < length; i++) {
             int number = random.nextInt(base.length());
