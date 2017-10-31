@@ -30,9 +30,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>在线订购</title>
 	<link rel="shortcut icon" href="./favicon.ico">
-	<link rel="stylesheet" href="./css/themes/default/jquery.mobile-1.4.5.min.css">
-	<script src="./js/jquery.js"></script>
-	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+	<link rel="stylesheet" href="./css/themes/default/jquery.mobile-1.4.5.min.css" charset="utf-8">
+	<script src="./js/jquery.js" charset="utf-8"></script>
+	<script src="./js/jquery.mobile-1.4.5.min.js" charset="utf-8"></script>
 
 
 </head>
