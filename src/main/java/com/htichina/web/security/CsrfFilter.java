@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.owasp.esapi.ESAPI;
 
 public class CsrfFilter implements Filter {
 		private static final Logger logger = LogManager.getLogger(CsrfFilter.class);
@@ -36,6 +38,7 @@ public class CsrfFilter implements Filter {
 			size = null == whiteUrls ? 0 : whiteUrls.size();
 		}
 
+		/*2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范*/
 		public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 				throws IOException, ServletException {
 			
@@ -49,9 +52,9 @@ public class CsrfFilter implements Filter {
 				String url = req.getRequestURL().toString();
 				String referurl = req.getHeader("Referer");
 			    
-				logger.info("referurl----->" + referurl);
+				logger.info("referurl----->" + ESAPI.encoder().encodeForHTML(referurl));
 				String serverAddr = isWhiteReq(referurl);
-				logger.info("mod referurl----->" + serverAddr);
+				logger.info("mod referurl----->" + ESAPI.encoder().encodeForHTML(serverAddr));
 				if (serverAddr!=null) {
 					//res.setHeader("Referer","http://"+serverAddr);
 					chain.doFilter(request, response);
@@ -65,7 +68,7 @@ public class CsrfFilter implements Filter {
 					String clientIp = getRemoteHost(req);
 
 					log = clientIp + "||" + date + "||" + referurl + "||" + url;
-					logger.warn(log);
+					logger.warn(ESAPI.encoder().encodeForHTML(log));
 					return;
 				}
 
@@ -103,15 +106,18 @@ public class CsrfFilter implements Filter {
 		public void destroy() {
 		}
 
+		/*2017-10-25;Alex:优化代码，关闭IO等流;CR-代码规范*/
 		private List<String> readFile(String fileName) {
 			List<String> list = new ArrayList<String>();
 			BufferedReader reader = null;
 			FileInputStream fis = null;
+			InputStreamReader ip_reader = null;
 			try {
 				File f = new File(fileName);
 				if (f.isFile() && f.exists()) {
 					fis = new FileInputStream(f);
-					reader = new BufferedReader(new InputStreamReader(fis, "UTF-8"));
+					ip_reader = new InputStreamReader(fis, "UTF-8");
+					reader = new BufferedReader(ip_reader);
 					String line;
 					while ((line = reader.readLine()) != null) {
 						if (!"".equals(line)) {
@@ -128,6 +134,13 @@ public class CsrfFilter implements Filter {
 					}
 				} catch (IOException e) {
 					logger.error("InputStream关闭异常", e);
+				}
+				try {
+					if (ip_reader != null) {
+						ip_reader.close();
+					}
+				} catch (IOException e) {
+					logger.error("InputStreamReader关闭异常", e);
 				}
 				try {
 					if (fis != null) {

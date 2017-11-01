@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 
+import org.owasp.esapi.ESAPI;
+
 /*
 '============================================================================
 'api说明：
@@ -19,11 +21,13 @@ import java.util.SortedMap;
 '*/
 public class Sha1Util {
 
-	/*2017-10-25;Alex:该方法没有调用，去掉;CR-代码规范-->*/
-	/*public static String getNonceStr() {
+	/*2017-10-25;Alex:优化代码，安全加密静态变量;CR-代码规范*/
+	private static final String ALGORITHMS = ESAPI.encoder().encodeForHTML("SHA1");
+	/*2017-10-25;Alex:优化代码，将Random替换成SecureRandom;CR-代码规范*/
+	public static String getNonceStr() {
 		SecureRandom random = new SecureRandom();
 		return MD5Util.MD5Encode(String.valueOf(random.nextInt(10000)), "UTF-8");
-	}*/
+	}
 	public static String getTimeStamp() {
 		return String.valueOf(System.currentTimeMillis() / 1000);
 	}
@@ -54,7 +58,7 @@ public class Sha1Util {
 				'a', 'b', 'c', 'd', 'e', 'f' };
 
 		try {
-			MessageDigest mdTemp = MessageDigest.getInstance("SHA1");
+			MessageDigest mdTemp = MessageDigest.getInstance(ALGORITHMS);
 			mdTemp.update(str.getBytes("GBK"));
 
 			byte[] md = mdTemp.digest();

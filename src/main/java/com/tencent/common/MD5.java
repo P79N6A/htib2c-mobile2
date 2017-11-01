@@ -2,6 +2,8 @@ package com.tencent.common;
 
 import java.security.MessageDigest;
 
+import org.owasp.esapi.ESAPI;
+
 /**
  * User: rizenguo
  * Date: 2014/10/23
@@ -11,6 +13,8 @@ public class MD5 {
     private final static String[] hexDigits = {"0", "1", "2", "3", "4", "5", "6", "7",
             "8", "9", "a", "b", "c", "d", "e", "f"};
 
+    /*2017-10-25;Alex:优化代码，安全加密静态变量;CR-代码规范*/
+    private static final String ALGORITHMS = ESAPI.encoder().encodeForHTML("MD5");
     /**
      * 转换字节数组为16进制字串
      * @param b 字节数组
@@ -48,7 +52,7 @@ public class MD5 {
         String resultString = null;
         try {
             resultString = origin;
-            MessageDigest md = MessageDigest.getInstance("MD5");
+            MessageDigest md = MessageDigest.getInstance(ALGORITHMS);
             resultString = byteArrayToHexString(md.digest(resultString.getBytes()));
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,10 +1,17 @@
 package com.htichina.web.wechat;
 
-import com.htichina.common.web.ConfigureInfo;
-import com.htichina.common.web.Constant;
-import com.htichina.web.common.ViewPage;
-import com.htichina.web.login.LoginBackingBean;
-import com.htichina.web.order.OrderBackingBean;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -16,16 +23,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.htichina.common.web.ConfigureInfo;
+import com.htichina.common.web.Constant;
+import com.htichina.web.common.ViewPage;
+import com.htichina.web.login.LoginBackingBean;
+import com.htichina.web.order.OrderBackingBean;
 
 /**
  * Created by yiming on 2015/5/4.
@@ -89,7 +91,8 @@ public class WechatServlet extends HttpServlet {
 		if (entity != null) {
 			InputStream instreams = entity.getContent();
 			String str = convertStreamToString(instreams);
-			logger.info("str == "+str);
+			/*2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范*/
+			logger.info("str == "+ESAPI.encoder().encodeForHTML(str));
 			if(str.indexOf("errcode") > -1){
 				logger.debug("httpGet failed");
 				F = false;
@@ -111,9 +114,10 @@ public class WechatServlet extends HttpServlet {
 				int i = str.indexOf("openid");
 				int j = str.indexOf("scope");
 				String openId = str.substring(i + 9, j - 3);
-				/*2017-10-25;Alex:添加临时变量转换变量传值;CR-代码规范-->*/
-				String temp = openId;
-				oId = temp;
+				/*2017-10-25;Alex:优化代码，线程同步;CR-代码规范*/
+				synchronized(oId){
+					oId = openId;
+				}
 //			System.out.println("openId: " + openId);
 				logger.info("openId: " + ESAPI.encoder().encodeForHTML(openId));
 
@@ -142,26 +146,11 @@ public class WechatServlet extends HttpServlet {
 
 //			FacesUtils.setManagedBeanInSession(Constant.OPEN_ID, openId);
 //			FacesUtils.setManagedBeanInSession(Constant.PAYMENT_PLATFORM, Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
-				/*2017-10-25;Alex:判空变量，设置空变量值为静态变量空字符串;CR-代码规范-->*/
-				if(openId.isEmpty()){
-					req.getSession().setAttribute(Constant.OPEN_ID, Constant.EMPTY_STRING);
-				}else{
-					req.getSession().setAttribute(Constant.OPEN_ID, openId);
-				}
-				
-				if(userInfo.isEmpty()){
-					req.getSession().setAttribute(Constant.WECHAT_USER_INFO, Constant.EMPTY_STRING);
-				}else{
-					req.getSession().setAttribute(Constant.WECHAT_USER_INFO, userInfo);
-				}
-//			req.getSession().setAttribute(Constant.WECHAT_USER_INFO, nickname);
+				/*2017-10-25;Alex:优化代码，安全加密输出内容;CR-代码规范*/
+				req.getSession().setAttribute(Constant.OPEN_ID, ESAPI.encoder().encodeForHTML(openId));
+				req.getSession().setAttribute(Constant.WECHAT_USER_INFO, ESAPI.encoder().encodeForHTML(userInfo));
 				req.getSession().setAttribute(Constant.PAYMENT_PLATFORM, Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
-				if(state.isEmpty()){
-					req.getSession().setAttribute(Constant.WECHAT_STATE, Constant.EMPTY_STRING);
-				}else{
-					req.getSession().setAttribute(Constant.WECHAT_STATE, state);
-				}
-				/*2017-10-25;Alex:判空变量，设置空变量值为静态变量空字符串;CR-代码规范<--*/
+				req.getSession().setAttribute(Constant.WECHAT_STATE, ESAPI.encoder().encodeForHTML(state));
 //			System.out.println("payment platform: " + Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
 				logger.info("payment platform: " + ESAPI.encoder().encodeForHTML(Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY));
 			}
@@ -210,20 +199,24 @@ public class WechatServlet extends HttpServlet {
 		}
 	}
 
-	public static String convertStreamToString(InputStream is) {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+	/*2017-10-25;Alex:优化代码，关闭IO流等;CR-代码规范*/
+	public static String convertStreamToString(InputStream ip_stream) {
+		InputStreamReader ip_reader = new InputStreamReader(ip_stream);
+		BufferedReader bf_reader = new BufferedReader(ip_reader);
 		StringBuilder sb = new StringBuilder();
 
 		String line = null;
 		try {
-			while ((line = reader.readLine()) != null) {
+			while ((line = bf_reader.readLine()) != null) {
 				sb.append(line + "\n");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				is.close();
+				bf_reader.close();
+				ip_reader.close();
+				ip_stream.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

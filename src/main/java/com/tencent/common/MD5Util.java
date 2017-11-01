@@ -5,8 +5,13 @@ package com.tencent.common;
 
 import java.security.MessageDigest;
 
+import org.owasp.esapi.ESAPI;
+
 public class MD5Util {
 
+	/*2017-10-25;Alex:优化代码，安全加密静态变量;CR-代码规范*/
+	private static final String ALGORITHMS = ESAPI.encoder().encodeForHTML("MD5");
+	
 	private static String byteArrayToHexString(byte b[]) {
 		StringBuffer resultSb = new StringBuffer();
 		for (int i = 0; i < b.length; i++)
@@ -28,7 +33,7 @@ public class MD5Util {
 		String resultString = null;
 		try {
 			resultString = new String(origin);
-			MessageDigest md = MessageDigest.getInstance("MD5");
+			MessageDigest md = MessageDigest.getInstance(ALGORITHMS);
 			if (charsetname == null || "".equals(charsetname))
 				resultString = byteArrayToHexString(md.digest(resultString
 						.getBytes()));

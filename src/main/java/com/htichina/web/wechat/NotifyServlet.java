@@ -27,6 +27,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.*;
 import java.util.List;
 import java.util.SortedMap;
@@ -125,9 +126,10 @@ public class NotifyServlet extends HttpServlet {
 									+ "<return_msg><![CDATA[报文为空]]></return_msg>"
 									+ "</xml> ";
 						}
-						/*2017-10-25;Alex:添加临时变量转换变量传值;CR-代码规范-->*/
-						String temp = neworder;
-						order = temp;
+						/*2017-10-25;Alex:优化代码，线程同步;CR-代码规范*/
+						synchronized (order) {
+							order = neworder;
+						}
 //				System.out.println(order);
 						logger.info(ESAPI.encoder().encodeForHTML(order));
 //				System.out.println(resXml);
@@ -184,7 +186,6 @@ public class NotifyServlet extends HttpServlet {
 	 * @see
 	 */
 
-	@SuppressWarnings("rawtypes")
 	private static SortedMap<String, String> parseXmlToList2(String xml) {
 		// Map retMap = new HashMap();
 		SortedMap<String, String> retMap = new TreeMap<String, String>();
@@ -237,20 +238,24 @@ public class NotifyServlet extends HttpServlet {
 
 	}
 
-	public static String convertStreamToString(InputStream is) {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+	/*2017-10-25;Alex:优化代码，关闭IO流等;CR-代码规范*/
+	public static String convertStreamToString(InputStream ip_stream) {
+		InputStreamReader ip_reader = new InputStreamReader(ip_stream);
+		BufferedReader bf_reader = new BufferedReader(ip_reader);
 		StringBuilder sb = new StringBuilder();
 
 		String line = null;
 		try {
-			while ((line = reader.readLine()) != null) {
+			while ((line = bf_reader.readLine()) != null) {
 				sb.append(line + "\n");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				is.close();
+				bf_reader.close();
+				ip_reader.close();
+				ip_stream.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
