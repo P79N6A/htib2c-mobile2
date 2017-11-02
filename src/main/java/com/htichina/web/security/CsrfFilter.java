@@ -18,7 +18,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -46,11 +45,8 @@ public class CsrfFilter implements Filter {
 			try {
 				HttpServletRequest req = (HttpServletRequest) request;
 				HttpServletResponse res = (HttpServletResponse) response;
-				
-				
-				
 				res.setHeader("Server", "verizon");
-				req.setCharacterEncoding("UTF-8");
+				//req.setCharacterEncoding("UTF-8");
 				res.setCharacterEncoding("UTF-8");
 				// 获取请求url地址
 				String url = req.getRequestURL().toString();
