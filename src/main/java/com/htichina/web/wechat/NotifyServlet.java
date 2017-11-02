@@ -1,11 +1,19 @@
 package com.htichina.web.wechat;
 
-import com.htichina.common.web.ConfigureInfo;
-import com.htichina.web.PaymentServiceClient;
-import com.htichina.web.common.ViewPage;
-import com.htichina.wsclient.payment.PaymentResponse;
-import com.htichina.wsclient.payment.PaymentResultMessage;
-import com.tencent.common.RequestHandler;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.util.List;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
@@ -23,15 +31,12 @@ import org.jdom.input.SAXBuilder;
 import org.owasp.esapi.ESAPI;
 import org.xml.sax.InputSource;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import java.io.*;
-import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import com.htichina.common.web.ConfigureInfo;
+import com.htichina.web.PaymentServiceClient;
+import com.htichina.web.common.ViewPage;
+import com.htichina.wsclient.payment.PaymentResponse;
+import com.htichina.wsclient.payment.PaymentResultMessage;
+import com.tencent.common.RequestHandler;
 
 public class NotifyServlet extends HttpServlet {
 	private static Logger logger = Logger.getLogger(NotifyServlet.class.getName());
@@ -262,5 +267,4 @@ public class NotifyServlet extends HttpServlet {
 		}
 		return sb.toString();
 	}
-
 }
