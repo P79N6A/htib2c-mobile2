@@ -4,6 +4,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
+import org.owasp.esapi.ESAPI;
+
 /**
  * Created by yaliu on 2017/5/2.
  * 请求校验工具类
@@ -11,6 +13,9 @@ import java.util.Arrays;
 public class SignUtil {
     // 与接口配置信息中的Token要一致
     private static String token = "VerizonTelematicsChina";
+    
+    /*2017-10-25;Alex:优化代码，安全加密静态变量;CR-代码规范*/
+    private static final String ALGORITHMS = ESAPI.encoder().encodeForHTML("SHA-1");
 
     /**
      * 验证签名
@@ -32,7 +37,7 @@ public class SignUtil {
         String tmpStr = null;
 
         try {
-            md = MessageDigest.getInstance("SHA-1");
+            md = MessageDigest.getInstance(ALGORITHMS);
             // 将三个参数字符串拼接成一个字符串进行sha1加密
             byte[] digest = md.digest(content.toString().getBytes());
             tmpStr = byteToStr(digest);

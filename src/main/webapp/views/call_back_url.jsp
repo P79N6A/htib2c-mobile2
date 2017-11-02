@@ -23,6 +23,7 @@
 <%@ page import="com.htichina.web.PaymentServiceClient" %>
 <%@ page import="com.htichina.wsclient.payment.PaymentResultMessage" %>
 <%@ page import="com.htichina.wsclient.payment.PaymentResponse" %>
+<%@ page import="org.owasp.esapi.ESAPI" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,13 +101,13 @@
 			Map.Entry entry = (Map.Entry) iterator.next();
 			String value =  (String) entry.getValue();
 			String key = (String) entry.getKey();
-			out.println("返回参数: " + key + "=" + value + "<br/>");
+			out.println(ESAPI.encoder().encodeForHTML("返回参数: " + key + "=" + value + "<br/>"));
 			transMsg += key + ":" + value + ", ";
 		}
 		out.println("<br/><br/>");
-		out.println("商户订单号: " + out_trade_no + "<br/>");
-		out.println("支付宝交易号: " + trade_no + "<br/>");
-		out.println("交易结果: " + result + "<br/>");
+		out.println(ESAPI.encoder().encodeForHTML("商户订单号: " + out_trade_no + "<br/>"));
+		out.println(ESAPI.encoder().encodeForHTML("支付宝交易号: " + trade_no + "<br/>"));
+		out.println(ESAPI.encoder().encodeForHTML("交易结果: " + result + "<br/>"));
 
 		PaymentServiceClient client = PaymentServiceClient.getInstance();
 		PaymentResultMessage paymentResultMessage = new PaymentResultMessage();

@@ -5,7 +5,6 @@ import java.security.SecureRandom;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Random;
 
 /* *
  *类名：UtilDate
@@ -64,11 +63,10 @@ public class UtilDate {
 	 * 产生随机的三位数
 	 * @return
 	 */
-	/*2017-10-25;Alex:该方法没有调用，去掉;CR-代码规范-->*/
-	/*public static String getThree(){
+	/*2017-10-25;Alex:优化代码，将random替换成SecureRandom;CR-代码规范*/
+	public static String getThree(){
 		SecureRandom rad=new SecureRandom();
 		return rad.nextInt(1000)+"";
-	}*/
-	/*2017-10-25;Alex:该方法没有调用，去掉;CR-代码规范<--*/
+	}
 	
 }

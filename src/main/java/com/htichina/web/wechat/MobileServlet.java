@@ -3,6 +3,7 @@ package com.htichina.web.wechat;
 import com.tencent.common.GetWxOrderno;
 import com.tencent.common.MD5Util;
 import com.tencent.common.Sha1Util;
+
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
 import org.richfaces.json.JSONException;
@@ -12,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -137,28 +139,29 @@ public class MobileServlet extends HttpServlet {
 		return sign;
 
 	}
-//
-//	public static String convertStreamToString(InputStream is) {
-//		InputStreamReader inputstreamreader = new InputStreamReader(is);
-//		BufferedReader reader = new BufferedReader(inputstreamreader);
-//		StringBuilder sb = new StringBuilder();
-//
-//		String line = null;
-//		try {
-//			while ((line = reader.readLine()) != null) {
-//				sb.append(line + "\n");
-//			}
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				is.close();
-//				inputstreamreader.close();
-//				
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		return sb.toString();
-//	}
+
+	/*2017-10-25;Alex:优化代码，关闭IO流等;CR-代码规范*/
+	public static String convertStreamToString(InputStream ip_stream) {
+		InputStreamReader ip_reader = new InputStreamReader(ip_stream);
+		BufferedReader bf_reader = new BufferedReader(ip_reader);
+		StringBuilder sb = new StringBuilder();
+
+		String line = null;
+		try {
+			while ((line = bf_reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				bf_reader.close();
+				ip_reader.close();
+				ip_stream.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return sb.toString();
+	}
 }

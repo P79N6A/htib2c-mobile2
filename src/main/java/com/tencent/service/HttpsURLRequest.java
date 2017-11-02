@@ -130,13 +130,17 @@ public class HttpsURLRequest  {
             CloseableHttpClient httpClient = HttpClients.createDefault();
             HttpResponse httpResponse = httpClient.execute(post);
             // 获取响应输入流
+            /*2017-10-25;Alex:优化代码，关闭IO流等;CR-代码规范*/
             InputStream inStream = httpResponse.getEntity().getContent();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    inStream, "utf-8"));
+            InputStreamReader ip_reader = new InputStreamReader(inStream, "utf-8");
+            BufferedReader bf_reader = new BufferedReader(ip_reader);
             StringBuilder strber = new StringBuilder();
             String line = null;
-            while ((line = reader.readLine()) != null)
-                strber.append(line + "\n");
+            while ((line = bf_reader.readLine()) != null){
+            	strber.append(line + "\n");
+            }
+            bf_reader.close();
+            ip_reader.close();
             inStream.close();
             String result = strber.toString();
             //string转Json
@@ -333,7 +337,7 @@ public class HttpsURLRequest  {
     public static String getTransactionId() {
 
         final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        /*2017-10-25;Alex:将random变成SecureRandom;CR-代码规范-->*/
+        /*2017-10-25;Alex:将random替换成SecureRandom;CR-代码规范-->*/
         SecureRandom rnd = new SecureRandom();
         StringBuilder transactionId = new StringBuilder(15);
         for (int i = 0; i < 15; i++)

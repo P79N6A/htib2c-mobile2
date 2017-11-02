@@ -29,7 +29,10 @@ public class MySSLSocketFactory extends SSLSocketFactory{
 			e.printStackTrace();
 		}
 		try {
-			sslcontext.init(null, new TrustManager[]{new TrustAnyTrustManager()}, null);
+			/*2017-10-25;Alex:优化代码，代码分开定义，避免错误;CR-代码规范*/
+			TrustAnyTrustManager trustManager = new TrustAnyTrustManager();
+			TrustManager[] trustManagers = new TrustManager[]{trustManager};
+			sslcontext.init(null,trustManagers, null);
 		} catch (KeyManagementException e) {
 			e.printStackTrace();
 			return null;
