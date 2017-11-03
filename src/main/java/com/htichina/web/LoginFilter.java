@@ -76,7 +76,7 @@ public class LoginFilter implements Filter {
 			fc.doFilter(httpRequest, httpResponse);
 		}
 		catch (Exception e){
-			request.getRequestDispatcher("/views/common/error.xhtml").forward(request,response);
+			httpResponse.sendRedirect("/views/common/error.xhtml");
 		}
 
 
