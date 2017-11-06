@@ -221,5 +221,4 @@ public class Constant {
     public static final String HTTPS_TCUTYPE="tcuType";
     public static final String HTTPS_TCUID="tcuId";
     public static final String LOCATEPARAMTERKEY = "LOCATEPARAMTERKEY";
-
 }

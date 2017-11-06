@@ -3,13 +3,14 @@ package com.tencent.common;
 
 
 
-import java.net.URLDecoder;
 import java.security.MessageDigest;
+import java.security.SecureRandom;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 import java.util.SortedMap;
+
+import org.owasp.esapi.ESAPI;
 
 /*
 '============================================================================
@@ -20,8 +21,11 @@ import java.util.SortedMap;
 '*/
 public class Sha1Util {
 
+	/*2017-10-25;Alex:优化代码，安全加密静态变量;CR-代码规范*/
+	private static final String ALGORITHMS = ESAPI.encoder().encodeForHTML("SHA1");
+	/*2017-10-25;Alex:优化代码，将Random替换成SecureRandom;CR-代码规范*/
 	public static String getNonceStr() {
-		Random random = new Random();
+		SecureRandom random = new SecureRandom();
 		return MD5Util.MD5Encode(String.valueOf(random.nextInt(10000)), "UTF-8");
 	}
 	public static String getTimeStamp() {
@@ -54,7 +58,7 @@ public class Sha1Util {
 				'a', 'b', 'c', 'd', 'e', 'f' };
 
 		try {
-			MessageDigest mdTemp = MessageDigest.getInstance("SHA1");
+			MessageDigest mdTemp = MessageDigest.getInstance(ALGORITHMS);
 			mdTemp.update(str.getBytes("GBK"));
 
 			byte[] md = mdTemp.digest();

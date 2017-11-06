@@ -1,18 +1,6 @@
 package com.tencent.service;
 
-import com.htichina.common.web.ConfigureInfo;
-import com.htichina.common.web.Constant;
-import com.htichina.web.POC.ResultBean;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.springframework.stereotype.Component;
+import static java.lang.Thread.sleep;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,14 +10,28 @@ import java.net.URISyntaxException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.security.UnrecoverableKeyException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
-import static java.lang.Thread.sleep;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.springframework.stereotype.Component;
+
+import com.htichina.common.web.ConfigureInfo;
+import com.htichina.common.web.Constant;
+import com.htichina.web.POC.ResultBean;
 
 /**
  * User: liuning
@@ -128,13 +130,17 @@ public class HttpsURLRequest  {
             CloseableHttpClient httpClient = HttpClients.createDefault();
             HttpResponse httpResponse = httpClient.execute(post);
             // 获取响应输入流
+            /*2017-10-25;Alex:优化代码，关闭IO流等;CR-代码规范*/
             InputStream inStream = httpResponse.getEntity().getContent();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    inStream, "utf-8"));
+            InputStreamReader ip_reader = new InputStreamReader(inStream, "utf-8");
+            BufferedReader bf_reader = new BufferedReader(ip_reader);
             StringBuilder strber = new StringBuilder();
             String line = null;
-            while ((line = reader.readLine()) != null)
-                strber.append(line + "\n");
+            while ((line = bf_reader.readLine()) != null){
+            	strber.append(line + "\n");
+            }
+            bf_reader.close();
+            ip_reader.close();
             inStream.close();
             String result = strber.toString();
             //string转Json
@@ -331,7 +337,8 @@ public class HttpsURLRequest  {
     public static String getTransactionId() {
 
         final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        Random rnd = new Random();
+        /*2017-10-25;Alex:将random替换成SecureRandom;CR-代码规范-->*/
+        SecureRandom rnd = new SecureRandom();
         StringBuilder transactionId = new StringBuilder(15);
         for (int i = 0; i < 15; i++)
             transactionId.append(AB.charAt(rnd.nextInt(AB.length())));
