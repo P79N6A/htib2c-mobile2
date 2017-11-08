@@ -36,19 +36,23 @@ public class TokenCsrfFilter implements Filter {
 		   session.setAttribute(CSRFTOKEN,sToken); 
 		   chain.doFilter(request, response); 
 		} else{ 
-		 
+			String uri =req.getRequestURI();
+			if(uri!=null && !(uri.contains(".css") || uri.contains(".js") || uri.contains(".ecss") || uri.contains(".png")  )){
+				
+			
 		   // 从 HTTP 头中取得 csrftoken 
-		   String xhrToken = req.getHeader(CSRFTOKEN); 
-		 
-		   // 从请求参数中取得 csrftoken 
-		   String pToken = req.getParameter(CSRFTOKEN); 
-		   if(sToken != null && xhrToken != null && sToken.equals(xhrToken)){ 
-		       chain.doFilter(request, response); 
-		   }else if(sToken != null && pToken != null && sToken.equals(pToken)){ 
-		       chain.doFilter(request, response); 
-		   }else{ 
-		       request.getRequestDispatcher("/views/common/error.xhtml").forward(request,response); 
-		   } 
+			   String xhrToken = req.getHeader(CSRFTOKEN); 
+			 
+			   // 从请求参数中取得 csrftoken 
+			   String pToken = req.getParameter(CSRFTOKEN); 
+			   if(sToken != null && xhrToken != null && sToken.equals(xhrToken)){ 
+			       chain.doFilter(request, response); 
+			   }else if(sToken != null && pToken != null && sToken.equals(pToken)){ 
+			       chain.doFilter(request, response); 
+			   } else{ 
+			       request.getRequestDispatcher("/views/common/error.xhtml").forward(request,response); 
+			   } 
+			}
 		}
 		
 	}
@@ -58,5 +62,8 @@ public class TokenCsrfFilter implements Filter {
 		
 		
 	}
+	
+	
+	
 
 }
