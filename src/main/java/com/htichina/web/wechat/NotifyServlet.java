@@ -132,7 +132,7 @@ public class NotifyServlet extends HttpServlet {
 									+ "</xml> ";
 						}
 						/*2017-10-25;Alex:优化代码，线程同步;CR-代码规范*/
-						synchronized (order) {
+						synchronized (this) {
 							order = neworder;
 						}
 //				System.out.println(order);

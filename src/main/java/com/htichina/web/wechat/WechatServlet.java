@@ -115,7 +115,7 @@ public class WechatServlet extends HttpServlet {
 				int j = str.indexOf("scope");
 				String openId = str.substring(i + 9, j - 3);
 				/*2017-10-25;Alex:优化代码，线程同步;CR-代码规范*/
-				synchronized(oId){
+				synchronized(this){
 					oId = openId;
 				}
 //			System.out.println("openId: " + openId);
