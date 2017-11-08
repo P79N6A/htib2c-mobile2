@@ -71,7 +71,7 @@ public class CsrfFilter implements Filter {
 					log = clientIp + "||" + date + "||" + referurl + "||" + url;
 					logger.warn(ESAPI.encoder().encodeForHTML(log));
 					
-					req.getRequestDispatcher("/views/common/404.html").forward(req, res);
+					req.getRequestDispatcher("/views/common/error.html").forward(req, res);
 					return;
 				}
 
