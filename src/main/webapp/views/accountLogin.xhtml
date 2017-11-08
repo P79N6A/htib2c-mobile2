@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <body>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
@@ -34,17 +35,18 @@
                 <ul>
 
                     <li class="pt_10"></li>
-                    <li style="padding-top:60px"><h:inputText id="accountNum"
-                                     value="#{loginBackingBean.accountNum}" maxlength="8">
+                    <li style="padding-top:60px">
+                    <h:inputText id="accountNum"
+                                     value="#{loginBackingBean.accountNum}" maxlength="8"  required="true" requiredMessage="The field is empty"  >
                         <f:passThroughAttribute name="placeholder" value="智能互联客户编号8位数字" />
-                        <f:passThroughAttribute name="type"
-                                                value="tel"/>
+                        <f:passThroughAttribute name="pattern"
+                                                value="[0-9]*"/>
+                        <f:passThroughAttribute name="type"  value="tel"/>
                     </h:inputText>
                     </li>
                     <li class="pt_10"></li>
-                    <li style="padding-top:30px"><h:inputSecret id="pin"
-                                       value="#{loginBackingBean.pin}" maxlength="4" style="-webkit-text-security:disc;
-            text-security:disc">
+                    <li style="padding-top:30px">
+                       <h:inputSecret id="pin" value="#{loginBackingBean.pin}" maxlength="4" style="-webkit-text-security:disc;text-security:disc">
                         <h:inputText id="repMessage"
                                        value="#{loginBackingBean.repMessage}"
                                        style="display: none">
@@ -56,6 +58,8 @@
                         <f:passThroughAttribute name="type"
                                                 value="tel"/>
                     </h:inputSecret></li>
+                   
+                    
                     <li class="pt_10"
                         id="tellme">忘记客户编号或个人密码？<br/>
                         请致电<span id="helptel">400-898-0050</span>寻求帮助

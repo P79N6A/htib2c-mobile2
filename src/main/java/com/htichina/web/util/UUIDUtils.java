@@ -27,6 +27,11 @@ public class UUIDUtils {
 	
 	}
 	
+	
+	
+	
+
+	
 //	private static String digits(long val, int digits) {  
 //	    long hi = 1L << (digits * 4);  
 //	    return Numbers.toString(hi | (val & (hi - 1)), Numbers.MAX_RADIX)  
@@ -45,9 +50,9 @@ public class UUIDUtils {
 //	}  
 //	
 	public static void main(String[] args) {
-		for(int i = 0 ; i < 500; i ++){
-		System.out.println(UUIDUtils.uuid());
-		}
+		
+		System.out.println( UUID.randomUUID());
+		//}
 	}
 }
 

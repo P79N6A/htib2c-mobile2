@@ -45,9 +45,10 @@ public class CsrfFilter implements Filter {
 			try {
 				HttpServletRequest req = (HttpServletRequest) request;
 				HttpServletResponse res = (HttpServletResponse) response;
-				res.setHeader("Server", "verizon");
+				//res.setHeader("Server", "verizon");
+				
 				//req.setCharacterEncoding("UTF-8");
-				res.setCharacterEncoding("UTF-8");
+				//res.setCharacterEncoding("UTF-8");
 				// 获取请求url地址
 				String url = req.getRequestURL().toString();
 				String referurl = req.getHeader("Referer");
@@ -59,8 +60,8 @@ public class CsrfFilter implements Filter {
 					//res.setHeader("Referer","http://"+serverAddr);
 					chain.doFilter(request, response);
 				} else {
-					res.setStatus(403);
-					req.getRequestDispatcher("/").forward(req, res);
+					//res.setStatus(403);
+					
 
 					// 记录跨站请求日志
 					String log = "";
@@ -69,6 +70,8 @@ public class CsrfFilter implements Filter {
 
 					log = clientIp + "||" + date + "||" + referurl + "||" + url;
 					logger.warn(ESAPI.encoder().encodeForHTML(log));
+					
+					req.getRequestDispatcher("/views/common/404.html").forward(req, res);
 					return;
 				}
 
