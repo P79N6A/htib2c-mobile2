@@ -62,6 +62,7 @@ public class ObjectFactory {
     private final static QName _GetPromotionInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getPromotionInfo");
     private final static QName _PaymentHandlerService_QNAME = new QName("http://payment.ws.htichina.com/", "paymentHandlerService");
     private final static QName _InsertInvoiceInfo_QNAME = new QName("http://payment.ws.htichina.com/", "insertInvoiceInfo");
+    private final static QName _CheckTransactionPaiedResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkTransactionPaiedResponse");
     private final static QName _IsWinBackOrEarlyBirdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isWinBackOrEarlyBirdResponse");
     private final static QName _GetCurrentAccountInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getCurrentAccountInfoResponse");
     private final static QName _UpdateLoginTimesResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateLoginTimesResponse");
@@ -69,6 +70,7 @@ public class ObjectFactory {
     private final static QName _GetActiveAccountByOpenIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getActiveAccountByOpenIdResponse");
     private final static QName _GetChildOrderInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getChildOrderInfoResponse");
     private final static QName _SyncAMPWifiAccount_QNAME = new QName("http://payment.ws.htichina.com/", "syncAMPWifiAccount");
+    private final static QName _CheckTransactionPaied_QNAME = new QName("http://payment.ws.htichina.com/", "checkTransactionPaied");
     private final static QName _GetProdInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getProdInfo");
     private final static QName _IsNewFollowReciveDidiResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isNewFollowReciveDidiResponse");
     private final static QName _Exception_QNAME = new QName("http://payment.ws.htichina.com/", "Exception");
@@ -294,6 +296,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CheckTransactionPaiedResponse }
+     * 
+     */
+    public CheckTransactionPaiedResponse createCheckTransactionPaiedResponse() {
+        return new CheckTransactionPaiedResponse();
+    }
+
+    /**
      * Create an instance of {@link InsertInvoiceInfo }
      * 
      */
@@ -411,6 +421,14 @@ public class ObjectFactory {
      */
     public SyncAccnt createSyncAccnt() {
         return new SyncAccnt();
+    }
+
+    /**
+     * Create an instance of {@link CheckTransactionPaied }
+     * 
+     */
+    public CheckTransactionPaied createCheckTransactionPaied() {
+        return new CheckTransactionPaied();
     }
 
     /**
@@ -667,6 +685,14 @@ public class ObjectFactory {
      */
     public QueryOrderByParentOrderNumResponse createQueryOrderByParentOrderNumResponse() {
         return new QueryOrderByParentOrderNumResponse();
+    }
+
+    /**
+     * Create an instance of {@link Transaction }
+     * 
+     */
+    public Transaction createTransaction() {
+        return new Transaction();
     }
 
     /**
@@ -1012,6 +1038,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CheckTransactionPaiedResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "checkTransactionPaiedResponse")
+    public JAXBElement<CheckTransactionPaiedResponse> createCheckTransactionPaiedResponse(CheckTransactionPaiedResponse value) {
+        return new JAXBElement<CheckTransactionPaiedResponse>(_CheckTransactionPaiedResponse_QNAME, CheckTransactionPaiedResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link IsWinBackOrEarlyBirdResponse }{@code >}}
      * 
      */
@@ -1072,6 +1107,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "syncAMPWifiAccount")
     public JAXBElement<SyncAMPWifiAccount> createSyncAMPWifiAccount(SyncAMPWifiAccount value) {
         return new JAXBElement<SyncAMPWifiAccount>(_SyncAMPWifiAccount_QNAME, SyncAMPWifiAccount.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CheckTransactionPaied }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "checkTransactionPaied")
+    public JAXBElement<CheckTransactionPaied> createCheckTransactionPaied(CheckTransactionPaied value) {
+        return new JAXBElement<CheckTransactionPaied>(_CheckTransactionPaied_QNAME, CheckTransactionPaied.class, null, value);
     }
 
     /**

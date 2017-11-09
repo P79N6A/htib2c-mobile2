@@ -7,6 +7,9 @@ public class ViewPage {
     public static final String LINK2OrderTerminate = "/views/orderTerminate.xhtml?showwxpaytitle=1";
     public static final String LINK2OrderVehicle = "/views/orderVehicle.xhtml?showwxpaytitle=1";
     public static final String LINK2OrderPayment = "/views/orderPayment.xhtml?showwxpaytitle=1";
+    public static final String LINK2OrderPaymentForWechat = "/views/orderPaymentForWechat.xhtml?showwxpaytitle=1";
+    public static final String HASBEENPAIED = "/views/hasBeenPaied.xhtml?showwxpaytitle=1";
+
     public static final String LINK2OrderAlipayRequest = "/views/orderAlipayRequest.xhtml";
     public static final String LINK2OrderAlipaySuccess = "/views/orderAlipaySuccess.xhtml";
     public static final String LINK2OrderAlipayFailed = "/views/orderAlipayFailed.xhtml";
@@ -49,4 +52,6 @@ public class ViewPage {
     //First Login Didi
     public static final String Didi_FirstLogin = "/views/firstLoginDidi.xhtml";
     public static final String LINK2OrderPackage0 = "/views/orderPackage0.xhtml?showwxpaytitle=1";
+
+    public static final String ERRORMESSAGE = "/views/paymentError.xhtml?showwxpaytitle=1";
 }

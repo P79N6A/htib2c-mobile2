@@ -10,9 +10,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for queryChildOrdersByParentOrderNumResponse complex type.
+ * <p>queryChildOrdersByParentOrderNumResponse complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="queryChildOrdersByParentOrderNumResponse">
@@ -56,7 +56,7 @@ public class QueryChildOrdersByParentOrderNumResponse {
     protected String vin;
 
     /**
-     * Gets the value of the marketName property.
+     * 获取marketName属性的值。
      * 
      * @return
      *     possible object is
@@ -68,7 +68,7 @@ public class QueryChildOrdersByParentOrderNumResponse {
     }
 
     /**
-     * Sets the value of the marketName property.
+     * 设置marketName属性的值。
      * 
      * @param value
      *     allowed object is
@@ -80,7 +80,7 @@ public class QueryChildOrdersByParentOrderNumResponse {
     }
 
     /**
-     * Gets the value of the price property.
+     * 获取price属性的值。
      * 
      */
     public double getPrice() {
@@ -88,7 +88,7 @@ public class QueryChildOrdersByParentOrderNumResponse {
     }
 
     /**
-     * Sets the value of the price property.
+     * 设置price属性的值。
      * 
      */
     public void setPrice(double value) {
@@ -96,7 +96,7 @@ public class QueryChildOrdersByParentOrderNumResponse {
     }
 
     /**
-     * Gets the value of the quanti property.
+     * 获取quanti属性的值。
      * 
      */
     public int getQuanti() {
@@ -104,7 +104,7 @@ public class QueryChildOrdersByParentOrderNumResponse {
     }
 
     /**
-     * Sets the value of the quanti property.
+     * 设置quanti属性的值。
      * 
      */
     public void setQuanti(int value) {
@@ -112,7 +112,7 @@ public class QueryChildOrdersByParentOrderNumResponse {
     }
 
     /**
-     * Gets the value of the shortMarketName property.
+     * 获取shortMarketName属性的值。
      * 
      * @return
      *     possible object is
@@ -124,7 +124,7 @@ public class QueryChildOrdersByParentOrderNumResponse {
     }
 
     /**
-     * Sets the value of the shortMarketName property.
+     * 设置shortMarketName属性的值。
      * 
      * @param value
      *     allowed object is
@@ -136,7 +136,7 @@ public class QueryChildOrdersByParentOrderNumResponse {
     }
 
     /**
-     * Gets the value of the startDt property.
+     * 获取startDt属性的值。
      * 
      * @return
      *     possible object is
@@ -148,7 +148,7 @@ public class QueryChildOrdersByParentOrderNumResponse {
     }
 
     /**
-     * Sets the value of the startDt property.
+     * 设置startDt属性的值。
      * 
      * @param value
      *     allowed object is
@@ -160,7 +160,7 @@ public class QueryChildOrdersByParentOrderNumResponse {
     }
 
     /**
-     * Gets the value of the vin property.
+     * 获取vin属性的值。
      * 
      * @return
      *     possible object is
@@ -172,7 +172,7 @@ public class QueryChildOrdersByParentOrderNumResponse {
     }
 
     /**
-     * Sets the value of the vin property.
+     * 设置vin属性的值。
      * 
      * @param value
      *     allowed object is

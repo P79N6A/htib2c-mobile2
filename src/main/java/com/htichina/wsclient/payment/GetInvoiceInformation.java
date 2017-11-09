@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getInvoiceInformation complex type.
+ * <p>getInvoiceInformation complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="getInvoiceInformation">
@@ -34,7 +34,7 @@ public class GetInvoiceInformation {
     protected String ordernum;
 
     /**
-     * Gets the value of the ordernum property.
+     * 获取ordernum属性的值。
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class GetInvoiceInformation {
     }
 
     /**
-     * Sets the value of the ordernum property.
+     * 设置ordernum属性的值。
      * 
      * @param value
      *     allowed object is

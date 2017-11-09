@@ -159,6 +159,7 @@ public class Constant {
 
     public static final String WECHAT_STATE_POC = "startPOC";
     public static final String VIOLATION_INQUIRY = "violationInquiry";
+    public static final String WECHAT_PAYMENT = "wechatPayment";
 
 
     public static final String DB_PACKAGE_CHANNEL_CALL_CENTER = "CC";
@@ -170,7 +171,7 @@ public class Constant {
 //    }
 
 
-//    public static final String WMAN_FHT_TOKEN = "16Ecf15rlg";//测试环境
+    //    public static final String WMAN_FHT_TOKEN = "16Ecf15rlg";//测试环境
     public static final String WMAN_FHT_TOKEN = "V9RDM4AzhK";
     public static final String WMAN_APP_ID = "fht30e981038f141b3c";
     public static final String WMAN_APP_SECRET = "b91826301c5b2d294876cff290f3d71f";
@@ -221,4 +222,11 @@ public class Constant {
     public static final String HTTPS_TCUTYPE="tcuType";
     public static final String HTTPS_TCUID="tcuId";
     public static final String LOCATEPARAMTERKEY = "LOCATEPARAMTERKEY";
+
+    //新增空字符串静态变量
+    public static final String EMPTY_STRING = "";
+
+    public static final String PROMOTION_CATEGERY1="1";
+    public static final String PROMOTION_CATEGERY3="3";
+
 }

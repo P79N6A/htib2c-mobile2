@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getVehicleInfo complex type.
+ * <p>getVehicleInfo complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="getVehicleInfo">
@@ -40,7 +40,7 @@ public class GetVehicleInfo {
     protected String mobileNum;
 
     /**
-     * Gets the value of the vin property.
+     * 获取vin属性的值。
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class GetVehicleInfo {
     }
 
     /**
-     * Sets the value of the vin property.
+     * 设置vin属性的值。
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class GetVehicleInfo {
     }
 
     /**
-     * Gets the value of the acctNum property.
+     * 获取acctNum属性的值。
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class GetVehicleInfo {
     }
 
     /**
-     * Sets the value of the acctNum property.
+     * 设置acctNum属性的值。
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class GetVehicleInfo {
     }
 
     /**
-     * Gets the value of the mobileNum property.
+     * 获取mobileNum属性的值。
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class GetVehicleInfo {
     }
 
     /**
-     * Sets the value of the mobileNum property.
+     * 设置mobileNum属性的值。
      * 
      * @param value
      *     allowed object is

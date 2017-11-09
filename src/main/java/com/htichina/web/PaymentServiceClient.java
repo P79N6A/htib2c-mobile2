@@ -111,7 +111,7 @@ public class PaymentServiceClient {
       return null;
     }
   }
-  
+
   public boolean CheckTransaction(String orderNum) {
     try {
       return service.checkTransaction(orderNum);
@@ -119,6 +119,15 @@ public class PaymentServiceClient {
     catch (Exception exception) {
       exception.printStackTrace();
       return false;
+    }
+  }
+  public List<Transaction> checkTransactionPaied(String orderNum) {
+    try {
+      return service.checkTransactionPaied(orderNum);
+    }
+    catch (Exception exception) {
+      exception.printStackTrace();
+      return null;
     }
   }
 
