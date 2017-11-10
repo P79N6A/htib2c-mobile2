@@ -50,15 +50,20 @@ public class WechatLocateServlet extends HttpServlet {
         try {
             resultBean  =httpsURLRequest.postForlocateFinal(paramMap);
         } catch (UnrecoverableKeyException e) {
-            e.printStackTrace();
+        	logger.info(ESAPI.encoder().encodeForHTML(e.getMessage()));
+            //e.printStackTrace();
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+        	logger.info(ESAPI.encoder().encodeForHTML(e.getMessage()));
+            //e.printStackTrace();
         } catch (KeyManagementException e) {
-            e.printStackTrace();
+        	logger.info(ESAPI.encoder().encodeForHTML(e.getMessage()));
+            //e.printStackTrace();
         } catch (KeyStoreException e) {
-            e.printStackTrace();
+        	logger.info(ESAPI.encoder().encodeForHTML(e.getMessage()));
+            //e.printStackTrace();
         } catch (URISyntaxException e) {
-            e.printStackTrace();
+        	logger.info(ESAPI.encoder().encodeForHTML(e.getMessage()));
+            //e.printStackTrace();
         }
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out;
@@ -71,7 +76,8 @@ public class WechatLocateServlet extends HttpServlet {
             out.flush();
             out.close();
         } catch (IOException e) {
-            e.printStackTrace();
+        	logger.info(ESAPI.encoder().encodeForHTML(e.getMessage()));
+            //e.printStackTrace();
         }
 
     }

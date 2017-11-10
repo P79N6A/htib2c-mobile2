@@ -82,6 +82,7 @@ public class LoginBackingBean implements Serializable {
     private String registrationCode;
 
 
+    /*2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范*/
     public String login(HttpSession session, String From, String oId, String targetPage) {
         FacesContext context = FacesContext.getCurrentInstance();
         logger.info("context ===>"+context);
@@ -99,10 +100,10 @@ public class LoginBackingBean implements Serializable {
         openId = oId;
         targetPg = targetPage;
         String an = null;
-        logger.info("Login bakcing oId ==>"+oId);
+        logger.info("Login bakcing oId ==>"+ESAPI.encoder().encodeForHTML(oId) );
         if(!Strings.isNullOrEmpty(oId)){
            an = PaymentServiceClient.getInstance().getActiveAccountByOpenId(oId);
-            logger.info("Login bakcing an ==>"+an);
+            logger.info("Login bakcing an ==>"+ESAPI.encoder().decodeForHTML(an));
         }
         else {
             logger.info("return to login");
@@ -125,7 +126,7 @@ public class LoginBackingBean implements Serializable {
             logger.info("Login bakcing flag ==>");
             /*logger.debug("fullName="+accountInfo.getFullName());*/
             repMessage = null;
-            logger.info("Login bakcing targetPage ==>"+targetPage);
+            logger.info("Login bakcing targetPage ==>"+ESAPI.encoder().encodeForHTML(targetPage));
             return targetPage;
 
         } else {

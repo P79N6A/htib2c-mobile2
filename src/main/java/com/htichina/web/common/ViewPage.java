@@ -11,6 +11,7 @@ public class ViewPage {
     public static final String LINK2OrderTerminate = "/views/orderTerminate.xhtml?showwxpaytitle=1";
     public static final String LINK2OrderVehicle = "/views/orderVehicle.xhtml?showwxpaytitle=1";
     public static final String LINK2OrderPayment = "/views/orderPayment.xhtml?showwxpaytitle=1";
+
     /* 2017-11-10,Tommy Liu, CR82_Part II, 套餐升级支付页面 */
     public static final String LINK2OrderUpgradePayment = "/views/orderUpgradePayment.xhtml?showwxpaytitle=1";
     

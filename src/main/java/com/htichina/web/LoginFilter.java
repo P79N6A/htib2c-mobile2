@@ -1,12 +1,15 @@
 package com.htichina.web;
 
 import com.sun.faces.util.Util;
+
 import org.apache.log4j.Logger;
+import org.owasp.esapi.ESAPI;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 
 @WebFilter(urlPatterns = { "/views/*" }, dispatcherTypes = { DispatcherType.REQUEST,
@@ -23,6 +26,7 @@ public class LoginFilter implements Filter {
 
 	}
 
+	/*2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范*/
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
                          FilterChain fc) throws IOException, ServletException {
@@ -32,7 +36,7 @@ public class LoginFilter implements Filter {
 		try{
 			String uri = httpRequest.getRequestURI();
 			StringBuffer Path = httpRequest.getRequestURL();
-			logger.info("Path ===>"+Path);
+			logger.info("Path ===>"+ESAPI.encoder().encodeForHTML(Path.toString()));
 			if (uri.contains(".xhtml")) {
 				String facesServletMapping = getFacesMapping(httpRequest);
 				// 只处理facesServletMapping为.xxx后缀的情况，不处理facesServletMapping为/xxx为前缀的情况
@@ -57,9 +61,9 @@ public class LoginFilter implements Filter {
 						"POCTelCheck.xhtml","unLock.xhtml","unLock_help.xhtml")) {
 
 					StringBuffer Path1 = httpRequest.getRequestURL();
-					logger.info("Path ===>>"+Path1);
+					logger.info("Path ===>>"+ESAPI.encoder().encodeForHTML(Path1.toString()));
 					String x = httpRequest.getContextPath();
-					logger.info("x ==++"+x);
+					logger.info("x ==++"+ESAPI.encoder().encodeForHTML(x));
 					request.getRequestDispatcher("/views/accountLogin.xhtml#").forward(request, response);
 
 				} else {
@@ -72,7 +76,7 @@ public class LoginFilter implements Filter {
 			fc.doFilter(httpRequest, httpResponse);
 		}
 		catch (Exception e){
-			request.getRequestDispatcher("/views/common/error.xhtml").forward(request,response);
+			httpResponse.sendRedirect("/views/common/error.xhtml");
 		}
 
 

@@ -1,21 +1,36 @@
 package com.htichina.web.wechat;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.util.List;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import com.htichina.common.web.ConfigureInfo;
+import com.htichina.common.web.Constant;
 import com.htichina.web.PaymentServiceClient;
 import com.htichina.web.common.ViewPage;
 import com.htichina.wsclient.payment.PaymentResponse;
 import com.htichina.wsclient.payment.PaymentResultMessage;
+import com.htichina.wsclient.payment.QueryChildOrdersByParentOrderNumResponse;
 import com.tencent.common.RequestHandler;
 
+import com.tencent.service.HttpsURLRequest;
+import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -28,14 +43,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URISyntaxException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import com.htichina.common.web.ConfigureInfo;
+import com.htichina.web.PaymentServiceClient;
+import com.htichina.web.common.ViewPage;
+import com.htichina.wsclient.payment.PaymentResponse;
+import com.htichina.wsclient.payment.PaymentResultMessage;
+import com.tencent.common.RequestHandler;
 
 public class NotifyServlet extends HttpServlet {
 	private static Logger logger = Logger.getLogger(NotifyServlet.class.getName());
 
 	String order = "";
+	String otherOrder = "";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -50,13 +78,10 @@ public class NotifyServlet extends HttpServlet {
 						  HttpServletResponse response) throws ServletException, IOException {
 
 		request.setAttribute("order", order);
-//		System.out.println(order);
-		logger.info("order: " + ESAPI.encoder().encodeForHTML(order));
-//		request.getSession().setAttribute("order", order);
 		request.getRequestDispatcher(ViewPage.LINK2OrderSuccess).forward(request,
 				response);
 		if(request.getContentLength()!=-1){
-			
+
 			String inputLine;
 			String notifyXml = "";
 			String resXml = "";
@@ -69,22 +94,28 @@ public class NotifyServlet extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 //			System.out.println("Notify: " + notifyXml);
-			logger.info("Notify: " + ESAPI.encoder().encodeForHTML(notifyXml));
-			
+
 			if(!StringUtils.isEmpty(notifyXml)){
 				SortedMap<String, String> m = parseXmlToList2(notifyXml);
 				WxPayResult wpr = new WxPayResult();
 				wpr.setSign(m.get("sign").toString());
 				wpr.setOutTradeNo(m.get("out_trade_no").toString());
 				m.put("sign", "");
-
-				String neworder = wpr.getOutTradeNo().substring(0, 13);
+				String neworder = "";
+				String otherNeworder = "";
+				if(wpr.getOutTradeNo().length()>19){
+					neworder = wpr.getOutTradeNo().substring(0, 13)+"1";
+					otherNeworder = wpr.getOutTradeNo().substring(0, 13)+"2";
+				}else{
+					neworder = wpr.getOutTradeNo().substring(0, 13);
+				}
 //			System.out.println(neworder);
-				logger.info(ESAPI.encoder().encodeForHTML(neworder));
 				PaymentServiceClient client = PaymentServiceClient.getInstance();
-
+				logger.info("order======================>"+order);
+				logger.info("neworder======================>"+neworder);
+				logger.info("otherOrder======================================>"+otherOrder);
 				if (!order.equals(neworder)&&(!client.CheckTransaction(neworder))) {
 
 //			System.out.println("in NotifyServlet");
@@ -125,27 +156,80 @@ public class NotifyServlet extends HttpServlet {
 									+ "<return_msg><![CDATA[报文为空]]></return_msg>"
 									+ "</xml> ";
 						}
-
-						order = neworder;
+						/*2017-10-25;Alex:优化代码，线程同步;CR-代码规范*/
+						synchronized (this) {
+							order = neworder;
+							otherOrder = otherNeworder;
+						}
 //				System.out.println(order);
 						logger.info(ESAPI.encoder().encodeForHTML(order));
 //				System.out.println(resXml);
 						logger.info(ESAPI.encoder().encodeForHTML(resXml));
-						this.sendMessage(wpr.getOutTradeNo().substring(13), wpr.getOpenid());
+//						this.sendMessage(wpr.getOutTradeNo().substring(13), wpr.getOpenid());
 
-						PaymentResultMessage paymentResultMessage = new PaymentResultMessage();
-						paymentResultMessage.setPaymentTransNo(order);
-						String respCode = "-1";
-//				System.out.println("wpr.getReturnCode()=" + wpr.getReturnCode());
-						logger.info("wpr.getReturnCode()=" + ESAPI.encoder().encodeForHTML(wpr.getReturnCode()));
-						if(wpr.getReturnCode().equalsIgnoreCase("SUCCESS")) {
-							respCode = "00";
+
+						String orderNum = "";
+						String body = "";
+						if(wpr.getOutTradeNo().length()>19){
+							orderNum = wpr.getOutTradeNo().substring(13,19)+"和"+wpr.getOutTradeNo().substring(19,25);
+							List<QueryChildOrdersByParentOrderNumResponse> list1 = client.queryChildOrdersByParentOrderNum(wpr.getOutTradeNo().substring(13,19));
+							List<QueryChildOrdersByParentOrderNumResponse> list2 = client.queryChildOrdersByParentOrderNum(wpr.getOutTradeNo().substring(19,25));
+							String baseName = "";
+							String wifiName = "";
+							for(QueryChildOrdersByParentOrderNumResponse queryChildOrdersByParentOrderNumResponse:list1){
+								if(queryChildOrdersByParentOrderNumResponse.getPrice()!=0){
+									baseName = queryChildOrdersByParentOrderNumResponse.getMarketName();
+								}
+							}
+							body = baseName+"和"+list2.get(0).getMarketName();
+						}else {
+							orderNum = wpr.getOutTradeNo().substring(13);
+							List<QueryChildOrdersByParentOrderNumResponse> list1 = client.queryChildOrdersByParentOrderNum(wpr.getOutTradeNo().substring(13));
+
+							body = list1.get(0).getMarketName();
 						}
-						paymentResultMessage.setRespCode(respCode);
-						paymentResultMessage.setRespMsg(wpr.getResultCode());
-						paymentResultMessage.setTransMsg(notifyXml);
 
-						PaymentResponse paymentResponse = client.paymentHandlerService(order, paymentResultMessage);
+						this.sendMessage(body,orderNum, wpr.getOpenid());
+						PaymentResponse paymentResponse = new PaymentResponse();
+						if(wpr.getOutTradeNo().length()>19) {
+							PaymentResultMessage paymentResultMessage1 = new PaymentResultMessage();
+							paymentResultMessage1.setPaymentTransNo(order);
+							String respCode1 = "-1";
+//				System.out.println("wpr.getReturnCode()=" + wpr.getReturnCode());
+							if (wpr.getReturnCode().equalsIgnoreCase("SUCCESS")) {
+								respCode1 = "00";
+							}
+							paymentResultMessage1.setRespCode(respCode1);
+							paymentResultMessage1.setRespMsg(wpr.getResultCode());
+							paymentResultMessage1.setTransMsg(notifyXml);
+
+							paymentResponse = client.paymentHandlerService(order, paymentResultMessage1);
+							PaymentResultMessage paymentResultMessage2 = new PaymentResultMessage();
+							paymentResultMessage2.setPaymentTransNo(otherOrder);
+							String respCode2 = "-1";
+//				System.out.println("wpr.getReturnCode()=" + wpr.getReturnCode());
+							if (wpr.getReturnCode().equalsIgnoreCase("SUCCESS")) {
+								respCode2 = "00";
+							}
+							paymentResultMessage2.setRespCode(respCode2);
+							paymentResultMessage2.setRespMsg(wpr.getResultCode());
+							paymentResultMessage2.setTransMsg(notifyXml);
+
+							paymentResponse = client.paymentHandlerService(otherOrder, paymentResultMessage1);
+						}else{
+							PaymentResultMessage paymentResultMessage1 = new PaymentResultMessage();
+							paymentResultMessage1.setPaymentTransNo(order);
+							String respCode = "-1";
+//				System.out.println("wpr.getReturnCode()=" + wpr.getReturnCode());
+							if (wpr.getReturnCode().equalsIgnoreCase("SUCCESS")) {
+								respCode = "00";
+							}
+							paymentResultMessage1.setRespCode(respCode);
+							paymentResultMessage1.setRespMsg(wpr.getResultCode());
+							paymentResultMessage1.setTransMsg(notifyXml);
+
+							paymentResponse = client.paymentHandlerService(order, paymentResultMessage1);
+						}
 						if(paymentResponse.getRespCode().equals("00")) {
 							// todo: show message the data plan was applied.
 //					System.out.println("the data plan was applied");
@@ -156,7 +240,6 @@ public class NotifyServlet extends HttpServlet {
 						}
 
 //				System.out.println("Notify End..");
-						logger.info("Notify End..");
 
 						response.setContentType("text/html;charset=UTF-8");
 						BufferedOutputStream out = new BufferedOutputStream(
@@ -167,10 +250,10 @@ public class NotifyServlet extends HttpServlet {
 						// response.getWriter().write(resXml);
 
 					}
-			}
+				}
 
 
-		}}
+			}}
 
 	}
 
@@ -183,7 +266,6 @@ public class NotifyServlet extends HttpServlet {
 	 * @see
 	 */
 
-	@SuppressWarnings("rawtypes")
 	private static SortedMap<String, String> parseXmlToList2(String xml) {
 		// Map retMap = new HashMap();
 		SortedMap<String, String> retMap = new TreeMap<String, String>();
@@ -205,7 +287,7 @@ public class NotifyServlet extends HttpServlet {
 		return retMap;
 	}
 
-	private void sendMessage(String order, String openid) throws IOException {
+	private void sendMessage(String body ,String order, String openid) throws IOException {
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpGet httpgets = new HttpGet(
 				"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
@@ -220,41 +302,70 @@ public class NotifyServlet extends HttpServlet {
 			int j = str.indexOf("expires_in");
 			String access_token = str.substring(i + 15, j - 3);
 
-			HttpPost httpost = new HttpPost(
-					"https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
-							+ access_token + "");
-			String msg = "{\"touser\":\""
-					+ openid
-					+ "\",\"msgtype\":\"text\",\"text\":{\"content\":\"您订购的套餐已完成支付，订单号为"
-					+ order + "。我们会尽快为您开通服务，请关注开通短信通知，谢谢！\"}}";
-			httpost.setEntity(new StringEntity(msg, "UTF-8"));
-			HttpResponse resp = httpclient.execute(httpost);
-			String jsonStr = EntityUtils.toString(resp.getEntity(), "UTF-8");
+//			HttpPost httpost = new HttpPost(
+//					"https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
+//							+ access_token + "");
+			String title = "订购成功\n";
+
+			String time =new SimpleDateFormat("MM月dd日").format(System.currentTimeMillis())+"\n" ;
+			String link = ConfigureInfo.getWechatLinkLogin();
+			String message = title+time+"尊敬的梅赛德斯-奔驰 智能互联客户，您选购的"+body+"订购成功，订单号"+order+"，请等待开通。点击查看详情。\n"
+					+" 有任何疑问请随时使用车内【i】按钮或者400 898 0050联系客服中心。智能互联 -- 智在安心，不止于此。\n <a href='" + link + "'>请点击前往</a>";
+//			String msg = "{\"touser\":\""
+//					+ openid
+//					+ "\",\"msgtype\":\"text\",\"text\":{\"content\":\""+message+"\"}}";
+//			httpost.setEntity(new StringEntity(msg, "UTF-8"));
+//			HttpResponse resp = httpclient.execute(httpost);
+//			String jsonStr = EntityUtils.toString(resp.getEntity(), "UTF-8");
+			JSONObject jsobj = new JSONObject();
+			jsobj.put("touser", openid);
+			jsobj.put("msgtype", "text");
+			JSONObject jsobj2 = new JSONObject();
+			jsobj2.put("content", message);
+			jsobj.put("text", jsobj2);
+			HttpsURLRequest httpsURLRequest  =new HttpsURLRequest();
+			try {
+				httpsURLRequest.postUrl("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
+						+ access_token + "", jsobj, null);
+			} catch (UnrecoverableKeyException e) {
+				e.printStackTrace();
+			} catch (KeyManagementException e) {
+				e.printStackTrace();
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			} catch (KeyStoreException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
 //			System.out.println(jsonStr);
-			logger.info(ESAPI.encoder().encodeForHTML(jsonStr));
+//			logger.info(ESAPI.encoder().encodeForHTML(jsonStr));
 		}
 
 	}
 
-	public static String convertStreamToString(InputStream is) {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+	/*2017-10-25;Alex:优化代码，关闭IO流等;CR-代码规范*/
+	public static String convertStreamToString(InputStream ip_stream) {
+		InputStreamReader ip_reader = new InputStreamReader(ip_stream);
+		BufferedReader bf_reader = new BufferedReader(ip_reader);
 		StringBuilder sb = new StringBuilder();
 
 		String line = null;
 		try {
-			while ((line = reader.readLine()) != null) {
+			while ((line = bf_reader.readLine()) != null) {
 				sb.append(line + "\n");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				is.close();
+				bf_reader.close();
+				ip_reader.close();
+				ip_stream.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		return sb.toString();
 	}
-
 }

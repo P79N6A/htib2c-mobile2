@@ -19,6 +19,7 @@ import com.htichina.wsclient.payment.PromotionInfoResponse;
 import com.htichina.wsclient.payment.PurchaseProductResponse;
 import com.htichina.wsclient.payment.QueryChildOrdersByParentOrderNumResponse;
 import com.htichina.wsclient.payment.QueryOrderByParentOrderNumResponse;
+import com.htichina.wsclient.payment.Transaction;
 import com.htichina.wsclient.payment.TransactionRequest;
 import com.htichina.wsclient.payment.TransactionResponse;
 import com.htichina.wsclient.payment.VehicleInfoResponse;

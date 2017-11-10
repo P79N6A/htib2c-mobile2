@@ -32,6 +32,7 @@ import com.htichina.web.common.ViewPage;
 import com.htichina.web.wechat.Demo;
 import com.htichina.web.wechat.WxPayDto;
 import com.htichina.wsclient.payment.AccountInfoResponse;
+import com.htichina.wsclient.payment.PackageInfoResponse;
 import com.htichina.wsclient.payment.PackageUpgradeRequest;
 import com.htichina.wsclient.payment.PackageUpgradeResponse;
 import com.htichina.wsclient.payment.PaymentOrderResponse;
@@ -41,6 +42,7 @@ import com.htichina.wsclient.payment.PromotionCategoryResult;
 import com.htichina.wsclient.payment.PromotionInfoResponse;
 import com.htichina.wsclient.payment.PromotionInfoWS;
 import com.htichina.wsclient.payment.PurchaseProductResponse;
+import com.htichina.wsclient.payment.Transaction;
 import com.htichina.wsclient.payment.TransactionRequest;
 import com.htichina.wsclient.payment.TransactionResponse;
 import com.htichina.wsclient.payment.VehicleInfoResponse;
@@ -1116,7 +1118,7 @@ public class OrderBackingBean implements Serializable {
     }
     
     /* 2017-11-10,Tommy Liu, CR82_Part II, 进入套餐升级页面 */
-    public String toOrderUpgradeEntry(com.htichina.wsclient.payment2.PackageInfoResponse currentPkg, AccountInfoResponse accountInfo, String openId) {
+    public String toOrderUpgradeEntry(PackageInfoResponse currentPkg, AccountInfoResponse accountInfo, String openId) {
     	this.accountInfo = accountInfo;
     	this.openId = openId;
         targetPage = ViewPage.LINK2OrderPackageUpgrade;
@@ -1525,9 +1527,6 @@ public class OrderBackingBean implements Serializable {
 		this.upgradeRequest = upgradeRequest;
 	}
     
-
-
-
     //add by liuning CR345 20171023 begin
 
     public String toOrderPaymentForWechat(List<String> transactionNos,String openId,String accountNum,List<String> types,List<String> ids,List<String> prices,List<String> vins,List<String> shortMarketNames) {

@@ -23,6 +23,7 @@
 <%@ page import="com.htichina.web.PaymentServiceClient" %>
 <%@ page import="com.htichina.wsclient.payment.PaymentResultMessage" %>
 <%@ page import="com.htichina.wsclient.payment.PaymentResponse" %>
+<%@ page import="org.owasp.esapi.ESAPI" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,9 +31,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>在线订购</title>
 	<link rel="shortcut icon" href="./favicon.ico">
-	<link rel="stylesheet" href="./css/themes/default/jquery.mobile-1.4.5.min.css">
-	<script src="./js/jquery.js"></script>
-	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+	<link rel="stylesheet" href="./css/themes/default/jquery.mobile-1.4.5.min.css" charset="utf-8">
+	<script src="./js/jquery.js" charset="utf-8"></script>
+	<script src="./js/jquery.mobile-1.4.5.min.js" charset="utf-8"></script>
 
 
 </head>
@@ -100,13 +101,13 @@
 			Map.Entry entry = (Map.Entry) iterator.next();
 			String value =  (String) entry.getValue();
 			String key = (String) entry.getKey();
-			out.println("返回参数: " + key + "=" + value + "<br/>");
+			out.println(ESAPI.encoder().encodeForHTML("返回参数: " + key + "=" + value + "<br/>"));
 			transMsg += key + ":" + value + ", ";
 		}
 		out.println("<br/><br/>");
-		out.println("商户订单号: " + out_trade_no + "<br/>");
-		out.println("支付宝交易号: " + trade_no + "<br/>");
-		out.println("交易结果: " + result + "<br/>");
+		out.println(ESAPI.encoder().encodeForHTML("商户订单号: " + out_trade_no + "<br/>"));
+		out.println(ESAPI.encoder().encodeForHTML("支付宝交易号: " + trade_no + "<br/>"));
+		out.println(ESAPI.encoder().encodeForHTML("交易结果: " + result + "<br/>"));
 
 		PaymentServiceClient client = PaymentServiceClient.getInstance();
 		PaymentResultMessage paymentResultMessage = new PaymentResultMessage();

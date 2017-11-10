@@ -1,10 +1,17 @@
 package com.htichina.web.wechat;
 
-import com.htichina.common.web.ConfigureInfo;
-import com.htichina.common.web.Constant;
-import com.htichina.web.common.ViewPage;
-import com.htichina.web.login.LoginBackingBean;
-import com.htichina.web.order.OrderBackingBean;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -16,6 +23,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.htichina.common.web.ConfigureInfo;
+import com.htichina.common.web.Constant;
+import com.htichina.web.common.ViewPage;
+import com.htichina.web.login.LoginBackingBean;
+import com.htichina.web.order.OrderBackingBean;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +37,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by yiming on 2015/5/4.
@@ -66,16 +80,16 @@ public class WechatServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String accessToken = null;
-//		System.out.println("in WeChatServlet");
+//		logger.infoln("in WeChatServlet");
 		logger.debug("in WeChatServlet");
 
 //		clear the session
 		req.getSession().invalidate();
 //		String pkg="";
 		String code = req.getParameter("code");
-//		System.out.println(code);
+//		logger.infoln(code);
 		logger.info("code=" + ESAPI.encoder().encodeForHTML(code));
-		String state = req.getParameter("state");
+		String state = req.getParameter("state").split(",")[0];
 		logger.info("state=" + ESAPI.encoder().encodeForHTML(state));
 
 		HttpClient httpclient = new DefaultHttpClient();
@@ -89,7 +103,8 @@ public class WechatServlet extends HttpServlet {
 		if (entity != null) {
 			InputStream instreams = entity.getContent();
 			String str = convertStreamToString(instreams);
-			logger.info("str == "+str);
+			/*2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范*/
+			logger.info("str == "+ESAPI.encoder().encodeForHTML(str));
 			if(str.indexOf("errcode") > -1){
 				logger.debug("httpGet failed");
 				F = false;
@@ -97,9 +112,9 @@ public class WechatServlet extends HttpServlet {
 				req.getRequestDispatcher(loginBackingBean.closeBrowser()).forward(req, resp);
 			}
 			else{
-//			System.out.println("Do something");
+//			logger.infoln("Do something");
 				logger.debug("Do something");
-//			System.out.println(str);
+//			logger.infoln(str);
 				logger.info(ESAPI.encoder().encodeForHTML(str));
 
 				int m = str.indexOf("access_token");
@@ -111,7 +126,12 @@ public class WechatServlet extends HttpServlet {
 				int i = str.indexOf("openid");
 				int j = str.indexOf("scope");
 				String openId = str.substring(i + 9, j - 3);
-				oId = openId;
+//				oId = openId;
+//			logger.infoln("openId: " + openId);
+				/*2017-10-25;Alex:优化代码，线程同步;CR-代码规范*/
+				synchronized(this){
+					oId = openId;
+				}
 //			System.out.println("openId: " + openId);
 				logger.info("openId: " + ESAPI.encoder().encodeForHTML(openId));
 
@@ -140,11 +160,11 @@ public class WechatServlet extends HttpServlet {
 
 //			FacesUtils.setManagedBeanInSession(Constant.OPEN_ID, openId);
 //			FacesUtils.setManagedBeanInSession(Constant.PAYMENT_PLATFORM, Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
-				req.getSession().setAttribute(Constant.OPEN_ID, openId);
-				req.getSession().setAttribute(Constant.WECHAT_USER_INFO, userInfo);
-//			req.getSession().setAttribute(Constant.WECHAT_USER_INFO, nickname);
+				/*2017-10-25;Alex:优化代码，安全加密输出内容;CR-代码规范*/
+				req.getSession().setAttribute(Constant.OPEN_ID, ESAPI.encoder().encodeForHTML(openId));
+				req.getSession().setAttribute(Constant.WECHAT_USER_INFO, ESAPI.encoder().encodeForHTML(userInfo));
 				req.getSession().setAttribute(Constant.PAYMENT_PLATFORM, Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
-				req.getSession().setAttribute(Constant.WECHAT_STATE, state);
+				req.getSession().setAttribute(Constant.WECHAT_STATE, ESAPI.encoder().encodeForHTML(state));
 //			System.out.println("payment platform: " + Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
 				logger.info("payment platform: " + ESAPI.encoder().encodeForHTML(Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY));
 			}
@@ -183,30 +203,82 @@ public class WechatServlet extends HttpServlet {
 				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2KEY)).forward(req, resp);
 			}
 
-            //违章查询
-            else if(state.equalsIgnoreCase(Constant.VIOLATION_INQUIRY)){
-                System.out.print("+++++++++"+state);
-                logger.debug("wechatServlet start violation inquiry");
-                LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
-                req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2VIOLATIONINQUIRY)).forward(req, resp);
-            }
+			//违章查询
+			else if(state.equalsIgnoreCase(Constant.VIOLATION_INQUIRY)){
+				System.out.print("+++++++++"+state);
+				logger.debug("wechatServlet start violation inquiry");
+				LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
+				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2VIOLATIONINQUIRY)).forward(req, resp);
+			}
+			else if(state.equalsIgnoreCase(Constant.WECHAT_PAYMENT)){
+				OrderBackingBean orderBackingBean = (OrderBackingBean)context.getBean("orderBackingBean" );
+				List<String> types = new ArrayList<String>();
+				List<String> ids = new ArrayList<String>();
+				List<String> prices = new ArrayList<String>();
+				List<String> vins = new ArrayList<String>();
+				List<String> shortMarketNames = new ArrayList<String>();
+				List<String> transactionNos = new ArrayList<String>();
+				String package1Message = req.getParameter("state").split(",")[1];
+				String package2Message = req.getParameter("state").split(",")[2];
+				String accountNum = req.getParameter("state").split(",")[3];
+
+				if(!"$PKG1_MESSAGE".equals(package1Message)){
+					//智能互联支付
+					String basePackageId = package1Message.split("/")[0];
+					String basePrice = package1Message.split("/")[1];
+					String baseVin = package1Message.split("/")[2];
+					String baseShortName = package1Message.split("/")[3];
+					String baseTransNo = package1Message.split("/")[4];
+					String baseType =Constant.PROMOTION_CATEGERY1;
+					types.add(baseType);
+					ids.add(basePackageId);
+					prices.add(basePrice);
+					vins.add(baseVin);
+					shortMarketNames.add(baseShortName);
+					transactionNos.add(baseTransNo);
+					logger.info("baseType=============>"+baseType);
+				}
+				if(!"$PKG2_MESSAGE".equals(package2Message)){
+					//wifi支付
+					String wifiPackageId = package2Message.split("/")[0];
+					String wifiPrice = package2Message.split("/")[1];
+					String wifiVin = package2Message.split("/")[2];
+					String wifiShortName = package2Message.split("/")[3];
+					String wifiTransNo = package2Message.split("/")[4];
+					String wifiType =Constant.PROMOTION_CATEGERY3;
+					types.add(wifiType);
+					ids.add(wifiPackageId);
+					prices.add(wifiPrice);
+					vins.add(wifiVin);
+					shortMarketNames.add(wifiShortName);
+					transactionNos.add(wifiTransNo);
+					logger.info("wifiType=============>"+wifiType);
+				}
+				String link = orderBackingBean.toOrderPaymentForWechat( transactionNos,oId,accountNum,types,ids,prices,vins,shortMarketNames);
+				req.getRequestDispatcher(link).forward(req, resp);
+
+			}
 		}
 	}
 
-	public static String convertStreamToString(InputStream is) {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+	/*2017-10-25;Alex:优化代码，关闭IO流等;CR-代码规范*/
+	public static String convertStreamToString(InputStream ip_stream) {
+		InputStreamReader ip_reader = new InputStreamReader(ip_stream);
+		BufferedReader bf_reader = new BufferedReader(ip_reader);
 		StringBuilder sb = new StringBuilder();
 
 		String line = null;
 		try {
-			while ((line = reader.readLine()) != null) {
+			while ((line = bf_reader.readLine()) != null) {
 				sb.append(line + "\n");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				is.close();
+				bf_reader.close();
+				ip_reader.close();
+				ip_stream.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
