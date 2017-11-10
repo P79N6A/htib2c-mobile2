@@ -209,7 +209,15 @@ public class WechatServlet extends HttpServlet {
 				logger.debug("wechatServlet start violation inquiry");
 				LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
 				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2VIOLATIONINQUIRY)).forward(req, resp);
-			}
+			}  
+      
+			/* 2017-11-10,Tommy Liu, CR82_Part II, 增加 套餐升级 菜单 */
+            else if(state.equalsIgnoreCase(Constant.WECHAT_STATE_UPGRADE)){
+    			logger.debug("wechatServlet start startUpgradeOrder");
+    			LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
+    			req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2MyAccount)).forward(req, resp);
+    		}
+			
 			else if(state.equalsIgnoreCase(Constant.WECHAT_PAYMENT)){
 				OrderBackingBean orderBackingBean = (OrderBackingBean)context.getBean("orderBackingBean" );
 				List<String> types = new ArrayList<String>();
