@@ -3,21 +3,20 @@ package com.htichina.wsclient.payment;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for isNewFollowReciveDidiResponse complex type.
+ * <p>Java class for getNewPackageAfterUpgrade complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="isNewFollowReciveDidiResponse">
+ * &lt;complexType name="getNewPackageAfterUpgrade">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="arg0" type="{http://payment.ws.htichina.com/}packageUpgradeRequest" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,36 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "isNewFollowReciveDidiResponse", propOrder = {
-    "_return"
+@XmlType(name = "getNewPackageAfterUpgrade", propOrder = {
+    "arg0"
 })
-public class IsNewFollowReciveDidiResponse {
+public class GetNewPackageAfterUpgrade {
 
-    @XmlElement(name = "return")
-    protected String _return;
+    protected PackageUpgradeRequest arg0;
 
     /**
-     * Gets the value of the return property.
+     * Gets the value of the arg0 property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link PackageUpgradeRequest }
      *     
      */
-    public String getReturn() {
-        return _return;
+    public PackageUpgradeRequest getArg0() {
+        return arg0;
     }
 
     /**
-     * Sets the value of the return property.
+     * Sets the value of the arg0 property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link PackageUpgradeRequest }
      *     
      */
-    public void setReturn(String value) {
-        this._return = value;
+    public void setArg0(PackageUpgradeRequest value) {
+        this.arg0 = value;
     }
 
 }

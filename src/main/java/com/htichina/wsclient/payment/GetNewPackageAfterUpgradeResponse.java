@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for isNewFollowReciveDidiResponse complex type.
+ * <p>Java class for getNewPackageAfterUpgradeResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="isNewFollowReciveDidiResponse">
+ * &lt;complexType name="getNewPackageAfterUpgradeResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://payment.ws.htichina.com/}packageUpgradeResponse" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,23 +27,23 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "isNewFollowReciveDidiResponse", propOrder = {
+@XmlType(name = "getNewPackageAfterUpgradeResponse", propOrder = {
     "_return"
 })
-public class IsNewFollowReciveDidiResponse {
+public class GetNewPackageAfterUpgradeResponse {
 
     @XmlElement(name = "return")
-    protected String _return;
+    protected PackageUpgradeResponse _return;
 
     /**
      * Gets the value of the return property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link PackageUpgradeResponse }
      *     
      */
-    public String getReturn() {
+    public PackageUpgradeResponse getReturn() {
         return _return;
     }
 
@@ -52,10 +52,10 @@ public class IsNewFollowReciveDidiResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link PackageUpgradeResponse }
      *     
      */
-    public void setReturn(String value) {
+    public void setReturn(PackageUpgradeResponse value) {
         this._return = value;
     }
 
