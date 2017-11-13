@@ -33,7 +33,15 @@
 		<script src="#{facesContext.externalContext.request.contextPath}/resources/js/iscroll.js" charset="UTF-8" ></script>
 		<script src="#{facesContext.externalContext.request.contextPath}/resources/js/v.js" charset="UTF-8" ></script>
 		<script src="#{facesContext.externalContext.request.contextPath}/resources/js/csrf.js" charset="UTF-8" ></script>
-      
+        <script>
+          $(function(){
+        	  var token = "#{csrftoken}";
+   		      appendToken(token);  
+        	  
+          });
+           
+        
+        </script>
 		
 	</h:head>
 
@@ -51,7 +59,7 @@
 			var ua = navigator.userAgent.toLowerCase();
 			if(ua.match(/MicroMessenger/i)!="micromessenger" &amp;&amp; ua.indexOf("alipay")==-1) {
 				/*window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";*/
-				broserNum = 1;
+				broserNum = 0;
 			}
 			
 		
