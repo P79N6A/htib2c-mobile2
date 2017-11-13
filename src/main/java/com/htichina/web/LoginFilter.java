@@ -76,6 +76,8 @@ public class LoginFilter implements Filter {
 			fc.doFilter(httpRequest, httpResponse);
 		}
 		catch (Exception e){
+			System.out.println("-------------------21132312121231232313212312312121212"+e.getMessage());
+	        logger.info("-------------------21132312121231232313212312312121212"+e.getMessage());
 			httpResponse.sendRedirect("/views/common/error.xhtml");
 		}
 
