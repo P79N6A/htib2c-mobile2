@@ -130,8 +130,8 @@
                             <h:inputText id="accountNumDis" maxlength="8">
                                 <f:passThroughAttribute name="placeholder" value="8位数字" />
                                 <f:passThroughAttribute name="type" value="tel"/>
-                                 <f:passThroughAttribute name="pattern"
-                                                value="[0-9]*"/>
+                                <!--  <f:passThroughAttribute name="pattern"
+                                                value="[0-9]*"/> -->
                                 <f:passThroughAttribute name="clear" value="clearAccountNum"/>
                                 <f:passThroughAttribute name="onchange" value="accountNumChange()"/>
                                 <f:converter converterId="AccountNumConverter"/>
@@ -146,8 +146,8 @@
                         <li><h:inputText id="mobilePhoneDis" maxlength="11">
                             <f:passThroughAttribute name="placeholder" value="11位数字" />
                             <f:passThroughAttribute name="type" value="tel"/>
-                             <f:passThroughAttribute name="pattern"
-                                                value="[0-9]*"/>
+                            <!--  <f:passThroughAttribute name="pattern"
+                                                value="[0-9]*"/> -->
                             <f:passThroughAttribute name="clear" value="clearTel"/>
                             <f:passThroughAttribute name="onchange" value="mobileChange()"/>
                             <f:converter converterId="MobilePhoneConverter"/>
@@ -164,8 +164,8 @@
                             <f:passThroughAttribute name="placeholder" value="17位数字" ></f:passThroughAttribute>
                             <f:passThroughAttribute name="clear" value="clearVin"/>
                             <f:passThroughAttribute name="onchange" value="vinChange()"/>
-                             <f:passThroughAttribute name="pattern"
-                                                value="[0-9]*"/>
+                            <!--  <f:passThroughAttribute name="pattern"
+                                                value="[0-9]*"/> -->
                             <f:converter converterId="VinConverter"/>
                         </h:inputText>
                             <h:inputHidden id="vinInit" value="#{orderBackingBean.vin}">
