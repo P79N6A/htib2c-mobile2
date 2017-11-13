@@ -1571,7 +1571,7 @@ public class OrderBackingBean implements Serializable {
                     sProdId = id;
                     sProdPrice = Double.valueOf(prices.get(count));
                     String oId = openId;
-                    logger.info("count=====================>"+count);
+                    logger.info("oId=====================>"+oId);
                     logger.info("sProdId=====================>"+sProdId);
                     logger.info("sProdPrice=====================>"+sProdPrice);
                     logger.info("types.get(count)=====================>"+types.get(count));
@@ -1585,10 +1585,9 @@ public class OrderBackingBean implements Serializable {
                             Constant.DB_ORDER_CHANNEL_MOBILE,
                             oId
                     );
-                    logger.info("orderIds=====================>"+paymentOrderResponse.getOrderNum());
+                    logger.info("paymentOrderResponse=====================>"+paymentOrderResponse.getRespCode());
                     // if create new order failed
                     if (!paymentOrderResponse.getRespCode().equals(Constant.SERVICE_B2C_PAYMENT_RESPONSE_CODE_SUCCESS)) {
-                        logger.info("PaymentOrderResponseError=============>");
                         context.addMessage(null, new FacesMessage(
                                 FacesMessage.SEVERITY_ERROR, "创建订单失败，原因：" + paymentOrderResponse.getRespMsg(), ""));
                         orderPackagePop = "创建订单失败，原因：" + paymentOrderResponse.getRespMsg() + "请重试或致电<span style=\"text-decoration: underline;\" class=\"span2\">400-898-0050</span>联系梅赛德斯-奔驰智能互联服务中心寻求帮助";
@@ -1673,7 +1672,6 @@ public class OrderBackingBean implements Serializable {
         tpWxPay.setTotalFee(String.valueOf(amounts));
         logger.debug("totalFee=" + ESAPI.encoder().encodeForHTML(String.valueOf(amounts)));
         wechatPrepayResponse = demo.getPackage(tpWxPay);
-        logger.info("wechatPrepayResponse=" + ESAPI.encoder().encodeForHTML(wechatPrepayResponse));
 //        WIDout_trade_no = transactionNo+orderIds;
 //        WIDsubject = orderDescs;
 //        WIDtotal_fee = amounts;
