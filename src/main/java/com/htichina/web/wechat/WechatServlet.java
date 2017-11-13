@@ -28,6 +28,18 @@ import com.htichina.common.web.Constant;
 import com.htichina.web.common.ViewPage;
 import com.htichina.web.login.LoginBackingBean;
 import com.htichina.web.order.OrderBackingBean;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by yiming on 2015/5/4.
@@ -68,16 +80,16 @@ public class WechatServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String accessToken = null;
-//		System.out.println("in WeChatServlet");
+//		logger.infoln("in WeChatServlet");
 		logger.debug("in WeChatServlet");
 
 //		clear the session
 		req.getSession().invalidate();
 //		String pkg="";
 		String code = req.getParameter("code");
-//		System.out.println(code);
+//		logger.infoln(code);
 		logger.info("code=" + ESAPI.encoder().encodeForHTML(code));
-		String state = req.getParameter("state");
+		String state = req.getParameter("state").split(",")[0];
 		logger.info("state=" + ESAPI.encoder().encodeForHTML(state));
 
 		HttpClient httpclient = new DefaultHttpClient();
@@ -100,9 +112,9 @@ public class WechatServlet extends HttpServlet {
 				req.getRequestDispatcher(loginBackingBean.closeBrowser()).forward(req, resp);
 			}
 			else{
-//			System.out.println("Do something");
+//			logger.infoln("Do something");
 				logger.debug("Do something");
-//			System.out.println(str);
+//			logger.infoln(str);
 				logger.info(ESAPI.encoder().encodeForHTML(str));
 
 				int m = str.indexOf("access_token");
@@ -114,6 +126,8 @@ public class WechatServlet extends HttpServlet {
 				int i = str.indexOf("openid");
 				int j = str.indexOf("scope");
 				String openId = str.substring(i + 9, j - 3);
+//				oId = openId;
+//			logger.infoln("openId: " + openId);
 				/*2017-10-25;Alex:优化代码，线程同步;CR-代码规范*/
 				synchronized(this){
 					oId = openId;
@@ -189,13 +203,69 @@ public class WechatServlet extends HttpServlet {
 				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2KEY)).forward(req, resp);
 			}
 
-            //违章查询
-            else if(state.equalsIgnoreCase(Constant.VIOLATION_INQUIRY)){
-                System.out.print("+++++++++"+state);
-                logger.debug("wechatServlet start violation inquiry");
-                LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
-                req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2VIOLATIONINQUIRY)).forward(req, resp);
-            }
+			//违章查询
+			else if(state.equalsIgnoreCase(Constant.VIOLATION_INQUIRY)){
+				System.out.print("+++++++++"+state);
+				logger.debug("wechatServlet start violation inquiry");
+				LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
+				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2VIOLATIONINQUIRY)).forward(req, resp);
+			}  
+      
+			/* 2017-11-10,Tommy Liu, CR82_Part II, 增加 套餐升级 菜单 */
+            else if(state.equalsIgnoreCase(Constant.WECHAT_STATE_UPGRADE)){
+    			logger.debug("wechatServlet start startUpgradeOrder");
+    			LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
+    			req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2MyAccount)).forward(req, resp);
+    		}
+			
+			else if(state.equalsIgnoreCase(Constant.WECHAT_PAYMENT)){
+				OrderBackingBean orderBackingBean = (OrderBackingBean)context.getBean("orderBackingBean" );
+				List<String> types = new ArrayList<String>();
+				List<String> ids = new ArrayList<String>();
+				List<String> prices = new ArrayList<String>();
+				List<String> vins = new ArrayList<String>();
+				List<String> shortMarketNames = new ArrayList<String>();
+				List<String> transactionNos = new ArrayList<String>();
+				String package1Message = req.getParameter("state").split(",")[1];
+				String package2Message = req.getParameter("state").split(",")[2];
+				String accountNum = req.getParameter("state").split(",")[3];
+
+				if(!"$PKG1_MESSAGE".equals(package1Message)){
+					//智能互联支付
+					String basePackageId = package1Message.split("/")[0];
+					String basePrice = package1Message.split("/")[1];
+					String baseVin = package1Message.split("/")[2];
+					String baseShortName = package1Message.split("/")[3];
+					String baseTransNo = package1Message.split("/")[4];
+					String baseType =Constant.PROMOTION_CATEGERY1;
+					types.add(baseType);
+					ids.add(basePackageId);
+					prices.add(basePrice);
+					vins.add(baseVin);
+					shortMarketNames.add(baseShortName);
+					transactionNos.add(baseTransNo);
+					logger.info("baseType=============>"+baseType);
+				}
+				if(!"$PKG2_MESSAGE".equals(package2Message)){
+					//wifi支付
+					String wifiPackageId = package2Message.split("/")[0];
+					String wifiPrice = package2Message.split("/")[1];
+					String wifiVin = package2Message.split("/")[2];
+					String wifiShortName = package2Message.split("/")[3];
+					String wifiTransNo = package2Message.split("/")[4];
+					String wifiType =Constant.PROMOTION_CATEGERY3;
+					types.add(wifiType);
+					ids.add(wifiPackageId);
+					prices.add(wifiPrice);
+					vins.add(wifiVin);
+					shortMarketNames.add(wifiShortName);
+					transactionNos.add(wifiTransNo);
+					logger.info("wifiType=============>"+wifiType);
+				}
+				String link = orderBackingBean.toOrderPaymentForWechat( transactionNos,oId,accountNum,types,ids,prices,vins,shortMarketNames);
+				req.getRequestDispatcher(link).forward(req, resp);
+
+			}
 		}
 	}
 

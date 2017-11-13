@@ -105,6 +105,17 @@ public class ConfigureInfo {
     @Value("#{configProperties['mobiledeviceregistration_apikey']}")
     private static String mobiledeviceregistrationapikey;
 
+    @Value("#{configProperties['WechatLinkLogin']}")
+    private static String WechatLinkLogin;
+
+    public static String getWechatLinkLogin() {
+        return WechatLinkLogin;
+    }
+
+    public static void setWechatLinkLogin(String wechatLinkLogin) {
+        WechatLinkLogin = wechatLinkLogin;
+    }
+
     public static String getMobiledeviceregistrationapikey() {
         return mobiledeviceregistrationapikey;
     }

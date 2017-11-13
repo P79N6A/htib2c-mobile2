@@ -100,6 +100,13 @@
                                                         <li>到&#160;&#160;期&#160;&#160;时&#160;&#160;间&#160;：<span><h:outputText value="#{currentPkg.endDate}">
                                                             <f:convertDateTime pattern="yyyy-MM-dd"/>
                                                         </h:outputText></span></li>
+                                                        <c:if test="#{currentPkg.canBeUpgrated}">
+	                                                        <li><div class="s_btn s_btn1">
+	                                                        	<h:commandButton
+                                                				value="升级" action="#{orderBackingBean.toOrderUpgradeEntry(currentPkg,loginBackingBean.accountInfo,loginBackingBean.openId)}" style="color:white;background:none;font-size:26px;height:60px;line-height: 60px;margin:0;padding:0;text-align: center;border:none;"/>
+                                                				</div>
+	                                                        </li>
+                                                        </c:if>
                                                     </ul>
                                                 </div>
                                                 <c:if test="#{loop.index != loop.count}">
@@ -145,11 +152,45 @@
                                                     onclick="hideExit()" style="color:white;background:none;font-size:26px;height:60px;line-height: 60px;margin:0;padding:0;text-align: center;border:none;"/></div>
             </div>
             <div id="filer" style="display:none"></div>
+            <h:inputText id="myAccountPop"
+                         value="#{orderBackingBean.myAccountPop}" style="display: none">
+                <f:passThroughAttribute name="nm3" value="myAccountPop" />
+            </h:inputText>
+            <div class="alert" id="sn_err" style="display:none">
+                <div class="a_txt" id="perro">您的密码不正确<br/>
+			                    请重试或致电<span class="span2">400-898-0050</span><br/>
+			                    联系梅赛德斯-奔驰智能互联<br/>
+			                    服务中心寻求帮助
+			    </div>
+                <div class="m_btn m_btn1">
+                	<input type="button" value="重 &#160; 试" onclick="hideLogOff()" class="csinput"/>
+                </div>
+            </div>
 
             <script type="text/javascript">
                 if("1" == broserNum){
                     window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
                 }
+                
+                /*判断是否弹窗提示*/
+                var myAccountPopVal = $("input[nm3='myAccountPop']").val();
+                if(myAccountPopVal == null || myAccountPopVal == ""){
+                    $('#filer').hide();
+                    $('#sn_err').hide();
+                }else{
+                    $('#filer').show();
+                    $('#sn_err').show();
+                    $('#perro').html(myAccountPopVal);
+                }
+                function hideLogOff() {
+                    $('#filer').hide();
+                    $('#sn_err').hide();
+                }
+                function hide3000Pop(){
+                    $('#filer').hide();
+                    $('#xiexie').hide();
+                }
+                
                 function toInvoice(){
                     window.location.href="#{facesContext.externalContext.request.contextPath}/views/invoiceEntry.xhtml";
                 }
