@@ -1548,8 +1548,6 @@ public class OrderBackingBean implements Serializable {
                     //订单已支付
                     transactionType = "2";
                     break;
-                }else{
-
                 }
                 //订单完成未支付
                 transactionType = "3";
