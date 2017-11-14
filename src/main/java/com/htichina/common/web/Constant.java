@@ -2,6 +2,10 @@ package com.htichina.common.web;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.List;
+
+import com.tencent.common.RandomStringGenerator;
 
 /**
  * Created by yiming on 2014/8/6.
@@ -230,5 +234,11 @@ public class Constant {
 
     public static final String PROMOTION_CATEGERY1="1";
     public static final String PROMOTION_CATEGERY3="3";
-
+    
+	public static final List<String> TOKENLIST = Arrays.asList("psqhew8bc4taht6mbr3a", "sits9w2xb0wjilsyhdz1",
+			"dvy7h158r254jcybndiv", "us7rnbkscrhmx0nwypj7", "pd1pn8lt7qrl2n5n43so", "0q5yiq0b6n9lepgbcrar",
+			"ixkh0ugn93ispbdzqokq", "vrl319w6g3mvxdv8uv2i", "xwgdtteki4if47ubts6j", "l1z8jzz19ph3lzfwmptj",
+			"ondn7jiyz8zfzoi4g4dn", "0kn1ii07o12sgypmhbig", "8z7uauk7nb5md1ki143n", "reuduzkqf2dlamqs8e7i",
+			"v3tds6r8bqgn4vfa31eq", "9k8p60n2p50fs0i0ftua", "77c9lf5p8mkbdec8eceq", "c7fhudvebltwm6xp9ho3",
+			"pyrgds12ixrgxx0a1k6i", "5joa07tue9tggn0jr10w");
 }

@@ -2,6 +2,8 @@ package com.tencent.common;
 
 import java.security.SecureRandom;
 
+import com.htichina.common.web.Constant;
+
 /**
  * User: rizenguo
  * Date: 2014/10/29
@@ -26,4 +28,9 @@ public class RandomStringGenerator {
         return sb.toString();
     }
 
+    public static String getCSRFToken(){
+    	SecureRandom rm = new SecureRandom();
+		int i = rm.nextInt(Constant.TOKENLIST.size()-1);
+		return Constant.TOKENLIST.get(i);
+    }
 }
