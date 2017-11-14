@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for promotionInfoWS complex type.
+ * <p>promotionInfoWS complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="promotionInfoWS">
@@ -78,7 +78,7 @@ public class PromotionInfoWS {
     protected String shortMarketName;
 
     /**
-     * Gets the value of the pkgId property.
+     * 获取pkgId属性的值。
      * 
      * @return
      *     possible object is
@@ -90,7 +90,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Sets the value of the pkgId property.
+     * 设置pkgId属性的值。
      * 
      * @param value
      *     allowed object is
@@ -102,7 +102,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Gets the value of the promotionPrice property.
+     * 获取promotionPrice属性的值。
      * 
      * @return
      *     possible object is
@@ -114,7 +114,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Sets the value of the promotionPrice property.
+     * 设置promotionPrice属性的值。
      * 
      * @param value
      *     allowed object is
@@ -126,7 +126,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Gets the value of the promotionDesc1A property.
+     * 获取promotionDesc1A属性的值。
      * 
      * @return
      *     possible object is
@@ -138,7 +138,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Sets the value of the promotionDesc1A property.
+     * 设置promotionDesc1A属性的值。
      * 
      * @param value
      *     allowed object is
@@ -150,7 +150,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Gets the value of the promotionDesc1B property.
+     * 获取promotionDesc1B属性的值。
      * 
      * @return
      *     possible object is
@@ -162,7 +162,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Sets the value of the promotionDesc1B property.
+     * 设置promotionDesc1B属性的值。
      * 
      * @param value
      *     allowed object is
@@ -174,7 +174,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Gets the value of the promotionDesc2 property.
+     * 获取promotionDesc2属性的值。
      * 
      * @return
      *     possible object is
@@ -186,7 +186,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Sets the value of the promotionDesc2 property.
+     * 设置promotionDesc2属性的值。
      * 
      * @param value
      *     allowed object is
@@ -198,7 +198,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Gets the value of the promotionDesc3 property.
+     * 获取promotionDesc3属性的值。
      * 
      * @return
      *     possible object is
@@ -210,7 +210,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Sets the value of the promotionDesc3 property.
+     * 设置promotionDesc3属性的值。
      * 
      * @param value
      *     allowed object is
@@ -222,7 +222,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Gets the value of the promotionDesc4 property.
+     * 获取promotionDesc4属性的值。
      * 
      * @return
      *     possible object is
@@ -234,7 +234,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Sets the value of the promotionDesc4 property.
+     * 设置promotionDesc4属性的值。
      * 
      * @param value
      *     allowed object is
@@ -246,7 +246,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Gets the value of the promotionDesc5A property.
+     * 获取promotionDesc5A属性的值。
      * 
      * @return
      *     possible object is
@@ -258,7 +258,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Sets the value of the promotionDesc5A property.
+     * 设置promotionDesc5A属性的值。
      * 
      * @param value
      *     allowed object is
@@ -270,7 +270,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Gets the value of the promotionDesc5B property.
+     * 获取promotionDesc5B属性的值。
      * 
      * @return
      *     possible object is
@@ -282,7 +282,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Sets the value of the promotionDesc5B property.
+     * 设置promotionDesc5B属性的值。
      * 
      * @param value
      *     allowed object is
@@ -294,7 +294,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Gets the value of the promotionDesc6 property.
+     * 获取promotionDesc6属性的值。
      * 
      * @return
      *     possible object is
@@ -306,7 +306,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Sets the value of the promotionDesc6 property.
+     * 设置promotionDesc6属性的值。
      * 
      * @param value
      *     allowed object is
@@ -318,7 +318,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Gets the value of the promotionTheme property.
+     * 获取promotionTheme属性的值。
      * 
      * @return
      *     possible object is
@@ -330,7 +330,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Sets the value of the promotionTheme property.
+     * 设置promotionTheme属性的值。
      * 
      * @param value
      *     allowed object is
@@ -342,7 +342,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Gets the value of the shortMarketName property.
+     * 获取shortMarketName属性的值。
      * 
      * @return
      *     possible object is
@@ -354,7 +354,7 @@ public class PromotionInfoWS {
     }
 
     /**
-     * Sets the value of the shortMarketName property.
+     * 设置shortMarketName属性的值。
      * 
      * @param value
      *     allowed object is

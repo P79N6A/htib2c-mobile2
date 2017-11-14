@@ -189,7 +189,9 @@ public class NotifyServlet extends HttpServlet {
 							body = list1.get(0).getMarketName();
 						}
 
-						this.sendMessage(body,orderNum, wpr.getOpenid());
+						List<String> openIds = client.getOpendIdByOpenId(wpr.getOpenid());
+						logger.info("openIds======================================>"+openIds.get(0));
+						this.sendMessage(body,orderNum, openIds);
 						PaymentResponse paymentResponse = new PaymentResponse();
 						if(wpr.getOutTradeNo().length()>19) {
 							PaymentResultMessage paymentResultMessage1 = new PaymentResultMessage();
@@ -287,7 +289,7 @@ public class NotifyServlet extends HttpServlet {
 		return retMap;
 	}
 
-	private void sendMessage(String body ,String order, String openid) throws IOException {
+	private void sendMessage(String body ,String order, List<String> openids) throws IOException {
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpGet httpgets = new HttpGet(
 				"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
@@ -317,26 +319,30 @@ public class NotifyServlet extends HttpServlet {
 //			httpost.setEntity(new StringEntity(msg, "UTF-8"));
 //			HttpResponse resp = httpclient.execute(httpost);
 //			String jsonStr = EntityUtils.toString(resp.getEntity(), "UTF-8");
-			JSONObject jsobj = new JSONObject();
-			jsobj.put("touser", openid);
-			jsobj.put("msgtype", "text");
-			JSONObject jsobj2 = new JSONObject();
-			jsobj2.put("content", message);
-			jsobj.put("text", jsobj2);
-			HttpsURLRequest httpsURLRequest  =new HttpsURLRequest();
-			try {
-				httpsURLRequest.postUrl("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
-						+ access_token + "", jsobj, null);
-			} catch (UnrecoverableKeyException e) {
-				e.printStackTrace();
-			} catch (KeyManagementException e) {
-				e.printStackTrace();
-			} catch (NoSuchAlgorithmException e) {
-				e.printStackTrace();
-			} catch (KeyStoreException e) {
-				e.printStackTrace();
-			} catch (URISyntaxException e) {
-				e.printStackTrace();
+			if(openids!=null&&openids.size()>0) {
+				for(String openid:openids) {
+					JSONObject jsobj = new JSONObject();
+					jsobj.put("touser", openid);
+					jsobj.put("msgtype", "text");
+					JSONObject jsobj2 = new JSONObject();
+					jsobj2.put("content", message);
+					jsobj.put("text", jsobj2);
+					HttpsURLRequest httpsURLRequest = new HttpsURLRequest();
+					try {
+						httpsURLRequest.postUrl("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
+								+ access_token + "", jsobj, null);
+					} catch (UnrecoverableKeyException e) {
+						e.printStackTrace();
+					} catch (KeyManagementException e) {
+						e.printStackTrace();
+					} catch (NoSuchAlgorithmException e) {
+						e.printStackTrace();
+					} catch (KeyStoreException e) {
+						e.printStackTrace();
+					} catch (URISyntaxException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 //			System.out.println(jsonStr);
 //			logger.info(ESAPI.encoder().encodeForHTML(jsonStr));

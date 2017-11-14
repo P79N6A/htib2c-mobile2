@@ -10,9 +10,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for queryOrderByParentOrderNumResponse complex type.
+ * <p>queryOrderByParentOrderNumResponse complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="queryOrderByParentOrderNumResponse">
@@ -55,7 +55,7 @@ public class QueryOrderByParentOrderNumResponse {
     protected String vin;
 
     /**
-     * Gets the value of the accountNum property.
+     * 获取accountNum属性的值。
      * 
      * @return
      *     possible object is
@@ -67,7 +67,7 @@ public class QueryOrderByParentOrderNumResponse {
     }
 
     /**
-     * Sets the value of the accountNum property.
+     * 设置accountNum属性的值。
      * 
      * @param value
      *     allowed object is
@@ -79,7 +79,7 @@ public class QueryOrderByParentOrderNumResponse {
     }
 
     /**
-     * Gets the value of the insurancePresentOrder property.
+     * 获取insurancePresentOrder属性的值。
      * 
      */
     public boolean isInsurancePresentOrder() {
@@ -87,7 +87,7 @@ public class QueryOrderByParentOrderNumResponse {
     }
 
     /**
-     * Sets the value of the insurancePresentOrder property.
+     * 设置insurancePresentOrder属性的值。
      * 
      */
     public void setInsurancePresentOrder(boolean value) {
@@ -95,7 +95,7 @@ public class QueryOrderByParentOrderNumResponse {
     }
 
     /**
-     * Gets the value of the orderStatus property.
+     * 获取orderStatus属性的值。
      * 
      * @return
      *     possible object is
@@ -107,7 +107,7 @@ public class QueryOrderByParentOrderNumResponse {
     }
 
     /**
-     * Sets the value of the orderStatus property.
+     * 设置orderStatus属性的值。
      * 
      * @param value
      *     allowed object is
@@ -119,7 +119,7 @@ public class QueryOrderByParentOrderNumResponse {
     }
 
     /**
-     * Gets the value of the price property.
+     * 获取price属性的值。
      * 
      */
     public double getPrice() {
@@ -127,7 +127,7 @@ public class QueryOrderByParentOrderNumResponse {
     }
 
     /**
-     * Sets the value of the price property.
+     * 设置price属性的值。
      * 
      */
     public void setPrice(double value) {
@@ -135,7 +135,7 @@ public class QueryOrderByParentOrderNumResponse {
     }
 
     /**
-     * Gets the value of the startDt property.
+     * 获取startDt属性的值。
      * 
      * @return
      *     possible object is
@@ -147,7 +147,7 @@ public class QueryOrderByParentOrderNumResponse {
     }
 
     /**
-     * Sets the value of the startDt property.
+     * 设置startDt属性的值。
      * 
      * @param value
      *     allowed object is
@@ -159,7 +159,7 @@ public class QueryOrderByParentOrderNumResponse {
     }
 
     /**
-     * Gets the value of the vin property.
+     * 获取vin属性的值。
      * 
      * @return
      *     possible object is
@@ -171,7 +171,7 @@ public class QueryOrderByParentOrderNumResponse {
     }
 
     /**
-     * Sets the value of the vin property.
+     * 设置vin属性的值。
      * 
      * @param value
      *     allowed object is
