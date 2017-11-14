@@ -44,7 +44,12 @@ public class TokenCsrfFilter implements Filter {
 			if(token==null||!Constant.TOKENLIST.contains(token)){
 				logger.info("no csrftoken");
 				request.getRequestDispatcher("/views/common/error.xhtml").forward(request,response);
-			}}
+			}else{
+				chain.doFilter(request, response);
+			}
+		}else{
+			chain.doFilter(request, response);
+		}
 		
 	}
 
