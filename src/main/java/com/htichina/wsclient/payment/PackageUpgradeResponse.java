@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for packageUpgradeResponse complex type.
+ * <p>packageUpgradeResponse complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="packageUpgradeResponse">
@@ -76,7 +76,7 @@ public class PackageUpgradeResponse {
     protected String upgratedParentOrderNum;
 
     /**
-     * Gets the value of the accountNum property.
+     * 获取accountNum属性的值。
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the accountNum property.
+     * 设置accountNum属性的值。
      * 
      * @param value
      *     allowed object is
@@ -100,7 +100,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Gets the value of the calculateByActivePkg property.
+     * 获取calculateByActivePkg属性的值。
      * 
      */
     public boolean isCalculateByActivePkg() {
@@ -108,7 +108,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the calculateByActivePkg property.
+     * 设置calculateByActivePkg属性的值。
      * 
      */
     public void setCalculateByActivePkg(boolean value) {
@@ -116,7 +116,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Gets the value of the endDate property.
+     * 获取endDate属性的值。
      * 
      * @return
      *     possible object is
@@ -128,7 +128,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the endDate property.
+     * 设置endDate属性的值。
      * 
      * @param value
      *     allowed object is
@@ -140,7 +140,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Gets the value of the newPackageId property.
+     * 获取newPackageId属性的值。
      * 
      * @return
      *     possible object is
@@ -152,7 +152,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the newPackageId property.
+     * 设置newPackageId属性的值。
      * 
      * @param value
      *     allowed object is
@@ -164,7 +164,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Gets the value of the newPackageName property.
+     * 获取newPackageName属性的值。
      * 
      * @return
      *     possible object is
@@ -176,7 +176,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the newPackageName property.
+     * 设置newPackageName属性的值。
      * 
      * @param value
      *     allowed object is
@@ -188,7 +188,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Gets the value of the openId property.
+     * 获取openId属性的值。
      * 
      * @return
      *     possible object is
@@ -200,7 +200,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the openId property.
+     * 设置openId属性的值。
      * 
      * @param value
      *     allowed object is
@@ -212,7 +212,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Gets the value of the originalPackageId property.
+     * 获取originalPackageId属性的值。
      * 
      * @return
      *     possible object is
@@ -224,7 +224,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the originalPackageId property.
+     * 设置originalPackageId属性的值。
      * 
      * @param value
      *     allowed object is
@@ -236,7 +236,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Gets the value of the originalPackageName property.
+     * 获取originalPackageName属性的值。
      * 
      * @return
      *     possible object is
@@ -248,7 +248,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the originalPackageName property.
+     * 设置originalPackageName属性的值。
      * 
      * @param value
      *     allowed object is
@@ -260,7 +260,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Gets the value of the originalPrice property.
+     * 获取originalPrice属性的值。
      * 
      * @return
      *     possible object is
@@ -272,7 +272,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the originalPrice property.
+     * 设置originalPrice属性的值。
      * 
      * @param value
      *     allowed object is
@@ -284,7 +284,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Gets the value of the originalServiceOrderNum property.
+     * 获取originalServiceOrderNum属性的值。
      * 
      * @return
      *     possible object is
@@ -296,7 +296,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the originalServiceOrderNum property.
+     * 设置originalServiceOrderNum属性的值。
      * 
      * @param value
      *     allowed object is
@@ -308,7 +308,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Gets the value of the respCode property.
+     * 获取respCode属性的值。
      * 
      * @return
      *     possible object is
@@ -320,7 +320,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the respCode property.
+     * 设置respCode属性的值。
      * 
      * @param value
      *     allowed object is
@@ -332,7 +332,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Gets the value of the respMsg property.
+     * 获取respMsg属性的值。
      * 
      * @return
      *     possible object is
@@ -344,7 +344,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the respMsg property.
+     * 设置respMsg属性的值。
      * 
      * @param value
      *     allowed object is
@@ -356,7 +356,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Gets the value of the startDate property.
+     * 获取startDate属性的值。
      * 
      * @return
      *     possible object is
@@ -368,7 +368,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the startDate property.
+     * 设置startDate属性的值。
      * 
      * @param value
      *     allowed object is
@@ -380,7 +380,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Gets the value of the upgradeGapPrice property.
+     * 获取upgradeGapPrice属性的值。
      * 
      * @return
      *     possible object is
@@ -392,7 +392,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the upgradeGapPrice property.
+     * 设置upgradeGapPrice属性的值。
      * 
      * @param value
      *     allowed object is
@@ -404,7 +404,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Gets the value of the upgratedParentOrderNum property.
+     * 获取upgratedParentOrderNum属性的值。
      * 
      * @return
      *     possible object is
@@ -416,7 +416,7 @@ public class PackageUpgradeResponse {
     }
 
     /**
-     * Sets the value of the upgratedParentOrderNum property.
+     * 设置upgratedParentOrderNum属性的值。
      * 
      * @param value
      *     allowed object is
