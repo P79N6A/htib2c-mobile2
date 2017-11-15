@@ -1118,14 +1118,17 @@ public class OrderBackingBean implements Serializable {
     }
     
     /* 2017-11-10,Tommy Liu, CR82_Part II, 进入套餐升级页面 */
-    public String toOrderUpgradeEntry(PackageInfoResponse currentPkg, AccountInfoResponse accountInfo, String openId) {
+    public String toOrderUpgradeEntry(PackageInfoResponse currentPkg, AccountInfoResponse accountInfo, String openId, String fromFlag) {
     	this.accountInfo = accountInfo;
     	this.openId = openId;
-        targetPage = ViewPage.LINK2OrderPackageUpgrade;
+        String errorReturn = ViewPage.LINK2MyAccount;
+        if("2".equals(fromFlag)){
+        	errorReturn = ViewPage.LINK2MyAccount2;
+        }
 
         FacesContext context = FacesContext.getCurrentInstance();
         if(!validateToBeUpgratedPkgSelection()){
-        	targetPage = ViewPage.LINK2MyAccount;
+        	return errorReturn;
         }else{
           paymentPlatform = (String) FacesUtils.getManagedBeanInSession(Constant.PAYMENT_PLATFORM);
 //            paymentPlatform = Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY;//通过浏览器临时测试时使用
@@ -1147,7 +1150,7 @@ public class OrderBackingBean implements Serializable {
                         FacesMessage.SEVERITY_ERROR, upgradeResponse.getRespMsg() +
                         "请确认信息后再次尝试。如果有任何疑问请按车内 【i】按钮或" +
                         "拨打400-898-0050联系在线客服，谢谢！", ""));
-        		targetPage = ViewPage.LINK2MyAccount;
+        		return errorReturn;
         	}
         	upgradeRequest.setOriginalPackageId(upgradeResponse.getOriginalPackageId());
         	upgradeRequest.setOriginalPrice(upgradeResponse.getOriginalPrice());
@@ -1158,7 +1161,7 @@ public class OrderBackingBean implements Serializable {
         	upgradeRequest.setCalculateByActivePkg(upgradeResponse.isCalculateByActivePkg());
         	
         }
-        return targetPage;
+        return ViewPage.LINK2OrderPackageUpgrade;
     }
     
     private boolean validateToBeUpgratedPkgSelection() {
@@ -1548,8 +1551,6 @@ public class OrderBackingBean implements Serializable {
                     //订单已支付
                     transactionType = "2";
                     break;
-                }else{
-
                 }
                 //订单完成未支付
                 transactionType = "3";
@@ -1573,7 +1574,7 @@ public class OrderBackingBean implements Serializable {
                     sProdId = id;
                     sProdPrice = Double.valueOf(prices.get(count));
                     String oId = openId;
-                    logger.info("count=====================>"+count);
+                    logger.info("oId=====================>"+oId);
                     logger.info("sProdId=====================>"+sProdId);
                     logger.info("sProdPrice=====================>"+sProdPrice);
                     logger.info("types.get(count)=====================>"+types.get(count));
@@ -1587,10 +1588,9 @@ public class OrderBackingBean implements Serializable {
                             Constant.DB_ORDER_CHANNEL_MOBILE,
                             oId
                     );
-                    logger.info("orderIds=====================>"+paymentOrderResponse.getOrderNum());
+                    logger.info("paymentOrderResponse=====================>"+paymentOrderResponse.getRespCode());
                     // if create new order failed
                     if (!paymentOrderResponse.getRespCode().equals(Constant.SERVICE_B2C_PAYMENT_RESPONSE_CODE_SUCCESS)) {
-                        logger.info("PaymentOrderResponseError=============>");
                         context.addMessage(null, new FacesMessage(
                                 FacesMessage.SEVERITY_ERROR, "创建订单失败，原因：" + paymentOrderResponse.getRespMsg(), ""));
                         orderPackagePop = "创建订单失败，原因：" + paymentOrderResponse.getRespMsg() + "请重试或致电<span style=\"text-decoration: underline;\" class=\"span2\">400-898-0050</span>联系梅赛德斯-奔驰智能互联服务中心寻求帮助";
@@ -1675,7 +1675,6 @@ public class OrderBackingBean implements Serializable {
         tpWxPay.setTotalFee(String.valueOf(amounts));
         logger.debug("totalFee=" + ESAPI.encoder().encodeForHTML(String.valueOf(amounts)));
         wechatPrepayResponse = demo.getPackage(tpWxPay);
-        logger.info("wechatPrepayResponse=" + ESAPI.encoder().encodeForHTML(wechatPrepayResponse));
 //        WIDout_trade_no = transactionNo+orderIds;
 //        WIDsubject = orderDescs;
 //        WIDtotal_fee = amounts;
