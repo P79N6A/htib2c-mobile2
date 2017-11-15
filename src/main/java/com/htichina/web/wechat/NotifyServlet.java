@@ -189,9 +189,8 @@ public class NotifyServlet extends HttpServlet {
 							body = list1.get(0).getMarketName();
 						}
 
-						List<String> openIds = client.getOpendIdByOpenId(wpr.getOpenid());
-						logger.info("openIds======================================>"+openIds.get(0));
-						this.sendMessage(body,orderNum, openIds);
+//						List<String> openIds = client.getOpendIdByOpenId(wpr.getOpenid());
+						this.sendMessage(body,orderNum, wpr.getOpenid());
 						PaymentResponse paymentResponse = new PaymentResponse();
 						if(wpr.getOutTradeNo().length()>19) {
 							PaymentResultMessage paymentResultMessage1 = new PaymentResultMessage();
@@ -289,7 +288,7 @@ public class NotifyServlet extends HttpServlet {
 		return retMap;
 	}
 
-	private void sendMessage(String body ,String order, List<String> openids) throws IOException {
+	private void sendMessage(String body ,String order, String openid) throws IOException {
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpGet httpgets = new HttpGet(
 				"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
@@ -313,14 +312,8 @@ public class NotifyServlet extends HttpServlet {
 			String link = ConfigureInfo.getWechatLinkLogin();
 			String message = title+time+"尊敬的梅赛德斯-奔驰 智能互联客户，您选购的"+body+"订购成功，订单号"+order+"，请等待开通。点击查看详情。\n"
 					+" 有任何疑问请随时使用车内【i】按钮或者400 898 0050联系客服中心。智能互联 -- 智在安心，不止于此。\n <a href='" + link + "'>请点击前往</a>";
-//			String msg = "{\"touser\":\""
-//					+ openid
-//					+ "\",\"msgtype\":\"text\",\"text\":{\"content\":\""+message+"\"}}";
-//			httpost.setEntity(new StringEntity(msg, "UTF-8"));
-//			HttpResponse resp = httpclient.execute(httpost);
-//			String jsonStr = EntityUtils.toString(resp.getEntity(), "UTF-8");
-			if(openids!=null&&openids.size()>0) {
-				for(String openid:openids) {
+//			if(openids!=null&&openids.size()>0) {
+//				for(String openid:openids) {
 					JSONObject jsobj = new JSONObject();
 					jsobj.put("touser", openid);
 					jsobj.put("msgtype", "text");
@@ -342,8 +335,8 @@ public class NotifyServlet extends HttpServlet {
 					} catch (URISyntaxException e) {
 						e.printStackTrace();
 					}
-				}
-			}
+//				}
+//			}
 //			System.out.println(jsonStr);
 //			logger.info(ESAPI.encoder().encodeForHTML(jsonStr));
 		}
