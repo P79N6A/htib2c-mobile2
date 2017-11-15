@@ -1534,7 +1534,11 @@ public class OrderBackingBean implements Serializable {
             //没创建订单
             transactionType = "1";
         }else{
-            if (orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_PAYMENT_PAID)) {
+            logger.info("orders.get(0).getOrderStat()================>"+orders.get(0).getOrderStat());
+            if (!orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_NEW)
+                    ||!orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_PENDING_PAYMENT)
+                    ||!orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_PAYMENT_FAILED)
+                    ||!orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_PAYMENT_CANCELED)) {
                 //订单已支付
                 transactionType = "2";
             }

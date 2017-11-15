@@ -81,7 +81,7 @@ public class NotifyServlet extends HttpServlet {
 		request.getRequestDispatcher(ViewPage.LINK2OrderSuccess).forward(request,
 				response);
 		if(request.getContentLength()!=-1){
-
+		logger.info("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 			String inputLine;
 			String notifyXml = "";
 			String resXml = "";
@@ -96,7 +96,7 @@ public class NotifyServlet extends HttpServlet {
 			}
 
 //			System.out.println("Notify: " + notifyXml);
-
+			logger.info("notifyXml-------------------"+notifyXml);
 			if(!StringUtils.isEmpty(notifyXml)){
 				SortedMap<String, String> m = parseXmlToList2(notifyXml);
 				WxPayResult wpr = new WxPayResult();
@@ -116,6 +116,7 @@ public class NotifyServlet extends HttpServlet {
 				logger.info("order======================>"+order);
 				logger.info("neworder======================>"+neworder);
 				logger.info("otherOrder======================================>"+otherOrder);
+				logger.info("client.CheckTransaction(neworder)======================================>"+client.CheckTransaction(neworder));
 				if (!order.equals(neworder)&&(!client.CheckTransaction(neworder))) {
 
 //			System.out.println("in NotifyServlet");
@@ -189,7 +190,7 @@ public class NotifyServlet extends HttpServlet {
 							body = list1.get(0).getMarketName();
 						}
 
-//						List<String> openIds = client.getOpendIdByOpenId(wpr.getOpenid());
+						logger.info(" wpr.getOpenid()-------------------"+ wpr.getOpenid());
 						this.sendMessage(body,orderNum, wpr.getOpenid());
 						PaymentResponse paymentResponse = new PaymentResponse();
 						if(wpr.getOutTradeNo().length()>19) {
@@ -312,31 +313,33 @@ public class NotifyServlet extends HttpServlet {
 			String link = ConfigureInfo.getWechatLinkLogin();
 			String message = title+time+"尊敬的梅赛德斯-奔驰 智能互联客户，您选购的"+body+"订购成功，订单号"+order+"，请等待开通。点击查看详情。\n"
 					+" 有任何疑问请随时使用车内【i】按钮或者400 898 0050联系客服中心。智能互联 -- 智在安心，不止于此。\n <a href='" + link + "'>请点击前往</a>";
-//			if(openids!=null&&openids.size()>0) {
-//				for(String openid:openids) {
-					JSONObject jsobj = new JSONObject();
-					jsobj.put("touser", openid);
-					jsobj.put("msgtype", "text");
-					JSONObject jsobj2 = new JSONObject();
-					jsobj2.put("content", message);
-					jsobj.put("text", jsobj2);
-					HttpsURLRequest httpsURLRequest = new HttpsURLRequest();
-					try {
-						httpsURLRequest.postUrl("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
-								+ access_token + "", jsobj, null);
-					} catch (UnrecoverableKeyException e) {
-						e.printStackTrace();
-					} catch (KeyManagementException e) {
-						e.printStackTrace();
-					} catch (NoSuchAlgorithmException e) {
-						e.printStackTrace();
-					} catch (KeyStoreException e) {
-						e.printStackTrace();
-					} catch (URISyntaxException e) {
-						e.printStackTrace();
-					}
-//				}
-//			}
+//			String msg = "{\"touser\":\""
+//					+ openid
+//					+ "\",\"msgtype\":\"text\",\"text\":{\"content\":\""+message+"\"}}";
+//			httpost.setEntity(new StringEntity(msg, "UTF-8"));
+//			HttpResponse resp = httpclient.execute(httpost);
+//			String jsonStr = EntityUtils.toString(resp.getEntity(), "UTF-8");
+			JSONObject jsobj = new JSONObject();
+			jsobj.put("touser", openid);
+			jsobj.put("msgtype", "text");
+			JSONObject jsobj2 = new JSONObject();
+			jsobj2.put("content", message);
+			jsobj.put("text", jsobj2);
+			HttpsURLRequest httpsURLRequest  =new HttpsURLRequest();
+			try {
+				httpsURLRequest.postUrl("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
+						+ access_token + "", jsobj, null);
+			} catch (UnrecoverableKeyException e) {
+				e.printStackTrace();
+			} catch (KeyManagementException e) {
+				e.printStackTrace();
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			} catch (KeyStoreException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
 //			System.out.println(jsonStr);
 //			logger.info(ESAPI.encoder().encodeForHTML(jsonStr));
 		}
