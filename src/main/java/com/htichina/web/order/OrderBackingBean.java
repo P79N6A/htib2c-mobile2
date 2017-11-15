@@ -1546,8 +1546,6 @@ public class OrderBackingBean implements Serializable {
                 //订单失效关闭
                 transactionType = "3";
             }
-            //订单完成未支付
-            transactionType = "4";
         }
         logger.info("TranactionType================>"+transactionType);
 //        logger.info("TranactionTypeList================>"+list.size());
