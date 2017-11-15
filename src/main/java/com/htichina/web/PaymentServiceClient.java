@@ -320,7 +320,10 @@ public class PaymentServiceClient {
   public PackageUpgradeResponse createUpgradePaymentOrder(PackageUpgradeRequest request) {
 	  return service.createUpgradePaymentOrder(request);
   }
-  
+
+  public List<String> getOpendIdByOpenId(String openId){
+    return service.getOpenIdByAccountNum(openId);
+  }
 }
 
 

@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="accountNum" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="accountStatus" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="accountType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="currentCanBeUpgratedPackages" type="{http://payment.ws.htichina.com/}packageInfoResponse" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="currentPackages" type="{http://payment.ws.htichina.com/}packageInfoResponse" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="fullName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="isReceiveDidiForFirstLogin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -41,6 +42,7 @@ import javax.xml.bind.annotation.XmlType;
     "accountNum",
     "accountStatus",
     "accountType",
+    "currentCanBeUpgratedPackages",
     "currentPackages",
     "fullName",
     "isReceiveDidiForFirstLogin",
@@ -53,6 +55,8 @@ public class AccountInfoResponse {
     protected String accountNum;
     protected String accountStatus;
     protected String accountType;
+    @XmlElement(nillable = true)
+    protected List<PackageInfoResponse> currentCanBeUpgratedPackages;
     @XmlElement(nillable = true)
     protected List<PackageInfoResponse> currentPackages;
     protected String fullName;
@@ -131,6 +135,35 @@ public class AccountInfoResponse {
      */
     public void setAccountType(String value) {
         this.accountType = value;
+    }
+
+    /**
+     * Gets the value of the currentCanBeUpgratedPackages property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the currentCanBeUpgratedPackages property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getCurrentCanBeUpgratedPackages().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link PackageInfoResponse }
+     * 
+     * 
+     */
+    public List<PackageInfoResponse> getCurrentCanBeUpgratedPackages() {
+        if (currentCanBeUpgratedPackages == null) {
+            currentCanBeUpgratedPackages = new ArrayList<PackageInfoResponse>();
+        }
+        return this.currentCanBeUpgratedPackages;
     }
 
     /**

@@ -33,7 +33,7 @@ public class PaymentServiceService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL(ConfigureInfo.getB2CPaymentServiceEndPoint());
+        	url = new URL(ConfigureInfo.getB2CPaymentServiceEndPoint());
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
