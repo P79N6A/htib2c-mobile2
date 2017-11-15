@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>getChildOrderInfo complex type的 Java 类。
+ * <p>Java class for getChildOrderInfo complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="getChildOrderInfo">
@@ -37,7 +37,7 @@ public class GetChildOrderInfo {
     protected String lang;
 
     /**
-     * 获取ordernum属性的值。
+     * Gets the value of the ordernum property.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class GetChildOrderInfo {
     }
 
     /**
-     * 设置ordernum属性的值。
+     * Sets the value of the ordernum property.
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class GetChildOrderInfo {
     }
 
     /**
-     * 获取lang属性的值。
+     * Gets the value of the lang property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class GetChildOrderInfo {
     }
 
     /**
-     * 设置lang属性的值。
+     * Sets the value of the lang property.
      * 
      * @param value
      *     allowed object is

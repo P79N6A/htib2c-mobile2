@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>transactionRequest complex type的 Java 类。
+ * <p>Java class for transactionRequest complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="transactionRequest">
@@ -55,7 +55,7 @@ public class TransactionRequest {
     protected String seraialno;
 
     /**
-     * 获取amoumt属性的值。
+     * Gets the value of the amoumt property.
      * 
      * @return
      *     possible object is
@@ -67,7 +67,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 设置amoumt属性的值。
+     * Sets the value of the amoumt property.
      * 
      * @param value
      *     allowed object is
@@ -79,7 +79,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 获取channel属性的值。
+     * Gets the value of the channel property.
      * 
      * @return
      *     possible object is
@@ -91,7 +91,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 设置channel属性的值。
+     * Sets the value of the channel property.
      * 
      * @param value
      *     allowed object is
@@ -103,7 +103,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 获取orderDescription属性的值。
+     * Gets the value of the orderDescription property.
      * 
      * @return
      *     possible object is
@@ -115,7 +115,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 设置orderDescription属性的值。
+     * Sets the value of the orderDescription property.
      * 
      * @param value
      *     allowed object is
@@ -127,7 +127,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 获取paymentno属性的值。
+     * Gets the value of the paymentno property.
      * 
      * @return
      *     possible object is
@@ -139,7 +139,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 设置paymentno属性的值。
+     * Sets the value of the paymentno property.
      * 
      * @param value
      *     allowed object is
@@ -151,7 +151,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 获取remark属性的值。
+     * Gets the value of the remark property.
      * 
      * @return
      *     possible object is
@@ -163,7 +163,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 设置remark属性的值。
+     * Sets the value of the remark property.
      * 
      * @param value
      *     allowed object is
@@ -175,7 +175,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 获取respcode属性的值。
+     * Gets the value of the respcode property.
      * 
      * @return
      *     possible object is
@@ -187,7 +187,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 设置respcode属性的值。
+     * Sets the value of the respcode property.
      * 
      * @param value
      *     allowed object is
@@ -199,7 +199,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 获取response属性的值。
+     * Gets the value of the response property.
      * 
      * @return
      *     possible object is
@@ -211,7 +211,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 设置response属性的值。
+     * Sets the value of the response property.
      * 
      * @param value
      *     allowed object is
@@ -223,7 +223,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 获取seraialno属性的值。
+     * Gets the value of the seraialno property.
      * 
      * @return
      *     possible object is
@@ -235,7 +235,7 @@ public class TransactionRequest {
     }
 
     /**
-     * 设置seraialno属性的值。
+     * Sets the value of the seraialno property.
      * 
      * @param value
      *     allowed object is

@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>productInfo complex type的 Java 类。
+ * <p>Java class for productInfo complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="productInfo">
@@ -58,7 +58,7 @@ public class ProductInfo {
     protected double vol;
 
     /**
-     * 获取duration属性的值。
+     * Gets the value of the duration property.
      * 
      */
     public int getDuration() {
@@ -66,7 +66,7 @@ public class ProductInfo {
     }
 
     /**
-     * 设置duration属性的值。
+     * Sets the value of the duration property.
      * 
      */
     public void setDuration(int value) {
@@ -74,7 +74,7 @@ public class ProductInfo {
     }
 
     /**
-     * 获取price属性的值。
+     * Gets the value of the price property.
      * 
      */
     public double getPrice() {
@@ -82,7 +82,7 @@ public class ProductInfo {
     }
 
     /**
-     * 设置price属性的值。
+     * Sets the value of the price property.
      * 
      */
     public void setPrice(double value) {
@@ -90,7 +90,7 @@ public class ProductInfo {
     }
 
     /**
-     * 获取prodDesc属性的值。
+     * Gets the value of the prodDesc property.
      * 
      * @return
      *     possible object is
@@ -102,7 +102,7 @@ public class ProductInfo {
     }
 
     /**
-     * 设置prodDesc属性的值。
+     * Sets the value of the prodDesc property.
      * 
      * @param value
      *     allowed object is
@@ -114,7 +114,7 @@ public class ProductInfo {
     }
 
     /**
-     * 获取prodId属性的值。
+     * Gets the value of the prodId property.
      * 
      */
     public int getProdId() {
@@ -122,7 +122,7 @@ public class ProductInfo {
     }
 
     /**
-     * 设置prodId属性的值。
+     * Sets the value of the prodId property.
      * 
      */
     public void setProdId(int value) {
@@ -130,7 +130,7 @@ public class ProductInfo {
     }
 
     /**
-     * 获取prodName属性的值。
+     * Gets the value of the prodName property.
      * 
      * @return
      *     possible object is
@@ -142,7 +142,7 @@ public class ProductInfo {
     }
 
     /**
-     * 设置prodName属性的值。
+     * Sets the value of the prodName property.
      * 
      * @param value
      *     allowed object is
@@ -154,7 +154,7 @@ public class ProductInfo {
     }
 
     /**
-     * 获取prodShortName属性的值。
+     * Gets the value of the prodShortName property.
      * 
      * @return
      *     possible object is
@@ -166,7 +166,7 @@ public class ProductInfo {
     }
 
     /**
-     * 设置prodShortName属性的值。
+     * Sets the value of the prodShortName property.
      * 
      * @param value
      *     allowed object is
@@ -178,7 +178,7 @@ public class ProductInfo {
     }
 
     /**
-     * 获取promotionPrice属性的值。
+     * Gets the value of the promotionPrice property.
      * 
      */
     public double getPromotionPrice() {
@@ -186,7 +186,7 @@ public class ProductInfo {
     }
 
     /**
-     * 设置promotionPrice属性的值。
+     * Sets the value of the promotionPrice property.
      * 
      */
     public void setPromotionPrice(double value) {
@@ -194,7 +194,7 @@ public class ProductInfo {
     }
 
     /**
-     * 获取promotionRule属性的值。
+     * Gets the value of the promotionRule property.
      * 
      * @return
      *     possible object is
@@ -206,7 +206,7 @@ public class ProductInfo {
     }
 
     /**
-     * 设置promotionRule属性的值。
+     * Sets the value of the promotionRule property.
      * 
      * @param value
      *     allowed object is
@@ -218,7 +218,7 @@ public class ProductInfo {
     }
 
     /**
-     * 获取vol属性的值。
+     * Gets the value of the vol property.
      * 
      */
     public double getVol() {
@@ -226,7 +226,7 @@ public class ProductInfo {
     }
 
     /**
-     * 设置vol属性的值。
+     * Sets the value of the vol property.
      * 
      */
     public void setVol(double value) {

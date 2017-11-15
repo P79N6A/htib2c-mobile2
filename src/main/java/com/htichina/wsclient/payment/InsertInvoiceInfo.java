@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>insertInvoiceInfo complex type的 Java 类。
+ * <p>Java class for insertInvoiceInfo complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="insertInvoiceInfo">
@@ -34,7 +34,7 @@ public class InsertInvoiceInfo {
     protected InvoiceInfoRequest arg0;
 
     /**
-     * 获取arg0属性的值。
+     * Gets the value of the arg0 property.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class InsertInvoiceInfo {
     }
 
     /**
-     * 设置arg0属性的值。
+     * Sets the value of the arg0 property.
      * 
      * @param value
      *     allowed object is

@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>promotionInfoResponse complex type的 Java 类。
+ * <p>Java class for promotionInfoResponse complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="promotionInfoResponse">
@@ -44,7 +44,7 @@ public class PromotionInfoResponse {
     protected String productCategoryName;
 
     /**
-     * 获取productCategoryId属性的值。
+     * Gets the value of the productCategoryId property.
      * 
      * @return
      *     possible object is
@@ -56,7 +56,7 @@ public class PromotionInfoResponse {
     }
 
     /**
-     * 设置productCategoryId属性的值。
+     * Sets the value of the productCategoryId property.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class PromotionInfoResponse {
     }
 
     /**
-     * 获取productCategoryName属性的值。
+     * Gets the value of the productCategoryName property.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class PromotionInfoResponse {
     }
 
     /**
-     * 设置productCategoryName属性的值。
+     * Sets the value of the productCategoryName property.
      * 
      * @param value
      *     allowed object is

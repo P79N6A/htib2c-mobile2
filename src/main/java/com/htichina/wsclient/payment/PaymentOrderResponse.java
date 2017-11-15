@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>paymentOrderResponse complex type的 Java 类。
+ * <p>Java class for paymentOrderResponse complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="paymentOrderResponse">
@@ -40,7 +40,7 @@ public class PaymentOrderResponse {
     protected String respMsg;
 
     /**
-     * 获取orderNum属性的值。
+     * Gets the value of the orderNum property.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class PaymentOrderResponse {
     }
 
     /**
-     * 设置orderNum属性的值。
+     * Sets the value of the orderNum property.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class PaymentOrderResponse {
     }
 
     /**
-     * 获取respCode属性的值。
+     * Gets the value of the respCode property.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class PaymentOrderResponse {
     }
 
     /**
-     * 设置respCode属性的值。
+     * Sets the value of the respCode property.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class PaymentOrderResponse {
     }
 
     /**
-     * 获取respMsg属性的值。
+     * Gets the value of the respMsg property.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class PaymentOrderResponse {
     }
 
     /**
-     * 设置respMsg属性的值。
+     * Sets the value of the respMsg property.
      * 
      * @param value
      *     allowed object is

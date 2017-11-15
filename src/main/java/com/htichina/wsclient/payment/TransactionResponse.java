@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>transactionResponse complex type的 Java 类。
+ * <p>Java class for transactionResponse complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="transactionResponse">
@@ -37,7 +37,7 @@ public class TransactionResponse {
     protected String respcode;
 
     /**
-     * 获取respMsg属性的值。
+     * Gets the value of the respMsg property.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class TransactionResponse {
     }
 
     /**
-     * 设置respMsg属性的值。
+     * Sets the value of the respMsg property.
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class TransactionResponse {
     }
 
     /**
-     * 获取respcode属性的值。
+     * Gets the value of the respcode property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class TransactionResponse {
     }
 
     /**
-     * 设置respcode属性的值。
+     * Sets the value of the respcode property.
      * 
      * @param value
      *     allowed object is

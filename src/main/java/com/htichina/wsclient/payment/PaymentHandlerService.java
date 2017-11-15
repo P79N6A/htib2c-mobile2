@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>paymentHandlerService complex type的 Java 类。
+ * <p>Java class for paymentHandlerService complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="paymentHandlerService">
@@ -37,7 +37,7 @@ public class PaymentHandlerService {
     protected PaymentResultMessage payresult;
 
     /**
-     * 获取transNum属性的值。
+     * Gets the value of the transNum property.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class PaymentHandlerService {
     }
 
     /**
-     * 设置transNum属性的值。
+     * Sets the value of the transNum property.
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class PaymentHandlerService {
     }
 
     /**
-     * 获取payresult属性的值。
+     * Gets the value of the payresult property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class PaymentHandlerService {
     }
 
     /**
-     * 设置payresult属性的值。
+     * Sets the value of the payresult property.
      * 
      * @param value
      *     allowed object is
