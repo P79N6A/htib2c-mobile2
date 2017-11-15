@@ -1128,6 +1128,7 @@ public class OrderBackingBean implements Serializable {
         	upgradeRequest.setOriginalPackageState(currentPkg.getPackageStatus());
         	upgradeRequest.setWebSubscriptionId(currentPkg.getWebSubscriptionId());
         	upgradeRequest.setPaymentChannel(paymentPlatform);
+        	upgradeRequest.setOpenId(openId);
         	upgradeResponse = PaymentServiceClient.getInstance().getNewPackageAfterUpgrade(upgradeRequest);
         	if(!Constant.SERVICE_B2C_PAYMENT_RESPONSE_CODE_SUCCESS.equals(upgradeResponse.getRespCode())){
         		myAccountPop = upgradeResponse.getRespMsg() +
@@ -1534,7 +1535,11 @@ public class OrderBackingBean implements Serializable {
             //没创建订单
             transactionType = "1";
         }else{
-            if (orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_PAYMENT_PAID)) {
+            logger.info("orders.get(0).getOrderStat()================>"+orders.get(0).getOrderStat());
+            if (!orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_NEW)
+                    &&!orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_PENDING_PAYMENT)
+                    &&!orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_PAYMENT_FAILED)
+                    &&!orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_PAYMENT_CANCELED)) {
                 //订单已支付
                 transactionType = "2";
             }
@@ -1542,8 +1547,6 @@ public class OrderBackingBean implements Serializable {
                 //订单失效关闭
                 transactionType = "3";
             }
-            //订单完成未支付
-            transactionType = "4";
         }
         logger.info("TranactionType================>"+transactionType);
 //        logger.info("TranactionTypeList================>"+list.size());
@@ -1661,9 +1664,11 @@ public class OrderBackingBean implements Serializable {
             return ViewPage.ERRORMESSAGE;
         }
         else if("2".equals(transactionType)){
+            this.openId=openId;
             return ViewPage.HASBEENPAIED;
         }
         else if("3".equals(transactionType)){
+            this.openId=openId;
             return ViewPage.HASBEENCANCELED;
         }
         logger.info("trans=================" + trans);
