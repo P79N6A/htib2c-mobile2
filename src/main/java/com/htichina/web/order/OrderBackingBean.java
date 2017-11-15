@@ -1,6 +1,7 @@
 package com.htichina.web.order;
 
 import java.io.Serializable;
+import java.lang.Exception;
 import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
+import com.htichina.wsclient.payment.*;
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
 import org.springframework.context.annotation.Scope;
@@ -31,21 +33,6 @@ import com.htichina.web.common.MessageBundle;
 import com.htichina.web.common.ViewPage;
 import com.htichina.web.wechat.Demo;
 import com.htichina.web.wechat.WxPayDto;
-import com.htichina.wsclient.payment.AccountInfoResponse;
-import com.htichina.wsclient.payment.PackageInfoResponse;
-import com.htichina.wsclient.payment.PackageUpgradeRequest;
-import com.htichina.wsclient.payment.PackageUpgradeResponse;
-import com.htichina.wsclient.payment.PaymentOrderResponse;
-import com.htichina.wsclient.payment.ProductInfo;
-import com.htichina.wsclient.payment.ProductInfoResponse;
-import com.htichina.wsclient.payment.PromotionCategoryResult;
-import com.htichina.wsclient.payment.PromotionInfoResponse;
-import com.htichina.wsclient.payment.PromotionInfoWS;
-import com.htichina.wsclient.payment.PurchaseProductResponse;
-import com.htichina.wsclient.payment.Transaction;
-import com.htichina.wsclient.payment.TransactionRequest;
-import com.htichina.wsclient.payment.TransactionResponse;
-import com.htichina.wsclient.payment.VehicleInfoResponse;
 
 
 /**
@@ -1542,30 +1529,25 @@ public class OrderBackingBean implements Serializable {
         String transactionType = "0";
         double amounts = 0;
         List<Transaction> list = client.checkTransactionPaied(transactionNos.get(0));
-        if (list == null || list.size() == 0) {
+        List<ServiceOrder> orders = client.checkOrderPaied(transactionNos.get(0));
+        if (orders == null || orders.size() == 0) {
             //没创建订单
             transactionType = "1";
         }else{
-            for(Transaction transaction:list){
-                if (transaction.getOrderstate().equals(Constant.SERVICE_DNAPAY_ORDER_STATE_PAID)) {
-                    //订单已支付
-                    transactionType = "2";
-                    break;
-                }
-                //订单完成未支付
+            if (orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_PAYMENT_PAID)) {
+                //订单已支付
+                transactionType = "2";
+            }
+            if (orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_PAYMENT_CANCELED)) {
+                //订单失效关闭
                 transactionType = "3";
             }
+            //订单完成未支付
+            transactionType = "4";
         }
         logger.info("TranactionType================>"+transactionType);
 //        logger.info("TranactionTypeList================>"+list.size());
-
-        if("0".equals(transactionType)){
-            return ViewPage.ERRORMESSAGE;
-        }
-        else if("2".equals(transactionType)){
-            return ViewPage.HASBEENPAIED;
-        }
-        else if("1".equals(transactionType)) {
+      if("1".equals(transactionType)) {
             if (ids != null && ids.size() > 0) {
                 int count = 0;
                 for (String id : ids) {
@@ -1662,6 +1644,28 @@ public class OrderBackingBean implements Serializable {
             }
 
         }
+
+        //页面显示需要
+        PromotionInfoWS promotionInfoWS = new PromotionInfoWS();
+        promotionInfoWS.setShortMarketName(orderDescs);
+        promotionInfoWS.setPromotionPrice(amounts);
+        selectProd = promotionInfoWS;
+        accountInfo = client.getCurrentAccountInfo(accountNum);
+        VehicleInfoResponse vehicleInfoResponse = new VehicleInfoResponse();
+        vehicleInfoResponse.setName(accountInfo.getFullName());
+        vehicleInfoResponse.setAcctNum(Integer.valueOf(accountNum));
+        vehicleInfoResponse.setCellphone(accountInfo.getMobilePhone());
+        vehicleInfoResponse.setVin(accountInfo.getVin());
+        selectedVehicle = vehicleInfoResponse;
+        if("0".equals(transactionType)){
+            return ViewPage.ERRORMESSAGE;
+        }
+        else if("2".equals(transactionType)){
+            return ViewPage.HASBEENPAIED;
+        }
+        else if("3".equals(transactionType)){
+            return ViewPage.HASBEENCANCELED;
+        }
         logger.info("trans=================" + trans);
         logger.info("orderIds=================" + orderIds);
         logger.info("amounts=================" + amounts);
@@ -1675,23 +1679,7 @@ public class OrderBackingBean implements Serializable {
         tpWxPay.setTotalFee(String.valueOf(amounts));
         logger.debug("totalFee=" + ESAPI.encoder().encodeForHTML(String.valueOf(amounts)));
         wechatPrepayResponse = demo.getPackage(tpWxPay);
-//        WIDout_trade_no = transactionNo+orderIds;
-//        WIDsubject = orderDescs;
-//        WIDtotal_fee = amounts;
 //
-//        //页面显示需要
-
-        PromotionInfoWS promotionInfoWS = new PromotionInfoWS();
-        promotionInfoWS.setShortMarketName(orderDescs);
-        promotionInfoWS.setPromotionPrice(amounts);
-        selectProd = promotionInfoWS;
-        accountInfo = client.getCurrentAccountInfo(accountNum);
-        VehicleInfoResponse vehicleInfoResponse = new VehicleInfoResponse();
-        vehicleInfoResponse.setName(accountInfo.getFullName());
-        vehicleInfoResponse.setAcctNum(Integer.valueOf(accountNum));
-        vehicleInfoResponse.setCellphone(accountInfo.getMobilePhone());
-        vehicleInfoResponse.setVin(accountInfo.getVin());
-        selectedVehicle = vehicleInfoResponse;
 
         return ViewPage.LINK2OrderPaymentForWechat;
     }

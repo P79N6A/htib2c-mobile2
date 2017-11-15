@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for checkTransactionPaied complex type.
+ * <p>checkTransactionPaied complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="checkTransactionPaied">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="orderNum" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="transactionNo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,34 +27,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "checkTransactionPaied", propOrder = {
-    "orderNum"
+    "transactionNo"
 })
 public class CheckTransactionPaied {
 
-    protected String orderNum;
+    protected String transactionNo;
 
     /**
-     * Gets the value of the orderNum property.
+     * 获取transactionNo属性的值。
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getOrderNum() {
-        return orderNum;
+    public String getTransactionNo() {
+        return transactionNo;
     }
 
     /**
-     * Sets the value of the orderNum property.
+     * 设置transactionNo属性的值。
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setOrderNum(String value) {
-        this.orderNum = value;
+    public void setTransactionNo(String value) {
+        this.transactionNo = value;
     }
 
 }

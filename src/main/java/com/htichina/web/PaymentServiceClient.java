@@ -1,29 +1,12 @@
 package com.htichina.web;
 
+import java.lang.Exception;
 import java.util.List;
 
+import com.htichina.wsclient.payment.*;
 import org.apache.log4j.Logger;
 
 import com.htichina.common.web.Constant;
-import com.htichina.wsclient.payment.AccountInfoResponse;
-import com.htichina.wsclient.payment.InvoiceInfoRequest;
-import com.htichina.wsclient.payment.PackageUpgradeRequest;
-import com.htichina.wsclient.payment.PackageUpgradeResponse;
-import com.htichina.wsclient.payment.PaymentOrderResponse;
-import com.htichina.wsclient.payment.PaymentResponse;
-import com.htichina.wsclient.payment.PaymentResultMessage;
-import com.htichina.wsclient.payment.PaymentService;
-import com.htichina.wsclient.payment.PaymentServiceService;
-import com.htichina.wsclient.payment.ProductInfoResponse;
-import com.htichina.wsclient.payment.PromotionInfoResponse;
-import com.htichina.wsclient.payment.PurchaseProductResponse;
-import com.htichina.wsclient.payment.QueryChildOrdersByParentOrderNumResponse;
-import com.htichina.wsclient.payment.QueryOrderByParentOrderNumResponse;
-import com.htichina.wsclient.payment.Transaction;
-import com.htichina.wsclient.payment.TransactionRequest;
-import com.htichina.wsclient.payment.TransactionResponse;
-import com.htichina.wsclient.payment.VehicleInfoResponse;
-import com.htichina.wsclient.payment.WechatUserDataResponse;
 
 /**
  * Created by yiming on 2015/7/1.
@@ -321,8 +304,8 @@ public class PaymentServiceClient {
 	  return service.createUpgradePaymentOrder(request);
   }
 
-  public List<String> getOpendIdByOpenId(String openId){
-    return service.getOpenIdByAccountNum(openId);
+  public List<ServiceOrder> checkOrderPaied(String transNo){
+    return service.checkOrderPaied(transNo);
   }
 }
 

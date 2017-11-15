@@ -62,6 +62,8 @@ public class Constant {
     public static final String DB_ORDER_STATUS_COMPLETED = "105008";
     public static final String DB_ORDER_STATUS_PENDING_FINANCE_APPROVAL = "105009";
     public static final String DB_ORDER_STATUS_FINANCE_REJECT = "105010";
+    public static final String DB_ORDER_STATUS_PAYMENT_PAID = "105011";
+    public static final String DB_ORDER_STATUS_PAYMENT_CANCELED = "105003";
 
     public static final String DB_EVENT_ACTIVITY_TYPE_CONFIGMBAPPS = "101013";
     public static final String DB_EVENT_ACTIVITY_TYPE_REQUEST_PAY = "101014";

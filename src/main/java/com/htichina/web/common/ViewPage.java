@@ -17,6 +17,7 @@ public class ViewPage {
     
     public static final String LINK2OrderPaymentForWechat = "/views/orderPaymentForWechat.xhtml?showwxpaytitle=1";
     public static final String HASBEENPAIED = "/views/hasBeenPaied.xhtml?showwxpaytitle=1";
+    public static final String HASBEENCANCELED = "/views/hasBeenCanceled.xhtml?showwxpaytitle=1";
 
     public static final String LINK2OrderAlipayRequest = "/views/orderAlipayRequest.xhtml";
     public static final String LINK2OrderAlipaySuccess = "/views/orderAlipaySuccess.xhtml";
