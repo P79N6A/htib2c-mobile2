@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>promotionRule complex type的 Java 类。
+ * <p>Java class for promotionRule complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="promotionRule">
@@ -92,7 +92,7 @@ public class PromotionRule {
     protected String promotionStatus;
 
     /**
-     * 获取attrib01属性的值。
+     * Gets the value of the attrib01 property.
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置attrib01属性的值。
+     * Sets the value of the attrib01 property.
      * 
      * @param value
      *     allowed object is
@@ -116,7 +116,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取attrib02属性的值。
+     * Gets the value of the attrib02 property.
      * 
      * @return
      *     possible object is
@@ -128,7 +128,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置attrib02属性的值。
+     * Sets the value of the attrib02 property.
      * 
      * @param value
      *     allowed object is
@@ -140,7 +140,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取created属性的值。
+     * Gets the value of the created property.
      * 
      * @return
      *     possible object is
@@ -152,7 +152,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置created属性的值。
+     * Sets the value of the created property.
      * 
      * @param value
      *     allowed object is
@@ -164,7 +164,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取createdBy属性的值。
+     * Gets the value of the createdBy property.
      * 
      * @return
      *     possible object is
@@ -176,7 +176,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置createdBy属性的值。
+     * Sets the value of the createdBy property.
      * 
      * @param value
      *     allowed object is
@@ -188,7 +188,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取factor1属性的值。
+     * Gets the value of the factor1 property.
      * 
      * @return
      *     possible object is
@@ -200,7 +200,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置factor1属性的值。
+     * Sets the value of the factor1 property.
      * 
      * @param value
      *     allowed object is
@@ -212,7 +212,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取factor2属性的值。
+     * Gets the value of the factor2 property.
      * 
      * @return
      *     possible object is
@@ -224,7 +224,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置factor2属性的值。
+     * Sets the value of the factor2 property.
      * 
      * @param value
      *     allowed object is
@@ -236,7 +236,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取giftPkgId属性的值。
+     * Gets the value of the giftPkgId property.
      * 
      * @return
      *     possible object is
@@ -248,7 +248,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置giftPkgId属性的值。
+     * Sets the value of the giftPkgId property.
      * 
      * @param value
      *     allowed object is
@@ -260,7 +260,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取lastUpd属性的值。
+     * Gets the value of the lastUpd property.
      * 
      * @return
      *     possible object is
@@ -272,7 +272,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置lastUpd属性的值。
+     * Sets the value of the lastUpd property.
      * 
      * @param value
      *     allowed object is
@@ -284,7 +284,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取lastUpdBy属性的值。
+     * Gets the value of the lastUpdBy property.
      * 
      * @return
      *     possible object is
@@ -296,7 +296,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置lastUpdBy属性的值。
+     * Sets the value of the lastUpdBy property.
      * 
      * @param value
      *     allowed object is
@@ -308,7 +308,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取promotionChannelList属性的值。
+     * Gets the value of the promotionChannelList property.
      * 
      * @return
      *     possible object is
@@ -320,7 +320,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置promotionChannelList属性的值。
+     * Sets the value of the promotionChannelList property.
      * 
      * @param value
      *     allowed object is
@@ -332,7 +332,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取promotionDiscount属性的值。
+     * Gets the value of the promotionDiscount property.
      * 
      */
     public double getPromotionDiscount() {
@@ -340,7 +340,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置promotionDiscount属性的值。
+     * Sets the value of the promotionDiscount property.
      * 
      */
     public void setPromotionDiscount(double value) {
@@ -348,7 +348,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取promotionDiscountPrice属性的值。
+     * Gets the value of the promotionDiscountPrice property.
      * 
      */
     public double getPromotionDiscountPrice() {
@@ -356,7 +356,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置promotionDiscountPrice属性的值。
+     * Sets the value of the promotionDiscountPrice property.
      * 
      */
     public void setPromotionDiscountPrice(double value) {
@@ -364,7 +364,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取promotionEndDate属性的值。
+     * Gets the value of the promotionEndDate property.
      * 
      * @return
      *     possible object is
@@ -376,7 +376,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置promotionEndDate属性的值。
+     * Sets the value of the promotionEndDate property.
      * 
      * @param value
      *     allowed object is
@@ -388,7 +388,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取promotionName属性的值。
+     * Gets the value of the promotionName property.
      * 
      * @return
      *     possible object is
@@ -400,7 +400,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置promotionName属性的值。
+     * Sets the value of the promotionName property.
      * 
      * @param value
      *     allowed object is
@@ -412,7 +412,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取promotionNo属性的值。
+     * Gets the value of the promotionNo property.
      * 
      * @return
      *     possible object is
@@ -424,7 +424,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置promotionNo属性的值。
+     * Sets the value of the promotionNo property.
      * 
      * @param value
      *     allowed object is
@@ -436,7 +436,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取promotionPkgList属性的值。
+     * Gets the value of the promotionPkgList property.
      * 
      * @return
      *     possible object is
@@ -448,7 +448,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置promotionPkgList属性的值。
+     * Sets the value of the promotionPkgList property.
      * 
      * @param value
      *     allowed object is
@@ -460,7 +460,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取promotionPkgTypeList属性的值。
+     * Gets the value of the promotionPkgTypeList property.
      * 
      * @return
      *     possible object is
@@ -472,7 +472,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置promotionPkgTypeList属性的值。
+     * Sets the value of the promotionPkgTypeList property.
      * 
      * @param value
      *     allowed object is
@@ -484,7 +484,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取promotionStartDate属性的值。
+     * Gets the value of the promotionStartDate property.
      * 
      * @return
      *     possible object is
@@ -496,7 +496,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置promotionStartDate属性的值。
+     * Sets the value of the promotionStartDate property.
      * 
      * @param value
      *     allowed object is
@@ -508,7 +508,7 @@ public class PromotionRule {
     }
 
     /**
-     * 获取promotionStatus属性的值。
+     * Gets the value of the promotionStatus property.
      * 
      * @return
      *     possible object is
@@ -520,7 +520,7 @@ public class PromotionRule {
     }
 
     /**
-     * 设置promotionStatus属性的值。
+     * Sets the value of the promotionStatus property.
      * 
      * @param value
      *     allowed object is

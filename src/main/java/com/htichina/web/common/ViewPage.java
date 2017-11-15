@@ -27,6 +27,7 @@ public class ViewPage {
     public static final String LINK2AlipayPromotion = "/views/alipayPromotion.xhtml";
     public static final String LINK2Login = "/views/accountLogin.xhtml?showwxpaytitle=1";
     public static final String LINK2MyAccount = "/views/myAccount.xhtml?showwxpaytitle=1";
+    public static final String LINK2MyAccount2 = "/views/myAccount2.xhtml?showwxpaytitle=1";
     public static final String LINK2ApplyInvoice = "/views/invoiceEntry.xhtml?showwxpaytitle=1";
     public static final String LINK2ShipedInvoice = "/views/invoiceShiped.xhtml?showwxpaytitle=1";
     public static final String LINK2InvoiceOrder = "/views/invoiceOrder.xhtml?showwxpaytitle=1";

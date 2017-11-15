@@ -51,44 +51,16 @@
                                                 </h:outputText></span></li>
                                             </ul>
                                         </div>
-                                        <c:if test="#{'0' eq loginBackingBean.renewFlag}"><div onclick="clickDidi()">
-
-                                                <div style="color:white;padding-left:39%;font-size:22px">专属滴滴礼券：</div>
-                                                <div style="padding-top:50px;"><div class="long_btn " >
-                                                    领取专车礼券包
-                                                </div></div>
-                                                <div style="color:white;padding-top:5%;padding-left:35%;font-size:22px">友情提示：请即领取。<br/>多次点击链接将失效</div>
-                                            </div>
-                                        </c:if>
-                                        <c:if test="#{'1' eq loginBackingBean.renewFlag || 'ok' eq loginBackingBean.renewFlag}">
-                                            <div  >
-                                                <div style="color:white;padding-left:39%;font-size:22px">专属滴滴礼券：</div>
-                                                <div style="padding-top:50px;"><div class="long_btn " style="background:grey">
-                                                    已领取
-                                                </div></div>
-                                                <div style="color:white;padding-top:5%;padding-left:35%;font-size:22px">友情提示：请即领取。<br/>多次点击链接将失效</div>
-                                            </div>
-                                        </c:if>
-
-                                        <h:inputHidden value ="#{loginBackingBean.renewFlag}">
-                                            <f:passThroughAttribute name="flag" value="renewFlag"/>
-                                        </h:inputHidden>
-                                        <h:outputText value ="#{loginBackingBean.accountNum}">
-                                        </h:outputText>
-
-                                        <h:commandButton action="#{loginBackingBean.setReceivedDidi('renew',loginBackingBean.accountInfo.accountNum)}" style="display: none">
-                                            <f:passThroughAttribute name="btn" value="didiBtn"/>
-                                            领取专车礼券包
-                                        </h:commandButton>
+                                       
                                         <h3>我的套餐</h3>
-                                        <c:if test="#{loginBackingBean.accountInfo.currentPackages.size() == 0 || loginBackingBean.accountInfo.currentPackages == null}">
+                                        <c:if test="#{loginBackingBean.accountInfo.currentCanBeUpgratedPackages.size() == 0 || loginBackingBean.accountInfo.currentCanBeUpgratedPackages == null}">
                                             <div class="my_list" style="height:222px;padding-left:170px;padding-top: 82px;">
-                                                暂无已购买套餐
+                                                暂无可以升级的套餐
 
                                             </div>
                                         </c:if>
-                                        <c:if test="#{loginBackingBean.accountInfo.currentPackages.size() != 0}">
-                                            <c:forEach items="#{loginBackingBean.accountInfo.currentPackages}" var="currentPkg" varStatus="loop">
+                                        <c:if test="#{loginBackingBean.accountInfo.currentCanBeUpgratedPackages.size() != 0}">
+                                            <c:forEach items="#{loginBackingBean.accountInfo.currentCanBeUpgratedPackages}" var="currentPkg" varStatus="loop">
                                                 <div class="my_list">
                                                     <ul>
                                                         <li>套&#160;&#160;餐&#160;&#160;名&#160;&#160;称&#160;：<span><h:outputText value="#{currentPkg.packageName}">
@@ -103,7 +75,7 @@
                                                         <c:if test="#{currentPkg.canBeUpgrated}">
 	                                                        <li><div class="s_btn s_btn1">
 	                                                        	<h:commandButton
-                                                				value="升级" action="#{orderBackingBean.toOrderUpgradeEntry(currentPkg,loginBackingBean.accountInfo,loginBackingBean.openId,1)}" style="color:white;background:none;font-size:26px;height:60px;line-height: 60px;margin:0;padding:0;text-align: center;border:none;"/>
+                                                				value="升级" action="#{orderBackingBean.toOrderUpgradeEntry(currentPkg,loginBackingBean.accountInfo,loginBackingBean.openId,2)}" style="color:white;background:none;font-size:26px;height:60px;line-height: 60px;margin:0;padding:0;text-align: center;border:none;"/>
                                                 				</div>
 	                                                        </li>
                                                         </c:if>

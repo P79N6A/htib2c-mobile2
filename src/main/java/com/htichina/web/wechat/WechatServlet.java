@@ -215,7 +215,7 @@ public class WechatServlet extends HttpServlet {
             else if(state.equalsIgnoreCase(Constant.WECHAT_STATE_UPGRADE)){
     			logger.debug("wechatServlet start startUpgradeOrder");
     			LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
-    			req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2MyAccount)).forward(req, resp);
+    			req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2MyAccount2)).forward(req, resp);
     		}
 			
 			else if(state.equalsIgnoreCase(Constant.WECHAT_PAYMENT)){

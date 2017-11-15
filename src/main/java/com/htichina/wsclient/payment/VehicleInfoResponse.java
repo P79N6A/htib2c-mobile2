@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>vehicleInfoResponse complex type的 Java 类。
+ * <p>Java class for vehicleInfoResponse complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="vehicleInfoResponse">
@@ -58,7 +58,7 @@ public class VehicleInfoResponse {
     protected int wifiFlag;
 
     /**
-     * 获取acctNum属性的值。
+     * Gets the value of the acctNum property.
      * 
      */
     public int getAcctNum() {
@@ -66,7 +66,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 设置acctNum属性的值。
+     * Sets the value of the acctNum property.
      * 
      */
     public void setAcctNum(int value) {
@@ -74,7 +74,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 获取baseSeviceStatus属性的值。
+     * Gets the value of the baseSeviceStatus property.
      * 
      */
     public int getBaseSeviceStatus() {
@@ -82,7 +82,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 设置baseSeviceStatus属性的值。
+     * Sets the value of the baseSeviceStatus property.
      * 
      */
     public void setBaseSeviceStatus(int value) {
@@ -90,7 +90,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 获取cellphone属性的值。
+     * Gets the value of the cellphone property.
      * 
      * @return
      *     possible object is
@@ -102,7 +102,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 设置cellphone属性的值。
+     * Sets the value of the cellphone property.
      * 
      * @param value
      *     allowed object is
@@ -114,7 +114,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 获取color属性的值。
+     * Gets the value of the color property.
      * 
      * @return
      *     possible object is
@@ -126,7 +126,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 设置color属性的值。
+     * Sets the value of the color property.
      * 
      * @param value
      *     allowed object is
@@ -138,7 +138,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 获取model属性的值。
+     * Gets the value of the model property.
      * 
      * @return
      *     possible object is
@@ -150,7 +150,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 设置model属性的值。
+     * Sets the value of the model property.
      * 
      * @param value
      *     allowed object is
@@ -162,7 +162,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 获取name属性的值。
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -174,7 +174,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 设置name属性的值。
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -186,7 +186,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 获取vin属性的值。
+     * Gets the value of the vin property.
      * 
      * @return
      *     possible object is
@@ -198,7 +198,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 设置vin属性的值。
+     * Sets the value of the vin property.
      * 
      * @param value
      *     allowed object is
@@ -210,7 +210,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 获取wifiFlag属性的值。
+     * Gets the value of the wifiFlag property.
      * 
      */
     public int getWifiFlag() {
@@ -218,7 +218,7 @@ public class VehicleInfoResponse {
     }
 
     /**
-     * 设置wifiFlag属性的值。
+     * Sets the value of the wifiFlag property.
      * 
      */
     public void setWifiFlag(int value) {

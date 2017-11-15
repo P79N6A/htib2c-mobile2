@@ -1118,14 +1118,17 @@ public class OrderBackingBean implements Serializable {
     }
     
     /* 2017-11-10,Tommy Liu, CR82_Part II, 进入套餐升级页面 */
-    public String toOrderUpgradeEntry(PackageInfoResponse currentPkg, AccountInfoResponse accountInfo, String openId) {
+    public String toOrderUpgradeEntry(PackageInfoResponse currentPkg, AccountInfoResponse accountInfo, String openId, String fromFlag) {
     	this.accountInfo = accountInfo;
     	this.openId = openId;
-        targetPage = ViewPage.LINK2OrderPackageUpgrade;
+        String errorReturn = ViewPage.LINK2MyAccount;
+        if("2".equals(fromFlag)){
+        	errorReturn = ViewPage.LINK2MyAccount2;
+        }
 
         FacesContext context = FacesContext.getCurrentInstance();
         if(!validateToBeUpgratedPkgSelection()){
-        	targetPage = ViewPage.LINK2MyAccount;
+        	return errorReturn;
         }else{
           paymentPlatform = (String) FacesUtils.getManagedBeanInSession(Constant.PAYMENT_PLATFORM);
 //            paymentPlatform = Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY;//通过浏览器临时测试时使用
@@ -1147,7 +1150,7 @@ public class OrderBackingBean implements Serializable {
                         FacesMessage.SEVERITY_ERROR, upgradeResponse.getRespMsg() +
                         "请确认信息后再次尝试。如果有任何疑问请按车内 【i】按钮或" +
                         "拨打400-898-0050联系在线客服，谢谢！", ""));
-        		targetPage = ViewPage.LINK2MyAccount;
+        		return errorReturn;
         	}
         	upgradeRequest.setOriginalPackageId(upgradeResponse.getOriginalPackageId());
         	upgradeRequest.setOriginalPrice(upgradeResponse.getOriginalPrice());
@@ -1158,7 +1161,7 @@ public class OrderBackingBean implements Serializable {
         	upgradeRequest.setCalculateByActivePkg(upgradeResponse.isCalculateByActivePkg());
         	
         }
-        return targetPage;
+        return ViewPage.LINK2OrderPackageUpgrade;
     }
     
     private boolean validateToBeUpgratedPkgSelection() {

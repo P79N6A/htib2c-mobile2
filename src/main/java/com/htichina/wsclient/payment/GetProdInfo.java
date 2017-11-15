@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>getProdInfo complex type的 Java 类。
+ * <p>Java class for getProdInfo complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="getProdInfo">
@@ -39,7 +39,7 @@ public class GetProdInfo {
     protected String accountNum;
 
     /**
-     * 获取productChannel属性的值。
+     * Gets the value of the productChannel property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class GetProdInfo {
     }
 
     /**
-     * 设置productChannel属性的值。
+     * Sets the value of the productChannel property.
      * 
      * @param value
      *     allowed object is
@@ -63,7 +63,7 @@ public class GetProdInfo {
     }
 
     /**
-     * 获取accountNum属性的值。
+     * Gets the value of the accountNum property.
      * 
      * @return
      *     possible object is
@@ -75,7 +75,7 @@ public class GetProdInfo {
     }
 
     /**
-     * 设置accountNum属性的值。
+     * Sets the value of the accountNum property.
      * 
      * @param value
      *     allowed object is
