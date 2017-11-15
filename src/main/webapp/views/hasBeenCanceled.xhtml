@@ -124,9 +124,14 @@
 
 
                                 </div>
-                                <div id="food_">
-                                    <div id="keytxt">网站备案号：京ICP备11011340号</div>
-                                </div>
+                            </div>
+                            <div style="text-align: center;position: relative; margin: auto; width:490px; height:400px; line-height: 64px; text-indent: 25px; font-size: 30px; color: #fff; ">
+                                您的订单已失效。
+                                <div class="s_btn s_btn1" onclick="toInvoice()"><h:commandButton
+                                        value="服务续订" action="#{orderBackingBean.toOrderEntry('dsadsadsa321321ewqewq')}" style="color:white;background:none;font-size:26px;height:60px;line-height: 60px;margin:0;padding:0;text-align: center;border:none;"/></div>
+
+                                有任何疑问请随时使用车内【i】按钮或者<a href="tel:4008980050" style="font-size: 18px;color:white;">400-898-0050</a>联系客服中心。
+                                智能互联 -- 智在安心，不止于此。
                             </div>
                         </div>
                         <!--    &lt;!&ndash; Add Scroll Bar &ndash;&gt;
@@ -143,7 +148,9 @@
             if("1" == broserNum){
                 window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
             }
-
+            function toInvoice(){
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/orderEntry.xhtml?showwxpaytitle=1";
+            }
             function popCheck(){
                 $('#sn_err').show();
                 $('#filer').show();

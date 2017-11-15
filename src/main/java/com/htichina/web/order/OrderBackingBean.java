@@ -1663,9 +1663,11 @@ public class OrderBackingBean implements Serializable {
             return ViewPage.ERRORMESSAGE;
         }
         else if("2".equals(transactionType)){
+            this.openId=openId;
             return ViewPage.HASBEENPAIED;
         }
         else if("3".equals(transactionType)){
+            this.openId=openId;
             return ViewPage.HASBEENCANCELED;
         }
         logger.info("trans=================" + trans);
