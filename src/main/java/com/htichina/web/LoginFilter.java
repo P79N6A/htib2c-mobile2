@@ -37,11 +37,11 @@ public class LoginFilter implements Filter {
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		try{
 			String string = httpRequest.getRequestURL().toString();
-			HttpSession session = httpRequest.getSession();
-			if(httpRequest.getMethod().equalsIgnoreCase("GET")){
-				session.setAttribute("csrftoken", RandomStringGenerator.getCSRFToken());
-			}
-			System.out.println(string);
+//			HttpSession session = httpRequest.getSession();
+//			if(httpRequest.getMethod().equalsIgnoreCase("GET")){
+//				session.setAttribute("csrftoken", RandomStringGenerator.getCSRFToken());
+//			}
+//			System.out.println(string);
 			String uri = httpRequest.getRequestURI();
 			StringBuffer Path = httpRequest.getRequestURL();
 			logger.info("Path ===>"+ESAPI.encoder().encodeForHTML(Path.toString()));
