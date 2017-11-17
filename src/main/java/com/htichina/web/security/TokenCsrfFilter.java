@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import com.alipay.api.internal.util.StringUtils;
 import com.htichina.common.web.Constant;
 import com.htichina.web.util.UUIDUtils;
 import com.tencent.common.RandomStringGenerator;
@@ -25,7 +26,7 @@ import com.tencent.common.RandomStringGenerator;
 public class TokenCsrfFilter implements Filter {
 
 	private static Logger logger = Logger.getLogger(TokenCsrfFilter.class.getName());
-	public static final String CSRFTOKEN = "csrftoken";
+
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
@@ -39,27 +40,31 @@ public class TokenCsrfFilter implements Filter {
 		HttpSession session = req.getSession(); 
 		 
 		// 从 session 中得到 csrftoken 属性
-		String sToken = (String)session.getAttribute(CSRFTOKEN); 
-		if(sToken == null){ 
+		String sToken = (String)session.getAttribute(Constant.CSRFTOKEN); 
+		String uri =req.getRequestURI();
+		
+		
+		
+		if(StringUtils.isEmpty(sToken) ){ 
 		 
 		   // 产生新的 token 放入 session 中
 		   //sToken = UUIDUtils.uuid()+UUIDUtils.uuid()+UUIDUtils.uuid();
 			
 		   sToken = RandomStringGenerator.getCSRFToken();
-		   session.setAttribute(CSRFTOKEN,sToken); 
+		   session.setAttribute(Constant.CSRFTOKEN,sToken); 
 		   
 		   chain.doFilter(request, response); 
 		} else{ 
-			String uri =req.getRequestURI();
+			
 			 logger.info("-------------------------------------uri1:"+uri);
 			if(uri!=null && !passWithoutValidation(uri)){
 				
 			
 		       // 从 HTTP 头中取得 csrftoken 
-			   String xhrToken = req.getHeader(CSRFTOKEN); 
+			   String xhrToken = req.getHeader(Constant.CSRFTOKEN); 
 			 
 			   // 从请求参数中取得 csrftoken 
-			   String pToken = req.getParameter(CSRFTOKEN); 
+			   String pToken = req.getParameter(Constant.CSRFTOKEN); 
 			   if(sToken != null && xhrToken != null && sToken.equals(xhrToken)){ 
 			       chain.doFilter(request, response); 
 			   //}else if(sToken != null && pToken != null && sToken.equals(pToken)){ 

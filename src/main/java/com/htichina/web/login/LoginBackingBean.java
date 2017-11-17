@@ -11,6 +11,7 @@ import com.htichina.web.common.ViewPage;
 import com.htichina.web.tag.TagBean;
 import com.htichina.wsclient.payment.AccountInfoResponse;
 import com.htichina.wsclient.payment.WechatUserDataResponse;
+import com.tencent.common.RandomStringGenerator;
 import com.tencent.service.MobileDeviceRegistrationService;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -346,6 +347,9 @@ public class LoginBackingBean implements Serializable {
         Session.invalidate();
         if(PaymentServiceClient.getInstance().logoff(openId)) {
             FacesUtils.resetManagedBean(Constant.ACCOUNT_NUM);
+            String sToken = RandomStringGenerator.getCSRFToken();
+            HttpSession Session1 = (HttpSession) fc.getExternalContext().getSession(true);
+            Session1.setAttribute(Constant.CSRFTOKEN,sToken); 
             return ViewPage.LINK2Login;
         } else {
             logger.debug("logoff failed!");
