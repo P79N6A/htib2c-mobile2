@@ -28,6 +28,9 @@ import com.htichina.common.web.Constant;
 import com.htichina.web.common.ViewPage;
 import com.htichina.web.login.LoginBackingBean;
 import com.htichina.web.order.OrderBackingBean;
+import com.htichina.web.util.UUIDUtils;
+import com.tencent.common.RandomStringGenerator;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -86,6 +89,12 @@ public class WechatServlet extends HttpServlet {
 //		clear the session
 		req.getSession().invalidate();
 //		String pkg="";
+		
+		req.getSession().setAttribute(Constant.CSRFTOKEN, RandomStringGenerator.getCSRFToken());
+		//req.getSession().setAttribute(Constant.CSRFTOKEN,  UUIDUtils.uuid()+UUIDUtils.uuid()+UUIDUtils.uuid()); 
+		
+		
+		
 		String code = req.getParameter("code");
 //		logger.infoln(code);
 		logger.info("code=" + ESAPI.encoder().encodeForHTML(code));

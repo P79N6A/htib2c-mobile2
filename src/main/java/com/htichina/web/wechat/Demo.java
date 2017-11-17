@@ -172,13 +172,25 @@ public class Demo {
 				+ "</trade_type>" + "<openid>" + openId + "</openid>"
 				+ "</xml>";
 //		System.out.println(xml);
-		logger.info(ESAPI.encoder().encodeForHTML(xml));
 		String prepay_id = "";
 		String createOrderURL = "https://api.mch.weixin.qq.com/pay/unifiedorder";
 		prepay_id = new GetWxOrderno().getPayNo(createOrderURL, xml);
 //		System.out.println("prepayid :" + prepay_id);
-		logger.info("prepayid :" + ESAPI.encoder().encodeForHTML(prepay_id));
+		logger.info("xml-----------------------"+xml);
+		logger.info("appid-----------------------"+appid);
+		logger.info("mch_id-----------------------"+mch_id);
+		logger.info("nonce_str-----------------------"+nonce_str);
+		logger.info("sign-----------------------"+sign);
+		logger.info("body-----------------------"+body);
+		logger.info("out_trade_no-----------------------"+out_trade_no);
+		logger.info("attach-----------------------"+attach);
+		logger.info("totalFee-----------------------"+totalFee);
+		logger.info("spbill_create_ip-----------------------"+spbill_create_ip);
+		logger.info("notify_url-----------------------"+notify_url);
+		logger.info("trade_type-----------------------"+trade_type);
+		logger.info("openId-----------------------"+openId);
 
+		logger.info("prepay_id-----------------------"+prepay_id);
 
 
 		SortedMap<String, String> finalpackage = new TreeMap<String, String>();
@@ -198,7 +210,7 @@ public class Demo {
 		+ finalsign + "\"";
 
 //		System.out.println("V3 jsApi package:"+finaPackage);
-		logger.info("V3 jsApi package:"+ESAPI.encoder().encodeForHTML(finaPackage));
+//		logger.info("V3 jsApi package:"+ESAPI.encoder().encodeForHTML(finaPackage));
 		return finaPackage;
 	}
 
