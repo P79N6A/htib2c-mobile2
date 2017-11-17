@@ -101,9 +101,9 @@
                                                             <f:convertDateTime pattern="yyyy-MM-dd"/>
                                                         </h:outputText></span></li>
                                                         <c:if test="#{currentPkg.canBeUpgrated}">
-	                                                        <li><div class="s_btn s_btn1">
+	                                                        <li><div class="s_btn s_btn1" style="margin-left:60px">
 	                                                        	<h:commandButton
-                                                				value="升级" action="#{orderBackingBean.toOrderUpgradeEntry(currentPkg,loginBackingBean.accountInfo,loginBackingBean.openId,1)}" style="color:white;background:none;font-size:26px;height:60px;line-height: 60px;margin:0;padding:0;text-align: center;border:none;"/>
+                                                				value="升级" action="#{orderBackingBean.toOrderUpgradeEntry(currentPkg,loginBackingBean.accountInfo,loginBackingBean.openId,1)}" style="color:white;background:none;font-size:26px;height:60px;line-height: 60px;margin:0;padding:0;text-align: center;border:none;width:100%"/>
                                                 				</div>
 	                                                        </li>
                                                         </c:if>

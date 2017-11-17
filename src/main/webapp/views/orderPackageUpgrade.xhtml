@@ -102,7 +102,7 @@
                     <img
                             src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
                 </div>
-                <div id="fri_mod">
+                <div id="fri_mod" style="height: 46%">
                     <img
                             src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
                     <img
@@ -122,7 +122,7 @@
 
                     
                 </div>
-                <div id="fri_mod">
+                <div id="fri_mod" style="height: 30%">
                     <img
                             src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
                     <img
@@ -132,12 +132,12 @@
                             <li>升&#160;&#160;级&#160;&#160;差&#160;&#160;价：<span><h:outputText value="#{orderBackingBean.upgradeResponse.upgradeGapPrice}" /></span></li>
                             <li>到&#160;&#160;期&#160;&#160;时&#160;&#160;间&#160;：<span><h:outputText value="#{orderBackingBean.upgradeResponse.endDate}" /></span></li>                            
                         </ul>
-                    
-                </div>
-                <div id="fri_bottom">
-                    <div class="empty" id="service">
+                    <div class="empty" id="service" style="top:100px;position: absolute">
                         <div class="long_btn "  id="long_btn1" ><h:commandButton value="确认升级" action="#{orderBackingBean.toOrderUpgradePayment}" style="margin-left: 0%;"/></div>
                     </div>
+                </div>
+                <div id="fri_bottom" style="height: 10%">
+
                     <div id="keytxt">网站备案号：京ICP备11011340号</div>
                 </div>
             </div>

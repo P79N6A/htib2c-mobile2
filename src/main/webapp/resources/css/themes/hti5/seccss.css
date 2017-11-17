@@ -68,7 +68,7 @@ html,body,p,ul,h1,h2,h3,h4{ margin: 0px; padding: 0px; list-style: none;}
 #long_btn1{ margin-top:60px;}
 #icp{ position: absolute; left: 75px; bottom: 60px; color: #fff; font-size: 15px;}
 #fri_my{ position: absolute; left: 50%; margin-left:-73px;top: 53px; }
-#fri_mod ul{ list-style: none; margin: 0; padding: 0; position: absolute; left: 75px; top: 220px; color: #fff; font-size: 26px;}
+#fri_mod ul{ list-style: none; margin: 0; padding: 0; position: absolute; left: 30px; top: 26px; color: #fff; font-size: 26px;}
 #fri_mod input{ width: 495px; height:68px; border:none; background: url("../../../images/img/input_bg.png") ;background-size: 100% 100%;  box-sizing: border-box; padding: 5px; outline: none; line-height: 50px; color: #fff; font-size: 26px; text-align: center }
 #fri_mod h5{color:#fff;margin:0;padding:0;font-size:22px;font-weight:100;padding-top: 182px;text-align: center;}
 /*#fri_mod ul{ list-style: none; margin: 0px; padding: 0px; position: absolute; left: 75px; top: 190px; color: #fff; font-size: 26px;}*/
