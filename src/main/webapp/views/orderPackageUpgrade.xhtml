@@ -102,7 +102,7 @@
                     <img
                             src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
                 </div>
-                <div id="fri_mod" style="height: 46%">
+                <div id="fri_mod" style="height: 40%">
                     <img
                             src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
                     <img
@@ -122,17 +122,18 @@
 
                     
                 </div>
-                <div id="fri_mod" style="height: 30%">
+                <div id="fri_mod" style="height: 34%">
                     <img
                             src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
                     <img
                             src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line2.jpg" id="linebot"/>
-                        <ul>
+                    <ul>
+                        <li style="margin-left: 170px;font-size: 30px;height: 50px">升&#160;&#160;&#160;&#160;级&#160;&#160;&#160;&#160;套&#160;&#160;&#160;&#160;餐</li>
                             <li>新&#160;&#160;套&#160;&#160;餐&#160;&#160;名&#160;&#160;称：<span><h:outputText value="#{orderBackingBean.upgradeResponse.newPackageName}" /></span></li>
                             <li>升&#160;&#160;级&#160;&#160;差&#160;&#160;价：<span><h:outputText value="#{orderBackingBean.upgradeResponse.upgradeGapPrice}" /></span></li>
                             <li>到&#160;&#160;期&#160;&#160;时&#160;&#160;间&#160;：<span><h:outputText value="#{orderBackingBean.upgradeResponse.endDate}" /></span></li>                            
                         </ul>
-                    <div class="empty" id="service" style="top:100px;position: absolute">
+                    <div class="empty" id="service" style="top:170px;position: absolute">
                         <div class="long_btn "  id="long_btn1" ><h:commandButton value="确认升级" action="#{orderBackingBean.toOrderUpgradePayment}" style="margin-left: 0%;"/></div>
                     </div>
                 </div>
