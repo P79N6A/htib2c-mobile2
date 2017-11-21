@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for checkPurchaseProduct complex type.
+ * <p>checkPurchaseProduct complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="checkPurchaseProduct">
@@ -39,7 +39,7 @@ public class CheckPurchaseProduct {
     protected String productType;
 
     /**
-     * Gets the value of the vin property.
+     * 获取vin属性的值。
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class CheckPurchaseProduct {
     }
 
     /**
-     * Sets the value of the vin property.
+     * 设置vin属性的值。
      * 
      * @param value
      *     allowed object is
@@ -63,7 +63,7 @@ public class CheckPurchaseProduct {
     }
 
     /**
-     * Gets the value of the productType property.
+     * 获取productType属性的值。
      * 
      * @return
      *     possible object is
@@ -75,7 +75,7 @@ public class CheckPurchaseProduct {
     }
 
     /**
-     * Sets the value of the productType property.
+     * 设置productType属性的值。
      * 
      * @param value
      *     allowed object is

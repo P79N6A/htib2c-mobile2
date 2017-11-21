@@ -192,6 +192,9 @@ public class NotifyServlet extends HttpServlet {
 
 						logger.info(" wpr.getOpenid()-------------------"+ wpr.getOpenid());
 						this.sendMessage(body,orderNum, wpr.getOpenid());
+						//更新
+						client.updatewechatMessage(wpr.getOpenid(),wpr.getOutTradeNo().substring(0, 13));
+
 						PaymentResponse paymentResponse = new PaymentResponse();
 						if(wpr.getOutTradeNo().length()>19) {
 							PaymentResultMessage paymentResultMessage1 = new PaymentResultMessage();

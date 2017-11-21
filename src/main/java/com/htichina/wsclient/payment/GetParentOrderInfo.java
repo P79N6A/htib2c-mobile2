@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getParentOrderInfo complex type.
+ * <p>getParentOrderInfo complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="getParentOrderInfo">
@@ -37,7 +37,7 @@ public class GetParentOrderInfo {
     protected String accountNum;
 
     /**
-     * Gets the value of the orderNum property.
+     * 获取orderNum属性的值。
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class GetParentOrderInfo {
     }
 
     /**
-     * Sets the value of the orderNum property.
+     * 设置orderNum属性的值。
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class GetParentOrderInfo {
     }
 
     /**
-     * Gets the value of the accountNum property.
+     * 获取accountNum属性的值。
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class GetParentOrderInfo {
     }
 
     /**
-     * Sets the value of the accountNum property.
+     * 设置accountNum属性的值。
      * 
      * @param value
      *     allowed object is

@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for promotionCategoryResult complex type.
+ * <p>promotionCategoryResult complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="promotionCategoryResult">
@@ -70,7 +70,7 @@ public class PromotionCategoryResult {
     }
 
     /**
-     * Gets the value of the promotionCategoryName property.
+     * 获取promotionCategoryName属性的值。
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class PromotionCategoryResult {
     }
 
     /**
-     * Sets the value of the promotionCategoryName property.
+     * 设置promotionCategoryName属性的值。
      * 
      * @param value
      *     allowed object is

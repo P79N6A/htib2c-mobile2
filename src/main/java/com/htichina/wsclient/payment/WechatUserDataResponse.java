@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for wechatUserDataResponse complex type.
+ * <p>wechatUserDataResponse complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="wechatUserDataResponse">
@@ -49,7 +49,7 @@ public class WechatUserDataResponse {
     protected List<String> openIdList;
 
     /**
-     * Gets the value of the attrib02 property.
+     * 获取attrib02属性的值。
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class WechatUserDataResponse {
     }
 
     /**
-     * Sets the value of the attrib02 property.
+     * 设置attrib02属性的值。
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class WechatUserDataResponse {
     }
 
     /**
-     * Gets the value of the endDt property.
+     * 获取endDt属性的值。
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class WechatUserDataResponse {
     }
 
     /**
-     * Sets the value of the endDt property.
+     * 设置endDt属性的值。
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class WechatUserDataResponse {
     }
 
     /**
-     * Gets the value of the model property.
+     * 获取model属性的值。
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class WechatUserDataResponse {
     }
 
     /**
-     * Sets the value of the model property.
+     * 设置model属性的值。
      * 
      * @param value
      *     allowed object is

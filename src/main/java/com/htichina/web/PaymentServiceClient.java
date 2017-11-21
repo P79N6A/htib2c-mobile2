@@ -307,6 +307,16 @@ public class PaymentServiceClient {
   public List<ServiceOrder> checkOrderPaied(String transNo){
     return service.checkOrderPaied(transNo);
   }
+
+  public boolean updatewechatMessage(String openid,String tranNo){
+    boolean flag = false;
+    try {
+      flag =  service.updateWechatMessageHistory(openid,tranNo);
+    } catch (Exception_Exception e) {
+      e.printStackTrace();
+    }
+    return flag;
+  }
 }
 
 
