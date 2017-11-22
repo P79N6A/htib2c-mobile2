@@ -1520,138 +1520,98 @@ public class OrderBackingBean implements Serializable {
     
     //add by liuning CR345 20171023 begin
 
-    public String toOrderPaymentForWechat(List<String> transactionNos,String openId,String accountNum,List<String> types,List<String> ids,List<String> prices,List<String> vins,List<String> shortMarketNames) {
+    public String toOrderPaymentForWechat(String parentOrderNum,String accountNum,String openId) {
         FacesContext context = FacesContext.getCurrentInstance();
 
-        logger.info("transactionNo=============>"+transactionNos.get(0));
+        logger.info("parentOrderNum=============>"+parentOrderNum);
+        logger.info("accountNum=============>"+accountNum);
         String orderDescs = "";
         String orderIds = "";
-        String trans ="";
         String transactionType = "0";
         double amounts = 0;
-        List<Transaction> list = client.checkTransactionPaied(transactionNos.get(0));
-        List<ServiceOrder> orders = client.checkOrderPaied(transactionNos.get(0));
+//        List<Transaction> list = client.checkTransactionPaied(transactionNos.get(0));
+        QueryOrderByParentOrderNumResponse queryOrderByParentOrderNumResponse = client.queryOrderByParentOrderNum(parentOrderNum,accountNum);
+        List<QueryChildOrdersByParentOrderNumResponse> orders = client.queryChildOrdersByParentOrderNum(parentOrderNum);
         if (orders == null || orders.size() == 0) {
             //没创建订单
             transactionType = "1";
         }else{
-            logger.info("orders.get(0).getOrderStat()================>"+orders.get(0).getOrderStat());
-            if (!orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_NEW)
-                    &&!orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_PENDING_PAYMENT)
-                    &&!orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_PAYMENT_FAILED)
-                    &&!orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_PAYMENT_CANCELED)) {
+            logger.info("OrderStat================>"+queryOrderByParentOrderNumResponse.getOrderStatus());
+            if (!queryOrderByParentOrderNumResponse.getOrderStatus().equals(Constant.DB_ORDER_STATUS_NEW)
+                    &&!queryOrderByParentOrderNumResponse.getOrderStatus().equals(Constant.DB_ORDER_STATUS_PENDING_PAYMENT)
+                    &&!queryOrderByParentOrderNumResponse.getOrderStatus().equals(Constant.DB_ORDER_STATUS_PAYMENT_FAILED)
+                    &&!queryOrderByParentOrderNumResponse.getOrderStatus().equals(Constant.DB_ORDER_STATUS_PAYMENT_CANCELED)) {
                 //订单已支付
                 transactionType = "2";
             }
-            if (orders.get(0).getOrderStat().equals(Constant.DB_ORDER_STATUS_PAYMENT_CANCELED)) {
+            if (queryOrderByParentOrderNumResponse.getOrderStatus().equals(Constant.DB_ORDER_STATUS_PAYMENT_CANCELED)) {
                 //订单失效关闭
                 transactionType = "3";
+            }
+            if(queryOrderByParentOrderNumResponse.getOrderStatus().equals(Constant.DB_ORDER_STATUS_PENDING_PAYMENT)){
+                //订单待支付
+                transactionType = "4";
             }
         }
         logger.info("TranactionType================>"+transactionType);
 //        logger.info("TranactionTypeList================>"+list.size());
       if("1".equals(transactionType)) {
-            if (ids != null && ids.size() > 0) {
-                int count = 0;
-                for (String id : ids) {
-                    String sProdId = "";
-                    double sProdPrice = 0;
-                    sProdId = id;
-                    sProdPrice = Double.valueOf(prices.get(count));
-                    String oId = openId;
-                    logger.info("oId=====================>"+oId);
-                    logger.info("sProdId=====================>"+sProdId);
-                    logger.info("sProdPrice=====================>"+sProdPrice);
-                    logger.info("types.get(count)=====================>"+types.get(count));
-                    logger.info("vins=====================>"+vins.get(count));
-                    PaymentOrderResponse paymentOrderResponse = client.createPaymentOrder(
-                            sProdId,
-                            sProdPrice,
-                            types.get(count),
-                            accountNum,
-                            vins.get(count),
-                            Constant.DB_ORDER_CHANNEL_MOBILE,
-                            oId
-                    );
-                    logger.info("paymentOrderResponse=====================>"+paymentOrderResponse.getRespCode());
-                    // if create new order failed
-                    if (!paymentOrderResponse.getRespCode().equals(Constant.SERVICE_B2C_PAYMENT_RESPONSE_CODE_SUCCESS)) {
-                        context.addMessage(null, new FacesMessage(
-                                FacesMessage.SEVERITY_ERROR, "创建订单失败，原因：" + paymentOrderResponse.getRespMsg(), ""));
-                        orderPackagePop = "创建订单失败，原因：" + paymentOrderResponse.getRespMsg() + "请重试或致电<span style=\"text-decoration: underline;\" class=\"span2\">400-898-0050</span>联系梅赛德斯-奔驰智能互联服务中心寻求帮助";
-                        return ViewPage.LINK2OrderPackage0;
-                    }
-                    orderIds += paymentOrderResponse.getOrderNum();
-                    // create transaction
-                    String serialNo = getSerialNo();
-                    String transChannel = null;
-                    transChannel = "03";
-                    double amount = 0;
-                    String orderDesc = "";
-                    amount = Double.valueOf(prices.get(count));
-                    orderDesc = shortMarketNames.get(count);
-                    if(Strings.isNullOrEmpty(orderDescs)){
-                        orderDescs +=orderDesc;
-                    }else{
-                        orderDescs +="和"+orderDesc;
-                    }
-                    TransactionRequest transactionRequest = new TransactionRequest();
-                    transactionRequest.setAmoumt(String.valueOf(amount));
-                    transactionRequest.setChannel(transChannel);
-                    transactionRequest.setOrderDescription(orderDesc);
-                    logger.info("transactionNoCount=============>"+transactionNos.get(count));
-                    transactionRequest.setPaymentno(transactionNos.get(count));
-                    transactionRequest.setRemark("微信支付，OpenID:" + oId);
-                    transactionRequest.setRespcode("00A4");
-                    transactionRequest.setResponse("已下单，等待支付");
-                    transactionRequest.setSeraialno(serialNo);
-                    logger.info("creating transaction");
-                    TransactionResponse transactionResponse = client.createTransaction(paymentOrderResponse.getOrderNum(), transactionRequest);
-                    if (!transactionResponse.getRespcode().equals(Constant.SERVICE_B2C_PAYMENT_RESPONSE_CODE_SUCCESS)) {
-                        logger.error("create new transaction failed, error message: " + ESAPI.encoder().encodeForHTML(transactionResponse.getRespMsg()));
-                        context.addMessage(null, new FacesMessage(
-                                FacesMessage.SEVERITY_ERROR, "创建交易失败，原因：" + transactionResponse.getRespMsg() + "<br>请重试或致电<span class='span2'>400-898-0050</span>联系<br>梅赛德斯-奔驰智能互联<br>服务中心寻求帮助", ""));
-                        orderPackagePop = "创建订单失败，原因：" + transactionResponse.getRespMsg() + "请重试或致电<span style=\"text-decoration: underline;\" class=\"span2\">400-898-0050</span>联系梅赛德斯-奔驰智能互联服务中心寻求帮助";
-                        return ViewPage.LINK2OrderPackage0;
+          this.openId=openId;
+          return ViewPage.ERRORMESSAGE;
+      }
+        if("0".equals(transactionType)){
+        String transactionNo = getTransactionNo();
+        client.updateOrderStatus(parentOrderNum,transactionNo,openId);
+          String orderDesc = "";
+          for(QueryChildOrdersByParentOrderNumResponse queryChildOrdersByParentOrderNumResponse:orders) {
+              if(Strings.isNullOrEmpty(orderDesc)) {
+                  orderDesc += queryChildOrdersByParentOrderNumResponse.getShortMarketName();
+              } else {
+                  orderDesc += "和" + queryChildOrdersByParentOrderNumResponse.getShortMarketName();
+              }
+          }
+          String serialNo = getSerialNo();
+          String transChannel = null;
+          transChannel = "03";
+          double amount = 0;
+          amount = queryOrderByParentOrderNumResponse.getPrice();
 
-                    }
-                    amounts += amount;
-                    count++;
-                }
-                if(transactionNos.size()>1){
-                    trans = transactionNos.get(0).substring(0,13);
-                }else{
-                    trans = transactionNos.get(0);
-                }
-                logger.info("trans=================" + trans);
-                logger.info("orderIds=================" + orderIds);
-                logger.info("amounts=================" + amounts);
-                logger.info("orderDescs=================" + orderDescs);
+          TransactionRequest transactionRequest = new TransactionRequest();
+          transactionRequest.setAmoumt(String.valueOf(amount));
+          transactionRequest.setChannel(transChannel);
+          transactionRequest.setOrderDescription(orderDesc);
+          transactionRequest.setPaymentno(transactionNo);
+          transactionRequest.setRemark("微信支付，OpenID:" + openId);
+          transactionRequest.setRespcode("00A4");
+          transactionRequest.setResponse("已下单，等待支付");
+          transactionRequest.setSeraialno(serialNo);
+          logger.debug("creating transaction");
+          TransactionResponse transactionResponse = client.createTransaction(parentOrderNum, transactionRequest);;
+          if (!transactionResponse.getRespcode().equals(Constant.SERVICE_B2C_PAYMENT_RESPONSE_CODE_SUCCESS)) {
+//                  logger.error("create new transaction failed, error message: " + ESAPI.encoder().encodeForHTML(transactionResponse.getRespMsg()));
+//                  context.addMessage(null, new FacesMessage(
+//                          FacesMessage.SEVERITY_ERROR, "创建交易失败，原因：" + transactionResponse.getRespMsg() + "<br>请重试或致电<span class='span2'>400-898-0050</span>联系<br>梅赛德斯-奔驰智能互联<br>服务中心寻求帮助", ""));
+              orderPackagePop = "创建订单失败，原因：" + transactionResponse.getRespMsg() + "请重试或致电<span style=\"text-decoration: underline;\" class=\"span2\">400-898-0050</span>联系梅赛德斯-奔驰智能互联服务中心寻求帮助";
+              return ViewPage.LINK2OrderPackage0;
 
-            }
-        }
+          }
+      }
 
         //订单创建完毕
-        if(list!=null&&list.size()>0){
-            if(transactionNos.size()>1){
-                List<Transaction> list1 = client.checkTransactionPaied(transactionNos.get(1));
-                orderDescs = list.get(0).getOrderdescription()+"和"+list1.get(0).getOrderdescription();
-                orderIds = list.get(0).getOrderNum()+list1.get(0).getOrderNum();
-                amounts =  Double.valueOf(list.get(0).getAmount())+Double.valueOf(list1.get(0).getAmount());
-                trans = transactionNos.get(0).substring(0,13);
+        if(orders!=null&&orders.size()>0){
+            if(orders.size()>1){
+                orderDescs = orders.get(0).getMarketName()+"和"+orders.get(1).getMarketName();
             }else{
-                orderDescs = list.get(0).getOrderdescription();
-                orderIds = list.get(0).getOrderNum();
-                amounts =  Double.valueOf(list.get(0).getAmount());
-                trans = transactionNos.get(0);
+                orderDescs = orders.get(0).getMarketName();
             }
+            List<Transaction> transactionList = client.getTransactionByOrderNum(parentOrderNum);
+            orderIds = transactionList.get(0).getOrderno()+parentOrderNum;
 
         }
-
         //页面显示需要
         PromotionInfoWS promotionInfoWS = new PromotionInfoWS();
         promotionInfoWS.setShortMarketName(orderDescs);
-        promotionInfoWS.setPromotionPrice(amounts);
+        promotionInfoWS.setPromotionPrice(queryOrderByParentOrderNumResponse.getPrice());
         selectProd = promotionInfoWS;
         accountInfo = client.getCurrentAccountInfo(accountNum);
         VehicleInfoResponse vehicleInfoResponse = new VehicleInfoResponse();
@@ -1671,18 +1631,16 @@ public class OrderBackingBean implements Serializable {
             this.openId=openId;
             return ViewPage.HASBEENCANCELED;
         }
-        logger.info("trans=================" + trans);
         logger.info("orderIds=================" + orderIds);
-        logger.info("amounts=================" + amounts);
         logger.info("orderDescs=================" + orderDescs);
         WxPayDto tpWxPay = new WxPayDto();
         Demo demo = new Demo();
         tpWxPay.setOpenId(openId);
-        tpWxPay.setOrderId(trans+orderIds);
+        tpWxPay.setOrderId(orderIds);
         tpWxPay.setBody(orderDescs);
         tpWxPay.setSpbillCreateIp("127.0.0.1");
-        tpWxPay.setTotalFee(String.valueOf(amounts));
-        logger.debug("totalFee=" + ESAPI.encoder().encodeForHTML(String.valueOf(amounts)));
+        tpWxPay.setTotalFee(String.valueOf(queryOrderByParentOrderNumResponse.getPrice()));
+        logger.debug("totalFee=" + ESAPI.encoder().encodeForHTML(String.valueOf(queryOrderByParentOrderNumResponse.getPrice())));
         wechatPrepayResponse = demo.getPackage(tpWxPay);
 //
 

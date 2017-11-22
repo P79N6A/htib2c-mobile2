@@ -33,6 +33,7 @@ public class ObjectFactory {
     private final static QName _PaymentHandlerServiceResponse_QNAME = new QName("http://payment.ws.htichina.com/", "paymentHandlerServiceResponse");
     private final static QName _GetActiveAccountByOpenId_QNAME = new QName("http://payment.ws.htichina.com/", "getActiveAccountByOpenId");
     private final static QName _InsertResponse_QNAME = new QName("http://payment.ws.htichina.com/", "insertResponse");
+    private final static QName _UpdateOrderStatusResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateOrderStatusResponse");
     private final static QName _CheckTransactionResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkTransactionResponse");
     private final static QName _UpdateWechatMessageHistory_QNAME = new QName("http://payment.ws.htichina.com/", "updateWechatMessageHistory");
     private final static QName _GetVehicleInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getVehicleInfoResponse");
@@ -71,7 +72,6 @@ public class ObjectFactory {
     private final static QName _GetPromotionInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getPromotionInfo");
     private final static QName _PaymentHandlerService_QNAME = new QName("http://payment.ws.htichina.com/", "paymentHandlerService");
     private final static QName _InsertInvoiceInfo_QNAME = new QName("http://payment.ws.htichina.com/", "insertInvoiceInfo");
-    private final static QName _CheckTransactionPaiedResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkTransactionPaiedResponse");
     private final static QName _IsWinBackOrEarlyBirdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isWinBackOrEarlyBirdResponse");
     private final static QName _GetCurrentAccountInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getCurrentAccountInfoResponse");
     private final static QName _UpdateLoginTimesResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateLoginTimesResponse");
@@ -80,14 +80,16 @@ public class ObjectFactory {
     private final static QName _GetChildOrderInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getChildOrderInfoResponse");
     private final static QName _GetNewPackageAfterUpgrade_QNAME = new QName("http://payment.ws.htichina.com/", "getNewPackageAfterUpgrade");
     private final static QName _SyncAMPWifiAccount_QNAME = new QName("http://payment.ws.htichina.com/", "syncAMPWifiAccount");
-    private final static QName _CheckTransactionPaied_QNAME = new QName("http://payment.ws.htichina.com/", "checkTransactionPaied");
     private final static QName _GetProdInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getProdInfo");
     private final static QName _IsNewFollowReciveDidiResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isNewFollowReciveDidiResponse");
     private final static QName _GetOpenIdByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "getOpenIdByAccountNum");
     private final static QName _Exception_QNAME = new QName("http://payment.ws.htichina.com/", "Exception");
     private final static QName _SendInvoiceEmailResponse_QNAME = new QName("http://payment.ws.htichina.com/", "sendInvoiceEmailResponse");
+    private final static QName _GetTransactionByOrderNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getTransactionByOrderNumResponse");
+    private final static QName _UpdateOrderStatus_QNAME = new QName("http://payment.ws.htichina.com/", "updateOrderStatus");
     private final static QName _CheckPurchaseProductResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkPurchaseProductResponse");
     private final static QName _CreatePaymentOrderResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createPaymentOrderResponse");
+    private final static QName _GetTransactionByOrderNum_QNAME = new QName("http://payment.ws.htichina.com/", "getTransactionByOrderNum");
     private final static QName _GetChildOrderInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getChildOrderInfo");
     private final static QName _SyncAccnt_QNAME = new QName("http://payment.ws.htichina.com/", "syncAccnt");
     private final static QName _CheckOrderPaiedResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkOrderPaiedResponse");
@@ -137,6 +139,14 @@ public class ObjectFactory {
      */
     public CheckTransactionResponse createCheckTransactionResponse() {
         return new CheckTransactionResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateOrderStatusResponse }
+     * 
+     */
+    public UpdateOrderStatusResponse createUpdateOrderStatusResponse() {
+        return new UpdateOrderStatusResponse();
     }
 
     /**
@@ -356,14 +366,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CheckTransactionPaiedResponse }
-     * 
-     */
-    public CheckTransactionPaiedResponse createCheckTransactionPaiedResponse() {
-        return new CheckTransactionPaiedResponse();
-    }
-
-    /**
      * Create an instance of {@link InsertInvoiceInfo }
      * 
      */
@@ -500,6 +502,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetTransactionByOrderNum }
+     * 
+     */
+    public GetTransactionByOrderNum createGetTransactionByOrderNum() {
+        return new GetTransactionByOrderNum();
+    }
+
+    /**
      * Create an instance of {@link CheckOrderPaiedResponse }
      * 
      */
@@ -513,14 +523,6 @@ public class ObjectFactory {
      */
     public SyncAccnt createSyncAccnt() {
         return new SyncAccnt();
-    }
-
-    /**
-     * Create an instance of {@link CheckTransactionPaied }
-     * 
-     */
-    public CheckTransactionPaied createCheckTransactionPaied() {
-        return new CheckTransactionPaied();
     }
 
     /**
@@ -553,6 +555,22 @@ public class ObjectFactory {
      */
     public CreatePaymentOrderResponse createCreatePaymentOrderResponse() {
         return new CreatePaymentOrderResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetTransactionByOrderNumResponse }
+     * 
+     */
+    public GetTransactionByOrderNumResponse createGetTransactionByOrderNumResponse() {
+        return new GetTransactionByOrderNumResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateOrderStatus }
+     * 
+     */
+    public UpdateOrderStatus createUpdateOrderStatus() {
+        return new UpdateOrderStatus();
     }
 
     /**
@@ -909,6 +927,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateOrderStatusResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateOrderStatusResponse")
+    public JAXBElement<UpdateOrderStatusResponse> createUpdateOrderStatusResponse(UpdateOrderStatusResponse value) {
+        return new JAXBElement<UpdateOrderStatusResponse>(_UpdateOrderStatusResponse_QNAME, UpdateOrderStatusResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CheckTransactionResponse }{@code >}}
      * 
      */
@@ -1251,15 +1278,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CheckTransactionPaiedResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "checkTransactionPaiedResponse")
-    public JAXBElement<CheckTransactionPaiedResponse> createCheckTransactionPaiedResponse(CheckTransactionPaiedResponse value) {
-        return new JAXBElement<CheckTransactionPaiedResponse>(_CheckTransactionPaiedResponse_QNAME, CheckTransactionPaiedResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link IsWinBackOrEarlyBirdResponse }{@code >}}
      * 
      */
@@ -1332,15 +1350,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CheckTransactionPaied }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "checkTransactionPaied")
-    public JAXBElement<CheckTransactionPaied> createCheckTransactionPaied(CheckTransactionPaied value) {
-        return new JAXBElement<CheckTransactionPaied>(_CheckTransactionPaied_QNAME, CheckTransactionPaied.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetProdInfo }{@code >}}
      * 
      */
@@ -1386,6 +1395,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetTransactionByOrderNumResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getTransactionByOrderNumResponse")
+    public JAXBElement<GetTransactionByOrderNumResponse> createGetTransactionByOrderNumResponse(GetTransactionByOrderNumResponse value) {
+        return new JAXBElement<GetTransactionByOrderNumResponse>(_GetTransactionByOrderNumResponse_QNAME, GetTransactionByOrderNumResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateOrderStatus }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateOrderStatus")
+    public JAXBElement<UpdateOrderStatus> createUpdateOrderStatus(UpdateOrderStatus value) {
+        return new JAXBElement<UpdateOrderStatus>(_UpdateOrderStatus_QNAME, UpdateOrderStatus.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CheckPurchaseProductResponse }{@code >}}
      * 
      */
@@ -1401,6 +1428,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createPaymentOrderResponse")
     public JAXBElement<CreatePaymentOrderResponse> createCreatePaymentOrderResponse(CreatePaymentOrderResponse value) {
         return new JAXBElement<CreatePaymentOrderResponse>(_CreatePaymentOrderResponse_QNAME, CreatePaymentOrderResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetTransactionByOrderNum }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getTransactionByOrderNum")
+    public JAXBElement<GetTransactionByOrderNum> createGetTransactionByOrderNum(GetTransactionByOrderNum value) {
+        return new JAXBElement<GetTransactionByOrderNum>(_GetTransactionByOrderNum_QNAME, GetTransactionByOrderNum.class, null, value);
     }
 
     /**
