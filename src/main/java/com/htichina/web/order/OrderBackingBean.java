@@ -1660,10 +1660,10 @@ public class OrderBackingBean implements Serializable {
         vehicleInfoResponse.setCellphone(accountInfo.getMobilePhone());
         vehicleInfoResponse.setVin(accountInfo.getVin());
         selectedVehicle = vehicleInfoResponse;
-        if("0".equals(transactionType)){
-            return ViewPage.ERRORMESSAGE;
-        }
-        else if("2".equals(transactionType)){
+//        if("0".equals(transactionType)){
+//            return ViewPage.ERRORMESSAGE;
+//        }
+        if("2".equals(transactionType)){
             this.openId=openId;
             return ViewPage.HASBEENPAIED;
         }
