@@ -1108,6 +1108,8 @@ public class OrderBackingBean implements Serializable {
     public String toOrderUpgradeEntry(PackageInfoResponse currentPkg, AccountInfoResponse accountInfo, String openId, String fromFlag) {
     	this.accountInfo = accountInfo;
     	this.openId = openId;
+    	this.targetPage = ViewPage.LINK2MyAccount;//支付成功后点击登陆进入的界面
+    	
         String errorReturn = ViewPage.LINK2MyAccount;
         if("2".equals(fromFlag)){
         	errorReturn = ViewPage.LINK2MyAccount2;
@@ -1660,10 +1662,10 @@ public class OrderBackingBean implements Serializable {
         vehicleInfoResponse.setCellphone(accountInfo.getMobilePhone());
         vehicleInfoResponse.setVin(accountInfo.getVin());
         selectedVehicle = vehicleInfoResponse;
-        if("0".equals(transactionType)){
-            return ViewPage.ERRORMESSAGE;
-        }
-        else if("2".equals(transactionType)){
+//        if("0".equals(transactionType)){
+//            return ViewPage.ERRORMESSAGE;
+//        }
+        if("2".equals(transactionType)){
             this.openId=openId;
             return ViewPage.HASBEENPAIED;
         }

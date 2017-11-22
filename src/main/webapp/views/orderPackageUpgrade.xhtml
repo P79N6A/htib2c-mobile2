@@ -142,17 +142,25 @@
                     <div id="keytxt">网站备案号：京ICP备11011340号</div>
                 </div>
             </div>
+            
+            <div id="filer" style="display:none"></div>
+            <h:inputText id="orderUpgradePop"
+                         value="#{orderBackingBean.orderUpgradePop}" style="display: none">
+                <f:passThroughAttribute name="nm3" value="orderUpgradePop" />
+            </h:inputText>
             <div class="alert" id="sn_err" style="display:none">
                 <div class="a_txt" id="perro">您的密码不正确<br/>
-                    请重试或致电<span class="span2">400-898-0050</span><br/>
-                    联系梅赛德斯-奔驰智能互联<br/>
-                    服务中心寻求帮助</div>
-                <div class="m_btn m_btn1"><input type="button" value="重 &#160; 试"
-                                                 onclick="hideLogOff()" class="csinput"/></div>
+			                    请重试或致电<span class="span2">400-898-0050</span><br/>
+			                    联系梅赛德斯-奔驰智能互联<br/>
+			                    服务中心寻求帮助
+			    </div>
+                <div class="m_btn m_btn1">
+                	<input type="button" value="重 &#160; 试" onclick="hideLogOff()" class="csinput"/>
+                </div>
             </div>
-            <div id="filer"  style="display:none"></div>
+            
              <script type="text/javascript">
-                var orderUpgradePopVal = $("input[nm2='orderUpgradePop']").val();
+                var orderUpgradePopVal = $("input[nm3='orderUpgradePop']").val();
                 console.log(orderUpgradePopVal);
                 //                        alert(orderUpgradePopVal);
                 if(orderUpgradePopVal == null || orderUpgradePopVal == ""){
