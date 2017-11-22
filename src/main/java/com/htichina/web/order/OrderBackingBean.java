@@ -1108,6 +1108,8 @@ public class OrderBackingBean implements Serializable {
     public String toOrderUpgradeEntry(PackageInfoResponse currentPkg, AccountInfoResponse accountInfo, String openId, String fromFlag) {
     	this.accountInfo = accountInfo;
     	this.openId = openId;
+    	this.targetPage = ViewPage.LINK2MyAccount;//支付成功后点击登陆进入的界面
+    	
         String errorReturn = ViewPage.LINK2MyAccount;
         if("2".equals(fromFlag)){
         	errorReturn = ViewPage.LINK2MyAccount2;
