@@ -172,7 +172,7 @@ public class InvoiceBackingBean implements Serializable {
             }
 
             if(Strings.isNullOrEmpty(accountNum)) {
-                applyInvoicePop = "请点击菜单“在线订购”->“我的账户”登录成功后进行发票申请。 如需帮助，请按车内【i】按钮或致电<span style=\"text-decoration: underline;\" class=\"span2\">400-898-0050</span>。";
+                applyInvoicePop = "请点击菜单“我的账户”->“我的账户”登录成功后进行发票申请。 如需帮助，请按车内【i】按钮或致电<span style=\"text-decoration: underline;\" class=\"span2\">400-898-0050</span>。";
 //                context.addMessage(null, new FacesMessage(
 //                        FacesMessage.SEVERITY_ERROR, "无法获知您的智能互联客户编号。请点击菜单“在线订购”-> “我的账户”进行登录之后再试。如需帮助，请按车内【i】按钮或致电4008980050", ""));
                 context.addMessage(null, new FacesMessage(
