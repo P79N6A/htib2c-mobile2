@@ -80,6 +80,7 @@ public class ObjectFactory {
     private final static QName _GetChildOrderInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getChildOrderInfoResponse");
     private final static QName _GetNewPackageAfterUpgrade_QNAME = new QName("http://payment.ws.htichina.com/", "getNewPackageAfterUpgrade");
     private final static QName _SyncAMPWifiAccount_QNAME = new QName("http://payment.ws.htichina.com/", "syncAMPWifiAccount");
+    private final static QName _UpdateTransactionResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateTransactionResponse");
     private final static QName _GetProdInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getProdInfo");
     private final static QName _IsNewFollowReciveDidiResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isNewFollowReciveDidiResponse");
     private final static QName _GetOpenIdByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "getOpenIdByAccountNum");
@@ -92,6 +93,7 @@ public class ObjectFactory {
     private final static QName _GetTransactionByOrderNum_QNAME = new QName("http://payment.ws.htichina.com/", "getTransactionByOrderNum");
     private final static QName _GetChildOrderInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getChildOrderInfo");
     private final static QName _SyncAccnt_QNAME = new QName("http://payment.ws.htichina.com/", "syncAccnt");
+    private final static QName _UpdateTransaction_QNAME = new QName("http://payment.ws.htichina.com/", "updateTransaction");
     private final static QName _CheckOrderPaiedResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkOrderPaiedResponse");
 
     /**
@@ -526,6 +528,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UpdateTransaction }
+     * 
+     */
+    public UpdateTransaction createUpdateTransaction() {
+        return new UpdateTransaction();
+    }
+
+    /**
      * Create an instance of {@link GetProdInfo }
      * 
      */
@@ -611,6 +621,14 @@ public class ObjectFactory {
      */
     public GetNewPackageAfterUpgrade createGetNewPackageAfterUpgrade() {
         return new GetNewPackageAfterUpgrade();
+    }
+
+    /**
+     * Create an instance of {@link UpdateTransactionResponse }
+     * 
+     */
+    public UpdateTransactionResponse createUpdateTransactionResponse() {
+        return new UpdateTransactionResponse();
     }
 
     /**
@@ -1350,6 +1368,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateTransactionResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateTransactionResponse")
+    public JAXBElement<UpdateTransactionResponse> createUpdateTransactionResponse(UpdateTransactionResponse value) {
+        return new JAXBElement<UpdateTransactionResponse>(_UpdateTransactionResponse_QNAME, UpdateTransactionResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetProdInfo }{@code >}}
      * 
      */
@@ -1455,6 +1482,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "syncAccnt")
     public JAXBElement<SyncAccnt> createSyncAccnt(SyncAccnt value) {
         return new JAXBElement<SyncAccnt>(_SyncAccnt_QNAME, SyncAccnt.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateTransaction }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateTransaction")
+    public JAXBElement<UpdateTransaction> createUpdateTransaction(UpdateTransaction value) {
+        return new JAXBElement<UpdateTransaction>(_UpdateTransaction_QNAME, UpdateTransaction.class, null, value);
     }
 
     /**

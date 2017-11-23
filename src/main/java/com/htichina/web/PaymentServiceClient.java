@@ -323,6 +323,12 @@ public class PaymentServiceClient {
     flag =  service.updateOrderStatus(orderNum,tranNo,openid);
     return flag;
   }
+
+  public boolean updateTransaction(String orderNum,String openId){
+    boolean flag = false;
+    flag =  service.updateTransaction(orderNum,openId);
+    return flag;
+  }
 }
 
 
