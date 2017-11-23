@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for syncAMPWifiAccount complex type.
+ * <p>syncAMPWifiAccount complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="syncAMPWifiAccount">
@@ -42,7 +42,7 @@ public class SyncAMPWifiAccount {
     protected String vin;
 
     /**
-     * Gets the value of the orderNum property.
+     * 获取orderNum属性的值。
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class SyncAMPWifiAccount {
     }
 
     /**
-     * Sets the value of the orderNum property.
+     * 设置orderNum属性的值。
      * 
      * @param value
      *     allowed object is
@@ -66,7 +66,7 @@ public class SyncAMPWifiAccount {
     }
 
     /**
-     * Gets the value of the acctNum property.
+     * 获取acctNum属性的值。
      * 
      * @return
      *     possible object is
@@ -78,7 +78,7 @@ public class SyncAMPWifiAccount {
     }
 
     /**
-     * Sets the value of the acctNum property.
+     * 设置acctNum属性的值。
      * 
      * @param value
      *     allowed object is
@@ -90,7 +90,7 @@ public class SyncAMPWifiAccount {
     }
 
     /**
-     * Gets the value of the vin property.
+     * 获取vin属性的值。
      * 
      * @return
      *     possible object is
@@ -102,7 +102,7 @@ public class SyncAMPWifiAccount {
     }
 
     /**
-     * Sets the value of the vin property.
+     * 设置vin属性的值。
      * 
      * @param value
      *     allowed object is

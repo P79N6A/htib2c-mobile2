@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template.xhtml">
+
+    <ui:define name="header">
+        支付信息
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css?v=20170704" charset="utf-8" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" charset="utf-8" />
+        <script>
+            $(function () {
+
+
+                //订购须知 展开 收缩
+                $('.Orderbtn').click(function(){
+                    // var class_= $('.Orderbtn').attr('class')
+                    if($('.Orderbtn').hasClass('Orderbtn1')){
+                        $('.Orderbtn').removeClass('Orderbtn1');
+                        $('.Orderbtn').addClass('Orderbtn2');
+                        $('.Pay_infotxt').show();
+                        //alert()
+                        //$('.swiper-wrapper').height(document.getElementById('txtlist').clientHeight)
+
+                    }else{
+                        $('.Orderbtn').addClass('Orderbtn1');
+                        $('.Orderbtn').removeClass('Orderbtn2');
+                        $('.Pay_infotxt').hide();
+                        /* if(parseInt($("#move").css('marginTop'))&lt;$('#infobox').height()-$('#move').height()){
+                         slide($('#infobox').height()-$('#move').height())
+                         return false;
+                         }*/
+                        // $('.swiper-wrapper').height(document.getElementById('txtlist').clientHeight)
+
+                    }
+                })
+
+                //同意并确认
+                $('.tiaokuam_bg .btn').click(function(){
+                    if($(this).hasClass('btn1')){
+                        $(this).removeClass('btn1')
+                        $(this).addClass('btn2')
+                    }else{
+                        $(this).removeClass('btn2')
+                        $(this).addClass('btn1')
+                    }
+                })
+            })
+            function toTermsOfService(){
+                window.location.href = "https://www.cntelematics.com/htib2c-mobile/views/termsOfService.pdf";
+            }
+        </script>
+
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="infobox" style=" height: 94%">
+
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <!--<div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">-->
+                <div class="aotu">
+                    <div id="move" style="padding: 0px 0px;">
+                        <div id="txtlist">
+                            <div class="ddmx">
+                                <h3>订单明细</h3>
+                                <div class="info_list" id="info_list1" style="padding-left: 43px;">
+                                    <ul>
+                                        <li>套&#160;&#160;餐&#160;&#160;名&#160;&#160;称&#160;：<span><h:outputText value="#{orderBackingBean.selectProd.shortMarketName}"/></span></li>
+                                        <li>套&#160;&#160;餐&#160;&#160;价&#160;&#160;格&#160;：<span><h:outputText value="#{orderBackingBean.selectProd.promotionPrice}">
+                                            <f:convertNumber type="currency" currencySymbol="¥"/>
+                                        </h:outputText></span></li>
+                                        <li>合&#160;&#160;计&#160;&#160;金&#160;&#160;额&#160;：<span><h:outputText value="#{orderBackingBean.selectProd.promotionPrice}">
+                                            <f:convertNumber type="currency" maxFractionDigits="2" currencySymbol="¥"/>
+                                        </h:outputText></span></li>
+                                    </ul>
+                                </div>
+                                <h3>账户信息</h3>
+                                <div class="info_list" id="info_list2" style=" padding-left: 40px;">
+
+
+                                    <table style="border:0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td style="text-align:right">用户姓名：</td>
+                                            <td><h:outputText
+                                                    value="#{orderBackingBean.selectedVehicle.name}">
+                                                <f:converter converterId="UserNameConverter"/>
+                                            </h:outputText></td>
+                                        </tr>
+                                        <tr>
+                                            <td >智能互联客户编号：</td>
+                                            <td><h:outputText
+                                                    value="#{orderBackingBean.selectedVehicle.acctNum}">
+                                                <f:converter converterId="AccountNumConverter"/>
+                                            </h:outputText></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:right">关联手机号：</td>
+                                            <td><h:outputText
+                                                    value="#{orderBackingBean.selectedVehicle.cellphone}">
+                                                <f:converter converterId="MobilePhoneConverter"/>
+                                            </h:outputText></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:right">车架号：</td>
+                                            <td><h:outputText
+                                                    value="#{orderBackingBean.selectedVehicle.vin}">
+                                                <f:converter converterId="VinConverter"/>
+                                            </h:outputText></td>
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+
+
+                            </div>
+                            <div style="text-align: center;position: relative; margin: auto; width:490px; height:400px; line-height: 64px; text-indent: 25px; font-size: 30px; color: #fff; ">
+                                您已完成支付，请等待服务开通。
+                                有任何疑问请随时使用车内【i】按钮或者<a href="tel:4008980050" style="font-size: 18px;color:white;">400-898-0050</a>联系客服中心。
+                                智能互联 -- 智在安心，不止于此
+                            </div>
+
+                        </div>
+                        <!--    &lt;!&ndash; Add Scroll Bar &ndash;&gt;
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                        </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="filer"  style="display:none"></div>
+        <script type="text/javascript">
+            if("1" == broserNum){
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+            }
+
+            function popCheck(){
+                $('#sn_err').show();
+                $('#filer').show();
+            }
+            function hideLogOff() {
+                $('#filer').hide();
+                $('#sn_err').hide();
+            }
+            console.log('#move')
+            /* var swiper = new Swiper('.swiper-container', {
+             scrollbar: '.swiper-scrollbar',
+             direction: 'vertical',
+             slidesPerView: 'auto',
+             mousewheelControl: true,
+             freeMode: true,
+             observer:true,
+             observeParents:true
+             });*/
+        </script>
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

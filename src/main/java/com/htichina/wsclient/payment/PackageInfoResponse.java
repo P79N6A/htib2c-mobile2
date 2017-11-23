@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for packageInfoResponse complex type.
+ * <p>packageInfoResponse complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="packageInfoResponse">
@@ -18,9 +18,13 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="balance" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="base" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="canBeUpgrated" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="endDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="packageName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="packageStatus" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="startDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="subscriptionName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="webSubscriptionId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,20 +37,28 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "packageInfoResponse", propOrder = {
     "balance",
     "base",
+    "canBeUpgrated",
     "endDate",
     "packageName",
-    "packageStatus"
+    "packageStatus",
+    "startDate",
+    "subscriptionName",
+    "webSubscriptionId"
 })
 public class PackageInfoResponse {
 
     protected double balance;
     protected boolean base;
+    protected boolean canBeUpgrated;
     protected String endDate;
     protected String packageName;
     protected String packageStatus;
+    protected String startDate;
+    protected String subscriptionName;
+    protected String webSubscriptionId;
 
     /**
-     * Gets the value of the balance property.
+     * 获取balance属性的值。
      * 
      */
     public double getBalance() {
@@ -54,7 +66,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * Sets the value of the balance property.
+     * 设置balance属性的值。
      * 
      */
     public void setBalance(double value) {
@@ -62,7 +74,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * Gets the value of the base property.
+     * 获取base属性的值。
      * 
      */
     public boolean isBase() {
@@ -70,7 +82,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * Sets the value of the base property.
+     * 设置base属性的值。
      * 
      */
     public void setBase(boolean value) {
@@ -78,7 +90,23 @@ public class PackageInfoResponse {
     }
 
     /**
-     * Gets the value of the endDate property.
+     * 获取canBeUpgrated属性的值。
+     * 
+     */
+    public boolean isCanBeUpgrated() {
+        return canBeUpgrated;
+    }
+
+    /**
+     * 设置canBeUpgrated属性的值。
+     * 
+     */
+    public void setCanBeUpgrated(boolean value) {
+        this.canBeUpgrated = value;
+    }
+
+    /**
+     * 获取endDate属性的值。
      * 
      * @return
      *     possible object is
@@ -90,7 +118,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * Sets the value of the endDate property.
+     * 设置endDate属性的值。
      * 
      * @param value
      *     allowed object is
@@ -102,7 +130,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * Gets the value of the packageName property.
+     * 获取packageName属性的值。
      * 
      * @return
      *     possible object is
@@ -114,7 +142,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * Sets the value of the packageName property.
+     * 设置packageName属性的值。
      * 
      * @param value
      *     allowed object is
@@ -126,7 +154,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * Gets the value of the packageStatus property.
+     * 获取packageStatus属性的值。
      * 
      * @return
      *     possible object is
@@ -138,7 +166,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * Sets the value of the packageStatus property.
+     * 设置packageStatus属性的值。
      * 
      * @param value
      *     allowed object is
@@ -147,6 +175,78 @@ public class PackageInfoResponse {
      */
     public void setPackageStatus(String value) {
         this.packageStatus = value;
+    }
+
+    /**
+     * 获取startDate属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getStartDate() {
+        return startDate;
+    }
+
+    /**
+     * 设置startDate属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStartDate(String value) {
+        this.startDate = value;
+    }
+
+    /**
+     * 获取subscriptionName属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSubscriptionName() {
+        return subscriptionName;
+    }
+
+    /**
+     * 设置subscriptionName属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSubscriptionName(String value) {
+        this.subscriptionName = value;
+    }
+
+    /**
+     * 获取webSubscriptionId属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getWebSubscriptionId() {
+        return webSubscriptionId;
+    }
+
+    /**
+     * 设置webSubscriptionId属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setWebSubscriptionId(String value) {
+        this.webSubscriptionId = value;
     }
 
 }

@@ -1,11 +1,12 @@
 package com.htichina.web;
 
-import com.htichina.common.web.Constant;
+import java.lang.Exception;
+import java.util.List;
+
 import com.htichina.wsclient.payment.*;
 import org.apache.log4j.Logger;
 
-import java.lang.Exception;
-import java.util.List;
+import com.htichina.common.web.Constant;
 
 /**
  * Created by yiming on 2015/7/1.
@@ -111,7 +112,7 @@ public class PaymentServiceClient {
       return null;
     }
   }
-  
+
   public boolean CheckTransaction(String orderNum) {
     try {
       return service.checkTransaction(orderNum);
@@ -119,6 +120,15 @@ public class PaymentServiceClient {
     catch (Exception exception) {
       exception.printStackTrace();
       return false;
+    }
+  }
+  public List<Transaction> getTransactionByOrderNum(String orderNum) {
+    try {
+      return service.getTransactionByOrderNum(orderNum);
+    }
+    catch (Exception exception) {
+      exception.printStackTrace();
+      return null;
     }
   }
 
@@ -282,6 +292,36 @@ public class PaymentServiceClient {
       return false;
     }
     /*return false;*/
+  }
+  
+  /* 2017-11-10,Tommy Liu, CR82_Part II, 获取 升级-目标套餐 的信息 */
+  public PackageUpgradeResponse getNewPackageAfterUpgrade(PackageUpgradeRequest request){
+	  return service.getNewPackageAfterUpgrade(request);
+  }  
+  
+  /* 2017-11-10,Tommy Liu, CR82_Part II, 创建升级订单信息 */
+  public PackageUpgradeResponse createUpgradePaymentOrder(PackageUpgradeRequest request) {
+	  return service.createUpgradePaymentOrder(request);
+  }
+
+  public List<ServiceOrder> checkOrderPaied(String transNo){
+    return service.checkOrderPaied(transNo);
+  }
+
+  public boolean updatewechatMessage(String openid,String tranNo){
+    boolean flag = false;
+    try {
+      flag =  service.updateWechatMessageHistory(openid,tranNo);
+    } catch (Exception_Exception e) {
+      e.printStackTrace();
+    }
+    return flag;
+  }
+
+  public boolean updateOrderStatus(String orderNum,String openid,String tranNo){
+    boolean flag = false;
+    flag =  service.updateOrderStatus(orderNum,tranNo,openid);
+    return flag;
   }
 }
 

@@ -1,6 +1,7 @@
 package com.htichina.web;
 
 import com.sun.faces.util.Util;
+import com.tencent.common.RandomStringGenerator;
 
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
@@ -9,8 +10,10 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 @WebFilter(urlPatterns = { "/views/*" }, dispatcherTypes = { DispatcherType.REQUEST,
 		DispatcherType.FORWARD, DispatcherType.INCLUDE })
@@ -32,8 +35,13 @@ public class LoginFilter implements Filter {
                          FilterChain fc) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
-
 		try{
+			String string = httpRequest.getRequestURL().toString();
+//			HttpSession session = httpRequest.getSession();
+//			if(httpRequest.getMethod().equalsIgnoreCase("GET")){
+//				session.setAttribute("csrftoken", RandomStringGenerator.getCSRFToken());
+//			}
+//			System.out.println(string);
 			String uri = httpRequest.getRequestURI();
 			StringBuffer Path = httpRequest.getRequestURL();
 			logger.info("Path ===>"+ESAPI.encoder().encodeForHTML(Path.toString()));
@@ -76,6 +84,8 @@ public class LoginFilter implements Filter {
 			fc.doFilter(httpRequest, httpResponse);
 		}
 		catch (Exception e){
+			System.out.println("-------------------21132312121231232313212312312121212"+e.getMessage());
+	        logger.info("-------------------21132312121231232313212312312121212"+e.getMessage());
 			httpResponse.sendRedirect("/views/common/error.xhtml");
 		}
 

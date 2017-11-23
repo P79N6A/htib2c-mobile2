@@ -14,7 +14,7 @@
             <list>
                 <!-- standard config -->
                 <value>classpath*:/ws_env/Staging.URL.properties</value>
-<!--                 <value>classpath*:/ws_env/Prod.URL.properties</value> -->
+                <!--<value>classpath*:/ws_env/Prod.URL.properties</value>-->
             </list>
         </property>
 
@@ -57,7 +57,8 @@
         <property name="validateregistrationUrl" value="${validateregistration_url}" />
         <property name="mobiledeviceregistrationapikey" value="${mobiledeviceregistration_apikey}" />
 
+        <!--add by liunig CR345-->
+        <property name="WechatLinkLogin" value="${WechatLinkLogin}" />
 
     </bean>
 </beans>
- 

@@ -3,10 +3,22 @@ package com.htichina.web.common;
 public class ViewPage {
     public static final String LINK2OrderEntry = "/views/orderEntry.xhtml?showwxpaytitle=1";
     public static final String LINK2OrderPackage = "/views/orderPackage.xhtml?showwxpaytitle=1";
+    
+    /* 2017-11-10,Tommy Liu, CR82_Part II, 套餐升级页面 */
+    public static final String LINK2OrderPackageUpgrade = "/views/orderPackageUpgrade.xhtml?showwxpaytitle=1";
+    
     public static final String LINK2OrderAccountInfo = "/views/orderAccountInfo.xhtml?showwxpaytitle=1";
     public static final String LINK2OrderTerminate = "/views/orderTerminate.xhtml?showwxpaytitle=1";
     public static final String LINK2OrderVehicle = "/views/orderVehicle.xhtml?showwxpaytitle=1";
     public static final String LINK2OrderPayment = "/views/orderPayment.xhtml?showwxpaytitle=1";
+
+    /* 2017-11-10,Tommy Liu, CR82_Part II, 套餐升级支付页面 */
+    public static final String LINK2OrderUpgradePayment = "/views/orderUpgradePayment.xhtml?showwxpaytitle=1";
+    
+    public static final String LINK2OrderPaymentForWechat = "/views/orderPaymentForWechat.xhtml?showwxpaytitle=1";
+    public static final String HASBEENPAIED = "/views/hasBeenPaied.xhtml?showwxpaytitle=1";
+    public static final String HASBEENCANCELED = "/views/hasBeenCanceled.xhtml?showwxpaytitle=1";
+
     public static final String LINK2OrderAlipayRequest = "/views/orderAlipayRequest.xhtml";
     public static final String LINK2OrderAlipaySuccess = "/views/orderAlipaySuccess.xhtml";
     public static final String LINK2OrderAlipayFailed = "/views/orderAlipayFailed.xhtml";
@@ -16,6 +28,7 @@ public class ViewPage {
     public static final String LINK2AlipayPromotion = "/views/alipayPromotion.xhtml";
     public static final String LINK2Login = "/views/accountLogin.xhtml?showwxpaytitle=1";
     public static final String LINK2MyAccount = "/views/myAccount.xhtml?showwxpaytitle=1";
+    public static final String LINK2MyAccount2 = "/views/myAccount2.xhtml?showwxpaytitle=1";
     public static final String LINK2ApplyInvoice = "/views/invoiceEntry.xhtml?showwxpaytitle=1";
     public static final String LINK2ShipedInvoice = "/views/invoiceShiped.xhtml?showwxpaytitle=1";
     public static final String LINK2InvoiceOrder = "/views/invoiceOrder.xhtml?showwxpaytitle=1";
@@ -49,4 +62,6 @@ public class ViewPage {
     //First Login Didi
     public static final String Didi_FirstLogin = "/views/firstLoginDidi.xhtml";
     public static final String LINK2OrderPackage0 = "/views/orderPackage0.xhtml?showwxpaytitle=1";
+
+    public static final String ERRORMESSAGE = "/views/paymentError.xhtml?showwxpaytitle=1";
 }

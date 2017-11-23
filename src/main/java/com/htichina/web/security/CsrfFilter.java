@@ -53,9 +53,9 @@ public class CsrfFilter implements Filter {
 				String url = req.getRequestURL().toString();
 				String referurl = req.getHeader("Referer");
 			    
-				logger.info("referurl----->" + ESAPI.encoder().encodeForHTML(referurl));
+//				logger.info("referurl----->" + ESAPI.encoder().encodeForHTML(referurl));
 				String serverAddr = isWhiteReq(referurl);
-				logger.info("mod referurl----->" + ESAPI.encoder().encodeForHTML(serverAddr));
+//				logger.info("mod referurl----->" + ESAPI.encoder().encodeForHTML(serverAddr));
 				if (serverAddr!=null) {
 					//res.setHeader("Referer","http://"+serverAddr);
 					chain.doFilter(request, response);
@@ -69,14 +69,18 @@ public class CsrfFilter implements Filter {
 					String clientIp = getRemoteHost(req);
 
 					log = clientIp + "||" + date + "||" + referurl + "||" + url;
-					logger.warn(ESAPI.encoder().encodeForHTML(log));
+					//logger.warn(ESAPI.encoder().encodeForHTML(log));
+					System.out.println("error------log:"+log);
+					System.out.println("error------uri:"+req.getRequestURI());
 					
-					req.getRequestDispatcher("/views/common/error.html").forward(req, res);
+					logger.info("error------log:"+log);
+					logger.info("error------uri:"+req.getRequestURI());
+					req.getRequestDispatcher("views/common/error.xhtml").forward(req, res);
 					return;
 				}
 
 			} catch (Exception e) {
-				logger.error("doFilter", e);
+				logger.error("doFilter eception", e);
 			}
 
 		}

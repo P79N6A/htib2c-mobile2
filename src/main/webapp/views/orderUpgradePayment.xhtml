@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template.xhtml">
+
+    <ui:define name="header">
+        支付信息
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css?v=20170704" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+        <script>
+            $(function () {
+
+
+                //订购须知 展开 收缩
+                $('.Orderbtn').click(function(){
+                    // var class_= $('.Orderbtn').attr('class')
+                    if($('.Orderbtn').hasClass('Orderbtn1')){
+                        $('.Orderbtn').removeClass('Orderbtn1');
+                        $('.Orderbtn').addClass('Orderbtn2');
+                        $('.Pay_infotxt').show();
+                        //alert()
+                        //$('.swiper-wrapper').height(document.getElementById('txtlist').clientHeight)
+
+                    }else{
+                        $('.Orderbtn').addClass('Orderbtn1');
+                        $('.Orderbtn').removeClass('Orderbtn2');
+                        $('.Pay_infotxt').hide();
+                        /* if(parseInt($("#move").css('marginTop'))&lt;$('#infobox').height()-$('#move').height()){
+                         slide($('#infobox').height()-$('#move').height())
+                         return false;
+                         }*/
+                        // $('.swiper-wrapper').height(document.getElementById('txtlist').clientHeight)
+
+                    }
+                })
+
+                //同意并确认
+                $('.tiaokuam_bg .btn').click(function(){
+                    if($(this).hasClass('btn1')){
+                        $(this).removeClass('btn1')
+                        $(this).addClass('btn2')
+                    }else{
+                        $(this).removeClass('btn2')
+                        $(this).addClass('btn1')
+                    }
+                })
+            })
+            function toTermsOfService(){
+                window.location.href = "https://www.cntelematics.com/htib2c-mobile/views/termsOfService.pdf";
+            }
+        </script>
+
+        <div class="page">
+            <div id="fri_top">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+            </div>
+            <div id="infobox">
+
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                <!--<div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">-->
+                <div class="aotu">
+                    <div id="move" style="padding: 0px 0px;">
+                        <div id="txtlist">
+                            <div class="ddmx">
+                                <h3>订单明细</h3>
+                                <div class="info_list" id="info_list1" style="padding-left: 43px;">
+                                    <ul>
+                                        <li>套&#160;&#160;餐&#160;&#160;名&#160;&#160;称&#160;：<span><h:outputText value="#{orderBackingBean.upgradeRequest.newPackageName}"/></span></li>
+                                        <li>套&#160;&#160;餐&#160;&#160;价&#160;&#160;格&#160;：<span><h:outputText value="#{orderBackingBean.upgradeRequest.upgradeGapPrice}">
+                                            <f:convertNumber type="currency" currencySymbol="¥"/>
+                                        </h:outputText></span></li>
+                                        <li>合&#160;&#160;计&#160;&#160;金&#160;&#160;额&#160;：<span><h:outputText value="#{orderBackingBean.upgradeRequest.upgradeGapPrice}">
+                                            <f:convertNumber type="currency" maxFractionDigits="2" currencySymbol="¥"/>
+                                        </h:outputText></span></li>
+                                    </ul>
+                                </div>
+                                <h3>账户信息</h3>
+                                <div class="info_list" id="info_list2" style=" padding-left: 40px;">
+
+
+                                    <table style="border:0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td style="text-align:right">用户姓名：</td>
+                                            <td><h:outputText
+                                                    value="#{orderBackingBean.selectedVehicle.name}">
+                                                <f:converter converterId="UserNameConverter"/>
+                                            </h:outputText></td>
+                                        </tr>
+                                        <tr>
+                                            <td >智能互联客户编号：</td>
+                                            <td><h:outputText
+                                                    value="#{orderBackingBean.selectedVehicle.acctNum}">
+                                                <f:converter converterId="AccountNumConverter"/>
+                                            </h:outputText></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:right">关联手机号：</td>
+                                            <td><h:outputText
+                                                    value="#{orderBackingBean.selectedVehicle.cellphone}">
+                                                <f:converter converterId="MobilePhoneConverter"/>
+                                            </h:outputText></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:right">车架号：</td>
+                                            <td><h:outputText
+                                                    value="#{orderBackingBean.selectedVehicle.vin}">
+                                                <f:converter converterId="VinConverter"/>
+                                            </h:outputText></td>
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+                                <!--未选中“确认”时弹窗-->
+                                <!--<div class="alert2" id="Unbound_acc" style="display: none">
+                                    <div class="a_txt" id="popDiv">
+                                        请您同意并确认服务条款后再进行支付！
+                                    </div>
+                                    <div class="m_btn m_btn1" onclick="exitCheck()">确&#160;&#160;定</div>
+                                </div>
+                                <div id="filer" style="display: none"></div>-->
+                                <!--<div class="alert" id="Unbound_acc" style="display:none">
+                                    <div class="a_txt" id="perro">请您同意并确认服务条款后再进行支付！
+                                        <div class="m_btn m_btn1" id="im_btn"><input type="button" value="重&#160;试"
+                                                                         onclick="exitCheck()" class="csinput"/></div>
+                                    </div>
+                                </div>
+                                    <div id="filer"  style="display:none"></div>-->
+
+                                <c:if test="#{orderBackingBean.wechatPay}">
+                                    <h:form id="wechatForm">
+                                        <div class="Orderbtn Orderbtn1">订购须知<div
+                                                class="btn"></div></div>
+                                        <div class="Pay_infotxt">
+                                            <p>梅赛德斯-奔驰“智能互联服务套餐”和“多媒体服务套餐”均为预付费服务，您须按照本服务计划完成支付后才可以享用相应服务。</p>
+                                            <p>在收到您的付款后，套餐内所包含的服务会在1个工作日内开通，套餐有效期自开通日开始计算。</p>
+                                            <p>除非有关适用的法律法规另有明确规定，本服务计划中任何服务套餐的预付费用均不予退款。</p>
+                                            <p>未经您的同意，任何服务套餐在有效期届满后或其中包含的数据流量用尽后不会自动续订。</p>
+                                            <p>套餐成功订购并开通以后，在梅赛德斯-奔驰智能互联服务激活的情况下并经过有关申请及受理流程，其套餐内服务及数据流量在该套餐有效期内就订购车辆可以一直使用，无论该车辆是否发生了所有权变更或使用权变更。</p>
+                                            <p>如果需要，您可以支付一定的费用将已开通或未开通的智能互联套餐立即升级到更高级别的套餐或者同等级别更长时长的套餐，您可通过车内【i】按钮或<span style="text-decoration: underline;">400-898-0050</span>致电智能互联服务中心了解详情并完成升级。</p>
+                                            <p>您若续订低于当前服务级别的套餐，则只能在当前服务到期后开通使用。</p>
+                                            <p>本服务计划包含的所有服务套餐仅适用本服务计划中列明的上述付费/退款政策，如该政策的有关内容与《梅赛德斯-奔驰 智能互联服务条款及条件》中的规定发生冲突，以本服务计划中列明的上述付费/退款政策为准。</p>
+                                        </div>
+                                        <div class="tiaokuam_bg">
+                                            <div class="btn btn1" onclick="turnCheck()" for="terms"></div>
+                                            同意并确认《服务条款与条件》
+                                            <input type="checkbox" id="terms" name="terms" style="display:none"/>
+                                        </div>
+
+                                        <div class="text"><span onclick="toTermsOfService()">详见“服务条款与条件”</span></div>
+                                        <div class="btn long_btn"> <input type="button"
+                                                                          style="margin-left: 0%;"
+                                                                          id="payButton" value="确认付款(微信支付)" onclick="callpay()"/></div>
+                                        <script type="text/javascript">
+                                            function enablePay(termsObj) {
+                                                var obj = termsObj;
+                                                if(obj.checked) {
+                                                    payButton.disabled = false;
+                                                } else {
+                                                    payButton.disabled = true;
+                                                }
+                                            }
+                                            function turnCheck(){
+                                                $("#terms").get(0).checked=!$("#terms").get(0).checked;
+                                            }
+
+                                            function callpay()
+                                            {
+                                                //alert('确认付款');
+                                                if(!terms.checked) {
+                                                    popCheck();
+                                                } else {;
+                                                    var response = '{<h:outputText value="#{orderBackingBean.wechatPrepayResponse}"/>}';
+                                                    WeixinJSBridge.invoke("getBrandWCPayRequest", JSON.parse(response), function (res) {
+                                                                if (res.err_msg == "get_brand_wcpay_request:ok") {
+                                                                    window.location.href = '<h:outputText value="#{orderBackingBean.wechatNotifyUrl}"/>';
+                                                                } else {
+                                                                    window.location.href = '<h:outputText value="#{orderBackingBean.wechatPayFailedUrl}"/>';
+                                                                }
+                                                            }
+                                                    );
+                                                }
+                                            }
+                                        </script>
+                                    </h:form>
+                                </c:if>
+                                <c:if test="#{orderBackingBean.alipay}">
+                                    <form name="alipayment" action="alipayapi.jsp" method="post" target="_blank">
+                                        <div class="Orderbtn Orderbtn1">订购须知
+                                            <div class="btn"></div></div>
+                                        <div class="Pay_infotxt">
+                                            <p>梅赛德斯-奔驰“智能互联服务套餐”和“多媒体服务套餐”均为预付费服务，您须按照本服务计划完成支付后才可以享用相应服务。</p>
+                                            <p>在收到您的付款后，套餐内所包含的服务会在1个工作日内开通，套餐有效期自开通日开始计算。</p>
+                                            <p>除非有关适用的法律法规另有明确规定，本服务计划中任何服务套餐的预付费用均不予退款。</p>
+                                            <p>未经您的同意，任何服务套餐在有效期届满后或其中包含的数据流量用尽后不会自动续订。</p>
+                                            <p>套餐成功订购并开通以后，在梅赛德斯-奔驰智能互联服务激活的情况下并经过有关申请及受理流程，其套餐内服务及数据流量在该套餐有效期内就订购车辆可以一直使用，无论该车辆是否发生了所有权变更或使用权变更。</p>
+                                            <p>如果需要，您可以支付一定的费用将已开通或未开通的智能互联套餐立即升级到更高级别的套餐或者同等级别更长时长的套餐，您可通过车内【i】按钮或<span style="text-decoration: underline;">400-898-0050</span>致电智能互联服务中心了解详情并完成升级。</p>
+                                            <p>您若续订低于当前服务级别的套餐，则只能在当前服务到期后开通使用。</p>
+                                            <p>本服务计划包含的所有服务套餐仅适用本服务计划中列明的上述付费/退款政策，如该政策的有关内容与《梅赛德斯-奔驰 智能互联服务条款及条件》中的规定发生冲突，以本服务计划中列明的上述付费/退款政策为准。</p>
+                                        </div>
+                                        <div class="tiaokuam_bg">
+                                            <div class="btn btn1" onclick="turnCheck2()" for="terms2"></div>
+                                            同意并确认《服务条款与条件》
+                                            <input type="checkbox" id="terms2" name="terms2" style="display:none"/>
+                                        </div>
+                                        <div class="text"><span onclick="toTermsOfService()">详见“服务条款与条件”</span></div>
+                                        <input style="display: none"  name="WIDout_trade_no" value='#{orderBackingBean.WIDout_trade_no}' />
+                                        <input style="display: none"  name="WIDsubject" value='#{orderBackingBean.WIDsubject}' />
+                                        <input style="display: none"  name="WIDtotal_fee" value='#{orderBackingBean.WIDtotal_fee}' />
+                                        <div class="btn long_btn">
+                                            <input type="submit" style="margin-left: 0%;" value="确认付款(支付宝支付)" onclick="return
+                                         callAlipay();"/>
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            function callAlipay()
+                                            {
+                                                if(!terms2.checked) {
+                                                    popCheck();
+                                                    return false;
+                                                } else {
+                                                    return true;
+                                                }
+                                            }
+                                            function turnCheck2(){
+                                                $("#terms2").get(0).checked=!$("#terms2").get(0).checked;
+                                            }
+                                        </script>
+                                    </form>
+                                </c:if>
+                                <c:if test="#{not orderBackingBean.alipay and not orderBackingBean.wechatPay}">
+                                    <label>请关注微信公众号“梅赛德斯-奔驰 智能互联”或者添加支付宝服务窗“梅赛德斯-奔驰 智能互联”才能完成支付。</label>
+                                </c:if>
+                                <div id="food_">
+                                    <div id="keytxt">网站备案号：京ICP备11011340号</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--    &lt;!&ndash; Add Scroll Bar &ndash;&gt;
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                        </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alert" id="sn_err" style="display:none">
+            <div class="a_txt" id="perro">请您同意并确认服务条款后<br/>再进行支付！</div>
+            <div class="m_btn m_btn1"><input type="button" value="重 &#160; 试"
+                                             onclick="hideLogOff()" class="csinput"/></div>
+        </div>
+        <div id="filer"  style="display:none"></div>
+        <script type="text/javascript">
+            if("1" == broserNum){
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+            }
+
+            function popCheck(){
+                $('#sn_err').show();
+                $('#filer').show();
+            }
+            function hideLogOff() {
+                $('#filer').hide();
+                $('#sn_err').hide();
+            }
+            console.log('#move')
+            /* var swiper = new Swiper('.swiper-container', {
+             scrollbar: '.swiper-scrollbar',
+             direction: 'vertical',
+             slidesPerView: 'auto',
+             mousewheelControl: true,
+             freeMode: true,
+             observer:true,
+             observeParents:true
+             });*/
+        </script>
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

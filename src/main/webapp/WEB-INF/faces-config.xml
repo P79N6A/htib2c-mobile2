@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
-	version="2.1">
+	version="2.2">
 
 	<application>
 		<el-resolver>
@@ -13,5 +13,8 @@
 	<factory>
 		<exception-handler-factory>org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory</exception-handler-factory>
 	</factory>
-
+	<protected-views>
+        <url-pattern>views/accountLogin.xhtml</url-pattern>
+        
+    </protected-views>
 </faces-config>

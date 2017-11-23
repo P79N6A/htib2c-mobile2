@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template.xhtml">
+
+    <ui:define name="header">
+        	套餐升级
+    </ui:define>
+
+    <ui:define name="workspace">
+        <link rel="stylesheet"
+              href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css" />
+        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+        <h:form id="condition" onsubmit="sub();">
+            <script type="text/javascript">
+                if("1" == broserNum){
+                    window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+                }
+                var mobile;
+                var accountNum;
+                var vin;
+                $(document).ready(function(){
+                    mobile = $("input[init='mobile']").val();
+                    var mobileVal = $("input[val='mobile']").val();
+                    if (mobile != mobileVal){
+                        $("input[val='mobile']").val(mobile);
+                    }
+                    if(mobile != null){
+                        if(mobile.length >= 11) {
+                            var fdStart = mobile.indexOf("86");
+                            if(fdStart == 0) mobile = mobile.substring(2);
+                            mobile = mobile.substring(0,3) + "****" + mobile.substring(mobile.length - 4);
+                        }
+                    }
+
+                    accountNum = $("input[init='accountNum']").val();
+
+                    var accountNumVal = $("input[val='accountNum']").val();
+                    if (accountNum != accountNumVal){
+                        $("input[val='accountNum']").val(accountNum);
+                    }
+                    if(accountNum != null){
+                        if(accountNum.length > 5) {
+                            accountNum = accountNum.substring(0,2) + "****" + accountNum.substring(accountNum.length - 2);
+                        }
+                    }
+
+                    vin = $("input[init='vin']").val();
+                    var vinVal = $("input[val='vin']").val();
+                    if (vin != vinVal){
+                        $("input[val='vin']").val(vin);
+                    }
+                    if(vin != null){
+                        if(vin.length >= 7) {
+                            vin = "***********" + vin.substring(vin.length - 6);
+                        }
+                    }
+
+                    $("input[clear='clearAccountNum']").val(accountNum);
+                    $("input[clear='clearTel']").val(mobile);
+                    $("input[clear='clearVin']").val(vin);
+                });
+                function sub(){
+                    var clearAccountNum = $("input[clear='clearAccountNum']").val();
+                    if(clearAccountNum != accountNum){
+                        $("input[val='accountNum']").val(clearAccountNum);
+                    }
+
+                    var clearTel = $("input[clear='clearTel']").val();
+                    if(clearTel != mobile){
+                        $("input[val='mobile']").val(clearTel);
+                    }
+
+                    var clearVin = $("input[clear='clearVin']").val();
+                    if(clearVin != vin){
+                        $("input[val='vin']").val(clearVin);
+                    }
+
+                }
+
+                function clearInput() {
+                    $("input[clear='clearAccountNum']").val("");
+                    $("input[val='accountNum']").val("");
+                    $("input[clear='clearTel']").val("");
+                    $("input[val='mobile']").val("");
+                    $("input[clear='clearVin']").val("");
+                    $("input[val='vin']").val("");
+                }
+            </script>
+            <!--<h:messages infoClass="info" errorClass="error" warnClass="warn" />-->
+            <div class="page">
+                <div id="fri_top">
+                    <img
+                            src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/logo.png" id="logo"/>
+                </div>
+                <div id="fri_mod" style="height: 40%">
+                    <img
+                            src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                    <img
+                            src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line2.jpg" id="linebot"/>
+                    <div style="margin:1px,10px;padding:1px,10px;">
+                        <ul style="left: 30px; top: 26px;">
+                            <li class="">升级规则</li>
+                            <li class="">1.目前仅支持智能互联优享套餐升级到尊享套餐。</li>
+                            <li class="">2.升级后新套餐的结束日期与原套餐一致，保持不变。如果您希望获得更长时间的尊享服务，需要另行购买。</li>
+                            <li class="">3.升级差价：66元*剩余月份（66元为月平均差价）</li>
+                            <li class="">
+							4.剩余月份：（当前产品结束日期-升级日期）/30，向下取整。注意：如果（当前产品结束日期-升级日期）不足30天，您将无法升级，需要另行购买新套餐。
+							</li>
+                        </ul>
+                        
+                    </div>
+
+                    
+                </div>
+                <div id="fri_mod" style="height: 34%">
+                    <img
+                            src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
+                    <img
+                            src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line2.jpg" id="linebot"/>
+                    <ul style="left: 30px; top: 26px;">
+                        <li style="margin-left: 170px;font-size: 30px;height: 50px">升&#160;&#160;&#160;&#160;级&#160;&#160;&#160;&#160;套&#160;&#160;&#160;&#160;餐</li>
+                            <li>新&#160;&#160;套&#160;&#160;餐&#160;&#160;名&#160;&#160;称：<span><h:outputText value="#{orderBackingBean.upgradeResponse.newPackageName}" /></span></li>
+                            <li>升&#160;&#160;级&#160;&#160;差&#160;&#160;价：<span><h:outputText value="#{orderBackingBean.upgradeResponse.upgradeGapPrice}" /></span></li>
+                            <li>到&#160;&#160;期&#160;&#160;时&#160;&#160;间&#160;：<span><h:outputText value="#{orderBackingBean.upgradeResponse.endDate}" /></span></li>                            
+                        </ul>
+                    <div class="empty" id="service" style="top:170px;position: absolute">
+                        <div class="long_btn "  id="long_btn1" ><h:commandButton value="确认升级" action="#{orderBackingBean.toOrderUpgradePayment}" style="margin-left: 0%;"/></div>
+                    </div>
+                </div>
+                <div id="fri_bottom" style="height: 10%">
+
+                    <div id="keytxt">网站备案号：京ICP备11011340号</div>
+                </div>
+            </div>
+            
+            <div id="filer" style="display:none"></div>
+            <h:inputText id="orderUpgradePop"
+                         value="#{orderBackingBean.orderUpgradePop}" style="display: none">
+                <f:passThroughAttribute name="nm3" value="orderUpgradePop" />
+            </h:inputText>
+            <div class="alert" id="sn_err" style="display:none">
+                <div class="a_txt" id="perro">您的密码不正确<br/>
+			                    请重试或致电<span class="span2">400-898-0050</span><br/>
+			                    联系梅赛德斯-奔驰智能互联<br/>
+			                    服务中心寻求帮助
+			    </div>
+                <div class="m_btn m_btn1">
+                	<input type="button" value="重 &#160; 试" onclick="hideLogOff()" class="csinput"/>
+                </div>
+            </div>
+            
+             <script type="text/javascript">
+                var orderUpgradePopVal = $("input[nm3='orderUpgradePop']").val();
+                console.log(orderUpgradePopVal);
+                //                        alert(orderUpgradePopVal);
+                if(orderUpgradePopVal == null || orderUpgradePopVal == ""){
+                    $('#filer').hide();
+                    $('#sn_err').hide();
+                }else{
+                    $('#filer').show();
+                    $('#sn_err').show();
+                    $('#perro').html(orderUpgradePopVal);
+                    /*alert(orderEntryPopVal);*/
+
+                }
+                function hideLogOff() {
+                    $('#filer').hide();
+                    $('#sn_err').hide();
+                }
+                $(function() {
+                    pushHistory();
+                    window.addEventListener("popstate", function(e) {
+                        var ua = navigator.userAgent.toLowerCase();
+                        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+                            WeixinJSBridge.call('closeWindow');
+                        } else if(ua.indexOf("alipay")!=-1){
+                            AlipayJSBridge.call('closeWebview');
+                        }else if(ua.indexOf("baidu")!=-1){
+                            BLightApp.closeWindow();
+                        }
+                        else{
+                            window.close();
+                        }
+                    }, false);
+                    function pushHistory() {
+                        var state = {
+                            title : "title",
+                            url : "#"
+                        };
+                        window.history.pushState(state, "title", "#");
+                    }
+                });
+            </script>
+        </h:form>
+
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>

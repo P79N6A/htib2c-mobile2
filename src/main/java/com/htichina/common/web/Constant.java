@@ -2,6 +2,10 @@ package com.htichina.common.web;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.List;
+
+import com.tencent.common.RandomStringGenerator;
 
 /**
  * Created by yiming on 2014/8/6.
@@ -58,6 +62,8 @@ public class Constant {
     public static final String DB_ORDER_STATUS_COMPLETED = "105008";
     public static final String DB_ORDER_STATUS_PENDING_FINANCE_APPROVAL = "105009";
     public static final String DB_ORDER_STATUS_FINANCE_REJECT = "105010";
+    public static final String DB_ORDER_STATUS_PAYMENT_PAID = "105011";
+    public static final String DB_ORDER_STATUS_PAYMENT_CANCELED = "105003";
 
     public static final String DB_EVENT_ACTIVITY_TYPE_CONFIGMBAPPS = "101013";
     public static final String DB_EVENT_ACTIVITY_TYPE_REQUEST_PAY = "101014";
@@ -156,9 +162,12 @@ public class Constant {
     public static final String ALIPAY_STATE_PROMOTION = "startAlipayPromotionOrder";
     public static final String WECHAT_STATE_LOGIN = "startLogin";
     public static final String WECHAT_STATE_APPLY_INVOICE = "startApplyInvoice";
+    /* 2017-11-10,Tommy Liu, CR82_Part II, 增加 套餐升级 菜单 */
+    public static final String WECHAT_STATE_UPGRADE = "startUpgradeOrder";
 
     public static final String WECHAT_STATE_POC = "startPOC";
     public static final String VIOLATION_INQUIRY = "violationInquiry";
+    public static final String WECHAT_PAYMENT = "wechatPayment";
 
 
     public static final String DB_PACKAGE_CHANNEL_CALL_CENTER = "CC";
@@ -170,7 +179,7 @@ public class Constant {
 //    }
 
 
-//    public static final String WMAN_FHT_TOKEN = "16Ecf15rlg";//测试环境
+    //    public static final String WMAN_FHT_TOKEN = "16Ecf15rlg";//测试环境
     public static final String WMAN_FHT_TOKEN = "V9RDM4AzhK";
     public static final String WMAN_APP_ID = "fht30e981038f141b3c";
     public static final String WMAN_APP_SECRET = "b91826301c5b2d294876cff290f3d71f";
@@ -221,4 +230,20 @@ public class Constant {
     public static final String HTTPS_TCUTYPE="tcuType";
     public static final String HTTPS_TCUID="tcuId";
     public static final String LOCATEPARAMTERKEY = "LOCATEPARAMTERKEY";
+
+    //新增空字符串静态变量
+    public static final String EMPTY_STRING = "";
+
+    public static final String PROMOTION_CATEGERY1="1";
+    public static final String PROMOTION_CATEGERY3="3";
+    
+	public static final List<String> TOKENLIST = Arrays.asList("psqhew8bc4taht6mbr3a", "sits9w2xb0wjilsyhdz1",
+			"dvy7h158r254jcybndiv", "us7rnbkscrhmx0nwypj7", "pd1pn8lt7qrl2n5n43so", "0q5yiq0b6n9lepgbcrar",
+			"ixkh0ugn93ispbdzqokq", "vrl319w6g3mvxdv8uv2i", "xwgdtteki4if47ubts6j", "l1z8jzz19ph3lzfwmptj",
+			"ondn7jiyz8zfzoi4g4dn", "0kn1ii07o12sgypmhbig", "8z7uauk7nb5md1ki143n", "reuduzkqf2dlamqs8e7i",
+			"v3tds6r8bqgn4vfa31eq", "9k8p60n2p50fs0i0ftua", "77c9lf5p8mkbdec8eceq", "c7fhudvebltwm6xp9ho3",
+			"pyrgds12ixrgxx0a1k6i", "5joa07tue9tggn0jr10w");
+	
+	
+	public static final String CSRFTOKEN = "csrftoken";
 }
