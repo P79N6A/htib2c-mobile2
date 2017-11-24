@@ -329,6 +329,16 @@ public class PaymentServiceClient {
     flag =  service.updateTransaction(orderNum,openId);
     return flag;
   }
+
+  public List<String>  getOpenIdByAccountNum(String accountNum){
+    List<String> openIds = null;
+    try {
+      openIds = service.getOpenIdByAccountNum(accountNum);
+    } catch (Exception_Exception e) {
+      e.printStackTrace();
+    }
+    return openIds;
+  }
 }
 
 
