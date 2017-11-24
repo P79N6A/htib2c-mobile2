@@ -113,7 +113,7 @@ public class TokenCsrfFilter implements Filter {
 		  
 		   uri.contains("loginAuth.html")||
 		   uri.contains("alipayCallback.do")||
-		   
+		   uri.contains("alipayapi.jsp")||
 		   
 		   uri.contains(".css") || 
 		   uri.contains(".js") || 
