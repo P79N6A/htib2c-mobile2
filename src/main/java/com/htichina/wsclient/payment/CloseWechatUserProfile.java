@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for closeWechatUserProfile complex type.
+ * <p>closeWechatUserProfile complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="closeWechatUserProfile">
@@ -43,7 +43,7 @@ public class CloseWechatUserProfile {
     protected String userInfo;
 
     /**
-     * Gets the value of the accountNum property.
+     * 获取accountNum属性的值。
      * 
      * @return
      *     possible object is
@@ -55,7 +55,7 @@ public class CloseWechatUserProfile {
     }
 
     /**
-     * Sets the value of the accountNum property.
+     * 设置accountNum属性的值。
      * 
      * @param value
      *     allowed object is
@@ -67,7 +67,7 @@ public class CloseWechatUserProfile {
     }
 
     /**
-     * Gets the value of the pin property.
+     * 获取pin属性的值。
      * 
      * @return
      *     possible object is
@@ -79,7 +79,7 @@ public class CloseWechatUserProfile {
     }
 
     /**
-     * Sets the value of the pin property.
+     * 设置pin属性的值。
      * 
      * @param value
      *     allowed object is
@@ -91,7 +91,7 @@ public class CloseWechatUserProfile {
     }
 
     /**
-     * Gets the value of the openId property.
+     * 获取openId属性的值。
      * 
      * @return
      *     possible object is
@@ -103,7 +103,7 @@ public class CloseWechatUserProfile {
     }
 
     /**
-     * Sets the value of the openId property.
+     * 设置openId属性的值。
      * 
      * @param value
      *     allowed object is
@@ -115,7 +115,7 @@ public class CloseWechatUserProfile {
     }
 
     /**
-     * Gets the value of the userInfo property.
+     * 获取userInfo属性的值。
      * 
      * @return
      *     possible object is
@@ -127,7 +127,7 @@ public class CloseWechatUserProfile {
     }
 
     /**
-     * Sets the value of the userInfo property.
+     * 设置userInfo属性的值。
      * 
      * @param value
      *     allowed object is

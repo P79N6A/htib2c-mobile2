@@ -52,7 +52,7 @@
                                             </ul>
                                         </div>
                                        
-                                        <h3>我的套餐</h3>
+                                        <h3>套餐升级</h3>
                                         <c:if test="#{loginBackingBean.accountInfo.currentCanBeUpgratedPackages.size() == 0 || loginBackingBean.accountInfo.currentCanBeUpgratedPackages == null}">
                                             <div class="my_list" style="height:222px;padding-left:170px;padding-top: 82px;">
                                                 暂无可以升级的套餐
@@ -73,9 +73,9 @@
                                                             <f:convertDateTime pattern="yyyy-MM-dd"/>
                                                         </h:outputText></span></li>
                                                         <c:if test="#{currentPkg.canBeUpgrated}">
-	                                                        <li><div class="s_btn s_btn1">
+	                                                        <li><div class="s_btn s_btn1" style="margin-left:60px">
 	                                                        	<h:commandButton
-                                                				value="升级" action="#{orderBackingBean.toOrderUpgradeEntry(currentPkg,loginBackingBean.accountInfo,loginBackingBean.openId,2)}" style="color:white;background:none;font-size:26px;height:60px;line-height: 60px;margin:0;padding:0;text-align: center;border:none;"/>
+                                                				value="升级" action="#{orderBackingBean.toOrderUpgradeEntry(currentPkg,loginBackingBean.accountInfo,loginBackingBean.openId,2)}" style="color:white;background:none;font-size:26px;height:60px;line-height: 60px;margin:0;padding:0;text-align: center;border:none;width:100%"/>
                                                 				</div>
 	                                                        </li>
                                                         </c:if>

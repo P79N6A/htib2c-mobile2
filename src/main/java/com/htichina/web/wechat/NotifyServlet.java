@@ -6,21 +6,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
-import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.lang.Exception;
+import java.util.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.common.base.Strings;
 import com.htichina.common.web.ConfigureInfo;
 import com.htichina.common.web.Constant;
 import com.htichina.web.PaymentServiceClient;
 import com.htichina.web.common.ViewPage;
-import com.htichina.wsclient.payment.PaymentResponse;
-import com.htichina.wsclient.payment.PaymentResultMessage;
-import com.htichina.wsclient.payment.QueryChildOrdersByParentOrderNumResponse;
+import com.htichina.wsclient.payment.*;
 import com.tencent.common.RequestHandler;
 
 import com.tencent.service.HttpsURLRequest;
@@ -63,7 +62,6 @@ public class NotifyServlet extends HttpServlet {
 	private static Logger logger = Logger.getLogger(NotifyServlet.class.getName());
 
 	String order = "";
-	String otherOrder = "";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -103,19 +101,14 @@ public class NotifyServlet extends HttpServlet {
 				wpr.setSign(m.get("sign").toString());
 				wpr.setOutTradeNo(m.get("out_trade_no").toString());
 				m.put("sign", "");
+				PaymentServiceClient client = PaymentServiceClient.getInstance();
 				String neworder = "";
-				String otherNeworder = "";
-				if(wpr.getOutTradeNo().length()>19){
-					neworder = wpr.getOutTradeNo().substring(0, 13)+"1";
-					otherNeworder = wpr.getOutTradeNo().substring(0, 13)+"2";
-				}else{
+				logger.info("wpr.getOutTradeNo()=============================="+wpr.getOutTradeNo());
+				if(wpr.getOutTradeNo().length()>13){
 					neworder = wpr.getOutTradeNo().substring(0, 13);
 				}
-//			System.out.println(neworder);
-				PaymentServiceClient client = PaymentServiceClient.getInstance();
 				logger.info("order======================>"+order);
 				logger.info("neworder======================>"+neworder);
-				logger.info("otherOrder======================================>"+otherOrder);
 				logger.info("client.CheckTransaction(neworder)======================================>"+client.CheckTransaction(neworder));
 				if (!order.equals(neworder)&&(!client.CheckTransaction(neworder))) {
 
@@ -160,7 +153,6 @@ public class NotifyServlet extends HttpServlet {
 						/*2017-10-25;Alex:优化代码，线程同步;CR-代码规范*/
 						synchronized (this) {
 							order = neworder;
-							otherOrder = otherNeworder;
 						}
 //				System.out.println(order);
 						logger.info(ESAPI.encoder().encodeForHTML(order));
@@ -169,69 +161,37 @@ public class NotifyServlet extends HttpServlet {
 //						this.sendMessage(wpr.getOutTradeNo().substring(13), wpr.getOpenid());
 
 
-						String orderNum = "";
+						String orderNum = wpr.getOutTradeNo().substring(13, 19);
 						String body = "";
-						if(wpr.getOutTradeNo().length()>19){
-							orderNum = wpr.getOutTradeNo().substring(13,19)+"和"+wpr.getOutTradeNo().substring(19,25);
-							List<QueryChildOrdersByParentOrderNumResponse> list1 = client.queryChildOrdersByParentOrderNum(wpr.getOutTradeNo().substring(13,19));
-							List<QueryChildOrdersByParentOrderNumResponse> list2 = client.queryChildOrdersByParentOrderNum(wpr.getOutTradeNo().substring(19,25));
-							String baseName = "";
-							String wifiName = "";
+						List<QueryChildOrdersByParentOrderNumResponse> list1 = client.queryChildOrdersByParentOrderNum(orderNum);
+						if(wpr.getOutTradeNo().length()>13){
 							for(QueryChildOrdersByParentOrderNumResponse queryChildOrdersByParentOrderNumResponse:list1){
-								if(queryChildOrdersByParentOrderNumResponse.getPrice()!=0){
-									baseName = queryChildOrdersByParentOrderNumResponse.getMarketName();
+								if(Strings.isNullOrEmpty(body)) {
+									body += queryChildOrdersByParentOrderNumResponse.getShortMarketName();
+								} else {
+									body += "和" + queryChildOrdersByParentOrderNumResponse.getShortMarketName();
 								}
 							}
-							body = baseName+"和"+list2.get(0).getMarketName();
-						}else {
-							orderNum = wpr.getOutTradeNo().substring(13);
-							List<QueryChildOrdersByParentOrderNumResponse> list1 = client.queryChildOrdersByParentOrderNum(wpr.getOutTradeNo().substring(13));
-
-							body = list1.get(0).getMarketName();
 						}
 
 						logger.info(" wpr.getOpenid()-------------------"+ wpr.getOpenid());
 						this.sendMessage(body,orderNum, wpr.getOpenid());
+						//更新
+						client.updatewechatMessage(wpr.getOpenid(),wpr.getOutTradeNo().substring(13, 19));
+
 						PaymentResponse paymentResponse = new PaymentResponse();
-						if(wpr.getOutTradeNo().length()>19) {
-							PaymentResultMessage paymentResultMessage1 = new PaymentResultMessage();
-							paymentResultMessage1.setPaymentTransNo(order);
-							String respCode1 = "-1";
+						PaymentResultMessage paymentResultMessage1 = new PaymentResultMessage();
+						paymentResultMessage1.setPaymentTransNo(order);
+						String respCode = "-1";
 //				System.out.println("wpr.getReturnCode()=" + wpr.getReturnCode());
-							if (wpr.getReturnCode().equalsIgnoreCase("SUCCESS")) {
-								respCode1 = "00";
-							}
-							paymentResultMessage1.setRespCode(respCode1);
-							paymentResultMessage1.setRespMsg(wpr.getResultCode());
-							paymentResultMessage1.setTransMsg(notifyXml);
-
-							paymentResponse = client.paymentHandlerService(order, paymentResultMessage1);
-							PaymentResultMessage paymentResultMessage2 = new PaymentResultMessage();
-							paymentResultMessage2.setPaymentTransNo(otherOrder);
-							String respCode2 = "-1";
-//				System.out.println("wpr.getReturnCode()=" + wpr.getReturnCode());
-							if (wpr.getReturnCode().equalsIgnoreCase("SUCCESS")) {
-								respCode2 = "00";
-							}
-							paymentResultMessage2.setRespCode(respCode2);
-							paymentResultMessage2.setRespMsg(wpr.getResultCode());
-							paymentResultMessage2.setTransMsg(notifyXml);
-
-							paymentResponse = client.paymentHandlerService(otherOrder, paymentResultMessage1);
-						}else{
-							PaymentResultMessage paymentResultMessage1 = new PaymentResultMessage();
-							paymentResultMessage1.setPaymentTransNo(order);
-							String respCode = "-1";
-//				System.out.println("wpr.getReturnCode()=" + wpr.getReturnCode());
-							if (wpr.getReturnCode().equalsIgnoreCase("SUCCESS")) {
-								respCode = "00";
-							}
-							paymentResultMessage1.setRespCode(respCode);
-							paymentResultMessage1.setRespMsg(wpr.getResultCode());
-							paymentResultMessage1.setTransMsg(notifyXml);
-
-							paymentResponse = client.paymentHandlerService(order, paymentResultMessage1);
+						if (wpr.getReturnCode().equalsIgnoreCase("SUCCESS")) {
+							respCode = "00";
 						}
+						paymentResultMessage1.setRespCode(respCode);
+						paymentResultMessage1.setRespMsg(wpr.getResultCode());
+						paymentResultMessage1.setTransMsg(notifyXml);
+
+						paymentResponse = client.paymentHandlerService(order, paymentResultMessage1);
 						if(paymentResponse.getRespCode().equals("00")) {
 							// todo: show message the data plan was applied.
 //					System.out.println("the data plan was applied");

@@ -129,9 +129,9 @@
                             src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line2.jpg" id="linebot"/>
                     <ul style="left: 30px; top: 26px;">
                         <li style="margin-left: 170px;font-size: 30px;height: 50px">升&#160;&#160;&#160;&#160;级&#160;&#160;&#160;&#160;套&#160;&#160;&#160;&#160;餐</li>
-                            <li>新&#160;&#160;套&#160;&#160;餐&#160;&#160;名&#160;&#160;称：<span><h:outputText value="#{orderBackingBean.upgradeResponse.newPackageName}" /></span></li>
-                            <li>升&#160;&#160;级&#160;&#160;差&#160;&#160;价：<span><h:outputText value="#{orderBackingBean.upgradeResponse.upgradeGapPrice}" /></span></li>
-                            <li>到&#160;&#160;期&#160;&#160;时&#160;&#160;间&#160;：<span><h:outputText value="#{orderBackingBean.upgradeResponse.endDate}" /></span></li>                            
+                            <li>新&#160;&#160;套&#160;&#160;餐&#160;&#160;名&#160;&#160;称：<span><h:outputText value="#{orderBackingBean.upgradeRequest.newPackageName}" /></span></li>
+                            <li>升&#160;&#160;级&#160;&#160;差&#160;&#160;价：<span><h:outputText value="#{orderBackingBean.upgradeRequest.upgradeGapPrice}" /></span></li>
+                            <li>到&#160;&#160;期&#160;&#160;时&#160;&#160;间&#160;：<span><h:outputText value="#{orderBackingBean.upgradeRequest.endDate}" /></span></li>                            
                         </ul>
                     <div class="empty" id="service" style="top:170px;position: absolute">
                         <div class="long_btn "  id="long_btn1" ><h:commandButton value="确认升级" action="#{orderBackingBean.toOrderUpgradePayment}" style="margin-left: 0%;"/></div>
@@ -142,17 +142,25 @@
                     <div id="keytxt">网站备案号：京ICP备11011340号</div>
                 </div>
             </div>
+            
+            <div id="filer" style="display:none"></div>
+            <h:inputText id="orderUpgradePop"
+                         value="#{orderBackingBean.orderUpgradePop}" style="display: none">
+                <f:passThroughAttribute name="nm3" value="orderUpgradePop" />
+            </h:inputText>
             <div class="alert" id="sn_err" style="display:none">
                 <div class="a_txt" id="perro">您的密码不正确<br/>
-                    请重试或致电<span class="span2">400-898-0050</span><br/>
-                    联系梅赛德斯-奔驰智能互联<br/>
-                    服务中心寻求帮助</div>
-                <div class="m_btn m_btn1"><input type="button" value="重 &#160; 试"
-                                                 onclick="hideLogOff()" class="csinput"/></div>
+			                    请重试或致电<span class="span2">400-898-0050</span><br/>
+			                    联系梅赛德斯-奔驰智能互联<br/>
+			                    服务中心寻求帮助
+			    </div>
+                <div class="m_btn m_btn1">
+                	<input type="button" value="重 &#160; 试" onclick="hideLogOff()" class="csinput"/>
+                </div>
             </div>
-            <div id="filer"  style="display:none"></div>
+            
              <script type="text/javascript">
-                var orderUpgradePopVal = $("input[nm2='orderUpgradePop']").val();
+                var orderUpgradePopVal = $("input[nm3='orderUpgradePop']").val();
                 console.log(orderUpgradePopVal);
                 //                        alert(orderUpgradePopVal);
                 if(orderUpgradePopVal == null || orderUpgradePopVal == ""){

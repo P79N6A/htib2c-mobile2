@@ -122,9 +122,9 @@ public class PaymentServiceClient {
       return false;
     }
   }
-  public List<Transaction> checkTransactionPaied(String orderNum) {
+  public List<Transaction> getTransactionByOrderNum(String orderNum) {
     try {
-      return service.checkTransactionPaied(orderNum);
+      return service.getTransactionByOrderNum(orderNum);
     }
     catch (Exception exception) {
       exception.printStackTrace();
@@ -306,6 +306,28 @@ public class PaymentServiceClient {
 
   public List<ServiceOrder> checkOrderPaied(String transNo){
     return service.checkOrderPaied(transNo);
+  }
+
+  public boolean updatewechatMessage(String openid,String tranNo){
+    boolean flag = false;
+    try {
+      flag =  service.updateWechatMessageHistory(openid,tranNo);
+    } catch (Exception_Exception e) {
+      e.printStackTrace();
+    }
+    return flag;
+  }
+
+  public boolean updateOrderStatus(String orderNum,String openid,String tranNo){
+    boolean flag = false;
+    flag =  service.updateOrderStatus(orderNum,tranNo,openid);
+    return flag;
+  }
+
+  public boolean updateTransaction(String orderNum,String openId){
+    boolean flag = false;
+    flag =  service.updateTransaction(orderNum,openId);
+    return flag;
   }
 }
 

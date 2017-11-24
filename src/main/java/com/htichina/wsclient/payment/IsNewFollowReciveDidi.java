@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for isNewFollowReciveDidi complex type.
+ * <p>isNewFollowReciveDidi complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="isNewFollowReciveDidi">
@@ -34,7 +34,7 @@ public class IsNewFollowReciveDidi {
     protected String cellphone;
 
     /**
-     * Gets the value of the cellphone property.
+     * 获取cellphone属性的值。
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class IsNewFollowReciveDidi {
     }
 
     /**
-     * Sets the value of the cellphone property.
+     * 设置cellphone属性的值。
      * 
      * @param value
      *     allowed object is
