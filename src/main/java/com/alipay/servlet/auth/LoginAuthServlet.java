@@ -15,6 +15,8 @@ import com.alipay.factory.AlipayAPIClientFactory;
 import com.alipay.util.RequestUtil;
 import com.htichina.common.web.Constant;
 import com.htichina.web.common.ViewPage;
+import com.tencent.common.RandomStringGenerator;
+
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
 
@@ -22,6 +24,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.util.Map;
 
@@ -52,6 +56,8 @@ public class LoginAuthServlet extends HttpServlet {
         String authCode = params.get("auth_code");
 
         String state = params.get("state");
+        HttpSession session =request.getSession();
+        session.setAttribute(Constant.CSRFTOKEN, RandomStringGenerator.getCSRFToken());
 
         try {
             //3. 利用authCode获得authToken
