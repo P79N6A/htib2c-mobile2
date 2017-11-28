@@ -53,14 +53,14 @@
                                         </div>
                                        
                                         <h3>套餐升级</h3>
-                                        <c:if test="#{loginBackingBean.accountInfo.currentCanBeUpgratedPackages.size() == 0 || loginBackingBean.accountInfo.currentCanBeUpgratedPackages == null}">
+                                        <c:if test="#{loginBackingBean.accountInfo.currentCanBeUpgratedPackages == null || loginBackingBean.accountInfo.currentCanBeUpgratedPackages.size() == 0}">
                                             <div class="my_list" style="height:222px;padding-left:170px;padding-top: 82px;">
                                                 暂无可以升级的套餐
 
                                             </div>
                                         </c:if>
-                                        <c:if test="#{loginBackingBean.accountInfo.currentCanBeUpgratedPackages.size() != 0}">
-                                            <c:forEach items="#{loginBackingBean.accountInfo.currentCanBeUpgratedPackages}" var="currentPkg" varStatus="loop">
+                                        <c:if test="#{loginBackingBean.accountInfo.currentPackages!=null && loginBackingBean.accountInfo.currentPackages.size() != 0}">
+                                            <c:forEach items="#{loginBackingBean.accountInfo.currentPackages}" var="currentPkg" varStatus="loop">
                                                 <div class="my_list">
                                                     <ul>
                                                         <li>套&#160;&#160;餐&#160;&#160;名&#160;&#160;称&#160;：<span><h:outputText value="#{currentPkg.packageName}">
