@@ -1613,11 +1613,19 @@ public class OrderBackingBean implements Serializable {
 
         //订单创建完毕
         if(orders!=null&&orders.size()>0){
-            if(orders.size()>1){
-                orderDescs = orders.get(0).getMarketName()+"和"+orders.get(1).getMarketName();
-            }else{
-                orderDescs = orders.get(0).getMarketName();
+            String packageName1 = "";
+            String packageName2 = "";
+            for(QueryChildOrdersByParentOrderNumResponse serviceOrderForQuery:orders){
+                if(serviceOrderForQuery.getPrice()>0){
+                    if("".equals(packageName1)) {
+                        packageName1 = serviceOrderForQuery.getMarketName();
+                    }else{
+                        packageName2 = "和"+serviceOrderForQuery.getMarketName();
+                    }
+                }
             }
+
+            orderDescs = packageName1+packageName2;
             List<Transaction> transactionList = client.getTransactionByOrderNum(parentOrderNum);
             orderIds = transactionList.get(0).getOrderno()+parentOrderNum;
 
