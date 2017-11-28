@@ -45,9 +45,11 @@ $(function () {
         $(this).removeClass('textlight')
         $(this).addClass('textshadow')
     })
+    var clickNum=0;
     $('.numbtn').each(function(i,divs){
         $(divs).bind('touchstart',function(){
             $(divs).css('background','url("../resources/images/img/keybg2.png") repeat-x')
+            clickNum++;
             var thisval=$(this).attr('datanum')
             var thisfunction=$(this).attr('data')
             var thePw=$('#keytc').html();
@@ -57,9 +59,10 @@ $(function () {
                     thetxt+=thisval
                     thePw += "*"
                 }
+                
             }else
             if(thisfunction=='over'){
-                //alert(thetxt)
+            	
             }else
             if(thisfunction=='backspace'){
                 thetxt=thetxt.substr(0,thetxt.length-1);
@@ -67,6 +70,9 @@ $(function () {
             }
             $('#keytc').html(thePw);
             $('#keyPW').html(thetxt);
+            if(thetxt.length==4){
+            	checkPin();
+            }
         })
         $(divs).bind('touchend',function(){
             $(divs).css('background','url(" ../resources/images/img/keybg.png") repeat-x')

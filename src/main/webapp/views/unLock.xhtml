@@ -104,20 +104,32 @@
             function unLockHelp(){
                 window.location.href="#{facesContext.externalContext.request.contextPath}/views/unlock_help.xhtml";
             }
-            /*$(function() {
-                pushHistory();
-                window.addEventListener("popstate", function(e) {
-                    //此处已经捕获返回事件，可以写自己的跳转代码
-                    location.href = "#{facesContext.externalContext.request.contextPath}/views/key.xhtml";
-                }, false);
-                function pushHistory() {
-                    var state = {
-                        title : "title",
-                        url : "#"
-                    };
-                    window.history.pushState(state, "title", "#");
-                }
-            });*/
+            $(function() {
+//                 pushHistory();
+//                 window.addEventListener("popstate", function(e) {
+//                     //此处已经捕获返回事件，可以写自己的跳转代码
+//                     location.href = "#{facesContext.externalContext.request.contextPath}/views/key.xhtml";
+//                 }, false);
+//                 function pushHistory() {
+//                     var state = {
+//                         title : "title",
+//                         url : "#"
+//                     };
+//                     window.history.pushState(state, "title", "#");
+//                 }
+//                 document.getElementById("keytc").addEventListener("oninput", function(e){
+//                     var value = e.target.value;
+//                     alert(value)
+//                     console.info(value)
+//                 });
+//             	document.getElementById("keytc").addEventListener("oninput", function(e){
+//                  var value = e.target.value;
+//                  alert(value)
+//                  console.info(value)
+//              });
+            });
+            
+        
         </script>
         <div class="page">
             <div id="fri_top">
@@ -155,7 +167,7 @@
                         </li>
                         <li >
                             <div class="numbtn numbtn213 r3 h90 ">
-                                <div class="finish" onclick="checkPin();">完成</div>
+<!--                                 <div class="finish" onclick="checkPin();">完成</div> -->
                                 <h:form  id="condition" style="display: none">
                                     <h:inputHidden id="pin" value="#{unLockBean.pin}"
                                                    style="display: none">
