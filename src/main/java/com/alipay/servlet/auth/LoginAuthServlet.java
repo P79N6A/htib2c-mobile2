@@ -4,6 +4,18 @@
  */
 package com.alipay.servlet.auth;
 
+import java.io.IOException;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
+import org.owasp.esapi.ESAPI;
+
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.request.AlipaySystemOauthTokenRequest;
@@ -16,18 +28,6 @@ import com.alipay.util.RequestUtil;
 import com.htichina.common.web.Constant;
 import com.htichina.web.common.ViewPage;
 import com.tencent.common.RandomStringGenerator;
-
-import org.apache.log4j.Logger;
-import org.owasp.esapi.ESAPI;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import java.io.IOException;
-import java.util.Map;
 
 /**
  * 用户信息共享（获取用户信息）
@@ -108,6 +108,11 @@ public class LoginAuthServlet extends HttpServlet {
                 }  else if(state.equalsIgnoreCase(Constant.WECHAT_STATE_APPLY_INVOICE)){
                     request.getRequestDispatcher(ViewPage.LINK2ApplyInvoice).forward(request, response);
                 }
+                /* 2017-11-10,Tommy Liu, CR82_Part II, 增加 套餐升级 菜单 */
+                else if(state.equalsIgnoreCase(Constant.WECHAT_STATE_UPGRADE)){
+        			logger.debug("wechatServlet start startUpgradeOrder");
+        			request.getRequestDispatcher(ViewPage.LINK2MyAccount2).forward(request, response);
+        		}
 
 
             } else {

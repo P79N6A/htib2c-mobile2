@@ -16,6 +16,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import com.htichina.wsclient.payment.*;
+
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
 import org.springframework.context.annotation.Scope;
@@ -61,6 +62,7 @@ public class OrderBackingBean implements Serializable {
     /* 2017-11-10,Tommy Liu, CR82_Part II, 套餐升级的请求和响应 */
     private PackageUpgradeRequest upgradeRequest;
     private PackageUpgradeResponse upgradeResponse;
+    private String toInvoiceEntry = ViewPage.LINK2ApplyInvoice;
 
     // select base package
 //    private String selectBasePackageShortName;
@@ -866,8 +868,16 @@ public class OrderBackingBean implements Serializable {
     public void setTermsAgreed(boolean termsAgreed) {
         this.termsAgreed = termsAgreed;
     }
+    
+    public String getToInvoiceEntry() {
+		return toInvoiceEntry;
+	}
 
-    public ProductInfo getSelectedBaseProduct() {
+	public void setToInvoiceEntry(String toInvoiceEntry) {
+		this.toInvoiceEntry = toInvoiceEntry;
+	}
+
+	public ProductInfo getSelectedBaseProduct() {
         String state = (String) FacesUtils.getManagedBeanInSession(Constant.WECHAT_STATE);
         if(Constant.WECHAT_STATE_PROMOTION.equalsIgnoreCase(state)) {
             productInfo = client.getPromotionProdInfo();

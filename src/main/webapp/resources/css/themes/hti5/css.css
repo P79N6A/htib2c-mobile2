@@ -10,7 +10,7 @@ html,body,p,ul,h1,h2,h3,h4{ margin: 0; padding: 0; list-style: none;}
 #filer{ width: 100%; height: 100%; position: absolute; top:0;left:0;z-index: 50; background: rgba(0,0,0,0.9);  }
 
 
-/*µ¯¿ò*/
+/*ï¿½ï¿½ï¿½ï¿½*/
 #Unbound .a_txt{ box-sizing: border-box; padding: 0 60px; padding-top: 67px; font-size: 26px; line-height: 36px; color: #fff; text-align: center; padding-bottom: 40px;   }
 #juli{ background: url("../../../images/img/tc_bg2.png"); background-size: 100% 100%;}
 #juli .a_txt{ box-sizing: border-box; padding: 0 60px; padding-top: 67px; font-size: 26px; line-height: 36px; color: #fff; text-align: center; padding-bottom: 40px;   }
@@ -75,7 +75,7 @@ html,body,p,ul,h1,h2,h3,h4{ margin: 0; padding: 0; list-style: none;}
 #tellme{ font-size: 18px;}
 #tellme span{ text-decoration: underline}
 
-/*Ëø*/
+/*ï¿½ï¿½*/
 #keybot{ height: 84%; background: url("../../../images/img/jp_bg.jpg"); background-size: 100% 100%; position: relative}
 #keybox{ width: 100%; background: url("../../../images/img/jp_bg2.jpg"); background-size: 100% 100%; position: absolute; bottom: 0; height: 62% }
 #censel{ width: 100%;  height:64px; background: url("../../../images/img/keybg.png") repeat-x;}
@@ -123,7 +123,7 @@ html,body,p,ul,h1,h2,h3,h4{ margin: 0; padding: 0; list-style: none;}
 }
 
 
-/*Ô¿³×*/
+/*Ô¿ï¿½ï¿½*/
 #key_{  height: 84%; background: url("../../../images/img/jp_bg3.jpg"); background-size: 100% 100%; position: relative; overflow: hidden;}
 #key_bg{ width: 347px; height: 674px; position: absolute; left: 50%; margin-left: -175px; top: 50%; margin-top:-365px; background: url("../../../images/img/key.png"); transform: scale(0.8) }
 #keytxt{ position:absolute; left:75px; bottom: 3rem; color: #fff; font-size:1.1rem;}
@@ -144,7 +144,7 @@ html,body,p,ul,h1,h2,h3,h4{ margin: 0; padding: 0; list-style: none;}
 #right_dr{ position: absolute; left: 19px; top: 13px;}
 
 
-/*ÎÒµÄÕË»§*/
+/*ï¿½Òµï¿½ï¿½Ë»ï¿½*/
 #mybox{width: 100%; height:84%;position: relative; overflow: hidden; background: #000}
 .swiper-container {width: 100%;height:100%;}
 .swiper-slide {font-size: 18px;-webkit-box-sizing: border-box;box-sizing: border-box;min-height: 100%;}
@@ -152,6 +152,7 @@ html,body,p,ul,h1,h2,h3,h4{ margin: 0; padding: 0; list-style: none;}
 #txtlist>div{ width: 100%; height: auto; overflow: auto;background:  url("../../../images/img/mybg2.jpg") center bottom  no-repeat; }
 #txtlist h3{ text-align: center; color: #fff; font-style: normal; font-size: 30px; margin-top: 50px; height: 65px; background: url("../../../images/img/my_h3bg.png") center bottom no-repeat; line-height: 65px;}
 .my_list{ width: 520px; height: auto; overflow: auto; zoom: 1; background: url("../../../images/img/my_listbg.png") repeat-x; border: 2px solid rgba(255,255,255,0.45);border-top: none; margin: auto; color: #fff; font-size: 22px; line-height: 28px; margin-bottom: 20px; box-sizing: border-box; padding: 15px 0; padding-left: 100px;}
+.my_list_notice{ width: 520px; height: auto; overflow: auto; zoom: 1; border: 0px solid rgba(255,255,255,0.45);border-top: none; margin: auto; color: #f52447; font-size: 22px; line-height: 28px; margin-bottom: 20px; box-sizing: border-box; padding: 15px 0; padding-left: 100px;}
 #food{ width: 100%; position: relative; margin-top: 20px; height: 282px;}
 #food .s_btn{ position: absolute; left: 50%; top: 70px; width: 237px;}
 #food .s_btn input{outline: none}

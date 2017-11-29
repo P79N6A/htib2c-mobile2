@@ -61,6 +61,8 @@ public class LoginBackingBean implements Serializable {
     private String toInvoiceEntry = ViewPage.LINK2ApplyInvoice;
 
     private String repMessage;
+    /* 2017-11-28,Tommy Liu, CR82_Part II, 套餐升级的信息提示 */
+    private String myAccountPop;
 
     private String aToken;
 
@@ -128,6 +130,10 @@ public class LoginBackingBean implements Serializable {
             /*logger.debug("fullName="+accountInfo.getFullName());*/
             repMessage = null;
             logger.info("Login bakcing targetPage ==>"+ESAPI.encoder().encodeForHTML(targetPage));
+            if(ViewPage.LINK2MyAccount2.equals(targetPage)
+            		&& (accountInfo.getCurrentCanBeUpgratedPackages()==null || accountInfo.getCurrentCanBeUpgratedPackages().size()==0) ){
+            	myAccountPop = "暂无可以升级的套餐";
+            }
             return targetPage;
 
         } else {
@@ -142,6 +148,7 @@ public class LoginBackingBean implements Serializable {
     private void dataReset() {
         logger.debug("in dataReset");
         repMessage = null;
+        myAccountPop = null;
         accountNum = null;
         pin = null;
         openId = null;
@@ -510,8 +517,18 @@ public class LoginBackingBean implements Serializable {
         repMessage = null;
         return temp;
     }
-
-    public String getNewFollowFlag() {
+    
+    public String getMyAccountPop() {
+    	String temp = myAccountPop;
+    	myAccountPop = null;
+        return temp;
+	}
+    
+	public void setMyAccountPop(String myAccountPop) {
+		this.myAccountPop = myAccountPop;
+	}
+	
+	public String getNewFollowFlag() {
         String temp = newFollowFlag;
         newFollowFlag = null;
         return temp;

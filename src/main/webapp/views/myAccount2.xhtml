@@ -53,13 +53,12 @@
                                         </div>
                                        
                                         <h3>套餐升级</h3>
-                                        <c:if test="#{loginBackingBean.accountInfo.currentCanBeUpgratedPackages == null || loginBackingBean.accountInfo.currentCanBeUpgratedPackages.size() == 0}">
-                                            <div class="my_list" style="height:222px;padding-left:170px;padding-top: 82px;">
-                                                暂无可以升级的套餐
-
+                                        <c:if test="#{empty loginBackingBean.accountInfo.currentCanBeUpgratedPackages}">
+                                            <div class="my_list_notice" style="border:none;height:30px;padding-left:170px;padding-top: 0px;font-color:red">
+                                                	暂无可以升级的套餐
                                             </div>
                                         </c:if>
-                                        <c:if test="#{loginBackingBean.accountInfo.currentPackages!=null && loginBackingBean.accountInfo.currentPackages.size() != 0}">
+                                        <c:if test="#{loginBackingBean.accountInfo.currentPackages.size() != 0}">
                                             <c:forEach items="#{loginBackingBean.accountInfo.currentPackages}" var="currentPkg" varStatus="loop">
                                                 <div class="my_list">
                                                     <ul>
@@ -124,10 +123,21 @@
                                                     onclick="hideExit()" style="color:white;background:none;font-size:26px;height:60px;line-height: 60px;margin:0;padding:0;text-align: center;border:none;"/></div>
             </div>
             <div id="filer" style="display:none"></div>
-            <h:inputText id="myAccountPop"
-                         value="#{orderBackingBean.myAccountPop}" style="display: none">
-                <f:passThroughAttribute name="nm3" value="myAccountPop" />
+            <h:inputText id="myAccountPop1"
+                         value="#{loginBackingBean.myAccountPop}" style="display: none">
+                <f:passThroughAttribute name="nm1" value="myAccountPop1" />
             </h:inputText>
+            <h:inputText id="myAccountPop2"
+                         value="#{orderBackingBean.myAccountPop}" style="display: none">
+                <f:passThroughAttribute name="nm2" value="myAccountPop2" />
+            </h:inputText>
+            <c:if test="#{empty loginBackingBean.accountInfo.currentCanBeUpgratedPackages}">
+	            <h:inputText id="myAccountPop3"
+	                     value="暂无可以升级的套餐" style="display: none">
+	            	<f:passThroughAttribute name="nm3" value="myAccountPop3" />
+	        	</h:inputText>
+        	</c:if>
+            
             <div class="alert" id="sn_err" style="display:none">
                 <div class="a_txt" id="perro">您的密码不正确<br/>
 			                    请重试或致电<span class="span2">400-898-0050</span><br/>
@@ -135,7 +145,7 @@
 			                    服务中心寻求帮助
 			    </div>
                 <div class="m_btn m_btn1">
-                	<input type="button" value="重 &#160; 试" onclick="hideLogOff()" class="csinput"/>
+                	<input type="button" value="我知道了" onclick="hideLogOff()" class="csinput"/>
                 </div>
             </div>
 
@@ -145,7 +155,13 @@
                 }
                 
                 /*判断是否弹窗提示*/
-                var myAccountPopVal = $("input[nm3='myAccountPop']").val();
+                var myAccountPopVal = $("input[nm1='myAccountPop1']").val();
+                if(myAccountPopVal == null || myAccountPopVal == ""){
+                   myAccountPopVal = $("input[nm2='myAccountPop2']").val();
+                }
+                if(myAccountPopVal == null || myAccountPopVal == ""){
+                   myAccountPopVal = $("input[nm3='myAccountPop3']").val();
+                }
                 if(myAccountPopVal == null || myAccountPopVal == ""){
                     $('#filer').hide();
                     $('#sn_err').hide();
