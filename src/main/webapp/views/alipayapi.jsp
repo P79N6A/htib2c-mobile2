@@ -72,11 +72,13 @@
 
 		//订单名称
 		String subject = new String(request.getParameter("WIDsubject").getBytes("ISO-8859-1"),"UTF-8");
+		
 		//必填
 
 		//付款金额
 		String total_fee = new String(request.getParameter("WIDtotal_fee").getBytes("ISO-8859-1"),"UTF-8");
 		//必填
+		System.out.println("--------------:"+request.getParameter("WIDsubject"));
 		System.out.println("订单名称:"+subject);
 		System.out.println("总体费用:"+total_fee);
 		System.out.println("商户订单号:"+out_trade_no);
