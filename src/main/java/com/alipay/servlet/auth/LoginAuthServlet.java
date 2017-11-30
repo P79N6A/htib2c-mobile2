@@ -56,8 +56,8 @@ public class LoginAuthServlet extends HttpServlet {
         String authCode = params.get("auth_code");
 
         String state = params.get("state");
-        HttpSession session =request.getSession();
-        session.setAttribute(Constant.CSRFTOKEN, RandomStringGenerator.getCSRFToken());
+        request.getSession().invalidate();
+        request.getSession().setAttribute(Constant.CSRFTOKEN, RandomStringGenerator.getCSRFToken());
 
         try {
             //3. 利用authCode获得authToken
