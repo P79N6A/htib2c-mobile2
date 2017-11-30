@@ -77,11 +77,13 @@
 		//付款金额
 		String total_fee = new String(request.getParameter("WIDtotal_fee").getBytes("ISO-8859-1"),"UTF-8");
 		//必填
-		
+		System.out.println("订单名称:"+subject);
+		System.out.println("总体费用:"+total_fee);
+		System.out.println("商户订单号:"+out_trade_no);
 		//请求业务参数详细
-		String req_dataToken = "<direct_trade_create_req><notify_url>" + notify_url + "</notify_url><call_back_url>" + call_back_url + "</call_back_url><seller_account_name>" + AlipayConfig.seller_email + "</seller_account_name><out_trade_no>" + out_trade_no + "</out_trade_no><subject>" + subject + "</subject><total_fee>" + total_fee + "</total_fee><merchant_url>" + merchant_url + "</merchant_url></direct_trade_create_req>";
+		String req_dataToken = "<direct_trade_create_req><notify_url>" + notify_url + "</notify_url><call_back_url>" + call_back_url + "</call_back_url><seller_account_name>" + AlipayConfig.seller_email + "</seller_account_name><out_trade_no>" + out_trade_no + "</out_trade_no><subject>" + subject+"1" + "</subject><total_fee>" + total_fee + "</total_fee><merchant_url>" + merchant_url + "</merchant_url></direct_trade_create_req>";
 		//必填
-		
+		System.out.println(req_dataToken);
 		//////////////////////////////////////////////////////////////////////////////////
 		
 		//把请求参数打包成数组
@@ -101,6 +103,8 @@
 		//URLDECODE返回的信息
 		sHtmlTextToken = URLDecoder.decode(sHtmlTextToken,AlipayConfig.input_charset);
 		//获取token
+		System.out.println("---------------test---------------"+sHtmlTextToken);
+		       logger.info("---------------test---------------"+sHtmlTextToken);
 		String request_token = AlipaySubmit.getRequestToken(sHtmlTextToken);
 		System.out.println("request_token=" + request_token);
 		logger.info("toAlipay request_token="+ESAPI.encoder().encodeForHTML(request_token));
