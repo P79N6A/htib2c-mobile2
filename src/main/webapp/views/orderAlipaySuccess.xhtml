@@ -65,7 +65,8 @@
                 window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
             }
             function toAccountLogin(){
-                window.location.href="#{facesContext.externalContext.request.contextPath}/views/accountLogin.xhtml";
+            	var csrftoken = "#{csrftoken}";
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/accountLogin.xhtml?csrftoken="+csrftoken;
             }
         </script>
 
