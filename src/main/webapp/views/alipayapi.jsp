@@ -130,7 +130,7 @@
 		logger.info("toAlipay sParaTemp="+ESAPI.encoder().encodeForHTML(sParaTemp.toString()));
 		
 		//建立请求
-		String sHtmlText = AlipaySubmit.buildRequest(ALIPAY_GATEWAY_NEW, sParaTemp, "get", "确认");
+		String sHtmlText = AlipaySubmit.buildRequest(ALIPAY_GATEWAY_NEW, sParaTemp, "get", "确认1");
 		out.println(sHtmlText);
 	%>
 	<body>

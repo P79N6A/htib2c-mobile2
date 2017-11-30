@@ -143,6 +143,9 @@ public class InvoiceBackingBean implements Serializable {
             String accountNum = client.getActiveAccountByOpenId(openId);
 
             parentrderinfo = client.queryOrderByParentOrderNum(parentOrderNum, "");
+            System.out.println("ccccc openId="+openId);
+            System.out.println("aaaaaa accountNum in WECHAT_USER_PROFILE     "+ accountNum);
+        	System.out.println("bbbbbb accountNum in parent order     "+parentrderinfo.getAccountNum());
             if(parentrderinfo.isInsurancePresentOrder()){
                 applyInvoicePop = "您的订单为赠品，无需开具发票。如需帮助，请按车内i按钮或致电<span style=\"text-decoration: underline;\" class=\"span2\">400-898-0050</span>，详询梅赛德斯-奔驰 智能互联服务中心";
                 context.addMessage(null, new FacesMessage(
@@ -181,6 +184,8 @@ public class InvoiceBackingBean implements Serializable {
             }
 
             if(!Strings.isNullOrEmpty(accountNum) && !accountNum.equalsIgnoreCase(parentrderinfo.getAccountNum())) {
+            	System.out.println("accountNum in WECHAT_USER_PROFILE     "+ accountNum);
+            	System.out.println("accountNum in parent order     "+parentrderinfo.getAccountNum());
                 applyInvoicePop = "请点击菜单“在线订购”->“我的账户”请成功登录完成该订单所用账号后进行发票申请。 如需帮助，请按车内【i】按钮或致电<span style=\"text-decoration: underline;\" class=\"span2\">400-898-0050</span>。";
 //                context.addMessage(null, new FacesMessage(
 //                        FacesMessage.SEVERITY_ERROR, "您的智能互联客户编号与订单所属的客户编号不符。请点击菜单“在线订购”-> “我的账户”进行登录之后再试。如需帮助，请按车内【i】按钮或致电4008980050", ""));
