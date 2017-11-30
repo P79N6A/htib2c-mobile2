@@ -1675,7 +1675,10 @@ public class OrderBackingBean implements Serializable {
         logger.debug("totalFee=" + ESAPI.encoder().encodeForHTML(String.valueOf(queryOrderByParentOrderNumResponse.getPrice())));
         wechatPrepayResponse = demo.getPackage(tpWxPay);
 //
-
+// setting order information
+        WIDout_trade_no = orderIds;
+        WIDsubject = orderDescs;
+        WIDtotal_fee = queryOrderByParentOrderNumResponse.getPrice();
         return ViewPage.LINK2OrderPaymentForWechat;
     }
     //add by liunig CR345 20171023 end
