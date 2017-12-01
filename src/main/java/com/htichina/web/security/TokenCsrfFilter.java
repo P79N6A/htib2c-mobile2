@@ -100,6 +100,7 @@ public class TokenCsrfFilter implements Filter {
 		   uri.contains("notifyServlet")|| 
 		   uri.contains("firstLoginDidi.xhtml")||
 		   uri.contains("myAccount.xhtml")||
+		   uri.contains("myAccount2.xhtml")||
 		   uri.contains("invoiceEntry.xhtml")||
 		   uri.contains("faq.xhtml")||
 		   

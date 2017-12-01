@@ -103,15 +103,17 @@ public class LoginAuthServlet extends HttpServlet {
                 } else if(state.equalsIgnoreCase(Constant.ALIPAY_STATE_PROMOTION)){
                     request.getRequestDispatcher(ViewPage.LINK2AlipayPromotion).forward(request, response);
                 }  else if(state.equalsIgnoreCase(Constant.WECHAT_STATE_LOGIN)){
-                    logger.debug("wechatServlet start login");
+                    logger.debug("LoginAuthServlet start login");
                     request.getRequestDispatcher(ViewPage.LINK2Login).forward(request, response);
                 }  else if(state.equalsIgnoreCase(Constant.WECHAT_STATE_APPLY_INVOICE)){
                     request.getRequestDispatcher(ViewPage.LINK2ApplyInvoice).forward(request, response);
                 }
                 /* 2017-11-10,Tommy Liu, CR82_Part II, 增加 套餐升级 菜单 */
                 else if(state.equalsIgnoreCase(Constant.WECHAT_STATE_UPGRADE)){
-        			logger.debug("wechatServlet start startUpgradeOrder");
-        			request.getRequestDispatcher(ViewPage.LINK2MyAccount2).forward(request, response);
+        			logger.debug("LoginAuthServlet start startUpgradeOrder");
+        			request.setAttribute("orderUpgradePage", ViewPage.LINK2MyAccount2);
+        			request.getRequestDispatcher(ViewPage.LINK2Login).forward(request, response);
+//        			request.getRequestDispatcher(ViewPage.LINK2MyAccount2).forward(request, response);
         		}
 
 

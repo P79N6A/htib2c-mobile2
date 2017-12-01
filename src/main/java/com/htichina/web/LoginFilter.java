@@ -1,5 +1,6 @@
 package com.htichina.web;
 
+import com.htichina.web.common.ViewPage;
 import com.sun.faces.util.Util;
 import com.tencent.common.RandomStringGenerator;
 
@@ -75,7 +76,10 @@ public class LoginFilter implements Filter {
 					request.getRequestDispatcher("/views/accountLogin.xhtml#").forward(request, response);
 
 				} else {
-
+					//test code
+					if(httpRequest.getRequestURL().toString().contains("accountLogin.xhtml") && request.getAttribute("orderUpgradePage")!=null){
+						logger.info("LoginFilter.java....支付宝访问升级菜单,下一步进入 accountLogin.xhtml, 传递属性 orderUpgradePage="+request.getAttribute("orderUpgradePage").toString());
+					}
 
 					fc.doFilter(httpRequest, httpResponse);
 				}

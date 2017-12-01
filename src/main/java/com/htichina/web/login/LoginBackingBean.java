@@ -63,6 +63,7 @@ public class LoginBackingBean implements Serializable {
     private String repMessage;
     /* 2017-11-28,Tommy Liu, CR82_Part II, 套餐升级的信息提示 */
     private String myAccountPop;
+    private String orderUpgradePage;
 
     private String aToken;
 
@@ -158,6 +159,8 @@ public class LoginBackingBean implements Serializable {
     public String validateLogin(String targetPage) throws IOException, ParseException {
         targetPg = targetPage;
         System.out.println("validateLogin");
+        logger.info("loginbean........validateLogin()........targetPage="+targetPage);
+        
         FacesContext context = FacesContext.getCurrentInstance();
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
         logger.info("validateLogin openId="+ESAPI.encoder().encodeForHTML(openId));
@@ -235,6 +238,10 @@ public class LoginBackingBean implements Serializable {
             }
             if(Strings.isNullOrEmpty(targetPage)){
                 return ViewPage.LINK2MyAccount;
+            }
+            if(ViewPage.LINK2MyAccount2.contains(targetPage)){
+            	logger.info("loginbean........validateLogin()........return to myAccount2.xhtml");
+            	return ViewPage.LINK2MyAccount2;
             }
             if(ViewPage.LINK2CHECKTEL.equals(targetPage)){
                 logger.info("return to LINK2CHECKTEL");
@@ -600,4 +607,11 @@ public class LoginBackingBean implements Serializable {
     public void setRegistrationCode(String registrationCode) {
         this.registrationCode = registrationCode;
     }
+	public String getOrderUpgradePage() {
+		return orderUpgradePage;
+	}
+	public void setOrderUpgradePage(String orderUpgradePage) {
+		this.orderUpgradePage = orderUpgradePage;
+	}
+    
 }
