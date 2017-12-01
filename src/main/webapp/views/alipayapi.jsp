@@ -71,7 +71,8 @@
 		//商户网站订单系统中唯一订单号，必填
 
 		//订单名称
-		String subject = new String(request.getParameter("WIDsubject").getBytes("ISO-8859-1"),"UTF-8");
+		String subject = new String(request.getParameter("WIDsubject"));
+		//String subject = new String(request.getParameter("WIDsubject").getBytes("ISO-8859-1"),"UTF-8");
 		
 		//必填
 
