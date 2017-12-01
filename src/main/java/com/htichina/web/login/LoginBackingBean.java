@@ -213,6 +213,7 @@ public class LoginBackingBean implements Serializable {
 
         boolean valid = PaymentServiceClient.getInstance().validateLogin(accountNum, pin, openId, userInfo);
         if(valid) {
+        	logger.info("put account into session");
             context.getExternalContext().getSessionMap()
                     .put(LoginFilter.CURRENT_USER, accountNum);
             if(!ViewPage.LINK2CHECKTEL.equals(targetPage)){
