@@ -165,6 +165,11 @@ public class LoginBackingBean implements Serializable {
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
         logger.info("validateLogin openId="+ESAPI.encoder().encodeForHTML(openId));
 
+        if(Strings.isNullOrEmpty(targetPage)){
+        	logger.info("loginbean........validateLogin()........targetPage is null");
+        }else{
+        	logger.info("loginbean........validateLogin()........targetPage is not null, = "+targetPage);
+        }
 
         String userInfo = (String) FacesUtils.getManagedBeanInSession(Constant.WECHAT_USER_INFO);
 
@@ -213,6 +218,7 @@ public class LoginBackingBean implements Serializable {
 
         boolean valid = PaymentServiceClient.getInstance().validateLogin(accountNum, pin, openId, userInfo);
         if(valid) {
+        	logger.info("put account into session");
             context.getExternalContext().getSessionMap()
                     .put(LoginFilter.CURRENT_USER, accountNum);
             if(!ViewPage.LINK2CHECKTEL.equals(targetPage)){
