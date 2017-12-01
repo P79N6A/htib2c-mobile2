@@ -238,7 +238,7 @@
                     window.addEventListener("popstate", function(e) {
                         var ua = navigator.userAgent.toLowerCase();
                         if(ua.indexOf("alipay")!=-1){
-                        	
+                        	AlipayJSBridge.call('closeWebview');
                         	//Brook,fix issue that alipay can't backwards
                            // window.location.href = window.location.href;
                         }
