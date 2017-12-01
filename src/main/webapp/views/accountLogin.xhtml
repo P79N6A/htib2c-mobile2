@@ -68,20 +68,11 @@
             </div>
             <div id="fri_bottom">
                 <div class="empty">
-                    <c:choose>
-					　　<c:when test="#{not empty orderUpgradePage}">
-							<h:commandButton value="登录进升级页面"
-                                     action="#{loginBackingBean.validateLogin('myAccount2')}"  />
-						</c:when>
-					　　<c:otherwise>
-							<h:commandButton value="登&#160;&#160;录2"
+                    <h:commandButton value="登&#160;&#160;录"
                                      action="#{loginBackingBean.validateLogin(loginBackingBean.targetPg)}" onclick="showLogOff()" />
-					  </c:otherwise>
-						
-					</c:choose>
                     
                 </div>
-                <div id="keytxt">网站备案号：京ICP备11011340号...loginBackingBean.targetPg=...#{loginBackingBean.targetPg}...orderUpgradePage=...#{orderUpgradePage}</div>
+                <div id="keytxt">网站备案号：京ICP备11011340号</div>
             </div>
         </div>
             <!-- 密码错误 -->
@@ -105,36 +96,6 @@
             </div>
             <div id="filer"  style="display:none"></div>
             <script type="text/javascript">
-                $(function(){
-		        	  var upgradeParam1 ="#{orderUpgradePage1}";
-		        	  var upgradeParam2 ="#{orderUpgradePage2}";
-		        	  var upgradeParam3 ="#{orderUpgradePage3}";
-		        	  appendForm(upgradeParam1);
-		        	  appendForm(upgradeParam2);
-		        	  appendForm(upgradeParam3);
-		        });
-		        
-		        function appendForm(upgradeParam1,upgradeParam2,upgradeParam3){ 
-				       // 得到页面中所有的 form 元素
-					   var fm = document.getElementsByTagName('form')[0]; 
-				       // 动态生成 input 元素，加入到 form 之后
-				       var e1 = document.createElement("input"); 
-				       e1.name = "upgradeParam1"; 
-				       e1.value = upgradeParam1; 
-				       e1.type="hidden"; 
-				       var e2 = document.createElement("input"); 
-				       e2.name = "upgradeParam1"; 
-				       e2.value = upgradeParam1; 
-				       e2.type="hidden";
-				       var e3 = document.createElement("input"); 
-				       e3.name = "upgradeParam1"; 
-				       e3.value = upgradeParam1; 
-				       e3.type="hidden";
-				       fm.appendChild(e1);
-				       fm.appendChild(e2);
-				       fm.appendChild(e3); 
-				} 
-		        
                 if("1" == broserNum){
                     window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
                 }
