@@ -84,7 +84,7 @@
 		System.out.println("总体费用:"+total_fee);
 		System.out.println("商户订单号:"+out_trade_no);
 		//请求业务参数详细
-		String req_dataToken = "<direct_trade_create_req><notify_url>" + notify_url + "</notify_url><call_back_url>" + call_back_url + "</call_back_url><seller_account_name>" + AlipayConfig.seller_email + "</seller_account_name><out_trade_no>" + out_trade_no + "</out_trade_no><subject>" + subject+"1" + "</subject><total_fee>" + total_fee + "</total_fee><merchant_url>" + merchant_url + "</merchant_url></direct_trade_create_req>";
+		String req_dataToken = "<direct_trade_create_req><notify_url>" + notify_url + "</notify_url><call_back_url>" + call_back_url + "</call_back_url><seller_account_name>" + AlipayConfig.seller_email + "</seller_account_name><out_trade_no>" + out_trade_no + "</out_trade_no><subject>" + subject + "</subject><total_fee>" + total_fee + "</total_fee><merchant_url>" + merchant_url + "</merchant_url></direct_trade_create_req>";
 		//必填
 		System.out.println(req_dataToken);
 		//////////////////////////////////////////////////////////////////////////////////
@@ -133,7 +133,7 @@
 		logger.info("toAlipay sParaTemp="+ESAPI.encoder().encodeForHTML(sParaTemp.toString()));
 		
 		//建立请求
-		String sHtmlText = AlipaySubmit.buildRequest(ALIPAY_GATEWAY_NEW, sParaTemp, "get", "确认1");
+		String sHtmlText = AlipaySubmit.buildRequest(ALIPAY_GATEWAY_NEW, sParaTemp, "get", "确认");
 		out.println(sHtmlText);
 	%>
 	<body>
