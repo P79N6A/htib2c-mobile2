@@ -56,7 +56,7 @@ public class TokenCsrfFilter implements Filter {
 		   chain.doFilter(request, response); 
 		} else{ 
 			
-			 logger.info("-------------------------------------uri1:"+uri);
+			 //logger.info("-------------------------------------uri1:"+uri);
 			if(uri!=null && !passWithoutValidation(uri)){
 				
 			
@@ -72,14 +72,14 @@ public class TokenCsrfFilter implements Filter {
 				   logger.info("-------------------------------------uri2:"+uri);
 			       chain.doFilter(request, response); 
 			   } else{ 
-				   logger.info("-------------------------------------uri3:"+uri);
-				   logger.info("-------------------------------------session token:"+sToken);
-				   logger.info("-------------------------------------parameter token:"+pToken);
+				   //logger.info("-------------------------------------uri3:"+uri);
+				   //logger.info("-------------------------------------session token:"+sToken);
+				   //logger.info("-------------------------------------parameter token:"+pToken);
 				  
 				   request.getRequestDispatcher("/views/common/error.xhtml").forward(request,response); 
 			   } 
 			}else{
-				logger.info("-------------------------------------uri4:"+uri);
+				//logger.info("-------------------------------------uri4:"+uri);
 				 chain.doFilter(request, response); 
 			}
 		}
