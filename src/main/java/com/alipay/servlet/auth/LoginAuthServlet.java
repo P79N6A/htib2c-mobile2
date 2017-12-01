@@ -110,7 +110,7 @@ public class LoginAuthServlet extends HttpServlet {
                 }
                 /* 2017-11-10,Tommy Liu, CR82_Part II, 增加 套餐升级 菜单 */
                 else if(state.equalsIgnoreCase(Constant.WECHAT_STATE_UPGRADE)){
-        			logger.debug("LoginAuthServlet start startUpgradeOrder");
+        			logger.info("1231233412334123412334LoginAuthServlet start startUpgradeOrder");
         			request.setAttribute("orderUpgradePage", ViewPage.LINK2MyAccount2);
         			request.getRequestDispatcher(ViewPage.LINK2Login).forward(request, response);
 //        			request.getRequestDispatcher(ViewPage.LINK2MyAccount2).forward(request, response);

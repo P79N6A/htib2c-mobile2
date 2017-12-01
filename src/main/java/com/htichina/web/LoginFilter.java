@@ -65,6 +65,9 @@ public class LoginFilter implements Filter {
 			}
 
 			if (null == httpRequest.getSession().getAttribute(CURRENT_USER)) {
+				if(httpRequest.getRequestURL().toString().contains("accountLogin.xhtml") && request.getAttribute("orderUpgradePage")!=null){
+					logger.info("LoginFilter.java....支付宝访问升级菜单,下一步进入 accountLogin.xhtml, 传递属性 orderUpgradePage="+request.getAttribute("orderUpgradePage").toString()+"-------------");
+				}
 				if (isinterceptor(httpRequest.getRequestURL().toString(),
 						"firstLoginDidi.xhtml","hornLight_help.xhtml","hornLight.xhtml","key.xhtml","location.xhtml","locationMap.xhtml","lock.xhtml","lock_help.xhtml","myAccount.xhtml",
 						"POCTelCheck.xhtml","unLock.xhtml","unLock_help.xhtml")) {
