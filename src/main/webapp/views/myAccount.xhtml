@@ -238,7 +238,9 @@
                     window.addEventListener("popstate", function(e) {
                         var ua = navigator.userAgent.toLowerCase();
                         if(ua.indexOf("alipay")!=-1){
-                            window.location.href = window.location.href;
+                        	
+                        	//Brook,fix issue that alipay can't backwards
+                           // window.location.href = window.location.href;
                         }
                     }, false);
                     function pushHistory() {
