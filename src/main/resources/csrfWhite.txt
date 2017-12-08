@@ -8,5 +8,6 @@ localhost
 10.195.2.72
 
 stgchina.cntelematics.com
+www.cntelematics.com
 
 
