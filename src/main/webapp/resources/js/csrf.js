@@ -49,17 +49,21 @@ function updateTag(element, attr, token) {
        } 
         
        var index = location.indexOf('?'); 
+       var telIndex = location.indexOf('tel:');
  
-       if(index != -1) { 
-           //url 中已含有其他参数
-           location = location + '&csrftoken=' + token; 
-       } else { 
-           //url 中没有其他参数
-           location = location + '?csrftoken=' + token; 
-       } 
-       if(fragment != null){ 
-           location += fragment; 
-       } 
+       if(telIndex==-1){
+	       if(index != -1) { 
+	           //url 中已含有其他参数
+	           location = location + '&csrftoken=' + token; 
+	       } else { 
+	           //url 中没有其他参数
+	           location = location + '?csrftoken=' + token; 
+	       } 
+       }
+	   if(fragment != null){ 
+	       location += fragment; 
+	   } 
+       
         
        element.setAttribute(attr, location); 
    } 
