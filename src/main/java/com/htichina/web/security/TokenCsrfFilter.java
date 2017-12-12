@@ -94,7 +94,6 @@ public class TokenCsrfFilter implements Filter {
 	
 	
 	private static boolean  passWithoutValidation (String uri){
-		//orderEntry.xhtml   promotion.xhtml invoiceEntry.xhtml key.xhtml violationInquiry.xhtml
 		if(uri.contains("index.xhtml")||
 		   uri.contains("wechatServlet")||
 		   uri.contains("notifyServlet")|| 
@@ -120,6 +119,8 @@ public class TokenCsrfFilter implements Filter {
 		   uri.contains("orderAlipayInstruction.xhtml")||
 		   uri.contains("termsOfService.pdf")||
 		   uri.contains("newFollowDidi.xhtml")||
+           
+		   uri.contains("WechatLocateServlet")||
 		   
 		   
 		   uri.contains(".css") || 
