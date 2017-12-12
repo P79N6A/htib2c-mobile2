@@ -19,7 +19,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "PaymentServiceService", targetNamespace = "http://payment.ws.htichina.com/", wsdlLocation = "http://10.198.50.233:8080/b2c_portal/ws/paymentService?wsdl")
+@WebServiceClient(name = "PaymentServiceService", targetNamespace = "http://payment.ws.htichina.com/", wsdlLocation = "http://192.168.168.220:8080/ws/paymentService?wsdl")
 public class PaymentServiceService
     extends Service
 {
