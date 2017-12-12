@@ -28,6 +28,7 @@ public class ObjectFactory {
     private final static QName _CloseWechatUserProfile_QNAME = new QName("http://payment.ws.htichina.com/", "closeWechatUserProfile");
     private final static QName _GetWechatUserDataByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "getWechatUserDataByAccountNum");
     private final static QName _CreateUpgradePaymentOrderResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createUpgradePaymentOrderResponse");
+    private final static QName _GetLastLoginUserByOpenId_QNAME = new QName("http://payment.ws.htichina.com/", "getLastLoginUserByOpenId");
     private final static QName _CheckPurchaseProduct_QNAME = new QName("http://payment.ws.htichina.com/", "checkPurchaseProduct");
     private final static QName _LogoffResponse_QNAME = new QName("http://payment.ws.htichina.com/", "logoffResponse");
     private final static QName _PaymentHandlerServiceResponse_QNAME = new QName("http://payment.ws.htichina.com/", "paymentHandlerServiceResponse");
@@ -94,6 +95,7 @@ public class ObjectFactory {
     private final static QName _GetChildOrderInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getChildOrderInfo");
     private final static QName _SyncAccnt_QNAME = new QName("http://payment.ws.htichina.com/", "syncAccnt");
     private final static QName _UpdateTransaction_QNAME = new QName("http://payment.ws.htichina.com/", "updateTransaction");
+    private final static QName _GetLastLoginUserByOpenIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getLastLoginUserByOpenIdResponse");
     private final static QName _CheckOrderPaiedResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkOrderPaiedResponse");
 
     /**
@@ -181,6 +183,14 @@ public class ObjectFactory {
      */
     public CreateUpgradePaymentOrderResponse createCreateUpgradePaymentOrderResponse() {
         return new CreateUpgradePaymentOrderResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetLastLoginUserByOpenId }
+     * 
+     */
+    public GetLastLoginUserByOpenId createGetLastLoginUserByOpenId() {
+        return new GetLastLoginUserByOpenId();
     }
 
     /**
@@ -520,6 +530,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetLastLoginUserByOpenIdResponse }
+     * 
+     */
+    public GetLastLoginUserByOpenIdResponse createGetLastLoginUserByOpenIdResponse() {
+        return new GetLastLoginUserByOpenIdResponse();
+    }
+
+    /**
      * Create an instance of {@link SyncAccnt }
      * 
      */
@@ -680,6 +698,86 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PromotionCategoryResult }
+     * 
+     */
+    public PromotionCategoryResult createPromotionCategoryResult() {
+        return new PromotionCategoryResult();
+    }
+
+    /**
+     * Create an instance of {@link TransactionRequest }
+     * 
+     */
+    public TransactionRequest createTransactionRequest() {
+        return new TransactionRequest();
+    }
+
+    /**
+     * Create an instance of {@link VehicleInfoResponse }
+     * 
+     */
+    public VehicleInfoResponse createVehicleInfoResponse() {
+        return new VehicleInfoResponse();
+    }
+
+    /**
+     * Create an instance of {@link ProductInfo }
+     * 
+     */
+    public ProductInfo createProductInfo() {
+        return new ProductInfo();
+    }
+
+    /**
+     * Create an instance of {@link PackageUpgradeRequest }
+     * 
+     */
+    public PackageUpgradeRequest createPackageUpgradeRequest() {
+        return new PackageUpgradeRequest();
+    }
+
+    /**
+     * Create an instance of {@link PackageUpgradeResponse }
+     * 
+     */
+    public PackageUpgradeResponse createPackageUpgradeResponse() {
+        return new PackageUpgradeResponse();
+    }
+
+    /**
+     * Create an instance of {@link Timestamp }
+     * 
+     */
+    public Timestamp createTimestamp() {
+        return new Timestamp();
+    }
+
+    /**
+     * Create an instance of {@link ProductInfoResponse }
+     * 
+     */
+    public ProductInfoResponse createProductInfoResponse() {
+        return new ProductInfoResponse();
+    }
+
+    /**
+     * Create an instance of {@link QueryOrderByParentOrderNumResponse }
+     * 
+     */
+    public QueryOrderByParentOrderNumResponse createQueryOrderByParentOrderNumResponse() {
+        return new QueryOrderByParentOrderNumResponse();
+    }
+
+    /**
+     * Create an instance of {@link Transaction }
+     * 
+     */
+    public Transaction createTransaction() {
+        return new Transaction();
+    }
+
+    /**
      * Create an instance of {@link InvoiceInfoRequest }
      * 
      */
@@ -752,38 +850,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PromotionCategoryResult }
-     * 
-     */
-    public PromotionCategoryResult createPromotionCategoryResult() {
-        return new PromotionCategoryResult();
-    }
-
-    /**
-     * Create an instance of {@link TransactionRequest }
-     * 
-     */
-    public TransactionRequest createTransactionRequest() {
-        return new TransactionRequest();
-    }
-
-    /**
-     * Create an instance of {@link VehicleInfoResponse }
-     * 
-     */
-    public VehicleInfoResponse createVehicleInfoResponse() {
-        return new VehicleInfoResponse();
-    }
-
-    /**
-     * Create an instance of {@link ProductInfo }
-     * 
-     */
-    public ProductInfo createProductInfo() {
-        return new ProductInfo();
-    }
-
-    /**
      * Create an instance of {@link WechatUserDataResponse }
      * 
      */
@@ -800,38 +866,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PackageUpgradeRequest }
-     * 
-     */
-    public PackageUpgradeRequest createPackageUpgradeRequest() {
-        return new PackageUpgradeRequest();
-    }
-
-    /**
-     * Create an instance of {@link PackageUpgradeResponse }
-     * 
-     */
-    public PackageUpgradeResponse createPackageUpgradeResponse() {
-        return new PackageUpgradeResponse();
-    }
-
-    /**
-     * Create an instance of {@link Timestamp }
-     * 
-     */
-    public Timestamp createTimestamp() {
-        return new Timestamp();
-    }
-
-    /**
-     * Create an instance of {@link ProductInfoResponse }
-     * 
-     */
-    public ProductInfoResponse createProductInfoResponse() {
-        return new ProductInfoResponse();
-    }
-
-    /**
      * Create an instance of {@link PurchaseProductResponse }
      * 
      */
@@ -845,22 +879,6 @@ public class ObjectFactory {
      */
     public QueryChildOrdersByParentOrderNumResponse createQueryChildOrdersByParentOrderNumResponse() {
         return new QueryChildOrdersByParentOrderNumResponse();
-    }
-
-    /**
-     * Create an instance of {@link QueryOrderByParentOrderNumResponse }
-     * 
-     */
-    public QueryOrderByParentOrderNumResponse createQueryOrderByParentOrderNumResponse() {
-        return new QueryOrderByParentOrderNumResponse();
-    }
-
-    /**
-     * Create an instance of {@link Transaction }
-     * 
-     */
-    public Transaction createTransaction() {
-        return new Transaction();
     }
 
     /**
@@ -897,6 +915,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createUpgradePaymentOrderResponse")
     public JAXBElement<CreateUpgradePaymentOrderResponse> createCreateUpgradePaymentOrderResponse(CreateUpgradePaymentOrderResponse value) {
         return new JAXBElement<CreateUpgradePaymentOrderResponse>(_CreateUpgradePaymentOrderResponse_QNAME, CreateUpgradePaymentOrderResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetLastLoginUserByOpenId }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getLastLoginUserByOpenId")
+    public JAXBElement<GetLastLoginUserByOpenId> createGetLastLoginUserByOpenId(GetLastLoginUserByOpenId value) {
+        return new JAXBElement<GetLastLoginUserByOpenId>(_GetLastLoginUserByOpenId_QNAME, GetLastLoginUserByOpenId.class, null, value);
     }
 
     /**
@@ -1491,6 +1518,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateTransaction")
     public JAXBElement<UpdateTransaction> createUpdateTransaction(UpdateTransaction value) {
         return new JAXBElement<UpdateTransaction>(_UpdateTransaction_QNAME, UpdateTransaction.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetLastLoginUserByOpenIdResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getLastLoginUserByOpenIdResponse")
+    public JAXBElement<GetLastLoginUserByOpenIdResponse> createGetLastLoginUserByOpenIdResponse(GetLastLoginUserByOpenIdResponse value) {
+        return new JAXBElement<GetLastLoginUserByOpenIdResponse>(_GetLastLoginUserByOpenIdResponse_QNAME, GetLastLoginUserByOpenIdResponse.class, null, value);
     }
 
     /**
