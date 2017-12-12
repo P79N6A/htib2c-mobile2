@@ -121,7 +121,7 @@ public class TokenCsrfFilter implements Filter {
 		   uri.contains("newFollowDidi.xhtml")||
            
 		   uri.contains("WechatLocateServlet")||
-		   
+		   uri.contains("orderFailed.xhtml")||
 		   
 		   uri.contains(".css") || 
 		   uri.contains(".js") || 
