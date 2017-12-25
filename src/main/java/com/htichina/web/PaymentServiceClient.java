@@ -339,6 +339,26 @@ public class PaymentServiceClient {
     }
     return openIds;
   }
+
+  public LuckyDrawReponse checkCustemerLuckyDraw(String accountNum){
+    LuckyDrawReponse luckyDrawReponse = null;
+    try {
+      luckyDrawReponse = service.checkCustemerLuckyDraw(accountNum);
+    }catch (Exception e){
+      e.getStackTrace();
+    }
+    return luckyDrawReponse;
+  }
+
+  public LdLtemReponse doLuckDraw(String accountNum,String openId,String channel){
+    LdLtemReponse ldLtemReponse = null;
+    try {
+      ldLtemReponse = service.doLuckDraw(accountNum,openId,channel);
+    }catch (Exception e){
+      e.getStackTrace();
+    }
+    return ldLtemReponse;
+  }
 }
 
 

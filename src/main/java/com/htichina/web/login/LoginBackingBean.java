@@ -8,8 +8,10 @@ import com.htichina.web.POC.MobileBean;
 import com.htichina.web.PaymentServiceClient;
 import com.htichina.web.common.FacesUtils;
 import com.htichina.web.common.ViewPage;
+import com.htichina.web.luckDraw.LuckDrawBean;
 import com.htichina.web.tag.TagBean;
 import com.htichina.wsclient.payment.AccountInfoResponse;
+import com.htichina.wsclient.payment.LuckyDrawReponse;
 import com.htichina.wsclient.payment.WechatUserDataResponse;
 import com.tencent.common.RandomStringGenerator;
 import com.tencent.service.MobileDeviceRegistrationService;
@@ -20,6 +22,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
@@ -44,6 +47,8 @@ import java.util.List;
 @Component
 @Scope("session")
 public class LoginBackingBean implements Serializable {
+    @Autowired
+    private LuckDrawBean luckDrawBean;
     private static Logger logger = Logger.getLogger(LoginBackingBean.class.getName());
     PaymentServiceClient client = PaymentServiceClient.getInstance();
 
@@ -107,7 +112,7 @@ public class LoginBackingBean implements Serializable {
         logger.info("Login bakcing oId ==>"+ESAPI.encoder().encodeForHTML(oId) );
         if(!Strings.isNullOrEmpty(oId)){
            an = PaymentServiceClient.getInstance().getActiveAccountByOpenId(oId);
-            logger.info("Login bakcing an ==>"+ESAPI.encoder().decodeForHTML(an));
+           logger.info("Login bakcing an ==>"+ESAPI.encoder().decodeForHTML(an));
         }
         else {
             logger.info("return to login");
@@ -134,6 +139,12 @@ public class LoginBackingBean implements Serializable {
             if(ViewPage.LINK2MyAccount2.equals(targetPage)
             		&& (accountInfo.getCurrentCanBeUpgratedPackages()==null || accountInfo.getCurrentCanBeUpgratedPackages().size()==0) ){
             	myAccountPop = "暂无可以升级的套餐";
+            }
+            if(ViewPage.LINK2LUCKDRAW.equals(targetPage)){
+                boolean flag = luckDrawBean.checkCustemerLuckyDraw(accountInfo.getAccountNum());
+                if(flag){
+                    return ViewPage.LINK2Login;
+                }
             }
             return targetPage;
 

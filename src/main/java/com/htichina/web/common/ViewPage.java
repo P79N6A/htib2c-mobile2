@@ -64,4 +64,7 @@ public class ViewPage {
     public static final String LINK2OrderPackage0 = "/views/orderPackage0.xhtml?showwxpaytitle=1";
 
     public static final String ERRORMESSAGE = "/views/paymentError.xhtml?showwxpaytitle=1";
+
+    //cr389
+    public static final String LINK2LUCKDRAW = "/views/luckyDraw.xhtml?showwxpaytitle=1";
 }

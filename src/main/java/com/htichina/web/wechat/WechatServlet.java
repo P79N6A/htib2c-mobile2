@@ -229,49 +229,15 @@ public class WechatServlet extends HttpServlet {
 			
 			else if(state.equalsIgnoreCase(Constant.WECHAT_PAYMENT)){
 				OrderBackingBean orderBackingBean = (OrderBackingBean)context.getBean("orderBackingBean" );
-//				List<String> types = new ArrayList<String>();
-//				List<String> ids = new ArrayList<String>();
-//				List<String> prices = new ArrayList<String>();
-//				List<String> vins = new ArrayList<String>();
-//				List<String> shortMarketNames = new ArrayList<String>();
-//				List<String> transactionNos = new ArrayList<String>();
 				String orderNum = req.getParameter("state").split(",")[1];
 				String accountNum = req.getParameter("state").split(",")[2];
-
-//				if(!"$PKG1_MESSAGE".equals(package1Message)){
-//					//智能互联支付
-//					String basePackageId = package1Message.split("/")[0];
-//					String basePrice = package1Message.split("/")[1];
-//					String baseVin = package1Message.split("/")[2];
-//					String baseShortName = package1Message.split("/")[3];
-//					String baseTransNo = package1Message.split("/")[4];
-//					String baseType =Constant.PROMOTION_CATEGERY1;
-//					types.add(baseType);
-//					ids.add(basePackageId);
-//					prices.add(basePrice);
-//					vins.add(baseVin);
-//					shortMarketNames.add(baseShortName);
-//					transactionNos.add(baseTransNo);
-//					logger.info("baseType=============>"+baseType);
-//				}
-//				if(!"$PKG2_MESSAGE".equals(package2Message)){
-//					//wifi支付
-//					String wifiPackageId = package2Message.split("/")[0];
-//					String wifiPrice = package2Message.split("/")[1];
-//					String wifiVin = package2Message.split("/")[2];
-//					String wifiShortName = package2Message.split("/")[3];
-//					String wifiTransNo = package2Message.split("/")[4];
-//					String wifiType =Constant.PROMOTION_CATEGERY3;
-//					types.add(wifiType);
-//					ids.add(wifiPackageId);
-//					prices.add(wifiPrice);
-//					vins.add(wifiVin);
-//					shortMarketNames.add(wifiShortName);
-//					transactionNos.add(wifiTransNo);
-//					logger.info("wifiType=============>"+wifiType);
-//				}
 				String link = orderBackingBean.toOrderPaymentForWechat( orderNum,accountNum,oId);
 				req.getRequestDispatcher(link).forward(req, resp);
+
+			}
+			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAW)){
+				LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
+				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW)).forward(req, resp);
 
 			}
 		}
