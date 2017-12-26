@@ -24,24 +24,29 @@
                          id="logo" />
                 </div>
 
-                <div id="fri_mod">
+                <div id="fri_mod" style="height: 85%">
                     <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line.jpg"
                          id="linetop"/>
                     <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line2.jpg"
                          id="linebot"/>
 
-                    <div>你好</div>
-                    <ul>
+                    <div style="color: transparent">你好</div>
+                    <ul style="margin-top: -167px;">
+                        <li >抽奖机会：<h:inputText id="allAmount" value="#{luckDrawBean.allAmount}" type="text"></h:inputText></li>
+                        <li >剩余次数：<h:inputText id="leftAmount" value="#{luckDrawBean.leftAmount}" type="text"></h:inputText></li>
+                        <li >获奖：
+                            <c:forEach items="#{luckDrawBean.dataMessage}" var="luckyDrawData" varStatus="x" >
+                                <h:inputText id="prize" value="#{luckyDrawData.itemName}" type="text"></h:inputText>
+                            </c:forEach>
+                        </li>
 
-                    <li class="pt_10">
-                        <h:commandButton value="抽奖"
-                                         action="#{LuckDraw.}"  />
-                    </li>
+                        <li class="pt_10" style="padding-top:260px">
+                            <h:commandButton value="抽奖"
+                                             action="#{luckDrawBean.doLuckDraw}"  />
+                        </li>
                     </ul>
                 </div>
-                <div id="fri_bottom">
-                    <div id="keytxt">网站备案号：京ICP备11011340号</div>
-                </div>
+
             </div>
         </h:form>
     </ui:define>

@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ import java.util.List;
 public class LuckDrawBean implements Serializable {
     private static Logger logger = Logger.getLogger(PocBean.class.getName());
 
-    PaymentServiceClient client = PaymentServiceClient.getInstance();
+//    PaymentServiceClient client = PaymentServiceClient.getInstance();
     private String itemName;
     private int allAmount;
     private int leftAmount;
@@ -44,20 +45,37 @@ public class LuckDrawBean implements Serializable {
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
         accountNum  = (String) FacesUtils.getManagedBeanInSession(Constant.ACCOUNT_NUM);
         paymentPlatform = (String) FacesUtils.getManagedBeanInSession(Constant.PAYMENT_PLATFORM);
-        ldLtemReponse = client.doLuckDraw(accountNum,openId,paymentPlatform);
+//        ldLtemReponse = client.doLuckDraw(accountNum,openId,paymentPlatform);
+        ldLtemReponse = new LdLtemReponse();
+        ldLtemReponse.setAllAmount(3);
+        ldLtemReponse.setLeftAmount(1);
+        ldLtemReponse.setPrize("一等奖品");
+        List<LuckyDrawData> luckyDrawDataList = new ArrayList<LuckyDrawData>();
+            LuckyDrawData luckyDrawData1 = new LuckyDrawData();
+            luckyDrawData1.setItemName("一等奖");
+            LuckyDrawData luckyDrawData2 = new LuckyDrawData();
+            luckyDrawData2.setItemName("二等奖");
+        luckyDrawDataList.add(luckyDrawData1);
+        luckyDrawDataList.add(luckyDrawData2);
         //总数量
         allAmount = ldLtemReponse.getAllAmount();
         //剩余数量
         leftAmount = ldLtemReponse.getLeftAmount();
-        prize = ldLtemReponse.getPrize();
         dataMessage = ldLtemReponse.getLuckyDrawDataList();
+        prize = ldLtemReponse.getPrize();
+        dataMessage = luckyDrawDataList;
         return  flag;
 
     }
 
+
     public boolean checkCustemerLuckyDraw(String accountNum){
         boolean flag;
-        LuckyDrawReponse luckyDrawReponse = client.checkCustemerLuckyDraw(accountNum);
+//        LuckyDrawReponse luckyDrawReponse = client.checkCustemerLuckyDraw(accountNum);
+        LuckyDrawReponse luckyDrawReponse  =new LuckyDrawReponse();
+        luckyDrawReponse.setSuccess(true);
+        luckyDrawReponse.setAllAmount(3);
+        luckyDrawReponse.setLeftAmount(2);
         flag = luckyDrawReponse.isSuccess();
         if(flag){
             allAmount = luckyDrawReponse.getAllAmount();
@@ -66,7 +84,6 @@ public class LuckDrawBean implements Serializable {
         dataMessage = luckyDrawReponse.getDataMessage();
         return flag;
     }
-
 
     public String getOpenId() {
         return openId;
@@ -130,5 +147,13 @@ public class LuckDrawBean implements Serializable {
 
     public void setLdLtemReponse(LdLtemReponse ldLtemReponse) {
         this.ldLtemReponse = ldLtemReponse;
+    }
+
+    public List<LuckyDrawData> getDataMessage() {
+        return dataMessage;
+    }
+
+    public void setDataMessage(List<LuckyDrawData> dataMessage) {
+        this.dataMessage = dataMessage;
     }
 }
