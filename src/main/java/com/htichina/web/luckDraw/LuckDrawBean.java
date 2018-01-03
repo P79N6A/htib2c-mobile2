@@ -4,6 +4,7 @@ import com.htichina.common.web.Constant;
 import com.htichina.web.POC.PocBean;
 import com.htichina.web.PaymentServiceClient;
 import com.htichina.web.common.FacesUtils;
+import com.htichina.web.common.ViewPage;
 import com.htichina.wsclient.payment.LdLtemReponse;
 import com.htichina.wsclient.payment.LuckyDrawData;
 import com.htichina.wsclient.payment.LuckyDrawReponse;
@@ -24,7 +25,7 @@ import java.util.List;
 public class LuckDrawBean implements Serializable {
     private static Logger logger = Logger.getLogger(PocBean.class.getName());
 
-//    PaymentServiceClient client = PaymentServiceClient.getInstance();
+    PaymentServiceClient client = PaymentServiceClient.getInstance();
     private String itemName;
     private int allAmount;
     private int leftAmount;
@@ -45,44 +46,60 @@ public class LuckDrawBean implements Serializable {
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
         accountNum  = (String) FacesUtils.getManagedBeanInSession(Constant.ACCOUNT_NUM);
         paymentPlatform = (String) FacesUtils.getManagedBeanInSession(Constant.PAYMENT_PLATFORM);
-//        ldLtemReponse = client.doLuckDraw(accountNum,openId,paymentPlatform);
-        ldLtemReponse = new LdLtemReponse();
-        ldLtemReponse.setAllAmount(3);
-        ldLtemReponse.setLeftAmount(1);
-        ldLtemReponse.setPrize("一等奖品");
-        List<LuckyDrawData> luckyDrawDataList = new ArrayList<LuckyDrawData>();
-            LuckyDrawData luckyDrawData1 = new LuckyDrawData();
-            luckyDrawData1.setItemName("一等奖");
-            LuckyDrawData luckyDrawData2 = new LuckyDrawData();
-            luckyDrawData2.setItemName("二等奖");
-        luckyDrawDataList.add(luckyDrawData1);
-        luckyDrawDataList.add(luckyDrawData2);
+        ldLtemReponse = client.doLuckDraw(accountNum,openId,paymentPlatform);
+//        ldLtemReponse = new LdLtemReponse();
+//        ldLtemReponse.setAllAmount(3);
+//        ldLtemReponse.setLeftAmount(1);
+//        ldLtemReponse.setPrize("一等奖品");
+//        List<LuckyDrawData> luckyDrawDataList = new ArrayList<LuckyDrawData>();
+//            LuckyDrawData luckyDrawData1 = new LuckyDrawData();
+//            luckyDrawData1.setItemName("一等奖");
+//            LuckyDrawData luckyDrawData2 = new LuckyDrawData();
+//            luckyDrawData2.setItemName("二等奖");
+//        luckyDrawDataList.add(luckyDrawData1);
+//        luckyDrawDataList.add(luckyDrawData2);
         //总数量
         allAmount = ldLtemReponse.getAllAmount();
         //剩余数量
         leftAmount = ldLtemReponse.getLeftAmount();
         dataMessage = ldLtemReponse.getLuckyDrawDataList();
         prize = ldLtemReponse.getPrize();
-        dataMessage = luckyDrawDataList;
+        dataMessage = ldLtemReponse.getLuckyDrawDataList();
         return  flag;
 
     }
 
 
-    public boolean checkCustemerLuckyDraw(String accountNum){
-        boolean flag;
-//        LuckyDrawReponse luckyDrawReponse = client.checkCustemerLuckyDraw(accountNum);
-        LuckyDrawReponse luckyDrawReponse  =new LuckyDrawReponse();
-        luckyDrawReponse.setSuccess(true);
-        luckyDrawReponse.setAllAmount(3);
-        luckyDrawReponse.setLeftAmount(2);
-        flag = luckyDrawReponse.isSuccess();
-        if(flag){
+    public String checkCustemerLuckyDraw(String accountNum){
+        String flag="1";
+        LuckyDrawReponse luckyDrawReponse = client.checkCustemerLuckyDraw(accountNum);
+//        LuckyDrawReponse luckyDrawReponse  =new LuckyDrawReponse();
+//        luckyDrawReponse.setAllAmount(3);
+//        luckyDrawReponse.setLeftAmount(2);
+//        luckyDrawReponse.setLuckyDrawFlag("3");
+        flag = luckyDrawReponse.getLuckyDrawFlag();
+        if(flag=="3"){
             allAmount = luckyDrawReponse.getAllAmount();
             leftAmount = luckyDrawReponse.getLeftAmount();
         }
         dataMessage = luckyDrawReponse.getDataMessage();
         return flag;
+    }
+
+    /**
+     * 跳转到登陆页面
+     * @return
+     */
+    public String turnLogin() {
+        return ViewPage.LINK2Login;
+    }
+
+    /**
+     * 跳转到下单页面
+     * @return
+     */
+    public String turnPackage() {
+        return ViewPage.LINK2OrderEntry;
     }
 
     public String getOpenId() {

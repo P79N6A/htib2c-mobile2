@@ -67,4 +67,7 @@ public class ViewPage {
 
     //cr389
     public static final String LINK2LUCKDRAW = "/views/luckyDraw.xhtml?showwxpaytitle=1";
+    public static final String LINK2LUCKDRAWLOGIN = "/views/luckyDrawLogin.xhtml?showwxpaytitle=1";
+    public static final String LINK2LUCKDRAWPACKAGE = "/views/luckyDrawPackage.xhtml?showwxpaytitle=1";
+    public static final String LINK2LUCKDRAWERRER = "/views/luckyDrawErrer.xhtml?showwxpaytitle=1";
 }

@@ -141,9 +141,12 @@ public class LoginBackingBean implements Serializable {
             	myAccountPop = "暂无可以升级的套餐";
             }
             if(ViewPage.LINK2LUCKDRAW.equals(targetPage)){
-                boolean flag = luckDrawBean.checkCustemerLuckyDraw(accountInfo.getAccountNum());
-                if(flag){
-                    return ViewPage.LINK2Login;
+                String flag = luckDrawBean.checkCustemerLuckyDraw(accountInfo.getAccountNum());
+                if(flag=="3"){
+                    return targetPage;
+                }
+                else if(flag=="2"){
+                    return ViewPage.LINK2LUCKDRAWPACKAGE;
                 }
             }
             return targetPage;
@@ -151,6 +154,9 @@ public class LoginBackingBean implements Serializable {
         } else {
             if(ViewPage.LINK2KEY.equals(targetPage)){
                 targetPg= ViewPage.LINK2CHECKTEL;
+            }
+            if(ViewPage.LINK2LUCKDRAW.equals(targetPage)){
+                return ViewPage.LINK2LUCKDRAWERRER;
             }
             logger.debug(ESAPI.encoder().encodeForHTML(oId) + " haven't active account, redirect to login page");
             return ViewPage.LINK2Login;

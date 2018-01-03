@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="allAmount" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="dataMessage" type="{http://payment.ws.htichina.com/}luckyDrawData" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="leftAmount" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="luckyDrawFlag" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
     "allAmount",
     "dataMessage",
     "leftAmount",
-    "success"
+    "luckyDrawFlag"
 })
 public class LuckyDrawReponse {
 
@@ -44,7 +44,7 @@ public class LuckyDrawReponse {
     @XmlElement(nillable = true)
     protected List<LuckyDrawData> dataMessage;
     protected int leftAmount;
-    protected boolean success;
+    protected String luckyDrawFlag;
 
     /**
      * 获取allAmount属性的值。
@@ -108,19 +108,27 @@ public class LuckyDrawReponse {
     }
 
     /**
-     * 获取success属性的值。
+     * 获取luckyDrawFlag属性的值。
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public boolean isSuccess() {
-        return success;
+    public String getLuckyDrawFlag() {
+        return luckyDrawFlag;
     }
 
     /**
-     * 设置success属性的值。
+     * 设置luckyDrawFlag属性的值。
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setSuccess(boolean value) {
-        this.success = value;
+    public void setLuckyDrawFlag(String value) {
+        this.luckyDrawFlag = value;
     }
 
 }
