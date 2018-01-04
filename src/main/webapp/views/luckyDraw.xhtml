@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body >
+
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -9,45 +10,152 @@
                 xmlns:rich="http://richfaces.org/rich"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="./template.xhtml">
-
+    <script>
+        // 绑定数据标签
+        document.createElement("bind");
+        //禁止手机端body滚动
+        document
+            .addEventListener('touchmove', function(event) {
+                event.preventDefault();
+            }, false);
+    </script>
     <ui:define name="header">
         我的账户
     </ui:define>
 
     <ui:define name="workspace">
-        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/css.css" charset="utf-8" />
-        <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" charset="utf-8" />
-        <h:form  id="condition">
-            <div class="page">
-                <div id="fri_top">
-                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/logo.png"
-                         id="logo" />
-                </div>
+        <!--  -->
+        <div class="titleBox">
+            <img class="title_img1" src="#{facesContext.externalContext.request.contextPath}/resources/img/title1.png" alt=""/>
+            <img class="title_img2" src="#{facesContext.externalContext.request.contextPath}/resources/img/title2.png" alt=""/>
+        </div>
 
-                <div id="fri_mod" style="height: 85%">
-                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line.jpg"
-                         id="linetop"/>
-                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line2.jpg"
-                         id="linebot"/>
+        <!--  -->
+        <div class="containerBox">
+            <img class="page1Text" src="#{facesContext.externalContext.request.contextPath}/resources/img/page1-3.png" alt=""/>
 
-                    <div style="color: transparent">你好</div>
-                    <ul style="margin-top: -167px;">
-                        <li >抽奖机会：<h:inputText id="allAmount" value="#{luckDrawBean.allAmount}" type="text"></h:inputText></li>
-                        <li >剩余次数：<h:inputText id="leftAmount" value="#{luckDrawBean.leftAmount}" type="text"></h:inputText></li>
-                        <li >获奖：
-                            <c:forEach items="#{luckDrawBean.dataMessage}" var="luckyDrawData" varStatus="x" >
-                                <h:inputText id="prize" value="#{luckyDrawData.itemName}" type="text"></h:inputText>
-                            </c:forEach>
-                        </li>
+            <button class="page1Btn"></button>
 
-                        <li class="pt_10" style="padding-top:260px">
-                            <h:commandButton value="抽奖"
-                                             action="#{luckDrawBean.doLuckDraw}" />
-                        </li>
-                    </ul>
-                </div>
+            <a class="rule" href="javascript:void(0);">活动规则</a>
+        </div>
 
+        <!-- 喷红包动画 -->
+        <div class="packageBox">
+            <img class="package1" src="#{facesContext.externalContext.request.contextPath}/resources/img/package1.png" alt="" />
+            <img class="package1 packageActive" src="#{facesContext.externalContext.request.contextPath}/resources/img/package2.png" alt="" />
+            <div class="animateBox">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/img/1.png" alt="" />
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/img/2.png" alt=""/>
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/img/3.png" alt=""/>
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/img/4.png" alt=""/>
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/img/5.png" alt=""/>
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/img/6.png" alt=""/>
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/img/7.png" alt=""/>
             </div>
+        </div>
+
+
+        <!-- 活动规则弹窗 -->
+        <div class="opacityFloor">
+            <div class="floorBox">
+                <div class="floorTitleBox">
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/img/floorTitle.jpg" alt=""/>
+                </div>
+
+                <div class="bor">
+                    <div class="scrollfather" id="scrollfather2">
+                        <!-- 内容 -->
+                        <div class="scrollson">
+                            <img src="#{facesContext.externalContext.request.contextPath}/resources/img/floor.jpg" alt=""/>
+                        </div>
+
+                        <div class="scroll_ymove">
+                            <div class="scroll_y" unorbind="unbind"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="closeBox">
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/img/floorClose.png" alt=""/>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <!-- 红包掉落 -->
+        <!--
+            四种状态
+            1中奖 有抽奖次数 winnings
+            2中奖 没有抽奖次数 winning
+            3未中奖 有抽奖次数 notWinnings
+            4未中奖 没有抽奖次数 notWinning
+        -->
+        <div class="lastPageBox">
+            <img class="packageDown" src="#{facesContext.externalContext.request.contextPath}/resources/img/package1.png" alt=""/>
+            <img class="lastDown" src="#{facesContext.externalContext.request.contextPath}/resources/img/lastDown.png" alt=""/>
+            <div class="lastContainer">
+                <div class="awardRoll">
+                    <div class="winningsData">
+                        <img class="winningsImg" src="#{facesContext.externalContext.request.contextPath}/resources/img/winnings.png" alt=""/>
+                        <img class="notWinningsImg" src="#{facesContext.externalContext.request.contextPath}/resources/img/notWinnings.png" alt=""/>
+                        <bind></bind>
+                    </div>
+                </div>
+                <div class="text1">
+                    <div class="winningsText">
+                        <p class="fontScale">恭喜您获得:</p>
+                        <p class="fontScale">『套餐服务期免费延续<bind></bind>』</p>
+                        <p class="fontScale">奖品将在7个工作日内更新至您的账户</p>
+                    </div>
+                </div>
+                <div class="notWinningText">
+                    <div class="winningsText">
+                        <p class="fontScale">很遗憾，您没有中奖</p>
+                    </div>
+                </div>
+                <div class="text2 fontScale">
+                    剩余<bind></bind>礼包，再拆一次？
+                </div>
+                <div class="againBtn">
+                    <a class="lastBtn" href="javascript:void(0);"></a>
+                </div>
+                <div class="ThankYou">谢谢您的参与</div>
+            </div>
+        </div>
+        <!-- 小动画盒子 -->
+        <div class="minAnimateBox">
+            <img class="item1" src="#{facesContext.externalContext.request.contextPath}/resources/img/item1.png" alt="" />
+            <img class="item2" src="#{facesContext.externalContext.request.contextPath}/resources/img/item2.png" alt=""/>
+            <img class="item3" src="#{facesContext.externalContext.request.contextPath}/resources/img/item3.png" alt=""/>
+            <img class="item4" src="#{facesContext.externalContext.request.contextPath}/resources/img/item4.png" alt=""/>
+            <img class="item5" src="#{facesContext.externalContext.request.contextPath}/resources/img/item5.png" alt=""/>
+            <img class="item6" src="#{facesContext.externalContext.request.contextPath}/resources/img/item6.png" alt=""/>
+            <img class="item7" src="#{facesContext.externalContext.request.contextPath}/resources/img/item7.png" alt=""/>
+        </div>
+        <script src="#{facesContext.externalContext.request.contextPath}/resources/js/benzH5.js"></script>
+
+        <h:form  id="ajax" style="display: none">
+            <h:commandButton  value="抽奖"  action="#{luckDrawBean.doLuckDraw}">
+                <f:passThroughAttribute name="nm" value="doLuckDraw"/>
+                <f:ajax render="ajax"  event="action" onevent="luckyDrawSuccess" />
+            </h:commandButton>
+            <h:inputHidden id="userLuckyDrawFlag" value="#{luckDrawBean.userLuckyDrawFlag}"
+                           style="display: none">
+                <f:passThroughAttribute name="nm" value="userLuckyDrawFlag"/>
+            </h:inputHidden>
+            <h:inputHidden id="baseSize" value="#{luckDrawBean.baseSize}"
+                           style="display: none">
+                <f:passThroughAttribute name="nm" value="baseSize"/>
+            </h:inputHidden>
+            <h:inputHidden id="leftAmount" value="#{luckDrawBean.leftAmount}"
+                           style="display: none">
+                <f:passThroughAttribute name="nm" value="leftAmount"/>
+            </h:inputHidden>
+            <h:inputHidden id="flag" value="#{luckDrawBean.flag}"
+                           style="display: none">
+                <f:passThroughAttribute name="nm" value="flag"/>
+            </h:inputHidden>
         </h:form>
     </ui:define>
 

@@ -802,6 +802,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link LdItem }
+     * 
+     */
+    public LdItem createLdItem() {
+        return new LdItem();
+    }
+
+    /**
      * Create an instance of {@link PackageUpgradeRequest }
      * 
      */

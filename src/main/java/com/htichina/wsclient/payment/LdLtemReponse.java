@@ -1,11 +1,8 @@
 
 package com.htichina.wsclient.payment;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -20,9 +17,11 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="allAmount" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="basePrizeSize" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="ldItem" type="{http://payment.ws.htichina.com/}ldItem" minOccurs="0"/>
  *         &lt;element name="leftAmount" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="luckyDrawDataList" type="{http://payment.ws.htichina.com/}luckyDrawData" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="prize" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="otherPrizeSize" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="wifiPrizeSize" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -34,17 +33,20 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ldLtemReponse", propOrder = {
     "allAmount",
+    "basePrizeSize",
+    "ldItem",
     "leftAmount",
-    "luckyDrawDataList",
-    "prize"
+    "otherPrizeSize",
+    "wifiPrizeSize"
 })
 public class LdLtemReponse {
 
     protected int allAmount;
+    protected int basePrizeSize;
+    protected LdItem ldItem;
     protected int leftAmount;
-    @XmlElement(nillable = true)
-    protected List<LuckyDrawData> luckyDrawDataList;
-    protected String prize;
+    protected int otherPrizeSize;
+    protected int wifiPrizeSize;
 
     /**
      * 获取allAmount属性的值。
@@ -60,6 +62,46 @@ public class LdLtemReponse {
      */
     public void setAllAmount(int value) {
         this.allAmount = value;
+    }
+
+    /**
+     * 获取basePrizeSize属性的值。
+     * 
+     */
+    public int getBasePrizeSize() {
+        return basePrizeSize;
+    }
+
+    /**
+     * 设置basePrizeSize属性的值。
+     * 
+     */
+    public void setBasePrizeSize(int value) {
+        this.basePrizeSize = value;
+    }
+
+    /**
+     * 获取ldItem属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link LdItem }
+     *     
+     */
+    public LdItem getLdItem() {
+        return ldItem;
+    }
+
+    /**
+     * 设置ldItem属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link LdItem }
+     *     
+     */
+    public void setLdItem(LdItem value) {
+        this.ldItem = value;
     }
 
     /**
@@ -79,56 +121,35 @@ public class LdLtemReponse {
     }
 
     /**
-     * Gets the value of the luckyDrawDataList property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the luckyDrawDataList property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getLuckyDrawDataList().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link LuckyDrawData }
-     * 
+     * 获取otherPrizeSize属性的值。
      * 
      */
-    public List<LuckyDrawData> getLuckyDrawDataList() {
-        if (luckyDrawDataList == null) {
-            luckyDrawDataList = new ArrayList<LuckyDrawData>();
-        }
-        return this.luckyDrawDataList;
+    public int getOtherPrizeSize() {
+        return otherPrizeSize;
     }
 
     /**
-     * 获取prize属性的值。
+     * 设置otherPrizeSize属性的值。
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getPrize() {
-        return prize;
+    public void setOtherPrizeSize(int value) {
+        this.otherPrizeSize = value;
     }
 
     /**
-     * 设置prize属性的值。
+     * 获取wifiPrizeSize属性的值。
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setPrize(String value) {
-        this.prize = value;
+    public int getWifiPrizeSize() {
+        return wifiPrizeSize;
+    }
+
+    /**
+     * 设置wifiPrizeSize属性的值。
+     * 
+     */
+    public void setWifiPrizeSize(int value) {
+        this.wifiPrizeSize = value;
     }
 
 }

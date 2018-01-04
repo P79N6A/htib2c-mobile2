@@ -247,4 +247,16 @@ public class Constant {
 	
 	
 	public static final String CSRFTOKEN = "csrftoken";
+
+    //CR389 礼物类型
+    public static final String ITEM_TYPE_0 ="Thanks";
+    public static final String ITEM_TYPE_1 ="1"; //基础
+    public static final String ITEM_TYPE_2 ="2"; //wifi
+    public static final String ITEM_TYPE_3 ="3"; //礼物
+
+    //CR389  用户四个状态
+    public static final String USERLUCKYDRAWFLAG_1 ="winnings";
+    public static final String USERLUCKYDRAWFLAG_2 ="winning";
+    public static final String USERLUCKYDRAWFLAG_3 ="notWinnings";
+    public static final String USERLUCKYDRAWFLAG_4 ="notWinning";
 }

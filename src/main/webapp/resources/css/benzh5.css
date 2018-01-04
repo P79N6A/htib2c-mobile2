@@ -1,0 +1,612 @@
+
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow:hidden;
+}
+.fontScale{
+  transform: scale(1,1.2);
+  margin-bottom:10px;
+}
+
+@font-face
+{
+font-family: newsFonts;
+src: url('../fonts/newsFonts.ttf');
+}
+body {
+  background: url("../img/bg.jpg") no-repeat;
+  background-size: 100% 100%;
+  font-size: 23px;
+  font-family: newsFonts;
+}
+
+.titleBox {
+  height: 35%;
+  position: relative;
+  z-index:3;
+}
+
+.titleBox img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.titleBox .title_img1 {
+  top: 57px;
+  width: 60%;
+}
+
+.titleBox .title_img2 {
+  top:200px;
+  bottom: 5%;
+  width: 85%;
+}
+
+.containerBox {
+  height: 60%;
+  position: relative;
+  z-index:3;
+}
+
+.containerBox p {
+  color: #8B6133;
+  text-align: center;
+}
+
+.containerBox .package1 {
+  position: absolute;
+  bottom: 30%;
+  width: 23%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.page1Btn {
+  width: 45%;
+  height: 56px;
+  border: 0;
+  top: 738px;
+  outline: 0;
+  background: url("../img/page1Btn.jpg") no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.rule {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top:800px;
+  right: 0;
+  margin: 0 auto;
+  width: 15%;
+  text-align: center;
+  font-size: .78em;
+  text-decoration: none;
+  color: #8B6133;
+  /* border-bottom:1px solid #EFD297; */
+}
+
+.rule:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -60px;
+  height: 2px;
+  width: 90%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: #EFD297;
+}
+
+.opacityFloor {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: all .5s ease;
+  opacity:0;
+  z-index:0;
+}
+.floorTitleBox{
+  position: relative;
+  height:17%;
+}
+.floorTitleBox img{
+  width:30%;
+  position: absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  top:0;
+  margin:auto;
+}
+/* 滚动条 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+.bor{
+  width:90%;
+  height:80%;
+  position:absolute;
+  left:0;
+  right:0;
+  margin:0 auto;
+  bottom:3%;
+  border:1px solid #D1B486;
+}
+.floorBox{
+  height: 70%;
+  width: 80%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background:#F8F0D4;
+  top:-100%;
+  /* transition: all .5s ease; */
+}
+.closeBox{
+  position: absolute;
+  bottom:-10%;
+  width:100%;
+  height:80px;
+  /* text-align: center; */
+}
+.closeBox img{
+  position:absolute;
+  left:-30%;
+  margin-left:-40px;
+  width:80px;
+  opacity:0;
+  transform: rotateZ(0deg);
+  transition: all 1.5s ease;
+}
+
+#scrollfather1, #scrollfather2 {
+  /* background: rgba(230,230,230,0.5); */
+  background: #F8F0D4;
+  float: left;
+  width:100%;
+  height:100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  border:8px solid #F3E0B8;
+}
+#scrollfather1, #scrollfather2 img{
+  width:100%;
+}
+
+.scrollson {
+  float: left;
+  width: 100%;
+}
+
+.scrollson img {
+  width: 100%;
+}
+
+.scroll_y {
+  background: #D5BC92;
+  border-radius: 5px;
+  position: absolute;
+  right: 0;
+  width: 8px;
+}
+
+.scroll_ymove {
+  /* background: rgba(0,0,0,0.2); */
+  border-radius: 5px;
+  height: 300px;
+  position: absolute;
+  right: 12px;
+  width: 5px;
+  z-index: 2;
+}
+
+/* 红包动画 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+.packageBox{
+  position: absolute;
+  height:80%;
+  width:100%;
+  bottom:28%;
+}
+.packageBox .package1{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:0 auto;
+  width:150px;
+  z-index:4;
+}
+.packageBox .packageActive{
+  z-index:3;
+
+}
+.animateBox{
+  width:100%;
+  height:100%;
+  position:absolute;
+  display:none;
+  z-index:5;
+}
+.page1Text{
+  position:absolute;
+  top: 280px;
+  left:0;
+  right:0;
+  margin:0 auto;
+  width:70%;
+}
+.animateBox img{
+  height:100%;
+  /* width:100%; */
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  display:none;
+}
+/* 四种状态
+1中奖 有抽奖次数 winnings
+2中奖 没有抽奖次数 winning
+3未中奖 有抽奖次数 notWinnings
+4未中奖 没有抽奖次数 notWinning */
+.winning .notWinningsImg,
+.winnings .notWinningsImg{
+  display:none;
+}
+.notWinnings .winningsImg,
+.notWinning .winningsImg{
+  display:none;
+}
+.notWinnings .winningsData bind,
+.notWinning .winningsData bind{
+  display:none;
+}
+
+.packageDown{
+  position:absolute;
+  top:0;
+  right:30%;
+  transform-origin:0 0 0;
+  transform:rotateZ(-90deg);
+  z-index:10;
+  width:160px;
+  /*  */
+}
+.lastDown{
+  position:absolute;
+  top:-25px;
+  right:30%;
+  transform-origin:0 0 0;
+  transform:rotateZ(-90deg);
+  z-index:10;
+  width:144px;
+  transform:translate(-125%,65%) rotateZ(-8deg);
+  display:none;
+}
+.lastPageBox{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+}
+.lastContainer{
+  height:67%;
+  width:100%;
+  position:absolute;
+  bottom:0;
+  /* ---------------------------------------------------------------------------------------------------------------- */
+  z-index:20;
+  display:none;
+}
+.lastContainer>div{
+  opacity:0;
+  transition: all .5s ease;
+}
+.notWinning .text1,
+.notWinnings .text1{
+  display:none;
+}
+.notWinnings .text2{
+  margin-top:10%;
+}
+.notWinningText{
+  margin-top:5%;
+  display:none;
+}
+.notWinning .notWinningText,
+.notWinnings .notWinningText{
+  display:block;
+}
+.ThankYou{
+  position:absolute;
+  bottom:15%;
+  width:55%;
+  left:0;
+  right:0;
+  margin:0 auto;
+  font-size: .78em;
+  color:#AD9078;
+  text-align: center;
+}
+.ThankYou:after,
+.ThankYou:before{
+  content:"";
+  display:block;
+  width:20%;
+  height:2px;
+  background:#AD9078;
+  position: absolute;
+  top:0;
+  bottom:0;
+  margin:auto 0;
+}
+.ThankYou:after{
+  left:0;
+}
+.ThankYou:before{
+  right:0;
+}
+.awardRoll{
+  width:100%;
+}
+.awardRoll div{
+  width:295px;
+  margin-left:50%;
+  transform:translateX(-40%);
+}
+.awardRoll div img{
+  width:92%;
+}
+.awardRoll div bind{
+  display:inline-block;
+  width:50%;
+  height:28%;
+  /* border:1px solid red; */
+  position:absolute;
+  top:88px;
+  right:50px;
+  transform: rotateZ(13deg);
+  text-align: center;
+  color:#633D0A;
+  font-weight: bold;
+}
+
+.winningsText{
+  width:90%;
+  height:100%;
+  margin-left:50%;
+  transform: translateX(-50%);
+  background:url("../img/winningsTextBg.png") no-repeat;
+  background-size:100% 100%;
+  text-align: center;
+  color:#956E43;
+  padding:25px 35px 35px 35px;
+  /* margin-top:10px; */
+  box-sizing: border-box;
+}
+
+.winningsText p{
+  font-size:1em;
+}
+.winningsText p:nth-child(1){
+  font-size:1.3em;
+}
+.winningsText p:nth-child(2){
+  font-weight:bold;
+  /* margin:5px 0; */
+}
+.notWinningText .winningsText{
+  width:60%;
+  padding:25px;
+}
+.notWinningText .winningsText p{
+  font-size:1em;
+  font-weight: bold;
+}
+.winningsText p bind{
+  font-weight:bold;
+}
+.text2{
+  text-align: center;
+  color:#825525;
+  font-size:1.1em;
+  font-weight: bold;
+}
+.text2 bind{
+
+  font-size:1.5em;
+}
+.lastBtn{
+  position:absolute;
+  bottom:15%;
+  width:215px;
+  height:70px;
+  background:url("../img/lastBtn.jpg") no-repeat ;
+  background-size:100% 100%;
+  left:0;
+  right:0;
+  margin:0 auto;
+}
+.minAnimateBox{
+  position:absolute;
+  top:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  display:none;
+}
+.minAnimateBox img{
+  position:absolute;
+  opacity:0;
+}
+.minAnimateBox .item1{
+  left:3%;
+  top:2%;
+  animation: item1Rorate 8s linear infinite;
+}
+.minAnimateBox .item2{
+  right: 5%;
+  top:0;
+  transform-origin: 50% 0 0;
+  animation: item2Rorate 2s ease-in-out alternate infinite;
+}
+.minAnimateBox .item3{
+  left:-20%;
+  top:35%;
+  animation: item3Rorate 2.5s 1s ease-in-out alternate infinite;
+}
+.minAnimateBox .item4{
+  right:-14%;
+  top:40%;
+  animation: item4Rorate 2.5s ease-in-out alternate infinite;
+}
+.minAnimateBox .item5{
+  left:12%;
+  top:59%;
+  animation: item1Rorate 8s linear infinite;
+}
+.minAnimateBox .item6{
+  left:40%;
+  top:70%;
+  animation: item6Rorate 8s linear infinite;
+}
+.minAnimateBox .item7{
+  right:-5%;
+  top:73%;
+  animation: item3Rorate 2s ease-in-out alternate infinite;
+}
+
+/*--------------------- css动画 ----------------------------------- */
+/* 背景动画  */
+/* 旋转 */
+@keyframes item1Rorate {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+/* 左右晃（灯笼） */
+@keyframes item2Rorate {
+  0%{
+    transform: rotate(-10deg);
+  }
+  100%{
+    transform: rotate(10deg);
+  }
+}
+
+/* 左右晃（云朵1）*/
+@keyframes item3Rorate {
+  0%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(10%);
+  }
+}
+/* 左右晃（云朵2）*/
+@keyframes item4Rorate {
+  0%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(-20%);
+  }
+}
+
+/* 旋转逆时针 */
+@keyframes item6Rorate {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(-360deg);
+  }
+}
+
+
+
+/* 红包掉落 */
+@keyframes packageDown{
+  0%{transform:rotateZ(-90deg);}
+  25%{transform:rotateZ(80deg);}
+  50%{transform:rotateZ(20deg);}
+  75%{transform:rotateZ(60deg);}
+  100%{transform:translate(-120%,99%) rotateZ(-8deg);}
+}
+/* 红包爆炸 */
+@keyframes packageActiveAnimate {
+  0%{
+    width:150px;
+    z-index:3;
+  }
+  50%{
+    width:170px;
+    z-index:3;
+  }
+  55%{
+    width:180px;
+    z-index:5;
+  }
+  60%{
+    width:175px;
+    z-index:5;
+  }
+  65%{
+    width:180px;
+    z-index:5;
+  }
+  70%{
+    width:175px;
+    z-index:5;
+  }
+  72%{
+    width:180px;
+    z-index:5;
+  }
+  76%{
+    width:175px;
+    z-index:5;
+  }
+  80%{
+    width:180px;
+    z-index:5;
+  }
+  84%{
+    width:175px;
+    z-index:5;
+  }
+  88%{
+    width:180px;
+    z-index:5;
+  }
+  90%{
+    width:180px;
+    z-index:5;
+  }
+  100%{
+    width:185px;
+    z-index:5;
+  }
+}

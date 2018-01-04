@@ -5,16 +5,14 @@ import com.htichina.web.POC.PocBean;
 import com.htichina.web.PaymentServiceClient;
 import com.htichina.web.common.FacesUtils;
 import com.htichina.web.common.ViewPage;
+import com.htichina.wsclient.payment.LdItem;
 import com.htichina.wsclient.payment.LdLtemReponse;
-import com.htichina.wsclient.payment.LuckyDrawData;
 import com.htichina.wsclient.payment.LuckyDrawReponse;
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The main class for handling the Lock
@@ -26,26 +24,30 @@ public class LuckDrawBean implements Serializable {
     private static Logger logger = Logger.getLogger(PocBean.class.getName());
 
     PaymentServiceClient client = PaymentServiceClient.getInstance();
-    private String itemName;
     private int allAmount;
     private int leftAmount;
     private String openId;
-    private String prize;
+    private String userLuckyDrawFlag;
+    private int baseSize;
+    private int wifiSize;
+    private int otherSize;
+    private LdItem ldItem;
     private String accountNum;
     private String paymentPlatform;
     private LdLtemReponse ldLtemReponse;
-    private List<LuckyDrawData> dataMessage;
 
+    private String flag;
 
     /**
      * 点击抽奖
      * @return
      */
-    public boolean doLuckDraw(){
-        boolean flag =true;
+    public void doLuckDraw(){
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
         accountNum  = (String) FacesUtils.getManagedBeanInSession(Constant.ACCOUNT_NUM);
+        accountNum  = "10579675";
         paymentPlatform = (String) FacesUtils.getManagedBeanInSession(Constant.PAYMENT_PLATFORM);
+        paymentPlatform="11111111";
         ldLtemReponse = client.doLuckDraw(accountNum,openId,paymentPlatform);
 //        ldLtemReponse = new LdLtemReponse();
 //        ldLtemReponse.setAllAmount(3);
@@ -62,11 +64,42 @@ public class LuckDrawBean implements Serializable {
         allAmount = ldLtemReponse.getAllAmount();
         //剩余数量
         leftAmount = ldLtemReponse.getLeftAmount();
-        dataMessage = ldLtemReponse.getLuckyDrawDataList();
-        prize = ldLtemReponse.getPrize();
-        dataMessage = ldLtemReponse.getLuckyDrawDataList();
-        return  flag;
+        //中奖内容
+        ldItem = ldLtemReponse.getLdItem();
+        //中奖了 还有次数
+        if(leftAmount>0 && !Constant.ITEM_TYPE_0.equals(ldItem.getSubType())){
+            userLuckyDrawFlag = Constant.USERLUCKYDRAWFLAG_1;
+            if(Constant.ITEM_TYPE_1.equals(ldItem.getSubType())) {
+                baseSize = Integer.valueOf(ldItem.getAmount());
+            }
+            if(Constant.ITEM_TYPE_2.equals(ldItem.getSubType())) {
+                wifiSize = Integer.valueOf(ldItem.getAmount());
+            }else {
+                otherSize = Integer.valueOf(ldItem.getAmount());
+            }
+        }
+        //有剩余次数没中奖
+        if(leftAmount>0 && Constant.ITEM_TYPE_0.equals(ldItem.getSubType())){
+            userLuckyDrawFlag = Constant.USERLUCKYDRAWFLAG_3;
+        }
+        //无剩余次数中奖
+        if(leftAmount==0 && !Constant.ITEM_TYPE_0.equals(ldItem.getSubType())){
+            userLuckyDrawFlag = Constant.USERLUCKYDRAWFLAG_2;
+            if(Constant.ITEM_TYPE_1.equals(ldItem.getSubType())) {
+                baseSize = ldLtemReponse.getBasePrizeSize();
+            }
+            if(Constant.ITEM_TYPE_2.equals(ldItem.getSubType())) {
+                wifiSize = ldLtemReponse.getWifiPrizeSize();
+            }else {
+                otherSize = ldLtemReponse.getOtherPrizeSize();
+            }
+        }
+        //无剩余次数没中奖
+        if(leftAmount==0 && Constant.ITEM_TYPE_0.equals(ldItem.getSubType())){
+            userLuckyDrawFlag = Constant.USERLUCKYDRAWFLAG_4;;
+        }
 
+        flag = "1";
     }
 
 
@@ -82,7 +115,6 @@ public class LuckDrawBean implements Serializable {
             allAmount = luckyDrawReponse.getAllAmount();
             leftAmount = luckyDrawReponse.getLeftAmount();
         }
-        dataMessage = luckyDrawReponse.getDataMessage();
         return flag;
     }
 
@@ -110,13 +142,6 @@ public class LuckDrawBean implements Serializable {
         this.openId = openId;
     }
 
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
 
     public int getAllAmount() {
         return allAmount;
@@ -134,13 +159,7 @@ public class LuckDrawBean implements Serializable {
         this.leftAmount = leftAmount;
     }
 
-    public String getPrize() {
-        return prize;
-    }
 
-    public void setPrize(String prize) {
-        this.prize = prize;
-    }
 
     public String getAccountNum() {
         return accountNum;
@@ -166,11 +185,51 @@ public class LuckDrawBean implements Serializable {
         this.ldLtemReponse = ldLtemReponse;
     }
 
-    public List<LuckyDrawData> getDataMessage() {
-        return dataMessage;
+    public String getUserLuckyDrawFlag() {
+        return userLuckyDrawFlag;
     }
 
-    public void setDataMessage(List<LuckyDrawData> dataMessage) {
-        this.dataMessage = dataMessage;
+    public void setUserLuckyDrawFlag(String userLuckyDrawFlag) {
+        this.userLuckyDrawFlag = userLuckyDrawFlag;
+    }
+
+    public int getBaseSize() {
+        return baseSize;
+    }
+
+    public void setBaseSize(int baseSize) {
+        this.baseSize = baseSize;
+    }
+
+    public int getWifiSize() {
+        return wifiSize;
+    }
+
+    public void setWifiSize(int wifiSize) {
+        this.wifiSize = wifiSize;
+    }
+
+    public int getOtherSize() {
+        return otherSize;
+    }
+
+    public void setOtherSize(int otherSize) {
+        this.otherSize = otherSize;
+    }
+
+    public LdItem getLdItem() {
+        return ldItem;
+    }
+
+    public void setLdItem(LdItem ldItem) {
+        this.ldItem = ldItem;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 }
