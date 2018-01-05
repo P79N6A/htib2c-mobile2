@@ -35,8 +35,7 @@
                         <li >您购买的套餐不在活动范围，是否愿意前往购买活动套餐？</li>
 
                         <li class="pt_10" style="padding-top:160px">
-                            <h:commandButton value="前往订购套餐"
-                                             action="#{luckDrawBean.turnPackage}" />
+                            <div class="s_btn s_btn2" id = "sBtn2" onclick="turnPackage()">订购套餐</div>
                         </li>
                     </ul>
                 </div>
@@ -44,6 +43,11 @@
                     <div id="keytxt">网站备案号：京ICP备11011340号</div>
                 </div>
             </div>
+            <script>
+                function turnPackage(){
+                    window.location.href="#{facesContext.externalContext.request.contextPath}/views/luckyDrawPackage.xhtml";
+                }
+            </script>
         </h:form>
     </ui:define>
 

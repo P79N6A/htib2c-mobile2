@@ -69,14 +69,6 @@ public class LuckDrawBean implements Serializable {
         //中奖了 还有次数
         if(leftAmount>0 && !Constant.ITEM_TYPE_0.equals(ldItem.getSubType())){
             userLuckyDrawFlag = Constant.USERLUCKYDRAWFLAG_1;
-            if(Constant.ITEM_TYPE_1.equals(ldItem.getSubType())) {
-                baseSize = Integer.valueOf(ldItem.getAmount());
-            }
-            if(Constant.ITEM_TYPE_2.equals(ldItem.getSubType())) {
-                wifiSize = Integer.valueOf(ldItem.getAmount());
-            }else {
-                otherSize = Integer.valueOf(ldItem.getAmount());
-            }
         }
         //有剩余次数没中奖
         if(leftAmount>0 && Constant.ITEM_TYPE_0.equals(ldItem.getSubType())){
@@ -85,22 +77,22 @@ public class LuckDrawBean implements Serializable {
         //无剩余次数中奖
         if(leftAmount==0 && !Constant.ITEM_TYPE_0.equals(ldItem.getSubType())){
             userLuckyDrawFlag = Constant.USERLUCKYDRAWFLAG_2;
-            if(Constant.ITEM_TYPE_1.equals(ldItem.getSubType())) {
-                baseSize = Integer.valueOf(ldItem.getAmount());
-            }
-            if(Constant.ITEM_TYPE_2.equals(ldItem.getSubType())) {
-                wifiSize = Integer.valueOf(ldItem.getAmount());
-            }else {
-                otherSize = Integer.valueOf(ldItem.getAmount());
-            }
             allBaseSize = ldLtemReponse.getBasePrizeSize();
         }
         //无剩余次数没中奖
         if(leftAmount==0 && Constant.ITEM_TYPE_0.equals(ldItem.getSubType())){
             userLuckyDrawFlag = Constant.USERLUCKYDRAWFLAG_4;
+
             allBaseSize = ldLtemReponse.getBasePrizeSize();
         }
-
+        if(Constant.ITEM_TYPE_1.equals(ldItem.getSubType())) {
+            baseSize = Integer.valueOf(ldItem.getAmount());
+        }
+        if(Constant.ITEM_TYPE_2.equals(ldItem.getSubType())) {
+            wifiSize = Integer.valueOf(ldItem.getAmount());
+        }else {
+            otherSize = Integer.valueOf(ldItem.getAmount());
+        }
         flag = "1";
     }
 
@@ -134,6 +126,13 @@ public class LuckDrawBean implements Serializable {
      */
     public String turnPackage() {
         return ViewPage.LINK2OrderEntry;
+    }
+    /**
+     * 跳转到下单页面
+     * @return
+     */
+    public String turnLuckyDraw() {
+        return ViewPage.LINK2LUCKDRAW;
     }
 
     public String getOpenId() {

@@ -237,7 +237,7 @@ public class WechatServlet extends HttpServlet {
 			}
 			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAW)){
 				LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
-				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAWLOGIN)).forward(req, resp);
+				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW)).forward(req, resp);
 
 			}
 		}

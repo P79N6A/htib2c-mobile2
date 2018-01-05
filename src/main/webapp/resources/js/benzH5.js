@@ -12,6 +12,10 @@ packageBtn.click(function() {
 });
 
 packageImg.click(function() {
+    $("input[nm='userLuckyDrawFlag']").val("");
+    $("input[nm='baseSize']").val("");
+    $("input[nm='leftAmount']").val("");
+    $("input[nm='allBaseSize']").val("");
     $("input[nm='doLuckDraw']").click();
 
   //
@@ -19,6 +23,7 @@ packageImg.click(function() {
 
 
 function luckyDrawSuccess(){
+
     $(".packageActive").css({"animation": "packageActiveAnimate 2.5s  ease alternate"});
     setTimeout(function() {
 

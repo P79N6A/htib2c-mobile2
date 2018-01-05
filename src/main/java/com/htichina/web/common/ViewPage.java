@@ -70,4 +70,6 @@ public class ViewPage {
     public static final String LINK2LUCKDRAWLOGIN = "/views/luckyDrawLogin.xhtml?showwxpaytitle=1";
     public static final String LINK2LUCKDRAWPACKAGE = "/views/luckyDrawPackage.xhtml?showwxpaytitle=1";
     public static final String LINK2LUCKDRAWERRER = "/views/luckyDrawErrer.xhtml?showwxpaytitle=1";
+    public static final String LINK2LUCKDRAWOVER = "/views/luckyDrawOver.xhtml?showwxpaytitle=1";
+    public static final String LINK2LUCKYDRAWCONTINUE = "/views/luckyDrawContinue.xhtml?showwxpaytitle=1";
 }

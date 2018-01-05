@@ -32,10 +32,10 @@
 
                     <div style="color: transparent">你好</div>
                     <ul style="margin-top: -167px;">
-                        <li >参与此活动，需要您先登录参与活动的账号，请点击前往</li>
+                        <li >抽奖次数用尽，欢迎再次订购参与抽奖</li>
 
                         <li class="pt_10" style="padding-top:160px">
-                            <div class="s_btn s_btn2" id = "sBtn2" onclick="turnLogin()">登陆</div>
+                            <div class="s_btn s_btn2" id = "sBtn2" onclick="toluckDraw()">继续抽奖</div>
                         </li>
                     </ul>
                 </div>
@@ -44,8 +44,8 @@
                 </div>
             </div>
             <script>
-                function turnLogin(){
-                    window.location.href="#{facesContext.externalContext.request.contextPath}/views/luckyDrawLogin.xhtml";
+                function toluckDraw(){
+                    window.location.href="#{facesContext.externalContext.request.contextPath}/views/luckyDraw.xhtml";
                 }
             </script>
         </h:form>
