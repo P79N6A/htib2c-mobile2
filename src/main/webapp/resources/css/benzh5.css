@@ -106,7 +106,7 @@ body {
   content: "";
   display: block;
   position: absolute;
-  bottom: -60px;
+  bottom: -28px;
   height: 2px;
   width: 90%;
   left: 0;
@@ -337,8 +337,8 @@ body {
 }
 .ThankYou{
   position:absolute;
-  bottom:15%;
-  width:55%;
+  bottom:24%;
+  width:87%;
   left:0;
   right:0;
   margin:0 auto;
@@ -354,7 +354,7 @@ body {
   height:2px;
   background:#AD9078;
   position: absolute;
-  top:0;
+  top:-86px;
   bottom:0;
   margin:auto 0;
 }

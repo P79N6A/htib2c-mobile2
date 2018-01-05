@@ -67,7 +67,7 @@ function luckyDrawSuccess(){
 
 }
 //四个状态函数
-function statusFn(str,winningsAdd,theTerm,remaining) {
+function statusFn(str,winningsAdd,theTerm,remaining,allBaseSize) {
   $(".lastContainer").addClass(str);
   var ele = "." + str;
 
@@ -103,7 +103,7 @@ function statusFn(str,winningsAdd,theTerm,remaining) {
 
     //套餐服务期
     $(".winningsText").find("bind").text(theTerm+"个月");
-
+        $(".allText").find("bind").text(allBaseSize+"个");
       $(ele).css("display", "block");
       //依次显示
       $(ele).children(".awardRoll").animate({"opacity": "1"}, 500, function() {
@@ -134,6 +134,8 @@ function statusFn(str,winningsAdd,theTerm,remaining) {
 
       //未中奖 没有抽奖次数
     case "notWinning":
+
+        $(".allText").find("bind").text(allBaseSize+"个");
       $(ele).css("display", "block");
 
       //依次显示
@@ -174,8 +176,8 @@ function packageDownFn() {
     var userLuckyDrawFlag = $("input[nm='userLuckyDrawFlag']").val();
       var baseSize = $("input[nm='baseSize']").val();
       var leftAmount = $("input[nm='leftAmount']").val();
-
-    statusFn(userLuckyDrawFlag,baseSize,baseSize,leftAmount);
+      var allBaseSize = $("input[nm='allBaseSize']").val();
+    statusFn(userLuckyDrawFlag,baseSize,baseSize,leftAmount,allBaseSize);
 
   }, 3000);
 

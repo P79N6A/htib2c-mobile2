@@ -120,7 +120,9 @@
                 <div class="againBtn">
                     <a class="lastBtn" href="javascript:void(0);"></a>
                 </div>
-                <div class="ThankYou">谢谢您的参与</div>
+                <div class="ThankYou">谢谢您的参与
+                    <div class="allText" style="opacity: 1;top: 598px;margin-top: 57px;">此次活动您总共获得『<bind style="font-weight: bold;"></bind>个月套餐服务期免费延续』</div>
+                </div>
             </div>
         </div>
         <!-- 小动画盒子 -->
@@ -151,6 +153,10 @@
             <h:inputHidden id="leftAmount" value="#{luckDrawBean.leftAmount}"
                            style="display: none">
                 <f:passThroughAttribute name="nm" value="leftAmount"/>
+            </h:inputHidden>
+            <h:inputHidden id="allBaseSize" value="#{luckDrawBean.allBaseSize}"
+                           style="display: none">
+                <f:passThroughAttribute name="nm" value="allBaseSize"/>
             </h:inputHidden>
             <h:inputHidden id="flag" value="#{luckDrawBean.flag}"
                            style="display: none">
