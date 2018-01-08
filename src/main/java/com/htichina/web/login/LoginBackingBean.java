@@ -48,9 +48,7 @@ import java.util.List;
 @Scope("session")
 public class LoginBackingBean implements Serializable {
     @Autowired
-    private LuckDrawBean luckDrawBean;
     private static Logger logger = Logger.getLogger(LoginBackingBean.class.getName());
-    PaymentServiceClient client = PaymentServiceClient.getInstance();
 
     //    private String paymentPlatform;
 //    private String openId;
@@ -92,7 +90,7 @@ public class LoginBackingBean implements Serializable {
 
 
     /*2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范*/
-    public String login(HttpSession session, String From, String oId, String targetPage) {
+    public String login(HttpSession session, String From, String oId, String targetPage) throws IOException {
         FacesContext context = FacesContext.getCurrentInstance();
         logger.info("context ===>"+context);
         if (!(From.indexOf("xhtml") > -1)){
@@ -140,36 +138,44 @@ public class LoginBackingBean implements Serializable {
             		&& (accountInfo.getCurrentCanBeUpgratedPackages()==null || accountInfo.getCurrentCanBeUpgratedPackages().size()==0) ){
             	myAccountPop = "暂无可以升级的套餐";
             }
-            if(ViewPage.LINK2LUCKDRAW.equals(targetPage)){
-                System.out.print("===================================accountNum="+accountInfo.getAccountNum());
-                String flag = luckDrawBean.checkCustemerLuckyDraw(accountInfo.getAccountNum());
-                System.out.print("===================================flag="+flag);
-                if("3".equals(flag)){
-                    return targetPage;
-                }
-                else if("2".equals(flag)){
-                    return ViewPage.LINK2LUCKDRAWPACKAGE;
-                }
-                else if("1".equals(flag)){
-                    return ViewPage.LINK2LUCKDRAWERRER;
-                }
-                else if("4".equals(flag)){
-                    return ViewPage.LINK2LUCKDRAWOVER;
-                }
-                else if("5".equals(flag)){
-                    return ViewPage.LINK2LUCKYDRAWCONTINUE;
-                }
-            }
+//            if(ViewPage.LINK2LUCKDRAW.equals(targetPage)){
+//                System.out.print("===================================accountNum="+accountInfo.getAccountNum());
+//                String flag = luckDrawBean.checkCustemerLuckyDraw(accountInfo.getAccountNum());
+//                System.out.print("===================================flag="+flag);
+//                if("3".equals(flag)){
+//                    return targetPage;
+//                }
+//                else if("2".equals(flag)){
+//                    return ViewPage.LINK2LUCKDRAWPACKAGE;
+//                }
+//                else if("1".equals(flag)){
+//                    return ViewPage.LINK2LUCKDRAWERRER;
+//                }
+//                else if("4".equals(flag)){
+//                    return ViewPage.LINK2LUCKDRAWOVER;
+//                }
+//                else if("5".equals(flag)){
+//                    return ViewPage.LINK2LUCKYDRAWCONTINUE;
+//                }
+//            }
+
+//            if(ViewPage.LINK2LUCKDRAW.equals(targetPage)) {
+//                return "/htib2c-mobile/views/luckyDraw.xhtml?showwxpaytitle=1";
+//            }
             return targetPage;
 
         } else {
             if(ViewPage.LINK2KEY.equals(targetPage)){
                 targetPg= ViewPage.LINK2CHECKTEL;
             }
-            if(ViewPage.LINK2LUCKDRAW.equals(targetPage)){
-                return ViewPage.LINK2LUCKDRAWLOGIN;
-            }
+//            if(ViewPage.LINK2LUCKDRAW.equals(targetPage)){
+//                return ViewPage.LINK2LUCKDRAWLOGIN;
+//            }
             logger.debug(ESAPI.encoder().encodeForHTML(oId) + " haven't active account, redirect to login page");
+            logger.info("targetPage========================="+targetPage);
+//            if(ViewPage.LINK2LUCKDRAW.equals(targetPage)) {
+//                return "/htib2c-mobile/views/accountLogin.xhtml?showwxpaytitle=1";
+//            }
             return ViewPage.LINK2Login;
         }
 
@@ -190,6 +196,7 @@ public class LoginBackingBean implements Serializable {
         logger.info("loginbean........validateLogin()........targetPage="+targetPage);
         
         FacesContext context = FacesContext.getCurrentInstance();
+        logger.info("context ===>"+context);
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
         logger.info("validateLogin openId="+ESAPI.encoder().encodeForHTML(openId));
 
@@ -249,6 +256,7 @@ public class LoginBackingBean implements Serializable {
         	logger.info("put account into session");
             context.getExternalContext().getSessionMap()
                     .put(LoginFilter.CURRENT_USER, accountNum);
+            logger.info("openId======================"+openId);
             if(!ViewPage.LINK2CHECKTEL.equals(targetPage)){
                 boolean flag = PaymentServiceClient.getInstance().createWechatUserProfile(accountNum, pin, openId, userInfo);
                 if(flag){
@@ -285,8 +293,13 @@ public class LoginBackingBean implements Serializable {
                 }
 
             }
-
-            return targetPage;
+            if(ViewPage.LINK2LUCKDRAW.equals(targetPage)) {
+                context.getExternalContext().redirect(
+                        "/htib2c-mobile/views/luckyDraw.xhtml");
+                return null;
+            }else {
+                return targetPage;
+            }
         } else {
             logger.debug("login information is invalid!");
             repMessage = "用户名和密码输入有误";

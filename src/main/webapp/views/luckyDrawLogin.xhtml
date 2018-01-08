@@ -11,44 +11,25 @@
                 template="./template.xhtml">
 
     <ui:define name="header">
-        我的账户
+        限时抽奖
     </ui:define>
 
     <ui:define name="workspace">
         <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/css.css" charset="utf-8" />
         <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" charset="utf-8" />
-        <h:form  id="condition">
-            <div class="page">
-                <div id="fri_top">
-                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/logo.png"
-                         id="logo" />
-                </div>
 
-                <div id="fri_mod" >
-                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line.jpg"
-                         id="linetop"/>
-                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line2.jpg"
-                         id="linebot"/>
+        <ul >
+            <li >参与此活动，需要您先登录参与活动的账号，请点击前往</li>
 
-                    <div style="color: transparent">你好</div>
-                    <ul style="margin-top: -167px;">
-                        <li >参与此活动，需要您先登录参与活动的账号，请点击前往</li>
-
-                        <li class="pt_10" style="padding-top:160px">
-                            <div class="s_btn s_btn2" id = "sBtn2" onclick="turnLogin()">登陆</div>
-                        </li>
-                    </ul>
-                </div>
-                <div id="fri_bottom">
-                    <div id="keytxt">网站备案号：京ICP备11011340号</div>
-                </div>
-            </div>
+            <li class="pt_10" style="padding-top:160px">
+                <div class="s_btn s_btn2" id = "sBtn2" onclick="turnLogin()">登陆</div>
+            </li>
+        </ul>
             <script>
                 function turnLogin(){
-                    window.location.href="#{facesContext.externalContext.request.contextPath}/views/luckyDrawLogin.xhtml";
+                    window.location.href="#{facesContext.externalContext.request.contextPath}/views/accountLogin.xhtml?flag=luckyDraw";
                 }
             </script>
-        </h:form>
     </ui:define>
 
 </ui:composition>

@@ -236,9 +236,10 @@ public class WechatServlet extends HttpServlet {
 
 			}
 			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAW)){
-				LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
-				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW)).forward(req, resp);
-
+//				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW)).redirect(req, resp);
+//				logger.info("======================"+loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW));
+//				LoginBackingBean loginBackingBean = new LoginBackingBean();
+				resp.sendRedirect("/htib2c-mobile/views/luckyDraw.xhtml?showwxpaytitle=1");
 			}
 		}
 	}

@@ -5,6 +5,7 @@ import com.htichina.web.POC.PocBean;
 import com.htichina.web.PaymentServiceClient;
 import com.htichina.web.common.FacesUtils;
 import com.htichina.web.common.ViewPage;
+import com.htichina.web.login.LoginBackingBean;
 import com.htichina.wsclient.payment.LdItem;
 import com.htichina.wsclient.payment.LdLtemReponse;
 import com.htichina.wsclient.payment.LuckyDrawReponse;
@@ -42,12 +43,30 @@ public class LuckDrawBean implements Serializable {
      * 点击抽奖
      * @return
      */
-    public void doLuckDraw(){
+    public String doLuckDraw(){
+
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
-        accountNum  = (String) FacesUtils.getManagedBeanInSession(Constant.ACCOUNT_NUM);
-        accountNum  = "10579675";
+        accountNum = client.getActiveAccountByOpenId(openId);
+//        accountNum  = (String) FacesUtils.getManagedBeanInSession(Constant.ACCOUNT_NUM);
         paymentPlatform = (String) FacesUtils.getManagedBeanInSession(Constant.PAYMENT_PLATFORM);
-        paymentPlatform="11111111";
+        logger.info("openId============================"+openId);
+        logger.info("accountNum============================"+accountNum);
+        logger.info("paymentPlatform============================"+paymentPlatform);
+        //判断是否符合资格
+        if(accountNum==null){
+            return ViewPage.LINK2LUCKDRAWLOGIN;
+        }
+        String flag= checkCustemerLuckyDraw(accountNum);
+        if("2".equals(flag)){
+            return ViewPage.LINK2LUCKDRAWPACKAGE;
+        }
+        else if("1".equals(flag)){
+            return ViewPage.LINK2LUCKDRAWERRER;
+        }
+        else if("4".equals(flag)){
+            return ViewPage.LINK2LUCKDRAWOVER;
+        }
+
         ldLtemReponse = client.doLuckDraw(accountNum,openId,paymentPlatform);
 //        ldLtemReponse = new LdLtemReponse();
 //        ldLtemReponse.setAllAmount(3);
@@ -94,6 +113,7 @@ public class LuckDrawBean implements Serializable {
             otherSize = Integer.valueOf(ldItem.getAmount());
         }
         flag = "1";
+        return null;
     }
 
 
@@ -105,10 +125,10 @@ public class LuckDrawBean implements Serializable {
 //        luckyDrawReponse.setLeftAmount(2);
 //        luckyDrawReponse.setLuckyDrawFlag("3");
         flag = luckyDrawReponse.getLuckyDrawFlag();
-        if(flag=="3"){
-            allAmount = luckyDrawReponse.getAllAmount();
-            leftAmount = luckyDrawReponse.getLeftAmount();
-        }
+//        if(flag=="3"){
+//            allAmount = luckyDrawReponse.getAllAmount();
+//            leftAmount = luckyDrawReponse.getLeftAmount();
+//        }
         return flag;
     }
 
@@ -117,6 +137,9 @@ public class LuckDrawBean implements Serializable {
      * @return
      */
     public String turnLogin() {
+
+        LoginBackingBean loginBackingBean = new LoginBackingBean();
+        loginBackingBean.setTargetPg("/htib2c-mobile/views/accountLogin.xhtml?showwxpaytitle=1");
         return ViewPage.LINK2Login;
     }
 
