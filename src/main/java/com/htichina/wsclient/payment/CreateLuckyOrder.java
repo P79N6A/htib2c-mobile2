@@ -19,8 +19,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="arg2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="arg3" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="arg4" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,17 +31,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "createLuckyOrder", propOrder = {
     "arg0",
     "arg1",
-    "arg2",
-    "arg3",
-    "arg4"
+    "arg2"
 })
 public class CreateLuckyOrder {
 
     protected String arg0;
     protected String arg1;
     protected String arg2;
-    protected String arg3;
-    protected String arg4;
 
     /**
      * 获取arg0属性的值。
@@ -115,54 +109,6 @@ public class CreateLuckyOrder {
      */
     public void setArg2(String value) {
         this.arg2 = value;
-    }
-
-    /**
-     * 获取arg3属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getArg3() {
-        return arg3;
-    }
-
-    /**
-     * 设置arg3属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setArg3(String value) {
-        this.arg3 = value;
-    }
-
-    /**
-     * 获取arg4属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getArg4() {
-        return arg4;
-    }
-
-    /**
-     * 设置arg4属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setArg4(String value) {
-        this.arg4 = value;
     }
 
 }

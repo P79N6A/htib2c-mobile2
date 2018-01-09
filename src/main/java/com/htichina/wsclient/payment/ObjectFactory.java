@@ -70,6 +70,7 @@ public class ObjectFactory {
     private final static QName _SendInvoiceEmail_QNAME = new QName("http://payment.ws.htichina.com/", "sendInvoiceEmail");
     private final static QName _CheckOrderPaied_QNAME = new QName("http://payment.ws.htichina.com/", "checkOrderPaied");
     private final static QName _ValidateLoginResponse_QNAME = new QName("http://payment.ws.htichina.com/", "validateLoginResponse");
+    private final static QName _HasLuckyDrawLink_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLink");
     private final static QName _GetWechatUserDataByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getWechatUserDataByAccountNumResponse");
     private final static QName _Insert_QNAME = new QName("http://payment.ws.htichina.com/", "insert");
     private final static QName _InsertInvoiceInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "insertInvoiceInfoResponse");
@@ -83,6 +84,7 @@ public class ObjectFactory {
     private final static QName _CreateLuckyOrderResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createLuckyOrderResponse");
     private final static QName _CreateTransaction_QNAME = new QName("http://payment.ws.htichina.com/", "createTransaction");
     private final static QName _GetActiveAccountByOpenIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getActiveAccountByOpenIdResponse");
+    private final static QName _HasLuckyDrawLinkResponse_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLinkResponse");
     private final static QName _GetChildOrderInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getChildOrderInfoResponse");
     private final static QName _GetNewPackageAfterUpgrade_QNAME = new QName("http://payment.ws.htichina.com/", "getNewPackageAfterUpgrade");
     private final static QName _SyncAMPWifiAccount_QNAME = new QName("http://payment.ws.htichina.com/", "syncAMPWifiAccount");
@@ -442,6 +444,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link HasLuckyDrawLink }
+     * 
+     */
+    public HasLuckyDrawLink createHasLuckyDrawLink() {
+        return new HasLuckyDrawLink();
+    }
+
+    /**
      * Create an instance of {@link CheckOrderPaied }
      * 
      */
@@ -743,6 +753,14 @@ public class ObjectFactory {
      */
     public GetActiveAccountByOpenIdResponse createGetActiveAccountByOpenIdResponse() {
         return new GetActiveAccountByOpenIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link HasLuckyDrawLinkResponse }
+     * 
+     */
+    public HasLuckyDrawLinkResponse createHasLuckyDrawLinkResponse() {
+        return new HasLuckyDrawLinkResponse();
     }
 
     /**
@@ -1400,6 +1418,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HasLuckyDrawLink }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "hasLuckyDrawLink")
+    public JAXBElement<HasLuckyDrawLink> createHasLuckyDrawLink(HasLuckyDrawLink value) {
+        return new JAXBElement<HasLuckyDrawLink>(_HasLuckyDrawLink_QNAME, HasLuckyDrawLink.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetWechatUserDataByAccountNumResponse }{@code >}}
      * 
      */
@@ -1514,6 +1541,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getActiveAccountByOpenIdResponse")
     public JAXBElement<GetActiveAccountByOpenIdResponse> createGetActiveAccountByOpenIdResponse(GetActiveAccountByOpenIdResponse value) {
         return new JAXBElement<GetActiveAccountByOpenIdResponse>(_GetActiveAccountByOpenIdResponse_QNAME, GetActiveAccountByOpenIdResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HasLuckyDrawLinkResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "hasLuckyDrawLinkResponse")
+    public JAXBElement<HasLuckyDrawLinkResponse> createHasLuckyDrawLinkResponse(HasLuckyDrawLinkResponse value) {
+        return new JAXBElement<HasLuckyDrawLinkResponse>(_HasLuckyDrawLinkResponse_QNAME, HasLuckyDrawLinkResponse.class, null, value);
     }
 
     /**
