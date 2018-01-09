@@ -1535,8 +1535,6 @@ public class OrderBackingBean implements Serializable {
     public String toOrderPaymentForWechat(String parentOrderNum,String accountNum,String openId) {
         FacesContext context = FacesContext.getCurrentInstance();
 
-        logger.info("parentOrderNum=============>"+parentOrderNum);
-        logger.info("accountNum=============>"+accountNum);
         String orderDescs = "";
         String orderIds = "";
         String transactionType = "0";
@@ -1547,7 +1545,6 @@ public class OrderBackingBean implements Serializable {
             //没创建订单
             transactionType = "1";
         }else{
-            logger.info("OrderStat================>"+queryOrderByParentOrderNumResponse.getOrderStatus());
             if (!queryOrderByParentOrderNumResponse.getOrderStatus().equals(Constant.DB_ORDER_STATUS_NEW)
                     &&!queryOrderByParentOrderNumResponse.getOrderStatus().equals(Constant.DB_ORDER_STATUS_PENDING_PAYMENT)
                     &&!queryOrderByParentOrderNumResponse.getOrderStatus().equals(Constant.DB_ORDER_STATUS_PAYMENT_FAILED)
