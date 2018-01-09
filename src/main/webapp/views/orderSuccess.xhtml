@@ -47,7 +47,12 @@
                         建议您登陆账号以便更好享受我们为您提供的优质服务!
                     </div>
                     <!--</div>-->
-
+                    <div id="luckDrawLink" style="font-size: 37px;color: #fff;line-height: 87px;margin-top: 60px;">
+                        恭喜您获得了<h:outputText id="luckyNum" value="#{orderBackingBean.hasLuckyDrawLink}" style="color: #f57e24;"/>
+                        次抽奖机会
+                        <br/>
+                        <div class="s_btn s_btn2" id = "sBtn2" onclick="toluckDraw()">前往抽奖</div>
+                    </div>
 
                 </div>
             </div>
@@ -64,6 +69,14 @@
     if("1" == broserNum){
         window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
     }
+    function toluckDraw(){
+        window.location.href="#{facesContext.externalContext.request.contextPath}/views/luckyDraw.xhtml";
+    }
+    $(function(){
+        if($("#luckyNum").text()==0){
+            $("#luckDrawLink").hide();
+        }
+    })
 </script>
     </ui:define>
 

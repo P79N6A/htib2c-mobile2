@@ -129,6 +129,8 @@ public class OrderBackingBean implements Serializable {
     private PromotionInfoWS selectProd;
     // CR147选定套餐类型
     private String sPkgId;
+    //CR389 是否出现抽奖按钮
+    private int hasLuckyDrawLink;
 
     public String toOrderEntry(String oId) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
@@ -537,6 +539,8 @@ public class OrderBackingBean implements Serializable {
         WIDout_trade_no = transactionNo+paymentOrderResponse.getOrderNum();
         WIDsubject = orderDesc;
         WIDtotal_fee = amount;
+        //CR389 lucky draw
+        hasLuckyDrawLink = client.hasLuckyDrawLink(WIDout_trade_no.substring(13));
 
         return ViewPage.LINK2OrderPayment;
     }
@@ -1295,6 +1299,8 @@ public class OrderBackingBean implements Serializable {
         WIDout_trade_no = transactionNo+upgradeResponse.getUpgratedParentOrderNum();
         WIDsubject = orderDesc;
         WIDtotal_fee = amount;
+        //CR389 lucky draw
+        hasLuckyDrawLink = client.hasLuckyDrawLink(WIDout_trade_no.substring(13));
 
         return ViewPage.LINK2OrderUpgradePayment;
     }
@@ -1671,11 +1677,12 @@ public class OrderBackingBean implements Serializable {
         tpWxPay.setTotalFee(String.valueOf(queryOrderByParentOrderNumResponse.getPrice()));
         logger.debug("totalFee=" + ESAPI.encoder().encodeForHTML(String.valueOf(queryOrderByParentOrderNumResponse.getPrice())));
         wechatPrepayResponse = demo.getPackage(tpWxPay);
-//
-// setting order information
         WIDout_trade_no = orderIds;
         WIDsubject = orderDescs;
         WIDtotal_fee = queryOrderByParentOrderNumResponse.getPrice();
+        //CR389 lucky draw
+        hasLuckyDrawLink = client.hasLuckyDrawLink(WIDout_trade_no.substring(13));
+
         return ViewPage.LINK2OrderPaymentForWechat;
     }
     //add by liunig CR345 20171023 end

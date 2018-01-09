@@ -359,6 +359,10 @@ public class PaymentServiceClient {
     }
     return ldLtemReponse;
   }
+
+  public int hasLuckyDrawLink(String parentOrderNum){
+    return service.hasLuckyDrawLink(parentOrderNum);
+  }
 }
 
 
