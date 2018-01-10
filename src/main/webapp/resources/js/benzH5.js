@@ -108,7 +108,7 @@ function statusFn(str,winningsAdd,theTerm,remaining,allBaseSize) {
 
     //套餐服务期
     $(".winningsText").find("bind").text(theTerm+"个月");
-        $(".allText").find("bind").text(allBaseSize+"个");
+        $(".allText").find("bind").text(allBaseSize);
       $(ele).css("display", "block");
       //依次显示
       $(ele).children(".awardRoll").animate({"opacity": "1"}, 500, function() {
