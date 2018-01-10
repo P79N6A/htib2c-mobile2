@@ -166,7 +166,12 @@ public class InvoiceBackingBean implements Serializable {
                         FacesMessage.SEVERITY_ERROR, "订单尚未完成，请稍后再试。如需帮助，请按车内【i】按钮或致电400-898-0050", ""));
                 return ViewPage.LINK2ApplyInvoice;
             }
-
+            if(parentrderinfo.isLuckyDrawOrder()) {
+                applyInvoicePop = "您的订单为赠品，无需开具发票。如需帮助，请按车内i按钮或致电<span style=\"text-decoration: underline;\" class=\"span2\">400-898-0050</span>，详询梅赛德斯-奔驰 智能互联服务中心。";
+                context.addMessage(null, new FacesMessage(
+                        FacesMessage.SEVERITY_ERROR, "您的订单为赠品，无需开具发票。如需帮助，请按车内i按钮或致电4008980050，详询梅赛德斯-奔驰 智能互联服务中心。", ""));
+                return ViewPage.LINK2ApplyInvoice;
+            }
             if(parentrderinfo.getPrice() <= 0) {
                 applyInvoicePop = "抱歉，非付费订单无法开具发票。如需帮助，请按车内【i】按钮或致电<span style=\"text-decoration: underline;\" class=\"span2\">400-898-0050</span>";
                 context.addMessage(null, new FacesMessage(
