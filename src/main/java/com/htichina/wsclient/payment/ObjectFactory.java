@@ -24,6 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _CreateTransactionForLuckyDrawResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createTransactionForLuckyDrawResponse");
     private final static QName _ValidateLogin_QNAME = new QName("http://payment.ws.htichina.com/", "validateLogin");
     private final static QName _CloseWechatUserProfile_QNAME = new QName("http://payment.ws.htichina.com/", "closeWechatUserProfile");
     private final static QName _GetWechatUserDataByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "getWechatUserDataByAccountNum");
@@ -55,6 +56,7 @@ public class ObjectFactory {
     private final static QName _GetInvoiceInformationResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getInvoiceInformationResponse");
     private final static QName _IsReceiveDidiResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isReceiveDidiResponse");
     private final static QName _GetVehicleInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getVehicleInfo");
+    private final static QName _CreateTransactionForLuckyDraw_QNAME = new QName("http://payment.ws.htichina.com/", "createTransactionForLuckyDraw");
     private final static QName _DoLuckDraw_QNAME = new QName("http://payment.ws.htichina.com/", "doLuckDraw");
     private final static QName _GetNewPackageAfterUpgradeResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getNewPackageAfterUpgradeResponse");
     private final static QName _GetParentOrderInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getParentOrderInfo");
@@ -228,6 +230,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CreateTransactionForLuckyDrawResponse }
+     * 
+     */
+    public CreateTransactionForLuckyDrawResponse createCreateTransactionForLuckyDrawResponse() {
+        return new CreateTransactionForLuckyDrawResponse();
+    }
+
+    /**
      * Create an instance of {@link CloseWechatUserProfile }
      * 
      */
@@ -257,6 +267,14 @@ public class ObjectFactory {
      */
     public DoLuckDraw createDoLuckDraw() {
         return new DoLuckDraw();
+    }
+
+    /**
+     * Create an instance of {@link CreateTransactionForLuckyDraw }
+     * 
+     */
+    public CreateTransactionForLuckyDraw createCreateTransactionForLuckyDraw() {
+        return new CreateTransactionForLuckyDraw();
     }
 
     /**
@@ -1004,6 +1022,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateTransactionForLuckyDrawResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createTransactionForLuckyDrawResponse")
+    public JAXBElement<CreateTransactionForLuckyDrawResponse> createCreateTransactionForLuckyDrawResponse(CreateTransactionForLuckyDrawResponse value) {
+        return new JAXBElement<CreateTransactionForLuckyDrawResponse>(_CreateTransactionForLuckyDrawResponse_QNAME, CreateTransactionForLuckyDrawResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ValidateLogin }{@code >}}
      * 
      */
@@ -1280,6 +1307,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getVehicleInfo")
     public JAXBElement<GetVehicleInfo> createGetVehicleInfo(GetVehicleInfo value) {
         return new JAXBElement<GetVehicleInfo>(_GetVehicleInfo_QNAME, GetVehicleInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateTransactionForLuckyDraw }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createTransactionForLuckyDraw")
+    public JAXBElement<CreateTransactionForLuckyDraw> createCreateTransactionForLuckyDraw(CreateTransactionForLuckyDraw value) {
+        return new JAXBElement<CreateTransactionForLuckyDraw>(_CreateTransactionForLuckyDraw_QNAME, CreateTransactionForLuckyDraw.class, null, value);
     }
 
     /**

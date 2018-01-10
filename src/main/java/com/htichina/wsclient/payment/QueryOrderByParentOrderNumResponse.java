@@ -21,6 +21,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="accountNum" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="insurancePresentOrder" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="luckyDrawOrder" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="order_status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="price" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="start_dt" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
@@ -37,6 +38,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "queryOrderByParentOrderNumResponse", propOrder = {
     "accountNum",
     "insurancePresentOrder",
+    "luckyDrawOrder",
     "orderStatus",
     "price",
     "startDt",
@@ -46,6 +48,7 @@ public class QueryOrderByParentOrderNumResponse {
 
     protected String accountNum;
     protected boolean insurancePresentOrder;
+    protected boolean luckyDrawOrder;
     @XmlElement(name = "order_status")
     protected String orderStatus;
     protected double price;
@@ -92,6 +95,22 @@ public class QueryOrderByParentOrderNumResponse {
      */
     public void setInsurancePresentOrder(boolean value) {
         this.insurancePresentOrder = value;
+    }
+
+    /**
+     * 获取luckyDrawOrder属性的值。
+     * 
+     */
+    public boolean isLuckyDrawOrder() {
+        return luckyDrawOrder;
+    }
+
+    /**
+     * 设置luckyDrawOrder属性的值。
+     * 
+     */
+    public void setLuckyDrawOrder(boolean value) {
+        this.luckyDrawOrder = value;
     }
 
     /**

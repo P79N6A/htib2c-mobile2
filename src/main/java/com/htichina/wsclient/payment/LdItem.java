@@ -20,7 +20,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="amount" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="created_by" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="created_time" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="extra_attr" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="last_upd_by" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="last_upd_time" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -30,6 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="probability" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="sub_type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="wifi_duration" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -43,7 +43,6 @@ import javax.xml.bind.annotation.XmlType;
     "amount",
     "createdBy",
     "createdTime",
-    "extraAttr",
     "id",
     "lastUpdBy",
     "lastUpdTime",
@@ -52,7 +51,8 @@ import javax.xml.bind.annotation.XmlType;
     "packageId",
     "probability",
     "subType",
-    "type"
+    "type",
+    "wifiDuration"
 })
 public class LdItem {
 
@@ -61,8 +61,6 @@ public class LdItem {
     protected String createdBy;
     @XmlElement(name = "created_time")
     protected String createdTime;
-    @XmlElement(name = "extra_attr")
-    protected String extraAttr;
     protected String id;
     @XmlElement(name = "last_upd_by")
     protected String lastUpdBy;
@@ -76,6 +74,8 @@ public class LdItem {
     @XmlElement(name = "sub_type")
     protected String subType;
     protected String type;
+    @XmlElement(name = "wifi_duration")
+    protected String wifiDuration;
 
     /**
      * 获取amount属性的值。
@@ -147,30 +147,6 @@ public class LdItem {
      */
     public void setCreatedTime(String value) {
         this.createdTime = value;
-    }
-
-    /**
-     * 获取extraAttr属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getExtraAttr() {
-        return extraAttr;
-    }
-
-    /**
-     * 设置extraAttr属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setExtraAttr(String value) {
-        this.extraAttr = value;
     }
 
     /**
@@ -387,6 +363,30 @@ public class LdItem {
      */
     public void setType(String value) {
         this.type = value;
+    }
+
+    /**
+     * 获取wifiDuration属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getWifiDuration() {
+        return wifiDuration;
+    }
+
+    /**
+     * 设置wifiDuration属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setWifiDuration(String value) {
+        this.wifiDuration = value;
     }
 
 }
