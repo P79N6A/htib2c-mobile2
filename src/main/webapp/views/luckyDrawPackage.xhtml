@@ -18,11 +18,12 @@
         <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/css.css" charset="utf-8" />
         <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" charset="utf-8" />
         <div style="color: transparent">您好</div>
-        <ul >
+        <ul class="luckyDraw">
             <li >您购买的套餐不在活动范围，是否愿意前往购买活动套餐？</li>
 
             <li class="pt_10" style="padding-top:160px">
-                <div class="s_btn s_btn2" id = "sBtn2" onclick="turnPackage()">订购套餐</div>
+                <button class="btnForLd" onclick="turnPackage()">订购套餐</button>
+                <!--<div class="s_btn s_btn2" id = "sBtn2" onclick="turnPackage()">订购套餐</div>-->
             </li>
         </ul>
             <script>

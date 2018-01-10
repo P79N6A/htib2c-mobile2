@@ -18,11 +18,12 @@
         <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/css.css" charset="utf-8" />
         <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" charset="utf-8" />
 
-        <ul >
+        <ul class="luckyDraw">
             <li >参与此活动，需要您先登录参与活动的账号，请点击前往</li>
 
             <li class="pt_10" style="padding-top:160px">
-                <div class="s_btn s_btn2" id = "sBtn2" onclick="turnLogin()">登陆</div>
+                <button class="btnForLd" onclick="turnLogin()">登陆</button>
+                <!--<div class="s_btn s_btn2" id = "sBtn2" ></div>-->
             </li>
         </ul>
             <script>
