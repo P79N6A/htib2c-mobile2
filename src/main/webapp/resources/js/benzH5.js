@@ -16,15 +16,32 @@ packageImg.click(function() {
     $("input[nm='baseSize']").val("");
     $("input[nm='leftAmount']").val("");
     $("input[nm='allBaseSize']").val("");
+    $("input[val='luckyDrawNotice']").val("");
+    $("input[val='luckyDrawNoticeType']").val("");
     $("input[nm='doLuckDraw']").click();
 
   //
 });
 
-
 function luckyDrawSuccess(){
+
     var type = $("input[val='luckyDrawNoticeType']").val();
-    if(type=="") {
+    var value = $("input[val='luckyDrawNotice']").val();
+    if(!(value == null || value == "")){
+        $('#noticeMessage').html(value);
+        $('.luckyDrawNotice').show();
+        $("#continueBtn").hide();
+        $("#loginBtn").hide();
+        if(type=="1"){
+            $("#loginBtn").show();
+        }
+        if(type=="2"){
+            $("#continueBtn").show();
+        }
+        $('#sn_err').show();
+    }
+    var userLuckyDrawFlag = $("input[nm='userLuckyDrawFlag']").val();
+    if(type==""&&userLuckyDrawFlag!="") {
         $(".packageActive").css({"animation": "packageActiveAnimate 2.5s  ease alternate"});
         setTimeout(function () {
 
@@ -70,10 +87,7 @@ function luckyDrawSuccess(){
                 }
             }, 30);
         }, 2500);
-    }else{
-        window.location.reload();
     }
-
 }
 //四个状态函数
 function statusFn(str,winningsAdd,theTerm,remaining,allBaseSize) {
@@ -219,6 +233,7 @@ closeObj.click(function() {
 var closeLuckyDrawNotice = $(".floorBoxForLuckyDraw").find("img");
 closeLuckyDrawNotice.click(function() {
     floorFnClose(0, 0, 0, -100, 0, -30);
+    // window.location.reload();
 });
 function floorFn(o, z, b, t, r, left) {
     $(".opacityFloor").css({

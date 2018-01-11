@@ -192,29 +192,23 @@
             </h:inputHidden>
         </h:form>
         <script>
-            $(function(){
-                var value = $("input[val='luckyDrawNotice']").val();
-                var type = $("input[val='luckyDrawNoticeType']").val();
-                if(!(value == null || value == "")){
-                    $('#noticeMessage').html(value);
-                    $('.luckyDrawNotice').show();
-                    $("#continueBtn").hide();
-                    $("#loginBtn").hide();
-                    if(type=="1"){
-                        $("#loginBtn").show();
-                    }
-                    if(type=="2"){
-                        $("#continueBtn").show();
-                    }
-                    $('#sn_err').show();
-                }
-            })
+//            $(function(){
+//                if(getUrlParam("flag")=="1") {
+//                    $("input[val='luckyDrawNotice']").val("");
+//                    $("input[val='luckyDrawNoticeType']").val("");
+//                }
+//            })
             function turnPackage(){
                 window.location.href="#{facesContext.externalContext.request.contextPath}/views/orderEntry.xhtml";
             }
             function turnLogin(){
                 window.location.href="#{facesContext.externalContext.request.contextPath}/views/accountLogin.xhtml?flag=luckyDraw";
             }
+//            function getUrlParam(name) {
+//                var reg = new RegExp("(^|&amp;)" + name + "=([^&amp;]*)(&amp;|$)"); //构造一个含有目标参数的正则表达式对象
+//                var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+//                if (r != null) return unescape(r[2]); return null; //返回参数值
+//            }
         </script>
     </ui:define>
 

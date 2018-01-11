@@ -1686,4 +1686,12 @@ public class OrderBackingBean implements Serializable {
         return ViewPage.LINK2OrderPaymentForWechat;
     }
     //add by liunig CR345 20171023 end
+
+    public int getHasLuckyDrawLink() {
+        return hasLuckyDrawLink;
+    }
+
+    public void setHasLuckyDrawLink(int hasLuckyDrawLink) {
+        this.hasLuckyDrawLink = hasLuckyDrawLink;
+    }
 }

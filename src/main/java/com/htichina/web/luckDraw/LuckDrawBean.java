@@ -47,8 +47,8 @@ public class LuckDrawBean implements Serializable {
     public String doLuckDraw(){
 
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
-        accountNum = client.getActiveAccountByOpenId(openId);
-//        accountNum  = (String) FacesUtils.getManagedBeanInSession(Constant.ACCOUNT_NUM);
+//        accountNum = "10579675";
+        accountNum  = (String) FacesUtils.getManagedBeanInSession(Constant.ACCOUNT_NUM);
         paymentPlatform = (String) FacesUtils.getManagedBeanInSession(Constant.PAYMENT_PLATFORM);
         logger.info("openId============================"+openId);
         logger.info("accountNum============================"+accountNum);
@@ -57,7 +57,7 @@ public class LuckDrawBean implements Serializable {
         if(accountNum==null){
             luckyDrawNotice="参与此活动，需要您先登录参与活动的账号，请点击前往";
             luckyDrawNoticeType="1";
-            return null;
+            return ViewPage.LINK2LUCKDRAW;
         }
         String flag= checkCustemerLuckyDraw(accountNum);
         if("2".equals(flag)){
