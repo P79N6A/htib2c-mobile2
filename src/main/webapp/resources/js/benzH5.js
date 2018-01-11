@@ -30,6 +30,7 @@ function luckyDrawSuccess(){
     if(!(value == null || value == "")){
         $('#noticeMessage').html(value);
         $('.luckyDrawNotice').show();
+        floorFnClose(1, 99, .5, 30, 720, 105);
         $("#continueBtn").hide();
         $("#loginBtn").hide();
         if(type=="1"){
