@@ -59,7 +59,7 @@
         <div class="opacityFloor">
             <div class="floorBox">
                 <div class="floorTitleBox">
-                    <img src="#{facesContext.externalContext.request.contextPath}/resources/img/floorTitle.jpg" alt=""/>
+                    <img style="margin-top: 7%;margin-left: 169px;" src="#{facesContext.externalContext.request.contextPath}/resources/img/floorTitle.jpg" alt=""/>
                 </div>
 
                 <div class="bor">
@@ -76,6 +76,32 @@
                 </div>
                 <div class="closeBox">
                     <img src="#{facesContext.externalContext.request.contextPath}/resources/img/floorClose.png" alt=""/>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="luckyDrawNotice" style="opacity: 1; z-index: 99; background: rgba(0, 0, 0, 0.5);display: none">
+            <div class="floorBoxForLuckyDraw" style="top: 29%;">
+
+
+                <div class="bor" style="bottom: 31%;height: 62%">
+                    <div class="scrollfather" id="scrollfather3" wheelxory="wheely">
+                        <!-- &#20869;&#23481; -->
+                        <div id="noticeMessage" class="scrollson" style="margin-top: 18px;font-size: 27px;font-family: HYA3GJ;color: black;">
+                            您购买的套餐不在活动范围，是否愿意前往购买活动套餐？
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="floorTitleBox" style="height: 183%;">-->
+                    <button id="continueBtn" class="btnForLd" onclick="turnPackage()">订购套餐</button>
+                    <button id="loginBtn" class="btnForLd" onclick="turnLogin()">登陆</button>
+                    <!--<img src="/resources/img/floorTitle.jpg" alt=""/>-->
+                <!--</div>-->
+                <div class="closeBoxForLuckyDraw">
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/img/floorClose.png" alt="" style="transform: rotate(720deg); opacity: 1; left: 106%;width: 50px;top:-20%" />
                 </div>
             </div>
 
@@ -158,7 +184,38 @@
                            style="display: none">
                 <f:passThroughAttribute name="nm" value="allBaseSize"/>
             </h:inputHidden>
+            <h:inputHidden id="luckyDrawNotice" value="#{luckDrawBean.luckyDrawNotice}"  >
+                <f:passThroughAttribute name="val" value="luckyDrawNotice"/>
+            </h:inputHidden>
+            <h:inputHidden id="luckyDrawNoticeType" value="#{luckDrawBean.luckyDrawNoticeType}"  >
+                <f:passThroughAttribute name="val" value="luckyDrawNoticeType"/>
+            </h:inputHidden>
         </h:form>
+        <script>
+            $(function(){
+                var value = $("input[val='luckyDrawNotice']").val();
+                var type = $("input[val='luckyDrawNoticeType']").val();
+                if(!(value == null || value == "")){
+                    $('#noticeMessage').html(value);
+                    $('.luckyDrawNotice').show();
+                    $("#continueBtn").hide();
+                    $("#loginBtn").hide();
+                    if(type=="1"){
+                        $("#loginBtn").show();
+                    }
+                    if(type=="2"){
+                        $("#continueBtn").show();
+                    }
+                    $('#sn_err').show();
+                }
+            })
+            function turnPackage(){
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/orderEntry.xhtml";
+            }
+            function turnLogin(){
+                window.location.href="#{facesContext.externalContext.request.contextPath}/views/accountLogin.xhtml?flag=luckyDraw";
+            }
+        </script>
     </ui:define>
 
 </ui:composition>

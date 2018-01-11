@@ -38,7 +38,8 @@ public class LuckDrawBean implements Serializable {
     private LdLtemReponse ldLtemReponse;
     private int allBaseSize;
     private String flag;
-
+    private String luckyDrawNotice;
+    private String luckyDrawNoticeType;
     /**
      * 点击抽奖
      * @return
@@ -54,17 +55,25 @@ public class LuckDrawBean implements Serializable {
         logger.info("paymentPlatform============================"+paymentPlatform);
         //判断是否符合资格
         if(accountNum==null){
-            return ViewPage.LINK2LUCKDRAWLOGIN;
+            luckyDrawNotice="参与此活动，需要您先登录参与活动的账号，请点击前往";
+            luckyDrawNoticeType="1";
+            return null;
         }
         String flag= checkCustemerLuckyDraw(accountNum);
         if("2".equals(flag)){
-            return ViewPage.LINK2LUCKDRAWPACKAGE;
+            luckyDrawNotice="您购买的套餐不在活动范围，是否愿意前往购买活动套餐？";
+            luckyDrawNoticeType="2";
+            return ViewPage.LINK2LUCKDRAW;
         }
         else if("1".equals(flag)){
-            return ViewPage.LINK2LUCKDRAWERRER;
+            luckyDrawNotice="您暂时不符合参加此次抽奖活动的的资格";
+            luckyDrawNoticeType="3";
+            return ViewPage.LINK2LUCKDRAW;
         }
         else if("4".equals(flag)){
-            return ViewPage.LINK2LUCKDRAWOVER;
+            luckyDrawNotice="您的抽奖次数已经使用完毕，感谢您的参与";
+            luckyDrawNoticeType="4";
+            return ViewPage.LINK2LUCKDRAW;
         }
 
         ldLtemReponse = client.doLuckDraw(accountNum,openId,paymentPlatform);
@@ -263,5 +272,21 @@ public class LuckDrawBean implements Serializable {
 
     public void setAllBaseSize(int allBaseSize) {
         this.allBaseSize = allBaseSize;
+    }
+
+    public String getLuckyDrawNotice() {
+        return luckyDrawNotice;
+    }
+
+    public void setLuckyDrawNotice(String luckyDrawNotice) {
+        this.luckyDrawNotice = luckyDrawNotice;
+    }
+
+    public String getLuckyDrawNoticeType() {
+        return luckyDrawNoticeType;
+    }
+
+    public void setLuckyDrawNoticeType(String luckyDrawNoticeType) {
+        this.luckyDrawNoticeType = luckyDrawNoticeType;
     }
 }

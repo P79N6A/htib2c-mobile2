@@ -23,52 +23,56 @@ packageImg.click(function() {
 
 
 function luckyDrawSuccess(){
+    var type = $("input[val='luckyDrawNoticeType']").val();
+    if(type=="") {
+        $(".packageActive").css({"animation": "packageActiveAnimate 2.5s  ease alternate"});
+        setTimeout(function () {
 
-    $(".packageActive").css({"animation": "packageActiveAnimate 2.5s  ease alternate"});
-    setTimeout(function() {
+            //隐藏第一页的元素
+            $(".titleBox").find("img").css("display", "none");
+            $(".page1Text").css("display", "none");
+            $(".containerBox").find("p").css("display", "none");
+            $(".opacityFloor").css("display", "none");
+            $(".package1").css("display", "none");
 
-        //隐藏第一页的元素
-        $(".titleBox").find("img").css("display", "none");
-        $(".page1Text").css("display","none");
-        $(".containerBox").find("p").css("display", "none");
-        $(".opacityFloor").css("display", "none");
-        $(".package1").css("display", "none");
+            //显示喷红包元素
+            $(".animateBox").css({"display": "block"});
 
-        //显示喷红包元素
-        $(".animateBox").css({"display": "block"});
-
-        //喷红包动画
-        var num = 0;
-        animateObj.eq(num).css("display", "block");
-
-        var t = setInterval(function() {
-            animateObj.css("display", "none");
+            //喷红包动画
+            var num = 0;
             animateObj.eq(num).css("display", "block");
-            num++;
-            if (num >= 7) {
 
-                $(".containerBox").animate({
-                    "opacity": "0"
-                }, 1000, function() {
-                    $(".titleBox").css("display", "none");
-                    $(this).css("display", "none");
-                });
+            var t = setInterval(function () {
+                animateObj.css("display", "none");
+                animateObj.eq(num).css("display", "block");
+                num++;
+                if (num >= 7) {
 
-                clearInterval(t);
-                packageDownFn();
-                setTimeout(function(){
-                    $(".minAnimateBox").css("display","block");
-                    $(".minAnimateBox").find("img").animate({"opacity":"1"},2000);
-                },500)
+                    $(".containerBox").animate({
+                        "opacity": "0"
+                    }, 1000, function () {
+                        $(".titleBox").css("display", "none");
+                        $(this).css("display", "none");
+                    });
 
-                $(".packageBox").animate({
-                    "opacity": "0"
-                }, 2000, function() {
-                    $(this).css("display", "none");
-                });
-            }
-        }, 30);
-    }, 2500);
+                    clearInterval(t);
+                    packageDownFn();
+                    setTimeout(function () {
+                        $(".minAnimateBox").css("display", "block");
+                        $(".minAnimateBox").find("img").animate({"opacity": "1"}, 2000);
+                    }, 500)
+
+                    $(".packageBox").animate({
+                        "opacity": "0"
+                    }, 2000, function () {
+                        $(this).css("display", "none");
+                    });
+                }
+            }, 30);
+        }, 2500);
+    }else{
+        window.location.reload();
+    }
 
 }
 //四个状态函数
@@ -207,25 +211,44 @@ ruleObj.click(function() {
   floorFn(1, 99, .5, 7, 720, 50);
 });
 
-//活动规则关闭
+//活动规则关闭closeBoxForLuckyDraw
 var closeObj = $(".floorBox").find("img");
 closeObj.click(function() {
   floorFn(0, 0, 0, -100, 0, -30);
 });
-
+var closeLuckyDrawNotice = $(".floorBoxForLuckyDraw").find("img");
+closeLuckyDrawNotice.click(function() {
+    floorFnClose(0, 0, 0, -100, 0, -30);
+});
 function floorFn(o, z, b, t, r, left) {
-  $(".opacityFloor").css({
-    "opacity": o,
-    "z-index": z,
-    "background": "rgba(0,0,0," + b + ")"
-  });
-  $(".floorBox").animate({
-    "top": t + "%"
-  }, 500, function() {
-    $(".closeBox").find("img").css({
-      "transform": "rotate(" + r + "deg)",
-      "opacity": o,
-      "left": left + "%"
+    $(".opacityFloor").css({
+        "opacity": o,
+        "z-index": z,
+        "background": "rgba(0,0,0," + b + ")"
     });
-  });
+    $(".floorBox").animate({
+        "top": t + "%"
+    }, 500, function () {
+        $(".closeBox").find("img").css({
+            "transform": "rotate(" + r + "deg)",
+            "opacity": o,
+            "left": left + "%"
+        });
+    });
+}
+    function floorFnClose(o, z, b, t, r, left) {
+        $(".luckyDrawNotice").css({
+            "opacity": o,
+            "z-index": z,
+            "background": "rgba(0,0,0," + b + ")"
+        });
+        $(".floorBoxForLuckyDraw").animate({
+            "top": t + "%"
+        }, 500, function() {
+            $(".closeBoxForLuckyDraw").find("img").css({
+                "transform": "rotate(" + r + "deg)",
+                "opacity": o,
+                "left": left + "%"
+            });
+        });
 };
