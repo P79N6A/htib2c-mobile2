@@ -45,7 +45,8 @@ public class LuckDrawBean implements Serializable {
      * @return
      */
     public String doLuckDraw(){
-
+        luckyDrawNotice=null;
+        luckyDrawNoticeType=null;
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
 //        accountNum = "10579675";
         accountNum = client.getActiveAccountByOpenId(openId);
