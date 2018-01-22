@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>ldLtemReponse complex type的 Java 类。
+ * <p>Java class for ldLtemReponse complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ldLtemReponse">
@@ -49,7 +49,7 @@ public class LdLtemReponse {
     protected int wifiPrizeSize;
 
     /**
-     * 获取allAmount属性的值。
+     * Gets the value of the allAmount property.
      * 
      */
     public int getAllAmount() {
@@ -57,7 +57,7 @@ public class LdLtemReponse {
     }
 
     /**
-     * 设置allAmount属性的值。
+     * Sets the value of the allAmount property.
      * 
      */
     public void setAllAmount(int value) {
@@ -65,7 +65,7 @@ public class LdLtemReponse {
     }
 
     /**
-     * 获取basePrizeSize属性的值。
+     * Gets the value of the basePrizeSize property.
      * 
      */
     public int getBasePrizeSize() {
@@ -73,7 +73,7 @@ public class LdLtemReponse {
     }
 
     /**
-     * 设置basePrizeSize属性的值。
+     * Sets the value of the basePrizeSize property.
      * 
      */
     public void setBasePrizeSize(int value) {
@@ -81,7 +81,7 @@ public class LdLtemReponse {
     }
 
     /**
-     * 获取ldItem属性的值。
+     * Gets the value of the ldItem property.
      * 
      * @return
      *     possible object is
@@ -93,7 +93,7 @@ public class LdLtemReponse {
     }
 
     /**
-     * 设置ldItem属性的值。
+     * Sets the value of the ldItem property.
      * 
      * @param value
      *     allowed object is
@@ -105,7 +105,7 @@ public class LdLtemReponse {
     }
 
     /**
-     * 获取leftAmount属性的值。
+     * Gets the value of the leftAmount property.
      * 
      */
     public int getLeftAmount() {
@@ -113,7 +113,7 @@ public class LdLtemReponse {
     }
 
     /**
-     * 设置leftAmount属性的值。
+     * Sets the value of the leftAmount property.
      * 
      */
     public void setLeftAmount(int value) {
@@ -121,7 +121,7 @@ public class LdLtemReponse {
     }
 
     /**
-     * 获取otherPrizeSize属性的值。
+     * Gets the value of the otherPrizeSize property.
      * 
      */
     public int getOtherPrizeSize() {
@@ -129,7 +129,7 @@ public class LdLtemReponse {
     }
 
     /**
-     * 设置otherPrizeSize属性的值。
+     * Sets the value of the otherPrizeSize property.
      * 
      */
     public void setOtherPrizeSize(int value) {
@@ -137,7 +137,7 @@ public class LdLtemReponse {
     }
 
     /**
-     * 获取wifiPrizeSize属性的值。
+     * Gets the value of the wifiPrizeSize property.
      * 
      */
     public int getWifiPrizeSize() {
@@ -145,7 +145,7 @@ public class LdLtemReponse {
     }
 
     /**
-     * 设置wifiPrizeSize属性的值。
+     * Sets the value of the wifiPrizeSize property.
      * 
      */
     public void setWifiPrizeSize(int value) {

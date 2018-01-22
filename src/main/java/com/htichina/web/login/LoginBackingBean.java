@@ -109,7 +109,7 @@ public class LoginBackingBean implements Serializable {
         String an = null;
         logger.info("Login bakcing oId ==>"+ESAPI.encoder().encodeForHTML(oId) );
         if(!Strings.isNullOrEmpty(oId)){
-           an = PaymentServiceClient.getInstance().getActiveAccountByOpenId(oId);
+           an = PaymentServiceClient.getInstance().getActiveAccountByOpenId(oId);//根据openid获取账号
            logger.info("Login bakcing an ==>"+ESAPI.encoder().decodeForHTML(an));
         }
         else {
@@ -258,7 +258,7 @@ public class LoginBackingBean implements Serializable {
                     .put(LoginFilter.CURRENT_USER, accountNum);
             logger.info("openId======================"+openId);
             if(!ViewPage.LINK2CHECKTEL.equals(targetPage)){
-                boolean flag = PaymentServiceClient.getInstance().createWechatUserProfile(accountNum, pin, openId, userInfo);
+                boolean flag = PaymentServiceClient.getInstance().createWechatUserProfile(accountNum, pin, openId, userInfo,"");//保存绑定信息
                 if(flag){
                     logger.info("createWechatUserProfileFlag = true");
                 }
@@ -502,7 +502,7 @@ public class LoginBackingBean implements Serializable {
         boolean flag = MobileDeviceRegistrationService.validateRegistration(accountNum,registrationCode);
         if(flag){
             String userInfo = (String) FacesUtils.getManagedBeanInSession(Constant.WECHAT_USER_INFO);
-            boolean cFlag = PaymentServiceClient.getInstance().createWechatUserProfile(accountNum, pin, openId, userInfo);
+            boolean cFlag = PaymentServiceClient.getInstance().createWechatUserProfile(accountNum, pin, openId, userInfo,"");
             if(cFlag){
                 logger.info("createWechatUserProfileFlag = true");
             }

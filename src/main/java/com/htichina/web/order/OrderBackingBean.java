@@ -211,8 +211,12 @@ public class OrderBackingBean implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
 
         paymentPlatform = (String) FacesUtils.getManagedBeanInSession(Constant.PAYMENT_PLATFORM);
-        /*logger.info("paymentPlatform = " + paymentPlatform);*/
+        openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
+        logger.info("openId = " + openId);
+        logger.info("paymentPlatform = " + paymentPlatform);
+        
         if(validateOrderEntryInput()) {
+        	String userInfo = (String) FacesUtils.getManagedBeanInSession(Constant.WECHAT_USER_INFO);
             if(!Strings.isNullOrEmpty(accountNum)) {
                 if (accountNum.indexOf("*") > -1)
                 {
@@ -246,12 +250,11 @@ public class OrderBackingBean implements Serializable {
                             "请确认信息后再次尝试。如果有任何疑问请按车内 【i】按钮或" +
                             "拨打400-898-0050联系在线客服，谢谢！", ""));
                     return ViewPage.LINK2OrderEntry;
-                }
+                }             
                 selectedVehicle = tmpVehicleList.get(0);
 
             } else {
-                if ((vin.indexOf("*") > -1) || (mobilePhone.indexOf("*") > -1))
-                {
+                if ((vin.indexOf("*") > -1) || (mobilePhone.indexOf("*") > -1)){
                     orderEntryPop = "如您对默认信息进行了修改，请输入完整信息不要包含*号";
                     context.addMessage(null, new FacesMessage(
                             FacesMessage.SEVERITY_ERROR, "如您对默认信息进行了修改，请输入完整信息不要包含*号", ""));
@@ -269,7 +272,8 @@ public class OrderBackingBean implements Serializable {
                             "拨打400-898-0050联系在线客服，谢谢！", ""));
                     return ViewPage.LINK2OrderEntry;
                 }
-
+               
+                
                 if(vehicles.size() > 1) {
                     /*context.addMessage(null, new FacesMessage(
                             FacesMessage.SEVERITY_ERROR, "您的手机号可能关联多辆车，请尝试提供对应的智能互联编号或车架号(VIN)", ""));
@@ -278,8 +282,7 @@ public class OrderBackingBean implements Serializable {
                     tvehicles.add(vehicles.get(0));
                     vehicles = tvehicles;*/
                     return ViewPage.LINK2OrderVehicle;
-                }
-
+                }                            
                 selectedVehicle = vehicles.get(0);
                 wifiFlag = selectedVehicle.getWifiFlag() == 1;
 
@@ -332,8 +335,14 @@ public class OrderBackingBean implements Serializable {
             if(!eligable) {
                 return ViewPage.LINK2OrderEntry;
             }
-
-
+            logger.info("createRenewalServiceUserProfileFlag:"+accountNum+openId+userInfo+vin);
+            //根据账户绑定openid
+            openId="o8rKvs6BZi-LQzX_UdNL0X0TL6T4";
+            vin="WWCHINAMBTEST0661";
+            boolean flag = PaymentServiceClient.getInstance().createWechatUserProfile(accountNum,"", openId, userInfo,vin);//保存绑定信息accountInfo.getvin
+            if(flag){
+            	logger.info("createRenewalServiceUserProfileFlag == true");
+            }
 
             /*logger.info("selectedVehicle = " + selectedVehicle.getVin())*/;
             int baseServiceStatus = selectedVehicle.getBaseSeviceStatus();
@@ -430,7 +439,15 @@ public class OrderBackingBean implements Serializable {
             wifiFlag = selectedVehicle.getWifiFlag() == 1;
             /*logger.info("baseServiceStatus = " + baseServiceStatus);
             logger.info("wifiFlag = " + wifiFlag);*/
-
+            //根据账户绑定openid
+            String userInfo = (String) FacesUtils.getManagedBeanInSession(Constant.WECHAT_USER_INFO);
+            logger.info("createRenewalServiceUserProfileFlag:"+accountNum+openId+userInfo+vin);
+            openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
+            openId="o8rKvs9-vbWftg4XJIVaA7EkWF2M";
+            boolean flag = PaymentServiceClient.getInstance().createWechatUserProfile(accountNum,"", openId, userInfo,accountInfo.getVin());//保存绑定信息
+            if(flag){
+            	logger.info("createRenewalServiceUserProfileFlag == true");
+            }
             return ViewPage.LINK2OrderPackage0;
         }
         return ViewPage.LINK2OrderVehicle;

@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>hasLuckyDrawLink complex type的 Java 类。
+ * <p>Java class for hasLuckyDrawLink complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="hasLuckyDrawLink">
@@ -34,7 +34,7 @@ public class HasLuckyDrawLink {
     protected String parentOrderId;
 
     /**
-     * 获取parentOrderId属性的值。
+     * Gets the value of the parentOrderId property.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class HasLuckyDrawLink {
     }
 
     /**
-     * 设置parentOrderId属性的值。
+     * Sets the value of the parentOrderId property.
      * 
      * @param value
      *     allowed object is

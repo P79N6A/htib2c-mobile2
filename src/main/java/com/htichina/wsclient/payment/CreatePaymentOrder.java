@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>createPaymentOrder complex type的 Java 类。
+ * <p>Java class for createPaymentOrder complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="createPaymentOrder">
@@ -52,7 +52,7 @@ public class CreatePaymentOrder {
     protected String openId;
 
     /**
-     * 获取packageId属性的值。
+     * Gets the value of the packageId property.
      * 
      * @return
      *     possible object is
@@ -64,7 +64,7 @@ public class CreatePaymentOrder {
     }
 
     /**
-     * 设置packageId属性的值。
+     * Sets the value of the packageId property.
      * 
      * @param value
      *     allowed object is
@@ -76,7 +76,7 @@ public class CreatePaymentOrder {
     }
 
     /**
-     * 获取price属性的值。
+     * Gets the value of the price property.
      * 
      */
     public double getPrice() {
@@ -84,7 +84,7 @@ public class CreatePaymentOrder {
     }
 
     /**
-     * 设置price属性的值。
+     * Sets the value of the price property.
      * 
      */
     public void setPrice(double value) {
@@ -92,7 +92,7 @@ public class CreatePaymentOrder {
     }
 
     /**
-     * 获取proCategoryId属性的值。
+     * Gets the value of the proCategoryId property.
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class CreatePaymentOrder {
     }
 
     /**
-     * 设置proCategoryId属性的值。
+     * Sets the value of the proCategoryId property.
      * 
      * @param value
      *     allowed object is
@@ -116,7 +116,7 @@ public class CreatePaymentOrder {
     }
 
     /**
-     * 获取accountNum属性的值。
+     * Gets the value of the accountNum property.
      * 
      * @return
      *     possible object is
@@ -128,7 +128,7 @@ public class CreatePaymentOrder {
     }
 
     /**
-     * 设置accountNum属性的值。
+     * Sets the value of the accountNum property.
      * 
      * @param value
      *     allowed object is
@@ -140,7 +140,7 @@ public class CreatePaymentOrder {
     }
 
     /**
-     * 获取vin属性的值。
+     * Gets the value of the vin property.
      * 
      * @return
      *     possible object is
@@ -152,7 +152,7 @@ public class CreatePaymentOrder {
     }
 
     /**
-     * 设置vin属性的值。
+     * Sets the value of the vin property.
      * 
      * @param value
      *     allowed object is
@@ -164,7 +164,7 @@ public class CreatePaymentOrder {
     }
 
     /**
-     * 获取channel属性的值。
+     * Gets the value of the channel property.
      * 
      * @return
      *     possible object is
@@ -176,7 +176,7 @@ public class CreatePaymentOrder {
     }
 
     /**
-     * 设置channel属性的值。
+     * Sets the value of the channel property.
      * 
      * @param value
      *     allowed object is
@@ -188,7 +188,7 @@ public class CreatePaymentOrder {
     }
 
     /**
-     * 获取openId属性的值。
+     * Gets the value of the openId property.
      * 
      * @return
      *     possible object is
@@ -200,7 +200,7 @@ public class CreatePaymentOrder {
     }
 
     /**
-     * 设置openId属性的值。
+     * Sets the value of the openId property.
      * 
      * @param value
      *     allowed object is

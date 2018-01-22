@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>insert complex type的 Java 类。
+ * <p>Java class for insert complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="insert">
@@ -40,7 +40,7 @@ public class Insert {
     protected String transactionNo;
 
     /**
-     * 获取openIds属性的值。
+     * Gets the value of the openIds property.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class Insert {
     }
 
     /**
-     * 设置openIds属性的值。
+     * Sets the value of the openIds property.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class Insert {
     }
 
     /**
-     * 获取message属性的值。
+     * Gets the value of the message property.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class Insert {
     }
 
     /**
-     * 设置message属性的值。
+     * Sets the value of the message property.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class Insert {
     }
 
     /**
-     * 获取transactionNo属性的值。
+     * Gets the value of the transactionNo property.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class Insert {
     }
 
     /**
-     * 设置transactionNo属性的值。
+     * Sets the value of the transactionNo property.
      * 
      * @param value
      *     allowed object is

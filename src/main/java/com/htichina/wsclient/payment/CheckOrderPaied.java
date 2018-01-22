@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>checkOrderPaied complex type的 Java 类。
+ * <p>Java class for checkOrderPaied complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="checkOrderPaied">
@@ -34,7 +34,7 @@ public class CheckOrderPaied {
     protected String transactionNo;
 
     /**
-     * 获取transactionNo属性的值。
+     * Gets the value of the transactionNo property.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class CheckOrderPaied {
     }
 
     /**
-     * 设置transactionNo属性的值。
+     * Sets the value of the transactionNo property.
      * 
      * @param value
      *     allowed object is

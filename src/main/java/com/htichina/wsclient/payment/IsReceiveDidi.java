@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>isReceiveDidi complex type的 Java 类。
+ * <p>Java class for isReceiveDidi complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="isReceiveDidi">
@@ -37,7 +37,7 @@ public class IsReceiveDidi {
     protected String didiType;
 
     /**
-     * 获取accountKey属性的值。
+     * Gets the value of the accountKey property.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class IsReceiveDidi {
     }
 
     /**
-     * 设置accountKey属性的值。
+     * Sets the value of the accountKey property.
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class IsReceiveDidi {
     }
 
     /**
-     * 获取didiType属性的值。
+     * Gets the value of the didiType property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class IsReceiveDidi {
     }
 
     /**
-     * 设置didiType属性的值。
+     * Sets the value of the didiType property.
      * 
      * @param value
      *     allowed object is

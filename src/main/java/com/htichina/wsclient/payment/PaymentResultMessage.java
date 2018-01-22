@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>paymentResultMessage complex type的 Java 类。
+ * <p>Java class for paymentResultMessage complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="paymentResultMessage">
@@ -46,7 +46,7 @@ public class PaymentResultMessage {
     protected String transMsg;
 
     /**
-     * 获取paymentTransNo属性的值。
+     * Gets the value of the paymentTransNo property.
      * 
      * @return
      *     possible object is
@@ -58,7 +58,7 @@ public class PaymentResultMessage {
     }
 
     /**
-     * 设置paymentTransNo属性的值。
+     * Sets the value of the paymentTransNo property.
      * 
      * @param value
      *     allowed object is
@@ -70,7 +70,7 @@ public class PaymentResultMessage {
     }
 
     /**
-     * 获取respCode属性的值。
+     * Gets the value of the respCode property.
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class PaymentResultMessage {
     }
 
     /**
-     * 设置respCode属性的值。
+     * Sets the value of the respCode property.
      * 
      * @param value
      *     allowed object is
@@ -94,7 +94,7 @@ public class PaymentResultMessage {
     }
 
     /**
-     * 获取respMsg属性的值。
+     * Gets the value of the respMsg property.
      * 
      * @return
      *     possible object is
@@ -106,7 +106,7 @@ public class PaymentResultMessage {
     }
 
     /**
-     * 设置respMsg属性的值。
+     * Sets the value of the respMsg property.
      * 
      * @param value
      *     allowed object is
@@ -118,7 +118,7 @@ public class PaymentResultMessage {
     }
 
     /**
-     * 获取transMsg属性的值。
+     * Gets the value of the transMsg property.
      * 
      * @return
      *     possible object is
@@ -130,7 +130,7 @@ public class PaymentResultMessage {
     }
 
     /**
-     * 设置transMsg属性的值。
+     * Sets the value of the transMsg property.
      * 
      * @param value
      *     allowed object is

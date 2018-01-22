@@ -282,9 +282,9 @@ public class PaymentServiceClient {
     /*return null;*/
   }
 
-  public boolean createWechatUserProfile(String accountNum, String pin, String openId, String userInfo){
+  public boolean createWechatUserProfile(String accountNum, String pin, String openId, String userInfo,String vin){
     try {
-      return service.createWechatUserProfile(accountNum,pin,openId,userInfo);
+      return service.createWechatUserProfile(accountNum,pin,openId,userInfo,vin);
      /* return false;*/
     }
     catch (Exception exception) {
@@ -293,7 +293,7 @@ public class PaymentServiceClient {
     }
     /*return false;*/
   }
-  
+
   /* 2017-11-10,Tommy Liu, CR82_Part II, 获取 升级-目标套餐 的信息 */
   public PackageUpgradeResponse getNewPackageAfterUpgrade(PackageUpgradeRequest request){
 	  return service.getNewPackageAfterUpgrade(request);

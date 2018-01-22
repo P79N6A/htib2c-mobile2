@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>packageUpgradeRequest complex type的 Java 类。
+ * <p>Java class for packageUpgradeRequest complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="packageUpgradeRequest">
@@ -82,7 +82,7 @@ public class PackageUpgradeRequest {
     protected String webSubscriptionId;
 
     /**
-     * 获取accountNum属性的值。
+     * Gets the value of the accountNum property.
      * 
      * @return
      *     possible object is
@@ -94,7 +94,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置accountNum属性的值。
+     * Sets the value of the accountNum property.
      * 
      * @param value
      *     allowed object is
@@ -106,7 +106,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取calculateByActivePkg属性的值。
+     * Gets the value of the calculateByActivePkg property.
      * 
      */
     public boolean isCalculateByActivePkg() {
@@ -114,7 +114,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置calculateByActivePkg属性的值。
+     * Sets the value of the calculateByActivePkg property.
      * 
      */
     public void setCalculateByActivePkg(boolean value) {
@@ -122,7 +122,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取endDate属性的值。
+     * Gets the value of the endDate property.
      * 
      * @return
      *     possible object is
@@ -134,7 +134,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置endDate属性的值。
+     * Sets the value of the endDate property.
      * 
      * @param value
      *     allowed object is
@@ -146,7 +146,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取newPackageId属性的值。
+     * Gets the value of the newPackageId property.
      * 
      * @return
      *     possible object is
@@ -158,7 +158,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置newPackageId属性的值。
+     * Sets the value of the newPackageId property.
      * 
      * @param value
      *     allowed object is
@@ -170,7 +170,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取newPackageName属性的值。
+     * Gets the value of the newPackageName property.
      * 
      * @return
      *     possible object is
@@ -182,7 +182,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置newPackageName属性的值。
+     * Sets the value of the newPackageName property.
      * 
      * @param value
      *     allowed object is
@@ -194,7 +194,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取openId属性的值。
+     * Gets the value of the openId property.
      * 
      * @return
      *     possible object is
@@ -206,7 +206,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置openId属性的值。
+     * Sets the value of the openId property.
      * 
      * @param value
      *     allowed object is
@@ -218,7 +218,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取originalPackageId属性的值。
+     * Gets the value of the originalPackageId property.
      * 
      * @return
      *     possible object is
@@ -230,7 +230,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置originalPackageId属性的值。
+     * Sets the value of the originalPackageId property.
      * 
      * @param value
      *     allowed object is
@@ -242,7 +242,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取originalPackageName属性的值。
+     * Gets the value of the originalPackageName property.
      * 
      * @return
      *     possible object is
@@ -254,7 +254,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置originalPackageName属性的值。
+     * Sets the value of the originalPackageName property.
      * 
      * @param value
      *     allowed object is
@@ -266,7 +266,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取originalPackageState属性的值。
+     * Gets the value of the originalPackageState property.
      * 
      * @return
      *     possible object is
@@ -278,7 +278,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置originalPackageState属性的值。
+     * Sets the value of the originalPackageState property.
      * 
      * @param value
      *     allowed object is
@@ -290,7 +290,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取originalPrice属性的值。
+     * Gets the value of the originalPrice property.
      * 
      * @return
      *     possible object is
@@ -302,7 +302,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置originalPrice属性的值。
+     * Sets the value of the originalPrice property.
      * 
      * @param value
      *     allowed object is
@@ -314,7 +314,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取originalServiceOrderNum属性的值。
+     * Gets the value of the originalServiceOrderNum property.
      * 
      * @return
      *     possible object is
@@ -326,7 +326,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置originalServiceOrderNum属性的值。
+     * Sets the value of the originalServiceOrderNum property.
      * 
      * @param value
      *     allowed object is
@@ -338,7 +338,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取paymentChannel属性的值。
+     * Gets the value of the paymentChannel property.
      * 
      * @return
      *     possible object is
@@ -350,7 +350,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置paymentChannel属性的值。
+     * Sets the value of the paymentChannel property.
      * 
      * @param value
      *     allowed object is
@@ -362,7 +362,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取startDate属性的值。
+     * Gets the value of the startDate property.
      * 
      * @return
      *     possible object is
@@ -374,7 +374,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置startDate属性的值。
+     * Sets the value of the startDate property.
      * 
      * @param value
      *     allowed object is
@@ -386,7 +386,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取subscriptionName属性的值。
+     * Gets the value of the subscriptionName property.
      * 
      * @return
      *     possible object is
@@ -398,7 +398,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置subscriptionName属性的值。
+     * Sets the value of the subscriptionName property.
      * 
      * @param value
      *     allowed object is
@@ -410,7 +410,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取upgradeGapPrice属性的值。
+     * Gets the value of the upgradeGapPrice property.
      * 
      * @return
      *     possible object is
@@ -422,7 +422,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置upgradeGapPrice属性的值。
+     * Sets the value of the upgradeGapPrice property.
      * 
      * @param value
      *     allowed object is
@@ -434,7 +434,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取vin属性的值。
+     * Gets the value of the vin property.
      * 
      * @return
      *     possible object is
@@ -446,7 +446,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置vin属性的值。
+     * Sets the value of the vin property.
      * 
      * @param value
      *     allowed object is
@@ -458,7 +458,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 获取webSubscriptionId属性的值。
+     * Gets the value of the webSubscriptionId property.
      * 
      * @return
      *     possible object is
@@ -470,7 +470,7 @@ public class PackageUpgradeRequest {
     }
 
     /**
-     * 设置webSubscriptionId属性的值。
+     * Sets the value of the webSubscriptionId property.
      * 
      * @param value
      *     allowed object is

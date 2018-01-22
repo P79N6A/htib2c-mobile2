@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>purchaseProductResponse complex type的 Java 类。
+ * <p>Java class for purchaseProductResponse complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="purchaseProductResponse">
@@ -40,7 +40,7 @@ public class PurchaseProductResponse {
     protected int result;
 
     /**
-     * 获取respCode属性的值。
+     * Gets the value of the respCode property.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class PurchaseProductResponse {
     }
 
     /**
-     * 设置respCode属性的值。
+     * Sets the value of the respCode property.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class PurchaseProductResponse {
     }
 
     /**
-     * 获取respMsg属性的值。
+     * Gets the value of the respMsg property.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class PurchaseProductResponse {
     }
 
     /**
-     * 设置respMsg属性的值。
+     * Sets the value of the respMsg property.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class PurchaseProductResponse {
     }
 
     /**
-     * 获取result属性的值。
+     * Gets the value of the result property.
      * 
      */
     public int getResult() {
@@ -96,7 +96,7 @@ public class PurchaseProductResponse {
     }
 
     /**
-     * 设置result属性的值。
+     * Sets the value of the result property.
      * 
      */
     public void setResult(int value) {
