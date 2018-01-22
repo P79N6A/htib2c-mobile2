@@ -337,9 +337,9 @@ public class OrderBackingBean implements Serializable {
             }
             logger.info("createRenewalServiceUserProfileFlag:"+accountNum+openId+userInfo+vin);
             //根据账户绑定openid
-            openId="o8rKvs6BZi-LQzX_UdNL0X0TL6T4";
-            vin="WWCHINAMBTEST0661";
-            boolean flag = PaymentServiceClient.getInstance().createWechatUserProfile(accountNum,"", openId, userInfo,vin);//保存绑定信息accountInfo.getvin
+            //openId="o8rKvs6BZi-LQzX_UdNL0X0TL6T4";
+            //vin="WWCHINAMBTEST0661";
+            boolean flag = PaymentServiceClient.getInstance().createWechatUserProfile(accountNum,"", openId, userInfo,accountInfo.getVin());//保存绑定信息accountInfo.getvin
             if(flag){
             	logger.info("createRenewalServiceUserProfileFlag == true");
             }
@@ -443,7 +443,7 @@ public class OrderBackingBean implements Serializable {
             String userInfo = (String) FacesUtils.getManagedBeanInSession(Constant.WECHAT_USER_INFO);
             logger.info("createRenewalServiceUserProfileFlag:"+accountNum+openId+userInfo+vin);
             openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
-            openId="o8rKvs9-vbWftg4XJIVaA7EkWF2M";
+            //openId="o8rKvs9-vbWftg4XJIVaA7EkWF2M";
             boolean flag = PaymentServiceClient.getInstance().createWechatUserProfile(accountNum,"", openId, userInfo,accountInfo.getVin());//保存绑定信息
             if(flag){
             	logger.info("createRenewalServiceUserProfileFlag == true");
