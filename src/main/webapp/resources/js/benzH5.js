@@ -159,7 +159,7 @@ function statusFn(str,winningsAdd,theTerm,remaining,allBaseSize) {
       //未中奖 没有抽奖次数
     case "notWinning":
 
-        $(".allText").find("bind").text(allBaseSize+"个");
+        $(".allText").find("bind").text(allBaseSize);
       $(ele).css("display", "block");
 
       //依次显示
