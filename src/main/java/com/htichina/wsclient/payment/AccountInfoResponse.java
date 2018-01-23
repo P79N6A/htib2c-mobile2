@@ -1,6 +1,7 @@
 
 package com.htichina.wsclient.payment;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -50,7 +51,7 @@ import javax.xml.bind.annotation.XmlType;
     "mobilePhone",
     "vin"
 })
-public class AccountInfoResponse {
+public class AccountInfoResponse implements Serializable {
 
     protected String accountNum;
     protected String accountStatus;

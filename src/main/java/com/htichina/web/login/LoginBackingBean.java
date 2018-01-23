@@ -104,7 +104,6 @@ public class LoginBackingBean implements Serializable {
             e.printStackTrace();
         }*/
         dataReset();
-        openId = oId;
         targetPg = targetPage;
         String an = null;
         logger.info("Login bakcing oId ==>"+ESAPI.encoder().encodeForHTML(oId) );
@@ -411,6 +410,7 @@ public class LoginBackingBean implements Serializable {
             String sToken = RandomStringGenerator.getCSRFToken();
             HttpSession Session1 = (HttpSession) fc.getExternalContext().getSession(true);
             Session1.setAttribute(Constant.CSRFTOKEN,sToken); 
+            Session1.setAttribute("openId", openId);
             return ViewPage.LINK2Login;
         } else {
             logger.debug("logoff failed!");
