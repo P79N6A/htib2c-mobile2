@@ -60,19 +60,22 @@ $(function () {
                     thePw += "*"
                 }
                 
-            }else
-            if(thisfunction=='over'){
+            }
+            else if(thisfunction=='over'){
             	
-            }else
-            if(thisfunction=='backspace'){
+            }else if(thisfunction=='backspace'){
                 thetxt=thetxt.substr(0,thetxt.length-1);
                 thePw=thePw.substr(0,thePw.length-1)
             }
             $('#keytc').html(thePw);
             $('#keyPW').html(thetxt);
-            if(thetxt.length==4){
-            	checkPin();
-            }
+            var passInput=$('#keytc').html();
+            //由于html()方法的执行效率比较低所以加入一个延时触发的效果
+            setTimeout(function () { 
+	            if(passInput.length==4){
+	            	checkPin();
+	            }
+            }, 700);
         })
         $(divs).bind('touchend',function(){
             $(divs).css('background','url(" ../resources/images/img/keybg.png") repeat-x')
