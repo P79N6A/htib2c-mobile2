@@ -55,7 +55,7 @@
 
                                                 <div style="color:white;padding-left:39%;font-size:22px">专属滴滴礼券：</div>
                                                 <div style="padding-top:50px;"><div class="long_btn " >
-                                                    领取专车礼券包
+                                                    领取代驾礼券包
                                                 </div></div>
                                                 <div style="color:white;padding-top:5%;padding-left:35%;font-size:22px">友情提示：请即领取。<br/>多次点击链接将失效</div>
                                             </div>
@@ -78,7 +78,7 @@
 
                                         <h:commandButton action="#{loginBackingBean.setReceivedDidi('renew',loginBackingBean.accountInfo.accountNum)}" style="display: none">
                                             <f:passThroughAttribute name="btn" value="didiBtn"/>
-                                            领取专车礼券包
+                                            领取代驾礼券包
                                         </h:commandButton>
                                         <h3>我的套餐</h3>
                                         <c:if test="#{loginBackingBean.accountInfo.currentPackages.size() == 0 || loginBackingBean.accountInfo.currentPackages == null}">
@@ -215,8 +215,6 @@
                  var flag = $("input[flag='renewFlag']").val();
                     if("OK" == flag){
                         $("#didiDiv").removeAttr("style");
-
-//                        window.location.href="https://gsactivity.diditaxi.com.cn/gulfstream/activity/v2/giftpackage/index?g_channel=56a55e6cfbb5aaf0457abf8d90a9de4d";
                         window.location.href="https://dc.tt/Rhv6";
 
                     }
