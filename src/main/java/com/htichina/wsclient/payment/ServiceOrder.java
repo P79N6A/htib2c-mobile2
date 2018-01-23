@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>serviceOrder complex type的 Java 类。
+ * <p>Java class for serviceOrder complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="serviceOrder">
@@ -163,7 +163,7 @@ public class ServiceOrder {
     protected String vin;
 
     /**
-     * 获取accntNum属性的值。
+     * Gets the value of the accntNum property.
      * 
      * @return
      *     possible object is
@@ -175,7 +175,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置accntNum属性的值。
+     * Sets the value of the accntNum property.
      * 
      * @param value
      *     allowed object is
@@ -187,7 +187,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取attrib01属性的值。
+     * Gets the value of the attrib01 property.
      * 
      * @return
      *     possible object is
@@ -199,7 +199,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置attrib01属性的值。
+     * Sets the value of the attrib01 property.
      * 
      * @param value
      *     allowed object is
@@ -211,7 +211,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取attrib02属性的值。
+     * Gets the value of the attrib02 property.
      * 
      */
     public boolean isAttrib02() {
@@ -219,7 +219,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置attrib02属性的值。
+     * Sets the value of the attrib02 property.
      * 
      */
     public void setAttrib02(boolean value) {
@@ -227,7 +227,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取attrib03属性的值。
+     * Gets the value of the attrib03 property.
      * 
      * @return
      *     possible object is
@@ -239,7 +239,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置attrib03属性的值。
+     * Sets the value of the attrib03 property.
      * 
      * @param value
      *     allowed object is
@@ -251,7 +251,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取attrib04属性的值。
+     * Gets the value of the attrib04 property.
      * 
      */
     public double getAttrib04() {
@@ -259,7 +259,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置attrib04属性的值。
+     * Sets the value of the attrib04 property.
      * 
      */
     public void setAttrib04(double value) {
@@ -267,7 +267,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取attrib05属性的值。
+     * Gets the value of the attrib05 property.
      * 
      * @return
      *     possible object is
@@ -279,7 +279,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置attrib05属性的值。
+     * Sets the value of the attrib05 property.
      * 
      * @param value
      *     allowed object is
@@ -291,7 +291,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取attrib06属性的值。
+     * Gets the value of the attrib06 property.
      * 
      * @return
      *     possible object is
@@ -303,7 +303,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置attrib06属性的值。
+     * Sets the value of the attrib06 property.
      * 
      * @param value
      *     allowed object is
@@ -315,7 +315,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取created属性的值。
+     * Gets the value of the created property.
      * 
      * @return
      *     possible object is
@@ -327,7 +327,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置created属性的值。
+     * Sets the value of the created property.
      * 
      * @param value
      *     allowed object is
@@ -339,7 +339,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取createdBy属性的值。
+     * Gets the value of the createdBy property.
      * 
      * @return
      *     possible object is
@@ -351,7 +351,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置createdBy属性的值。
+     * Sets the value of the createdBy property.
      * 
      * @param value
      *     allowed object is
@@ -363,7 +363,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取endDt属性的值。
+     * Gets the value of the endDt property.
      * 
      * @return
      *     possible object is
@@ -375,7 +375,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置endDt属性的值。
+     * Sets the value of the endDt property.
      * 
      * @param value
      *     allowed object is
@@ -387,7 +387,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取lang属性的值。
+     * Gets the value of the lang property.
      * 
      * @return
      *     possible object is
@@ -399,7 +399,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置lang属性的值。
+     * Sets the value of the lang property.
      * 
      * @param value
      *     allowed object is
@@ -411,7 +411,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取lastUpd属性的值。
+     * Gets the value of the lastUpd property.
      * 
      * @return
      *     possible object is
@@ -423,7 +423,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置lastUpd属性的值。
+     * Sets the value of the lastUpd property.
      * 
      * @param value
      *     allowed object is
@@ -435,7 +435,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取lastUpdBy属性的值。
+     * Gets the value of the lastUpdBy property.
      * 
      * @return
      *     possible object is
@@ -447,7 +447,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置lastUpdBy属性的值。
+     * Sets the value of the lastUpdBy property.
      * 
      * @param value
      *     allowed object is
@@ -459,7 +459,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取newEndDt属性的值。
+     * Gets the value of the newEndDt property.
      * 
      * @return
      *     possible object is
@@ -471,7 +471,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置newEndDt属性的值。
+     * Sets the value of the newEndDt property.
      * 
      * @param value
      *     allowed object is
@@ -483,7 +483,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取newStartDt属性的值。
+     * Gets the value of the newStartDt property.
      * 
      * @return
      *     possible object is
@@ -495,7 +495,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置newStartDt属性的值。
+     * Sets the value of the newStartDt property.
      * 
      * @param value
      *     allowed object is
@@ -507,7 +507,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取oldEndDt属性的值。
+     * Gets the value of the oldEndDt property.
      * 
      * @return
      *     possible object is
@@ -519,7 +519,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置oldEndDt属性的值。
+     * Sets the value of the oldEndDt property.
      * 
      * @param value
      *     allowed object is
@@ -531,7 +531,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取oldStartDt属性的值。
+     * Gets the value of the oldStartDt property.
      * 
      * @return
      *     possible object is
@@ -543,7 +543,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置oldStartDt属性的值。
+     * Sets the value of the oldStartDt property.
      * 
      * @param value
      *     allowed object is
@@ -555,7 +555,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取orderChannel属性的值。
+     * Gets the value of the orderChannel property.
      * 
      * @return
      *     possible object is
@@ -567,7 +567,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置orderChannel属性的值。
+     * Sets the value of the orderChannel property.
      * 
      * @param value
      *     allowed object is
@@ -579,7 +579,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取orderNum属性的值。
+     * Gets the value of the orderNum property.
      * 
      * @return
      *     possible object is
@@ -591,7 +591,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置orderNum属性的值。
+     * Sets the value of the orderNum property.
      * 
      * @param value
      *     allowed object is
@@ -603,7 +603,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取orderStat属性的值。
+     * Gets the value of the orderStat property.
      * 
      * @return
      *     possible object is
@@ -615,7 +615,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置orderStat属性的值。
+     * Sets the value of the orderStat property.
      * 
      * @param value
      *     allowed object is
@@ -627,7 +627,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取orderType属性的值。
+     * Gets the value of the orderType property.
      * 
      * @return
      *     possible object is
@@ -639,7 +639,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置orderType属性的值。
+     * Sets the value of the orderType property.
      * 
      * @param value
      *     allowed object is
@@ -651,7 +651,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取parentNum属性的值。
+     * Gets the value of the parentNum property.
      * 
      * @return
      *     possible object is
@@ -663,7 +663,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置parentNum属性的值。
+     * Sets the value of the parentNum property.
      * 
      * @param value
      *     allowed object is
@@ -675,7 +675,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取paymentChannel属性的值。
+     * Gets the value of the paymentChannel property.
      * 
      * @return
      *     possible object is
@@ -687,7 +687,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置paymentChannel属性的值。
+     * Sets the value of the paymentChannel property.
      * 
      * @param value
      *     allowed object is
@@ -699,7 +699,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取paymentOfflineNum属性的值。
+     * Gets the value of the paymentOfflineNum property.
      * 
      * @return
      *     possible object is
@@ -711,7 +711,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置paymentOfflineNum属性的值。
+     * Sets the value of the paymentOfflineNum property.
      * 
      * @param value
      *     allowed object is
@@ -723,7 +723,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取paymentStat属性的值。
+     * Gets the value of the paymentStat property.
      * 
      * @return
      *     possible object is
@@ -735,7 +735,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置paymentStat属性的值。
+     * Sets the value of the paymentStat property.
      * 
      * @param value
      *     allowed object is
@@ -747,7 +747,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取paymentTransNum属性的值。
+     * Gets the value of the paymentTransNum property.
      * 
      * @return
      *     possible object is
@@ -759,7 +759,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置paymentTransNum属性的值。
+     * Sets the value of the paymentTransNum property.
      * 
      * @param value
      *     allowed object is
@@ -771,7 +771,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取paymentTs属性的值。
+     * Gets the value of the paymentTs property.
      * 
      * @return
      *     possible object is
@@ -783,7 +783,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置paymentTs属性的值。
+     * Sets the value of the paymentTs property.
      * 
      * @param value
      *     allowed object is
@@ -795,7 +795,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取paymentType属性的值。
+     * Gets the value of the paymentType property.
      * 
      * @return
      *     possible object is
@@ -807,7 +807,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置paymentType属性的值。
+     * Sets the value of the paymentType property.
      * 
      * @param value
      *     allowed object is
@@ -819,7 +819,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取pkgId属性的值。
+     * Gets the value of the pkgId property.
      * 
      * @return
      *     possible object is
@@ -831,7 +831,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置pkgId属性的值。
+     * Sets the value of the pkgId property.
      * 
      * @param value
      *     allowed object is
@@ -843,7 +843,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取price属性的值。
+     * Gets the value of the price property.
      * 
      */
     public double getPrice() {
@@ -851,7 +851,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置price属性的值。
+     * Sets the value of the price property.
      * 
      */
     public void setPrice(double value) {
@@ -859,7 +859,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取quanti属性的值。
+     * Gets the value of the quanti property.
      * 
      */
     public int getQuanti() {
@@ -867,7 +867,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置quanti属性的值。
+     * Sets the value of the quanti property.
      * 
      */
     public void setQuanti(int value) {
@@ -875,7 +875,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取startDt属性的值。
+     * Gets the value of the startDt property.
      * 
      * @return
      *     possible object is
@@ -887,7 +887,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置startDt属性的值。
+     * Sets the value of the startDt property.
      * 
      * @param value
      *     allowed object is
@@ -899,7 +899,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取upgradeGapPrice属性的值。
+     * Gets the value of the upgradeGapPrice property.
      * 
      */
     public double getUpgradeGapPrice() {
@@ -907,7 +907,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置upgradeGapPrice属性的值。
+     * Sets the value of the upgradeGapPrice property.
      * 
      */
     public void setUpgradeGapPrice(double value) {
@@ -915,7 +915,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 获取vin属性的值。
+     * Gets the value of the vin property.
      * 
      * @return
      *     possible object is
@@ -927,7 +927,7 @@ public class ServiceOrder {
     }
 
     /**
-     * 设置vin属性的值。
+     * Sets the value of the vin property.
      * 
      * @param value
      *     allowed object is

@@ -43,7 +43,7 @@
             #erro .long_btn{ width: 346px;}
             #erro{ display: none;}
             #teltxt{ text-align: center; width: 100%; position: absolute; top: 675px; font-size: 21px; color: #fff;}
-
+			#enddate{ text-align: center; width: 100%; position: absolute; top: 904px; font-size: 16px; color: #fff;}
         </style>
         <h:form  id="condition">
             <!-- 密码错误 -->
@@ -64,7 +64,7 @@
                     <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line.jpg" id="linetop"/>
                     <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line2.jpg" id="linebot"/>
                     <div class="aotu">
-                        <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/taix_icon.png" id="SpecialCar_icon"/>
+                        <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/newFollow.png" id="SpecialCar_icon"/>
                         <div  id="tel"><h:inputText id="accountNum"
                                                     value="#{loginBackingBean.newFollowTel}" maxlength="11">
                             <f:passThroughAttribute name="placeholder" value="手机号" />
@@ -84,6 +84,7 @@
                 </div>
                 <div style="text-align: center; width: 100%; position: absolute; top: 870px; font-size: 21px; color: #fff;">
                     <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/didiMessage.png" alt=""></img></div>
+                    <div id="enddate">* 活动截止日期为2018年3月8日</div>
                 <div id="fri_bottom">
                     <div id="keytxt">
                         本活动解释权归梅赛德斯—奔驰智能互联所有<br/>
@@ -106,8 +107,7 @@
                 $('#sn_err').hide();
             }else{
                 if("true" == flag){
-//                    window.location.href="https://dc.tt/Rhv6"
-                    window.location.href="https://gsactivity.diditaxi.com.cn/gulfstream/activity/v2/giftpackage/index?g_channel=56a55e6cfbb5aaf0457abf8d90a9de4d";
+                    window.location.href="https://dc.tt/Rhv6"
                 }
                 else if("false" == flag){
                     $('#message').html("您的输入的手机号已领取");

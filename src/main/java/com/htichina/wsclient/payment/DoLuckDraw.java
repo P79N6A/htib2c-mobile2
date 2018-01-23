@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>doLuckDraw complex type的 Java 类。
+ * <p>Java class for doLuckDraw complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="doLuckDraw">
@@ -40,7 +40,7 @@ public class DoLuckDraw {
     protected String channel;
 
     /**
-     * 获取accountNum属性的值。
+     * Gets the value of the accountNum property.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class DoLuckDraw {
     }
 
     /**
-     * 设置accountNum属性的值。
+     * Sets the value of the accountNum property.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class DoLuckDraw {
     }
 
     /**
-     * 获取openId属性的值。
+     * Gets the value of the openId property.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class DoLuckDraw {
     }
 
     /**
-     * 设置openId属性的值。
+     * Sets the value of the openId property.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class DoLuckDraw {
     }
 
     /**
-     * 获取channel属性的值。
+     * Gets the value of the channel property.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class DoLuckDraw {
     }
 
     /**
-     * 设置channel属性的值。
+     * Sets the value of the channel property.
      * 
      * @param value
      *     allowed object is

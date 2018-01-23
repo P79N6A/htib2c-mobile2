@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>ldItem complex type的 Java 类。
+ * <p>Java class for ldItem complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ldItem">
@@ -78,7 +78,7 @@ public class LdItem {
     protected String wifiDuration;
 
     /**
-     * 获取amount属性的值。
+     * Gets the value of the amount property.
      * 
      * @return
      *     possible object is
@@ -90,7 +90,7 @@ public class LdItem {
     }
 
     /**
-     * 设置amount属性的值。
+     * Sets the value of the amount property.
      * 
      * @param value
      *     allowed object is
@@ -102,7 +102,7 @@ public class LdItem {
     }
 
     /**
-     * 获取createdBy属性的值。
+     * Gets the value of the createdBy property.
      * 
      * @return
      *     possible object is
@@ -114,7 +114,7 @@ public class LdItem {
     }
 
     /**
-     * 设置createdBy属性的值。
+     * Sets the value of the createdBy property.
      * 
      * @param value
      *     allowed object is
@@ -126,7 +126,7 @@ public class LdItem {
     }
 
     /**
-     * 获取createdTime属性的值。
+     * Gets the value of the createdTime property.
      * 
      * @return
      *     possible object is
@@ -138,7 +138,7 @@ public class LdItem {
     }
 
     /**
-     * 设置createdTime属性的值。
+     * Sets the value of the createdTime property.
      * 
      * @param value
      *     allowed object is
@@ -150,7 +150,7 @@ public class LdItem {
     }
 
     /**
-     * 获取id属性的值。
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
@@ -162,7 +162,7 @@ public class LdItem {
     }
 
     /**
-     * 设置id属性的值。
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
@@ -174,7 +174,7 @@ public class LdItem {
     }
 
     /**
-     * 获取lastUpdBy属性的值。
+     * Gets the value of the lastUpdBy property.
      * 
      * @return
      *     possible object is
@@ -186,7 +186,7 @@ public class LdItem {
     }
 
     /**
-     * 设置lastUpdBy属性的值。
+     * Sets the value of the lastUpdBy property.
      * 
      * @param value
      *     allowed object is
@@ -198,7 +198,7 @@ public class LdItem {
     }
 
     /**
-     * 获取lastUpdTime属性的值。
+     * Gets the value of the lastUpdTime property.
      * 
      * @return
      *     possible object is
@@ -210,7 +210,7 @@ public class LdItem {
     }
 
     /**
-     * 设置lastUpdTime属性的值。
+     * Sets the value of the lastUpdTime property.
      * 
      * @param value
      *     allowed object is
@@ -222,7 +222,7 @@ public class LdItem {
     }
 
     /**
-     * 获取luckDraw属性的值。
+     * Gets the value of the luckDraw property.
      * 
      * @return
      *     possible object is
@@ -234,7 +234,7 @@ public class LdItem {
     }
 
     /**
-     * 设置luckDraw属性的值。
+     * Sets the value of the luckDraw property.
      * 
      * @param value
      *     allowed object is
@@ -246,7 +246,7 @@ public class LdItem {
     }
 
     /**
-     * 获取name属性的值。
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -258,7 +258,7 @@ public class LdItem {
     }
 
     /**
-     * 设置name属性的值。
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -270,7 +270,7 @@ public class LdItem {
     }
 
     /**
-     * 获取packageId属性的值。
+     * Gets the value of the packageId property.
      * 
      * @return
      *     possible object is
@@ -282,7 +282,7 @@ public class LdItem {
     }
 
     /**
-     * 设置packageId属性的值。
+     * Sets the value of the packageId property.
      * 
      * @param value
      *     allowed object is
@@ -294,7 +294,7 @@ public class LdItem {
     }
 
     /**
-     * 获取probability属性的值。
+     * Gets the value of the probability property.
      * 
      * @return
      *     possible object is
@@ -306,7 +306,7 @@ public class LdItem {
     }
 
     /**
-     * 设置probability属性的值。
+     * Sets the value of the probability property.
      * 
      * @param value
      *     allowed object is
@@ -318,7 +318,7 @@ public class LdItem {
     }
 
     /**
-     * 获取subType属性的值。
+     * Gets the value of the subType property.
      * 
      * @return
      *     possible object is
@@ -330,7 +330,7 @@ public class LdItem {
     }
 
     /**
-     * 设置subType属性的值。
+     * Sets the value of the subType property.
      * 
      * @param value
      *     allowed object is
@@ -342,7 +342,7 @@ public class LdItem {
     }
 
     /**
-     * 获取type属性的值。
+     * Gets the value of the type property.
      * 
      * @return
      *     possible object is
@@ -354,7 +354,7 @@ public class LdItem {
     }
 
     /**
-     * 设置type属性的值。
+     * Sets the value of the type property.
      * 
      * @param value
      *     allowed object is
@@ -366,7 +366,7 @@ public class LdItem {
     }
 
     /**
-     * 获取wifiDuration属性的值。
+     * Gets the value of the wifiDuration property.
      * 
      * @return
      *     possible object is
@@ -378,7 +378,7 @@ public class LdItem {
     }
 
     /**
-     * 设置wifiDuration属性的值。
+     * Sets the value of the wifiDuration property.
      * 
      * @param value
      *     allowed object is

@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>transaction complex type的 Java 类。
+ * <p>Java class for transaction complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="transaction">
@@ -103,7 +103,7 @@ public class Transaction {
     protected String transtype;
 
     /**
-     * 获取amount属性的值。
+     * Gets the value of the amount property.
      * 
      * @return
      *     possible object is
@@ -115,7 +115,7 @@ public class Transaction {
     }
 
     /**
-     * 设置amount属性的值。
+     * Sets the value of the amount property.
      * 
      * @param value
      *     allowed object is
@@ -127,7 +127,7 @@ public class Transaction {
     }
 
     /**
-     * 获取bankaddress属性的值。
+     * Gets the value of the bankaddress property.
      * 
      * @return
      *     possible object is
@@ -139,7 +139,7 @@ public class Transaction {
     }
 
     /**
-     * 设置bankaddress属性的值。
+     * Sets the value of the bankaddress property.
      * 
      * @param value
      *     allowed object is
@@ -151,7 +151,7 @@ public class Transaction {
     }
 
     /**
-     * 获取bankcardno属性的值。
+     * Gets the value of the bankcardno property.
      * 
      * @return
      *     possible object is
@@ -163,7 +163,7 @@ public class Transaction {
     }
 
     /**
-     * 设置bankcardno属性的值。
+     * Sets the value of the bankcardno property.
      * 
      * @param value
      *     allowed object is
@@ -175,7 +175,7 @@ public class Transaction {
     }
 
     /**
-     * 获取bankphoneno属性的值。
+     * Gets the value of the bankphoneno property.
      * 
      * @return
      *     possible object is
@@ -187,7 +187,7 @@ public class Transaction {
     }
 
     /**
-     * 设置bankphoneno属性的值。
+     * Sets the value of the bankphoneno property.
      * 
      * @param value
      *     allowed object is
@@ -199,7 +199,7 @@ public class Transaction {
     }
 
     /**
-     * 获取cardtype属性的值。
+     * Gets the value of the cardtype property.
      * 
      * @return
      *     possible object is
@@ -211,7 +211,7 @@ public class Transaction {
     }
 
     /**
-     * 设置cardtype属性的值。
+     * Sets the value of the cardtype property.
      * 
      * @param value
      *     allowed object is
@@ -223,7 +223,7 @@ public class Transaction {
     }
 
     /**
-     * 获取created属性的值。
+     * Gets the value of the created property.
      * 
      * @return
      *     possible object is
@@ -235,7 +235,7 @@ public class Transaction {
     }
 
     /**
-     * 设置created属性的值。
+     * Sets the value of the created property.
      * 
      * @param value
      *     allowed object is
@@ -247,7 +247,7 @@ public class Transaction {
     }
 
     /**
-     * 获取id属性的值。
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
@@ -259,7 +259,7 @@ public class Transaction {
     }
 
     /**
-     * 设置id属性的值。
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
@@ -271,7 +271,7 @@ public class Transaction {
     }
 
     /**
-     * 获取idcardaddress属性的值。
+     * Gets the value of the idcardaddress property.
      * 
      * @return
      *     possible object is
@@ -283,7 +283,7 @@ public class Transaction {
     }
 
     /**
-     * 设置idcardaddress属性的值。
+     * Sets the value of the idcardaddress property.
      * 
      * @param value
      *     allowed object is
@@ -295,7 +295,7 @@ public class Transaction {
     }
 
     /**
-     * 获取idcardname属性的值。
+     * Gets the value of the idcardname property.
      * 
      * @return
      *     possible object is
@@ -307,7 +307,7 @@ public class Transaction {
     }
 
     /**
-     * 设置idcardname属性的值。
+     * Sets the value of the idcardname property.
      * 
      * @param value
      *     allowed object is
@@ -319,7 +319,7 @@ public class Transaction {
     }
 
     /**
-     * 获取idcardno属性的值。
+     * Gets the value of the idcardno property.
      * 
      * @return
      *     possible object is
@@ -331,7 +331,7 @@ public class Transaction {
     }
 
     /**
-     * 设置idcardno属性的值。
+     * Sets the value of the idcardno property.
      * 
      * @param value
      *     allowed object is
@@ -343,7 +343,7 @@ public class Transaction {
     }
 
     /**
-     * 获取lastuptime属性的值。
+     * Gets the value of the lastuptime property.
      * 
      * @return
      *     possible object is
@@ -355,7 +355,7 @@ public class Transaction {
     }
 
     /**
-     * 设置lastuptime属性的值。
+     * Sets the value of the lastuptime property.
      * 
      * @param value
      *     allowed object is
@@ -367,7 +367,7 @@ public class Transaction {
     }
 
     /**
-     * 获取operatorid属性的值。
+     * Gets the value of the operatorid property.
      * 
      * @return
      *     possible object is
@@ -379,7 +379,7 @@ public class Transaction {
     }
 
     /**
-     * 设置operatorid属性的值。
+     * Sets the value of the operatorid property.
      * 
      * @param value
      *     allowed object is
@@ -391,7 +391,7 @@ public class Transaction {
     }
 
     /**
-     * 获取orderNum属性的值。
+     * Gets the value of the orderNum property.
      * 
      * @return
      *     possible object is
@@ -403,7 +403,7 @@ public class Transaction {
     }
 
     /**
-     * 设置orderNum属性的值。
+     * Sets the value of the orderNum property.
      * 
      * @param value
      *     allowed object is
@@ -415,7 +415,7 @@ public class Transaction {
     }
 
     /**
-     * 获取orderdescription属性的值。
+     * Gets the value of the orderdescription property.
      * 
      * @return
      *     possible object is
@@ -427,7 +427,7 @@ public class Transaction {
     }
 
     /**
-     * 设置orderdescription属性的值。
+     * Sets the value of the orderdescription property.
      * 
      * @param value
      *     allowed object is
@@ -439,7 +439,7 @@ public class Transaction {
     }
 
     /**
-     * 获取orderno属性的值。
+     * Gets the value of the orderno property.
      * 
      * @return
      *     possible object is
@@ -451,7 +451,7 @@ public class Transaction {
     }
 
     /**
-     * 设置orderno属性的值。
+     * Sets the value of the orderno property.
      * 
      * @param value
      *     allowed object is
@@ -463,7 +463,7 @@ public class Transaction {
     }
 
     /**
-     * 获取orderstate属性的值。
+     * Gets the value of the orderstate property.
      * 
      * @return
      *     possible object is
@@ -475,7 +475,7 @@ public class Transaction {
     }
 
     /**
-     * 设置orderstate属性的值。
+     * Sets the value of the orderstate property.
      * 
      * @param value
      *     allowed object is
@@ -487,7 +487,7 @@ public class Transaction {
     }
 
     /**
-     * 获取remark属性的值。
+     * Gets the value of the remark property.
      * 
      * @return
      *     possible object is
@@ -499,7 +499,7 @@ public class Transaction {
     }
 
     /**
-     * 设置remark属性的值。
+     * Sets the value of the remark property.
      * 
      * @param value
      *     allowed object is
@@ -511,7 +511,7 @@ public class Transaction {
     }
 
     /**
-     * 获取respcode属性的值。
+     * Gets the value of the respcode property.
      * 
      * @return
      *     possible object is
@@ -523,7 +523,7 @@ public class Transaction {
     }
 
     /**
-     * 设置respcode属性的值。
+     * Sets the value of the respcode property.
      * 
      * @param value
      *     allowed object is
@@ -535,7 +535,7 @@ public class Transaction {
     }
 
     /**
-     * 获取respmsg属性的值。
+     * Gets the value of the respmsg property.
      * 
      * @return
      *     possible object is
@@ -547,7 +547,7 @@ public class Transaction {
     }
 
     /**
-     * 设置respmsg属性的值。
+     * Sets the value of the respmsg property.
      * 
      * @param value
      *     allowed object is
@@ -559,7 +559,7 @@ public class Transaction {
     }
 
     /**
-     * 获取response属性的值。
+     * Gets the value of the response property.
      * 
      * @return
      *     possible object is
@@ -571,7 +571,7 @@ public class Transaction {
     }
 
     /**
-     * 设置response属性的值。
+     * Sets the value of the response property.
      * 
      * @param value
      *     allowed object is
@@ -583,7 +583,7 @@ public class Transaction {
     }
 
     /**
-     * 获取serialno属性的值。
+     * Gets the value of the serialno property.
      * 
      * @return
      *     possible object is
@@ -595,7 +595,7 @@ public class Transaction {
     }
 
     /**
-     * 设置serialno属性的值。
+     * Sets the value of the serialno property.
      * 
      * @param value
      *     allowed object is
@@ -607,7 +607,7 @@ public class Transaction {
     }
 
     /**
-     * 获取transchannel属性的值。
+     * Gets the value of the transchannel property.
      * 
      * @return
      *     possible object is
@@ -619,7 +619,7 @@ public class Transaction {
     }
 
     /**
-     * 设置transchannel属性的值。
+     * Sets the value of the transchannel property.
      * 
      * @param value
      *     allowed object is
@@ -631,7 +631,7 @@ public class Transaction {
     }
 
     /**
-     * 获取transtime属性的值。
+     * Gets the value of the transtime property.
      * 
      * @return
      *     possible object is
@@ -643,7 +643,7 @@ public class Transaction {
     }
 
     /**
-     * 设置transtime属性的值。
+     * Sets the value of the transtime property.
      * 
      * @param value
      *     allowed object is
@@ -655,7 +655,7 @@ public class Transaction {
     }
 
     /**
-     * 获取transtype属性的值。
+     * Gets the value of the transtype property.
      * 
      * @return
      *     possible object is
@@ -667,7 +667,7 @@ public class Transaction {
     }
 
     /**
-     * 设置transtype属性的值。
+     * Sets the value of the transtype property.
      * 
      * @param value
      *     allowed object is

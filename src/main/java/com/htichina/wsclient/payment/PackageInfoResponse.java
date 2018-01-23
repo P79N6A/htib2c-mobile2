@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>packageInfoResponse complex type的 Java 类。
+ * <p>Java class for packageInfoResponse complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="packageInfoResponse">
@@ -58,7 +58,7 @@ public class PackageInfoResponse {
     protected String webSubscriptionId;
 
     /**
-     * 获取balance属性的值。
+     * Gets the value of the balance property.
      * 
      */
     public double getBalance() {
@@ -66,7 +66,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 设置balance属性的值。
+     * Sets the value of the balance property.
      * 
      */
     public void setBalance(double value) {
@@ -74,7 +74,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 获取base属性的值。
+     * Gets the value of the base property.
      * 
      */
     public boolean isBase() {
@@ -82,7 +82,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 设置base属性的值。
+     * Sets the value of the base property.
      * 
      */
     public void setBase(boolean value) {
@@ -90,7 +90,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 获取canBeUpgrated属性的值。
+     * Gets the value of the canBeUpgrated property.
      * 
      */
     public boolean isCanBeUpgrated() {
@@ -98,7 +98,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 设置canBeUpgrated属性的值。
+     * Sets the value of the canBeUpgrated property.
      * 
      */
     public void setCanBeUpgrated(boolean value) {
@@ -106,7 +106,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 获取endDate属性的值。
+     * Gets the value of the endDate property.
      * 
      * @return
      *     possible object is
@@ -118,7 +118,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 设置endDate属性的值。
+     * Sets the value of the endDate property.
      * 
      * @param value
      *     allowed object is
@@ -130,7 +130,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 获取packageName属性的值。
+     * Gets the value of the packageName property.
      * 
      * @return
      *     possible object is
@@ -142,7 +142,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 设置packageName属性的值。
+     * Sets the value of the packageName property.
      * 
      * @param value
      *     allowed object is
@@ -154,7 +154,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 获取packageStatus属性的值。
+     * Gets the value of the packageStatus property.
      * 
      * @return
      *     possible object is
@@ -166,7 +166,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 设置packageStatus属性的值。
+     * Sets the value of the packageStatus property.
      * 
      * @param value
      *     allowed object is
@@ -178,7 +178,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 获取startDate属性的值。
+     * Gets the value of the startDate property.
      * 
      * @return
      *     possible object is
@@ -190,7 +190,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 设置startDate属性的值。
+     * Sets the value of the startDate property.
      * 
      * @param value
      *     allowed object is
@@ -202,7 +202,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 获取subscriptionName属性的值。
+     * Gets the value of the subscriptionName property.
      * 
      * @return
      *     possible object is
@@ -214,7 +214,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 设置subscriptionName属性的值。
+     * Sets the value of the subscriptionName property.
      * 
      * @param value
      *     allowed object is
@@ -226,7 +226,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 获取webSubscriptionId属性的值。
+     * Gets the value of the webSubscriptionId property.
      * 
      * @return
      *     possible object is
@@ -238,7 +238,7 @@ public class PackageInfoResponse {
     }
 
     /**
-     * 设置webSubscriptionId属性的值。
+     * Sets the value of the webSubscriptionId property.
      * 
      * @param value
      *     allowed object is

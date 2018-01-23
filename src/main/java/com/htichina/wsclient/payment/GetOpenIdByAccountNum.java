@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>getOpenIdByAccountNum complex type的 Java 类。
+ * <p>Java class for getOpenIdByAccountNum complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="getOpenIdByAccountNum">
@@ -34,7 +34,7 @@ public class GetOpenIdByAccountNum {
     protected String accountNum;
 
     /**
-     * 获取accountNum属性的值。
+     * Gets the value of the accountNum property.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class GetOpenIdByAccountNum {
     }
 
     /**
-     * 设置accountNum属性的值。
+     * Sets the value of the accountNum property.
      * 
      * @param value
      *     allowed object is

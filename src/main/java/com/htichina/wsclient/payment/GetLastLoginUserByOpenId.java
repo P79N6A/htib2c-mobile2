@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>getLastLoginUserByOpenId complex type的 Java 类。
+ * <p>Java class for getLastLoginUserByOpenId complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="getLastLoginUserByOpenId">
@@ -34,7 +34,7 @@ public class GetLastLoginUserByOpenId {
     protected String openId;
 
     /**
-     * 获取openId属性的值。
+     * Gets the value of the openId property.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class GetLastLoginUserByOpenId {
     }
 
     /**
-     * 设置openId属性的值。
+     * Sets the value of the openId property.
      * 
      * @param value
      *     allowed object is

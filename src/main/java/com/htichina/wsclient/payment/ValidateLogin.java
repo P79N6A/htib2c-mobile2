@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>validateLogin complex type的 Java 类。
+ * <p>Java class for validateLogin complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="validateLogin">
@@ -43,7 +43,7 @@ public class ValidateLogin {
     protected String userInfo;
 
     /**
-     * 获取accountNum属性的值。
+     * Gets the value of the accountNum property.
      * 
      * @return
      *     possible object is
@@ -55,7 +55,7 @@ public class ValidateLogin {
     }
 
     /**
-     * 设置accountNum属性的值。
+     * Sets the value of the accountNum property.
      * 
      * @param value
      *     allowed object is
@@ -67,7 +67,7 @@ public class ValidateLogin {
     }
 
     /**
-     * 获取pin属性的值。
+     * Gets the value of the pin property.
      * 
      * @return
      *     possible object is
@@ -79,7 +79,7 @@ public class ValidateLogin {
     }
 
     /**
-     * 设置pin属性的值。
+     * Sets the value of the pin property.
      * 
      * @param value
      *     allowed object is
@@ -91,7 +91,7 @@ public class ValidateLogin {
     }
 
     /**
-     * 获取openId属性的值。
+     * Gets the value of the openId property.
      * 
      * @return
      *     possible object is
@@ -103,7 +103,7 @@ public class ValidateLogin {
     }
 
     /**
-     * 设置openId属性的值。
+     * Sets the value of the openId property.
      * 
      * @param value
      *     allowed object is
@@ -115,7 +115,7 @@ public class ValidateLogin {
     }
 
     /**
-     * 获取userInfo属性的值。
+     * Gets the value of the userInfo property.
      * 
      * @return
      *     possible object is
@@ -127,7 +127,7 @@ public class ValidateLogin {
     }
 
     /**
-     * 设置userInfo属性的值。
+     * Sets the value of the userInfo property.
      * 
      * @param value
      *     allowed object is

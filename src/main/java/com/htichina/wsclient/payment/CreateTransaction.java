@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>createTransaction complex type的 Java 类。
+ * <p>Java class for createTransaction complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="createTransaction">
@@ -37,7 +37,7 @@ public class CreateTransaction {
     protected TransactionRequest request;
 
     /**
-     * 获取orderNum属性的值。
+     * Gets the value of the orderNum property.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class CreateTransaction {
     }
 
     /**
-     * 设置orderNum属性的值。
+     * Sets the value of the orderNum property.
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class CreateTransaction {
     }
 
     /**
-     * 获取request属性的值。
+     * Gets the value of the request property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class CreateTransaction {
     }
 
     /**
-     * 设置request属性的值。
+     * Sets the value of the request property.
      * 
      * @param value
      *     allowed object is

@@ -11,3 +11,9 @@ stgchina.cntelematics.com
 www.cntelematics.com
 
 
+10.198.106.8
+10.198.106.9
+211.151.114.226
+
+10.198.107.127
+10.198.107.128

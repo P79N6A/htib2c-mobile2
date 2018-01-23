@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>updateWechatMessageHistory complex type的 Java 类。
+ * <p>Java class for updateWechatMessageHistory complex type.
  * 
- * <p>以下模式片段指定包含在此类中的预期内容。
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="updateWechatMessageHistory">
@@ -37,7 +37,7 @@ public class UpdateWechatMessageHistory {
     protected String transactionNo;
 
     /**
-     * 获取openIds属性的值。
+     * Gets the value of the openIds property.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class UpdateWechatMessageHistory {
     }
 
     /**
-     * 设置openIds属性的值。
+     * Sets the value of the openIds property.
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class UpdateWechatMessageHistory {
     }
 
     /**
-     * 获取transactionNo属性的值。
+     * Gets the value of the transactionNo property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class UpdateWechatMessageHistory {
     }
 
     /**
-     * 设置transactionNo属性的值。
+     * Sets the value of the transactionNo property.
      * 
      * @param value
      *     allowed object is
