@@ -70,9 +70,9 @@ $(function () {
             }
             $('#keytc').html(thePw);
             $('#keyPW').html(thetxt);
-//            if(thetxt.length==4){
-//            	checkPin();
-//            }
+            if(thetxt.length==4){
+            	checkPin();
+            }
         })
         $(divs).bind('touchend',function(){
             $(divs).css('background','url(" ../resources/images/img/keybg.png") repeat-x')

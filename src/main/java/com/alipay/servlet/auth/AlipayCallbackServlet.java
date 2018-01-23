@@ -20,12 +20,15 @@ import com.htichina.wsclient.payment.PaymentResultMessage;
 import com.htichina.wsclient.payment.QueryChildOrdersByParentOrderNumResponse;
 import com.htichina.wsclient.payment.ServiceOrder;
 import com.tencent.service.HttpsURLRequest;
+
 import net.sf.json.JSONObject;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
 
@@ -33,6 +36,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -224,59 +228,42 @@ private void sendMessage(String body ,String order, List<String> openids) throws
             "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
                     + ConfigureInfo.getWechatAppid() + "&secret=" + ConfigureInfo.getWechatAppSecret() + "&");
     HttpResponse response = httpclient.execute(httpgets);
-    HttpEntity entity = response.getEntity();
-    if (entity != null) {
-        InputStream instreams = entity.getContent();
-        String str = convertStreamToString(instreams);
+    String jsonStr = EntityUtils.toString(response.getEntity(), "UTF-8");
+    jsonStr=jsonStr.replaceAll("\"|\\{|\\}", "");
+    int beginIndex = jsonStr.indexOf(":");
+    int endIndex = jsonStr.indexOf(",");
+    String access_token = jsonStr.substring(beginIndex+1,endIndex);
+    String title = "订购成功\n";
 
-        int i = str.indexOf("access_token");
-        int j = str.indexOf("expires_in");
-        String access_token = str.substring(i + 15, j - 3);
-
-//			HttpPost httpost = new HttpPost(
-//					"https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
-//							+ access_token + "");
-        String title = "订购成功\n";
-
-        String time =new SimpleDateFormat("MM月dd日").format(System.currentTimeMillis())+"\n" ;
-        String link = ConfigureInfo.getWechatLinkLogin();
-        String message = title+time+"尊敬的梅赛德斯-奔驰 智能互联客户，您选购的"+body+"订购成功，订单号"+order+"，请等待开通。点击查看详情。\n"
-                +" 有任何疑问请随时使用车内【i】按钮或者400 898 0050联系客服中心。智能互联 -- 智在安心，不止于此。\n <a href='" + link + "'>请点击前往</a>";
-//			String msg = "{\"touser\":\""
-//					+ openid
-//					+ "\",\"msgtype\":\"text\",\"text\":{\"content\":\""+message+"\"}}";
-//			httpost.setEntity(new StringEntity(msg, "UTF-8"));
-//			HttpResponse resp = httpclient.execute(httpost);
-//			String jsonStr = EntityUtils.toString(resp.getEntity(), "UTF-8");
-        if(openids!=null&&openids.size()>0) {
-            for(String openid:openids) {
-                JSONObject jsobj = new JSONObject();
-                jsobj.put("touser", openid);
-                jsobj.put("msgtype", "text");
-                JSONObject jsobj2 = new JSONObject();
-                jsobj2.put("content", message);
-                jsobj.put("text", jsobj2);
-                HttpsURLRequest httpsURLRequest = new HttpsURLRequest();
-                try {
-                    httpsURLRequest.postUrl("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
-                            + access_token + "", jsobj, null);
-                } catch (UnrecoverableKeyException e) {
-                    e.printStackTrace();
-                } catch (KeyManagementException e) {
-                    e.printStackTrace();
-                } catch (NoSuchAlgorithmException e) {
-                    e.printStackTrace();
-                } catch (KeyStoreException e) {
-                    e.printStackTrace();
-                } catch (URISyntaxException e) {
-                    e.printStackTrace();
-                }
+    String time =new SimpleDateFormat("MM月dd日").format(System.currentTimeMillis())+"\n" ;
+    String link = ConfigureInfo.getWechatLinkLogin();
+    String message = title+time+"尊敬的梅赛德斯-奔驰 智能互联客户，您选购的"+body+"订购成功，订单号"+order+"，请等待开通。点击查看详情。\n"
+            +" 有任何疑问请随时使用车内【i】按钮或者400 898 0050联系客服中心。智能互联 -- 智在安心，不止于此。\n <a href='" + link + "'>请点击前往</a>";
+    if(openids!=null&&openids.size()>0) {
+        for(String openid:openids) {
+            JSONObject jsobj = new JSONObject();
+            jsobj.put("touser", openid);
+            jsobj.put("msgtype", "text");
+            JSONObject jsobj2 = new JSONObject();
+            jsobj2.put("content", message);
+            jsobj.put("text", jsobj2);
+            HttpsURLRequest httpsURLRequest = new HttpsURLRequest();
+            try {
+                httpsURLRequest.postUrl("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
+                        + access_token + "", jsobj, null);
+            } catch (UnrecoverableKeyException e) {
+                e.printStackTrace();
+            } catch (KeyManagementException e) {
+                e.printStackTrace();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            } catch (KeyStoreException e) {
+                e.printStackTrace();
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
             }
         }
-//			System.out.println(jsonStr);
-//			logger.info(ESAPI.encoder().encodeForHTML(jsonStr));
     }
-
 }
     /*2017-10-25;Alex:优化代码，关闭IO流等;CR-代码规范*/
     public static String convertStreamToString(InputStream ip_stream) {

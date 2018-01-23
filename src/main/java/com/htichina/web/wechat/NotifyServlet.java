@@ -6,42 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
-import java.lang.Exception;
-import java.util.*;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.google.common.base.Strings;
-import com.htichina.common.web.ConfigureInfo;
-import com.htichina.common.web.Constant;
-import com.htichina.web.PaymentServiceClient;
-import com.htichina.web.common.ViewPage;
-import com.htichina.wsclient.payment.*;
-import com.tencent.common.RequestHandler;
-
-import com.tencent.service.HttpsURLRequest;
-import net.sf.json.JSONObject;
-import org.apache.commons.lang.StringUtils;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.log4j.Logger;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.input.SAXBuilder;
-import org.owasp.esapi.ESAPI;
-import org.xml.sax.InputSource;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
 import java.net.URISyntaxException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
@@ -51,12 +15,36 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONObject;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.apache.log4j.Logger;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.input.SAXBuilder;
+import org.owasp.esapi.ESAPI;
+import org.xml.sax.InputSource;
+
+import com.google.common.base.Strings;
 import com.htichina.common.web.ConfigureInfo;
 import com.htichina.web.PaymentServiceClient;
 import com.htichina.web.common.ViewPage;
 import com.htichina.wsclient.payment.PaymentResponse;
 import com.htichina.wsclient.payment.PaymentResultMessage;
+import com.htichina.wsclient.payment.QueryChildOrdersByParentOrderNumResponse;
 import com.tencent.common.RequestHandler;
+import com.tencent.service.HttpsURLRequest;
 
 public class NotifyServlet extends HttpServlet {
 	private static Logger logger = Logger.getLogger(NotifyServlet.class.getName());
@@ -175,9 +163,6 @@ public class NotifyServlet extends HttpServlet {
 						}
 
 						logger.info(" wpr.getOpenid()-------------------"+ wpr.getOpenid());
-						this.sendMessage(body,orderNum, wpr.getOpenid());
-						//更新
-						client.updatewechatMessage(wpr.getOpenid(),wpr.getOutTradeNo().substring(13, 19));
 
 						PaymentResponse paymentResponse = new PaymentResponse();
 						PaymentResultMessage paymentResultMessage1 = new PaymentResultMessage();
@@ -202,6 +187,10 @@ public class NotifyServlet extends HttpServlet {
 						}
 
 //				System.out.println("Notify End..");
+						
+						this.sendMessage(body,orderNum, wpr.getOpenid());
+						//更新
+						client.updatewechatMessage(wpr.getOpenid(),wpr.getOutTradeNo().substring(13, 19));
 
 						response.setContentType("text/html;charset=UTF-8");
 						BufferedOutputStream out = new BufferedOutputStream(
@@ -255,30 +244,17 @@ public class NotifyServlet extends HttpServlet {
 				"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
 						+ ConfigureInfo.getWechatAppid() + "&secret=" + ConfigureInfo.getWechatAppSecret() + "&");
 		HttpResponse response = httpclient.execute(httpgets);
-		HttpEntity entity = response.getEntity();
-		if (entity != null) {
-			InputStream instreams = entity.getContent();
-			String str = convertStreamToString(instreams);
-
-			int i = str.indexOf("access_token");
-			int j = str.indexOf("expires_in");
-			String access_token = str.substring(i + 15, j - 3);
-
-//			HttpPost httpost = new HttpPost(
-//					"https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
-//							+ access_token + "");
+		String jsonStr = EntityUtils.toString(response.getEntity(), "UTF-8");
+		jsonStr=jsonStr.replaceAll("\"|\\{|\\}", "");
+		int beginIndex = jsonStr.indexOf(":");
+		int endIndex = jsonStr.indexOf(",");
+		String access_token = jsonStr.substring(beginIndex+1,endIndex);
 			String title = "订购成功\n";
 
 			String time =new SimpleDateFormat("MM月dd日").format(System.currentTimeMillis())+"\n" ;
 			String link = ConfigureInfo.getWechatLinkLogin();
 			String message = title+time+"尊敬的梅赛德斯-奔驰 智能互联客户，您选购的"+body+"订购成功，订单号"+order+"，请等待开通。点击查看详情。\n"
 					+" 有任何疑问请随时使用车内【i】按钮或者400 898 0050联系客服中心。智能互联 -- 智在安心，不止于此。\n <a href='" + link + "'>请点击前往</a>";
-//			String msg = "{\"touser\":\""
-//					+ openid
-//					+ "\",\"msgtype\":\"text\",\"text\":{\"content\":\""+message+"\"}}";
-//			httpost.setEntity(new StringEntity(msg, "UTF-8"));
-//			HttpResponse resp = httpclient.execute(httpost);
-//			String jsonStr = EntityUtils.toString(resp.getEntity(), "UTF-8");
 			JSONObject jsobj = new JSONObject();
 			jsobj.put("touser", openid);
 			jsobj.put("msgtype", "text");
@@ -299,9 +275,6 @@ public class NotifyServlet extends HttpServlet {
 				e.printStackTrace();
 			} catch (URISyntaxException e) {
 				e.printStackTrace();
-			}
-//			System.out.println(jsonStr);
-//			logger.info(ESAPI.encoder().encodeForHTML(jsonStr));
 		}
 
 	}
@@ -317,7 +290,7 @@ public class NotifyServlet extends HttpServlet {
 			while ((line = bf_reader.readLine()) != null) {
 				sb.append(line + "\n");
 			}
-		} catch (IOException e) {
+		} catch (IOException e) { 
 			e.printStackTrace();
 		} finally {
 			try {
