@@ -94,7 +94,8 @@
                 $('#filer').css('display', 'none');
             }
             function backToKey(){
-                $("#backToKey").click();
+//                 $("#backToKey").click();
+                history.go(-1);
             }
             function hornLightHelp(){
                 window.location.href="#{facesContext.externalContext.request.contextPath}/views/hornLight_help.xhtml";
