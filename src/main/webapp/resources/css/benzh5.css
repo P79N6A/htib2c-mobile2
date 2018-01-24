@@ -152,7 +152,7 @@ body {
 /* 滚动条 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 .bor{
   width:90%;
-  height:80%;
+  height: 91%;
   position:absolute;
   left:0;
   right:0;
@@ -255,11 +255,17 @@ body {
 }
 
 /* 红包动画 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/*.packageBox{*/
+  /*position: absolute;*/
+  /*height:80%;*/
+  /*width:100%;*/
+  /*bottom:28%;*/
+/*}*/
 .packageBox{
   position: absolute;
   height:80%;
   width:100%;
-  bottom:28%;
+  bottom:40%;
 }
 .packageBox .package1{
   position:absolute;
@@ -664,7 +670,7 @@ body {
   width: 55%;
   height: 42px;
   border: 0;
-  top: 142px;
+  top: 118px;
   outline: 0;
   background: url(../img/button.png) no-repeat;
   background-size: 100% 100%;

@@ -48,7 +48,7 @@ public class LuckDrawBean implements Serializable {
         luckyDrawNotice=null;
         luckyDrawNoticeType=null;
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
-//        accountNum = "10579675";
+//        accountNum = "10579723";
         accountNum = client.getActiveAccountByOpenId(openId);
 //        accountNum  = (String) FacesUtils.getManagedBeanInSession(Constant.ACCOUNT_NUM);
         paymentPlatform = (String) FacesUtils.getManagedBeanInSession(Constant.PAYMENT_PLATFORM);
@@ -62,6 +62,7 @@ public class LuckDrawBean implements Serializable {
             return ViewPage.LINK2LUCKDRAW;
         }
         String flag= checkCustemerLuckyDraw(accountNum);
+//        String flag="1";
         if("2".equals(flag)){
             luckyDrawNotice="您购买的套餐不在活动范围，是否愿意前往购买活动套餐？";
             luckyDrawNoticeType="2";

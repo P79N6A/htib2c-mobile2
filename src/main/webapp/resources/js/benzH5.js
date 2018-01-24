@@ -3,7 +3,7 @@
 
 //红包点击
 var packageBtn = $(".page1Btn");
-var packageImg = $(".package1");
+var packageImg = $(".packageImg");
 var animateObj = $(".animateBox").find("img");
 packageBtn.click(function() {
 

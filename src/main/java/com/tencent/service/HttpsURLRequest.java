@@ -105,7 +105,7 @@ public class HttpsURLRequest  {
         }
         HttpPost post = new HttpPost(URL);
         //设置请求器的配置
-        post.setHeader("Content-Type", "application/json");
+//        post.setHeader("Content-Type", "application/json");
         if(headerMap!=null){
             for(String key : headerMap.keySet()){
                 post.addHeader(key,headerMap.get(key));
@@ -457,11 +457,11 @@ public class HttpsURLRequest  {
 
     public static void main(String[] args) throws UnrecoverableKeyException, IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException, URISyntaxException {
         Map<String,String> params = new HashMap<>();
-        params.put(Constant.HTTPS_ACCOUNTNUM,"10576963");
-//        params.put(Constant.HTTPS_LATITUDE,"40.00288");
-//        params.put(Constant.HTTPS_LONGITUDE,"116.48836");
+        params.put(Constant.HTTPS_ACCOUNTNUM,"12345547");
+        params.put(Constant.HTTPS_LATITUDE,"40.00288");
+        params.put(Constant.HTTPS_LONGITUDE,"116.48836");
         params.put(Constant.HTTPS_PIN,"1234");
-//        params.put(Constant.HTTPS_POINAME,"hospital");
+        params.put(Constant.HTTPS_POINAME,"hospital");
 //        params.put(Constant.HTTPS_POINAME,"hospital");
         //绕过安全验证的方法
         new HttpsURLRequest().NoSecurityPost(Constant.HTTPS_UNLOCK ,params);
