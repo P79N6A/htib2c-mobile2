@@ -171,7 +171,7 @@ public class WechatServlet extends HttpServlet {
 //			FacesUtils.setManagedBeanInSession(Constant.PAYMENT_PLATFORM, Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
 				/*2017-10-25;Alex:优化代码，安全加密输出内容;CR-代码规范*/
 				req.getSession().setAttribute(Constant.OPEN_ID, ESAPI.encoder().encodeForHTML(openId));
-				req.getSession().setAttribute(Constant.WECHAT_USER_INFO, ESAPI.encoder().encodeForHTML(userInfo));
+				req.getSession().setAttribute(Constant.WECHAT_USER_INFO, userInfo);
 				req.getSession().setAttribute(Constant.PAYMENT_PLATFORM, Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
 				req.getSession().setAttribute(Constant.WECHAT_STATE, ESAPI.encoder().encodeForHTML(state));
 //			System.out.println("payment platform: " + Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
