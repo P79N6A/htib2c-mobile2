@@ -223,7 +223,7 @@ public class Constant {
     public static final String OEM = "Mercedes-Benz";
     public static final String REGION = "China";// "US"; TODO update to china
     public static final String APPLICATION_NAME = "CWP";// "CWP";
-    public static final String SOURCE_NAME = "WEB";//WEB
+    public static final String SOURCE_NAME = "WECHAT";//WECHAT
     public static final String WEBSITE = "MAPP";//MAPP
 
     public static final String HTTPS_TRANSACTIONID="transactionId";
