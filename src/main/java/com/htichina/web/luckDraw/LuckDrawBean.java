@@ -48,8 +48,8 @@ public class LuckDrawBean implements Serializable {
         luckyDrawNotice=null;
         luckyDrawNoticeType=null;
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
-//        accountNum = "10579723";
-        accountNum = client.getActiveAccountByOpenId(openId);
+        accountNum = "10631656";
+//        accountNum = client.getActiveAccountByOpenId(openId);
 //        accountNum  = (String) FacesUtils.getManagedBeanInSession(Constant.ACCOUNT_NUM);
         paymentPlatform = (String) FacesUtils.getManagedBeanInSession(Constant.PAYMENT_PLATFORM);
         logger.info("openId============================"+openId);
@@ -97,6 +97,11 @@ public class LuckDrawBean implements Serializable {
         leftAmount = ldLtemReponse.getLeftAmount();
         //中奖内容
         ldItem = ldLtemReponse.getLdItem();
+        if(allAmount==0){
+            luckyDrawNotice="您暂时不符合参加此次抽奖活动的的资格";
+            luckyDrawNoticeType="3";
+            return ViewPage.LINK2LUCKDRAW;
+        }
         //中奖了 还有次数
         if(leftAmount>0 && !Constant.ITEM_TYPE_0.equals(ldItem.getSubType())){
             userLuckyDrawFlag = Constant.USERLUCKYDRAWFLAG_1;
