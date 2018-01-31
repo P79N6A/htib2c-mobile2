@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import java.io.Serializable;
 
 /**
- * The main class for handling the Lock
+ *
  * Created by 刘宁 on 2017/5/5.
  */
 @Component
