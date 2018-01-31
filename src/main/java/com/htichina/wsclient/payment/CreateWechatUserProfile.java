@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for createWechatUserProfile complex type.
+ * <p>createWechatUserProfile complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="createWechatUserProfile">
@@ -46,7 +46,7 @@ public class CreateWechatUserProfile {
     protected String vin;
 
     /**
-     * Gets the value of the accountNum property.
+     * 获取accountNum属性的值。
      * 
      * @return
      *     possible object is
@@ -58,7 +58,7 @@ public class CreateWechatUserProfile {
     }
 
     /**
-     * Sets the value of the accountNum property.
+     * 设置accountNum属性的值。
      * 
      * @param value
      *     allowed object is
@@ -70,7 +70,7 @@ public class CreateWechatUserProfile {
     }
 
     /**
-     * Gets the value of the pin property.
+     * 获取pin属性的值。
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class CreateWechatUserProfile {
     }
 
     /**
-     * Sets the value of the pin property.
+     * 设置pin属性的值。
      * 
      * @param value
      *     allowed object is
@@ -94,7 +94,7 @@ public class CreateWechatUserProfile {
     }
 
     /**
-     * Gets the value of the openId property.
+     * 获取openId属性的值。
      * 
      * @return
      *     possible object is
@@ -106,7 +106,7 @@ public class CreateWechatUserProfile {
     }
 
     /**
-     * Sets the value of the openId property.
+     * 设置openId属性的值。
      * 
      * @param value
      *     allowed object is
@@ -118,7 +118,7 @@ public class CreateWechatUserProfile {
     }
 
     /**
-     * Gets the value of the userInfo property.
+     * 获取userInfo属性的值。
      * 
      * @return
      *     possible object is
@@ -130,7 +130,7 @@ public class CreateWechatUserProfile {
     }
 
     /**
-     * Sets the value of the userInfo property.
+     * 设置userInfo属性的值。
      * 
      * @param value
      *     allowed object is
@@ -142,7 +142,7 @@ public class CreateWechatUserProfile {
     }
 
     /**
-     * Gets the value of the vin property.
+     * 获取vin属性的值。
      * 
      * @return
      *     possible object is
@@ -154,7 +154,7 @@ public class CreateWechatUserProfile {
     }
 
     /**
-     * Sets the value of the vin property.
+     * 设置vin属性的值。
      * 
      * @param value
      *     allowed object is

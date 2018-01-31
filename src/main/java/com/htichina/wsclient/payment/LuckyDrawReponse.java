@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for luckyDrawReponse complex type.
+ * <p>luckyDrawReponse complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="luckyDrawReponse">
@@ -47,7 +47,7 @@ public class LuckyDrawReponse {
     protected String luckyDrawFlag;
 
     /**
-     * Gets the value of the allAmount property.
+     * 获取allAmount属性的值。
      * 
      */
     public int getAllAmount() {
@@ -55,7 +55,7 @@ public class LuckyDrawReponse {
     }
 
     /**
-     * Sets the value of the allAmount property.
+     * 设置allAmount属性的值。
      * 
      */
     public void setAllAmount(int value) {
@@ -92,7 +92,7 @@ public class LuckyDrawReponse {
     }
 
     /**
-     * Gets the value of the leftAmount property.
+     * 获取leftAmount属性的值。
      * 
      */
     public int getLeftAmount() {
@@ -100,7 +100,7 @@ public class LuckyDrawReponse {
     }
 
     /**
-     * Sets the value of the leftAmount property.
+     * 设置leftAmount属性的值。
      * 
      */
     public void setLeftAmount(int value) {
@@ -108,7 +108,7 @@ public class LuckyDrawReponse {
     }
 
     /**
-     * Gets the value of the luckyDrawFlag property.
+     * 获取luckyDrawFlag属性的值。
      * 
      * @return
      *     possible object is
@@ -120,7 +120,7 @@ public class LuckyDrawReponse {
     }
 
     /**
-     * Sets the value of the luckyDrawFlag property.
+     * 设置luckyDrawFlag属性的值。
      * 
      * @param value
      *     allowed object is

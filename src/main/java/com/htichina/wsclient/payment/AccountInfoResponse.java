@@ -1,7 +1,6 @@
 
 package com.htichina.wsclient.payment;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -11,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for accountInfoResponse complex type.
+ * <p>accountInfoResponse complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="accountInfoResponse">
@@ -51,7 +50,7 @@ import javax.xml.bind.annotation.XmlType;
     "mobilePhone",
     "vin"
 })
-public class AccountInfoResponse implements Serializable {
+public class AccountInfoResponse {
 
     protected String accountNum;
     protected String accountStatus;
@@ -67,7 +66,7 @@ public class AccountInfoResponse implements Serializable {
     protected String vin;
 
     /**
-     * Gets the value of the accountNum property.
+     * 获取accountNum属性的值。
      * 
      * @return
      *     possible object is
@@ -79,7 +78,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Sets the value of the accountNum property.
+     * 设置accountNum属性的值。
      * 
      * @param value
      *     allowed object is
@@ -91,7 +90,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Gets the value of the accountStatus property.
+     * 获取accountStatus属性的值。
      * 
      * @return
      *     possible object is
@@ -103,7 +102,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Sets the value of the accountStatus property.
+     * 设置accountStatus属性的值。
      * 
      * @param value
      *     allowed object is
@@ -115,7 +114,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Gets the value of the accountType property.
+     * 获取accountType属性的值。
      * 
      * @return
      *     possible object is
@@ -127,7 +126,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Sets the value of the accountType property.
+     * 设置accountType属性的值。
      * 
      * @param value
      *     allowed object is
@@ -197,7 +196,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Gets the value of the fullName property.
+     * 获取fullName属性的值。
      * 
      * @return
      *     possible object is
@@ -209,7 +208,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Sets the value of the fullName property.
+     * 设置fullName属性的值。
      * 
      * @param value
      *     allowed object is
@@ -221,7 +220,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Gets the value of the isReceiveDidiForFirstLogin property.
+     * 获取isReceiveDidiForFirstLogin属性的值。
      * 
      * @return
      *     possible object is
@@ -233,7 +232,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Sets the value of the isReceiveDidiForFirstLogin property.
+     * 设置isReceiveDidiForFirstLogin属性的值。
      * 
      * @param value
      *     allowed object is
@@ -245,7 +244,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Gets the value of the isReceiveDidiForRenew property.
+     * 获取isReceiveDidiForRenew属性的值。
      * 
      * @return
      *     possible object is
@@ -257,7 +256,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Sets the value of the isReceiveDidiForRenew property.
+     * 设置isReceiveDidiForRenew属性的值。
      * 
      * @param value
      *     allowed object is
@@ -269,7 +268,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Gets the value of the mobilePhone property.
+     * 获取mobilePhone属性的值。
      * 
      * @return
      *     possible object is
@@ -281,7 +280,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Sets the value of the mobilePhone property.
+     * 设置mobilePhone属性的值。
      * 
      * @param value
      *     allowed object is
@@ -293,7 +292,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Gets the value of the vin property.
+     * 获取vin属性的值。
      * 
      * @return
      *     possible object is
@@ -305,7 +304,7 @@ public class AccountInfoResponse implements Serializable {
     }
 
     /**
-     * Sets the value of the vin property.
+     * 设置vin属性的值。
      * 
      * @param value
      *     allowed object is

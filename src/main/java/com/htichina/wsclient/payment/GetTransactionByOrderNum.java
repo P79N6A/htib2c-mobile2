@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getTransactionByOrderNum complex type.
+ * <p>getTransactionByOrderNum complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="getTransactionByOrderNum">
@@ -36,7 +36,7 @@ public class GetTransactionByOrderNum {
     protected String orderNum;
 
     /**
-     * Gets the value of the orderNum property.
+     * 获取orderNum属性的值。
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class GetTransactionByOrderNum {
     }
 
     /**
-     * Sets the value of the orderNum property.
+     * 设置orderNum属性的值。
      * 
      * @param value
      *     allowed object is

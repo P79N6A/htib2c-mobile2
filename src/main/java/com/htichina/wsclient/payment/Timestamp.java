@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for timestamp complex type.
+ * <p>timestamp complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="timestamp">
@@ -34,7 +34,7 @@ public class Timestamp {
     protected int nanos;
 
     /**
-     * Gets the value of the nanos property.
+     * 获取nanos属性的值。
      * 
      */
     public int getNanos() {
@@ -42,7 +42,7 @@ public class Timestamp {
     }
 
     /**
-     * Sets the value of the nanos property.
+     * 设置nanos属性的值。
      * 
      */
     public void setNanos(int value) {

@@ -131,16 +131,8 @@ public class LuckDrawBean implements Serializable {
 
     public String checkCustemerLuckyDraw(String accountNum){
         String flag="1";
-        LuckyDrawReponse luckyDrawReponse = client.checkCustemerLuckyDraw(accountNum);
-//        LuckyDrawReponse luckyDrawReponse  =new LuckyDrawReponse();
-//        luckyDrawReponse.setAllAmount(3);
-//        luckyDrawReponse.setLeftAmount(2);
-//        luckyDrawReponse.setLuckyDrawFlag("3");
+        LuckyDrawReponse luckyDrawReponse = client.checkCustemerLuckyDraw(accountNum,null);
         flag = luckyDrawReponse.getLuckyDrawFlag();
-//        if(flag=="3"){
-//            allAmount = luckyDrawReponse.getAllAmount();
-//            leftAmount = luckyDrawReponse.getLeftAmount();
-//        }
         return flag;
     }
 

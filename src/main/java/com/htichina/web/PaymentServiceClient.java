@@ -340,10 +340,10 @@ public class PaymentServiceClient {
     return openIds;
   }
 
-  public LuckyDrawReponse checkCustemerLuckyDraw(String accountNum){
+  public LuckyDrawReponse checkCustemerLuckyDraw(String accountNum,String flag){
     LuckyDrawReponse luckyDrawReponse = null;
     try {
-      luckyDrawReponse = service.checkCustemerLuckyDraw(accountNum);
+      luckyDrawReponse = service.checkCustemerLuckyDraw(accountNum,flag);
     }catch (Exception e){
       e.getStackTrace();
     }

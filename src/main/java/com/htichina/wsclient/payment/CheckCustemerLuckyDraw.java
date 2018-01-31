@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for checkCustemerLuckyDraw complex type.
+ * <p>checkCustemerLuckyDraw complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="checkCustemerLuckyDraw">
@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="accountNum" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="flag" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,14 +28,16 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "checkCustemerLuckyDraw", propOrder = {
-    "accountNum"
+    "accountNum",
+    "flag"
 })
 public class CheckCustemerLuckyDraw {
 
     protected String accountNum;
+    protected String flag;
 
     /**
-     * Gets the value of the accountNum property.
+     * 获取accountNum属性的值。
      * 
      * @return
      *     possible object is
@@ -46,7 +49,7 @@ public class CheckCustemerLuckyDraw {
     }
 
     /**
-     * Sets the value of the accountNum property.
+     * 设置accountNum属性的值。
      * 
      * @param value
      *     allowed object is
@@ -55,6 +58,30 @@ public class CheckCustemerLuckyDraw {
      */
     public void setAccountNum(String value) {
         this.accountNum = value;
+    }
+
+    /**
+     * 获取flag属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFlag() {
+        return flag;
+    }
+
+    /**
+     * 设置flag属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFlag(String value) {
+        this.flag = value;
     }
 
 }

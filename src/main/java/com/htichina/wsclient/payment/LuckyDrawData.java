@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for luckyDrawData complex type.
+ * <p>luckyDrawData complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="luckyDrawData">
@@ -40,7 +40,7 @@ public class LuckyDrawData {
     protected String luckyDrawId;
 
     /**
-     * Gets the value of the itemAmount property.
+     * 获取itemAmount属性的值。
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class LuckyDrawData {
     }
 
     /**
-     * Sets the value of the itemAmount property.
+     * 设置itemAmount属性的值。
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class LuckyDrawData {
     }
 
     /**
-     * Gets the value of the itemName property.
+     * 获取itemName属性的值。
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class LuckyDrawData {
     }
 
     /**
-     * Sets the value of the itemName property.
+     * 设置itemName属性的值。
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class LuckyDrawData {
     }
 
     /**
-     * Gets the value of the luckyDrawId property.
+     * 获取luckyDrawId属性的值。
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class LuckyDrawData {
     }
 
     /**
-     * Sets the value of the luckyDrawId property.
+     * 设置luckyDrawId属性的值。
      * 
      * @param value
      *     allowed object is

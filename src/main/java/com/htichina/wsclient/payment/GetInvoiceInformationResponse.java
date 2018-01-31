@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getInvoiceInformationResponse complex type.
+ * <p>getInvoiceInformationResponse complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="getInvoiceInformationResponse">
@@ -36,7 +36,7 @@ public class GetInvoiceInformationResponse {
     protected InvoiceInfoRequest _return;
 
     /**
-     * Gets the value of the return property.
+     * 获取return属性的值。
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class GetInvoiceInformationResponse {
     }
 
     /**
-     * Sets the value of the return property.
+     * 设置return属性的值。
      * 
      * @param value
      *     allowed object is

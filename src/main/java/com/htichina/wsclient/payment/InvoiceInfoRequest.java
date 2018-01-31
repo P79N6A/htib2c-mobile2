@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for invoiceInfoRequest complex type.
+ * <p>invoiceInfoRequest complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="invoiceInfoRequest">
@@ -92,7 +92,7 @@ public class InvoiceInfoRequest {
     protected String zipcode;
 
     /**
-     * Gets the value of the city property.
+     * 获取city属性的值。
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the city property.
+     * 设置city属性的值。
      * 
      * @param value
      *     allowed object is
@@ -116,7 +116,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the created property.
+     * 获取created属性的值。
      * 
      * @return
      *     possible object is
@@ -128,7 +128,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the created property.
+     * 设置created属性的值。
      * 
      * @param value
      *     allowed object is
@@ -140,7 +140,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the createdBy property.
+     * 获取createdBy属性的值。
      * 
      * @return
      *     possible object is
@@ -152,7 +152,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the createdBy property.
+     * 设置createdBy属性的值。
      * 
      * @param value
      *     allowed object is
@@ -164,7 +164,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the district property.
+     * 获取district属性的值。
      * 
      * @return
      *     possible object is
@@ -176,7 +176,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the district property.
+     * 设置district属性的值。
      * 
      * @param value
      *     allowed object is
@@ -188,7 +188,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the email property.
+     * 获取email属性的值。
      * 
      * @return
      *     possible object is
@@ -200,7 +200,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the email property.
+     * 设置email属性的值。
      * 
      * @param value
      *     allowed object is
@@ -212,7 +212,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the invoiceAccount property.
+     * 获取invoiceAccount属性的值。
      * 
      * @return
      *     possible object is
@@ -224,7 +224,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the invoiceAccount property.
+     * 设置invoiceAccount属性的值。
      * 
      * @param value
      *     allowed object is
@@ -236,7 +236,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the invoiceContact property.
+     * 获取invoiceContact属性的值。
      * 
      * @return
      *     possible object is
@@ -248,7 +248,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the invoiceContact property.
+     * 设置invoiceContact属性的值。
      * 
      * @param value
      *     allowed object is
@@ -260,7 +260,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the invoiceType property.
+     * 获取invoiceType属性的值。
      * 
      * @return
      *     possible object is
@@ -272,7 +272,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the invoiceType property.
+     * 设置invoiceType属性的值。
      * 
      * @param value
      *     allowed object is
@@ -284,7 +284,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the invoiceVatType property.
+     * 获取invoiceVatType属性的值。
      * 
      * @return
      *     possible object is
@@ -296,7 +296,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the invoiceVatType property.
+     * 设置invoiceVatType属性的值。
      * 
      * @param value
      *     allowed object is
@@ -308,7 +308,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the lastUpd property.
+     * 获取lastUpd属性的值。
      * 
      * @return
      *     possible object is
@@ -320,7 +320,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the lastUpd property.
+     * 设置lastUpd属性的值。
      * 
      * @param value
      *     allowed object is
@@ -332,7 +332,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the lastUpdBy property.
+     * 获取lastUpdBy属性的值。
      * 
      * @return
      *     possible object is
@@ -344,7 +344,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the lastUpdBy property.
+     * 设置lastUpdBy属性的值。
      * 
      * @param value
      *     allowed object is
@@ -356,7 +356,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the mailTo property.
+     * 获取mailTo属性的值。
      * 
      * @return
      *     possible object is
@@ -368,7 +368,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the mailTo property.
+     * 设置mailTo属性的值。
      * 
      * @param value
      *     allowed object is
@@ -380,7 +380,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the orderNum property.
+     * 获取orderNum属性的值。
      * 
      * @return
      *     possible object is
@@ -392,7 +392,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the orderNum property.
+     * 设置orderNum属性的值。
      * 
      * @param value
      *     allowed object is
@@ -404,7 +404,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the phone property.
+     * 获取phone属性的值。
      * 
      * @return
      *     possible object is
@@ -416,7 +416,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the phone property.
+     * 设置phone属性的值。
      * 
      * @param value
      *     allowed object is
@@ -428,7 +428,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the province property.
+     * 获取province属性的值。
      * 
      * @return
      *     possible object is
@@ -440,7 +440,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the province property.
+     * 设置province属性的值。
      * 
      * @param value
      *     allowed object is
@@ -452,7 +452,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the street property.
+     * 获取street属性的值。
      * 
      * @return
      *     possible object is
@@ -464,7 +464,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the street property.
+     * 设置street属性的值。
      * 
      * @param value
      *     allowed object is
@@ -476,7 +476,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Gets the value of the zipcode property.
+     * 获取zipcode属性的值。
      * 
      * @return
      *     possible object is
@@ -488,7 +488,7 @@ public class InvoiceInfoRequest {
     }
 
     /**
-     * Sets the value of the zipcode property.
+     * 设置zipcode属性的值。
      * 
      * @param value
      *     allowed object is

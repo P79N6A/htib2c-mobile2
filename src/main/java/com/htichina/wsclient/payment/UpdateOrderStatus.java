@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for updateOrderStatus complex type.
+ * <p>updateOrderStatus complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="updateOrderStatus">
@@ -40,7 +40,7 @@ public class UpdateOrderStatus {
     protected String openIds;
 
     /**
-     * Gets the value of the orderNum property.
+     * 获取orderNum属性的值。
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class UpdateOrderStatus {
     }
 
     /**
-     * Sets the value of the orderNum property.
+     * 设置orderNum属性的值。
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class UpdateOrderStatus {
     }
 
     /**
-     * Gets the value of the tranNo property.
+     * 获取tranNo属性的值。
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class UpdateOrderStatus {
     }
 
     /**
-     * Sets the value of the tranNo property.
+     * 设置tranNo属性的值。
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class UpdateOrderStatus {
     }
 
     /**
-     * Gets the value of the openIds property.
+     * 获取openIds属性的值。
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class UpdateOrderStatus {
     }
 
     /**
-     * Sets the value of the openIds property.
+     * 设置openIds属性的值。
      * 
      * @param value
      *     allowed object is

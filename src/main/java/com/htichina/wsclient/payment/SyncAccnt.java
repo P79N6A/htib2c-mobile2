@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for syncAccnt complex type.
+ * <p>syncAccnt complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="syncAccnt">
@@ -39,7 +39,7 @@ public class SyncAccnt {
     protected String vin;
 
     /**
-     * Gets the value of the acctNum property.
+     * 获取acctNum属性的值。
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class SyncAccnt {
     }
 
     /**
-     * Sets the value of the acctNum property.
+     * 设置acctNum属性的值。
      * 
      * @param value
      *     allowed object is
@@ -63,7 +63,7 @@ public class SyncAccnt {
     }
 
     /**
-     * Gets the value of the vin property.
+     * 获取vin属性的值。
      * 
      * @return
      *     possible object is
@@ -75,7 +75,7 @@ public class SyncAccnt {
     }
 
     /**
-     * Sets the value of the vin property.
+     * 设置vin属性的值。
      * 
      * @param value
      *     allowed object is
