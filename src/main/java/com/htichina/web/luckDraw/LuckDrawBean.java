@@ -48,8 +48,8 @@ public class LuckDrawBean implements Serializable {
         luckyDrawNotice=null;
         luckyDrawNoticeType=null;
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
-        accountNum = "10631656";
-//        accountNum = client.getActiveAccountByOpenId(openId);
+//        accountNum = "10631656";
+        accountNum = client.getActiveAccountByOpenId(openId);
 //        accountNum  = (String) FacesUtils.getManagedBeanInSession(Constant.ACCOUNT_NUM);
         paymentPlatform = (String) FacesUtils.getManagedBeanInSession(Constant.PAYMENT_PLATFORM);
         logger.info("openId============================"+openId);
