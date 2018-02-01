@@ -136,8 +136,7 @@ public class TokenCsrfFilter implements Filter {
 		   uri.contains(".png")||
 		   uri.contains(".ico")||
 		   uri.contains(".jpg")||
-		   uri.contains(".gif")||
-			uri.contains(".ttf")){
+		   uri.contains(".gif")){
 			return true;
 		}  
 		return false;
