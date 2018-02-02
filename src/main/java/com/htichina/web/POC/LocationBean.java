@@ -3,14 +3,17 @@ package com.htichina.web.POC;
 import com.google.common.base.Strings;
 import com.htichina.common.web.Constant;
 import com.htichina.web.PaymentServiceClient;
+import com.htichina.web.common.FacesUtils;
 import com.htichina.web.common.ViewPage;
 import com.tencent.service.HttpsURLRequest;
+
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.faces.context.FacesContext;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,6 +66,7 @@ public class LocationBean implements Serializable {
         context.getExternalContext().getSessionMap().remove(locYSessionKey);
 
         pinFlag = "F";
+        openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
         if(Strings.isNullOrEmpty(accountNum)){
             accountNum = PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
         }

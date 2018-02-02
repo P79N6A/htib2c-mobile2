@@ -3,8 +3,10 @@ package com.htichina.web.POC;
 import com.google.common.base.Strings;
 import com.htichina.common.web.Constant;
 import com.htichina.web.PaymentServiceClient;
+import com.htichina.web.common.FacesUtils;
 import com.htichina.web.common.ViewPage;
 import com.tencent.service.HttpsURLRequest;
+
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
 import org.springframework.context.annotation.Scope;
@@ -35,6 +37,7 @@ public class UnLockBean implements Serializable {
      */
     public String checkPin(){
         pinFlag = "F";
+        openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
         if(Strings.isNullOrEmpty(accountNum)){
             accountNum = PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
         }
