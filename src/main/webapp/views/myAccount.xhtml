@@ -182,7 +182,7 @@
                     window.location.href="#{facesContext.externalContext.request.contextPath}/views/luckyDraw.xhtml";
                 }
                 $(function(){
-                    if($("#logout:luckyNum").text()==0){
+                    if($("#luckDrawLink").find("span").text()==0){
                         $("#luckDrawLink").hide();
                     }
                 })

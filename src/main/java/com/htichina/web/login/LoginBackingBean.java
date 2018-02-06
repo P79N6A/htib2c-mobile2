@@ -93,6 +93,7 @@ public class LoginBackingBean implements Serializable {
 
     /*2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范*/
     public String login(HttpSession session, String From, String oId, String targetPage) throws IOException {
+
         FacesContext context = FacesContext.getCurrentInstance();
         logger.info("context ===>"+context);
         if (!(From.indexOf("xhtml") > -1)){
@@ -123,6 +124,7 @@ public class LoginBackingBean implements Serializable {
             logger.info("Login bakcing accountInfo.getAccountNum() ==>"+accountInfo.getAccountNum());
             /*context.getExternalContext().getSessionMap()
                     .put(LoginFilter.CURRENT_USER,accountInfo.getAccountNum());*/
+            luckyDrawAmount = PaymentServiceClient.getInstance().hasLuckyDrawLinkByAccountNum(accountInfo.getAccountNum());
             if(session != null){
                 session.putValue(LoginFilter.CURRENT_USER,accountInfo.getAccountNum());
             }
@@ -193,6 +195,8 @@ public class LoginBackingBean implements Serializable {
 
     public String validateLogin(String targetPage) throws IOException, ParseException {
         targetPg = targetPage;
+        luckyDrawAmount = PaymentServiceClient.getInstance().hasLuckyDrawLinkByAccountNum(accountNum);
+
         System.out.println("validateLogin");
         logger.info("loginbean........validateLogin()........targetPage="+targetPage);
         
@@ -280,8 +284,6 @@ public class LoginBackingBean implements Serializable {
                 return ViewPage.Didi_FirstLogin;
             }
             if(Strings.isNullOrEmpty(targetPage)){
-                luckyDrawAmount = PaymentServiceClient.getInstance().hasLuckyDrawLinkByAccountNum(accountNum);
-
                 return ViewPage.LINK2MyAccount;
             }
             if(ViewPage.LINK2MyAccount2.contains(targetPage)){
