@@ -130,7 +130,7 @@ public class TokenCsrfFilter implements Filter {
 			uri.contains("luckyDrawOver.xhtml")||
 			uri.contains("accountLogin.xhtml")||
 				uri.contains("orderSuccess.xhtml")||
-		   uri.contains(".css") || 
+		   uri.contains(".css") ||
 		   uri.contains(".js") || 
 		   uri.contains(".ecss") || 
 		   uri.contains(".png")||

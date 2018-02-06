@@ -87,6 +87,8 @@ public class LoginBackingBean implements Serializable {
     private String POCMessageFlag;
     // POC短信验证用户填写的短信
     private String registrationCode;
+    //luckyDraw Link
+    private int luckyDrawAmount=0;
 
 
     /*2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范*/
@@ -278,6 +280,8 @@ public class LoginBackingBean implements Serializable {
                 return ViewPage.Didi_FirstLogin;
             }
             if(Strings.isNullOrEmpty(targetPage)){
+                luckyDrawAmount = PaymentServiceClient.getInstance().hasLuckyDrawLinkByAccountNum(accountNum);
+
                 return ViewPage.LINK2MyAccount;
             }
             if(ViewPage.LINK2MyAccount2.contains(targetPage)){
@@ -297,6 +301,7 @@ public class LoginBackingBean implements Serializable {
                         "/htib2c-mobile/views/luckyDraw.xhtml");
                 return null;
             }else {
+
                 return targetPage;
             }
         } else {
@@ -660,5 +665,12 @@ public class LoginBackingBean implements Serializable {
 	public void setOrderUpgradePage(String orderUpgradePage) {
 		this.orderUpgradePage = orderUpgradePage;
 	}
-    
+
+    public int getLuckyDrawAmount() {
+        return luckyDrawAmount;
+    }
+
+    public void setLuckyDrawAmount(int luckyDrawAmount) {
+        this.luckyDrawAmount = luckyDrawAmount;
+    }
 }

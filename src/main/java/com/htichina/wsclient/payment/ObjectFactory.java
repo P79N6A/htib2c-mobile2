@@ -60,6 +60,8 @@ public class ObjectFactory {
     private final static QName _DoLuckDraw_QNAME = new QName("http://payment.ws.htichina.com/", "doLuckDraw");
     private final static QName _GetNewPackageAfterUpgradeResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getNewPackageAfterUpgradeResponse");
     private final static QName _GetParentOrderInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getParentOrderInfo");
+    private final static QName _HasLuckyDrawLinkByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLinkByAccountNum");
+    private final static QName _HasLuckyDrawLinkByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLinkByAccountNumResponse");
     private final static QName _GetProdInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getProdInfoResponse");
     private final static QName _DoLuckDrawResponse_QNAME = new QName("http://payment.ws.htichina.com/", "doLuckDrawResponse");
     private final static QName _GetCurrentAccountInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getCurrentAccountInfo");
@@ -275,6 +277,14 @@ public class ObjectFactory {
      */
     public CreateTransactionForLuckyDraw createCreateTransactionForLuckyDraw() {
         return new CreateTransactionForLuckyDraw();
+    }
+
+    /**
+     * Create an instance of {@link HasLuckyDrawLinkByAccountNum }
+     * 
+     */
+    public HasLuckyDrawLinkByAccountNum createHasLuckyDrawLinkByAccountNum() {
+        return new HasLuckyDrawLinkByAccountNum();
     }
 
     /**
@@ -539,6 +549,14 @@ public class ObjectFactory {
      */
     public GetProdInfoResponse createGetProdInfoResponse() {
         return new GetProdInfoResponse();
+    }
+
+    /**
+     * Create an instance of {@link HasLuckyDrawLinkByAccountNumResponse }
+     * 
+     */
+    public HasLuckyDrawLinkByAccountNumResponse createHasLuckyDrawLinkByAccountNumResponse() {
+        return new HasLuckyDrawLinkByAccountNumResponse();
     }
 
     /**
@@ -1343,6 +1361,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getParentOrderInfo")
     public JAXBElement<GetParentOrderInfo> createGetParentOrderInfo(GetParentOrderInfo value) {
         return new JAXBElement<GetParentOrderInfo>(_GetParentOrderInfo_QNAME, GetParentOrderInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HasLuckyDrawLinkByAccountNum }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "hasLuckyDrawLinkByAccountNum")
+    public JAXBElement<HasLuckyDrawLinkByAccountNum> createHasLuckyDrawLinkByAccountNum(HasLuckyDrawLinkByAccountNum value) {
+        return new JAXBElement<HasLuckyDrawLinkByAccountNum>(_HasLuckyDrawLinkByAccountNum_QNAME, HasLuckyDrawLinkByAccountNum.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HasLuckyDrawLinkByAccountNumResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "hasLuckyDrawLinkByAccountNumResponse")
+    public JAXBElement<HasLuckyDrawLinkByAccountNumResponse> createHasLuckyDrawLinkByAccountNumResponse(HasLuckyDrawLinkByAccountNumResponse value) {
+        return new JAXBElement<HasLuckyDrawLinkByAccountNumResponse>(_HasLuckyDrawLinkByAccountNumResponse_QNAME, HasLuckyDrawLinkByAccountNumResponse.class, null, value);
     }
 
     /**
