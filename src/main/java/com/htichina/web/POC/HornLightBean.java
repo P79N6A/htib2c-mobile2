@@ -3,9 +3,12 @@ package com.htichina.web.POC;
 import com.google.common.base.Strings;
 import com.htichina.common.web.Constant;
 import com.htichina.web.PaymentServiceClient;
+import com.htichina.web.common.FacesUtils;
 import com.htichina.web.common.ViewPage;
 import com.tencent.service.HttpsURLRequest;
+
 import org.apache.log4j.Logger;
+import org.apache.log4j.pattern.LogEvent;
 import org.owasp.esapi.ESAPI;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -35,9 +38,11 @@ public class HornLightBean implements Serializable {
      */
     public String checkPin(){
         pinFlag = "F";
+        openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
         if(Strings.isNullOrEmpty(accountNum)){
             accountNum = PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
         }
+        logger.debug("accountNum, pin, openId,---"+accountNum+"---"+pin+"---"+openId);
         boolean flag = PaymentServiceClient.getInstance().validateLogin(accountNum, pin, openId, null);
         /*flag = true;*/
         if(flag){
