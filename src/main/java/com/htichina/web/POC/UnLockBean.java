@@ -39,6 +39,7 @@ public class UnLockBean implements Serializable {
         pinFlag = "F";
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
         if(Strings.isNullOrEmpty(accountNum)){
+        	openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
             accountNum = PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
         }
         boolean flag = PaymentServiceClient.getInstance().validateLogin(accountNum, pin, openId, null);
