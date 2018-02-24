@@ -17,7 +17,6 @@ import org.apache.log4j.Logger;
 
 import com.alipay.api.internal.util.StringUtils;
 import com.htichina.common.web.Constant;
-import com.htichina.web.util.UUIDUtils;
 import com.tencent.common.RandomStringGenerator;
 
 
@@ -39,30 +38,31 @@ public class TokenCsrfFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest)request; 
 		HttpSession session = req.getSession(); 
 		 
+
 		// 从 session 中得到 csrftoken 属性
 		String sToken = (String)session.getAttribute(Constant.CSRFTOKEN); 
-		String uri =req.getRequestURI();
+		String uri =req.getRequestURI();	
+
 		
 		
-		
-		if(StringUtils.isEmpty(sToken) ){ 
-		 
-		   // 产生新的 token 放入 session 中
-		   //sToken = UUIDUtils.uuid()+UUIDUtils.uuid()+UUIDUtils.uuid();
-			
+		if(StringUtils.isEmpty(sToken) ){ 		 
+		  
+			// 产生新的 token 放入 session 中
+		   //sToken = UUIDUtils.uuid()+UUIDUtils.uuid()+UUIDUtils.uuid();			
+
 		   sToken = RandomStringGenerator.getCSRFToken();
-		   session.setAttribute(Constant.CSRFTOKEN,sToken); 
-		   
+		   session.setAttribute(Constant.CSRFTOKEN,sToken); 		   
+
 		   chain.doFilter(request, response); 
-		} else{ 
-			
-			 //logger.info("-------------------------------------uri1:"+uri);
-			if(uri!=null && !passWithoutValidation(uri)){
+		} else{ 			
+
+			//logger.info("-------------------------------------uri1:"+uri);
+			if(uri!=null && !passWithoutValidation(uri)){							
+		 
 				
-			
-		       // 从 HTTP 头中取得 csrftoken 
+			   // 从 HTTP 头中取得 csrftoken 
 			   String xhrToken = req.getHeader(Constant.CSRFTOKEN); 
-			 
+			  
 			   // 从请求参数中取得 csrftoken 
 			   String pToken = req.getParameter(Constant.CSRFTOKEN); 
 			   if(sToken != null && xhrToken != null && sToken.equals(xhrToken)){ 
@@ -74,8 +74,7 @@ public class TokenCsrfFilter implements Filter {
 			   } else{ 
 				   logger.info("-------------------------------------uri3:"+uri);
 				   logger.info("-------------------------------------session token:"+sToken);
-				   logger.info("-------------------------------------parameter token:"+pToken);
-				  
+				   logger.info("-------------------------------------parameter token:"+pToken);				  
 				   request.getRequestDispatcher("/views/common/error.xhtml").forward(request,response); 
 			   } 
 			}else{
@@ -129,7 +128,8 @@ public class TokenCsrfFilter implements Filter {
 			uri.contains("luckyDrawContinue.xhtml")||
 			uri.contains("luckyDrawOver.xhtml")||
 			uri.contains("accountLogin.xhtml")||
-				uri.contains("orderSuccess.xhtml")||
+			uri.contains("orderSuccess.xhtml")||
+			uri.contains("updateNewCellPhone.xhtml")||
 		   uri.contains(".css") ||
 		   uri.contains(".js") || 
 		   uri.contains(".ecss") || 

@@ -8,7 +8,7 @@ import com.htichina.web.POC.MobileBean;
 import com.htichina.web.PaymentServiceClient;
 import com.htichina.web.common.FacesUtils;
 import com.htichina.web.common.ViewPage;
-import com.htichina.web.luckDraw.LuckDrawBean;
+
 import com.htichina.web.tag.TagBean;
 import com.htichina.wsclient.payment.AccountInfoResponse;
 import com.htichina.wsclient.payment.LuckyDrawReponse;
@@ -89,7 +89,7 @@ public class LoginBackingBean implements Serializable {
     private String registrationCode;
     //luckyDraw Link
     private int luckyDrawAmount=0;
-
+    
 
     /*2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范*/
     public String login(HttpSession session, String From, String oId, String targetPage) throws IOException {
@@ -298,6 +298,12 @@ public class LoginBackingBean implements Serializable {
                 }
 
             }
+            if(ViewPage.LINK2UPDATEPHONE.equals(targetPage)) {
+            	logger.info("return to LINK2UPDATEPHONE");
+                context.getExternalContext().redirect(
+                        "/htib2c-mobile/views/updateNewCellPhone.xhtml");
+                return null;
+            }
             if(ViewPage.LINK2LUCKDRAW.equals(targetPage)) {
                 context.getExternalContext().redirect(
                         "/htib2c-mobile/views/luckyDraw.xhtml");
@@ -451,6 +457,8 @@ public class LoginBackingBean implements Serializable {
         logger.info("to closeBrowser.xhtml");
         return ViewPage.CLOSEBROWSER;
     }
+    
+    
     // 校验newFollow输入手机号是否合法
     public void checkNewFollow(){
         String flag = null;

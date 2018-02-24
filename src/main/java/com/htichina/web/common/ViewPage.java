@@ -43,6 +43,8 @@ public class ViewPage {
 
     //远程控制前校验手机号
     public static final String LINK2CHECKTEL = "/views/POCTelCheck.xhtml?showwxpaytitle=1";
+    //联系方式更新前登陆
+    public static final String LINK2UPDATEPHONE = "/views/updateNewCellPhone.xhtml?showwxpaytitle=1";
 
 
     public static final String LINK2TAGTEST = "/views/tagTest.xhtml?showwxpaytitle=1";

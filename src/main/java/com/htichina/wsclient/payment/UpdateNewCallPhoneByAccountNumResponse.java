@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>syncAccntResponse complex type的 Java 类。
+ * <p>updateNewCallPhoneByAccountNumResponse complex type的 Java 类。
  * 
  * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
- * &lt;complexType name="syncAccntResponse">
+ * &lt;complexType name="updateNewCallPhoneByAccountNumResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,19 +27,19 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "syncAccntResponse", propOrder = {
+@XmlType(name = "updateNewCallPhoneByAccountNumResponse", propOrder = {
     "_return"
 })
-public class SyncAccntResponse {
+public class UpdateNewCallPhoneByAccountNumResponse {
 
     @XmlElement(name = "return")
-    protected boolean _return;
+    protected int _return;
 
     /**
      * 获取return属性的值。
      * 
      */
-    public boolean isReturn() {
+    public int getReturn() {
         return _return;
     }
 
@@ -47,7 +47,7 @@ public class SyncAccntResponse {
      * 设置return属性的值。
      * 
      */
-    public void setReturn(boolean value) {
+    public void setReturn(int value) {
         this._return = value;
     }
 

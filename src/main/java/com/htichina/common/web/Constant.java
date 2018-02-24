@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 
-import com.tencent.common.RandomStringGenerator;
+
 
 /**
  * Created by yiming on 2014/8/6.
@@ -259,4 +259,8 @@ public class Constant {
     public static final String USERLUCKYDRAWFLAG_2 ="winning";
     public static final String USERLUCKYDRAWFLAG_3 ="notWinnings";
     public static final String USERLUCKYDRAWFLAG_4 ="notWinning";
+    
+    public static final String ALREADYUPDATE = "alreadyUpdate";
+    public static final String SUCCESS = "success";
+    public static final String NEWCELLPHONE ="newCellPhone";
 }

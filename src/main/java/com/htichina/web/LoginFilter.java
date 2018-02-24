@@ -1,8 +1,7 @@
 package com.htichina.web;
 
-import com.htichina.web.common.ViewPage;
+
 import com.sun.faces.util.Util;
-import com.tencent.common.RandomStringGenerator;
 
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
@@ -11,10 +10,10 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 import java.io.IOException;
-import java.util.Enumeration;
+
 
 @WebFilter(urlPatterns = { "/views/*" }, dispatcherTypes = { DispatcherType.REQUEST,
 		DispatcherType.FORWARD, DispatcherType.INCLUDE })
@@ -37,7 +36,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		try{
-			String string = httpRequest.getRequestURL().toString();
+//			String string = httpRequest.getRequestURL().toString();
 //			HttpSession session = httpRequest.getSession();
 //			if(httpRequest.getMethod().equalsIgnoreCase("GET")){
 //				session.setAttribute("csrftoken", RandomStringGenerator.getCSRFToken());
@@ -65,13 +64,15 @@ public class LoginFilter implements Filter {
 			}
 
 			if (null == httpRequest.getSession().getAttribute(CURRENT_USER)) {
+				if(uri.contains("updateNewCellPhone.xhtml")) {
+					httpRequest.setAttribute("updateNewFlag", "updateNewCellPhone");
+				}
 				if(httpRequest.getRequestURL().toString().contains("accountLogin.xhtml") && request.getAttribute("orderUpgradePage")!=null){
 					logger.info("LoginFilter.java....支付宝访问升级菜单,下一步进入 accountLogin.xhtml, 传递属性 orderUpgradePage="+request.getAttribute("orderUpgradePage").toString()+"-------------");
 				}
 				if (isinterceptor(httpRequest.getRequestURL().toString(),
 						"firstLoginDidi.xhtml","hornLight_help.xhtml","hornLight.xhtml","key.xhtml","location.xhtml","locationMap.xhtml","lock.xhtml","lock_help.xhtml","myAccount.xhtml",
-						"POCTelCheck.xhtml","unLock.xhtml","unLock_help.xhtml")) {
-
+						"POCTelCheck.xhtml","unLock.xhtml","unLock_help.xhtml","updateNewCellPhone.xhtml")) {
 					logger.info("LoginFilter.java.....................................12312334");
 					StringBuffer Path1 = httpRequest.getRequestURL();
 					logger.info("Path ===>>"+ESAPI.encoder().encodeForHTML(Path1.toString()));

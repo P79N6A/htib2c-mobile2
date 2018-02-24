@@ -71,6 +71,7 @@ public class ObjectFactory {
     private final static QName _CloseWechatUserProfileResponse_QNAME = new QName("http://payment.ws.htichina.com/", "closeWechatUserProfileResponse");
     private final static QName _GetPromotionInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getPromotionInfoResponse");
     private final static QName _SyncAccntResponse_QNAME = new QName("http://payment.ws.htichina.com/", "syncAccntResponse");
+    private final static QName _UpdateNewCallPhoneByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateNewCallPhoneByAccountNumResponse");
     private final static QName _SendInvoiceEmail_QNAME = new QName("http://payment.ws.htichina.com/", "sendInvoiceEmail");
     private final static QName _CheckOrderPaied_QNAME = new QName("http://payment.ws.htichina.com/", "checkOrderPaied");
     private final static QName _ValidateLoginResponse_QNAME = new QName("http://payment.ws.htichina.com/", "validateLoginResponse");
@@ -82,6 +83,7 @@ public class ObjectFactory {
     private final static QName _GetPromotionInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getPromotionInfo");
     private final static QName _PaymentHandlerService_QNAME = new QName("http://payment.ws.htichina.com/", "paymentHandlerService");
     private final static QName _InsertInvoiceInfo_QNAME = new QName("http://payment.ws.htichina.com/", "insertInvoiceInfo");
+    private final static QName _UpdateNewCallPhoneByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "updateNewCallPhoneByAccountNum");
     private final static QName _IsWinBackOrEarlyBirdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isWinBackOrEarlyBirdResponse");
     private final static QName _GetCurrentAccountInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getCurrentAccountInfoResponse");
     private final static QName _UpdateLoginTimesResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateLoginTimesResponse");
@@ -448,6 +450,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UpdateNewCallPhoneByAccountNum }
+     * 
+     */
+    public UpdateNewCallPhoneByAccountNum createUpdateNewCallPhoneByAccountNum() {
+        return new UpdateNewCallPhoneByAccountNum();
+    }
+
+    /**
      * Create an instance of {@link InsertInvoiceInfoResponse }
      * 
      */
@@ -533,6 +543,14 @@ public class ObjectFactory {
      */
     public SyncAccntResponse createSyncAccntResponse() {
         return new SyncAccntResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateNewCallPhoneByAccountNumResponse }
+     * 
+     */
+    public UpdateNewCallPhoneByAccountNumResponse createUpdateNewCallPhoneByAccountNumResponse() {
+        return new UpdateNewCallPhoneByAccountNumResponse();
     }
 
     /**
@@ -1463,6 +1481,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateNewCallPhoneByAccountNumResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateNewCallPhoneByAccountNumResponse")
+    public JAXBElement<UpdateNewCallPhoneByAccountNumResponse> createUpdateNewCallPhoneByAccountNumResponse(UpdateNewCallPhoneByAccountNumResponse value) {
+        return new JAXBElement<UpdateNewCallPhoneByAccountNumResponse>(_UpdateNewCallPhoneByAccountNumResponse_QNAME, UpdateNewCallPhoneByAccountNumResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SendInvoiceEmail }{@code >}}
      * 
      */
@@ -1559,6 +1586,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "insertInvoiceInfo")
     public JAXBElement<InsertInvoiceInfo> createInsertInvoiceInfo(InsertInvoiceInfo value) {
         return new JAXBElement<InsertInvoiceInfo>(_InsertInvoiceInfo_QNAME, InsertInvoiceInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateNewCallPhoneByAccountNum }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateNewCallPhoneByAccountNum")
+    public JAXBElement<UpdateNewCallPhoneByAccountNum> createUpdateNewCallPhoneByAccountNum(UpdateNewCallPhoneByAccountNum value) {
+        return new JAXBElement<UpdateNewCallPhoneByAccountNum>(_UpdateNewCallPhoneByAccountNum_QNAME, UpdateNewCallPhoneByAccountNum.class, null, value);
     }
 
     /**
