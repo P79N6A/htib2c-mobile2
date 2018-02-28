@@ -15,6 +15,8 @@ import com.htichina.wsclient.payment.LuckyDrawReponse;
 import com.htichina.wsclient.payment.WechatUserDataResponse;
 import com.tencent.common.RandomStringGenerator;
 import com.tencent.service.MobileDeviceRegistrationService;
+import com.tencent.service.WechatAccessTokenUtils;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -31,6 +33,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.text.ParseException;
@@ -318,7 +321,11 @@ public class LoginBackingBean implements Serializable {
         boolean setTagFlag;
         WebApplicationContext context = null;
         TagBean tagBean = new TagBean();
-        String wToken = getWManAccessToken();
+      //2018-2-28,Tommy,调整微信access_token的获取方式，减少新token的生成以避免不够使用--------begin
+//        String wToken = getWManAccessToken();
+        String wToken = WechatAccessTokenUtils.getWechatToken();
+      //2018-2-28,Tommy,调整微信access_token的获取方式，减少新token的生成以避免不够使用--------end
+        
         String[] tags = tagBean.getTagsByOpenId(wToken,openId);
         if(tags != null){
             logger.info("inSetTagtoWechatUser getTags"+ESAPI.encoder().encodeForHTML(tags.toString()));
@@ -390,6 +397,7 @@ public class LoginBackingBean implements Serializable {
      * throws IOException
      */
 
+    @Deprecated
     public String getWManAccessToken() throws IOException{
         String id = ConfigureInfo.getWechatAppid();
         String secret = ConfigureInfo.getWechatAppSecret();

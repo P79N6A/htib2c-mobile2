@@ -69,4 +69,15 @@ public class UtilDate {
 		return rad.nextInt(1000)+"";
 	}
 	
+	/**
+	 * Tommy,2018-2-28,通过当前时间与旧token的时间间隔，判断是否需要生成新的微信token
+	 */
+	public static int getGapMinutes(Date fromDate, Date toDate){
+		long from = fromDate.getTime();
+		long to = toDate.getTime();
+		int minutes = (int) ((to - from)/(1000 * 60));
+		//System.out.println("from="+from+";to="+to+";minutes="+minutes);
+		return minutes;
+	}
+	
 }

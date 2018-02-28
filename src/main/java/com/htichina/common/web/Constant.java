@@ -259,4 +259,8 @@ public class Constant {
     public static final String USERLUCKYDRAWFLAG_2 ="winning";
     public static final String USERLUCKYDRAWFLAG_3 ="notWinnings";
     public static final String USERLUCKYDRAWFLAG_4 ="notWinning";
+    
+    //微信token生成的时间频率设置
+    public static final String WECHAT_TOKEN_GENERATE_INTERVAL = "WECHAT.TOKEN.GENERATE.INTERVAL";
+    
 }
