@@ -363,6 +363,10 @@ public class PaymentServiceClient {
   public int hasLuckyDrawLink(String parentOrderNum){
     return service.hasLuckyDrawLink(parentOrderNum);
   }
+
+  public int hasLuckyDrawLinkByAccountNum(String accountNum){
+    return service.hasLuckyDrawLinkByAccountNum(accountNum);
+  }
 }
 
 

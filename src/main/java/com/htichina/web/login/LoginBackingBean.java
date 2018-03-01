@@ -15,6 +15,8 @@ import com.htichina.wsclient.payment.LuckyDrawReponse;
 import com.htichina.wsclient.payment.WechatUserDataResponse;
 import com.tencent.common.RandomStringGenerator;
 import com.tencent.service.MobileDeviceRegistrationService;
+import com.tencent.service.WechatAccessTokenUtils;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -31,6 +33,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.text.ParseException;
@@ -87,10 +90,13 @@ public class LoginBackingBean implements Serializable {
     private String POCMessageFlag;
     // POC短信验证用户填写的短信
     private String registrationCode;
+    //luckyDraw Link
+    private int luckyDrawAmount=0;
 
 
     /*2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范*/
     public String login(HttpSession session, String From, String oId, String targetPage) throws IOException {
+
         FacesContext context = FacesContext.getCurrentInstance();
         logger.info("context ===>"+context);
         if (!(From.indexOf("xhtml") > -1)){
@@ -121,6 +127,7 @@ public class LoginBackingBean implements Serializable {
             logger.info("Login bakcing accountInfo.getAccountNum() ==>"+accountInfo.getAccountNum());
             /*context.getExternalContext().getSessionMap()
                     .put(LoginFilter.CURRENT_USER,accountInfo.getAccountNum());*/
+            luckyDrawAmount = PaymentServiceClient.getInstance().hasLuckyDrawLinkByAccountNum(accountInfo.getAccountNum());
             if(session != null){
                 session.putValue(LoginFilter.CURRENT_USER,accountInfo.getAccountNum());
             }
@@ -191,6 +198,8 @@ public class LoginBackingBean implements Serializable {
 
     public String validateLogin(String targetPage) throws IOException, ParseException {
         targetPg = targetPage;
+        luckyDrawAmount = PaymentServiceClient.getInstance().hasLuckyDrawLinkByAccountNum(accountNum);
+
         System.out.println("validateLogin");
         logger.info("loginbean........validateLogin()........targetPage="+targetPage);
         
@@ -297,6 +306,7 @@ public class LoginBackingBean implements Serializable {
                         "/htib2c-mobile/views/luckyDraw.xhtml");
                 return null;
             }else {
+
                 return targetPage;
             }
         } else {
@@ -311,7 +321,11 @@ public class LoginBackingBean implements Serializable {
         boolean setTagFlag;
         WebApplicationContext context = null;
         TagBean tagBean = new TagBean();
-        String wToken = getWManAccessToken();
+      //2018-2-28,Tommy,调整微信access_token的获取方式，减少新token的生成以避免不够使用--------begin
+//        String wToken = getWManAccessToken();
+        String wToken = WechatAccessTokenUtils.getWechatToken();
+      //2018-2-28,Tommy,调整微信access_token的获取方式，减少新token的生成以避免不够使用--------end
+        
         String[] tags = tagBean.getTagsByOpenId(wToken,openId);
         if(tags != null){
             logger.info("inSetTagtoWechatUser getTags"+ESAPI.encoder().encodeForHTML(tags.toString()));
@@ -383,6 +397,7 @@ public class LoginBackingBean implements Serializable {
      * throws IOException
      */
 
+    @Deprecated
     public String getWManAccessToken() throws IOException{
         String id = ConfigureInfo.getWechatAppid();
         String secret = ConfigureInfo.getWechatAppSecret();
@@ -660,5 +675,12 @@ public class LoginBackingBean implements Serializable {
 	public void setOrderUpgradePage(String orderUpgradePage) {
 		this.orderUpgradePage = orderUpgradePage;
 	}
-    
+
+    public int getLuckyDrawAmount() {
+        return luckyDrawAmount;
+    }
+
+    public void setLuckyDrawAmount(int luckyDrawAmount) {
+        this.luckyDrawAmount = luckyDrawAmount;
+    }
 }

@@ -40,6 +40,7 @@ public class HornLightBean implements Serializable {
         pinFlag = "F";
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
         if(Strings.isNullOrEmpty(accountNum)){
+        	openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
             accountNum = PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
         }
         logger.debug("accountNum, pin, openId,---"+accountNum+"---"+pin+"---"+openId);

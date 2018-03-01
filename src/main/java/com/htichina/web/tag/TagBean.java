@@ -2,7 +2,9 @@ package com.htichina.web.tag;
 
 import com.htichina.common.web.Constant;
 import com.htichina.web.common.ViewPage;
+
 import net.sf.json.JSONObject;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -448,16 +450,21 @@ public class TagBean implements Serializable {
      */
 
     public  String parseWManTag(String jsonStr){
-        jsonStr = jsonStr.trim();
-        if(jsonStr == null || jsonStr == "" || jsonStr.indexOf("errors")>-1){
-            return null;
-        }
-        jsonStr = jsonStr.replaceAll("\"|\\{|\\}", "");
-        int beginIndex = jsonStr.indexOf("tags")+5;
-        jsonStr = jsonStr.substring(beginIndex);
-        int endIndex = jsonStr.indexOf("]");
-        /*int endIndex = jsonStr.indexOf(",");*/
-        jsonStr = jsonStr.substring(0,endIndex-1);
+        try {
+			jsonStr = jsonStr.trim();
+			if(jsonStr == null || "".equals(jsonStr) || jsonStr.indexOf("errors")>-1){
+			    return null;
+			}
+			jsonStr = jsonStr.replaceAll("\"|\\{|\\}", "");
+			int beginIndex = jsonStr.indexOf("tags")+5;
+			jsonStr = jsonStr.substring(beginIndex);
+			int endIndex = jsonStr.indexOf("]");
+			/*int endIndex = jsonStr.indexOf(",");*/
+			jsonStr = jsonStr.substring(0,endIndex-1);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
         return jsonStr;
     }
 

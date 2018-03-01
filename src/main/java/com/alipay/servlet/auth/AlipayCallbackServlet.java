@@ -20,6 +20,7 @@ import com.htichina.wsclient.payment.PaymentResultMessage;
 import com.htichina.wsclient.payment.QueryChildOrdersByParentOrderNumResponse;
 import com.htichina.wsclient.payment.ServiceOrder;
 import com.tencent.service.HttpsURLRequest;
+import com.tencent.service.WechatAccessTokenUtils;
 
 import net.sf.json.JSONObject;
 
@@ -223,7 +224,8 @@ public class AlipayCallbackServlet extends HttpServlet {
 //        servlet.sendSingleMessage("20881030927966431018599483015130", "204191");
 //    }
 private void sendMessage(String body ,String order, List<String> openids) throws IOException {
-    HttpClient httpclient = new DefaultHttpClient();
+	//2018-2-28,Tommy,调整微信access_token的获取方式，减少新token的生成以避免不够使用--------begin
+	/*HttpClient httpclient = new DefaultHttpClient();
     HttpGet httpgets = new HttpGet(
             "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
                     + ConfigureInfo.getWechatAppid() + "&secret=" + ConfigureInfo.getWechatAppSecret() + "&");
@@ -232,7 +234,10 @@ private void sendMessage(String body ,String order, List<String> openids) throws
     jsonStr=jsonStr.replaceAll("\"|\\{|\\}", "");
     int beginIndex = jsonStr.indexOf(":");
     int endIndex = jsonStr.indexOf(",");
-    String access_token = jsonStr.substring(beginIndex+1,endIndex);
+    String access_token = jsonStr.substring(beginIndex+1,endIndex);*/
+	String access_token = WechatAccessTokenUtils.getWechatToken();
+	//2018-2-28,Tommy,调整微信access_token的获取方式，减少新token的生成以避免不够使用--------end
+	
     String title = "订购成功\n";
 
     String time =new SimpleDateFormat("MM月dd日").format(System.currentTimeMillis())+"\n" ;
