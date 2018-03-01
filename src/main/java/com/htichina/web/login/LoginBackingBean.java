@@ -8,13 +8,15 @@ import com.htichina.web.POC.MobileBean;
 import com.htichina.web.PaymentServiceClient;
 import com.htichina.web.common.FacesUtils;
 import com.htichina.web.common.ViewPage;
-
+import com.htichina.web.luckDraw.LuckDrawBean;
 import com.htichina.web.tag.TagBean;
 import com.htichina.wsclient.payment.AccountInfoResponse;
 import com.htichina.wsclient.payment.LuckyDrawReponse;
 import com.htichina.wsclient.payment.WechatUserDataResponse;
 import com.tencent.common.RandomStringGenerator;
 import com.tencent.service.MobileDeviceRegistrationService;
+import com.tencent.service.WechatAccessTokenUtils;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -31,6 +33,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.text.ParseException;
@@ -89,7 +92,7 @@ public class LoginBackingBean implements Serializable {
     private String registrationCode;
     //luckyDraw Link
     private int luckyDrawAmount=0;
-    
+
 
     /*2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范*/
     public String login(HttpSession session, String From, String oId, String targetPage) throws IOException {
@@ -324,7 +327,11 @@ public class LoginBackingBean implements Serializable {
         boolean setTagFlag;
         WebApplicationContext context = null;
         TagBean tagBean = new TagBean();
-        String wToken = getWManAccessToken();
+      //2018-2-28,Tommy,调整微信access_token的获取方式，减少新token的生成以避免不够使用--------begin
+//        String wToken = getWManAccessToken();
+        String wToken = WechatAccessTokenUtils.getWechatToken();
+      //2018-2-28,Tommy,调整微信access_token的获取方式，减少新token的生成以避免不够使用--------end
+        
         String[] tags = tagBean.getTagsByOpenId(wToken,openId);
         if(tags != null){
             logger.info("inSetTagtoWechatUser getTags"+ESAPI.encoder().encodeForHTML(tags.toString()));
@@ -396,6 +403,7 @@ public class LoginBackingBean implements Serializable {
      * throws IOException
      */
 
+    @Deprecated
     public String getWManAccessToken() throws IOException{
         String id = ConfigureInfo.getWechatAppid();
         String secret = ConfigureInfo.getWechatAppSecret();
@@ -457,8 +465,6 @@ public class LoginBackingBean implements Serializable {
         logger.info("to closeBrowser.xhtml");
         return ViewPage.CLOSEBROWSER;
     }
-    
-    
     // 校验newFollow输入手机号是否合法
     public void checkNewFollow(){
         String flag = null;

@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 
-
+import com.tencent.common.RandomStringGenerator;
 
 /**
  * Created by yiming on 2014/8/6.
@@ -171,6 +171,7 @@ public class Constant {
     public static final String WECHAT_LUCKYDRAW = "wechatLuckDraw";
     public static final String UPDATE_MOBILE ="updateMobile";
 
+
     public static final String DB_PACKAGE_CHANNEL_CALL_CENTER = "CC";
     public static final String DB_PACKAGE_CHANNEL_WE_CHAT = "WC";
     public static final String DB_PACKAGE_CHANNEL_ALIPAY = "AP";
@@ -260,7 +261,11 @@ public class Constant {
     public static final String USERLUCKYDRAWFLAG_3 ="notWinnings";
     public static final String USERLUCKYDRAWFLAG_4 ="notWinning";
     
+    //微信token生成的时间频率设置
+    public static final String WECHAT_TOKEN_GENERATE_INTERVAL = "WECHAT.TOKEN.GENERATE.INTERVAL";
     public static final String ALREADYUPDATE = "alreadyUpdate";
     public static final String SUCCESS = "success";
     public static final String NEWCELLPHONE ="newCellPhone";
+    
+    
 }
