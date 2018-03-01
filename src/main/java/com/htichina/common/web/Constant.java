@@ -169,7 +169,7 @@ public class Constant {
     public static final String VIOLATION_INQUIRY = "violationInquiry";
     public static final String WECHAT_PAYMENT = "wechatPayment";
     public static final String WECHAT_LUCKYDRAW = "wechatLuckDraw";
-
+    public static final String UPDATE_MOBILE ="updateMobile";
 
     public static final String DB_PACKAGE_CHANNEL_CALL_CENTER = "CC";
     public static final String DB_PACKAGE_CHANNEL_WE_CHAT = "WC";

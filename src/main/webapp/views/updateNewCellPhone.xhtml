@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<body>
+<body style="z-index: 2">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -52,7 +52,7 @@
             </div>
             <div id="fri_bottom">
                 <div class="empty">
-                    <h:commandButton id="form_phone" action="#{mobileBean.updateNewCellPhoneByAccountNum}" value="提&#160;&#160;交" onclick="return showLogOff();" />
+                    <h:commandButton id="form_phone" disabled="disabled" action="#{mobileBean.updateNewCellPhoneByAccountNum}" value="提&#160;&#160;交" onclick="return showLogOff();" />
                     <!--    <input type="button" value="提&#160;&#160;交" onclick="showLogOff()"/> -->
                     
                 </div>
@@ -60,12 +60,10 @@
             </div>
         </div> 
          <!-- 输入格式不对 -->
-            <div class="alert" id="sn_err" style="display:none;padding-top: 10px;">
+            <div class="alert" id="sn_err" style="display:none;padding-top: 10px;z-index: 6;">
 	             <div class="a_txt" id="perro">错误提示：输入有误，请检查后重新输入<br/></div> 
                 <div id = "retryBtn" class="m_btn m_btn1" onclick="hideLogOff()" style="margin-top: 30px;">重 新 输入</div>
-            </div>
-            
-                              
+            </div>                              
             <script type="text/javascript">
 	        var repMessageVal = $("input[nm='repMessage']").val();
             $(function(){  
@@ -90,7 +88,7 @@
 	            	$('#perro').html("错误提示：输入有误，请检查后重新输入");
 		            $('#retryBtn').html("重 新 输入");
 	            	var newCellPhone=$("input[phone='newCellPhone']").val();
-	            	var regex= /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
+	            	var regex= /^((0\d{2,3}\d{7,8})|(1[3584]\d{9}))$/;
 	            	if(newCellPhone.length==11){
 	            		if(regex.test(newCellPhone)){
 	            			flag=true;
@@ -101,8 +99,7 @@
 	            		$('#sn_err').show();
 	            	}
 	            	return flag;
-	            }
-	            
+	            }	            
 	            function hideLogOff() {
                     $('#sn_err').hide();
                 }

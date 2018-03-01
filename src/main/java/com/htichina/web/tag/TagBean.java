@@ -449,7 +449,7 @@ public class TagBean implements Serializable {
 
     public  String parseWManTag(String jsonStr){
         jsonStr = jsonStr.trim();
-        if(jsonStr == null || jsonStr == "" || jsonStr.indexOf("errors")>-1){
+        if(jsonStr == null || "".equals(jsonStr) || jsonStr.indexOf("errors")>-1){
             return null;
         }
         jsonStr = jsonStr.replaceAll("\"|\\{|\\}", "");
