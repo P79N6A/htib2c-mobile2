@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<body style="z-index: 2">
+<body >
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -30,8 +30,8 @@
                      id="linetop"/>
                 <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line2.jpg"
                      id="linebot"/>               
-                <ul style="top:90px;">
-                    <li >请输入你最新的联系方式：</li>
+                <ul >
+                    <li style="padding-top:10px">请输入你最新的联系方式：</li>
                     <li style="padding-top:40px">
                     <h:inputText id="newCellPhone"
                                      value="#{mobileBean.newCellPhone}" maxlength="11"  required="true" requiredMessage="The field is empty"  >
@@ -40,6 +40,8 @@
                                                 value="[0-9]*"/>
                         <f:passThroughAttribute name="phone"  value="newCellPhone"/>
                     </h:inputText>
+                    </li>
+                    <li style="padding-top:30px">
                     <h:inputText id="repMessage"
                                      value="#{mobileBean.repMessage}"
                                      style="display: none">
@@ -52,55 +54,32 @@
             </div>
             <div id="fri_bottom">
                 <div class="empty">
-                    <h:commandButton id="form_phone" disabled="disabled" action="#{mobileBean.updateNewCellPhoneByAccountNum}" value="提&#160;&#160;交" onclick="return showLogOff();" />
-                    <!--    <input type="button" value="提&#160;&#160;交" onclick="showLogOff()"/> -->
-                    
+                    <h:commandButton  id="form_phone" action="#{mobileBean.updateNewCellPhoneByAccountNum}" value="提&#160;&#160;交" onclick="showLogOff();" />                		
                 </div>
                 <div id="keytxt">网站备案号：京ICP备11011340号</div>
             </div>
         </div> 
          <!-- 输入格式不对 -->
-            <div class="alert" id="sn_err" style="display:none;padding-top: 10px;z-index: 6;">
+            <div class="alert" id="sn_err" style="display:none;">
 	             <div class="a_txt" id="perro">错误提示：输入有误，请检查后重新输入<br/></div> 
-                <div id = "retryBtn" class="m_btn m_btn1" onclick="hideLogOff()" style="margin-top: 30px;">重 新 输入</div>
-            </div>                              
+                <div id = "retryBtn" class="m_btn m_btn1" onclick="hideLogOff()">重 新 输入</div>
+            </div> 
+            <div id="filer"  style="display:none"></div>                             
             <script type="text/javascript">
 	        var repMessageVal = $("input[nm='repMessage']").val();
             $(function(){  
 	           	 console.log(repMessageVal);
 		          if(repMessageVal == null || repMessageVal == ""){
-		              $('#sn_err').hide();
+		        	  $('#filer').hide();
+		        	  $('#sn_err').hide();
 		          }else{
-		              if(repMessageVal == "success"){
-		            	 $('#perro').html("您的请求已成功提交！");
-		            	 $('#retryBtn').html("确定");
-			             $('#sn_err').show();
-		              }else if(repMessageVal == "alreadyUpdate"){
-	            	 	$('#perro').html("您已经更改过最新联系方式，如需修改请重新输入新的联系方式！");
-		            	$('#retryBtn').html("重 新 输入");
-			            $('#sn_err').show();
-		              }	             
-	         	 }
-            })
-            function closeUp(){$('#sn_err').hide();$("input[nm='repMessage']").attr('');}
-	            function showLogOff(){
-	            	var flag=false;
-	            	$('#perro').html("错误提示：输入有误，请检查后重新输入");
-		            $('#retryBtn').html("重 新 输入");
-	            	var newCellPhone=$("input[phone='newCellPhone']").val();
-	            	var regex= /^((0\d{2,3}\d{7,8})|(1[3584]\d{9}))$/;
-	            	if(newCellPhone.length==11){
-	            		if(regex.test(newCellPhone)){
-	            			flag=true;
-	            		}else{
-	            			$('#sn_err').show();
-	            		}	            		
-	            	}else{
-	            		$('#sn_err').show();
-	            	}
-	            	return flag;
-	            }	            
-	            function hideLogOff() {
+		        	  $('#filer').show();
+			          $('#sn_err').show();
+			          $('#perro').html(repMessageVal);
+	         	  }
+            })	           
+	            function hideLogOff() {	
+            		$('#filer').hide();
                     $('#sn_err').hide();
                 }
             </script>
