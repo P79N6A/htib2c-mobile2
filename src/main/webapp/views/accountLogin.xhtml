@@ -120,6 +120,7 @@
                                 $('#perro').html(repMessageVal);
                             }
                             /*alert(repMessageVal);*/
+                            
 
                         }
 
@@ -161,6 +162,10 @@
                             if(getUrlParam("flag")=="luckyDraw") {
                                 $("input[nm='luckyDraw']").val("/views/luckyDraw.xhtml?showwxpaytitle=1");
                             }
+                            var updateNewFlag='${updateNewFlag}';
+                            if(updateNewFlag=="updateNewCellPhone"){
+                        	 $("input[nm='luckyDraw']").val("/views/updateNewCellPhone.xhtml?showwxpaytitle=1");
+                        	}
 //                            $("#luckyDraw").val(getUrlParam("flag"));
 
                         });
