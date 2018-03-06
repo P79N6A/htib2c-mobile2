@@ -36,24 +36,24 @@ public class WechatAccessTokenUtils{
 		
 		Date newDate = new Date();
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		logger.info("-------有功能发出需要token的请求，当前时间："+sf.format(newDate)+"--------");
+		logger.info("-------one request needs token，the time is ："+sf.format(newDate)+"--------");
 		//如果access_token已经生成过，而且此刻距离上次生成时间不超过指定时间，则继续使用之前的token
 		if(!StringUtils.isEmpty(access_token)){
-			logger.info("-------上次生成token时间："+sf.format(generate_date));
-			logger.info("-------指定的生成token的时间频率：满"+token_generate_interval+"分钟生成一次-------");
+			logger.info("-------There is one token already generated before, and the generated time is:"+sf.format(generate_date));
+			logger.info("-------According to system settings, the time interval to generate new token is："+token_generate_interval+" minutes.");
 			int gapMinutes = UtilDate.getGapMinutes(generate_date, newDate);
 			if(gapMinutes<token_generate_interval){
-				logger.info("-------没有到下一次触发时间，继续使用之前的token----"+access_token);
+				logger.info("-------It isn't time to generate new token, so reuse the last token:----"+access_token);
 				return access_token;
 			}else{
-				logger.info("-------触发时间到了，马上生成新的token-------");
+				logger.info("-------It's time to generate new token.-------");
 			}
 		}else{
-			logger.info("-------当前时间是第一次获取token，马上生成新的token-------");
+			logger.info("-------There is no token generated before, so system will generate a new token immediately.-------");
 		}
 		
 		String wechatToken = getNewToken();
-		logger.info("----------生成新的token-------------"+wechatToken);
+		logger.info("----------The new token is:-------------"+wechatToken);
 		access_token = wechatToken;
 		generate_date = newDate;
 		
