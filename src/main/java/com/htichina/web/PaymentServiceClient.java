@@ -367,6 +367,15 @@ public class PaymentServiceClient {
   public int hasLuckyDrawLinkByAccountNum(String accountNum){
     return service.hasLuckyDrawLinkByAccountNum(accountNum);
   }
+  
+  public boolean updateNewCallPhoneByAccountNum(String accountNum,String newCellphone) {
+	  boolean flag=false;
+	  int num = service.updateNewCallPhoneByAccountNum(accountNum, newCellphone);
+	  if(num >0) {
+		  flag=true;
+	  }
+	  return flag;
+  }
 }
 
 

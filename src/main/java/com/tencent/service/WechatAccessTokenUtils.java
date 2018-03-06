@@ -11,6 +11,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -25,6 +26,7 @@ import com.htichina.web.common.B2CUtils;
 public class WechatAccessTokenUtils{
 	static String access_token;
 	static Date generate_date;
+	static Logger logger = Logger.getLogger(WechatAccessTokenUtils.class.getName());
 	
 	public synchronized static String getWechatToken()
 			throws ClientProtocolException, IOException {
@@ -34,24 +36,24 @@ public class WechatAccessTokenUtils{
 		
 		Date newDate = new Date();
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		System.out.println("当前时间："+sf.format(newDate));
+		logger.info("-------有功能发出需要token的请求，当前时间："+sf.format(newDate)+"--------");
 		//如果access_token已经生成过，而且此刻距离上次生成时间不超过指定时间，则继续使用之前的token
 		if(!StringUtils.isEmpty(access_token)){
-			System.out.println("上次生成token时间："+sf.format(generate_date));
-			System.out.println("指定的生成token的时间频率：满"+token_generate_interval+"分钟生成一次");
+			logger.info("-------上次生成token时间："+sf.format(generate_date));
+			logger.info("-------指定的生成token的时间频率：满"+token_generate_interval+"分钟生成一次-------");
 			int gapMinutes = UtilDate.getGapMinutes(generate_date, newDate);
 			if(gapMinutes<token_generate_interval){
-				System.out.println("没有到下一次触发时间，继续使用之前的token----"+access_token);
+				logger.info("-------没有到下一次触发时间，继续使用之前的token----"+access_token);
 				return access_token;
 			}else{
-				System.out.println("触发时间到了，马上生成新的token");
+				logger.info("-------触发时间到了，马上生成新的token-------");
 			}
 		}else{
-			System.out.println("当前时间是第一次获取token，马上生成新的token");
+			logger.info("-------当前时间是第一次获取token，马上生成新的token-------");
 		}
 		
 		String wechatToken = getNewToken();
-		System.out.println("----------生成新的token-------------"+wechatToken);
+		logger.info("----------生成新的token-------------"+wechatToken);
 		access_token = wechatToken;
 		generate_date = newDate;
 		
@@ -62,7 +64,7 @@ public class WechatAccessTokenUtils{
 			throws ClientProtocolException, IOException {
 		String appid = ConfigureInfo.getWechatAppid();
         String appsecret = ConfigureInfo.getWechatAppSecret();
-		System.out.println("appid="+appid+";appsecret="+appsecret);
+		logger.info("appid="+appid+";appsecret="+appsecret);
 		
 		String token = "";
 		String weChatTokenKey = "access_token";
@@ -80,9 +82,9 @@ public class WechatAccessTokenUtils{
 	/*public static String getWechatTokenTemp() throws ClientProtocolException, IOException{
 		String appid = PropertyReadUtil.getValue(TagGenerationJobConstants.WECHAT_APP_ID);
 		String appsecret = PropertyReadUtil.getValue(TagGenerationJobConstants.WECHAT_APP_SECRET);
-		System.out.println("appid="+appid+";appsecret="+appsecret);
+		logger.info("appid="+appid+";appsecret="+appsecret);
 		String wechatToken = WechatTagUtils.getWechatToken(appid, appsecret);
-		System.out.println("----到达微信token临界点 且 原来token已无效 的情况下------生成新的token-------------"+wechatToken);
+		logger.info("----到达微信token临界点 且 原来token已无效 的情况下------生成新的token-------------"+wechatToken);
 		access_token = wechatToken;
 		generate_date = new Date();
 		return access_token; 

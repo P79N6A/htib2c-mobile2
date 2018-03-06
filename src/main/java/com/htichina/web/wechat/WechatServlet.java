@@ -235,6 +235,11 @@ public class WechatServlet extends HttpServlet {
 				req.getRequestDispatcher(link).forward(req, resp);
 
 			}
+			else if(state.equalsIgnoreCase(Constant.UPDATE_MOBILE)){
+				logger.debug("wechatServlet start updatemobile");
+				LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
+				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2UPDATEPHONE)).forward(req, resp);	
+			}
 			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAW)){
 //				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW)).redirect(req, resp);
 //				logger.info("======================"+loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW));
