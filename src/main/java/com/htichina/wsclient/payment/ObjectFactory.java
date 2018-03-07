@@ -52,6 +52,7 @@ public class ObjectFactory {
     private final static QName _CreateTransactionResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createTransactionResponse");
     private final static QName _CreateUpgradePaymentOrder_QNAME = new QName("http://payment.ws.htichina.com/", "createUpgradePaymentOrder");
     private final static QName _UpdateLoginTimes_QNAME = new QName("http://payment.ws.htichina.com/", "updateLoginTimes");
+    private final static QName _GetCallPhoneByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "getCallPhoneByAccountNum");
     private final static QName _CheckTransaction_QNAME = new QName("http://payment.ws.htichina.com/", "checkTransaction");
     private final static QName _GetInvoiceInformationResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getInvoiceInformationResponse");
     private final static QName _IsReceiveDidiResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isReceiveDidiResponse");
@@ -111,6 +112,7 @@ public class ObjectFactory {
     private final static QName _GetChildOrderInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getChildOrderInfo");
     private final static QName _SyncAccnt_QNAME = new QName("http://payment.ws.htichina.com/", "syncAccnt");
     private final static QName _UpdateTransaction_QNAME = new QName("http://payment.ws.htichina.com/", "updateTransaction");
+    private final static QName _GetCallPhoneByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getCallPhoneByAccountNumResponse");
     private final static QName _GetLastLoginUserByOpenIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getLastLoginUserByOpenIdResponse");
     private final static QName _CheckOrderPaiedResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkOrderPaiedResponse");
 
@@ -359,6 +361,14 @@ public class ObjectFactory {
      */
     public CheckTransaction createCheckTransaction() {
         return new CheckTransaction();
+    }
+
+    /**
+     * Create an instance of {@link GetCallPhoneByAccountNum }
+     * 
+     */
+    public GetCallPhoneByAccountNum createGetCallPhoneByAccountNum() {
+        return new GetCallPhoneByAccountNum();
     }
 
     /**
@@ -647,6 +657,14 @@ public class ObjectFactory {
      */
     public GetLastLoginUserByOpenIdResponse createGetLastLoginUserByOpenIdResponse() {
         return new GetLastLoginUserByOpenIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCallPhoneByAccountNumResponse }
+     * 
+     */
+    public GetCallPhoneByAccountNumResponse createGetCallPhoneByAccountNumResponse() {
+        return new GetCallPhoneByAccountNumResponse();
     }
 
     /**
@@ -1310,6 +1328,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCallPhoneByAccountNum }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getCallPhoneByAccountNum")
+    public JAXBElement<GetCallPhoneByAccountNum> createGetCallPhoneByAccountNum(GetCallPhoneByAccountNum value) {
+        return new JAXBElement<GetCallPhoneByAccountNum>(_GetCallPhoneByAccountNum_QNAME, GetCallPhoneByAccountNum.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CheckTransaction }{@code >}}
      * 
      */
@@ -1838,6 +1865,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateTransaction")
     public JAXBElement<UpdateTransaction> createUpdateTransaction(UpdateTransaction value) {
         return new JAXBElement<UpdateTransaction>(_UpdateTransaction_QNAME, UpdateTransaction.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCallPhoneByAccountNumResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getCallPhoneByAccountNumResponse")
+    public JAXBElement<GetCallPhoneByAccountNumResponse> createGetCallPhoneByAccountNumResponse(GetCallPhoneByAccountNumResponse value) {
+        return new JAXBElement<GetCallPhoneByAccountNumResponse>(_GetCallPhoneByAccountNumResponse_QNAME, GetCallPhoneByAccountNumResponse.class, null, value);
     }
 
     /**
