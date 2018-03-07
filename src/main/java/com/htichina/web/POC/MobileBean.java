@@ -43,24 +43,27 @@ public class MobileBean implements Serializable {
 	 */
 	public String updateNewCellPhoneByAccountNum(){
 		FacesContext context = FacesContext.getCurrentInstance();
-		String regex= "^((0\\d{2,3}\\d{7,8})|(1[3584]\\d{9}))$";
+		String regex= "^((0\\d{2,3}\\d{7,8})|(((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8}))$";
 		boolean isf = Pattern.matches(regex, newCellPhone);
 		String accountNum=(String) FacesUtils.getManagedBeanInSession(LoginFilter.CURRENT_USER);
-		String alreadyUpdatePhone = (String)FacesUtils.getManagedBeanInSession(Constant.NEWCELLPHONE);
 		logger.info("newCellPhone+accountNum ===>"+newCellPhone+"==="+accountNum);
 		if(isf) {
-			if(null!=alreadyUpdatePhone && newCellPhone.equals(alreadyUpdatePhone)){
+			String phoneByAccountNum=null;
+			if(null!=accountNum) {
+				//根据账户查询联系方式
+				phoneByAccountNum= PaymentServiceClient.getInstance().getCallPhoneByAccountNum(accountNum);				
+			}
+			if(phoneByAccountNum!=null&&newCellPhone.equals(phoneByAccountNum)) {
 				repMessage="您已经更改过最新联系方式，如需修改请重新输入新的联系方式！";
-			}else {
+			}else {				
 				if(null!=accountNum && newCellPhone!=null) {
 					//调用接口保存
 					boolean f = PaymentServiceClient.getInstance().updateNewCallPhoneByAccountNum(accountNum,newCellPhone);
 					if(f) {
-						FacesUtils.setManagedBeanInSession(Constant.NEWCELLPHONE, newCellPhone);
 						repMessage="您的请求已成功提交！";
-					} 
+					} 								
 				}			
-			}			
+			}
 		}else {
 			repMessage="错误提示：输入有误，请检查后重新输入！";
 		}

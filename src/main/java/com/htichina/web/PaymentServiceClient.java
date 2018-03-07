@@ -376,6 +376,9 @@ public class PaymentServiceClient {
 	  }
 	  return flag;
   }
+  public String getCallPhoneByAccountNum(String accountNum) {
+	  return service.getCallPhoneByAccountNum(accountNum);
+  }
 }
 
 
