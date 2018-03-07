@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html style="overflow: scroll !important;">
 
-
-<body>
+<body >
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -15,13 +14,20 @@
         订购指南
     </ui:define>
 
-    <ui:define name="workspace">
+    <ui:define name="workspace" >
         <div  style="margin: 0px; padding: 0px; width: 100%; height: 100%; -webkit-overflow-scrolling :touch;">
            <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/订购指南.jpg" style="float: left; width: 100%;"/>
         </div> 
 
         <div style=" width: 100%; box-sizing: border-box; background: #fff; float: left; text-align: center">
         <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/long_btn.jpg" style="padding-top: 50px; padding-bottom: 50px;" id="long_btn"/> </div>
+        <style>
+        html, body {
+		    width: 100% !important;
+		    height: 100% !important;
+		    overflow:visible  !important;
+		}
+        </style>
         <script>
             if("1" == broserNum){
                 window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
