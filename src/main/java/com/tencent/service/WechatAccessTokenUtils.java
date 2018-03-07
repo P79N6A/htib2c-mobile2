@@ -36,11 +36,11 @@ public class WechatAccessTokenUtils{
 		
 		Date newDate = new Date();
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		logger.info("-------one request needs token，the time is ："+sf.format(newDate)+"--------");
+		logger.info("-------one request needs token，the time is:"+sf.format(newDate)+"--------");
 		//如果access_token已经生成过，而且此刻距离上次生成时间不超过指定时间，则继续使用之前的token
 		if(!StringUtils.isEmpty(access_token)){
 			logger.info("-------There is one token already generated before, and the generated time is:"+sf.format(generate_date));
-			logger.info("-------According to system settings, the time interval to generate new token is："+token_generate_interval+" minutes.");
+			logger.info("-------According to system settings, the time interval to generate new token is:"+token_generate_interval+" minutes.");
 			int gapMinutes = UtilDate.getGapMinutes(generate_date, newDate);
 			if(gapMinutes<token_generate_interval){
 				logger.info("-------It isn't time to generate new token, so reuse the last token:----"+access_token);
