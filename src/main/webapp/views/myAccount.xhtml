@@ -12,7 +12,7 @@
 
     <ui:define name="header">
         账户信息
-    </ui:define>
+    </ui:define> 
 
     <ui:define name="workspace">
         <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/css.css" />
@@ -51,7 +51,8 @@
                                                 </h:outputText></span></li>
                                             </ul>
                                         </div>
-                                        <c:if test="#{'0' eq loginBackingBean.renewFlag}"><div onclick="clickDidi()">
+                                        <!-- 2018-03-05 去除100元代驾券领取 -->
+                                        <!-- <c:if test="#{'0' eq loginBackingBean.renewFlag}"><div onclick="clickDidi()">
 
                                                 <div style="color:white;padding-left:39%;font-size:22px">专属滴滴礼券：</div>
                                                 <div style="padding-top:50px;"><div class="long_btn " >
@@ -68,18 +69,18 @@
                                                 </div></div>
                                                 <div style="color:white;padding-top:5%;padding-left:35%;font-size:22px">友情提示：请即领取。<br/>多次点击链接将失效</div>
                                             </div>
-                                        </c:if>
+                                        </c:if> -->
 
                                         <h:inputHidden value ="#{loginBackingBean.renewFlag}">
                                             <f:passThroughAttribute name="flag" value="renewFlag"/>
                                         </h:inputHidden>
                                         <h:outputText value ="#{loginBackingBean.accountNum}">
                                         </h:outputText>
-
-                                        <h:commandButton action="#{loginBackingBean.setReceivedDidi('renew',loginBackingBean.accountInfo.accountNum)}" style="display: none">
+										<!-- 2018-03-05 去除100元代驾券领取 -->
+                                        <!-- <h:commandButton action="#{loginBackingBean.setReceivedDidi('renew',loginBackingBean.accountInfo.accountNum)}" style="display: none">
                                             <f:passThroughAttribute name="btn" value="didiBtn"/>
                                             领取代驾礼券包
-                                        </h:commandButton>
+                                        </h:commandButton> -->
                                         <h3>我的套餐</h3>
                                         <c:if test="#{loginBackingBean.accountInfo.currentPackages.size() == 0 || loginBackingBean.accountInfo.currentPackages == null}">
                                             <div class="my_list" style="height:222px;padding-left:170px;padding-top: 82px;">
