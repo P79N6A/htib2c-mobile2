@@ -43,7 +43,7 @@ public class MobileBean implements Serializable {
 	 */
 	public String updateNewCellPhoneByAccountNum(){
 		FacesContext context = FacesContext.getCurrentInstance();
-		String regex= "^((0\\d{2,3}\\d{7,8})|(((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8}))$";
+		String regex= "^((0\\d{2,3}\\d{7,8})|(1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8})$";
 		boolean isf = Pattern.matches(regex, newCellPhone);
 		String accountNum=(String) FacesUtils.getManagedBeanInSession(LoginFilter.CURRENT_USER);
 		logger.info("newCellPhone+accountNum ===>"+newCellPhone+"==="+accountNum);
