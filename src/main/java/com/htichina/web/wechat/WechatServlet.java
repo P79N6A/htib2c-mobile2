@@ -28,6 +28,7 @@ import com.htichina.common.web.Constant;
 import com.htichina.web.common.ViewPage;
 import com.htichina.web.login.LoginBackingBean;
 import com.htichina.web.order.OrderBackingBean;
+import com.htichina.web.questionnaire.QuestionnaireBean;
 import com.htichina.web.util.UUIDUtils;
 import com.tencent.common.RandomStringGenerator;
 
@@ -35,6 +36,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -245,6 +247,11 @@ public class WechatServlet extends HttpServlet {
 //				logger.info("======================"+loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW));
 //				LoginBackingBean loginBackingBean = new LoginBackingBean();
 				resp.sendRedirect("/htib2c-mobile/views/luckyDraw.xhtml?showwxpaytitle=1");
+			}else if(state.equalsIgnoreCase(Constant.QUESTIONNAIRE)){
+//				logger.debug("wechatServlet start updatemobile");
+				QuestionnaireBean questionnaireBean = (QuestionnaireBean)context.getBean("questionnaireBean" );
+				Integer questionnaireId=Integer.parseInt(req.getParameter("questionnaireId"));
+				req.getRequestDispatcher(questionnaireBean.doAnswer(questionnaireId)).forward(req, resp);	
 			}
 		}
 	}
