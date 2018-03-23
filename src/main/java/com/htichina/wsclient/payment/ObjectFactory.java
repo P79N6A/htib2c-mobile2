@@ -28,107 +28,106 @@ public class ObjectFactory {
     private final static QName _ValidateLogin_QNAME = new QName("http://payment.ws.htichina.com/", "validateLogin");
     private final static QName _CloseWechatUserProfile_QNAME = new QName("http://payment.ws.htichina.com/", "closeWechatUserProfile");
     private final static QName _GetWechatUserDataByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "getWechatUserDataByAccountNum");
-    private final static QName _CreateUpgradePaymentOrderResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createUpgradePaymentOrderResponse");
-    private final static QName _GetLastLoginUserByOpenId_QNAME = new QName("http://payment.ws.htichina.com/", "getLastLoginUserByOpenId");
     private final static QName _CheckPurchaseProduct_QNAME = new QName("http://payment.ws.htichina.com/", "checkPurchaseProduct");
-    private final static QName _LogoffResponse_QNAME = new QName("http://payment.ws.htichina.com/", "logoffResponse");
-    private final static QName _PaymentHandlerServiceResponse_QNAME = new QName("http://payment.ws.htichina.com/", "paymentHandlerServiceResponse");
-    private final static QName _CreateLuckyOrder_QNAME = new QName("http://payment.ws.htichina.com/", "createLuckyOrder");
     private final static QName _GetActiveAccountByOpenId_QNAME = new QName("http://payment.ws.htichina.com/", "getActiveAccountByOpenId");
     private final static QName _InsertResponse_QNAME = new QName("http://payment.ws.htichina.com/", "insertResponse");
     private final static QName _UpdateOrderStatusResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateOrderStatusResponse");
     private final static QName _CheckTransactionResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkTransactionResponse");
-    private final static QName _UpdateWechatMessageHistory_QNAME = new QName("http://payment.ws.htichina.com/", "updateWechatMessageHistory");
     private final static QName _GetVehicleInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getVehicleInfoResponse");
-    private final static QName _IsWinBackOrEarlyBird_QNAME = new QName("http://payment.ws.htichina.com/", "isWinBackOrEarlyBird");
-    private final static QName _CreatePaymentOrder_QNAME = new QName("http://payment.ws.htichina.com/", "createPaymentOrder");
-    private final static QName _CreateWechatUserProfile_QNAME = new QName("http://payment.ws.htichina.com/", "createWechatUserProfile");
     private final static QName _GetParentOrderInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getParentOrderInfoResponse");
-    private final static QName _SendMessageResponse_QNAME = new QName("http://payment.ws.htichina.com/", "sendMessageResponse");
     private final static QName _GetInvoiceInformation_QNAME = new QName("http://payment.ws.htichina.com/", "getInvoiceInformation");
-    private final static QName _SyncAMPWifiAccountResponse_QNAME = new QName("http://payment.ws.htichina.com/", "syncAMPWifiAccountResponse");
-    private final static QName _GetOpenIdByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getOpenIdByAccountNumResponse");
-    private final static QName _Logoff_QNAME = new QName("http://payment.ws.htichina.com/", "logoff");
     private final static QName _CreateTransactionResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createTransactionResponse");
     private final static QName _CreateUpgradePaymentOrder_QNAME = new QName("http://payment.ws.htichina.com/", "createUpgradePaymentOrder");
     private final static QName _UpdateLoginTimes_QNAME = new QName("http://payment.ws.htichina.com/", "updateLoginTimes");
-    private final static QName _GetCallPhoneByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "getCallPhoneByAccountNum");
     private final static QName _CheckTransaction_QNAME = new QName("http://payment.ws.htichina.com/", "checkTransaction");
-    private final static QName _GetInvoiceInformationResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getInvoiceInformationResponse");
-    private final static QName _IsReceiveDidiResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isReceiveDidiResponse");
     private final static QName _GetVehicleInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getVehicleInfo");
     private final static QName _CreateTransactionForLuckyDraw_QNAME = new QName("http://payment.ws.htichina.com/", "createTransactionForLuckyDraw");
-    private final static QName _DoLuckDraw_QNAME = new QName("http://payment.ws.htichina.com/", "doLuckDraw");
+    private final static QName _AnswerStatus_QNAME = new QName("http://payment.ws.htichina.com/", "answerStatus");
     private final static QName _GetNewPackageAfterUpgradeResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getNewPackageAfterUpgradeResponse");
+    private final static QName _IsNewFollowReciveDidi_QNAME = new QName("http://payment.ws.htichina.com/", "isNewFollowReciveDidi");
+    private final static QName _AnswerStatusResponse_QNAME = new QName("http://payment.ws.htichina.com/", "answerStatusResponse");
+    private final static QName _CloseWechatUserProfileResponse_QNAME = new QName("http://payment.ws.htichina.com/", "closeWechatUserProfileResponse");
+    private final static QName _GetPromotionInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getPromotionInfoResponse");
+    private final static QName _UpdateNewCallPhoneByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateNewCallPhoneByAccountNumResponse");
+    private final static QName _SendInvoiceEmail_QNAME = new QName("http://payment.ws.htichina.com/", "sendInvoiceEmail");
+    private final static QName _HasLuckyDrawLink_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLink");
+    private final static QName _GetWechatUserDataByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getWechatUserDataByAccountNumResponse");
+    private final static QName _Insert_QNAME = new QName("http://payment.ws.htichina.com/", "insert");
+    private final static QName _InsertInvoiceInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "insertInvoiceInfoResponse");
+    private final static QName _QuestionnaireFinishedResponse_QNAME = new QName("http://payment.ws.htichina.com/", "QuestionnaireFinishedResponse");
+    private final static QName _GetPromotionInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getPromotionInfo");
+    private final static QName _PaymentHandlerService_QNAME = new QName("http://payment.ws.htichina.com/", "paymentHandlerService");
+    private final static QName _UpdateNewCallPhoneByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "updateNewCallPhoneByAccountNum");
+    private final static QName _UpdateLoginTimesResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateLoginTimesResponse");
+    private final static QName _CreateTransaction_QNAME = new QName("http://payment.ws.htichina.com/", "createTransaction");
+    private final static QName _HasLuckyDrawLinkResponse_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLinkResponse");
+    private final static QName _GetChildOrderInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getChildOrderInfoResponse");
+    private final static QName _UpdateTransactionResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateTransactionResponse");
+    private final static QName _GetProdInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getProdInfo");
+    private final static QName _Exception_QNAME = new QName("http://payment.ws.htichina.com/", "Exception");
+    private final static QName _GetTransactionByOrderNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getTransactionByOrderNumResponse");
+    private final static QName _CreatePaymentOrderResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createPaymentOrderResponse");
+    private final static QName _GetChildOrderInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getChildOrderInfo");
+    private final static QName _SyncAccnt_QNAME = new QName("http://payment.ws.htichina.com/", "syncAccnt");
+    private final static QName _UpdateTransaction_QNAME = new QName("http://payment.ws.htichina.com/", "updateTransaction");
+    private final static QName _GetLastLoginUserByOpenIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getLastLoginUserByOpenIdResponse");
+    private final static QName _CheckOrderPaiedResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkOrderPaiedResponse");
+    private final static QName _GetUnanswerQuestion_QNAME = new QName("http://payment.ws.htichina.com/", "getUnanswerQuestion");
+    private final static QName _CreateUpgradePaymentOrderResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createUpgradePaymentOrderResponse");
+    private final static QName _GetLastLoginUserByOpenId_QNAME = new QName("http://payment.ws.htichina.com/", "getLastLoginUserByOpenId");
+    private final static QName _LogoffResponse_QNAME = new QName("http://payment.ws.htichina.com/", "logoffResponse");
+    private final static QName _PaymentHandlerServiceResponse_QNAME = new QName("http://payment.ws.htichina.com/", "paymentHandlerServiceResponse");
+    private final static QName _CreateLuckyOrder_QNAME = new QName("http://payment.ws.htichina.com/", "createLuckyOrder");
+    private final static QName _GetUnanswerQuestionResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getUnanswerQuestionResponse");
+    private final static QName _UpdateWechatMessageHistory_QNAME = new QName("http://payment.ws.htichina.com/", "updateWechatMessageHistory");
+    private final static QName _IsWinBackOrEarlyBird_QNAME = new QName("http://payment.ws.htichina.com/", "isWinBackOrEarlyBird");
+    private final static QName _QuestionnaireFinished_QNAME = new QName("http://payment.ws.htichina.com/", "QuestionnaireFinished");
+    private final static QName _CreatePaymentOrder_QNAME = new QName("http://payment.ws.htichina.com/", "createPaymentOrder");
+    private final static QName _CreateWechatUserProfile_QNAME = new QName("http://payment.ws.htichina.com/", "createWechatUserProfile");
+    private final static QName _SendMessageResponse_QNAME = new QName("http://payment.ws.htichina.com/", "sendMessageResponse");
+    private final static QName _SyncAMPWifiAccountResponse_QNAME = new QName("http://payment.ws.htichina.com/", "syncAMPWifiAccountResponse");
+    private final static QName _GetOpenIdByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getOpenIdByAccountNumResponse");
+    private final static QName _Logoff_QNAME = new QName("http://payment.ws.htichina.com/", "logoff");
+    private final static QName _GetCallPhoneByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "getCallPhoneByAccountNum");
+    private final static QName _GetInvoiceInformationResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getInvoiceInformationResponse");
+    private final static QName _IsReceiveDidiResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isReceiveDidiResponse");
+    private final static QName _DoLuckDraw_QNAME = new QName("http://payment.ws.htichina.com/", "doLuckDraw");
     private final static QName _GetParentOrderInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getParentOrderInfo");
     private final static QName _HasLuckyDrawLinkByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLinkByAccountNum");
     private final static QName _HasLuckyDrawLinkByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLinkByAccountNumResponse");
     private final static QName _GetProdInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getProdInfoResponse");
     private final static QName _DoLuckDrawResponse_QNAME = new QName("http://payment.ws.htichina.com/", "doLuckDrawResponse");
     private final static QName _GetCurrentAccountInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getCurrentAccountInfo");
-    private final static QName _IsNewFollowReciveDidi_QNAME = new QName("http://payment.ws.htichina.com/", "isNewFollowReciveDidi");
     private final static QName _UpdateWechatMessageHistoryResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateWechatMessageHistoryResponse");
     private final static QName _CreateWechatUserProfileResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createWechatUserProfileResponse");
-    private final static QName _CloseWechatUserProfileResponse_QNAME = new QName("http://payment.ws.htichina.com/", "closeWechatUserProfileResponse");
-    private final static QName _GetPromotionInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getPromotionInfoResponse");
     private final static QName _SyncAccntResponse_QNAME = new QName("http://payment.ws.htichina.com/", "syncAccntResponse");
-    private final static QName _UpdateNewCallPhoneByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateNewCallPhoneByAccountNumResponse");
-    private final static QName _SendInvoiceEmail_QNAME = new QName("http://payment.ws.htichina.com/", "sendInvoiceEmail");
     private final static QName _CheckOrderPaied_QNAME = new QName("http://payment.ws.htichina.com/", "checkOrderPaied");
     private final static QName _ValidateLoginResponse_QNAME = new QName("http://payment.ws.htichina.com/", "validateLoginResponse");
-    private final static QName _HasLuckyDrawLink_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLink");
-    private final static QName _GetWechatUserDataByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getWechatUserDataByAccountNumResponse");
-    private final static QName _Insert_QNAME = new QName("http://payment.ws.htichina.com/", "insert");
-    private final static QName _InsertInvoiceInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "insertInvoiceInfoResponse");
     private final static QName _IsReceiveDidi_QNAME = new QName("http://payment.ws.htichina.com/", "isReceiveDidi");
-    private final static QName _GetPromotionInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getPromotionInfo");
-    private final static QName _PaymentHandlerService_QNAME = new QName("http://payment.ws.htichina.com/", "paymentHandlerService");
     private final static QName _InsertInvoiceInfo_QNAME = new QName("http://payment.ws.htichina.com/", "insertInvoiceInfo");
-    private final static QName _UpdateNewCallPhoneByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "updateNewCallPhoneByAccountNum");
     private final static QName _IsWinBackOrEarlyBirdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isWinBackOrEarlyBirdResponse");
+    private final static QName _ParseException_QNAME = new QName("http://payment.ws.htichina.com/", "ParseException");
     private final static QName _GetCurrentAccountInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getCurrentAccountInfoResponse");
-    private final static QName _UpdateLoginTimesResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateLoginTimesResponse");
     private final static QName _CreateLuckyOrderResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createLuckyOrderResponse");
-    private final static QName _CreateTransaction_QNAME = new QName("http://payment.ws.htichina.com/", "createTransaction");
     private final static QName _GetActiveAccountByOpenIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getActiveAccountByOpenIdResponse");
-    private final static QName _HasLuckyDrawLinkResponse_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLinkResponse");
-    private final static QName _GetChildOrderInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getChildOrderInfoResponse");
     private final static QName _GetNewPackageAfterUpgrade_QNAME = new QName("http://payment.ws.htichina.com/", "getNewPackageAfterUpgrade");
     private final static QName _SyncAMPWifiAccount_QNAME = new QName("http://payment.ws.htichina.com/", "syncAMPWifiAccount");
     private final static QName _CheckCustemerLuckyDraw_QNAME = new QName("http://payment.ws.htichina.com/", "checkCustemerLuckyDraw");
-    private final static QName _UpdateTransactionResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateTransactionResponse");
-    private final static QName _GetProdInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getProdInfo");
     private final static QName _IsNewFollowReciveDidiResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isNewFollowReciveDidiResponse");
     private final static QName _SendMessage_QNAME = new QName("http://payment.ws.htichina.com/", "sendMessage");
     private final static QName _GetOpenIdByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "getOpenIdByAccountNum");
-    private final static QName _Exception_QNAME = new QName("http://payment.ws.htichina.com/", "Exception");
     private final static QName _SendInvoiceEmailResponse_QNAME = new QName("http://payment.ws.htichina.com/", "sendInvoiceEmailResponse");
-    private final static QName _GetTransactionByOrderNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getTransactionByOrderNumResponse");
     private final static QName _UpdateOrderStatus_QNAME = new QName("http://payment.ws.htichina.com/", "updateOrderStatus");
     private final static QName _CheckPurchaseProductResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkPurchaseProductResponse");
-    private final static QName _CreatePaymentOrderResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createPaymentOrderResponse");
     private final static QName _GetTransactionByOrderNum_QNAME = new QName("http://payment.ws.htichina.com/", "getTransactionByOrderNum");
     private final static QName _CheckCustemerLuckyDrawResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkCustemerLuckyDrawResponse");
-    private final static QName _GetChildOrderInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getChildOrderInfo");
-    private final static QName _SyncAccnt_QNAME = new QName("http://payment.ws.htichina.com/", "syncAccnt");
-    private final static QName _UpdateTransaction_QNAME = new QName("http://payment.ws.htichina.com/", "updateTransaction");
     private final static QName _GetCallPhoneByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getCallPhoneByAccountNumResponse");
-    private final static QName _GetLastLoginUserByOpenIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getLastLoginUserByOpenIdResponse");
-    private final static QName _CheckOrderPaiedResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkOrderPaiedResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.htichina.wsclient.payment
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link GetVehicleInfoResponse }
-     * 
-     */
-    public GetVehicleInfoResponse createGetVehicleInfoResponse() {
-        return new GetVehicleInfoResponse();
     }
 
     /**
@@ -148,19 +147,403 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetActiveAccountByOpenId }
-     * 
-     */
-    public GetActiveAccountByOpenId createGetActiveAccountByOpenId() {
-        return new GetActiveAccountByOpenId();
-    }
-
-    /**
      * Create an instance of {@link CreateLuckyOrder }
      * 
      */
     public CreateLuckyOrder createCreateLuckyOrder() {
         return new CreateLuckyOrder();
+    }
+
+    /**
+     * Create an instance of {@link GetUnanswerQuestionResponse }
+     * 
+     */
+    public GetUnanswerQuestionResponse createGetUnanswerQuestionResponse() {
+        return new GetUnanswerQuestionResponse();
+    }
+
+    /**
+     * Create an instance of {@link LogoffResponse }
+     * 
+     */
+    public LogoffResponse createLogoffResponse() {
+        return new LogoffResponse();
+    }
+
+    /**
+     * Create an instance of {@link CreateUpgradePaymentOrderResponse }
+     * 
+     */
+    public CreateUpgradePaymentOrderResponse createCreateUpgradePaymentOrderResponse() {
+        return new CreateUpgradePaymentOrderResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetLastLoginUserByOpenId }
+     * 
+     */
+    public GetLastLoginUserByOpenId createGetLastLoginUserByOpenId() {
+        return new GetLastLoginUserByOpenId();
+    }
+
+    /**
+     * Create an instance of {@link PaymentHandlerServiceResponse }
+     * 
+     */
+    public PaymentHandlerServiceResponse createPaymentHandlerServiceResponse() {
+        return new PaymentHandlerServiceResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetUnanswerQuestion }
+     * 
+     */
+    public GetUnanswerQuestion createGetUnanswerQuestion() {
+        return new GetUnanswerQuestion();
+    }
+
+    /**
+     * Create an instance of {@link DoLuckDraw }
+     * 
+     */
+    public DoLuckDraw createDoLuckDraw() {
+        return new DoLuckDraw();
+    }
+
+    /**
+     * Create an instance of {@link HasLuckyDrawLinkByAccountNum }
+     * 
+     */
+    public HasLuckyDrawLinkByAccountNum createHasLuckyDrawLinkByAccountNum() {
+        return new HasLuckyDrawLinkByAccountNum();
+    }
+
+    /**
+     * Create an instance of {@link GetParentOrderInfo }
+     * 
+     */
+    public GetParentOrderInfo createGetParentOrderInfo() {
+        return new GetParentOrderInfo();
+    }
+
+    /**
+     * Create an instance of {@link GetInvoiceInformationResponse }
+     * 
+     */
+    public GetInvoiceInformationResponse createGetInvoiceInformationResponse() {
+        return new GetInvoiceInformationResponse();
+    }
+
+    /**
+     * Create an instance of {@link IsReceiveDidiResponse }
+     * 
+     */
+    public IsReceiveDidiResponse createIsReceiveDidiResponse() {
+        return new IsReceiveDidiResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetOpenIdByAccountNumResponse }
+     * 
+     */
+    public GetOpenIdByAccountNumResponse createGetOpenIdByAccountNumResponse() {
+        return new GetOpenIdByAccountNumResponse();
+    }
+
+    /**
+     * Create an instance of {@link Logoff }
+     * 
+     */
+    public Logoff createLogoff() {
+        return new Logoff();
+    }
+
+    /**
+     * Create an instance of {@link GetCallPhoneByAccountNum }
+     * 
+     */
+    public GetCallPhoneByAccountNum createGetCallPhoneByAccountNum() {
+        return new GetCallPhoneByAccountNum();
+    }
+
+    /**
+     * Create an instance of {@link SyncAMPWifiAccountResponse }
+     * 
+     */
+    public SyncAMPWifiAccountResponse createSyncAMPWifiAccountResponse() {
+        return new SyncAMPWifiAccountResponse();
+    }
+
+    /**
+     * Create an instance of {@link QuestionnaireFinished }
+     * 
+     */
+    public QuestionnaireFinished createQuestionnaireFinished() {
+        return new QuestionnaireFinished();
+    }
+
+    /**
+     * Create an instance of {@link CreatePaymentOrder }
+     * 
+     */
+    public CreatePaymentOrder createCreatePaymentOrder() {
+        return new CreatePaymentOrder();
+    }
+
+    /**
+     * Create an instance of {@link CreateWechatUserProfile }
+     * 
+     */
+    public CreateWechatUserProfile createCreateWechatUserProfile() {
+        return new CreateWechatUserProfile();
+    }
+
+    /**
+     * Create an instance of {@link SendMessageResponse }
+     * 
+     */
+    public SendMessageResponse createSendMessageResponse() {
+        return new SendMessageResponse();
+    }
+
+    /**
+     * Create an instance of {@link IsWinBackOrEarlyBirdResponse }
+     * 
+     */
+    public IsWinBackOrEarlyBirdResponse createIsWinBackOrEarlyBirdResponse() {
+        return new IsWinBackOrEarlyBirdResponse();
+    }
+
+    /**
+     * Create an instance of {@link InsertInvoiceInfo }
+     * 
+     */
+    public InsertInvoiceInfo createInsertInvoiceInfo() {
+        return new InsertInvoiceInfo();
+    }
+
+    /**
+     * Create an instance of {@link CheckOrderPaied }
+     * 
+     */
+    public CheckOrderPaied createCheckOrderPaied() {
+        return new CheckOrderPaied();
+    }
+
+    /**
+     * Create an instance of {@link ValidateLoginResponse }
+     * 
+     */
+    public ValidateLoginResponse createValidateLoginResponse() {
+        return new ValidateLoginResponse();
+    }
+
+    /**
+     * Create an instance of {@link IsReceiveDidi }
+     * 
+     */
+    public IsReceiveDidi createIsReceiveDidi() {
+        return new IsReceiveDidi();
+    }
+
+    /**
+     * Create an instance of {@link SyncAccntResponse }
+     * 
+     */
+    public SyncAccntResponse createSyncAccntResponse() {
+        return new SyncAccntResponse();
+    }
+
+    /**
+     * Create an instance of {@link CreateWechatUserProfileResponse }
+     * 
+     */
+    public CreateWechatUserProfileResponse createCreateWechatUserProfileResponse() {
+        return new CreateWechatUserProfileResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetProdInfoResponse }
+     * 
+     */
+    public GetProdInfoResponse createGetProdInfoResponse() {
+        return new GetProdInfoResponse();
+    }
+
+    /**
+     * Create an instance of {@link HasLuckyDrawLinkByAccountNumResponse }
+     * 
+     */
+    public HasLuckyDrawLinkByAccountNumResponse createHasLuckyDrawLinkByAccountNumResponse() {
+        return new HasLuckyDrawLinkByAccountNumResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCurrentAccountInfo }
+     * 
+     */
+    public GetCurrentAccountInfo createGetCurrentAccountInfo() {
+        return new GetCurrentAccountInfo();
+    }
+
+    /**
+     * Create an instance of {@link UpdateWechatMessageHistoryResponse }
+     * 
+     */
+    public UpdateWechatMessageHistoryResponse createUpdateWechatMessageHistoryResponse() {
+        return new UpdateWechatMessageHistoryResponse();
+    }
+
+    /**
+     * Create an instance of {@link DoLuckDrawResponse }
+     * 
+     */
+    public DoLuckDrawResponse createDoLuckDrawResponse() {
+        return new DoLuckDrawResponse();
+    }
+
+    /**
+     * Create an instance of {@link CheckCustemerLuckyDrawResponse }
+     * 
+     */
+    public CheckCustemerLuckyDrawResponse createCheckCustemerLuckyDrawResponse() {
+        return new CheckCustemerLuckyDrawResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetTransactionByOrderNum }
+     * 
+     */
+    public GetTransactionByOrderNum createGetTransactionByOrderNum() {
+        return new GetTransactionByOrderNum();
+    }
+
+    /**
+     * Create an instance of {@link GetCallPhoneByAccountNumResponse }
+     * 
+     */
+    public GetCallPhoneByAccountNumResponse createGetCallPhoneByAccountNumResponse() {
+        return new GetCallPhoneByAccountNumResponse();
+    }
+
+    /**
+     * Create an instance of {@link IsNewFollowReciveDidiResponse }
+     * 
+     */
+    public IsNewFollowReciveDidiResponse createIsNewFollowReciveDidiResponse() {
+        return new IsNewFollowReciveDidiResponse();
+    }
+
+    /**
+     * Create an instance of {@link SendMessage }
+     * 
+     */
+    public SendMessage createSendMessage() {
+        return new SendMessage();
+    }
+
+    /**
+     * Create an instance of {@link CheckPurchaseProductResponse }
+     * 
+     */
+    public CheckPurchaseProductResponse createCheckPurchaseProductResponse() {
+        return new CheckPurchaseProductResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateOrderStatus }
+     * 
+     */
+    public UpdateOrderStatus createUpdateOrderStatus() {
+        return new UpdateOrderStatus();
+    }
+
+    /**
+     * Create an instance of {@link SendInvoiceEmailResponse }
+     * 
+     */
+    public SendInvoiceEmailResponse createSendInvoiceEmailResponse() {
+        return new SendInvoiceEmailResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetOpenIdByAccountNum }
+     * 
+     */
+    public GetOpenIdByAccountNum createGetOpenIdByAccountNum() {
+        return new GetOpenIdByAccountNum();
+    }
+
+    /**
+     * Create an instance of {@link GetNewPackageAfterUpgrade }
+     * 
+     */
+    public GetNewPackageAfterUpgrade createGetNewPackageAfterUpgrade() {
+        return new GetNewPackageAfterUpgrade();
+    }
+
+    /**
+     * Create an instance of {@link CheckCustemerLuckyDraw }
+     * 
+     */
+    public CheckCustemerLuckyDraw createCheckCustemerLuckyDraw() {
+        return new CheckCustemerLuckyDraw();
+    }
+
+    /**
+     * Create an instance of {@link SyncAMPWifiAccount }
+     * 
+     */
+    public SyncAMPWifiAccount createSyncAMPWifiAccount() {
+        return new SyncAMPWifiAccount();
+    }
+
+    /**
+     * Create an instance of {@link GetCurrentAccountInfoResponse }
+     * 
+     */
+    public GetCurrentAccountInfoResponse createGetCurrentAccountInfoResponse() {
+        return new GetCurrentAccountInfoResponse();
+    }
+
+    /**
+     * Create an instance of {@link ParseException }
+     * 
+     */
+    public ParseException createParseException() {
+        return new ParseException();
+    }
+
+    /**
+     * Create an instance of {@link GetActiveAccountByOpenIdResponse }
+     * 
+     */
+    public GetActiveAccountByOpenIdResponse createGetActiveAccountByOpenIdResponse() {
+        return new GetActiveAccountByOpenIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link CreateLuckyOrderResponse }
+     * 
+     */
+    public CreateLuckyOrderResponse createCreateLuckyOrderResponse() {
+        return new CreateLuckyOrderResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetVehicleInfoResponse }
+     * 
+     */
+    public GetVehicleInfoResponse createGetVehicleInfoResponse() {
+        return new GetVehicleInfoResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetActiveAccountByOpenId }
+     * 
+     */
+    public GetActiveAccountByOpenId createGetActiveAccountByOpenId() {
+        return new GetActiveAccountByOpenId();
     }
 
     /**
@@ -196,43 +579,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LogoffResponse }
-     * 
-     */
-    public LogoffResponse createLogoffResponse() {
-        return new LogoffResponse();
-    }
-
-    /**
-     * Create an instance of {@link CreateUpgradePaymentOrderResponse }
-     * 
-     */
-    public CreateUpgradePaymentOrderResponse createCreateUpgradePaymentOrderResponse() {
-        return new CreateUpgradePaymentOrderResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetLastLoginUserByOpenId }
-     * 
-     */
-    public GetLastLoginUserByOpenId createGetLastLoginUserByOpenId() {
-        return new GetLastLoginUserByOpenId();
-    }
-
-    /**
      * Create an instance of {@link GetWechatUserDataByAccountNum }
      * 
      */
     public GetWechatUserDataByAccountNum createGetWechatUserDataByAccountNum() {
         return new GetWechatUserDataByAccountNum();
-    }
-
-    /**
-     * Create an instance of {@link PaymentHandlerServiceResponse }
-     * 
-     */
-    public PaymentHandlerServiceResponse createPaymentHandlerServiceResponse() {
-        return new PaymentHandlerServiceResponse();
     }
 
     /**
@@ -268,11 +619,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DoLuckDraw }
+     * Create an instance of {@link AnswerStatus }
      * 
      */
-    public DoLuckDraw createDoLuckDraw() {
-        return new DoLuckDraw();
+    public AnswerStatus createAnswerStatus() {
+        return new AnswerStatus();
     }
 
     /**
@@ -284,43 +635,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link HasLuckyDrawLinkByAccountNum }
-     * 
-     */
-    public HasLuckyDrawLinkByAccountNum createHasLuckyDrawLinkByAccountNum() {
-        return new HasLuckyDrawLinkByAccountNum();
-    }
-
-    /**
-     * Create an instance of {@link GetParentOrderInfo }
-     * 
-     */
-    public GetParentOrderInfo createGetParentOrderInfo() {
-        return new GetParentOrderInfo();
-    }
-
-    /**
-     * Create an instance of {@link GetInvoiceInformationResponse }
-     * 
-     */
-    public GetInvoiceInformationResponse createGetInvoiceInformationResponse() {
-        return new GetInvoiceInformationResponse();
-    }
-
-    /**
      * Create an instance of {@link GetVehicleInfo }
      * 
      */
     public GetVehicleInfo createGetVehicleInfo() {
         return new GetVehicleInfo();
-    }
-
-    /**
-     * Create an instance of {@link IsReceiveDidiResponse }
-     * 
-     */
-    public IsReceiveDidiResponse createIsReceiveDidiResponse() {
-        return new IsReceiveDidiResponse();
     }
 
     /**
@@ -340,35 +659,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetOpenIdByAccountNumResponse }
-     * 
-     */
-    public GetOpenIdByAccountNumResponse createGetOpenIdByAccountNumResponse() {
-        return new GetOpenIdByAccountNumResponse();
-    }
-
-    /**
-     * Create an instance of {@link Logoff }
-     * 
-     */
-    public Logoff createLogoff() {
-        return new Logoff();
-    }
-
-    /**
      * Create an instance of {@link CheckTransaction }
      * 
      */
     public CheckTransaction createCheckTransaction() {
         return new CheckTransaction();
-    }
-
-    /**
-     * Create an instance of {@link GetCallPhoneByAccountNum }
-     * 
-     */
-    public GetCallPhoneByAccountNum createGetCallPhoneByAccountNum() {
-        return new GetCallPhoneByAccountNum();
     }
 
     /**
@@ -380,14 +675,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SyncAMPWifiAccountResponse }
-     * 
-     */
-    public SyncAMPWifiAccountResponse createSyncAMPWifiAccountResponse() {
-        return new SyncAMPWifiAccountResponse();
-    }
-
-    /**
      * Create an instance of {@link GetInvoiceInformation }
      * 
      */
@@ -396,35 +683,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CreatePaymentOrder }
-     * 
-     */
-    public CreatePaymentOrder createCreatePaymentOrder() {
-        return new CreatePaymentOrder();
-    }
-
-    /**
-     * Create an instance of {@link CreateWechatUserProfile }
-     * 
-     */
-    public CreateWechatUserProfile createCreateWechatUserProfile() {
-        return new CreateWechatUserProfile();
-    }
-
-    /**
      * Create an instance of {@link GetParentOrderInfoResponse }
      * 
      */
     public GetParentOrderInfoResponse createGetParentOrderInfoResponse() {
         return new GetParentOrderInfoResponse();
-    }
-
-    /**
-     * Create an instance of {@link SendMessageResponse }
-     * 
-     */
-    public SendMessageResponse createSendMessageResponse() {
-        return new SendMessageResponse();
     }
 
     /**
@@ -441,22 +704,6 @@ public class ObjectFactory {
      */
     public PaymentHandlerService createPaymentHandlerService() {
         return new PaymentHandlerService();
-    }
-
-    /**
-     * Create an instance of {@link IsWinBackOrEarlyBirdResponse }
-     * 
-     */
-    public IsWinBackOrEarlyBirdResponse createIsWinBackOrEarlyBirdResponse() {
-        return new IsWinBackOrEarlyBirdResponse();
-    }
-
-    /**
-     * Create an instance of {@link InsertInvoiceInfo }
-     * 
-     */
-    public InsertInvoiceInfo createInsertInvoiceInfo() {
-        return new InsertInvoiceInfo();
     }
 
     /**
@@ -500,27 +747,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CheckOrderPaied }
+     * Create an instance of {@link QuestionnaireFinishedResponse }
      * 
      */
-    public CheckOrderPaied createCheckOrderPaied() {
-        return new CheckOrderPaied();
+    public QuestionnaireFinishedResponse createQuestionnaireFinishedResponse() {
+        return new QuestionnaireFinishedResponse();
     }
 
     /**
-     * Create an instance of {@link ValidateLoginResponse }
+     * Create an instance of {@link AnswerStatusResponse }
      * 
      */
-    public ValidateLoginResponse createValidateLoginResponse() {
-        return new ValidateLoginResponse();
-    }
-
-    /**
-     * Create an instance of {@link IsReceiveDidi }
-     * 
-     */
-    public IsReceiveDidi createIsReceiveDidi() {
-        return new IsReceiveDidi();
+    public AnswerStatusResponse createAnswerStatusResponse() {
+        return new AnswerStatusResponse();
     }
 
     /**
@@ -548,51 +787,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SyncAccntResponse }
-     * 
-     */
-    public SyncAccntResponse createSyncAccntResponse() {
-        return new SyncAccntResponse();
-    }
-
-    /**
      * Create an instance of {@link UpdateNewCallPhoneByAccountNumResponse }
      * 
      */
     public UpdateNewCallPhoneByAccountNumResponse createUpdateNewCallPhoneByAccountNumResponse() {
         return new UpdateNewCallPhoneByAccountNumResponse();
-    }
-
-    /**
-     * Create an instance of {@link CreateWechatUserProfileResponse }
-     * 
-     */
-    public CreateWechatUserProfileResponse createCreateWechatUserProfileResponse() {
-        return new CreateWechatUserProfileResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetProdInfoResponse }
-     * 
-     */
-    public GetProdInfoResponse createGetProdInfoResponse() {
-        return new GetProdInfoResponse();
-    }
-
-    /**
-     * Create an instance of {@link HasLuckyDrawLinkByAccountNumResponse }
-     * 
-     */
-    public HasLuckyDrawLinkByAccountNumResponse createHasLuckyDrawLinkByAccountNumResponse() {
-        return new HasLuckyDrawLinkByAccountNumResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetCurrentAccountInfo }
-     * 
-     */
-    public GetCurrentAccountInfo createGetCurrentAccountInfo() {
-        return new GetCurrentAccountInfo();
     }
 
     /**
@@ -604,43 +803,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UpdateWechatMessageHistoryResponse }
-     * 
-     */
-    public UpdateWechatMessageHistoryResponse createUpdateWechatMessageHistoryResponse() {
-        return new UpdateWechatMessageHistoryResponse();
-    }
-
-    /**
-     * Create an instance of {@link DoLuckDrawResponse }
-     * 
-     */
-    public DoLuckDrawResponse createDoLuckDrawResponse() {
-        return new DoLuckDrawResponse();
-    }
-
-    /**
-     * Create an instance of {@link CheckCustemerLuckyDrawResponse }
-     * 
-     */
-    public CheckCustemerLuckyDrawResponse createCheckCustemerLuckyDrawResponse() {
-        return new CheckCustemerLuckyDrawResponse();
-    }
-
-    /**
      * Create an instance of {@link GetChildOrderInfo }
      * 
      */
     public GetChildOrderInfo createGetChildOrderInfo() {
         return new GetChildOrderInfo();
-    }
-
-    /**
-     * Create an instance of {@link GetTransactionByOrderNum }
-     * 
-     */
-    public GetTransactionByOrderNum createGetTransactionByOrderNum() {
-        return new GetTransactionByOrderNum();
     }
 
     /**
@@ -657,14 +824,6 @@ public class ObjectFactory {
      */
     public GetLastLoginUserByOpenIdResponse createGetLastLoginUserByOpenIdResponse() {
         return new GetLastLoginUserByOpenIdResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetCallPhoneByAccountNumResponse }
-     * 
-     */
-    public GetCallPhoneByAccountNumResponse createGetCallPhoneByAccountNumResponse() {
-        return new GetCallPhoneByAccountNumResponse();
     }
 
     /**
@@ -692,30 +851,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IsNewFollowReciveDidiResponse }
-     * 
-     */
-    public IsNewFollowReciveDidiResponse createIsNewFollowReciveDidiResponse() {
-        return new IsNewFollowReciveDidiResponse();
-    }
-
-    /**
-     * Create an instance of {@link SendMessage }
-     * 
-     */
-    public SendMessage createSendMessage() {
-        return new SendMessage();
-    }
-
-    /**
-     * Create an instance of {@link CheckPurchaseProductResponse }
-     * 
-     */
-    public CheckPurchaseProductResponse createCheckPurchaseProductResponse() {
-        return new CheckPurchaseProductResponse();
-    }
-
-    /**
      * Create an instance of {@link CreatePaymentOrderResponse }
      * 
      */
@@ -732,35 +867,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UpdateOrderStatus }
-     * 
-     */
-    public UpdateOrderStatus createUpdateOrderStatus() {
-        return new UpdateOrderStatus();
-    }
-
-    /**
      * Create an instance of {@link Exception }
      * 
      */
     public Exception createException() {
         return new Exception();
-    }
-
-    /**
-     * Create an instance of {@link SendInvoiceEmailResponse }
-     * 
-     */
-    public SendInvoiceEmailResponse createSendInvoiceEmailResponse() {
-        return new SendInvoiceEmailResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetOpenIdByAccountNum }
-     * 
-     */
-    public GetOpenIdByAccountNum createGetOpenIdByAccountNum() {
-        return new GetOpenIdByAccountNum();
     }
 
     /**
@@ -772,35 +883,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetNewPackageAfterUpgrade }
-     * 
-     */
-    public GetNewPackageAfterUpgrade createGetNewPackageAfterUpgrade() {
-        return new GetNewPackageAfterUpgrade();
-    }
-
-    /**
-     * Create an instance of {@link CheckCustemerLuckyDraw }
-     * 
-     */
-    public CheckCustemerLuckyDraw createCheckCustemerLuckyDraw() {
-        return new CheckCustemerLuckyDraw();
-    }
-
-    /**
      * Create an instance of {@link UpdateTransactionResponse }
      * 
      */
     public UpdateTransactionResponse createUpdateTransactionResponse() {
         return new UpdateTransactionResponse();
-    }
-
-    /**
-     * Create an instance of {@link SyncAMPWifiAccount }
-     * 
-     */
-    public SyncAMPWifiAccount createSyncAMPWifiAccount() {
-        return new SyncAMPWifiAccount();
     }
 
     /**
@@ -812,35 +899,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetCurrentAccountInfoResponse }
-     * 
-     */
-    public GetCurrentAccountInfoResponse createGetCurrentAccountInfoResponse() {
-        return new GetCurrentAccountInfoResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetActiveAccountByOpenIdResponse }
-     * 
-     */
-    public GetActiveAccountByOpenIdResponse createGetActiveAccountByOpenIdResponse() {
-        return new GetActiveAccountByOpenIdResponse();
-    }
-
-    /**
      * Create an instance of {@link HasLuckyDrawLinkResponse }
      * 
      */
     public HasLuckyDrawLinkResponse createHasLuckyDrawLinkResponse() {
         return new HasLuckyDrawLinkResponse();
-    }
-
-    /**
-     * Create an instance of {@link CreateLuckyOrderResponse }
-     * 
-     */
-    public CreateLuckyOrderResponse createCreateLuckyOrderResponse() {
-        return new CreateLuckyOrderResponse();
     }
 
     /**
@@ -961,6 +1024,14 @@ public class ObjectFactory {
      */
     public Transaction createTransaction() {
         return new Transaction();
+    }
+
+    /**
+     * Create an instance of {@link Questions }
+     * 
+     */
+    public Questions createQuestions() {
+        return new Questions();
     }
 
     /**
@@ -1112,57 +1183,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreateUpgradePaymentOrderResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createUpgradePaymentOrderResponse")
-    public JAXBElement<CreateUpgradePaymentOrderResponse> createCreateUpgradePaymentOrderResponse(CreateUpgradePaymentOrderResponse value) {
-        return new JAXBElement<CreateUpgradePaymentOrderResponse>(_CreateUpgradePaymentOrderResponse_QNAME, CreateUpgradePaymentOrderResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetLastLoginUserByOpenId }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getLastLoginUserByOpenId")
-    public JAXBElement<GetLastLoginUserByOpenId> createGetLastLoginUserByOpenId(GetLastLoginUserByOpenId value) {
-        return new JAXBElement<GetLastLoginUserByOpenId>(_GetLastLoginUserByOpenId_QNAME, GetLastLoginUserByOpenId.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CheckPurchaseProduct }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "checkPurchaseProduct")
     public JAXBElement<CheckPurchaseProduct> createCheckPurchaseProduct(CheckPurchaseProduct value) {
         return new JAXBElement<CheckPurchaseProduct>(_CheckPurchaseProduct_QNAME, CheckPurchaseProduct.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LogoffResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "logoffResponse")
-    public JAXBElement<LogoffResponse> createLogoffResponse(LogoffResponse value) {
-        return new JAXBElement<LogoffResponse>(_LogoffResponse_QNAME, LogoffResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PaymentHandlerServiceResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "paymentHandlerServiceResponse")
-    public JAXBElement<PaymentHandlerServiceResponse> createPaymentHandlerServiceResponse(PaymentHandlerServiceResponse value) {
-        return new JAXBElement<PaymentHandlerServiceResponse>(_PaymentHandlerServiceResponse_QNAME, PaymentHandlerServiceResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreateLuckyOrder }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createLuckyOrder")
-    public JAXBElement<CreateLuckyOrder> createCreateLuckyOrder(CreateLuckyOrder value) {
-        return new JAXBElement<CreateLuckyOrder>(_CreateLuckyOrder_QNAME, CreateLuckyOrder.class, null, value);
     }
 
     /**
@@ -1202,48 +1228,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateWechatMessageHistory }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateWechatMessageHistory")
-    public JAXBElement<UpdateWechatMessageHistory> createUpdateWechatMessageHistory(UpdateWechatMessageHistory value) {
-        return new JAXBElement<UpdateWechatMessageHistory>(_UpdateWechatMessageHistory_QNAME, UpdateWechatMessageHistory.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetVehicleInfoResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getVehicleInfoResponse")
     public JAXBElement<GetVehicleInfoResponse> createGetVehicleInfoResponse(GetVehicleInfoResponse value) {
         return new JAXBElement<GetVehicleInfoResponse>(_GetVehicleInfoResponse_QNAME, GetVehicleInfoResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IsWinBackOrEarlyBird }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "isWinBackOrEarlyBird")
-    public JAXBElement<IsWinBackOrEarlyBird> createIsWinBackOrEarlyBird(IsWinBackOrEarlyBird value) {
-        return new JAXBElement<IsWinBackOrEarlyBird>(_IsWinBackOrEarlyBird_QNAME, IsWinBackOrEarlyBird.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreatePaymentOrder }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createPaymentOrder")
-    public JAXBElement<CreatePaymentOrder> createCreatePaymentOrder(CreatePaymentOrder value) {
-        return new JAXBElement<CreatePaymentOrder>(_CreatePaymentOrder_QNAME, CreatePaymentOrder.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreateWechatUserProfile }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createWechatUserProfile")
-    public JAXBElement<CreateWechatUserProfile> createCreateWechatUserProfile(CreateWechatUserProfile value) {
-        return new JAXBElement<CreateWechatUserProfile>(_CreateWechatUserProfile_QNAME, CreateWechatUserProfile.class, null, value);
     }
 
     /**
@@ -1256,48 +1246,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SendMessageResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "sendMessageResponse")
-    public JAXBElement<SendMessageResponse> createSendMessageResponse(SendMessageResponse value) {
-        return new JAXBElement<SendMessageResponse>(_SendMessageResponse_QNAME, SendMessageResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetInvoiceInformation }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getInvoiceInformation")
     public JAXBElement<GetInvoiceInformation> createGetInvoiceInformation(GetInvoiceInformation value) {
         return new JAXBElement<GetInvoiceInformation>(_GetInvoiceInformation_QNAME, GetInvoiceInformation.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SyncAMPWifiAccountResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "syncAMPWifiAccountResponse")
-    public JAXBElement<SyncAMPWifiAccountResponse> createSyncAMPWifiAccountResponse(SyncAMPWifiAccountResponse value) {
-        return new JAXBElement<SyncAMPWifiAccountResponse>(_SyncAMPWifiAccountResponse_QNAME, SyncAMPWifiAccountResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetOpenIdByAccountNumResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getOpenIdByAccountNumResponse")
-    public JAXBElement<GetOpenIdByAccountNumResponse> createGetOpenIdByAccountNumResponse(GetOpenIdByAccountNumResponse value) {
-        return new JAXBElement<GetOpenIdByAccountNumResponse>(_GetOpenIdByAccountNumResponse_QNAME, GetOpenIdByAccountNumResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Logoff }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "logoff")
-    public JAXBElement<Logoff> createLogoff(Logoff value) {
-        return new JAXBElement<Logoff>(_Logoff_QNAME, Logoff.class, null, value);
     }
 
     /**
@@ -1328,39 +1282,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetCallPhoneByAccountNum }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getCallPhoneByAccountNum")
-    public JAXBElement<GetCallPhoneByAccountNum> createGetCallPhoneByAccountNum(GetCallPhoneByAccountNum value) {
-        return new JAXBElement<GetCallPhoneByAccountNum>(_GetCallPhoneByAccountNum_QNAME, GetCallPhoneByAccountNum.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CheckTransaction }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "checkTransaction")
     public JAXBElement<CheckTransaction> createCheckTransaction(CheckTransaction value) {
         return new JAXBElement<CheckTransaction>(_CheckTransaction_QNAME, CheckTransaction.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetInvoiceInformationResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getInvoiceInformationResponse")
-    public JAXBElement<GetInvoiceInformationResponse> createGetInvoiceInformationResponse(GetInvoiceInformationResponse value) {
-        return new JAXBElement<GetInvoiceInformationResponse>(_GetInvoiceInformationResponse_QNAME, GetInvoiceInformationResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IsReceiveDidiResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "isReceiveDidiResponse")
-    public JAXBElement<IsReceiveDidiResponse> createIsReceiveDidiResponse(IsReceiveDidiResponse value) {
-        return new JAXBElement<IsReceiveDidiResponse>(_IsReceiveDidiResponse_QNAME, IsReceiveDidiResponse.class, null, value);
     }
 
     /**
@@ -1382,12 +1309,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DoLuckDraw }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link AnswerStatus }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "doLuckDraw")
-    public JAXBElement<DoLuckDraw> createDoLuckDraw(DoLuckDraw value) {
-        return new JAXBElement<DoLuckDraw>(_DoLuckDraw_QNAME, DoLuckDraw.class, null, value);
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "answerStatus")
+    public JAXBElement<AnswerStatus> createAnswerStatus(AnswerStatus value) {
+        return new JAXBElement<AnswerStatus>(_AnswerStatus_QNAME, AnswerStatus.class, null, value);
     }
 
     /**
@@ -1397,6 +1324,438 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getNewPackageAfterUpgradeResponse")
     public JAXBElement<GetNewPackageAfterUpgradeResponse> createGetNewPackageAfterUpgradeResponse(GetNewPackageAfterUpgradeResponse value) {
         return new JAXBElement<GetNewPackageAfterUpgradeResponse>(_GetNewPackageAfterUpgradeResponse_QNAME, GetNewPackageAfterUpgradeResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link IsNewFollowReciveDidi }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "isNewFollowReciveDidi")
+    public JAXBElement<IsNewFollowReciveDidi> createIsNewFollowReciveDidi(IsNewFollowReciveDidi value) {
+        return new JAXBElement<IsNewFollowReciveDidi>(_IsNewFollowReciveDidi_QNAME, IsNewFollowReciveDidi.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AnswerStatusResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "answerStatusResponse")
+    public JAXBElement<AnswerStatusResponse> createAnswerStatusResponse(AnswerStatusResponse value) {
+        return new JAXBElement<AnswerStatusResponse>(_AnswerStatusResponse_QNAME, AnswerStatusResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CloseWechatUserProfileResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "closeWechatUserProfileResponse")
+    public JAXBElement<CloseWechatUserProfileResponse> createCloseWechatUserProfileResponse(CloseWechatUserProfileResponse value) {
+        return new JAXBElement<CloseWechatUserProfileResponse>(_CloseWechatUserProfileResponse_QNAME, CloseWechatUserProfileResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetPromotionInfoResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getPromotionInfoResponse")
+    public JAXBElement<GetPromotionInfoResponse> createGetPromotionInfoResponse(GetPromotionInfoResponse value) {
+        return new JAXBElement<GetPromotionInfoResponse>(_GetPromotionInfoResponse_QNAME, GetPromotionInfoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateNewCallPhoneByAccountNumResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateNewCallPhoneByAccountNumResponse")
+    public JAXBElement<UpdateNewCallPhoneByAccountNumResponse> createUpdateNewCallPhoneByAccountNumResponse(UpdateNewCallPhoneByAccountNumResponse value) {
+        return new JAXBElement<UpdateNewCallPhoneByAccountNumResponse>(_UpdateNewCallPhoneByAccountNumResponse_QNAME, UpdateNewCallPhoneByAccountNumResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SendInvoiceEmail }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "sendInvoiceEmail")
+    public JAXBElement<SendInvoiceEmail> createSendInvoiceEmail(SendInvoiceEmail value) {
+        return new JAXBElement<SendInvoiceEmail>(_SendInvoiceEmail_QNAME, SendInvoiceEmail.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HasLuckyDrawLink }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "hasLuckyDrawLink")
+    public JAXBElement<HasLuckyDrawLink> createHasLuckyDrawLink(HasLuckyDrawLink value) {
+        return new JAXBElement<HasLuckyDrawLink>(_HasLuckyDrawLink_QNAME, HasLuckyDrawLink.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetWechatUserDataByAccountNumResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getWechatUserDataByAccountNumResponse")
+    public JAXBElement<GetWechatUserDataByAccountNumResponse> createGetWechatUserDataByAccountNumResponse(GetWechatUserDataByAccountNumResponse value) {
+        return new JAXBElement<GetWechatUserDataByAccountNumResponse>(_GetWechatUserDataByAccountNumResponse_QNAME, GetWechatUserDataByAccountNumResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Insert }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "insert")
+    public JAXBElement<Insert> createInsert(Insert value) {
+        return new JAXBElement<Insert>(_Insert_QNAME, Insert.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InsertInvoiceInfoResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "insertInvoiceInfoResponse")
+    public JAXBElement<InsertInvoiceInfoResponse> createInsertInvoiceInfoResponse(InsertInvoiceInfoResponse value) {
+        return new JAXBElement<InsertInvoiceInfoResponse>(_InsertInvoiceInfoResponse_QNAME, InsertInvoiceInfoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QuestionnaireFinishedResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "QuestionnaireFinishedResponse")
+    public JAXBElement<QuestionnaireFinishedResponse> createQuestionnaireFinishedResponse(QuestionnaireFinishedResponse value) {
+        return new JAXBElement<QuestionnaireFinishedResponse>(_QuestionnaireFinishedResponse_QNAME, QuestionnaireFinishedResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetPromotionInfo }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getPromotionInfo")
+    public JAXBElement<GetPromotionInfo> createGetPromotionInfo(GetPromotionInfo value) {
+        return new JAXBElement<GetPromotionInfo>(_GetPromotionInfo_QNAME, GetPromotionInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PaymentHandlerService }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "paymentHandlerService")
+    public JAXBElement<PaymentHandlerService> createPaymentHandlerService(PaymentHandlerService value) {
+        return new JAXBElement<PaymentHandlerService>(_PaymentHandlerService_QNAME, PaymentHandlerService.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateNewCallPhoneByAccountNum }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateNewCallPhoneByAccountNum")
+    public JAXBElement<UpdateNewCallPhoneByAccountNum> createUpdateNewCallPhoneByAccountNum(UpdateNewCallPhoneByAccountNum value) {
+        return new JAXBElement<UpdateNewCallPhoneByAccountNum>(_UpdateNewCallPhoneByAccountNum_QNAME, UpdateNewCallPhoneByAccountNum.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateLoginTimesResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateLoginTimesResponse")
+    public JAXBElement<UpdateLoginTimesResponse> createUpdateLoginTimesResponse(UpdateLoginTimesResponse value) {
+        return new JAXBElement<UpdateLoginTimesResponse>(_UpdateLoginTimesResponse_QNAME, UpdateLoginTimesResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateTransaction }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createTransaction")
+    public JAXBElement<CreateTransaction> createCreateTransaction(CreateTransaction value) {
+        return new JAXBElement<CreateTransaction>(_CreateTransaction_QNAME, CreateTransaction.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HasLuckyDrawLinkResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "hasLuckyDrawLinkResponse")
+    public JAXBElement<HasLuckyDrawLinkResponse> createHasLuckyDrawLinkResponse(HasLuckyDrawLinkResponse value) {
+        return new JAXBElement<HasLuckyDrawLinkResponse>(_HasLuckyDrawLinkResponse_QNAME, HasLuckyDrawLinkResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetChildOrderInfoResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getChildOrderInfoResponse")
+    public JAXBElement<GetChildOrderInfoResponse> createGetChildOrderInfoResponse(GetChildOrderInfoResponse value) {
+        return new JAXBElement<GetChildOrderInfoResponse>(_GetChildOrderInfoResponse_QNAME, GetChildOrderInfoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateTransactionResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateTransactionResponse")
+    public JAXBElement<UpdateTransactionResponse> createUpdateTransactionResponse(UpdateTransactionResponse value) {
+        return new JAXBElement<UpdateTransactionResponse>(_UpdateTransactionResponse_QNAME, UpdateTransactionResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetProdInfo }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getProdInfo")
+    public JAXBElement<GetProdInfo> createGetProdInfo(GetProdInfo value) {
+        return new JAXBElement<GetProdInfo>(_GetProdInfo_QNAME, GetProdInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Exception }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "Exception")
+    public JAXBElement<Exception> createException(Exception value) {
+        return new JAXBElement<Exception>(_Exception_QNAME, Exception.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetTransactionByOrderNumResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getTransactionByOrderNumResponse")
+    public JAXBElement<GetTransactionByOrderNumResponse> createGetTransactionByOrderNumResponse(GetTransactionByOrderNumResponse value) {
+        return new JAXBElement<GetTransactionByOrderNumResponse>(_GetTransactionByOrderNumResponse_QNAME, GetTransactionByOrderNumResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreatePaymentOrderResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createPaymentOrderResponse")
+    public JAXBElement<CreatePaymentOrderResponse> createCreatePaymentOrderResponse(CreatePaymentOrderResponse value) {
+        return new JAXBElement<CreatePaymentOrderResponse>(_CreatePaymentOrderResponse_QNAME, CreatePaymentOrderResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetChildOrderInfo }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getChildOrderInfo")
+    public JAXBElement<GetChildOrderInfo> createGetChildOrderInfo(GetChildOrderInfo value) {
+        return new JAXBElement<GetChildOrderInfo>(_GetChildOrderInfo_QNAME, GetChildOrderInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SyncAccnt }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "syncAccnt")
+    public JAXBElement<SyncAccnt> createSyncAccnt(SyncAccnt value) {
+        return new JAXBElement<SyncAccnt>(_SyncAccnt_QNAME, SyncAccnt.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateTransaction }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateTransaction")
+    public JAXBElement<UpdateTransaction> createUpdateTransaction(UpdateTransaction value) {
+        return new JAXBElement<UpdateTransaction>(_UpdateTransaction_QNAME, UpdateTransaction.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetLastLoginUserByOpenIdResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getLastLoginUserByOpenIdResponse")
+    public JAXBElement<GetLastLoginUserByOpenIdResponse> createGetLastLoginUserByOpenIdResponse(GetLastLoginUserByOpenIdResponse value) {
+        return new JAXBElement<GetLastLoginUserByOpenIdResponse>(_GetLastLoginUserByOpenIdResponse_QNAME, GetLastLoginUserByOpenIdResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CheckOrderPaiedResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "checkOrderPaiedResponse")
+    public JAXBElement<CheckOrderPaiedResponse> createCheckOrderPaiedResponse(CheckOrderPaiedResponse value) {
+        return new JAXBElement<CheckOrderPaiedResponse>(_CheckOrderPaiedResponse_QNAME, CheckOrderPaiedResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetUnanswerQuestion }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getUnanswerQuestion")
+    public JAXBElement<GetUnanswerQuestion> createGetUnanswerQuestion(GetUnanswerQuestion value) {
+        return new JAXBElement<GetUnanswerQuestion>(_GetUnanswerQuestion_QNAME, GetUnanswerQuestion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateUpgradePaymentOrderResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createUpgradePaymentOrderResponse")
+    public JAXBElement<CreateUpgradePaymentOrderResponse> createCreateUpgradePaymentOrderResponse(CreateUpgradePaymentOrderResponse value) {
+        return new JAXBElement<CreateUpgradePaymentOrderResponse>(_CreateUpgradePaymentOrderResponse_QNAME, CreateUpgradePaymentOrderResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetLastLoginUserByOpenId }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getLastLoginUserByOpenId")
+    public JAXBElement<GetLastLoginUserByOpenId> createGetLastLoginUserByOpenId(GetLastLoginUserByOpenId value) {
+        return new JAXBElement<GetLastLoginUserByOpenId>(_GetLastLoginUserByOpenId_QNAME, GetLastLoginUserByOpenId.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LogoffResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "logoffResponse")
+    public JAXBElement<LogoffResponse> createLogoffResponse(LogoffResponse value) {
+        return new JAXBElement<LogoffResponse>(_LogoffResponse_QNAME, LogoffResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PaymentHandlerServiceResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "paymentHandlerServiceResponse")
+    public JAXBElement<PaymentHandlerServiceResponse> createPaymentHandlerServiceResponse(PaymentHandlerServiceResponse value) {
+        return new JAXBElement<PaymentHandlerServiceResponse>(_PaymentHandlerServiceResponse_QNAME, PaymentHandlerServiceResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateLuckyOrder }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createLuckyOrder")
+    public JAXBElement<CreateLuckyOrder> createCreateLuckyOrder(CreateLuckyOrder value) {
+        return new JAXBElement<CreateLuckyOrder>(_CreateLuckyOrder_QNAME, CreateLuckyOrder.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetUnanswerQuestionResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getUnanswerQuestionResponse")
+    public JAXBElement<GetUnanswerQuestionResponse> createGetUnanswerQuestionResponse(GetUnanswerQuestionResponse value) {
+        return new JAXBElement<GetUnanswerQuestionResponse>(_GetUnanswerQuestionResponse_QNAME, GetUnanswerQuestionResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateWechatMessageHistory }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateWechatMessageHistory")
+    public JAXBElement<UpdateWechatMessageHistory> createUpdateWechatMessageHistory(UpdateWechatMessageHistory value) {
+        return new JAXBElement<UpdateWechatMessageHistory>(_UpdateWechatMessageHistory_QNAME, UpdateWechatMessageHistory.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link IsWinBackOrEarlyBird }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "isWinBackOrEarlyBird")
+    public JAXBElement<IsWinBackOrEarlyBird> createIsWinBackOrEarlyBird(IsWinBackOrEarlyBird value) {
+        return new JAXBElement<IsWinBackOrEarlyBird>(_IsWinBackOrEarlyBird_QNAME, IsWinBackOrEarlyBird.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QuestionnaireFinished }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "QuestionnaireFinished")
+    public JAXBElement<QuestionnaireFinished> createQuestionnaireFinished(QuestionnaireFinished value) {
+        return new JAXBElement<QuestionnaireFinished>(_QuestionnaireFinished_QNAME, QuestionnaireFinished.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreatePaymentOrder }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createPaymentOrder")
+    public JAXBElement<CreatePaymentOrder> createCreatePaymentOrder(CreatePaymentOrder value) {
+        return new JAXBElement<CreatePaymentOrder>(_CreatePaymentOrder_QNAME, CreatePaymentOrder.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateWechatUserProfile }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createWechatUserProfile")
+    public JAXBElement<CreateWechatUserProfile> createCreateWechatUserProfile(CreateWechatUserProfile value) {
+        return new JAXBElement<CreateWechatUserProfile>(_CreateWechatUserProfile_QNAME, CreateWechatUserProfile.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SendMessageResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "sendMessageResponse")
+    public JAXBElement<SendMessageResponse> createSendMessageResponse(SendMessageResponse value) {
+        return new JAXBElement<SendMessageResponse>(_SendMessageResponse_QNAME, SendMessageResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SyncAMPWifiAccountResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "syncAMPWifiAccountResponse")
+    public JAXBElement<SyncAMPWifiAccountResponse> createSyncAMPWifiAccountResponse(SyncAMPWifiAccountResponse value) {
+        return new JAXBElement<SyncAMPWifiAccountResponse>(_SyncAMPWifiAccountResponse_QNAME, SyncAMPWifiAccountResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetOpenIdByAccountNumResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getOpenIdByAccountNumResponse")
+    public JAXBElement<GetOpenIdByAccountNumResponse> createGetOpenIdByAccountNumResponse(GetOpenIdByAccountNumResponse value) {
+        return new JAXBElement<GetOpenIdByAccountNumResponse>(_GetOpenIdByAccountNumResponse_QNAME, GetOpenIdByAccountNumResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Logoff }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "logoff")
+    public JAXBElement<Logoff> createLogoff(Logoff value) {
+        return new JAXBElement<Logoff>(_Logoff_QNAME, Logoff.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCallPhoneByAccountNum }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getCallPhoneByAccountNum")
+    public JAXBElement<GetCallPhoneByAccountNum> createGetCallPhoneByAccountNum(GetCallPhoneByAccountNum value) {
+        return new JAXBElement<GetCallPhoneByAccountNum>(_GetCallPhoneByAccountNum_QNAME, GetCallPhoneByAccountNum.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetInvoiceInformationResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getInvoiceInformationResponse")
+    public JAXBElement<GetInvoiceInformationResponse> createGetInvoiceInformationResponse(GetInvoiceInformationResponse value) {
+        return new JAXBElement<GetInvoiceInformationResponse>(_GetInvoiceInformationResponse_QNAME, GetInvoiceInformationResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link IsReceiveDidiResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "isReceiveDidiResponse")
+    public JAXBElement<IsReceiveDidiResponse> createIsReceiveDidiResponse(IsReceiveDidiResponse value) {
+        return new JAXBElement<IsReceiveDidiResponse>(_IsReceiveDidiResponse_QNAME, IsReceiveDidiResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DoLuckDraw }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "doLuckDraw")
+    public JAXBElement<DoLuckDraw> createDoLuckDraw(DoLuckDraw value) {
+        return new JAXBElement<DoLuckDraw>(_DoLuckDraw_QNAME, DoLuckDraw.class, null, value);
     }
 
     /**
@@ -1454,15 +1813,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IsNewFollowReciveDidi }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "isNewFollowReciveDidi")
-    public JAXBElement<IsNewFollowReciveDidi> createIsNewFollowReciveDidi(IsNewFollowReciveDidi value) {
-        return new JAXBElement<IsNewFollowReciveDidi>(_IsNewFollowReciveDidi_QNAME, IsNewFollowReciveDidi.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link UpdateWechatMessageHistoryResponse }{@code >}}
      * 
      */
@@ -1481,48 +1831,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CloseWechatUserProfileResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "closeWechatUserProfileResponse")
-    public JAXBElement<CloseWechatUserProfileResponse> createCloseWechatUserProfileResponse(CloseWechatUserProfileResponse value) {
-        return new JAXBElement<CloseWechatUserProfileResponse>(_CloseWechatUserProfileResponse_QNAME, CloseWechatUserProfileResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetPromotionInfoResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getPromotionInfoResponse")
-    public JAXBElement<GetPromotionInfoResponse> createGetPromotionInfoResponse(GetPromotionInfoResponse value) {
-        return new JAXBElement<GetPromotionInfoResponse>(_GetPromotionInfoResponse_QNAME, GetPromotionInfoResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SyncAccntResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "syncAccntResponse")
     public JAXBElement<SyncAccntResponse> createSyncAccntResponse(SyncAccntResponse value) {
         return new JAXBElement<SyncAccntResponse>(_SyncAccntResponse_QNAME, SyncAccntResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateNewCallPhoneByAccountNumResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateNewCallPhoneByAccountNumResponse")
-    public JAXBElement<UpdateNewCallPhoneByAccountNumResponse> createUpdateNewCallPhoneByAccountNumResponse(UpdateNewCallPhoneByAccountNumResponse value) {
-        return new JAXBElement<UpdateNewCallPhoneByAccountNumResponse>(_UpdateNewCallPhoneByAccountNumResponse_QNAME, UpdateNewCallPhoneByAccountNumResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SendInvoiceEmail }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "sendInvoiceEmail")
-    public JAXBElement<SendInvoiceEmail> createSendInvoiceEmail(SendInvoiceEmail value) {
-        return new JAXBElement<SendInvoiceEmail>(_SendInvoiceEmail_QNAME, SendInvoiceEmail.class, null, value);
     }
 
     /**
@@ -1544,66 +1858,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link HasLuckyDrawLink }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "hasLuckyDrawLink")
-    public JAXBElement<HasLuckyDrawLink> createHasLuckyDrawLink(HasLuckyDrawLink value) {
-        return new JAXBElement<HasLuckyDrawLink>(_HasLuckyDrawLink_QNAME, HasLuckyDrawLink.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetWechatUserDataByAccountNumResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getWechatUserDataByAccountNumResponse")
-    public JAXBElement<GetWechatUserDataByAccountNumResponse> createGetWechatUserDataByAccountNumResponse(GetWechatUserDataByAccountNumResponse value) {
-        return new JAXBElement<GetWechatUserDataByAccountNumResponse>(_GetWechatUserDataByAccountNumResponse_QNAME, GetWechatUserDataByAccountNumResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Insert }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "insert")
-    public JAXBElement<Insert> createInsert(Insert value) {
-        return new JAXBElement<Insert>(_Insert_QNAME, Insert.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link InsertInvoiceInfoResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "insertInvoiceInfoResponse")
-    public JAXBElement<InsertInvoiceInfoResponse> createInsertInvoiceInfoResponse(InsertInvoiceInfoResponse value) {
-        return new JAXBElement<InsertInvoiceInfoResponse>(_InsertInvoiceInfoResponse_QNAME, InsertInvoiceInfoResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link IsReceiveDidi }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "isReceiveDidi")
     public JAXBElement<IsReceiveDidi> createIsReceiveDidi(IsReceiveDidi value) {
         return new JAXBElement<IsReceiveDidi>(_IsReceiveDidi_QNAME, IsReceiveDidi.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetPromotionInfo }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getPromotionInfo")
-    public JAXBElement<GetPromotionInfo> createGetPromotionInfo(GetPromotionInfo value) {
-        return new JAXBElement<GetPromotionInfo>(_GetPromotionInfo_QNAME, GetPromotionInfo.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PaymentHandlerService }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "paymentHandlerService")
-    public JAXBElement<PaymentHandlerService> createPaymentHandlerService(PaymentHandlerService value) {
-        return new JAXBElement<PaymentHandlerService>(_PaymentHandlerService_QNAME, PaymentHandlerService.class, null, value);
     }
 
     /**
@@ -1616,21 +1876,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateNewCallPhoneByAccountNum }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateNewCallPhoneByAccountNum")
-    public JAXBElement<UpdateNewCallPhoneByAccountNum> createUpdateNewCallPhoneByAccountNum(UpdateNewCallPhoneByAccountNum value) {
-        return new JAXBElement<UpdateNewCallPhoneByAccountNum>(_UpdateNewCallPhoneByAccountNum_QNAME, UpdateNewCallPhoneByAccountNum.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link IsWinBackOrEarlyBirdResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "isWinBackOrEarlyBirdResponse")
     public JAXBElement<IsWinBackOrEarlyBirdResponse> createIsWinBackOrEarlyBirdResponse(IsWinBackOrEarlyBirdResponse value) {
         return new JAXBElement<IsWinBackOrEarlyBirdResponse>(_IsWinBackOrEarlyBirdResponse_QNAME, IsWinBackOrEarlyBirdResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ParseException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "ParseException")
+    public JAXBElement<ParseException> createParseException(ParseException value) {
+        return new JAXBElement<ParseException>(_ParseException_QNAME, ParseException.class, null, value);
     }
 
     /**
@@ -1643,15 +1903,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateLoginTimesResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateLoginTimesResponse")
-    public JAXBElement<UpdateLoginTimesResponse> createUpdateLoginTimesResponse(UpdateLoginTimesResponse value) {
-        return new JAXBElement<UpdateLoginTimesResponse>(_UpdateLoginTimesResponse_QNAME, UpdateLoginTimesResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CreateLuckyOrderResponse }{@code >}}
      * 
      */
@@ -1661,39 +1912,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreateTransaction }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createTransaction")
-    public JAXBElement<CreateTransaction> createCreateTransaction(CreateTransaction value) {
-        return new JAXBElement<CreateTransaction>(_CreateTransaction_QNAME, CreateTransaction.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetActiveAccountByOpenIdResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getActiveAccountByOpenIdResponse")
     public JAXBElement<GetActiveAccountByOpenIdResponse> createGetActiveAccountByOpenIdResponse(GetActiveAccountByOpenIdResponse value) {
         return new JAXBElement<GetActiveAccountByOpenIdResponse>(_GetActiveAccountByOpenIdResponse_QNAME, GetActiveAccountByOpenIdResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link HasLuckyDrawLinkResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "hasLuckyDrawLinkResponse")
-    public JAXBElement<HasLuckyDrawLinkResponse> createHasLuckyDrawLinkResponse(HasLuckyDrawLinkResponse value) {
-        return new JAXBElement<HasLuckyDrawLinkResponse>(_HasLuckyDrawLinkResponse_QNAME, HasLuckyDrawLinkResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetChildOrderInfoResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getChildOrderInfoResponse")
-    public JAXBElement<GetChildOrderInfoResponse> createGetChildOrderInfoResponse(GetChildOrderInfoResponse value) {
-        return new JAXBElement<GetChildOrderInfoResponse>(_GetChildOrderInfoResponse_QNAME, GetChildOrderInfoResponse.class, null, value);
     }
 
     /**
@@ -1724,24 +1948,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateTransactionResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateTransactionResponse")
-    public JAXBElement<UpdateTransactionResponse> createUpdateTransactionResponse(UpdateTransactionResponse value) {
-        return new JAXBElement<UpdateTransactionResponse>(_UpdateTransactionResponse_QNAME, UpdateTransactionResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetProdInfo }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getProdInfo")
-    public JAXBElement<GetProdInfo> createGetProdInfo(GetProdInfo value) {
-        return new JAXBElement<GetProdInfo>(_GetProdInfo_QNAME, GetProdInfo.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link IsNewFollowReciveDidiResponse }{@code >}}
      * 
      */
@@ -1769,30 +1975,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Exception }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "Exception")
-    public JAXBElement<Exception> createException(Exception value) {
-        return new JAXBElement<Exception>(_Exception_QNAME, Exception.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SendInvoiceEmailResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "sendInvoiceEmailResponse")
     public JAXBElement<SendInvoiceEmailResponse> createSendInvoiceEmailResponse(SendInvoiceEmailResponse value) {
         return new JAXBElement<SendInvoiceEmailResponse>(_SendInvoiceEmailResponse_QNAME, SendInvoiceEmailResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetTransactionByOrderNumResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getTransactionByOrderNumResponse")
-    public JAXBElement<GetTransactionByOrderNumResponse> createGetTransactionByOrderNumResponse(GetTransactionByOrderNumResponse value) {
-        return new JAXBElement<GetTransactionByOrderNumResponse>(_GetTransactionByOrderNumResponse_QNAME, GetTransactionByOrderNumResponse.class, null, value);
     }
 
     /**
@@ -1814,15 +2002,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreatePaymentOrderResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createPaymentOrderResponse")
-    public JAXBElement<CreatePaymentOrderResponse> createCreatePaymentOrderResponse(CreatePaymentOrderResponse value) {
-        return new JAXBElement<CreatePaymentOrderResponse>(_CreatePaymentOrderResponse_QNAME, CreatePaymentOrderResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetTransactionByOrderNum }{@code >}}
      * 
      */
@@ -1841,57 +2020,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetChildOrderInfo }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getChildOrderInfo")
-    public JAXBElement<GetChildOrderInfo> createGetChildOrderInfo(GetChildOrderInfo value) {
-        return new JAXBElement<GetChildOrderInfo>(_GetChildOrderInfo_QNAME, GetChildOrderInfo.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SyncAccnt }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "syncAccnt")
-    public JAXBElement<SyncAccnt> createSyncAccnt(SyncAccnt value) {
-        return new JAXBElement<SyncAccnt>(_SyncAccnt_QNAME, SyncAccnt.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateTransaction }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateTransaction")
-    public JAXBElement<UpdateTransaction> createUpdateTransaction(UpdateTransaction value) {
-        return new JAXBElement<UpdateTransaction>(_UpdateTransaction_QNAME, UpdateTransaction.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetCallPhoneByAccountNumResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getCallPhoneByAccountNumResponse")
     public JAXBElement<GetCallPhoneByAccountNumResponse> createGetCallPhoneByAccountNumResponse(GetCallPhoneByAccountNumResponse value) {
         return new JAXBElement<GetCallPhoneByAccountNumResponse>(_GetCallPhoneByAccountNumResponse_QNAME, GetCallPhoneByAccountNumResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetLastLoginUserByOpenIdResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getLastLoginUserByOpenIdResponse")
-    public JAXBElement<GetLastLoginUserByOpenIdResponse> createGetLastLoginUserByOpenIdResponse(GetLastLoginUserByOpenIdResponse value) {
-        return new JAXBElement<GetLastLoginUserByOpenIdResponse>(_GetLastLoginUserByOpenIdResponse_QNAME, GetLastLoginUserByOpenIdResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CheckOrderPaiedResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "checkOrderPaiedResponse")
-    public JAXBElement<CheckOrderPaiedResponse> createCheckOrderPaiedResponse(CheckOrderPaiedResponse value) {
-        return new JAXBElement<CheckOrderPaiedResponse>(_CheckOrderPaiedResponse_QNAME, CheckOrderPaiedResponse.class, null, value);
     }
 
 }
