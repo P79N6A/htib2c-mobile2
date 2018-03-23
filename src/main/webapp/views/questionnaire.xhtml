@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<body>		
+	    <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	               xmlns:h="http://java.sun.com/jsf/html"
+	               xmlns:f="http://java.sun.com/jsf/core"
+	               xmlns:a4j="http://richfaces.org/a4j"
+	               xmlns:c="http://java.sun.com/jsp/jstl/core"
+	               xmlns:rich="http://richfaces.org/rich"
+	               xmlns:ui="http://java.sun.com/jsf/facelets"
+	               template="./template.xhtml">
+	    <script>
+	        //禁止手机端body滚动
+// 	        document.addEventListener('touchmove', function(event) {
+// 	                event.preventDefault();
+// 	            }, false);
+	    </script>
+	    <ui:define name="header">
+	          问卷调查
+	    </ui:define>
+	    <ui:define name="workspace">
+	    <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/bootstrap.min.css" />		
+		<link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/css/style.css" />
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/jquery-3.3.1.min.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/bootstrap.min.js"></script>
+		
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/wowUI.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/TweenMax.min.js"></script>
+		
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/ajax.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/js/common.js"></script>
+		
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/js/data.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/js/action.js"></script>
+		<div class="container-fluid main-ct">
+			<!--答题-结束页-->
+			<div class="end-pg page none">
+				
+			</div>
+			
+			<!--答题-起始页-->
+			<div class="start-pg page">
+				<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/start-title.png" alt="" class="start-title"/>
+				<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/start-btn.png" alt="" class="start-btn"/>
+			</div>
+			
+			<!--答题-内容页-->
+			<div class="ct-pg none">
+				<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/que-title.png" alt="" class="que-title"/>
+				
+				<div class="center-wrap">
+					<div class="bar-wrap">
+						<div class="col-xs-2 num-wrap">
+							Q0
+						</div>
+						<div class="col-xs-10 line-wrap">
+							<p>10%</p>
+							<div>
+								<div></div>
+							</div>
+						</div>
+						
+					</div>
+					<div class="ct-wrap">
+						<div class="que-wrap">
+
+						</div>
+						<div class="ans-wrap">
+							<ul>
+								<li>
+									<img src="#{facesContext.externalContext.request.contextPath}/resources/img/cb0.png" alt="" class="cb"/>
+									选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项
+								</li>
+								<li>
+									<img src="#{facesContext.externalContext.request.contextPath}/resources/img/cb0.png" alt="" class="cb"/>
+									选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项
+								</li>
+								<li>
+									<img src="#{facesContext.externalContext.request.contextPath}/resources/img/cb0.png" alt="" class="cb"/>
+									选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项
+								</li>
+								<li>
+									<img src="#{facesContext.externalContext.request.contextPath}/resources/img/cb0.png" alt="" class="cb"/>
+									选项 <input type="text" maxlength="60"/>
+								</li>
+							</ul>
+						</div>
+						<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/err-next.png" alt="" class="err-next"/>
+						<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/next-btn.png" alt="" class="next-btn"/>
+					</div>					
+					
+				</div>
+				
+			</div>
+			
+			<!--提示页：已参与-->
+			<div class="has-tip-pg page tip-pg none">
+				<div class="black"></div>
+				<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/has-tip.png" alt="" class="tip-img"/>
+			</div>
+			
+			<!--提示页：已结束-->
+			<div class="end-tip-pg page tip-pg none">
+				<div class="black"></div>
+				<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/end-tip.png" alt="" class="tip-img"/>
+			</div>
+			
+			<!--提示页：连接错误-->
+			<div class="err-tip-pg page tip-pg none">
+				<div class="black"></div>
+				<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/err-tip.png" alt="" class="tip-img"/>
+			</div>
+		</div>
+
+		<div id="window_mc" class="none">
+			<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/oriTip.jpg" alt=""/>
+		</div>
+		</ui:define>
+		</ui:composition>
+	</body>
+</html>
