@@ -32,24 +32,33 @@ public class QuestionnaireBean implements Serializable {
 	private Integer answeredIndex=-1;
 	private String answerStatus;//0未回答或未回答完毕1已回答完毕2已结束3错误
 	public String doAnswer(int questionnaireId){
+		
 		this.questionnaireId=questionnaireId;
 		logger.debug("questionnaireId------"+questionnaireId);
-		openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
-		logger.debug("openId------"+openId);
-		account = client.getActiveAccountByOpenId(openId);
-		logger.debug("account------"+account);
-		if(account==null){
-			account="";
-		}
-		String status=client.answerStatus(account, openId, questionnaireId);
-		this.answerStatus=status;
-		if(status.equals("start")){
-			//0未回答或未回答完毕
-			//开始答题
-			int index=client.getAnswerCount(questionnaireId, account, openId);
-			if(index!=0){
-				answeredIndex=index;
+		try{
+			openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
+			if(openId==null){
+				return ViewPage.ERRORMESSAGE;
 			}
+			logger.debug("openId------"+openId);
+			account = client.getActiveAccountByOpenId(openId);
+			logger.debug("account------"+account);
+			if(account==null){
+				account="";
+			}
+			String status=client.answerStatus(account, openId, questionnaireId);
+			this.answerStatus=status;
+			if(status.equals("start")){
+				//0未回答或未回答完毕
+				//开始答题
+				int index=client.getAnswerCount(questionnaireId, account, openId);
+				if(index!=0){
+					answeredIndex=index;
+				}
+			}
+		}catch(Exception e){
+			logger.debug("错误------"+e.toString());
+			return ViewPage.ERRORMESSAGE;
 		}
 		return ViewPage.LINK2QUESTIONNAIRE;
 	}
