@@ -2,10 +2,6 @@ package com.htichina.web.wechat;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,11 +19,7 @@ import com.google.gson.Gson;
 import com.htichina.common.web.Constant;
 import com.htichina.web.PaymentServiceClient;
 import com.htichina.web.common.FacesUtils;
-import com.htichina.web.order.OrderBackingBean;
-import com.htichina.web.questionnaire.QuestionnaireBean;
 import com.htichina.wsclient.payment.QuestionAnswer;
-import com.htichina.wsclient.payment.QuestionOptions;
-import com.htichina.wsclient.payment.Questions;
 
 /**
  * Created by cfq on 2018/3/23.
@@ -51,14 +43,14 @@ public class QuestionnaireSaveServlet extends HttpServlet {
 			String questionnaireId=req.getParameter("questionnaireId");
 	        String questionId=req.getParameter("queId");
 			String ansStr=req.getParameter("answers");
-//			String openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
-			String openId="123123";
-			
-//			logger.debug("openId------"+openId);
-//			String account = client.getActiveAccountByOpenId(openId);
-			String account="1232131";
-//			logger.debug("account------"+account);
+			String openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
+//			String openId="123123";
 			PaymentServiceClient client = PaymentServiceClient.getInstance();
+			logger.debug("openId------"+openId);
+			String account = client.getActiveAccountByOpenId(openId);
+//			String account="1232131";
+			logger.debug("account------"+account);
+			
 			QuestionAnswer answer=new QuestionAnswer();
 			answer.setQuestionnaireId(questionnaireId);
 			answer.setQuestionId(questionId);

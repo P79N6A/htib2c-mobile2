@@ -42,50 +42,51 @@ public class QuestionnaireDataServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String questionnaireId=req.getParameter("questionnaireId");
-		int qId=0;
-		if(questionnaireId!=null){
-			qId=Integer.parseInt(questionnaireId);
-		}
-		PaymentServiceClient client = PaymentServiceClient.getInstance();
-		List<Questions> qusList=client.getQuestions(qId);
-		List<Map<String, Object>> questionList=new ArrayList<>();
-		for(Questions q:qusList){
-			Map<String, Object> quetionMap=new HashMap<String, Object>();
-			if(q.getType().equals("0")){//单选
-				quetionMap.put("type", "cb");
-			}else if(q.getType().equals("1")){
-				quetionMap.put("type", "cb_");
-			}else if(q.getType().equals("2")){
-				quetionMap.put("type", "sel");
-			}else {
-				quetionMap.put("type", "area");
+		try {
+			String questionnaireId=req.getParameter("questionnaireId");
+			int qId=0;
+			if(questionnaireId!=null){
+				qId=Integer.parseInt(questionnaireId);
 			}
-			quetionMap.put("que",q.getContent());
-			String qustionId=q.getId();
-			quetionMap.put("questionId", qustionId);
-			List<String> optionList=new ArrayList<>();
-			List<QuestionOptions> optionsList=client.getQuestionOptions(Integer.parseInt(qustionId));
-			if(optionsList!=null&&optionsList.size()>0){
-				for(QuestionOptions qos:optionsList){
-					    optionList.add(qos.getContent());
+			PaymentServiceClient client = PaymentServiceClient.getInstance();
+			List<Questions> qusList=client.getQuestions(qId);
+			List<Map<String, Object>> questionList=new ArrayList<>();
+			for(Questions q:qusList){
+				Map<String, Object> quetionMap=new HashMap<String, Object>();
+				if(q.getType().equals("0")){//单选
+					quetionMap.put("type", "cb");
+				}else if(q.getType().equals("1")){
+					quetionMap.put("type", "cb_");
+				}else if(q.getType().equals("2")){
+					quetionMap.put("type", "sel");
+				}else {
+					quetionMap.put("type", "area");
 				}
-			}
-			quetionMap.put("ans", optionList);
-			quetionMap.put("qusId", q.getId());
-			if(q.getSkip()!=null&&q.getSkip().equals("0")){
-				quetionMap.put("skip", true);
-			}else{
-				quetionMap.put("skip", false);
+				quetionMap.put("que",q.getContent());
+				String qustionId=q.getId();
+				quetionMap.put("questionId", qustionId);
+				List<String> optionList=new ArrayList<>();
+				List<QuestionOptions> optionsList=client.getQuestionOptions(Integer.parseInt(qustionId));
+				if(optionsList!=null&&optionsList.size()>0){
+					for(QuestionOptions qos:optionsList){
+						    optionList.add(qos.getContent());
+					}
+				}
+				quetionMap.put("ans", optionList);
+				quetionMap.put("qusId", q.getId());
+				if(q.getSkip()!=null&&q.getSkip().equals("0")){
+					quetionMap.put("skip", true);
+				}else{
+					quetionMap.put("skip", false);
+				}
+				
+				questionList.add(quetionMap);
 			}
 			
-			questionList.add(quetionMap);
-		}
-		
-		
-		resp.setContentType("text/html;charset=utf-8");
-        PrintWriter out;
-        try {
+			
+			resp.setContentType("text/html;charset=utf-8");
+	        PrintWriter out;
+        
             out = resp.getWriter();
             Gson gson = new Gson();
             String str = gson.toJson(questionList);
