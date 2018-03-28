@@ -3,21 +3,20 @@ package com.htichina.wsclient.payment;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>QuestionnaireFinishedResponse complex type的 Java 类。
+ * <p>getQuestions complex type的 Java 类。
  * 
  * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
- * &lt;complexType name="QuestionnaireFinishedResponse">
+ * &lt;complexType name="getQuestions">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="questionnaireId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,36 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "QuestionnaireFinishedResponse", propOrder = {
-    "_return"
+@XmlType(name = "getQuestions", propOrder = {
+    "questionnaireId"
 })
-public class QuestionnaireFinishedResponse {
+public class GetQuestions {
 
-    @XmlElement(name = "return")
-    protected String _return;
+    protected Integer questionnaireId;
 
     /**
-     * 获取return属性的值。
+     * 获取questionnaireId属性的值。
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Integer }
      *     
      */
-    public String getReturn() {
-        return _return;
+    public Integer getQuestionnaireId() {
+        return questionnaireId;
     }
 
     /**
-     * 设置return属性的值。
+     * 设置questionnaireId属性的值。
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Integer }
      *     
      */
-    public void setReturn(String value) {
-        this._return = value;
+    public void setQuestionnaireId(Integer value) {
+        this.questionnaireId = value;
     }
 
 }

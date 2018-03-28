@@ -76,11 +76,6 @@ public class ViewPage {
     public static final String LINK2LUCKYDRAWCONTINUE = "/views/luckyDrawContinue.xhtml?showwxpaytitle=1";
     
     //问卷调查
-    //问卷答毕
-    public static final String LINK2QUESTIONNAIREFINSHED= "/views/questionnaireFinshed.xhtml?showwxpaytitle=1";
-    //开始问卷答题
-    public static final String LINK2QUESTIONNAIRESTART= "/views/questionnaire.xhtml?showwxpaytitle=1";
-    //问卷调查结束
-    public static final String LINK2QUESTIONNAIREOVER= "/views/questionnaireOver.xhtml?showwxpaytitle=1";
+    public static final String LINK2QUESTIONNAIRE= "/views/questionnaire.xhtml?showwxpaytitle=1";
     
 }

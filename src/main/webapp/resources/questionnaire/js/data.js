@@ -10,15 +10,36 @@ area，文本域
 
 //其它选项文本
 var Other = "其他";
-
+var questionnaireId=$("input[nm='questionnaire']").val();
+var allData;
 //所有题目
-var allData = [
-	{"type":"cb_","que":"请问您的兴趣爱好是_____？（可多选）","ans":["旅游探险","影视文艺类","体育赛事","健身运动","厨艺美食","宠物","电子游戏","舞台剧演出","艺术展",Other]},
+$.ajax({
+	url:'/htib2c-mobile/servlet/QuestionnaireDataServlet',
+    type:'POST', //GET
+    async:false,    //或false,是否异步
+    data:{
+        "questionnaireId":questionnaireId
+    },
+    dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+    success:function(data){
+        if(data){
+        	allData=data;
+        }
+    },
+    error:function(xhr){
+    	//错误
+		alphaUp($(".err-tip-pg"));
+		return;
+    }
+})
+var all = [
+	{"type":"cb_","que":"请问您的兴趣爱好是_____？（可多选）","ans":["旅游探险","影视文艺类","体育赛事","健身运动","厨艺美食","宠物","电子游戏","舞台剧演出","艺术展",Other],"skip":true},
+	
 	{"type":"cb_","que":"请问您平时喜欢阅读哪种类型的公众号文章？（可多选）","ans":["时政、商业财经新闻资讯","汽车、科技、体育赛事资讯","科普教育及育儿方面","情感励志美文","品质生活、好物推荐","幽默小故事"]},
 	
-	{"type":"cb","que":"请问您的年龄是_____？","ans":["18-25岁","26-30岁","31-35岁","36-45岁","46-50岁","50岁以上"]},
+	{"type":"cb","que":"请问您的年龄是_____？","ans":["18-25岁","26-30岁","31-35岁","36-45岁","46-50岁","50岁以上"],"skip":true},
 	
-	{"type":"cb","que":"请问您的性别是_____？","ans":["男性","女性"]},
+	{"type":"cb","que":"请问您的性别是_____？","ans":["男性","女性"],"skip":true},
 	
 	{"type":"cb","que":"请问您所从事的行业领域为_____？","ans":["房地产","金融","医疗","文体传媒","IT、电子、互联网","教育","商贸","运输、物流、贸易","服务类","政府、非营利机构",Other]},
 	

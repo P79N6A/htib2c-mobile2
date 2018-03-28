@@ -1,6 +1,6 @@
 $(window).ready(function () {
 	//第几题(从0开始),-1起始页，-2结束页
-	var tNum = -1;
+	var tNum =parseInt($("input[nm='answered']").val());
 	
 	//最大题数
 	var tMax = allData.length;
@@ -16,18 +16,28 @@ $(window).ready(function () {
 	//显示-当前题目
 	showQue();
 	function showQue(){
-		//1已回答，2已结束
-		var _param = getUrlParam("r");
+		//0未开始，1已回答，2已结束，3错误页，其他开始答题
+//		var _param = getUrlParam("r");
+		var _param = $("input[nm='status']").val();
 		trace(_param);
+		if(_param=="0"){
+			//0未开始
+			trace(".unstart-tip-pg");
+			alphaUp($(".unstart-tip-pg"));
+			return;
+		}
 		if(_param=="1"){
+			//已答毕
 			trace(".has-tip-pg");
 			alphaUp($(".has-tip-pg"));
 			return;
 		}else if(_param=="2"){
+			//问卷结束
 			trace(".end-tip-pg");
 			alphaUp($(".end-tip-pg"));
 			return;
 		}else if(_param=="3"){
+			//错误
 			trace(".err-tip-pg");
 			//alphaUp($(".err-tip-pg"));
 			//return;
@@ -54,14 +64,16 @@ $(window).ready(function () {
 		
 		//进度条
 		$(".line-wrap>div>div").css({"width":(_per-1)+"%"});
-		
+		_qusId= allData[n].qusId;
 		_type = allData[n].type;
-		
+		_skip = allData[n].skip;
 		//提问
 		$(".que-wrap").empty();
 		$(".que-wrap").text((n+1)+". "+allData[n].que);
-		
+		$(".ans-wrap").attr("que_type",_type);
+		$(".ans-wrap").attr("que_id",_qusId);
 		$(".ans-wrap").empty();
+		
 		var _html = "";
 		var iLen = allData[n].ans.length;
 		
@@ -70,9 +82,9 @@ $(window).ready(function () {
 			_html += "<ul>";
 			for(var i=0;i<iLen;i++){
 				if(allData[n].ans[i]==Other){
-					_html += '<li><img src="../resources/questionnaire/img/cb0.png" alt="" class="cb"> <span>'+allData[n].ans[i]+'</span> <input type="text" maxlength="60"></li>';
+					_html += '<li><img src="/htib2c-mobile/resources/questionnaire/img/cb0.png" alt="" class="cb"> <span index="'+i+'">'+allData[n].ans[i]+'</span> <input type="text" maxlength="60"></li>';
 				}else{
-					_html += '<li><img src="../resources/questionnaire/img/cb0.png" alt="" class="cb"> <span>'+allData[n].ans[i]+'</span></li>';
+					_html += '<li><img src="/htib2c-mobile/resources/questionnaire/img/cb0.png" alt="" class="cb"> <span index="'+i+'">'+allData[n].ans[i]+'</span></li>';
 				}				
 			}
 			_html += "</ul>";
@@ -86,13 +98,13 @@ $(window).ready(function () {
 						if($(this).data("cb")==0){
 							$(this).data("cb",1);
 
-							$(this).find("img").attr("src","../resources/questionnaire/img/cb1.png");
+							$(this).find("img").attr("src","/htib2c-mobile/resources/questionnaire/img/cb1.png");
 							$(this).find("span").css({"color":"rgb(0,161,196)"});
 							$(this).find("input").css({"border-color":"rgb(0,161,196)","color":"rgb(0,161,196)"});
 						}else{
 							$(this).data("cb",0);
 
-							$(this).find("img").attr("src","../resources/questionnaire/img/cb0.png");
+							$(this).find("img").attr("src","/htib2c-mobile/resources/questionnaire/img/cb0.png");
 							$(this).find("span").css({"color":"rgb(173,173,173)"});
 							$(this).find("input").css({"border-color":"rgb(173,173,173)","color":"rgb(173,173,173)"});
 						}
@@ -104,12 +116,12 @@ $(window).ready(function () {
 					$(this).data("cb",0);
 					$(this).click(function(){
 						$(".ans-wrap li").data("cb",0);
-						$(".ans-wrap li").find("img").attr("src","../resources/questionnaire/img/cb0.png");
+						$(".ans-wrap li").find("img").attr("src","/htib2c-mobile/resources/questionnaire/img/cb0.png");
 						$(".ans-wrap li").find("span").css({"color":"rgb(173,173,173)"});
 						$(".ans-wrap li").find("input").css({"border-color":"rgb(173,173,173)","color":"rgb(173,173,173)"});
 						
 						$(this).data("cb",1);
-						$(this).find("img").attr("src","../resources/questionnaire/img/cb1.png");
+						$(this).find("img").attr("src","/htib2c-mobile/resources/questionnaire/img/cb1.png");
 						$(this).find("span").css({"color":"rgb(0,161,196)"});
 						$(this).find("input").css({"border-color":"rgb(0,161,196)","color":"rgb(0,161,196)"});
 					});
@@ -143,6 +155,7 @@ $(window).ready(function () {
 				//cityId = document.querySelector("#select").selectedIndex;
 				//cityId = $(this).get(0).selectedindex;
 				$(".ans-wrap .txt").text($(this).find("option:selected").text());
+				$(".ans-wrap .txt").attr("index",$(this).find("option:selected").val());
 				
 				if($(".ans-wrap .txt").text()==Other){
 					alphaUp($(".ans-wrap .oth-wrap"));
@@ -166,9 +179,36 @@ $(window).ready(function () {
 	
 	//按钮：下一步
 	$(".next-btn").click(function(){
-		var n = tNum;
-		//var _que = $(".que-wrap").text();
-		//var _ans = getAns();
+	   var n = tNum;
+	   
+       var _queType = $(".ans-wrap").attr("que_type");
+       var content="";
+//       if(_queType=="cb"||_queType=="cb_"){
+//    	   //单选或者多选
+//    	   var img=$(".ans-wrap").find("li img");
+//	       $.each(img,function(index,item){
+//				if($(item).attr("src").indexOf("cb1")>0){
+//					var contenTagDom=$(item).next()[0];
+//					var op_index=$(contenTagDom).attr("index");
+//					content+=op_index+"@";
+//					if($(contenTagDom).text()=="其他"){
+//						content+=$(contenTagDom).next()[0].value+"#";
+//					}else{
+//						content+=$(contenTagDom).text()+"#";
+//					}
+//				}
+//			})
+//			content=content.substring(0,content.length-1);
+//       }else if(_queType=="sel"){
+//    	  var sel_text= $(".ans-wrap .txt").text();
+//		  var sel_index=$(".ans-wrap .txt").attr("index");
+//		  content+=sel_index+"@"+sel_text;
+//       }else if(_queType=="area"){
+//    	   var _text= $("#textarea").val();
+//    	   content+=_text;
+//       }
+       
+        var _que = $(".que-wrap").text();
 		getAns();
 		//alert("_que:"+_que+",_ans:"+_ans);
 		/*$.post("", {
@@ -191,13 +231,10 @@ $(window).ready(function () {
 		var _str = "";
 		
 		if(_type=="cb"||_type=="cb_"){
-			/*$(".que-wrap").eq(n).find("li").each(function(i,el){
-				if($(this)){
-
-				}
-			});*/
 			$(".ans-wrap li").each(function(){
 				if($(this).data("cb")==1){
+					var index=$(this).find("span").attr("index");
+					_str +=index+"_";
 					if($(this).find("span").text()==Other){
 						_str += $(this).find("span").text()+":"+$(this).find("input").val()+"|";
 					}else{
@@ -208,34 +245,66 @@ $(window).ready(function () {
 		}else if(_type=="area"){
 			_str = $(".ans-wrap textarea").val();
 		}else if(_type=="sel"){
+			var index=$(".ans-wrap .txt").attr("index");
+			_str+=index+"_"
 			if($(".ans-wrap .txt").text()==selInit){
 				alphaUp($(".err-next"));
 				return;
 			}
 			if($(".ans-wrap .txt").text()==Other){
-				_str = Other+":"+$(".ans-wrap>div>input").val();
+				_str += Other+":"+$(".ans-wrap>div>input").val();
 			}else{
-				_str = $(".ans-wrap .txt").text();
+				_str += $(".ans-wrap .txt").text();
 			}
+			
 		}
 		
-		if(_str==""){
-			alphaUp($(".err-next"));
-			return;
+		if(!_skip){
+			if(_str==""){
+				alphaUp($(".err-next"));
+				return;
+			}
 		}
 		alphaDown($(".err-next"));
 		if(_str.substr(_str.length-1,_str.length)=="|"){
 			_str = _str.substr(0,_str.length-1);
 		}
+		//保存
+		var que_id=$(".ans-wrap").attr("que_id");
+       $.ajax({
+    		url:'/htib2c-mobile/servlet/QuestionnaireSaveServlet',
+    	    type:'POST', //post
+    	    async:false,    //或false,是否异步
+    	    data:{
+    	        "questionnaireId":questionnaireId,"answers":_str,"queId":que_id
+    	    },
+    	    dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+    	    success:function(data){
+    	        if(data){
+    	        	if(parseInt(data)>0){
+	    	        	if(n>=tMax-1){
+	    	    			tNum = -2;
+	    	    			showQue();
+	    	    		}else{
+	    	    			tNum++;
+	    	    			showQue();
+	    	    		}
+    	            }else{
+    	            	//错误
+    	    			alphaUp($(".err-tip-pg"));
+    	    			return;
+    	            }
+    	        	
+    	        }
+    	    },
+    	    error:function(xhr){
+    	    	//错误
+    			alphaUp($(".err-tip-pg"));
+    			return;
+    	    }
+    	})
+    	
+	
 		
-		//alert(_str);
-		//return _str;
-		if(n>=tMax-1){
-			tNum = -2;
-			showQue();
-		}else{
-			tNum++;
-			showQue();
-		}
 	}
 });

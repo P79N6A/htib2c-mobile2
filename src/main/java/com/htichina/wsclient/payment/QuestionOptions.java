@@ -8,12 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>questions complex type的 Java 类。
+ * <p>questionOptions complex type的 Java 类。
  * 
  * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
- * &lt;complexType name="questions">
+ * &lt;complexType name="questionOptions">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -21,10 +21,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="create_time" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="create_user" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="questionnaire_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="question_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="show_order" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="skip" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="update_time" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="update_user" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -36,19 +34,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "questions", propOrder = {
+@XmlType(name = "questionOptions", propOrder = {
     "content",
     "createTime",
     "createUser",
     "id",
-    "questionnaireId",
+    "questionId",
     "showOrder",
-    "skip",
-    "type",
     "updateTime",
     "updateUser"
 })
-public class Questions {
+public class QuestionOptions {
 
     protected String content;
     @XmlElement(name = "create_time")
@@ -56,12 +52,10 @@ public class Questions {
     @XmlElement(name = "create_user")
     protected String createUser;
     protected String id;
-    @XmlElement(name = "questionnaire_id")
-    protected String questionnaireId;
+    @XmlElement(name = "question_id")
+    protected String questionId;
     @XmlElement(name = "show_order")
     protected String showOrder;
-    protected String skip;
-    protected String type;
     @XmlElement(name = "update_time")
     protected String updateTime;
     @XmlElement(name = "update_user")
@@ -164,27 +158,27 @@ public class Questions {
     }
 
     /**
-     * 获取questionnaireId属性的值。
+     * 获取questionId属性的值。
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getQuestionnaireId() {
-        return questionnaireId;
+    public String getQuestionId() {
+        return questionId;
     }
 
     /**
-     * 设置questionnaireId属性的值。
+     * 设置questionId属性的值。
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setQuestionnaireId(String value) {
-        this.questionnaireId = value;
+    public void setQuestionId(String value) {
+        this.questionId = value;
     }
 
     /**
@@ -209,54 +203,6 @@ public class Questions {
      */
     public void setShowOrder(String value) {
         this.showOrder = value;
-    }
-
-    /**
-     * 获取skip属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSkip() {
-        return skip;
-    }
-
-    /**
-     * 设置skip属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSkip(String value) {
-        this.skip = value;
-    }
-
-    /**
-     * 获取type属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * 设置type属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setType(String value) {
-        this.type = value;
     }
 
     /**

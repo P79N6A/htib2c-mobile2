@@ -122,7 +122,7 @@ function setSel(_selectObj, _array, _spanObj, nameTF) {
     	if(nameTF){
     		_val = _array[i].name;
     	}
-        selectObj.options.add(new Option(_val , _val));
+        selectObj.options.add(new Option(_val ,i-1));
         
     	if(i == 0){
     		selectedValue = _val;

@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>getUnanswerQuestion complex type的 Java 类。
+ * <p>getAnswerCount complex type的 Java 类。
  * 
  * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
- * &lt;complexType name="getUnanswerQuestion">
+ * &lt;complexType name="getAnswerCount">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -28,12 +28,12 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getUnanswerQuestion", propOrder = {
+@XmlType(name = "getAnswerCount", propOrder = {
     "account",
     "openId",
     "questionnaireId"
 })
-public class GetUnanswerQuestion {
+public class GetAnswerCount {
 
     protected String account;
     protected String openId;

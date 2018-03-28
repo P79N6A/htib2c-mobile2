@@ -19,19 +19,16 @@
 	          问卷调查
 	    </ui:define>
 	    <ui:define name="workspace">
-	    <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/bootstrap.min.css" />		
-		<link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/css/style.css" />
-		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/jquery-3.3.1.min.js"></script>
-		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/bootstrap.min.js"></script>
-		
-		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/wowUI.js"></script>
-		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/TweenMax.min.js"></script>
-		
-		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/ajax.js"></script>
-		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/js/common.js"></script>
-		
-		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/js/data.js"></script>
-		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/js/action.js"></script>
+	    
+		<h:inputHidden id="questionnaire" value="#{questionnaireBean.questionnaireId}" >
+                <f:passThroughAttribute name="nm" value="questionnaire"/>
+        </h:inputHidden>
+        <h:inputHidden id="answered" value="#{questionnaireBean.answeredIndex}" >
+                <f:passThroughAttribute name="nm" value="answered"/>
+        </h:inputHidden>
+        <h:inputHidden id="status" value="#{questionnaireBean.answerStatus}" >
+                <f:passThroughAttribute name="nm" value="status"/>
+        </h:inputHidden>
 		<div class="container-fluid main-ct">
 			<!--答题-结束页-->
 			<div class="end-pg page none">
@@ -68,19 +65,19 @@
 						<div class="ans-wrap">
 							<ul>
 								<li>
-									<img src="#{facesContext.externalContext.request.contextPath}/resources/img/cb0.png" alt="" class="cb"/>
+									<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/cb0.png" alt="" class="cb"/>
 									选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项
 								</li>
 								<li>
-									<img src="#{facesContext.externalContext.request.contextPath}/resources/img/cb0.png" alt="" class="cb"/>
+									<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/cb0.png" alt="" class="cb"/>
 									选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项
 								</li>
 								<li>
-									<img src="#{facesContext.externalContext.request.contextPath}/resources/img/cb0.png" alt="" class="cb"/>
+									<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/cb0.png" alt="" class="cb"/>
 									选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项选项
 								</li>
 								<li>
-									<img src="#{facesContext.externalContext.request.contextPath}/resources/img/cb0.png" alt="" class="cb"/>
+									<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/cb0.png" alt="" class="cb"/>
 									选项 <input type="text" maxlength="60"/>
 								</li>
 							</ul>
@@ -91,6 +88,12 @@
 					
 				</div>
 				
+			</div>
+			
+			<!--提示页：未开始-->
+			<div class="unstart-tip-pg page tip-pg none">
+				<div class="black"></div>
+				<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/unstart-tip-pg.png" alt="" class="tip-img"/>
 			</div>
 			
 			<!--提示页：已参与-->
@@ -115,6 +118,37 @@
 		<div id="window_mc" class="none">
 			<img src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/img/oriTip.jpg" alt=""/>
 		</div>
+		<link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/bootstrap.min.css" />		
+		<link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/css/style.css" />
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/WeiXinJS.js"></script>
+		<script>
+			function onBridgeReady(){
+			 WeixinJSBridge.call('hideOptionMenu');
+			}
+
+			if (typeof WeixinJSBridge == "undefined"){
+				if( document.addEventListener ){
+					document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+				}else if (document.attachEvent){
+					document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+					document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+				}
+			}else{
+				onBridgeReady();
+			}
+		</script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/jquery-3.3.1.min.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/bootstrap.min.js"></script>
+		
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/wowUI.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/TweenMax.min.js"></script>
+		
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/libs/ajax.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/js/common.js"></script>
+		
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/js/data.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/questionnaire/js/action.js"></script>
+
 		</ui:define>
 		</ui:composition>
 	</body>

@@ -12,6 +12,7 @@ import com.htichina.wsclient.payment.LdLtemReponse;
 import com.htichina.wsclient.payment.LuckyDrawReponse;
 import com.htichina.wsclient.payment.PackageUpgradeRequest;
 import com.htichina.wsclient.payment.PackageUpgradeResponse;
+import com.htichina.wsclient.payment.ParseException_Exception;
 import com.htichina.wsclient.payment.PaymentOrderResponse;
 import com.htichina.wsclient.payment.PaymentResponse;
 import com.htichina.wsclient.payment.PaymentResultMessage;
@@ -22,6 +23,9 @@ import com.htichina.wsclient.payment.PromotionInfoResponse;
 import com.htichina.wsclient.payment.PurchaseProductResponse;
 import com.htichina.wsclient.payment.QueryChildOrdersByParentOrderNumResponse;
 import com.htichina.wsclient.payment.QueryOrderByParentOrderNumResponse;
+import com.htichina.wsclient.payment.QuestionAnswer;
+import com.htichina.wsclient.payment.QuestionOptions;
+import com.htichina.wsclient.payment.QuestionnaireFinished;
 import com.htichina.wsclient.payment.Questions;
 import com.htichina.wsclient.payment.ServiceOrder;
 import com.htichina.wsclient.payment.Transaction;
@@ -401,14 +405,32 @@ public class PaymentServiceClient {
   public String getCallPhoneByAccountNum(String accountNum) {
 	  return service.getCallPhoneByAccountNum(accountNum);
   }
+  
+  public String questionnaireStatus(Integer questionnaireId) throws ParseException_Exception{
+	  return service.questionnaireFinished(questionnaireId);
+  }
   public String answerStatus(String account,String openId,Integer questionnaireId){
 	 return service.answerStatus(account, openId, questionnaireId);
-	  
   }
   public Questions getUnanswerQuestion(String account,String openId,Integer questionnaireId){
 	  return service.getUnanswerQuestion(account, openId, questionnaireId);
   }
+  public List<Questions> getQuestions(Integer questionnaireId){
+	  return service.getQuestions(questionnaireId);
+  }
+  public List<QuestionOptions> getQuestionOptions(Integer questionId){
+	  return service.getQuestionOptions(questionId);
+  }
   
+  public Integer getAnswerCount(Integer questionnaireId, String account,
+			String openId) {
+		// TODO Auto-generated method stub
+		return service.getAnswerCount(account, openId, questionnaireId);
+	}
+  
+  public Integer saveAnswer(QuestionAnswer questionAnswer){
+	  return service.saveAnswer(questionAnswer);
+  }
   
 }
 

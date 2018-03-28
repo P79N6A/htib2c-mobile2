@@ -33,17 +33,21 @@ public class ObjectFactory {
     private final static QName _InsertResponse_QNAME = new QName("http://payment.ws.htichina.com/", "insertResponse");
     private final static QName _UpdateOrderStatusResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateOrderStatusResponse");
     private final static QName _CheckTransactionResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkTransactionResponse");
+    private final static QName _SaveAnswerResponse_QNAME = new QName("http://payment.ws.htichina.com/", "saveAnswerResponse");
     private final static QName _GetVehicleInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getVehicleInfoResponse");
     private final static QName _GetParentOrderInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getParentOrderInfoResponse");
     private final static QName _GetInvoiceInformation_QNAME = new QName("http://payment.ws.htichina.com/", "getInvoiceInformation");
     private final static QName _CreateTransactionResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createTransactionResponse");
     private final static QName _CreateUpgradePaymentOrder_QNAME = new QName("http://payment.ws.htichina.com/", "createUpgradePaymentOrder");
+    private final static QName _GetQuestionsResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getQuestionsResponse");
     private final static QName _UpdateLoginTimes_QNAME = new QName("http://payment.ws.htichina.com/", "updateLoginTimes");
     private final static QName _CheckTransaction_QNAME = new QName("http://payment.ws.htichina.com/", "checkTransaction");
     private final static QName _GetVehicleInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getVehicleInfo");
     private final static QName _CreateTransactionForLuckyDraw_QNAME = new QName("http://payment.ws.htichina.com/", "createTransactionForLuckyDraw");
     private final static QName _AnswerStatus_QNAME = new QName("http://payment.ws.htichina.com/", "answerStatus");
     private final static QName _GetNewPackageAfterUpgradeResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getNewPackageAfterUpgradeResponse");
+    private final static QName _GetQuestionOptions_QNAME = new QName("http://payment.ws.htichina.com/", "getQuestionOptions");
+    private final static QName _GetQuestions_QNAME = new QName("http://payment.ws.htichina.com/", "getQuestions");
     private final static QName _IsNewFollowReciveDidi_QNAME = new QName("http://payment.ws.htichina.com/", "isNewFollowReciveDidi");
     private final static QName _AnswerStatusResponse_QNAME = new QName("http://payment.ws.htichina.com/", "answerStatusResponse");
     private final static QName _CloseWechatUserProfileResponse_QNAME = new QName("http://payment.ws.htichina.com/", "closeWechatUserProfileResponse");
@@ -58,6 +62,7 @@ public class ObjectFactory {
     private final static QName _GetPromotionInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getPromotionInfo");
     private final static QName _PaymentHandlerService_QNAME = new QName("http://payment.ws.htichina.com/", "paymentHandlerService");
     private final static QName _UpdateNewCallPhoneByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "updateNewCallPhoneByAccountNum");
+    private final static QName _GetAnswerCountResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getAnswerCountResponse");
     private final static QName _UpdateLoginTimesResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateLoginTimesResponse");
     private final static QName _CreateTransaction_QNAME = new QName("http://payment.ws.htichina.com/", "createTransaction");
     private final static QName _HasLuckyDrawLinkResponse_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLinkResponse");
@@ -79,6 +84,7 @@ public class ObjectFactory {
     private final static QName _PaymentHandlerServiceResponse_QNAME = new QName("http://payment.ws.htichina.com/", "paymentHandlerServiceResponse");
     private final static QName _CreateLuckyOrder_QNAME = new QName("http://payment.ws.htichina.com/", "createLuckyOrder");
     private final static QName _GetUnanswerQuestionResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getUnanswerQuestionResponse");
+    private final static QName _GetAnswerCount_QNAME = new QName("http://payment.ws.htichina.com/", "getAnswerCount");
     private final static QName _UpdateWechatMessageHistory_QNAME = new QName("http://payment.ws.htichina.com/", "updateWechatMessageHistory");
     private final static QName _IsWinBackOrEarlyBird_QNAME = new QName("http://payment.ws.htichina.com/", "isWinBackOrEarlyBird");
     private final static QName _QuestionnaireFinished_QNAME = new QName("http://payment.ws.htichina.com/", "QuestionnaireFinished");
@@ -92,6 +98,7 @@ public class ObjectFactory {
     private final static QName _GetInvoiceInformationResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getInvoiceInformationResponse");
     private final static QName _IsReceiveDidiResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isReceiveDidiResponse");
     private final static QName _DoLuckDraw_QNAME = new QName("http://payment.ws.htichina.com/", "doLuckDraw");
+    private final static QName _SaveAnswer_QNAME = new QName("http://payment.ws.htichina.com/", "saveAnswer");
     private final static QName _GetParentOrderInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getParentOrderInfo");
     private final static QName _HasLuckyDrawLinkByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLinkByAccountNum");
     private final static QName _HasLuckyDrawLinkByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLinkByAccountNumResponse");
@@ -119,6 +126,7 @@ public class ObjectFactory {
     private final static QName _SendInvoiceEmailResponse_QNAME = new QName("http://payment.ws.htichina.com/", "sendInvoiceEmailResponse");
     private final static QName _UpdateOrderStatus_QNAME = new QName("http://payment.ws.htichina.com/", "updateOrderStatus");
     private final static QName _CheckPurchaseProductResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkPurchaseProductResponse");
+    private final static QName _GetQuestionOptionsResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getQuestionOptionsResponse");
     private final static QName _GetTransactionByOrderNum_QNAME = new QName("http://payment.ws.htichina.com/", "getTransactionByOrderNum");
     private final static QName _CheckCustemerLuckyDrawResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkCustemerLuckyDrawResponse");
     private final static QName _GetCallPhoneByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getCallPhoneByAccountNumResponse");
@@ -128,6 +136,14 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link GetAnswerCount }
+     * 
+     */
+    public GetAnswerCount createGetAnswerCount() {
+        return new GetAnswerCount();
     }
 
     /**
@@ -200,6 +216,14 @@ public class ObjectFactory {
      */
     public GetUnanswerQuestion createGetUnanswerQuestion() {
         return new GetUnanswerQuestion();
+    }
+
+    /**
+     * Create an instance of {@link SaveAnswer }
+     * 
+     */
+    public SaveAnswer createSaveAnswer() {
+        return new SaveAnswer();
     }
 
     /**
@@ -451,6 +475,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetQuestionOptionsResponse }
+     * 
+     */
+    public GetQuestionOptionsResponse createGetQuestionOptionsResponse() {
+        return new GetQuestionOptionsResponse();
+    }
+
+    /**
      * Create an instance of {@link UpdateOrderStatus }
      * 
      */
@@ -555,6 +587,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SaveAnswerResponse }
+     * 
+     */
+    public SaveAnswerResponse createSaveAnswerResponse() {
+        return new SaveAnswerResponse();
+    }
+
+    /**
      * Create an instance of {@link UpdateOrderStatusResponse }
      * 
      */
@@ -635,6 +675,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetQuestions }
+     * 
+     */
+    public GetQuestions createGetQuestions() {
+        return new GetQuestions();
+    }
+
+    /**
+     * Create an instance of {@link GetQuestionOptions }
+     * 
+     */
+    public GetQuestionOptions createGetQuestionOptions() {
+        return new GetQuestionOptions();
+    }
+
+    /**
      * Create an instance of {@link GetVehicleInfo }
      * 
      */
@@ -664,6 +720,14 @@ public class ObjectFactory {
      */
     public CheckTransaction createCheckTransaction() {
         return new CheckTransaction();
+    }
+
+    /**
+     * Create an instance of {@link GetQuestionsResponse }
+     * 
+     */
+    public GetQuestionsResponse createGetQuestionsResponse() {
+        return new GetQuestionsResponse();
     }
 
     /**
@@ -704,6 +768,14 @@ public class ObjectFactory {
      */
     public PaymentHandlerService createPaymentHandlerService() {
         return new PaymentHandlerService();
+    }
+
+    /**
+     * Create an instance of {@link GetAnswerCountResponse }
+     * 
+     */
+    public GetAnswerCountResponse createGetAnswerCountResponse() {
+        return new GetAnswerCountResponse();
     }
 
     /**
@@ -1011,6 +1083,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link QuestionOptions }
+     * 
+     */
+    public QuestionOptions createQuestionOptions() {
+        return new QuestionOptions();
+    }
+
+    /**
      * Create an instance of {@link QueryOrderByParentOrderNumResponse }
      * 
      */
@@ -1147,6 +1227,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link QuestionAnswer }
+     * 
+     */
+    public QuestionAnswer createQuestionAnswer() {
+        return new QuestionAnswer();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CreateTransactionForLuckyDrawResponse }{@code >}}
      * 
      */
@@ -1228,6 +1316,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveAnswerResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "saveAnswerResponse")
+    public JAXBElement<SaveAnswerResponse> createSaveAnswerResponse(SaveAnswerResponse value) {
+        return new JAXBElement<SaveAnswerResponse>(_SaveAnswerResponse_QNAME, SaveAnswerResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetVehicleInfoResponse }{@code >}}
      * 
      */
@@ -1270,6 +1367,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createUpgradePaymentOrder")
     public JAXBElement<CreateUpgradePaymentOrder> createCreateUpgradePaymentOrder(CreateUpgradePaymentOrder value) {
         return new JAXBElement<CreateUpgradePaymentOrder>(_CreateUpgradePaymentOrder_QNAME, CreateUpgradePaymentOrder.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetQuestionsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getQuestionsResponse")
+    public JAXBElement<GetQuestionsResponse> createGetQuestionsResponse(GetQuestionsResponse value) {
+        return new JAXBElement<GetQuestionsResponse>(_GetQuestionsResponse_QNAME, GetQuestionsResponse.class, null, value);
     }
 
     /**
@@ -1324,6 +1430,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getNewPackageAfterUpgradeResponse")
     public JAXBElement<GetNewPackageAfterUpgradeResponse> createGetNewPackageAfterUpgradeResponse(GetNewPackageAfterUpgradeResponse value) {
         return new JAXBElement<GetNewPackageAfterUpgradeResponse>(_GetNewPackageAfterUpgradeResponse_QNAME, GetNewPackageAfterUpgradeResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetQuestionOptions }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getQuestionOptions")
+    public JAXBElement<GetQuestionOptions> createGetQuestionOptions(GetQuestionOptions value) {
+        return new JAXBElement<GetQuestionOptions>(_GetQuestionOptions_QNAME, GetQuestionOptions.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetQuestions }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getQuestions")
+    public JAXBElement<GetQuestions> createGetQuestions(GetQuestions value) {
+        return new JAXBElement<GetQuestions>(_GetQuestions_QNAME, GetQuestions.class, null, value);
     }
 
     /**
@@ -1450,6 +1574,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateNewCallPhoneByAccountNum")
     public JAXBElement<UpdateNewCallPhoneByAccountNum> createUpdateNewCallPhoneByAccountNum(UpdateNewCallPhoneByAccountNum value) {
         return new JAXBElement<UpdateNewCallPhoneByAccountNum>(_UpdateNewCallPhoneByAccountNum_QNAME, UpdateNewCallPhoneByAccountNum.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAnswerCountResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getAnswerCountResponse")
+    public JAXBElement<GetAnswerCountResponse> createGetAnswerCountResponse(GetAnswerCountResponse value) {
+        return new JAXBElement<GetAnswerCountResponse>(_GetAnswerCountResponse_QNAME, GetAnswerCountResponse.class, null, value);
     }
 
     /**
@@ -1642,6 +1775,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAnswerCount }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getAnswerCount")
+    public JAXBElement<GetAnswerCount> createGetAnswerCount(GetAnswerCount value) {
+        return new JAXBElement<GetAnswerCount>(_GetAnswerCount_QNAME, GetAnswerCount.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link UpdateWechatMessageHistory }{@code >}}
      * 
      */
@@ -1756,6 +1898,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "doLuckDraw")
     public JAXBElement<DoLuckDraw> createDoLuckDraw(DoLuckDraw value) {
         return new JAXBElement<DoLuckDraw>(_DoLuckDraw_QNAME, DoLuckDraw.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveAnswer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "saveAnswer")
+    public JAXBElement<SaveAnswer> createSaveAnswer(SaveAnswer value) {
+        return new JAXBElement<SaveAnswer>(_SaveAnswer_QNAME, SaveAnswer.class, null, value);
     }
 
     /**
@@ -1999,6 +2150,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "checkPurchaseProductResponse")
     public JAXBElement<CheckPurchaseProductResponse> createCheckPurchaseProductResponse(CheckPurchaseProductResponse value) {
         return new JAXBElement<CheckPurchaseProductResponse>(_CheckPurchaseProductResponse_QNAME, CheckPurchaseProductResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetQuestionOptionsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getQuestionOptionsResponse")
+    public JAXBElement<GetQuestionOptionsResponse> createGetQuestionOptionsResponse(GetQuestionOptionsResponse value) {
+        return new JAXBElement<GetQuestionOptionsResponse>(_GetQuestionOptionsResponse_QNAME, GetQuestionOptionsResponse.class, null, value);
     }
 
     /**

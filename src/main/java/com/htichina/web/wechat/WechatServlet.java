@@ -101,6 +101,7 @@ public class WechatServlet extends HttpServlet {
 //		logger.infoln(code);
 		logger.info("code=" + ESAPI.encoder().encodeForHTML(code));
 		String state = req.getParameter("state").split(",")[0];
+		Integer questionnaireId=Integer.parseInt(req.getParameter("questionnaireId"));
 		logger.info("state=" + ESAPI.encoder().encodeForHTML(state));
 
 		HttpClient httpclient = new DefaultHttpClient();
@@ -111,10 +112,10 @@ public class WechatServlet extends HttpServlet {
 		HttpResponse response = httpclient.execute(httpgets);
 		HttpEntity entity = response.getEntity();
 		boolean F = true;
-		if (entity != null) {
+		/**if (entity != null) {
 			InputStream instreams = entity.getContent();
 			String str = convertStreamToString(instreams);
-			/*2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范*/
+			//2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范
 			logger.info("str == "+ESAPI.encoder().encodeForHTML(str));
 			if(str.indexOf("errcode") > -1){
 				logger.debug("httpGet failed");
@@ -139,7 +140,7 @@ public class WechatServlet extends HttpServlet {
 				String openId = str.substring(i + 9, j - 3);
 //				oId = openId;
 //			logger.infoln("openId: " + openId);
-				/*2017-10-25;Alex:优化代码，线程同步;CR-代码规范*/
+				//2017-10-25;Alex:优化代码，线程同步;CR-代码规范
 				synchronized(this){
 					oId = openId;
 				}
@@ -171,7 +172,7 @@ public class WechatServlet extends HttpServlet {
 
 //			FacesUtils.setManagedBeanInSession(Constant.OPEN_ID, openId);
 //			FacesUtils.setManagedBeanInSession(Constant.PAYMENT_PLATFORM, Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
-				/*2017-10-25;Alex:优化代码，安全加密输出内容;CR-代码规范*/
+				//2017-10-25;Alex:优化代码，安全加密输出内容;CR-代码规范
 				req.getSession().setAttribute(Constant.OPEN_ID, ESAPI.encoder().encodeForHTML(openId));
 				req.getSession().setAttribute(Constant.WECHAT_USER_INFO, userInfo);
 				req.getSession().setAttribute(Constant.PAYMENT_PLATFORM, Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
@@ -180,7 +181,7 @@ public class WechatServlet extends HttpServlet {
 				logger.info("payment platform: " + ESAPI.encoder().encodeForHTML(Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY));
 			}
 
-		}
+		}*/
 		if(F){
 			if(state.equalsIgnoreCase(Constant.WECHAT_STATE_ORDER)) {
 				logger.debug("wechatServlet start Order");
@@ -250,7 +251,6 @@ public class WechatServlet extends HttpServlet {
 			}else if(state.equalsIgnoreCase(Constant.QUESTIONNAIRE)){
 //				logger.debug("wechatServlet start updatemobile");
 				QuestionnaireBean questionnaireBean = (QuestionnaireBean)context.getBean("questionnaireBean" );
-				Integer questionnaireId=Integer.parseInt(req.getParameter("questionnaireId"));
 				req.getRequestDispatcher(questionnaireBean.doAnswer(questionnaireId)).forward(req, resp);	
 			}
 		}

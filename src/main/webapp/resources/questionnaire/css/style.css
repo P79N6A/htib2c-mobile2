@@ -83,6 +83,12 @@ body{
 	z-index: 101;
 }
 
+/*提示：未开始*/
+.unstart-tip-pg{
+	
+}
+
+
 /*提示：已参与*/
 .has-tip-pg{
 	
