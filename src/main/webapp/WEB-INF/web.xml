@@ -2,7 +2,10 @@
 		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 		 version="3.0">
 	<display-name>htib2c-mobile</display-name>
-
+    <context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>webapp.mobile</param-value>
+	</context-param>
 	<context-param>
 		<param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
 		<param-value>true</param-value>
@@ -15,7 +18,7 @@
 
 	<context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value> app.root </param-value>
+		<param-value> app.root.mobile</param-value>
 	</context-param>
 
 	<listener>
@@ -154,6 +157,24 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>QuestionnaireDataServlet</servlet-name>
+		<servlet-class>com.htichina.web.wechat.QuestionnaireDataServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QuestionnaireDataServlet</servlet-name>
+		<url-pattern>/servlet/QuestionnaireDataServlet</url-pattern>
+	</servlet-mapping>
+
+    <servlet>
+		<servlet-name>QuestionnaireSaveServlet</servlet-name>
+		<servlet-class>com.htichina.web.wechat.QuestionnaireSaveServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QuestionnaireSaveServlet</servlet-name>
+		<url-pattern>/servlet/QuestionnaireSaveServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>WechatLocateServlet</servlet-name>
 		<servlet-class>com.htichina.web.wechat.WechatLocateServlet</servlet-class>
 	</servlet>
@@ -161,6 +182,7 @@
 		<servlet-name>WechatLocateServlet</servlet-name>
 		<url-pattern>/servlet/WechatLocateServlet</url-pattern>
 	</servlet-mapping>
+
 
 	<error-page>
 		<exception-type>java.lang.RuntimeException</exception-type>
