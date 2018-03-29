@@ -102,7 +102,6 @@ public class WechatServlet extends HttpServlet {
 		logger.info("code=" + ESAPI.encoder().encodeForHTML(code));
 		String state = req.getParameter("state").split(",")[0];
 		logger.info("state=" + ESAPI.encoder().encodeForHTML(state));
-		Integer questionnaireId=Integer.parseInt(req.getParameter("questionnaireId"));
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpGet httpgets = new HttpGet(
 				"https://api.weixin.qq.com/sns/oauth2/access_token?"
@@ -123,9 +122,7 @@ public class WechatServlet extends HttpServlet {
 				req.getRequestDispatcher(loginBackingBean.closeBrowser()).forward(req, resp);
 			}
 			else{
-//			logger.infoln("Do something");
 				logger.debug("Do something");
-//			logger.infoln(str);
 				logger.info(ESAPI.encoder().encodeForHTML(str));
 
 				int m = str.indexOf("access_token");
@@ -251,8 +248,14 @@ public class WechatServlet extends HttpServlet {
 				resp.sendRedirect("/htib2c-mobile/views/luckyDraw.xhtml?showwxpaytitle=1");
 			}else if(state.equalsIgnoreCase(Constant.QUESTIONNAIRE)){
 //				logger.debug("wechatServlet start updatemobile");
+				String questionnaireId=req.getParameter("state").split(",")[1];
+				logger.debug("questionnaireId-------"+questionnaireId);
+				Integer qId=0;
+				if(questionnaireId!=null){
+					qId=Integer.parseInt(questionnaireId);
+				}
 				QuestionnaireBean questionnaireBean = (QuestionnaireBean)context.getBean("questionnaireBean" );
-				req.getRequestDispatcher(questionnaireBean.doAnswer(questionnaireId)).forward(req, resp);	
+				req.getRequestDispatcher(questionnaireBean.doAnswer(qId,req,resp)).forward(req, resp);	
 			}
 		}
 	}

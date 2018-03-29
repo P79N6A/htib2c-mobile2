@@ -30,7 +30,7 @@ public class PaymentServiceService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8080/b2c_portal/ws/paymentService?wsdl");
+            url = new URL("http://10.198.50.233:8080/b2c_portal/ws/paymentService?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

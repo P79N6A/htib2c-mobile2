@@ -3,6 +3,9 @@ package com.htichina.web.questionnaire;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -26,17 +29,18 @@ public class QuestionnaireBean implements Serializable {
 	private static Logger logger = Logger.getLogger(QuestionnaireBean.class.getName());
 	PaymentServiceClient client = PaymentServiceClient.getInstance();
 	
-	private int questionnaireId;
+	private Integer questionnaireId;
 	private String openId;
 	private String account;
 	private Integer answeredIndex=-1;
 	private String answerStatus;//0未回答或未回答完毕1已回答完毕2已结束3错误
-	public String doAnswer(int questionnaireId){
+	public String doAnswer(Integer questionnaireId,HttpServletRequest req, HttpServletResponse resp){
 		
 		this.questionnaireId=questionnaireId;
 		logger.debug("questionnaireId------"+questionnaireId);
 		try{
-			openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
+			openId=(String)req.getSession().getAttribute(Constant.OPEN_ID);
+			logger.debug("openId------"+openId);
 			if(openId==null){
 				return ViewPage.ERRORMESSAGE;
 			}

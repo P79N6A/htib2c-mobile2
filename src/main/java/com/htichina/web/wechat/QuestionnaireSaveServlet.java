@@ -43,7 +43,7 @@ public class QuestionnaireSaveServlet extends HttpServlet {
 			String questionnaireId=req.getParameter("questionnaireId");
 	        String questionId=req.getParameter("queId");
 			String ansStr=req.getParameter("answers");
-			String openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
+			String openId = (String)req.getSession().getAttribute(Constant.OPEN_ID);
 //			String openId="123123";
 			PaymentServiceClient client = PaymentServiceClient.getInstance();
 			logger.debug("openId------"+openId);
