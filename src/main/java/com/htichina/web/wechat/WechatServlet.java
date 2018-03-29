@@ -101,9 +101,8 @@ public class WechatServlet extends HttpServlet {
 //		logger.infoln(code);
 		logger.info("code=" + ESAPI.encoder().encodeForHTML(code));
 		String state = req.getParameter("state").split(",")[0];
-		Integer questionnaireId=Integer.parseInt(req.getParameter("questionnaireId"));
 		logger.info("state=" + ESAPI.encoder().encodeForHTML(state));
-
+		Integer questionnaireId=Integer.parseInt(req.getParameter("questionnaireId"));
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpGet httpgets = new HttpGet(
 				"https://api.weixin.qq.com/sns/oauth2/access_token?"
@@ -183,6 +182,8 @@ public class WechatServlet extends HttpServlet {
 
 		}
 		if(F){
+			logger.debug("打印F====="+F);
+			logger.debug("打印state====="+state);
 			if(state.equalsIgnoreCase(Constant.WECHAT_STATE_ORDER)) {
 				logger.debug("wechatServlet start Order");
 
