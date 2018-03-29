@@ -112,7 +112,7 @@ public class WechatServlet extends HttpServlet {
 		HttpResponse response = httpclient.execute(httpgets);
 		HttpEntity entity = response.getEntity();
 		boolean F = true;
-		/**if (entity != null) {
+		if (entity != null) {
 			InputStream instreams = entity.getContent();
 			String str = convertStreamToString(instreams);
 			//2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范
@@ -181,7 +181,7 @@ public class WechatServlet extends HttpServlet {
 				logger.info("payment platform: " + ESAPI.encoder().encodeForHTML(Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY));
 			}
 
-		}*/
+		}
 		if(F){
 			if(state.equalsIgnoreCase(Constant.WECHAT_STATE_ORDER)) {
 				logger.debug("wechatServlet start Order");
