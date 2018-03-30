@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="answers_time" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="open_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="options_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="question_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="questionnaire_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -39,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
     "answersTime",
     "id",
     "openId",
+    "optionsId",
     "questionId",
     "questionnaireId"
 })
@@ -51,6 +53,8 @@ public class QuestionAnswer {
     protected String id;
     @XmlElement(name = "open_id")
     protected String openId;
+    @XmlElement(name = "options_id")
+    protected String optionsId;
     @XmlElement(name = "question_id")
     protected String questionId;
     @XmlElement(name = "questionnaire_id")
@@ -174,6 +178,30 @@ public class QuestionAnswer {
      */
     public void setOpenId(String value) {
         this.openId = value;
+    }
+
+    /**
+     * 获取optionsId属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getOptionsId() {
+        return optionsId;
+    }
+
+    /**
+     * 设置optionsId属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setOptionsId(String value) {
+        this.optionsId = value;
     }
 
     /**
