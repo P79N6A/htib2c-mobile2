@@ -117,9 +117,10 @@ body{
 }
 .next-btn{
 	width:80%;
-	margin-left:10%;
-	margin-top:15px;
-	/*bottom:5%;*/
+	position:absolute;
+	left:10%;
+	/*margin-top:15px;*/
+	bottom:5%;
 }
 .err-next{
 	width:60%;

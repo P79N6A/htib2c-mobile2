@@ -30,6 +30,7 @@ $(window).ready(function () {
 			//已答毕
 			trace(".has-tip-pg");
 			alphaUp($(".has-tip-pg"));
+			
 			return;
 		}else if(_param=="2"){
 			//问卷结束
@@ -39,8 +40,6 @@ $(window).ready(function () {
 		}else if(_param=="3"){
 			//错误
 			trace(".err-tip-pg");
-			//alphaUp($(".err-tip-pg"));
-			//return;
 			errTf = true;
 		}
 		
@@ -234,11 +233,11 @@ $(window).ready(function () {
 			$(".ans-wrap li").each(function(){
 				if($(this).data("cb")==1){
 					var index=$(this).find("span").attr("index");
-					_str +=index+"_";
+					_str +=index+"#D#";
 					if($(this).find("span").text()==Other){
-						_str += $(this).find("span").text()+":"+$(this).find("input").val()+"|";
+						_str += $(this).find("span").text()+":"+$(this).find("input").val()+"#E#";
 					}else{
-						_str += $(this).find("span").text()+"|";
+						_str += $(this).find("span").text()+"#E#";
 					}
 				}
 			});
@@ -246,7 +245,7 @@ $(window).ready(function () {
 			_str = $(".ans-wrap textarea").val();
 		}else if(_type=="sel"){
 			var index=$(".ans-wrap .txt").attr("index");
-			_str+=index+"_"
+			_str+=index+"#D#"
 			if($(".ans-wrap .txt").text()==selInit){
 				alphaUp($(".err-next"));
 				return;
@@ -266,8 +265,8 @@ $(window).ready(function () {
 			}
 		}
 		alphaDown($(".err-next"));
-		if(_str.substr(_str.length-1,_str.length)=="|"){
-			_str = _str.substr(0,_str.length-1);
+		if(_str.substr(_str.length-3,_str.length)=="#E#"){
+			_str = _str.substr(0,_str.length-3);
 		}
 		//保存
 		var que_id=$(".ans-wrap").attr("que_id");
@@ -303,8 +302,6 @@ $(window).ready(function () {
     			return;
     	    }
     	})
-    	
-	
-		
 	}
+	$(".ct-wrap").css({"height":($(window).height()-130)+"px"});
 });
