@@ -30,7 +30,6 @@ $(window).ready(function () {
 			//已答毕
 			trace(".has-tip-pg");
 			alphaUp($(".has-tip-pg"));
-			
 			return;
 		}else if(_param=="2"){
 			//问卷结束
