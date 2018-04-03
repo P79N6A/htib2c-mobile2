@@ -1,6 +1,8 @@
 
 package com.htichina.wsclient.payment;
 
+import com.htichina.common.web.ConfigureInfo;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.xml.namespace.QName;
@@ -17,7 +19,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "PaymentServiceService", targetNamespace = "http://payment.ws.htichina.com/", wsdlLocation = "http://localhost:8080/b2c_portal/ws/paymentService?wsdl")
+@WebServiceClient(name = "PaymentServiceService", targetNamespace = "http://payment.ws.htichina.com/", wsdlLocation = "http://10.198.50.233:8080/b2c_portal/ws/paymentService?wsdl")
 public class PaymentServiceService
     extends Service
 {
@@ -30,7 +32,7 @@ public class PaymentServiceService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://10.198.50.233:8080/b2c_portal/ws/paymentService?wsdl");
+            url = new URL(ConfigureInfo.getB2CPaymentServiceEndPoint());
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
