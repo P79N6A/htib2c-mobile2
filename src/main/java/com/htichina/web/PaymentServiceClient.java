@@ -1,7 +1,10 @@
 package com.htichina.web;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
+import com.htichina.common.web.ConfigureInfo;
 import org.apache.log4j.Logger;
 
 import com.htichina.common.web.Constant;
@@ -46,7 +49,11 @@ public class PaymentServiceClient {
   private static PaymentService service;
 
   private PaymentServiceClient() {
-    service = new PaymentServiceService().getPort(PaymentService.class);
+    try {
+      service = new PaymentServiceService(new URL(ConfigureInfo.getB2CPaymentServiceEndPoint())).getPort(PaymentService.class);
+    } catch (MalformedURLException e) {
+      e.printStackTrace();
+    }
   }
 
   public static PaymentServiceClient getInstance(){
