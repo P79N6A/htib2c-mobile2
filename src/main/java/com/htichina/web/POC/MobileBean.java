@@ -35,6 +35,7 @@ public class MobileBean implements Serializable {
     
     private String newCellPhone;
     private String repMessage=null;
+    private String isFlag=null;//0表示更新联系方式失败，1表示更新成功
     //更新手机号或者座机号
     /**
 	 * 更新联系人方式
@@ -43,28 +44,21 @@ public class MobileBean implements Serializable {
 	 */
 	public String updateNewCellPhoneByAccountNum(){
 		FacesContext context = FacesContext.getCurrentInstance();
-		String regex= "^((0\\d{2,3}\\d{7,8})|(1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}))$";
+		String regex= "^((0\\d{2,3}\\d{7,8})|(1([358][0-9]|4[56789]|66|7[0135678]|9[89])[0-9]{8}))$";
 		boolean isf = Pattern.matches(regex, newCellPhone);
 		String accountNum=(String) FacesUtils.getManagedBeanInSession(LoginFilter.CURRENT_USER);
 		logger.info("newCellPhone+accountNum ===>"+newCellPhone+"==="+accountNum);
-		if(isf) {
-			String phoneByAccountNum=null;
-			if(null!=accountNum) {
-				//根据账户查询联系方式
-				phoneByAccountNum= PaymentServiceClient.getInstance().getCallPhoneByAccountNum(accountNum);				
-			}
-			if(phoneByAccountNum!=null&&newCellPhone.equals(phoneByAccountNum)) {
-				repMessage="您已经更改过最新联系方式，如需修改请重新输入新的联系方式！";
-			}else {				
+		if(isf) {									
 				if(null!=accountNum && newCellPhone!=null) {
 					//调用接口保存
 					boolean f = PaymentServiceClient.getInstance().updateNewCallPhoneByAccountNum(accountNum,newCellPhone);
 					if(f) {
+						isFlag="1";
 						repMessage="您的请求已成功提交！";
 					} 								
-				}			
-			}
+				}
 		}else {
+			isFlag="0";
 			repMessage="错误提示：输入有误，请检查后重新输入！";
 		}
 		logger.info("newCellPhone+accountNum ===>"+repMessage);
@@ -111,6 +105,14 @@ public class MobileBean implements Serializable {
 
 	public void setRepMessage(String repMessage) {
 		this.repMessage = repMessage;
+	}
+
+	public String getIsFlag() {
+		return isFlag;
+	}
+
+	public void setIsFlag(String isFlag) {
+		this.isFlag = isFlag;
 	}
     
 }

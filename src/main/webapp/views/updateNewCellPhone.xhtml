@@ -30,9 +30,16 @@
                      id="linetop"/>
                 <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line2.jpg"
                      id="linebot"/>               
-                <ul >
-                    <li style="padding-top:10px">请输入你最新的联系方式：</li>
-                    <li style="padding-top:40px">
+                <ul style="margin-top: 10px;">
+                    <li style="padding-top:1px">请输入您最新的联系方式以确保您的使用权益</li>
+                    <li style="padding-top:30px">
+                    <h:inputText id="isFlag"
+                                     value="#{mobileBean.isFlag}"
+                                     style="display: none">
+                          <f:passThroughAttribute name="nm" value="isFlag"/>
+                      </h:inputText>
+                    </li>
+                    <li style="padding-top:70px">
                     <h:inputText id="newCellPhone"
                                      value="#{mobileBean.newCellPhone}" maxlength="12"  required="true" requiredMessage="The field is empty"  >
                         <f:passThroughAttribute name="placeholder" value="手机或座机号码" />
@@ -62,9 +69,14 @@
          <!-- 输入格式不对 -->
             <div class="alert" id="sn_err" style="display:none;">
 	             <div class="a_txt" id="perro">错误提示：输入有误，请检查后重新输入<br/></div> 
-                <div id = "retryBtn" class="m_btn m_btn1" onclick="hideLogOff()">重 新 输入</div>
+                <div id = "retryBtn" class="m_btn m_btn1" onclick="hideLogOff()">确 定</div>
             </div> 
-            <div id="filer"  style="display:none"></div>                             
+            <div id="filer"  style="display:none"></div>
+            <style>
+               #fri_mod ul{
+               top: 130px !important;
+               }
+            </style>                             
             <script type="text/javascript">
 	        var repMessageVal = $("input[nm='repMessage']").val();
             $(function(){  
@@ -78,9 +90,21 @@
 			          $('#perro').html(repMessageVal);
 	         	  }
             })	           
-	            function hideLogOff() {	
-            		$('#filer').hide();
-                    $('#sn_err').hide();
+	            function hideLogOff() {
+            		var isFlag = $("input[nm='isFlag']").val();
+	            	if(isFlag=="1"){
+	            		if(typeof(WeixinJSBridge)!="undefined"){
+	            			//这个可以关闭安卓系统的手机  
+	            			  document.addEventListener('WeixinJSBridgeReady', function(){ WeixinJSBridge.call('closeWindow'); }, false);  
+	            			  //这个可以关闭ios系统的手机  
+	            			  WeixinJSBridge.call('closeWindow');             			
+	            		}else{
+	            			open(location, '_self').close();
+	            		}
+	            	}else{
+	            		$('#filer').hide();
+	                    $('#sn_err').hide();            		
+	            	}
                 }
             </script>
         </h:form>
