@@ -264,8 +264,8 @@ $(window).ready(function () {
 			}
 		}
 		alphaDown($(".err-next"));
-		if(_str.substr(_str.length-3,_str.length)=="#E_#"){
-			_str = _str.substr(0,_str.length-3);
+		if(_str.substr(_str.length-4,_str.length)=="#E_#"){
+			_str = _str.substr(0,_str.length-4);
 		}
 		//保存
 		var que_id=$(".ans-wrap").attr("que_id");
