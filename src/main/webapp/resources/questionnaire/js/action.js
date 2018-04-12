@@ -302,5 +302,5 @@ $(window).ready(function () {
     	    }
     	})
 	}
-	$(".ct-wrap").css({"height":($(window).height()-160)+"px"});
+	$(".ct-wrap").css({"height":($(window).height()-130)+"px"});
 });
