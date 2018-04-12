@@ -194,7 +194,7 @@ body{
 }
 .ans-wrap li>input,.ans-wrap>div>input{
 	width:60%;
-	
+	font-size:15px;
 	border: 0px;
 	background:none;
 	
