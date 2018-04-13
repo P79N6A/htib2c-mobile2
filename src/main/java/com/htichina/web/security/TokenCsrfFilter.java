@@ -69,12 +69,12 @@ public class TokenCsrfFilter implements Filter {
 			       chain.doFilter(request, response); 
 			   //}else if(sToken != null && pToken != null && sToken.equals(pToken)){ 
 			  } else if(Constant.TOKENLIST.contains(pToken)){
-				   logger.info("-------------------------------------uri2:"+uri);
+//				   logger.info("-------------------------------------uri2:"+uri);
 			       chain.doFilter(request, response); 
 			   } else{ 
-				   logger.info("-------------------------------------uri3:"+uri);
+//				   logger.info("-------------------------------------uri3:"+uri);
 				   logger.info("-------------------------------------session token:"+sToken);
-				   logger.info("-------------------------------------parameter token:"+pToken);				  
+//				   logger.info("-------------------------------------parameter token:"+pToken);				  
 				   request.getRequestDispatcher("/views/common/error.xhtml").forward(request,response); 
 			   } 
 			}else{

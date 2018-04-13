@@ -73,8 +73,8 @@ public class CsrfFilter implements Filter {
 					System.out.println("error------log:"+log);
 					System.out.println("error------uri:"+req.getRequestURI());
 					
-					logger.info("error------log:"+log);
-					logger.info("error------uri:"+req.getRequestURI());
+					//logger.info("error------log:"+log);
+					//logger.info("error------uri:"+req.getRequestURI());
 					req.getRequestDispatcher("views/common/error.xhtml").forward(req, res);
 					return;
 				}

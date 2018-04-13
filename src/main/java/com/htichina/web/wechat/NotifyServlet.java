@@ -83,7 +83,7 @@ public class NotifyServlet extends HttpServlet {
 			}
 
 //			System.out.println("Notify: " + notifyXml);
-			logger.info("notifyXml-------------------"+notifyXml);
+//			logger.info("notifyXml-------------------"+notifyXml);
 			if(!StringUtils.isEmpty(notifyXml)){
 				SortedMap<String, String> m = parseXmlToList2(notifyXml);
 				WxPayResult wpr = new WxPayResult();
@@ -92,12 +92,12 @@ public class NotifyServlet extends HttpServlet {
 				m.put("sign", "");
 				PaymentServiceClient client = PaymentServiceClient.getInstance();
 				String neworder = "";
-				logger.info("wpr.getOutTradeNo()=============================="+wpr.getOutTradeNo());
+//				logger.info("wpr.getOutTradeNo()=============================="+wpr.getOutTradeNo());
 				if(wpr.getOutTradeNo().length()>13){
 					neworder = wpr.getOutTradeNo().substring(0, 13);
 				}
-				logger.info("order======================>"+order);
-				logger.info("neworder======================>"+neworder);
+//				logger.info("order======================>"+order);
+//				logger.info("neworder======================>"+neworder);
 				logger.info("client.CheckTransaction(neworder)======================================>"+client.CheckTransaction(neworder));
 				if (!order.equals(neworder)&&(!client.CheckTransaction(neworder))) {
 
@@ -163,7 +163,7 @@ public class NotifyServlet extends HttpServlet {
 							}
 						}
 
-						logger.info(" wpr.getOpenid()-------------------"+ wpr.getOpenid());
+//						logger.info(" wpr.getOpenid()-------------------"+ wpr.getOpenid());
 
 						PaymentResponse paymentResponse = new PaymentResponse();
 						PaymentResultMessage paymentResultMessage1 = new PaymentResultMessage();

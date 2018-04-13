@@ -176,21 +176,21 @@ public class Demo {
 		String createOrderURL = "https://api.mch.weixin.qq.com/pay/unifiedorder";
 		prepay_id = new GetWxOrderno().getPayNo(createOrderURL, xml);
 //		System.out.println("prepayid :" + prepay_id);
-		logger.info("xml-----------------------"+xml);
+//		logger.info("xml-----------------------"+xml);
 		logger.info("appid-----------------------"+appid);
 		logger.info("mch_id-----------------------"+mch_id);
 		logger.info("nonce_str-----------------------"+nonce_str);
-		logger.info("sign-----------------------"+sign);
+//		logger.info("sign-----------------------"+sign);
 		logger.info("body-----------------------"+body);
-		logger.info("out_trade_no-----------------------"+out_trade_no);
+//		logger.info("out_trade_no-----------------------"+out_trade_no);
 		logger.info("attach-----------------------"+attach);
 		logger.info("totalFee-----------------------"+totalFee);
 		logger.info("spbill_create_ip-----------------------"+spbill_create_ip);
 		logger.info("notify_url-----------------------"+notify_url);
 		logger.info("trade_type-----------------------"+trade_type);
-		logger.info("openId-----------------------"+openId);
+//		logger.info("openId-----------------------"+openId);
 
-		logger.info("prepay_id-----------------------"+prepay_id);
+//		logger.info("prepay_id-----------------------"+prepay_id);
 
 
 		SortedMap<String, String> finalpackage = new TreeMap<String, String>();

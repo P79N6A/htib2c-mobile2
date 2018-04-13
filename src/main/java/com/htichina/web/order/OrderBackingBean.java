@@ -34,6 +34,7 @@ import com.htichina.web.common.MessageBundle;
 import com.htichina.web.common.ViewPage;
 import com.htichina.web.wechat.Demo;
 import com.htichina.web.wechat.WxPayDto;
+import com.tencent.common.RandomStringGenerator;
 
 
 /**
@@ -1261,7 +1262,8 @@ public class OrderBackingBean implements Serializable {
 
         // create transaction
         String transactionNo = getTransactionNo();
-        String serialNo = getSerialNo();
+//        String serialNo = getSerialNo();
+        String serialNo = RandomStringGenerator.getRandomStringByLength(6);
         String transChannel = null;
         if(isWechatPay()) {
             transChannel = "03";
@@ -1683,7 +1685,7 @@ public class OrderBackingBean implements Serializable {
             this.openId=openId;
             return ViewPage.HASBEENCANCELED;
         }
-        logger.info("orderIds=================" + orderIds);
+//        logger.info("orderIds=================" + orderIds);
         logger.info("orderDescs=================" + orderDescs);
         WxPayDto tpWxPay = new WxPayDto();
         Demo demo = new Demo();
