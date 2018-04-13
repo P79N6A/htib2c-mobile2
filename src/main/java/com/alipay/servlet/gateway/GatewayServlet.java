@@ -89,6 +89,8 @@ public class GatewayServlet extends HttpServlet {
 
                 //http 内容应答
                 response.reset();
+                //添加xss拦截请求头
+                response.setHeader("X-XSS-Protection", "1; mode=block");
                 response.setContentType("text/xml;charset=GBK");
                 PrintWriter printWriter = response.getWriter();
                 printWriter.print(responseMsg);

@@ -169,10 +169,16 @@ public class WechatServlet extends HttpServlet {
 //			FacesUtils.setManagedBeanInSession(Constant.OPEN_ID, openId);
 //			FacesUtils.setManagedBeanInSession(Constant.PAYMENT_PLATFORM, Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
 				//2017-10-25;Alex:优化代码，安全加密输出内容;CR-代码规范
-				req.getSession().setAttribute(Constant.OPEN_ID, ESAPI.encoder().encodeForHTML(openId));
-				req.getSession().setAttribute(Constant.WECHAT_USER_INFO, userInfo);
+				if(openId!=null){
+				  req.getSession().setAttribute(Constant.OPEN_ID, ESAPI.encoder().encodeForHTML(openId));
+				}
+				if(userInfo!=null){
+				  req.getSession().setAttribute(Constant.WECHAT_USER_INFO, userInfo);
+				}
 				req.getSession().setAttribute(Constant.PAYMENT_PLATFORM, Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
-				req.getSession().setAttribute(Constant.WECHAT_STATE, ESAPI.encoder().encodeForHTML(state));
+				if(state!=null){
+				  req.getSession().setAttribute(Constant.WECHAT_STATE, ESAPI.encoder().encodeForHTML(state));
+				}
 //			System.out.println("payment platform: " + Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
 				logger.info("payment platform: " + ESAPI.encoder().encodeForHTML(Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY));
 			}
@@ -180,6 +186,7 @@ public class WechatServlet extends HttpServlet {
 		}
 		if(F){
 			logger.debug("打印F====="+F);
+			
 			logger.debug("打印state====="+state);
 			if(state.equalsIgnoreCase(Constant.WECHAT_STATE_ORDER)) {
 				logger.debug("wechatServlet start Order");
