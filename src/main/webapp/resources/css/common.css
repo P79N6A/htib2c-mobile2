@@ -1,0 +1,400 @@
+/*
+	by ohkei 66005199@qq.com
+*/
+html,body { width:100%; }
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,menu,nav,output,ruby,section,summary,time,mark,audio,video,p{margin:0;padding:0;border:0;vertical-align:baseline;}
+
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,footer,header,menu,nav,section{display:block;}
+body{line-height:1.3;font-size:28px;font-family:"Adobe 黑体 Std","微软雅黑","宋体",Verdana,Arial,Helvetica,sans-serif;margin:0 auto; color:#222; background-color:#000;}
+ol,ul{list-style:none;}
+a{text-decoration:none;color:#fff;}
+a:hover{color:#fff;}
+img{position: absolute;border:0px;vertical-align:middle;}
+em{ font-style: normal;}
+input,button,select,textarea{outline:none}
+
+*{
+    font-family: "微软雅黑", "Segoe", "Segoe UI", "DejaVu Sans", "Trebuchet MS", "Verdana", "sans-serif";
+}
+
+/* ********** loading ********* */
+svg {
+    transform: scale(2);
+    position: absolute;
+    top: -40px;
+    left: 18%;
+}
+#loading {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 500;
+    background-color: #000;
+}
+#loading_con {
+    display: block;
+    width: 40%;
+    bottom: 60%;
+    position: absolute;
+    left: 49.5%;
+    margin: -25% 0 0 -20%;
+}
+#loading_con span {
+    width: 100%;
+    position: absolute;
+    bottom: 17px;
+    left: 5%;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    color: #FFF;
+}
+@media screen and (max-width: 360px) {
+    #loading_con {
+        left: 43%;
+    }
+    #loading_con span {
+        left: 17%;
+    }
+}
+#loading_con p {
+    width: 100%;
+    position: absolute;
+    bottom: -80px;
+    left: 42%;
+    text-align: left;
+    font-size: 10px;
+    font-weight: bold;
+    font-style: italic;
+    color: #FFF;
+}
+#loading_bg{
+    width: 100%;
+    height: 100%;
+    bottom:0px;
+    left:0px;
+    background-color: #000;
+}
+
+/* ********** 翻页样式 ********** */
+#page{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:1334px;
+    overflow: hidden;
+}
+.cutPg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+}
+.pageWrap {
+    width: 100%;
+    position: absolute;
+}
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+/*.page.active {
+  z-index: 6;
+  display: block;
+}*/
+.page img {
+    position: absolute;
+
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+.pageBg {
+    width:auto;
+    height:auto;
+
+    top: 0px;
+    left: 0px;
+}
+.wd_fix{
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*width: 640px;
+    height: 1140px;*/
+
+    width: 750px;
+    height: 1340px;
+    overflow-x: hidden;
+}
+.wd_ht_fix{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 750px;
+    height: 1340px;
+    overflow: hidden;
+}
+
+/* ********** 通用样式 ********** */
+.pg_white{
+    background: #FFF;
+}
+.bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #10141C;
+    overflow: hidden;
+}
+.pbg{
+    width:100%;
+    top:0;
+}
+.pageBg {
+    width:auto;
+    height:auto;
+
+    top:0;
+    left: 0px;
+}
+.blackBg,.black,.share_mc{
+    width:100%;
+    height:1400px;
+    filter:alpha(Opacity=90);/*支持 IE 浏览器*/
+    -moz-opacity:0.9;/*支持 FireFox 浏览器*/
+    opacity: 0.9;/*支持 Chrome, Opera, Safari 等浏览器*/
+    background-color:rgb(18,33,54);
+    position:absolute;
+    top:0;
+    left:0;
+}
+.whiteBg,.white{
+    width:100%;
+    height:1600px;
+    background-color:#FFF;
+}
+#window_mc .blackBg{
+    opacity:1;
+}
+.pbg {
+    width:100%;
+    bottom: 0px;
+    left: 0px;
+}
+.none{
+    display: none;
+}
+/*文本*/
+.txt{
+    font-size: 0.9em;
+    position: absolute;
+    font-weight:300;
+}
+.arrow_share{
+    top:30px;
+    right:0;
+}
+
+/* ********** 横屏样式 ********** */
+#window_mc{
+    z-index: 1000;
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
+}
+#oriTip{
+    width:100%;
+    height:100%;
+}
+
+/*span标签自动折行*/
+/*span{
+	word-break: normal;
+	width: auto;
+	display: block;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+} */
+
+/*by ohkei QQ：66005199*/
+/*动画定义*/
+/*-webkit-animation: ticketDown2 1s linear 0.1s infinite alternate;
+  animation: ticketDown2 1s linear 0.1s infinite alternate;*/
+@-webkit-keyframes upRepeat2 {
+    0% {-webkit-transform:translateY(0%);opacity: 1;}
+    100% {-webkit-transform:translateY(80%);opacity: 0;}
+}
+@keyframes upRepeat2 {
+    0% {-webkit-transform:translateY(0%);opacity: 1;}
+    100% {-webkit-transform:translateY(80%);opacity: 0;}
+}
+
+@-webkit-keyframes upRepeat {
+    0%{-webkit-transform:translateY(0%);}
+    20% {-webkit-transform:translateY(-10%);}
+    40% {-webkit-transform:translateY(0%);}
+    60% {-webkit-transform:translateY(-5%);}
+    80% {-webkit-transform:translateY(0%);}
+    100% {-webkit-transform:translateY(0%);}
+}
+@keyframes upRepeat {
+    0%{-webkit-transform:translateY(0%);}
+    20% {-webkit-transform:translateY(-10%);}
+    40% {-webkit-transform:translateY(0%);}
+    60% {-webkit-transform:translateY(-5%);}
+    80% {-webkit-transform:translateY(0%);}
+    100% {-webkit-transform:translateY(0%);}
+}
+
+@-webkit-keyframes leftRepeat {
+    0%,100% {-webkit-transform:translateX(0%);}
+    50% {-webkit-transform:translateX(-50%);}
+}
+@keyframes leftRepeat {
+    0%,100% {-webkit-transform:translateX(0%);}
+    50% {-webkit-transform:translateX(-50%);}
+}
+
+@-webkit-keyframes leftRepeat2 {
+    0%,100% {-webkit-transform:translateX(0%);opacity: 1;}
+    50% {-webkit-transform:translateX(-30%);opacity: 0;}
+}
+@keyframes leftRepeat2 {
+    0%,100% {-webkit-transform:translateX(0%);opacity: 1;}
+    50% {-webkit-transform:translateX(-30%);opacity: 0;}
+}
+
+@-webkit-keyframes leftRepeat3 {
+    0%{-webkit-transform:translateX(-80%);opacity:1}
+    50% {-webkit-transform:translateX(0%);opacity:1}
+    100% {-webkit-transform:translateX(80%);opacity:0}
+}
+@keyframes leftRepeat3 {
+    0%{-webkit-transform:translateX(-80%);opacity:1}
+    50% {-webkit-transform:translateX(0%);opacity:1}
+    100% {-webkit-transform:translateX(80%);opacity:0}
+}
+
+@-webkit-keyframes rightRepeat {
+    0%,100% {-webkit-transform:translateX(0%);}
+    50% {-webkit-transform:translateX(4%);}
+}
+@keyframes rightRepeat {
+    0%,100% {-webkit-transform:translateX(0%);}
+    50% {-webkit-transform:translateX(4%);}
+}
+
+@-webkit-keyframes rightRepeat2 {
+    0%,100% {-webkit-transform:translateX(0%);}
+    50% {-webkit-transform:translateX(16%);}
+}
+@keyframes rightRepeat2 {
+    0%,100% {-webkit-transform:translateX(0%);}
+    50% {-webkit-transform:translateX(16%);}
+}
+
+@-webkit-keyframes rightRepeat3 {
+    0%{-webkit-transform:translateX(80%);opacity:1}
+    50% {-webkit-transform:translateX(0%);opacity:1}
+    100% {-webkit-transform:translateX(-80%);opacity:0}
+}
+@keyframes rightRepeat3 {
+    0%{-webkit-transform:translateX(80%);opacity:1}
+    50% {-webkit-transform:translateX(0%);opacity:1}
+    100% {-webkit-transform:translateX(-80%);opacity:0}
+}
+
+@-webkit-keyframes rotaAni {
+    0% {-webkit-transform:rotate(0);}
+    100% {-webkit-transform:rotate(10deg);}
+}
+@keyframes rotaAni {
+    0% {-webkit-transform:rotate(0);}
+    100% {-webkit-transform:rotate(10deg);}
+}
+
+.rota360{
+    -webkit-animation: rota360 1.5s;
+    animation: rota360 1.5s;
+}
+@-webkit-keyframes rota360 {
+    0% {-webkit-transform:rotate(0);}
+    100% {-webkit-transform:rotate(360deg);}
+}
+@keyframes rota360 {
+    0% {-webkit-transform:rotate(0);}
+    100% {-webkit-transform:rotate(360deg);}
+}
+/*箭头*/
+.active>.ticketDown2{
+    -webkit-animation: ticketDown2 1s;
+    animation: ticketDown2 1s;
+}
+@-webkit-keyframes ticketDown2 {
+    0%,100% {-webkit-transform:translateY(-5%);opacity: 1;}
+    50% {-webkit-transform:translateY(25%);opacity: 1;}
+}
+@keyframes ticketDown2 {
+    0%,100% {-webkit-transform:translateY(-5%);opacity: 1;}
+    50% {-webkit-transform:translateY(25%);opacity: 1;}
+}
+
+/* ********** animat ********** */
+.active>.delay100{ -webkit-animation-delay: 100ms; animation-delay: 100ms;}
+.active>.delay200{ -webkit-animation-delay: 200ms; animation-delay: 200ms;}
+.active>.delay300{ -webkit-animation-delay: 300ms; animation-delay: 300ms;}
+.active>.delay500{ -webkit-animation-delay: 500ms; animation-delay: 500ms;}
+.active>.delay600{ -webkit-animation-delay: 600ms; animation-delay: 600ms;}
+.active>.delay700{ -webkit-animation-delay: 700ms; animation-delay: 700ms;}
+.active>.delay800{ -webkit-animation-delay: 800ms; animation-delay: 800ms;}
+.active>.delay900{ -webkit-animation-delay: 900ms; animation-delay: 900ms;}
+.active>.delay1000{ -webkit-animation-delay: 1000ms; animation-delay: 1000ms;}
+.active>.delay1100{ -webkit-animation-delay: 1100ms; animation-delay: 1100ms;}
+.active>.delay1300{ -webkit-animation-delay: 1300ms; animation-delay: 1300ms;}
+.active>.delay1500{ -webkit-animation-delay: 1500ms; animation-delay: 1500ms;}
+.active>.delay1700{ -webkit-animation-delay: 1700ms; animation-delay: 1700ms;}
+.active>.delay1900{ -webkit-animation-delay: 1900ms; animation-delay: 1900ms;}
+.active>.delay2000{ -webkit-animation-delay: 2000ms; animation-delay: 2000ms;}
+.active>.delay2100{ -webkit-animation-delay: 2100ms; animation-delay: 2100ms;}
+.active>.delay2300{ -webkit-animation-delay: 2300ms; animation-delay: 2300ms;}
+.active>.delay2500{ -webkit-animation-delay: 2500ms; animation-delay: 2500ms;}
+.active>.delay2800{ -webkit-animation-delay: 2800ms; animation-delay: 2800ms;}
+.active>.delay3000{ -webkit-animation-delay: 3000ms; animation-delay: 3000ms;}
+.active>.delay3500{ -webkit-animation-delay: 3500ms; animation-delay: 3500ms;}
+.active>.delay4000{ -webkit-animation-delay: 4000ms; animation-delay: 4000ms;}
+.active>.delay4500{ -webkit-animation-delay: 4500ms; animation-delay: 4500ms;}
+.active>.delay5000{ -webkit-animation-delay: 5000ms; animation-delay: 5000ms;}
+.active>.delay5500{ -webkit-animation-delay: 5500ms; animation-delay: 5500ms;}
+.active>.delay6000{ -webkit-animation-delay: 6000ms; animation-delay: 6000ms;}
+.active>.duration100{ -webkit-animation-duration: 100ms; animation-duration: 100ms;}
+.active>.duration300{ -webkit-animation-duration: 300ms; animation-duration: 300ms;}
+.active>.duration500{ -webkit-animation-duration: 500ms; animation-duration: 500ms;}
+.active>.duration1000{ -webkit-animation-duration: 1000ms; animation-duration: 1000ms;}
+.active>.duration1500{ -webkit-animation-duration: 1500ms; animation-duration: 1500ms;}
+.active>.duration2000{ -webkit-animation-duration: 2000ms; animation-duration: 2000ms;}
+.active>.duration2500{ -webkit-animation-duration: 2500ms; animation-duration: 2500ms;}
+.active>.duration3000{ -webkit-animation-duration: 3000ms; animation-duration: 3000ms;}
+.active>.duration3500{ -webkit-animation-duration: 3500ms; animation-duration: 3500ms;}
+.active>.duration4000{ -webkit-animation-duration: 4000ms; animation-duration: 4000ms;}
+.active>.duration4500{ -webkit-animation-duration: 4500ms; animation-duration: 4500ms;}
+.active>.duration5000{ -webkit-animation-duration: 5000ms; animation-duration: 5000ms;}
+.active>.duration6000{ -webkit-animation-duration: 6000ms; animation-duration: 6000ms;}
+.active>.duration7000{ -webkit-animation-duration: 7000ms; animation-duration: 7000ms;}
+.active>.duration8000{ -webkit-animation-duration: 8000ms; animation-duration: 8000ms;}
+.active>.duration9000{ -webkit-animation-duration: 9000ms; animation-duration: 9000ms;}
+.active>.duration10000{ -webkit-animation-duration: 10000ms; animation-duration: 10000ms;}
+
