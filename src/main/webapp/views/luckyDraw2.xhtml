@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<body >
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template3.xhtml">
+
+
+    <ui:define name="header">
+        限时抽奖
+    </ui:define>
+
+    <ui:define name="workspace">
+        <!-- loading页 -->
+        <div id="loading" class="active">
+            <div id="ld-bg">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/bg.jpg" alt="" />
+            </div>
+            <div id="ld-ct">
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/load-txt.png" alt="" class="load-txt" />
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/load-bar-bg.png" alt="" class="load-bar-bg" />
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/load-bar-cur.png" alt="" class="load-bar-cur" />
+                <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/load-img.png" alt="" class="load-img" />
+                <!--<span></span>
+                <p></p>-->
+            </div>
+        </div>
+
+        <div id="page">
+            <div class="pageWrap">
+                <!--游戏页-->
+                <div class="page game-pg">
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/game-bg.jpg" alt=""/>
+
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/prize-1.png" alt="" class="none prize" />
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/prize-2.png" alt="" class="none"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/prize-3.png" alt="" class="none"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/prize-4.png" alt="" class="none"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/prize-5.png" alt="" class="none"/>
+
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/hand-1.png" alt="" class="hand"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/hand-2.png" alt="" class="none"/>
+
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/move-box.png" alt="" class="move-box"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/game-top.png" alt=""/>
+
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/ctrl-btn.png" alt="" class="ctrl-btn"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/ctrl-1.png" alt="" class="none"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/ctrl-2.png" alt="" class="none"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/game-ft.png" alt="" class="game-ft"/>
+
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/num-img.png" alt="" class="num-img"/>
+
+                    <div class="ctrl left-btn"></div>
+                    <div class="ctrl right-btn"></div>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/enter-btn.png" alt="" class="enter-btn"/>
+                </div>
+
+                <!--首页-->
+                <div class="page home-pg">
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/home-bg-3.jpg" alt=""/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/home-bg-2.png" alt=""/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/logo.png" alt="" class="logo"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/home-title.png" alt="" class="home-title"/>
+
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/home-ani-1.png" alt="" class="home-ani-1"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/home-ani-2.png" alt="" class="home-ani-2"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/home-ani-3.png" alt="" class="home-ani-3"/>
+
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/home-bg-1.png" alt=""/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/home-hand.png" alt="" class="home-hand"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/home-glass.png" alt="" class="home-glass"/>
+
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/rule-btn.png" alt="" class="rule-btn"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/start-btn.png" alt="" class="start-btn"/>
+                </div>
+
+                <!--活动规则页-->
+                <div class="page rule-pg none">
+                    <div class="black"></div>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/rule-bg.png" alt=""/>
+                    <!--<img src="img/rule-mask.png" alt="" class="rule-mask">-->
+                    <div class="rule-mask">
+                        <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/rule-txt.png" alt="" class="rule-txt"/>
+                    </div>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/close-btn.png" alt="" class="rule-close"/>
+                </div>
+
+                <!--订购页-->
+                <div class="page dg-pg none">
+                    <div class="black"></div>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/dg-bg.png" alt=""/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/dg-btn.png" alt="" class="dg-btn"/>
+                </div>
+
+                <!--未中奖页：非最后一次-->
+                <div class="page lose1-pg none">
+                    <div class="black"></div>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/lose-1.png" alt=""/>
+                    <p class="num">0</p>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/re-btn.png" alt="" class="re-btn"/>
+                </div>
+
+                <!--未中奖页：最后一次，无奖-->
+                <div class="page lose2-pg none">
+                    <div class="black"></div>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/lose-2.png" alt=""/>
+                </div>
+
+                <!--未中奖页：最后一次，有奖-->
+                <div class="page lose3-pg none">
+                    <div class="black"></div>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/lose-3.png" alt=""/>
+                    <p class="tt tt1">恭喜您，中奖啦！</p>
+                    <p class="tt tt2">恭喜您，中奖啦！</p>
+                    <p class="tt tt3">恭喜您，中奖啦！</p>
+                    <input type="text" maxlength="40" class="name"/>
+                    <input type="tel" maxlength="11" class="tel"/>
+                    <input type="text" maxlength="100" class="addr"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/send-btn.png" alt="" class="send-btn"/>
+                </div>
+
+                <!--中奖页：非最后一次-->
+                <div class="page win1-pg none">
+                    <div class="black"></div>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/win-1.png" alt=""/>
+                    <p class="txt">恭喜您，中奖啦！</p>
+                    <p class="num">0</p>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/re-btn.png" alt="" class="re-btn"/>
+                </div>
+
+                <!--中奖页：最后一次-->
+                <div class="page win2-pg none">
+                    <div class="black"></div>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/win-2.png" alt=""/>
+                    <p class="txt">恭喜您，中奖啦！</p>
+                    <p class="tt tt1">恭喜您，中奖啦！</p>
+                    <p class="tt tt2">恭喜您，中奖啦！</p>
+                    <p class="tt tt3">恭喜您，中奖啦！</p>
+                    <p class="tt tt4">恭喜您，中奖啦！</p>
+                    <input type="text" maxlength="40" class="name"/>
+                    <input type="tel" maxlength="11" class="tel"/>
+                    <input type="text" maxlength="100" class="addr"/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/send-btn.png" alt="" class="send-btn"/>
+                </div>
+
+                <!--提示页：未输入姓名-->
+                <div class="page tip-name-pg none">
+                    <div class="black"></div>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/tip-name.png" alt=""/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/close-btn.png" alt="" class="close-btn"/>
+                </div>
+
+                <!--提示页：未输入电话-->
+                <div class="page tip-tel-pg none">
+                    <div class="black"></div>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/tip-tel.png" alt=""/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/close-btn.png" alt="" class="close-btn" />
+                </div>
+
+                <!--提示页：未输入地址-->
+                <div class="page tip-addr-pg none">
+                    <div class="black"></div>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/tip-addr.png" alt=""/>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/close-btn.png" alt="" class="close-btn" />
+                </div>
+
+                <!--提示页：信息错误-->
+                <div class="page tip-err-pg none">
+                    <div class="black"></div>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/tip-err.png" alt="" />
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/close-btn.png" alt="" class="close-btn" />
+                </div>
+
+                <!--提示页：提交成功-->
+                <div class="page send-ok-pg none">
+                    <div class="black"></div>
+                    <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img3/send-ok.png" alt="" />
+                </div>
+            </div>
+        </div>
+
+        <div id="window_mc" class="none">
+            <!--<img src="img/oriTip.jpg" id="oriTip" />-->
+        </div>
+
+        <!--<h:form  id="ajax" style="display: none">-->
+            <!--<h:inputHidden id="luckyDrawNoticeType" value="#{luckDrawBean2.luckyDrawNoticeType}"  >-->
+                <!--<f:passThroughAttribute name="val" value="luckyDrawNoticeType"/>-->
+            <!--</h:inputHidden>-->
+            <!--<h:inputHidden id="ts" value="#{luckDrawBean2.ts}"  >-->
+                <!--<f:passThroughAttribute name="val" value="ts"/>-->
+            <!--</h:inputHidden>-->
+            <!--<h:inputHidden id="num" value="#{luckDrawBean2.num}"  >-->
+                <!--<f:passThroughAttribute name="val" value="num"/>-->
+            <!--</h:inputHidden>-->
+            <!--<h:inputHidden id="tn" value="#{luckDrawBean2.tn}"  >-->
+                <!--<f:passThroughAttribute name="val" value="tn"/>-->
+            <!--</h:inputHidden>-->
+            <!--<h:inputHidden id="tt1" value="#{luckDrawBean2.tt1}"  >-->
+                <!--<f:passThroughAttribute name="val" value="tt1"/>-->
+            <!--</h:inputHidden>-->
+            <!--<h:inputHidden id="tt2" value="#{luckDrawBean2.tt2}"  >-->
+                <!--<f:passThroughAttribute name="val" value="tt2"/>-->
+            <!--</h:inputHidden>-->
+            <!--<h:inputHidden id="tt3" value="#{luckDrawBean2.tt3}"  >-->
+                <!--<f:passThroughAttribute name="val" value="tt3"/>-->
+            <!--</h:inputHidden>-->
+            <!--<h:inputHidden id="tt4" value="#{luckDrawBean2.tt4}"  >-->
+                <!--<f:passThroughAttribute name="val" value="tt2"/>-->
+            <!--</h:inputHidden>-->
+            <!--<h:inputHidden id="txt" value="#{luckDrawBean2.txt}"  >-->
+                <!--<f:passThroughAttribute name="val" value="txt"/>-->
+            <!--</h:inputHidden>-->
+            <!--<h:commandButton  value="抽奖"  action="#{luckDrawBean2.doLuckDraw}">-->
+                <!--<f:passThroughAttribute name="nm" value="doLuckDraw"/>-->
+                <!--<f:ajax render="ajax"  event="action" onevent="successReturn" />-->
+            <!--</h:commandButton>-->
+        <!--</h:form>-->
+        <script src="#{facesContext.externalContext.request.contextPath}/resources/js/TweenMax.min.js"></script>
+        <script src="#{facesContext.externalContext.request.contextPath}/resources/js/wowUI.js"></script>
+        <script src="#{facesContext.externalContext.request.contextPath}/resources/js/ajax.js"></script>
+        <script src="#{facesContext.externalContext.request.contextPath}/resources/js/common.js"></script>
+        <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-98629510-7"></script>
+        <script src="#{facesContext.externalContext.request.contextPath}/resources/js/track.js"></script>
+        <script src="#{facesContext.externalContext.request.contextPath}/resources/js/jweixin-1.0.0.js"></script>
+        <!--<script src="js/Share.js"></script>-->
+        <script src="#{facesContext.externalContext.request.contextPath}/resources/js/action.js"></script>
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>
