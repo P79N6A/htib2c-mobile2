@@ -1,8 +1,11 @@
 
 package com.htichina.wsclient.payment;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -21,6 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="ldItem" type="{http://payment.ws.htichina.com/}ldItem" minOccurs="0"/>
  *         &lt;element name="leftAmount" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="otherPrizeSize" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="prizeList" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="wifiPrizeSize" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -37,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
     "ldItem",
     "leftAmount",
     "otherPrizeSize",
+    "prizeList",
     "wifiPrizeSize"
 })
 public class LdLtemReponse {
@@ -46,6 +51,8 @@ public class LdLtemReponse {
     protected LdItem ldItem;
     protected int leftAmount;
     protected int otherPrizeSize;
+    @XmlElement(nillable = true)
+    protected List<String> prizeList;
     protected int wifiPrizeSize;
 
     /**
@@ -134,6 +141,35 @@ public class LdLtemReponse {
      */
     public void setOtherPrizeSize(int value) {
         this.otherPrizeSize = value;
+    }
+
+    /**
+     * Gets the value of the prizeList property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the prizeList property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getPrizeList().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+     * 
+     */
+    public List<String> getPrizeList() {
+        if (prizeList == null) {
+            prizeList = new ArrayList<String>();
+        }
+        return this.prizeList;
     }
 
     /**

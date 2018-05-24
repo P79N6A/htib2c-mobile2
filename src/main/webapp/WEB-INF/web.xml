@@ -182,7 +182,22 @@
 		<servlet-name>WechatLocateServlet</servlet-name>
 		<url-pattern>/servlet/WechatLocateServlet</url-pattern>
 	</servlet-mapping>
-
+	<servlet>
+		<servlet-name>LuckyDraw2Servlet</servlet-name>
+		<servlet-class>com.htichina.web.wechat.LuckyDraw2Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LuckyDraw2Servlet</servlet-name>
+		<url-pattern>/servlet/LuckyDraw2Servlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>LuckyDraw2DataServlet</servlet-name>
+		<servlet-class>com.htichina.web.wechat.LuckyDraw2DataServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LuckyDraw2DataServlet</servlet-name>
+		<url-pattern>/servlet/LuckyDraw2DataServlet</url-pattern>
+	</servlet-mapping>
 
 	<error-page>
 		<exception-type>java.lang.RuntimeException</exception-type>

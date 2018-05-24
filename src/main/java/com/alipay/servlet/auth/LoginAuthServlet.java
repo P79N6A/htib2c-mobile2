@@ -119,7 +119,7 @@ public class LoginAuthServlet extends HttpServlet {
 //				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW)).redirect(req, resp);
 //				logger.info("======================"+loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW));
 //				LoginBackingBean loginBackingBean = new LoginBackingBean();
-                    response.sendRedirect("/htib2c-mobile/views/luckyDraw.xhtml?showwxpaytitle=1");
+                    response.sendRedirect("/htib2c-mobile/views/luckyDraw2.xhtml?showwxpaytitle=1");
                 }
 
 

@@ -69,7 +69,7 @@
             <div id="fri_bottom">
                 <div class="empty">
                     <h:commandButton value="登&#160;&#160;录"
-                                     action="#{loginBackingBean.validateLogin(loginBackingBean.targetPg)}" onclick="showLogOff()" />
+                                     action="#{loginBackingBean.validateLogin(loginBackingBean.targetPg)}"  />
                     
                 </div>
                 <div id="keytxt">网站备案号：京ICP备11011340号</div>
@@ -161,6 +161,9 @@
                             }
                             if(getUrlParam("flag")=="luckyDraw") {
                                 $("input[nm='luckyDraw']").val("/views/luckyDraw.xhtml?showwxpaytitle=1");
+                            }
+                            if(getUrlParam("flag")=="luckyDraw2") {
+                                $("input[nm='luckyDraw']").val("/views/luckyDraw2.xhtml?showwxpaytitle=1");
                             }
                             var updateNewFlag='${updateNewFlag}';
                             if(updateNewFlag=="updateNewCellPhone"){

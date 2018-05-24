@@ -438,7 +438,11 @@ public class PaymentServiceClient {
   public Integer saveAnswer(QuestionAnswer questionAnswer){
 	  return service.saveAnswer(questionAnswer);
   }
-  
+
+
+  public boolean winUserInfo(String accountNum,String name,String telNum,String address){
+    return service.winUserInfo(accountNum,name,telNum,address);
+  }
 }
 
 

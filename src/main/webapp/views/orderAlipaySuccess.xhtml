@@ -80,9 +80,10 @@
                 window.location.href="#{facesContext.externalContext.request.contextPath}/views/luckyDraw.xhtml";
             }
             $(function(){
-                if($("#luckyNum").text()==0){
+                //CR428 关掉luckyDraw1
+//                if($("#luckyNum").text()==0){
                     $("#luckDrawLink").hide();
-                }
+//                }
             })
         </script>
 

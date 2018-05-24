@@ -77,5 +77,6 @@ public class ViewPage {
     
     //问卷调查
     public static final String LINK2QUESTIONNAIRE= "/views/questionnaire.xhtml?showwxpaytitle=1";
-    
+    //cr426
+    public static final String LINK2LUCKDRAW2 = "/views/luckyDraw2.xhtml?showwxpaytitle=1";
 }

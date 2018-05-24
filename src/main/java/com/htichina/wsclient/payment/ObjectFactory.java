@@ -49,6 +49,7 @@ public class ObjectFactory {
     private final static QName _GetQuestionOptions_QNAME = new QName("http://payment.ws.htichina.com/", "getQuestionOptions");
     private final static QName _GetQuestions_QNAME = new QName("http://payment.ws.htichina.com/", "getQuestions");
     private final static QName _IsNewFollowReciveDidi_QNAME = new QName("http://payment.ws.htichina.com/", "isNewFollowReciveDidi");
+    private final static QName _WinUserInfo_QNAME = new QName("http://payment.ws.htichina.com/", "winUserInfo");
     private final static QName _AnswerStatusResponse_QNAME = new QName("http://payment.ws.htichina.com/", "answerStatusResponse");
     private final static QName _CloseWechatUserProfileResponse_QNAME = new QName("http://payment.ws.htichina.com/", "closeWechatUserProfileResponse");
     private final static QName _GetPromotionInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getPromotionInfoResponse");
@@ -87,6 +88,7 @@ public class ObjectFactory {
     private final static QName _GetAnswerCount_QNAME = new QName("http://payment.ws.htichina.com/", "getAnswerCount");
     private final static QName _UpdateWechatMessageHistory_QNAME = new QName("http://payment.ws.htichina.com/", "updateWechatMessageHistory");
     private final static QName _IsWinBackOrEarlyBird_QNAME = new QName("http://payment.ws.htichina.com/", "isWinBackOrEarlyBird");
+    private final static QName _WinUserInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "winUserInfoResponse");
     private final static QName _QuestionnaireFinished_QNAME = new QName("http://payment.ws.htichina.com/", "QuestionnaireFinished");
     private final static QName _CreatePaymentOrder_QNAME = new QName("http://payment.ws.htichina.com/", "createPaymentOrder");
     private final static QName _CreateWechatUserProfile_QNAME = new QName("http://payment.ws.htichina.com/", "createWechatUserProfile");
@@ -288,6 +290,14 @@ public class ObjectFactory {
      */
     public GetCallPhoneByAccountNum createGetCallPhoneByAccountNum() {
         return new GetCallPhoneByAccountNum();
+    }
+
+    /**
+     * Create an instance of {@link WinUserInfoResponse }
+     * 
+     */
+    public WinUserInfoResponse createWinUserInfoResponse() {
+        return new WinUserInfoResponse();
     }
 
     /**
@@ -872,6 +882,14 @@ public class ObjectFactory {
      */
     public IsNewFollowReciveDidi createIsNewFollowReciveDidi() {
         return new IsNewFollowReciveDidi();
+    }
+
+    /**
+     * Create an instance of {@link WinUserInfo }
+     * 
+     */
+    public WinUserInfo createWinUserInfo() {
+        return new WinUserInfo();
     }
 
     /**
@@ -1460,6 +1478,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WinUserInfo }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "winUserInfo")
+    public JAXBElement<WinUserInfo> createWinUserInfo(WinUserInfo value) {
+        return new JAXBElement<WinUserInfo>(_WinUserInfo_QNAME, WinUserInfo.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AnswerStatusResponse }{@code >}}
      * 
      */
@@ -1799,6 +1826,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "isWinBackOrEarlyBird")
     public JAXBElement<IsWinBackOrEarlyBird> createIsWinBackOrEarlyBird(IsWinBackOrEarlyBird value) {
         return new JAXBElement<IsWinBackOrEarlyBird>(_IsWinBackOrEarlyBird_QNAME, IsWinBackOrEarlyBird.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WinUserInfoResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "winUserInfoResponse")
+    public JAXBElement<WinUserInfoResponse> createWinUserInfoResponse(WinUserInfoResponse value) {
+        return new JAXBElement<WinUserInfoResponse>(_WinUserInfoResponse_QNAME, WinUserInfoResponse.class, null, value);
     }
 
     /**

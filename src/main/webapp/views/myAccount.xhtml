@@ -183,9 +183,10 @@
                     window.location.href="#{facesContext.externalContext.request.contextPath}/views/luckyDraw.xhtml";
                 }
                 $(function(){
-                    if($("#luckDrawLink").find("span").text()==0){
+                    //CR428 关掉luckydraw1
+//                    if($("#luckDrawLink").find("span").text()==0){
                         $("#luckDrawLink").hide();
-                    }
+//                    }
                 })
                 /*判断是否弹窗提示*/
                 var myAccountPopVal = $("input[nm3='myAccountPop']").val();

@@ -122,8 +122,11 @@ public class TokenCsrfFilter implements Filter {
 		   uri.contains("WechatLocateServlet")||
 		   uri.contains("QuestionnaireDataServlet")||
 		   uri.contains("QuestionnaireSaveServlet")||
+				uri.contains("LuckyDraw2Servlet")||
+				uri.contains("LuckyDraw2DataServlet")||
 		   uri.contains("orderFailed.xhtml")||
 		   uri.contains("luckyDraw.xhtml")||
+				uri.contains("luckyDraw2.xhtml")||
 		   uri.contains("luckyDrawLogin.xhtml")||
 		   uri.contains("luckyDrawPackage.xhtml")||
 		   uri.contains("luckyDrawErrer.xhtml")||

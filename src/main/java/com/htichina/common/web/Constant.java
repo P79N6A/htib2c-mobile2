@@ -169,6 +169,7 @@ public class Constant {
     public static final String VIOLATION_INQUIRY = "violationInquiry";
     public static final String WECHAT_PAYMENT = "wechatPayment";
     public static final String WECHAT_LUCKYDRAW = "wechatLuckDraw";
+    public static final String WECHAT_LUCKYDRAW2 = "wechatLuckDraw2";
     public static final String UPDATE_MOBILE ="updateMobile";
     public static final String QUESTIONNAIRE = "questionnaire";
 
@@ -264,5 +265,20 @@ public class Constant {
     
     //微信token生成的时间频率设置
     public static final String WECHAT_TOKEN_GENERATE_INTERVAL = "WECHAT.TOKEN.GENERATE.INTERVAL";   
-   
+
+
+    //CR426
+    //状态
+    public static final String TX_1 = "1";//买套餐
+    public static final String TX_2 = "2";//本次未中奖，非最后一次
+    public static final String TX_3 = "3";//本次未中奖，总计无奖，最后一次
+    public static final String TX_4 = "4";//本次未中奖，总计有奖，最后一次
+    public static final String TX_5 = "5";//本次中奖，非最后一次
+    public static final String TX_6 = "6";//本次中奖，总计有奖，最后一次
+    //中奖等级
+    public static final String TN_1 = "1";//一等奖
+    public static final String TN_2 = "2";//二等奖
+    public static final String TN_3 = "3";//三等奖
+    public static final String TN_4 = "4";//四等奖
+
 }
