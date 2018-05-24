@@ -1,0 +1,306 @@
+/**
+ * Created by ohkei 66005199@qq.com
+ */
+body{
+    /*margin:0;
+    padding:0;
+    overflow:hidden;*/
+    background-color: rgb(28, 27, 31);
+}
+worspace>span, .in, .txt, .sel{
+    width:520px;
+    height:45px;
+    color:rgb(82,127,158);
+    font-size: 26px;
+    position:absolute;
+    left:115px;
+}
+input{
+    background: none;
+    border:none;
+}
+span{
+    padding-left:5px;
+}
+img{
+    pointer-events: none;
+}
+
+.load-txt{
+    top:742px;
+    left:283px;
+}
+.load-bar-bg{
+    top:685px;
+    left:109px;
+}
+.load-bar-cur{
+    top:690px;
+    left:116px;
+    width:0;
+}
+
+.logo{
+    top:46px;
+    left:262px;
+    -webkit-animation: fromTop 2s;
+    animation: fromTop 2s;
+}
+@-webkit-keyframes fromTop {
+    0% {top:-100px;}
+    100% {top:46px;}
+}
+@keyframes fromTop {
+    0% {top:-100px;}
+    100% {top:46px;}
+}
+
+.home-title{
+    top:134px;
+    left:123px;
+    -webkit-animation: fromBig 2.5s;
+    animation: fromBig 2.5s;
+}
+@-webkit-keyframes fromBig {
+    0% {-webkit-transform:scale(2);opacity: 0;}
+    100% {-webkit-transform:scale(1);opacity: 1;}
+}
+@keyframes fromBig {
+    0% {-webkit-transform:scale(2);opacity: 0;}
+    100% {-webkit-transform:scale(1);opacity: 1;}
+}
+
+
+/*套娃-动画*/
+.home-ani-1{
+    top:816px;
+    left:127px;
+    -webkit-animation: upRepeat 2s linear 1s infinite alternate;
+    animation: upRepeat 2s linear 1s infinite alternate;
+}
+/*拳头-动画*/
+.home-ani-2{
+    top:680px;
+    left:510px;
+    -webkit-transform-origin: left bottom;
+    -webkit-animation: rotaAni 1s linear 1s infinite alternate;
+    animation: rotaAni 1s linear 1s infinite alternate;
+}
+/*云朵-动画*/
+.home-ani-3{
+    top:325px;
+    left:59px;
+    -webkit-animation: rightRepeat 3s linear 1s infinite alternate;
+    animation: rightRepeat 3s linear 1s infinite alternate;
+}
+/*娃娃机-手臂*/
+.home-hand{
+    -webkit-animation: rightRepeat2 2s linear 0.1s infinite alternate;
+    animation: rightRepeat2 2s linear 0.1s infinite alternate;
+}
+
+.rule-btn{
+    top:1137px;
+    left:278px;
+    -webkit-animation: fromBottom 2s;
+    animation: fromBottom 2s;
+
+    pointer-events: auto;
+}
+.start-btn{
+    top:1186px;
+    left:239px;
+    -webkit-animation: fromBottom2 2.5s;
+    animation: fromBottom2 2.5s;
+
+    pointer-events: auto;
+}
+@-webkit-keyframes fromBottom {
+    0% {top:2137px;}
+    100% {top:1137px;}
+}
+@keyframes fromBottom {
+    0% {top:2137px;}
+    100% {top:1137px;}
+}
+@-webkit-keyframes fromBottom2 {
+    0% {top:2137px;}
+    100% {top:1186px;}
+}
+@keyframes fromBottom2 {
+    0% {top:2137px;}
+    100% {top:1186px;}
+}
+
+.rule-pg{
+    position:fixed;
+}
+.rule-mask{
+    position:fixed;
+    width:507px;
+    height:766px;
+    top: 395px;
+    left: 128px;
+    overflow: hidden;
+}
+.rule-txt{
+    /*top: 420px;
+    left: 168px;*/
+    top: 20px;
+    left: 40px;
+
+    pointer-events: auto;
+}
+.rule-close{
+    top:202px;
+    left:612px;
+
+    pointer-events: auto;
+}
+
+.dg-btn{
+    top:936px;
+    left:236px;
+
+    pointer-events: auto;
+}
+
+.enter-btn{
+    top:1057px;
+    left:555px;
+
+    pointer-events: auto;
+}
+.ctrl-btn{
+    top:1045px;
+    left:241px;
+}
+.ctrl{
+    width:126px;
+    height:177px;
+    background:rgba(0,0,0,0);
+    position: absolute;
+    top:1045px;
+
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+.left-btn{
+    left:241px;
+
+    pointer-events: auto;
+}
+.right-btn{
+    left:367px;
+
+    pointer-events: auto;
+}
+
+.move-box{
+    top:75px;
+    left:334px;
+}
+.hand{
+    top: -430px;
+    left: 225px;
+}
+.home-glass{
+    top:10px;
+
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+.re-btn{
+    top:936px;
+    left:238px;
+
+    pointer-events: auto;
+}
+.win1-pg>p,.win2-pg>p,.lose1-pg>p,.lose3-pg>p{
+    position: absolute;
+    text-align: center;
+    font-size:0.8em;
+    color:rgb(21,47,80);
+}
+.win1-pg>.txt,.win2-pg>.txt,.win2-pg>.tt,.lose3-pg>.tt{
+    width:538px;
+    height:85px;
+    top:652px;
+    left:106px;
+}
+.win1-pg>.num,.lose1-pg>.num{
+    font-size:1.2em;
+    width:40px;
+    height:40px;
+    top:729px;
+    left:412px;
+}
+
+.win2-pg>.txt{
+    top:340px;
+}
+.win2-pg>.tt{
+    color:rgb(123,15,3);
+}
+.win2-pg>.tt1{
+    top:457px;
+}
+.win2-pg>.tt2{
+    top:517px;
+}
+.win2-pg>.tt3{
+    top:579px;
+}
+.win2-pg>.tt4{
+    top:641px;
+}
+.win2-pg>input,.lose3-pg>input{
+    width:390px;
+    height:45px;
+    position: absolute;
+    left:244px;
+    font-size:1em;
+}
+.win2-pg>.name,.lose3-pg>.name{
+    top:812px;
+}
+.win2-pg>.tel,.lose3-pg>.tel{
+    top:912px;
+}
+.win2-pg>.addr,.lose3-pg>.addr{
+    top:1012px;
+}
+.send-btn{
+    top:1182px;
+    left:282px;
+
+    pointer-events: auto;
+}
+
+.close-btn{
+    top:421px;
+    left:608px;
+
+    pointer-events: auto;
+}
+
+.lose1-pg>.num{
+    top: 681px;
+    left: 431px;
+}
+.lose3-pg>.tt1{
+    top:502px;
+}
+.lose3-pg>.tt2{
+    top:566px;
+}
+.lose3-pg>.tt3{
+    top:636px;
+}
+
+
