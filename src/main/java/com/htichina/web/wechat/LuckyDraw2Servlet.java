@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Created by ln on 2018/05/24.
@@ -46,6 +47,8 @@ public class LuckyDraw2Servlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		String openId = (String)req.getSession().getAttribute(Constant.OPEN_ID);
+		logger.debug("openId------"+openId);
 		resultBean resultBean = doLuckDraw(req);
 		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter out;
@@ -65,8 +68,8 @@ public class LuckyDraw2Servlet extends HttpServlet {
 		PaymentServiceClient client = PaymentServiceClient.getInstance();
 		resultBean resultBean = new resultBean();
 		String openId =(String)req.getSession().getAttribute(Constant.OPEN_ID);
-//		String accountNum = "10631819";
-        String accountNum = client.getActiveAccountByOpenId(openId);
+		String accountNum = "10631813";
+//        String accountNum = client.getActiveAccountByOpenId(openId);
 		String paymentPlatform = (String)req.getSession().getAttribute(Constant.PAYMENT_PLATFORM);
 		logger.info("openId============================"+openId);
 		logger.info("accountNum============================"+accountNum);
@@ -77,20 +80,42 @@ public class LuckyDraw2Servlet extends HttpServlet {
 			resultBean.setLuckyDrawNoticeType("1");
 			return resultBean;
 		}
-		String flag= checkCustemerLuckyDraw(accountNum,client);
-		if("2".equals(flag)){
-			resultBean.setLuckyDrawNotice("您购买的套餐不在活动范围，是否愿意前往购买活动套餐？");
-			resultBean.setTs("1");
-			return resultBean;
-		}
-		else if("1".equals(flag)){
-			resultBean.setLuckyDrawNotice("您暂时不符合参加此次抽奖活动的的资格");
-			resultBean.setLuckyDrawNoticeType("3");
-			return resultBean;
-		}
-		else if("4".equals(flag)){
-			resultBean.setLuckyDrawNotice("您的抽奖次数已经使用完毕，感谢您的参与");
-			resultBean.setLuckyDrawNoticeType("4");
+		String type=req.getParameter("type");
+		if("1".equals(type)) {
+			LuckyDrawReponse luckyDrawReponse = client.checkCustemerLuckyDraw(accountNum, null);
+			String flag = luckyDrawReponse.getLuckyDrawFlag();
+			resultBean.setLuckyDrawNoticeType(flag);
+			if ("2".equals(flag)) {
+				resultBean.setLuckyDrawNotice("您购买的套餐不在活动范围，是否愿意前往购买活动套餐？");
+				resultBean.setTs("1");
+				return resultBean;
+			} else if ("1".equals(flag)) {
+				resultBean.setLuckyDrawNotice("您暂时不符合参加此次抽奖活动的的资格");
+				return resultBean;
+			} else if ("4".equals(flag)) {
+				resultBean.setLuckyDrawNotice("您的抽奖次数已经使用完毕，感谢您的参与");
+				return resultBean;
+			}
+			//再进入状态
+			//本次无奖 总计有奖
+			else if ("6".equals(flag)) {
+				boolean prizflag = checkPrizeList(luckyDrawReponse.getPrizeList(), resultBean);
+				resultBean.setTs(Constant.TX_4);
+				return resultBean;
+			}
+			//本次没中奖，总计无奖
+			else if ("7".equals(flag)) {
+				boolean prizflag = checkPrizeList(luckyDrawReponse.getPrizeList(), resultBean);
+				resultBean.setTs(Constant.TX_3);
+				return resultBean;
+			}
+			//中奖了 最后一次
+			else if ("8".equals(flag)) {
+				boolean prizflag = checkPrizeList(luckyDrawReponse.getPrizeList(), resultBean);
+				resultBean.setTs(Constant.TX_6);
+				resultBean.setTxt(luckyDrawReponse.getPrizeList().get(0));
+				return resultBean;
+			}
 			return resultBean;
 		}
 
@@ -118,7 +143,7 @@ public class LuckyDraw2Servlet extends HttpServlet {
 		if(num==0 && !Constant.ITEM_TYPE_0.equals(ldItem.getSubType())){
 			resultBean.setTs(Constant.TX_6);
 			resultBean.setTxt(ldLtemReponse.getLdItem().getName());
-			checkPrizeList(ldLtemReponse,resultBean);
+			checkPrizeList(ldLtemReponse.getPrizeList(),resultBean);
 		}
 		//未中奖 非最后一次 num ts
 		if (num > 0 && Constant.ITEM_TYPE_0.equals(ldItem.getSubType())) {
@@ -126,7 +151,7 @@ public class LuckyDraw2Servlet extends HttpServlet {
 		}
 		//未中奖，最后一次
 		if(num==0 && Constant.ITEM_TYPE_0.equals(ldItem.getSubType())){
-			boolean prizflag = checkPrizeList(ldLtemReponse,resultBean);
+			boolean prizflag = checkPrizeList(ldLtemReponse.getPrizeList(),resultBean);
 			//无累积奖品
 			if(!prizflag){
 //				ts = Constant.TX_3;
@@ -149,16 +174,16 @@ public class LuckyDraw2Servlet extends HttpServlet {
 	 * 判断是否累计中奖，并赋值
 	 * @return
 	 */
-	public boolean checkPrizeList(LdLtemReponse ldLtemReponse,resultBean resultBean){
+	public boolean checkPrizeList(List<String > list, resultBean resultBean){
 		boolean flag =false;
-		if(ldLtemReponse.getPrizeList()!=null&&ldLtemReponse.getPrizeList().size()>0) {
+		if(list!=null&&list.size()>0) {
 			flag =true;
-			int size = ldLtemReponse.getPrizeList().size();
+			int size = list.size();
 			switch (size){
-				case 1:resultBean.setTt1(ldLtemReponse.getPrizeList().get(0));
-				case 2:resultBean.setTt1(ldLtemReponse.getPrizeList().get(0));resultBean.setTt2(ldLtemReponse.getPrizeList().get(1));break;
-				case 3:resultBean.setTt1(ldLtemReponse.getPrizeList().get(0));resultBean.setTt2(ldLtemReponse.getPrizeList().get(1));resultBean.setTt3(ldLtemReponse.getPrizeList().get(2));break;
-				case 4:resultBean.setTt1(ldLtemReponse.getPrizeList().get(0));resultBean.setTt2(ldLtemReponse.getPrizeList().get(1));resultBean.setTt3(ldLtemReponse.getPrizeList().get(2));resultBean.setTt4(ldLtemReponse.getPrizeList().get(3));break;
+				case 1:resultBean.setTt1(list.get(0));break;
+				case 2:resultBean.setTt1(list.get(0));resultBean.setTt2(list.get(1));break;
+				case 3:resultBean.setTt1(list.get(0));resultBean.setTt2(list.get(1));resultBean.setTt3(list.get(2));break;
+				case 4:resultBean.setTt1(list.get(0));resultBean.setTt2(list.get(1));resultBean.setTt3(list.get(2));resultBean.setTt4(list.get(3));break;
 			}
 		}
 		return  flag;
@@ -174,6 +199,7 @@ public class LuckyDraw2Servlet extends HttpServlet {
 			case "6":resultBean.setTn("2");break;
 			case "7":resultBean.setTn("3");break;
 			case "8":resultBean.setTn("4");break;
+
 		}
 	}
 }

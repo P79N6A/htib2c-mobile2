@@ -1,6 +1,4 @@
-﻿
-
-/**
+﻿/**
  * Created by ohkei 66005199@qq.com
  */
 ;(function ($) {
@@ -44,9 +42,9 @@
         });
     //******************** loading end********************
 
-	/*document.querySelector('body').addEventListener('touchmove', function(e) {
-	 e.preventDefault();
-	 })*/
+    /*document.querySelector('body').addEventListener('touchmove', function(e) {
+     e.preventDefault();
+     })*/
 
     //获取url参数：状态值
     var $ts = Number(getUrlParam("ts"))||"";
@@ -148,7 +146,7 @@
             ClickEvent("P2.0_Order");
 
             setTimeout(function(){
-                location.href = "xxxxx";
+                window.location.href = "orderEntry.xhtml";
             },1000);
         });
 
@@ -161,7 +159,77 @@
             setTimeout(function(){
                 touchTF = true;
             },twTimer*1000);
+            $.ajax({
+                url:'/htib2c-mobile/servlet/LuckyDraw2Servlet',
+                type:'POST', //post
+                async:false,    //或false,是否异步
+                data:{
+                    "type":1
+                },
+                dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+                success:function(result){
+                    if(result!=null){
+                        var type =result.luckyDrawNoticeType;
+                        if(type==3){
+                            alphaUp($(".send-ok-pg"));
+                        }
+                        if(type==4){
+                            alphaUp($(".send-ok-pg"));
+                        }
+                        if(type==1){
+                            window.location.href="accountLogin.xhtml?flag=luckyDraw2";
+                            //            window.location.href="http://www.baidu.com";
+                        }
+                        $ts = Number(result.ts)
 
+                        //获取url参数：剩余次数
+                        $num =  result.num
+
+                        //获取url参数：本次奖品等级
+                        $tn = Number(result.tn)||"";
+
+
+                        //获取url参数：本次奖品名称
+                        $txt = result.txt||"";
+
+                        //获取url参数：总计奖品值
+                        $tt1 = result.tt1||"";
+                        $tt2 = result.tt2||"";
+                        $tt3 = result.tt3||"";
+                        $tt4 = result.tt4||"";
+                        if(type==6){
+                            downAni($(".lose3-pg"),1);
+                            $(".lose3-pg>.txt").text($txt);
+                            $(".lose3-pg>.tt1").text($tt1);
+                            $(".lose3-pg>.tt2").text($tt2);
+                            $(".lose3-pg>.tt3").text($tt3);
+                            ClickEvent("P3.2", 1);
+                            keyP=1;
+                        }
+                        if(type==7){
+                            downAni($(".lose2-pg"),1);
+                            ClickEvent("P3.6", 1);
+                            keyP=1;
+                        }
+                        if(type==8){
+                            downAni($(".win2-pg"),1);
+                            $(".win2-pg>.txt").text($txt);
+                            $(".win2-pg>.tt1").text($tt1);
+                            $(".win2-pg>.tt2").text($tt2);
+                            $(".win2-pg>.tt3").text($tt3);
+                            $(".win2-pg>.tt4").text($tt4);
+                            ClickEvent("P3.3", 1);
+                            keyP=1;
+                        }
+
+                    }
+                },
+                error:function(xhr){
+                    //错误
+                    alphaUp($(".send-ok-pg"));
+                    return;
+                }
+            })
             ClickEvent("P1.0_Start");
             if($ts==1){
                 //测试-订购页
@@ -268,7 +336,7 @@
         $(".left-btn").on("touchstart",function(e){
             console.log(".left-btn");
             ClickEvent("P3.0_Left");
-            $(".ctrl-btn").attr("src","img/ctrl-1.png");
+            $(".ctrl-btn").attr("src","../resources/images/img3/ctrl-1.png");
             clearInterval(si_move);
             si_move = setInterval(function(){
                 if(!moveTf){
@@ -286,7 +354,7 @@
         $(".right-btn").on("touchstart",function(e){
             console.log(".right-btn");
             ClickEvent("P3.0_Right");
-            $(".ctrl-btn").attr("src","img/ctrl-2.png");
+            $(".ctrl-btn").attr("src","../resources/images/img3/ctrl-2.png");
             clearInterval(si_move);
             si_move = setInterval(function(){
                 if(!moveTf){
@@ -310,7 +378,7 @@
             ctrlImgInit();
         });
         function ctrlImgInit(){
-            $(".ctrl-btn").attr("src","img/ctrl-btn.png");
+            $(".ctrl-btn").attr("src","../resources/images/img3/ctrl-btn.png");
         }
         //****************** 移动 end ******************
 
@@ -324,13 +392,28 @@
         var prizeTopDis = 833;
 
         $(".enter-btn").click(function(){
+            $(".ctrl-btn").css("display","none")
+            $(".enter-btn").hide();
             if(!enterTf){
                 return;
             }
+            ClickEvent("P3.0_Grab");
+            enterFn();
+        });
+        function enterFn(){
+            enterTf = false;
+            ctrlImgInit();
+            clearInterval(si_time);
+            moveTf = false;
+            $(".hand").attr("src","../resources/images/img3/hand-2.png");
+            clearInterval(si_down);
             $.ajax({
-                url:'/servlet/LuckyDraw2Servlet',
+                url:'/htib2c-mobile/servlet/LuckyDraw2Servlet',
                 type:'POST', //post
                 async:false,    //或false,是否异步
+                data:{
+                    "type":2
+                },
                 dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
                 success:function(result){
                     if(result!=null){
@@ -338,13 +421,13 @@
                         if(type==3){
                             alphaUp($(".send-ok-pg"));
                         }
-                        if(type==4){
-                            alphaUp($(".send-ok-pg"));
-                        }
-                        if(type==1){
-                            window.location.href="accountLogin.xhtml?flag=luckyDraw2";
-                            //            window.location.href="http://www.baidu.com";
-                        }
+                        // if(type==4){
+                        //     alphaUp($(".send-ok-pg"));
+                        // }
+                        // if(type==1){
+                        //     window.location.href="accountLogin.xhtml?flag=luckyDraw2";
+                        //     //            window.location.href="http://www.baidu.com";
+                        // }
                         $ts = Number(result.ts)
 
                         //获取url参数：剩余次数
@@ -362,7 +445,32 @@
                         $tt2 = result.tt2||"";
                         $tt3 = result.tt3||"";
                         $tt4 = result.tt4||"";
-                    }
+                        // if(type==6){
+                        //     downAni($(".lose3-pg"),1);
+                        //     $(".lose3-pg>.txt").text($txt);
+                        //     $(".lose3-pg>.tt1").text($tt1);
+                        //     $(".lose3-pg>.tt2").text($tt2);
+                        //     $(".lose3-pg>.tt3").text($tt3);
+                        //     ClickEvent("P3.2", 1);
+                        //     keyP=1;
+                        // }
+                        // if(type==7){
+                        //     downAni($(".lose2-pg"),1);
+                        //     ClickEvent("P3.6", 1);
+                        //     keyP=1;
+                        // }
+                        // if(type==8){
+                        //     downAni($(".win2-pg"),1);
+                        //     $(".win2-pg>.txt").text($txt);
+                        //     $(".win2-pg>.tt1").text($tt1);
+                        //     $(".win2-pg>.tt2").text($tt2);
+                        //     $(".win2-pg>.tt3").text($tt3);
+                        //     $(".win2-pg>.tt4").text($tt4);
+                        //     ClickEvent("P3.3", 1);
+                        //     keyP=1;
+                        // }
+
+                        }
                 },
                 error:function(xhr){
                     //错误
@@ -370,144 +478,138 @@
                     return;
                 }
             })
-            ClickEvent("P3.0_Grab");
-            enterFn();
-        });
-        function enterFn(){
-            enterTf = false;
-            ctrlImgInit();
-            clearInterval(si_time);
-            moveTf = false;
-            $(".hand").attr("src","img/hand-2.png");
-            clearInterval(si_down);
-            si_down = setInterval(function(){
-                if(downNum<-50){
-                    downNum += dist;
-                    $(".hand").css("top",downNum+"px");
-                }else{
-                    clearInterval(si_down);
-                    console.log("到底了");
-                    $(".hand").attr("src","img/hand-1.png");
+                si_down = setInterval(function () {
+                    if (downNum < -50) {
+                        downNum += dist;
+                        $(".hand").css("top", downNum + "px");
+                    } else {
+                        clearInterval(si_down);
+                        console.log("到底了");
+                        $(".hand").attr("src", "../resources/images/img3/hand-1.png");
 
-                    if($ts==5||$ts==6){
-                        //中奖
-                        $(".prize").attr("src","img/prize-"+$tn+".png");
-                    }else{
-                        //未中
-                        $(".prize").attr("src","img/prize-5.png");
-                    }
-                    $(".prize").removeClass("none");
-                    $(".prize").css({"top":(downNum+prizeTopDis)+"px","left":(moveNum+prizeLeftDis)+"px"});
-                    si_down = setInterval(function(){
-                        if(downNum>handTopInit){
-                            downNum -= dist;
-                            $(".hand").css("top",downNum+"px");
-                            $(".prize").css({"top":(downNum+prizeTopDis)+"px"});
-                        }else{
-                            clearInterval(si_down);
-                            console.log("到顶了");
-
-                            //未抓到奖球，脱落
-                            if($ts<5){
-                                clearInterval(si_down);
-                                si_down = setInterval(function(){
-                                    if(downNum<180+handTopInit){
-                                        downNum += dist;
-                                        $(".prize").css({"top":(downNum+prizeTopDis)+"px"});
-                                    }else{
-                                        clearInterval(si_down);
-                                        console.log("落入球堆了");
-                                    }
-                                });
-                            }
-
-                            clearInterval(si_move);
-                            si_move = setInterval(function(){
-                                if(moveNum>93){
-                                    moveNum -= dist;
-                                    $(".move-box").css("left",moveNum+"px");
-                                    $(".hand").css("left",(moveNum+handLeftDis)+"px");
-                                    if($ts>=5){
-                                        $(".prize").css({"left":(moveNum+prizeLeftDis)+"px"});
-                                    }
-                                }else{
-                                    clearInterval(si_move);
-                                    console.log("到洞口上方了");
-                                    console.log("downNum:",downNum);
-                                    $(".hand").attr("src","img/hand-2.png");
-
-                                    //本次无奖
-                                    if($ts<5){
-                                        if($ts==2){
-                                            //本次未中奖，非最后一次
-                                            //alphaUp($(".lose1-pg"),1);
-                                            //scaleAni($(".lose1-pg>img").eq(0),1);
-                                            downAni($(".lose1-pg"),1);
-                                            $(".lose1-pg>.num").text($num);
-                                            ClickEvent("P3.5", 1);
-                                        }else if($ts==3){
-                                            //本次未中奖，总计无奖，最后一次
-                                            //alphaUp($(".lose2-pg"),1);
-                                            //scaleAni($(".lose2-pg>img").eq(0),1);
-                                            downAni($(".lose2-pg"),1);
-                                            ClickEvent("P3.6", 1);
-                                        }else{
-                                            // if($ts==4)
-                                            //本次未中奖，总计有奖，最后一次
-                                            //alphaUp($(".lose3-pg"),1);
-                                            //scaleAni($(".lose3-pg>img").eq(0),1);
-                                            downAni($(".lose3-pg"),1);
-                                            $(".lose3-pg>.txt").text($txt);
-                                            $(".lose3-pg>.tt1").text($tt1);
-                                            $(".lose3-pg>.tt2").text($tt2);
-                                            $(".lose3-pg>.tt3").text($tt3);
-                                            ClickEvent("P3.2", 1);
-                                        }
-                                        return;
-                                    }
-
-                                    //本次有奖
-                                    clearInterval(si_down);
-                                    si_down = setInterval(function(){
-                                        if(downNum<260+handTopInit){
-                                            downNum += dist;
-                                            $(".prize").css({"top":(downNum+prizeTopDis)+"px"});
-                                        }else{
-                                            clearInterval(si_down);
-                                            console.log("落入洞口了");
-
-                                            if($ts==5){
-                                                //本次中奖，非最后一次
-                                                //alphaUp($(".win1-pg"),1);
-                                                //scaleAni($(".win1-pg>img").eq(0),1);
-                                                downAni($(".win1-pg"),1);
-                                                $(".win1-pg>.txt").text($txt);
-                                                $(".win1-pg>.num").text($num);
-                                                ClickEvent("P3.1", 1);
-                                            }else if($ts==6){
-                                                //本次中奖，总计有奖，最后一次
-                                                //alphaUp($(".win2-pg"),1);
-                                                //scaleAni($(".win2-pg>img").eq(0),1);
-                                                downAni($(".win2-pg"),1);
-                                                $(".win2-pg>.txt").text($txt);
-                                                $(".win2-pg>.tt1").text($tt1);
-                                                $(".win2-pg>.tt2").text($tt2);
-                                                $(".win2-pg>.tt3").text($tt3);
-                                                $(".win2-pg>.tt4").text($tt4);
-                                                ClickEvent("P3.3", 1);
-                                            }
-                                        }
-                                    },10);
-                                }
-                            },10);
+                        if ($ts == 5 || $ts == 6) {
+                            //中奖
+                            $(".prize").attr("src", "../resources/images/img3/prize-" + $tn + ".png");
+                        } else {
+                            //未中
+                            $(".prize").attr("src", "../resources/images/img3/prize-5.png");
                         }
-                    },10);
-                }
-            },10);
+                        $(".prize").removeClass("none");
+                        $(".prize").css({
+                            "top": (downNum + prizeTopDis) + "px",
+                            "left": (moveNum + prizeLeftDis) + "px"
+                        });
+                        si_down = setInterval(function () {
+                            if (downNum > handTopInit) {
+                                downNum -= dist;
+                                $(".hand").css("top", downNum + "px");
+                                $(".prize").css({"top": (downNum + prizeTopDis) + "px"});
+                            } else {
+                                clearInterval(si_down);
+                                console.log("到顶了");
+
+                                //未抓到奖球，脱落
+                                if ($ts < 5) {
+                                    clearInterval(si_down);
+                                    si_down = setInterval(function () {
+                                        if (downNum < 180 + handTopInit) {
+                                            downNum += dist;
+                                            $(".prize").css({"top": (downNum + prizeTopDis) + "px"});
+                                        } else {
+                                            clearInterval(si_down);
+                                            console.log("落入球堆了");
+                                        }
+                                    });
+                                }
+
+                                clearInterval(si_move);
+                                si_move = setInterval(function () {
+                                    if (moveNum > 93) {
+                                        moveNum -= dist;
+                                        $(".move-box").css("left", moveNum + "px");
+                                        $(".hand").css("left", (moveNum + handLeftDis) + "px");
+                                        if ($ts >= 5) {
+                                            $(".prize").css({"left": (moveNum + prizeLeftDis) + "px"});
+                                        }
+                                    } else {
+                                        clearInterval(si_move);
+                                        console.log("到洞口上方了");
+                                        console.log("downNum:", downNum);
+                                        $(".hand").attr("src", "../resources/images/img3/hand-2.png");
+
+                                        //本次无奖
+                                        if ($ts < 5) {
+                                            if ($ts == 2) {
+                                                //本次未中奖，非最后一次
+                                                //alphaUp($(".lose1-pg"),1);
+                                                //scaleAni($(".lose1-pg>img").eq(0),1);
+                                                downAni($(".lose1-pg"), 1);
+                                                $(".lose1-pg>.num").text($num);
+                                                ClickEvent("P3.5", 1);
+                                            } else if ($ts == 3) {
+                                                //本次未中奖，总计无奖，最后一次
+                                                //alphaUp($(".lose2-pg"),1);
+                                                //scaleAni($(".lose2-pg>img").eq(0),1);
+                                                downAni($(".lose2-pg"), 1);
+                                                ClickEvent("P3.6", 1);
+                                            } else {
+                                                // if($ts==4)
+                                                //本次未中奖，总计有奖，最后一次
+                                                //alphaUp($(".lose3-pg"),1);
+                                                //scaleAni($(".lose3-pg>img").eq(0),1);
+                                                downAni($(".lose3-pg"), 1);
+                                                $(".lose3-pg>.txt").text($txt);
+                                                $(".lose3-pg>.tt1").text($tt1);
+                                                $(".lose3-pg>.tt2").text($tt2);
+                                                $(".lose3-pg>.tt3").text($tt3);
+                                                ClickEvent("P3.2", 1);
+                                            }
+                                            return;
+                                        }
+
+                                        //本次有奖
+                                        clearInterval(si_down);
+                                        si_down = setInterval(function () {
+                                            if (downNum < 260 + handTopInit) {
+                                                downNum += dist;
+                                                $(".prize").css({"top": (downNum + prizeTopDis) + "px"});
+                                            } else {
+                                                clearInterval(si_down);
+                                                console.log("落入洞口了");
+
+                                                if ($ts == 5) {
+                                                    //本次中奖，非最后一次
+                                                    //alphaUp($(".win1-pg"),1);
+                                                    //scaleAni($(".win1-pg>img").eq(0),1);
+                                                    downAni($(".win1-pg"), 1);
+                                                    $(".win1-pg>.txt").text($txt);
+                                                    $(".win1-pg>.num").text($num);
+                                                    ClickEvent("P3.1", 1);
+                                                } else if ($ts == 6) {
+                                                    //本次中奖，总计有奖，最后一次
+                                                    //alphaUp($(".win2-pg"),1);
+                                                    //scaleAni($(".win2-pg>img").eq(0),1);
+                                                    downAni($(".win2-pg"), 1);
+                                                    $(".win2-pg>.txt").text($txt);
+                                                    $(".win2-pg>.tt1").text($tt1);
+                                                    $(".win2-pg>.tt2").text($tt2);
+                                                    $(".win2-pg>.tt3").text($tt3);
+                                                    $(".win2-pg>.tt4").text($tt4);
+                                                    ClickEvent("P3.3", 1);
+                                                }
+                                            }
+                                        }, 10);
+                                    }
+                                }, 10);
+                            }
+                        }, 10);
+                    }
+                }, 10);
         }
         //****************** 抓取 end ******************
 
-
+        $(".enter-btn").show();
+        $(".ctrl-btn").css("display","")
         //****************** 留资 start ******************
         $(".send-btn").click(function(){
             if(!touchTF){
@@ -567,9 +669,8 @@
                 ClickEvent("P4.1", 1);
                 return;
             }
-
             $.ajax({
-                url:'/servlet/LuckyDraw2DataServlet',
+                url:'/htib2c-mobile/servlet/LuckyDraw2DataServlet',
                 type:'POST', //post
                 async:false,    //或false,是否异步
                 data:{
@@ -591,9 +692,9 @@
             })
 
             //测试提交成功
-            // alphaUp($(".send-ok-pg"));
+            //alphaUp($(".send-ok-pg"));
             //scaleAni($(".send-ok-pg>img").eq(0));
-            // downAni($(".send-ok-pg"));
+            downAni($(".send-ok-pg"));
             return;
 
             touchTF = false;
@@ -610,8 +711,8 @@
                 },
                 dataType: "text",
                 success: function (data) {
-					/*{ result = 1, msg = "提交成功" }
-					 { result = 0, msg = "提交失败" }*/
+                    /*{ result = 1, msg = "提交成功" }
+                     { result = 0, msg = "提交失败" }*/
                     touchTF = true;
                     jsonAll = JSON.parse(data);
 
@@ -635,9 +736,4 @@
 
     })();
 })(Zepto);
-
-
-
-
-
 

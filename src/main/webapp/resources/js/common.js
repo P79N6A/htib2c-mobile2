@@ -44,6 +44,10 @@ function alphaUp(_obj,_delay,_timer){
 		_timer = twTimer;
 	}
     _obj.show();
+	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+	if(isAndroid){
+		return;
+	}
     _obj.css({opacity:0});
 	if(!_delay){
 		_delay = 0;
@@ -95,6 +99,11 @@ function alphaDown(_obj,_timer){
 		_timer = twTimer;
 	}
     //touchTF = false;
+	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+	if(isAndroid){
+		_obj.hide();
+		return;
+	}
     TweenMax.to(_obj, twTimer, {autoAlpha:0,onComplete:alphaDownEnd});
     function alphaDownEnd(){
         //touchTF = true;

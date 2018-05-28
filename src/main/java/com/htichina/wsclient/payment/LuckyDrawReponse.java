@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="dataMessage" type="{http://payment.ws.htichina.com/}luckyDrawData" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="leftAmount" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="luckyDrawFlag" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="prizeList" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,7 +37,8 @@ import javax.xml.bind.annotation.XmlType;
     "allAmount",
     "dataMessage",
     "leftAmount",
-    "luckyDrawFlag"
+    "luckyDrawFlag",
+    "prizeList"
 })
 public class LuckyDrawReponse {
 
@@ -45,6 +47,8 @@ public class LuckyDrawReponse {
     protected List<LuckyDrawData> dataMessage;
     protected int leftAmount;
     protected String luckyDrawFlag;
+    @XmlElement(nillable = true)
+    protected List<String> prizeList;
 
     /**
      * 获取allAmount属性的值。
@@ -129,6 +133,35 @@ public class LuckyDrawReponse {
      */
     public void setLuckyDrawFlag(String value) {
         this.luckyDrawFlag = value;
+    }
+
+    /**
+     * Gets the value of the prizeList property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the prizeList property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getPrizeList().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+     * 
+     */
+    public List<String> getPrizeList() {
+        if (prizeList == null) {
+            prizeList = new ArrayList<String>();
+        }
+        return this.prizeList;
     }
 
 }

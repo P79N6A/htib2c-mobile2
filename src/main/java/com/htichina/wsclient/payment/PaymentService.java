@@ -54,429 +54,36 @@ public interface PaymentService {
 
     /**
      * 
-     * @param transactionNo
-     * @return
-     *     returns java.util.List<com.htichina.wsclient.payment.ServiceOrder>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "checkOrderPaied", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckOrderPaied")
-    @ResponseWrapper(localName = "checkOrderPaiedResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckOrderPaiedResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/checkOrderPaiedRequest", output = "http://payment.ws.htichina.com/PaymentService/checkOrderPaiedResponse")
-    public List<ServiceOrder> checkOrderPaied(
-        @WebParam(name = "transactionNo", targetNamespace = "")
-        String transactionNo);
-
-    /**
-     * 
-     * @param userInfo
      * @param accountNum
-     * @param pin
-     * @param openId
      * @return
-     *     returns boolean
+     *     returns com.htichina.wsclient.payment.AccountInfoResponse
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "validateLogin", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.ValidateLogin")
-    @ResponseWrapper(localName = "validateLoginResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.ValidateLoginResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/validateLoginRequest", output = "http://payment.ws.htichina.com/PaymentService/validateLoginResponse")
-    public boolean validateLogin(
-        @WebParam(name = "accountNum", targetNamespace = "")
-        String accountNum,
-        @WebParam(name = "pin", targetNamespace = "")
-        String pin,
-        @WebParam(name = "openId", targetNamespace = "")
-        String openId,
-        @WebParam(name = "userInfo", targetNamespace = "")
-        String userInfo);
-
-    /**
-     * 
-     * @param openId
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "logoff", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.Logoff")
-    @ResponseWrapper(localName = "logoffResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.LogoffResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/logoffRequest", output = "http://payment.ws.htichina.com/PaymentService/logoffResponse")
-    public boolean logoff(
-        @WebParam(name = "openId", targetNamespace = "")
-        String openId);
-
-    /**
-     * 
-     * @param orderNum
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "checkTransaction", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckTransaction")
-    @ResponseWrapper(localName = "checkTransactionResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckTransactionResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/checkTransactionRequest", output = "http://payment.ws.htichina.com/PaymentService/checkTransactionResponse")
-    public boolean checkTransaction(
-        @WebParam(name = "orderNum", targetNamespace = "")
-        String orderNum);
-
-    /**
-     * 
-     * @param mobileNum
-     * @param acctNum
-     * @param vin
-     * @return
-     *     returns java.util.List<com.htichina.wsclient.payment.VehicleInfoResponse>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getVehicleInfo", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetVehicleInfo")
-    @ResponseWrapper(localName = "getVehicleInfoResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetVehicleInfoResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getVehicleInfoRequest", output = "http://payment.ws.htichina.com/PaymentService/getVehicleInfoResponse")
-    public List<VehicleInfoResponse> getVehicleInfo(
-        @WebParam(name = "vin", targetNamespace = "")
-        String vin,
-        @WebParam(name = "acctNum", targetNamespace = "")
-        String acctNum,
-        @WebParam(name = "mobileNum", targetNamespace = "")
-        String mobileNum);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "sendInvoiceEmail", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.SendInvoiceEmail")
-    @ResponseWrapper(localName = "sendInvoiceEmailResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.SendInvoiceEmailResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/sendInvoiceEmailRequest", output = "http://payment.ws.htichina.com/PaymentService/sendInvoiceEmailResponse")
-    public boolean sendInvoiceEmail(
-        @WebParam(name = "arg0", targetNamespace = "")
-        InvoiceInfoRequest arg0);
-
-    /**
-     * 
-     * @param acctNum
-     * @param vin
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "syncAccnt", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.SyncAccnt")
-    @ResponseWrapper(localName = "syncAccntResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.SyncAccntResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/syncAccntRequest", output = "http://payment.ws.htichina.com/PaymentService/syncAccntResponse")
-    public boolean syncAccnt(
-        @WebParam(name = "acctNum", targetNamespace = "")
-        String acctNum,
-        @WebParam(name = "VIN", targetNamespace = "")
-        String vin);
-
-    /**
-     * 
-     * @param accountNum
-     * @param productChannel
-     * @return
-     *     returns com.htichina.wsclient.payment.ProductInfoResponse
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getProdInfo", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetProdInfo")
-    @ResponseWrapper(localName = "getProdInfoResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetProdInfoResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getProdInfoRequest", output = "http://payment.ws.htichina.com/PaymentService/getProdInfoResponse")
-    public ProductInfoResponse getProdInfo(
-        @WebParam(name = "product_channel", targetNamespace = "")
-        String productChannel,
+    @RequestWrapper(localName = "getCurrentAccountInfo", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetCurrentAccountInfo")
+    @ResponseWrapper(localName = "getCurrentAccountInfoResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetCurrentAccountInfoResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getCurrentAccountInfoRequest", output = "http://payment.ws.htichina.com/PaymentService/getCurrentAccountInfoResponse")
+    public AccountInfoResponse getCurrentAccountInfo(
         @WebParam(name = "accountNum", targetNamespace = "")
         String accountNum);
-
-    /**
-     * 
-     * @param accountNum
-     * @return
-     *     returns java.util.List<java.lang.String>
-     * @throws Exception_Exception
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getOpenIdByAccountNum", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetOpenIdByAccountNum")
-    @ResponseWrapper(localName = "getOpenIdByAccountNumResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetOpenIdByAccountNumResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getOpenIdByAccountNumRequest", output = "http://payment.ws.htichina.com/PaymentService/getOpenIdByAccountNumResponse", fault = {
-        @FaultAction(className = Exception_Exception.class, value = "http://payment.ws.htichina.com/PaymentService/getOpenIdByAccountNum/Fault/Exception")
-    })
-    public List<String> getOpenIdByAccountNum(
-        @WebParam(name = "accountNum", targetNamespace = "")
-        String accountNum)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param questionId
-     * @return
-     *     returns java.util.List<com.htichina.wsclient.payment.QuestionOptions>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getQuestionOptions", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetQuestionOptions")
-    @ResponseWrapper(localName = "getQuestionOptionsResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetQuestionOptionsResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getQuestionOptionsRequest", output = "http://payment.ws.htichina.com/PaymentService/getQuestionOptionsResponse")
-    public List<QuestionOptions> getQuestionOptions(
-        @WebParam(name = "questionId", targetNamespace = "")
-        Integer questionId);
-
-    /**
-     * 
-     * @param openId
-     * @param questionnaireId
-     * @param account
-     * @return
-     *     returns com.htichina.wsclient.payment.Questions
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getUnanswerQuestion", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetUnanswerQuestion")
-    @ResponseWrapper(localName = "getUnanswerQuestionResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetUnanswerQuestionResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getUnanswerQuestionRequest", output = "http://payment.ws.htichina.com/PaymentService/getUnanswerQuestionResponse")
-    public Questions getUnanswerQuestion(
-        @WebParam(name = "account", targetNamespace = "")
-        String account,
-        @WebParam(name = "openId", targetNamespace = "")
-        String openId,
-        @WebParam(name = "questionnaireId", targetNamespace = "")
-        Integer questionnaireId);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns com.htichina.wsclient.payment.PackageUpgradeResponse
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "createUpgradePaymentOrder", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateUpgradePaymentOrder")
-    @ResponseWrapper(localName = "createUpgradePaymentOrderResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateUpgradePaymentOrderResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/createUpgradePaymentOrderRequest", output = "http://payment.ws.htichina.com/PaymentService/createUpgradePaymentOrderResponse")
-    public PackageUpgradeResponse createUpgradePaymentOrder(
-        @WebParam(name = "arg0", targetNamespace = "")
-        PackageUpgradeRequest arg0);
-
-    /**
-     * 
-     * @param flag
-     * @param accountNum
-     * @return
-     *     returns com.htichina.wsclient.payment.LuckyDrawReponse
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "checkCustemerLuckyDraw", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckCustemerLuckyDraw")
-    @ResponseWrapper(localName = "checkCustemerLuckyDrawResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckCustemerLuckyDrawResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/checkCustemerLuckyDrawRequest", output = "http://payment.ws.htichina.com/PaymentService/checkCustemerLuckyDrawResponse")
-    public LuckyDrawReponse checkCustemerLuckyDraw(
-        @WebParam(name = "accountNum", targetNamespace = "")
-        String accountNum,
-        @WebParam(name = "flag", targetNamespace = "")
-        String flag);
-
-    /**
-     * 
-     * @param accountNum
-     * @param newCellphone
-     * @return
-     *     returns int
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "updateNewCallPhoneByAccountNum", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateNewCallPhoneByAccountNum")
-    @ResponseWrapper(localName = "updateNewCallPhoneByAccountNumResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateNewCallPhoneByAccountNumResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/updateNewCallPhoneByAccountNumRequest", output = "http://payment.ws.htichina.com/PaymentService/updateNewCallPhoneByAccountNumResponse")
-    public int updateNewCallPhoneByAccountNum(
-        @WebParam(name = "accountNum", targetNamespace = "")
-        String accountNum,
-        @WebParam(name = "newCellphone", targetNamespace = "")
-        String newCellphone);
-
-    /**
-     * 
-     * @param accountNum
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getCallPhoneByAccountNum", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetCallPhoneByAccountNum")
-    @ResponseWrapper(localName = "getCallPhoneByAccountNumResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetCallPhoneByAccountNumResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getCallPhoneByAccountNumRequest", output = "http://payment.ws.htichina.com/PaymentService/getCallPhoneByAccountNumResponse")
-    public String getCallPhoneByAccountNum(
-        @WebParam(name = "accountNum", targetNamespace = "")
-        String accountNum);
-
-    /**
-     * 
-     * @param orderNum
-     * @param tranNo
-     * @param openIds
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "updateOrderStatus", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateOrderStatus")
-    @ResponseWrapper(localName = "updateOrderStatusResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateOrderStatusResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/updateOrderStatusRequest", output = "http://payment.ws.htichina.com/PaymentService/updateOrderStatusResponse")
-    public boolean updateOrderStatus(
-        @WebParam(name = "orderNum", targetNamespace = "")
-        String orderNum,
-        @WebParam(name = "tranNo", targetNamespace = "")
-        String tranNo,
-        @WebParam(name = "openIds", targetNamespace = "")
-        String openIds);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns com.htichina.wsclient.payment.TransactionResponse
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "createTransactionForLuckyDraw", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateTransactionForLuckyDraw")
-    @ResponseWrapper(localName = "createTransactionForLuckyDrawResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateTransactionForLuckyDrawResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/createTransactionForLuckyDrawRequest", output = "http://payment.ws.htichina.com/PaymentService/createTransactionForLuckyDrawResponse")
-    public TransactionResponse createTransactionForLuckyDraw(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1);
-
-    /**
-     * 
-     * @param transactionNo
-     * @param openIds
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "updateWechatMessageHistory", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateWechatMessageHistory")
-    @ResponseWrapper(localName = "updateWechatMessageHistoryResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateWechatMessageHistoryResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/updateWechatMessageHistoryRequest", output = "http://payment.ws.htichina.com/PaymentService/updateWechatMessageHistoryResponse", fault = {
-        @FaultAction(className = Exception_Exception.class, value = "http://payment.ws.htichina.com/PaymentService/updateWechatMessageHistory/Fault/Exception")
-    })
-    public boolean updateWechatMessageHistory(
-        @WebParam(name = "openIds", targetNamespace = "")
-        String openIds,
-        @WebParam(name = "transactionNo", targetNamespace = "")
-        String transactionNo)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param openId
-     * @param orderNum
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "updateTransaction", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateTransaction")
-    @ResponseWrapper(localName = "updateTransactionResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateTransactionResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/updateTransactionRequest", output = "http://payment.ws.htichina.com/PaymentService/updateTransactionResponse")
-    public boolean updateTransaction(
-        @WebParam(name = "orderNum", targetNamespace = "")
-        String orderNum,
-        @WebParam(name = "openId", targetNamespace = "")
-        String openId);
-
-    /**
-     * 
-     * @param accountNum
-     * @return
-     *     returns int
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "hasLuckyDrawLinkByAccountNum", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.HasLuckyDrawLinkByAccountNum")
-    @ResponseWrapper(localName = "hasLuckyDrawLinkByAccountNumResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.HasLuckyDrawLinkByAccountNumResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/hasLuckyDrawLinkByAccountNumRequest", output = "http://payment.ws.htichina.com/PaymentService/hasLuckyDrawLinkByAccountNumResponse")
-    public int hasLuckyDrawLinkByAccountNum(
-        @WebParam(name = "accountNum", targetNamespace = "")
-        String accountNum);
-
-    /**
-     * 
-     * @param questionnaireId
-     * @return
-     *     returns java.lang.String
-     * @throws ParseException_Exception
-     */
-    @WebMethod(operationName = "QuestionnaireFinished")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "QuestionnaireFinished", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.QuestionnaireFinished")
-    @ResponseWrapper(localName = "QuestionnaireFinishedResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.QuestionnaireFinishedResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/QuestionnaireFinishedRequest", output = "http://payment.ws.htichina.com/PaymentService/QuestionnaireFinishedResponse", fault = {
-        @FaultAction(className = ParseException_Exception.class, value = "http://payment.ws.htichina.com/PaymentService/QuestionnaireFinished/Fault/ParseException")
-    })
-    public String questionnaireFinished(
-        @WebParam(name = "questionnaireId", targetNamespace = "")
-        Integer questionnaireId)
-        throws ParseException_Exception
-    ;
 
     /**
      * 
      * @param ordernum
+     * @param lang
      * @return
-     *     returns com.htichina.wsclient.payment.InvoiceInfoRequest
+     *     returns java.util.List<com.htichina.wsclient.payment.QueryChildOrdersByParentOrderNumResponse>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getInvoiceInformation", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetInvoiceInformation")
-    @ResponseWrapper(localName = "getInvoiceInformationResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetInvoiceInformationResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getInvoiceInformationRequest", output = "http://payment.ws.htichina.com/PaymentService/getInvoiceInformationResponse")
-    public InvoiceInfoRequest getInvoiceInformation(
+    @RequestWrapper(localName = "getChildOrderInfo", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetChildOrderInfo")
+    @ResponseWrapper(localName = "getChildOrderInfoResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetChildOrderInfoResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getChildOrderInfoRequest", output = "http://payment.ws.htichina.com/PaymentService/getChildOrderInfoResponse")
+    public List<QueryChildOrdersByParentOrderNumResponse> getChildOrderInfo(
         @WebParam(name = "ordernum", targetNamespace = "")
-        String ordernum);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "insertInvoiceInfo", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.InsertInvoiceInfo")
-    @ResponseWrapper(localName = "insertInvoiceInfoResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.InsertInvoiceInfoResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/insertInvoiceInfoRequest", output = "http://payment.ws.htichina.com/PaymentService/insertInvoiceInfoResponse")
-    public boolean insertInvoiceInfo(
-        @WebParam(name = "arg0", targetNamespace = "")
-        InvoiceInfoRequest arg0);
-
-    /**
-     * 
-     * @param accountNum
-     * @param orderNum
-     * @return
-     *     returns com.htichina.wsclient.payment.QueryOrderByParentOrderNumResponse
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getParentOrderInfo", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetParentOrderInfo")
-    @ResponseWrapper(localName = "getParentOrderInfoResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetParentOrderInfoResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getParentOrderInfoRequest", output = "http://payment.ws.htichina.com/PaymentService/getParentOrderInfoResponse")
-    public QueryOrderByParentOrderNumResponse getParentOrderInfo(
-        @WebParam(name = "orderNum", targetNamespace = "")
-        String orderNum,
-        @WebParam(name = "accountNum", targetNamespace = "")
-        String accountNum);
+        String ordernum,
+        @WebParam(name = "lang", targetNamespace = "")
+        String lang);
 
     /**
      * 
@@ -501,21 +108,137 @@ public interface PaymentService {
 
     /**
      * 
-     * @param ordernum
-     * @param lang
+     * @param arg0
      * @return
-     *     returns java.util.List<com.htichina.wsclient.payment.QueryChildOrdersByParentOrderNumResponse>
+     *     returns java.lang.Integer
+     * @throws Exception_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getChildOrderInfo", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetChildOrderInfo")
-    @ResponseWrapper(localName = "getChildOrderInfoResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetChildOrderInfoResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getChildOrderInfoRequest", output = "http://payment.ws.htichina.com/PaymentService/getChildOrderInfoResponse")
-    public List<QueryChildOrdersByParentOrderNumResponse> getChildOrderInfo(
+    @RequestWrapper(localName = "isWinBackOrEarlyBird", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.IsWinBackOrEarlyBird")
+    @ResponseWrapper(localName = "isWinBackOrEarlyBirdResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.IsWinBackOrEarlyBirdResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/isWinBackOrEarlyBirdRequest", output = "http://payment.ws.htichina.com/PaymentService/isWinBackOrEarlyBirdResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://payment.ws.htichina.com/PaymentService/isWinBackOrEarlyBird/Fault/Exception")
+    })
+    public Integer isWinBackOrEarlyBird(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param vin
+     * @param productType
+     * @return
+     *     returns com.htichina.wsclient.payment.PurchaseProductResponse
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "checkPurchaseProduct", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckPurchaseProduct")
+    @ResponseWrapper(localName = "checkPurchaseProductResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckPurchaseProductResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/checkPurchaseProductRequest", output = "http://payment.ws.htichina.com/PaymentService/checkPurchaseProductResponse")
+    public PurchaseProductResponse checkPurchaseProduct(
+        @WebParam(name = "vin", targetNamespace = "")
+        String vin,
+        @WebParam(name = "product_type", targetNamespace = "")
+        String productType);
+
+    /**
+     * 
+     * @param orderNum
+     * @return
+     *     returns java.util.List<com.htichina.wsclient.payment.Transaction>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getTransactionByOrderNum", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetTransactionByOrderNum")
+    @ResponseWrapper(localName = "getTransactionByOrderNumResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetTransactionByOrderNumResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getTransactionByOrderNumRequest", output = "http://payment.ws.htichina.com/PaymentService/getTransactionByOrderNumResponse")
+    public List<Transaction> getTransactionByOrderNum(
+        @WebParam(name = "OrderNum", targetNamespace = "")
+        String orderNum);
+
+    /**
+     * 
+     * @param cellphone
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "isNewFollowReciveDidi", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.IsNewFollowReciveDidi")
+    @ResponseWrapper(localName = "isNewFollowReciveDidiResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.IsNewFollowReciveDidiResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/isNewFollowReciveDidiRequest", output = "http://payment.ws.htichina.com/PaymentService/isNewFollowReciveDidiResponse")
+    public String isNewFollowReciveDidi(
+        @WebParam(name = "cellphone", targetNamespace = "")
+        String cellphone);
+
+    /**
+     * 
+     * @param userInfo
+     * @param accountNum
+     * @param pin
+     * @param openId
+     * @param vin
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "createWechatUserProfile", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateWechatUserProfile")
+    @ResponseWrapper(localName = "createWechatUserProfileResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateWechatUserProfileResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/createWechatUserProfileRequest", output = "http://payment.ws.htichina.com/PaymentService/createWechatUserProfileResponse")
+    public boolean createWechatUserProfile(
+        @WebParam(name = "accountNum", targetNamespace = "")
+        String accountNum,
+        @WebParam(name = "pin", targetNamespace = "")
+        String pin,
+        @WebParam(name = "openId", targetNamespace = "")
+        String openId,
+        @WebParam(name = "userInfo", targetNamespace = "")
+        String userInfo,
+        @WebParam(name = "vin", targetNamespace = "")
+        String vin);
+
+    /**
+     * 
+     * @param userInfo
+     * @param accountNum
+     * @param pin
+     * @param openId
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "closeWechatUserProfile", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CloseWechatUserProfile")
+    @ResponseWrapper(localName = "closeWechatUserProfileResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CloseWechatUserProfileResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/closeWechatUserProfileRequest", output = "http://payment.ws.htichina.com/PaymentService/closeWechatUserProfileResponse")
+    public boolean closeWechatUserProfile(
+        @WebParam(name = "accountNum", targetNamespace = "")
+        String accountNum,
+        @WebParam(name = "pin", targetNamespace = "")
+        String pin,
+        @WebParam(name = "openId", targetNamespace = "")
+        String openId,
+        @WebParam(name = "userInfo", targetNamespace = "")
+        String userInfo);
+
+    /**
+     * 
+     * @param ordernum
+     * @return
+     *     returns com.htichina.wsclient.payment.InvoiceInfoRequest
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getInvoiceInformation", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetInvoiceInformation")
+    @ResponseWrapper(localName = "getInvoiceInformationResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetInvoiceInformationResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getInvoiceInformationRequest", output = "http://payment.ws.htichina.com/PaymentService/getInvoiceInformationResponse")
+    public InvoiceInfoRequest getInvoiceInformation(
         @WebParam(name = "ordernum", targetNamespace = "")
-        String ordernum,
-        @WebParam(name = "lang", targetNamespace = "")
-        String lang);
+        String ordernum);
 
     /**
      * 
@@ -552,21 +275,36 @@ public interface PaymentService {
 
     /**
      * 
-     * @param transNum
-     * @param payresult
+     * @param openId
      * @return
-     *     returns com.htichina.wsclient.payment.PaymentResponse
+     *     returns java.lang.String
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "paymentHandlerService", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.PaymentHandlerService")
-    @ResponseWrapper(localName = "paymentHandlerServiceResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.PaymentHandlerServiceResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/paymentHandlerServiceRequest", output = "http://payment.ws.htichina.com/PaymentService/paymentHandlerServiceResponse")
-    public PaymentResponse paymentHandlerService(
-        @WebParam(name = "transNum", targetNamespace = "")
-        String transNum,
-        @WebParam(name = "payresult", targetNamespace = "")
-        PaymentResultMessage payresult);
+    @RequestWrapper(localName = "getActiveAccountByOpenId", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetActiveAccountByOpenId")
+    @ResponseWrapper(localName = "getActiveAccountByOpenIdResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetActiveAccountByOpenIdResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getActiveAccountByOpenIdRequest", output = "http://payment.ws.htichina.com/PaymentService/getActiveAccountByOpenIdResponse")
+    public String getActiveAccountByOpenId(
+        @WebParam(name = "openId", targetNamespace = "")
+        String openId);
+
+    /**
+     * 
+     * @param accountNum
+     * @param orderNum
+     * @return
+     *     returns com.htichina.wsclient.payment.QueryOrderByParentOrderNumResponse
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getParentOrderInfo", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetParentOrderInfo")
+    @ResponseWrapper(localName = "getParentOrderInfoResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetParentOrderInfoResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getParentOrderInfoRequest", output = "http://payment.ws.htichina.com/PaymentService/getParentOrderInfoResponse")
+    public QueryOrderByParentOrderNumResponse getParentOrderInfo(
+        @WebParam(name = "orderNum", targetNamespace = "")
+        String orderNum,
+        @WebParam(name = "accountNum", targetNamespace = "")
+        String accountNum);
 
     /**
      * 
@@ -588,117 +326,21 @@ public interface PaymentService {
 
     /**
      * 
-     * @param userInfo
-     * @param accountNum
-     * @param pin
-     * @param openId
+     * @param transNum
+     * @param payresult
      * @return
-     *     returns boolean
+     *     returns com.htichina.wsclient.payment.PaymentResponse
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "closeWechatUserProfile", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CloseWechatUserProfile")
-    @ResponseWrapper(localName = "closeWechatUserProfileResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CloseWechatUserProfileResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/closeWechatUserProfileRequest", output = "http://payment.ws.htichina.com/PaymentService/closeWechatUserProfileResponse")
-    public boolean closeWechatUserProfile(
-        @WebParam(name = "accountNum", targetNamespace = "")
-        String accountNum,
-        @WebParam(name = "pin", targetNamespace = "")
-        String pin,
-        @WebParam(name = "openId", targetNamespace = "")
-        String openId,
-        @WebParam(name = "userInfo", targetNamespace = "")
-        String userInfo);
-
-    /**
-     * 
-     * @param userInfo
-     * @param accountNum
-     * @param pin
-     * @param openId
-     * @param vin
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "createWechatUserProfile", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateWechatUserProfile")
-    @ResponseWrapper(localName = "createWechatUserProfileResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateWechatUserProfileResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/createWechatUserProfileRequest", output = "http://payment.ws.htichina.com/PaymentService/createWechatUserProfileResponse")
-    public boolean createWechatUserProfile(
-        @WebParam(name = "accountNum", targetNamespace = "")
-        String accountNum,
-        @WebParam(name = "pin", targetNamespace = "")
-        String pin,
-        @WebParam(name = "openId", targetNamespace = "")
-        String openId,
-        @WebParam(name = "userInfo", targetNamespace = "")
-        String userInfo,
-        @WebParam(name = "vin", targetNamespace = "")
-        String vin);
-
-    /**
-     * 
-     * @param cellphone
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "isNewFollowReciveDidi", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.IsNewFollowReciveDidi")
-    @ResponseWrapper(localName = "isNewFollowReciveDidiResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.IsNewFollowReciveDidiResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/isNewFollowReciveDidiRequest", output = "http://payment.ws.htichina.com/PaymentService/isNewFollowReciveDidiResponse")
-    public String isNewFollowReciveDidi(
-        @WebParam(name = "cellphone", targetNamespace = "")
-        String cellphone);
-
-    /**
-     * 
-     * @param orderNum
-     * @return
-     *     returns java.util.List<com.htichina.wsclient.payment.Transaction>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getTransactionByOrderNum", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetTransactionByOrderNum")
-    @ResponseWrapper(localName = "getTransactionByOrderNumResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetTransactionByOrderNumResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getTransactionByOrderNumRequest", output = "http://payment.ws.htichina.com/PaymentService/getTransactionByOrderNumResponse")
-    public List<Transaction> getTransactionByOrderNum(
-        @WebParam(name = "OrderNum", targetNamespace = "")
-        String orderNum);
-
-    /**
-     * 
-     * @param accountNum
-     * @return
-     *     returns com.htichina.wsclient.payment.AccountInfoResponse
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getCurrentAccountInfo", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetCurrentAccountInfo")
-    @ResponseWrapper(localName = "getCurrentAccountInfoResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetCurrentAccountInfoResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getCurrentAccountInfoRequest", output = "http://payment.ws.htichina.com/PaymentService/getCurrentAccountInfoResponse")
-    public AccountInfoResponse getCurrentAccountInfo(
-        @WebParam(name = "accountNum", targetNamespace = "")
-        String accountNum);
-
-    /**
-     * 
-     * @param vin
-     * @param productType
-     * @return
-     *     returns com.htichina.wsclient.payment.PurchaseProductResponse
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "checkPurchaseProduct", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckPurchaseProduct")
-    @ResponseWrapper(localName = "checkPurchaseProductResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckPurchaseProductResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/checkPurchaseProductRequest", output = "http://payment.ws.htichina.com/PaymentService/checkPurchaseProductResponse")
-    public PurchaseProductResponse checkPurchaseProduct(
-        @WebParam(name = "vin", targetNamespace = "")
-        String vin,
-        @WebParam(name = "product_type", targetNamespace = "")
-        String productType);
+    @RequestWrapper(localName = "paymentHandlerService", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.PaymentHandlerService")
+    @ResponseWrapper(localName = "paymentHandlerServiceResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.PaymentHandlerServiceResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/paymentHandlerServiceRequest", output = "http://payment.ws.htichina.com/PaymentService/paymentHandlerServiceResponse")
+    public PaymentResponse paymentHandlerService(
+        @WebParam(name = "transNum", targetNamespace = "")
+        String transNum,
+        @WebParam(name = "payresult", targetNamespace = "")
+        PaymentResultMessage payresult);
 
     /**
      * 
@@ -708,27 +350,12 @@ public interface PaymentService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getActiveAccountByOpenId", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetActiveAccountByOpenId")
-    @ResponseWrapper(localName = "getActiveAccountByOpenIdResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetActiveAccountByOpenIdResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getActiveAccountByOpenIdRequest", output = "http://payment.ws.htichina.com/PaymentService/getActiveAccountByOpenIdResponse")
-    public String getActiveAccountByOpenId(
+    @RequestWrapper(localName = "getLastLoginUserByOpenId", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetLastLoginUserByOpenId")
+    @ResponseWrapper(localName = "getLastLoginUserByOpenIdResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetLastLoginUserByOpenIdResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getLastLoginUserByOpenIdRequest", output = "http://payment.ws.htichina.com/PaymentService/getLastLoginUserByOpenIdResponse")
+    public String getLastLoginUserByOpenId(
         @WebParam(name = "openId", targetNamespace = "")
         String openId);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns com.htichina.wsclient.payment.PackageUpgradeResponse
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getNewPackageAfterUpgrade", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetNewPackageAfterUpgrade")
-    @ResponseWrapper(localName = "getNewPackageAfterUpgradeResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetNewPackageAfterUpgradeResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getNewPackageAfterUpgradeRequest", output = "http://payment.ws.htichina.com/PaymentService/getNewPackageAfterUpgradeResponse")
-    public PackageUpgradeResponse getNewPackageAfterUpgrade(
-        @WebParam(name = "arg0", targetNamespace = "")
-        PackageUpgradeRequest arg0);
 
     /**
      * 
@@ -749,34 +376,56 @@ public interface PaymentService {
      * 
      * @param arg0
      * @return
-     *     returns java.lang.Integer
-     * @throws Exception_Exception
+     *     returns com.htichina.wsclient.payment.PackageUpgradeResponse
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "isWinBackOrEarlyBird", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.IsWinBackOrEarlyBird")
-    @ResponseWrapper(localName = "isWinBackOrEarlyBirdResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.IsWinBackOrEarlyBirdResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/isWinBackOrEarlyBirdRequest", output = "http://payment.ws.htichina.com/PaymentService/isWinBackOrEarlyBirdResponse", fault = {
-        @FaultAction(className = Exception_Exception.class, value = "http://payment.ws.htichina.com/PaymentService/isWinBackOrEarlyBird/Fault/Exception")
-    })
-    public Integer isWinBackOrEarlyBird(
+    @RequestWrapper(localName = "getNewPackageAfterUpgrade", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetNewPackageAfterUpgrade")
+    @ResponseWrapper(localName = "getNewPackageAfterUpgradeResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetNewPackageAfterUpgradeResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getNewPackageAfterUpgradeRequest", output = "http://payment.ws.htichina.com/PaymentService/getNewPackageAfterUpgradeResponse")
+    public PackageUpgradeResponse getNewPackageAfterUpgrade(
         @WebParam(name = "arg0", targetNamespace = "")
-        String arg0)
-        throws Exception_Exception
-    ;
+        PackageUpgradeRequest arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "insertInvoiceInfo", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.InsertInvoiceInfo")
+    @ResponseWrapper(localName = "insertInvoiceInfoResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.InsertInvoiceInfoResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/insertInvoiceInfoRequest", output = "http://payment.ws.htichina.com/PaymentService/insertInvoiceInfoResponse")
+    public boolean insertInvoiceInfo(
+        @WebParam(name = "arg0", targetNamespace = "")
+        InvoiceInfoRequest arg0);
+
+    /**
+     * 
+     * @param accountNum
+     */
+    @WebMethod
+    @RequestWrapper(localName = "updateLoginTimes", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateLoginTimes")
+    @ResponseWrapper(localName = "updateLoginTimesResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateLoginTimesResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/updateLoginTimesRequest", output = "http://payment.ws.htichina.com/PaymentService/updateLoginTimesResponse")
+    public void updateLoginTimes(
+        @WebParam(name = "accountNum", targetNamespace = "")
+        String accountNum);
 
     /**
      * 
      * @param openId
      * @return
-     *     returns java.lang.String
+     *     returns boolean
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getLastLoginUserByOpenId", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetLastLoginUserByOpenId")
-    @ResponseWrapper(localName = "getLastLoginUserByOpenIdResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetLastLoginUserByOpenIdResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getLastLoginUserByOpenIdRequest", output = "http://payment.ws.htichina.com/PaymentService/getLastLoginUserByOpenIdResponse")
-    public String getLastLoginUserByOpenId(
+    @RequestWrapper(localName = "logoff", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.Logoff")
+    @ResponseWrapper(localName = "logoffResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.LogoffResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/logoffRequest", output = "http://payment.ws.htichina.com/PaymentService/logoffResponse")
+    public boolean logoff(
         @WebParam(name = "openId", targetNamespace = "")
         String openId);
 
@@ -800,6 +449,21 @@ public interface PaymentService {
 
     /**
      * 
+     * @param orderNum
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "checkTransaction", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckTransaction")
+    @ResponseWrapper(localName = "checkTransactionResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckTransactionResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/checkTransactionRequest", output = "http://payment.ws.htichina.com/PaymentService/checkTransactionResponse")
+    public boolean checkTransaction(
+        @WebParam(name = "orderNum", targetNamespace = "")
+        String orderNum);
+
+    /**
+     * 
      * @param accountNum
      * @param productChannel
      * @return
@@ -815,6 +479,93 @@ public interface PaymentService {
         String productChannel,
         @WebParam(name = "accountNum", targetNamespace = "")
         String accountNum);
+
+    /**
+     * 
+     * @param userInfo
+     * @param accountNum
+     * @param pin
+     * @param openId
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "validateLogin", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.ValidateLogin")
+    @ResponseWrapper(localName = "validateLoginResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.ValidateLoginResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/validateLoginRequest", output = "http://payment.ws.htichina.com/PaymentService/validateLoginResponse")
+    public boolean validateLogin(
+        @WebParam(name = "accountNum", targetNamespace = "")
+        String accountNum,
+        @WebParam(name = "pin", targetNamespace = "")
+        String pin,
+        @WebParam(name = "openId", targetNamespace = "")
+        String openId,
+        @WebParam(name = "userInfo", targetNamespace = "")
+        String userInfo);
+
+    /**
+     * 
+     * @param transactionNo
+     * @return
+     *     returns java.util.List<com.htichina.wsclient.payment.ServiceOrder>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "checkOrderPaied", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckOrderPaied")
+    @ResponseWrapper(localName = "checkOrderPaiedResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckOrderPaiedResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/checkOrderPaiedRequest", output = "http://payment.ws.htichina.com/PaymentService/checkOrderPaiedResponse")
+    public List<ServiceOrder> checkOrderPaied(
+        @WebParam(name = "transactionNo", targetNamespace = "")
+        String transactionNo);
+
+    /**
+     * 
+     * @param arg3
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns com.htichina.wsclient.payment.PaymentOrderResponse
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "createLuckyOrder", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateLuckyOrder")
+    @ResponseWrapper(localName = "createLuckyOrderResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateLuckyOrderResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/createLuckyOrderRequest", output = "http://payment.ws.htichina.com/PaymentService/createLuckyOrderResponse")
+    public PaymentOrderResponse createLuckyOrder(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        String arg2,
+        @WebParam(name = "arg3", targetNamespace = "")
+        String arg3);
+
+    /**
+     * 
+     * @param address
+     * @param accountNum
+     * @param name
+     * @param telNum
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "winUserInfo", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.WinUserInfo")
+    @ResponseWrapper(localName = "winUserInfoResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.WinUserInfoResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/winUserInfoRequest", output = "http://payment.ws.htichina.com/PaymentService/winUserInfoResponse")
+    public boolean winUserInfo(
+        @WebParam(name = "accountNum", targetNamespace = "")
+        String accountNum,
+        @WebParam(name = "name", targetNamespace = "")
+        String name,
+        @WebParam(name = "telNum", targetNamespace = "")
+        String telNum,
+        @WebParam(name = "address", targetNamespace = "")
+        String address);
 
     /**
      * 
@@ -839,15 +590,33 @@ public interface PaymentService {
 
     /**
      * 
-     * @param accountNum
+     * @param parentOrderId
+     * @return
+     *     returns int
      */
     @WebMethod
-    @RequestWrapper(localName = "updateLoginTimes", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateLoginTimes")
-    @ResponseWrapper(localName = "updateLoginTimesResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateLoginTimesResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/updateLoginTimesRequest", output = "http://payment.ws.htichina.com/PaymentService/updateLoginTimesResponse")
-    public void updateLoginTimes(
-        @WebParam(name = "accountNum", targetNamespace = "")
-        String accountNum);
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "hasLuckyDrawLink", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.HasLuckyDrawLink")
+    @ResponseWrapper(localName = "hasLuckyDrawLinkResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.HasLuckyDrawLinkResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/hasLuckyDrawLinkRequest", output = "http://payment.ws.htichina.com/PaymentService/hasLuckyDrawLinkResponse")
+    public int hasLuckyDrawLink(
+        @WebParam(name = "parentOrderId", targetNamespace = "")
+        String parentOrderId);
+
+    /**
+     * 
+     * @param questionAnswer
+     * @return
+     *     returns java.lang.Integer
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "saveAnswer", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.SaveAnswer")
+    @ResponseWrapper(localName = "saveAnswerResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.SaveAnswerResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/saveAnswerRequest", output = "http://payment.ws.htichina.com/PaymentService/saveAnswerResponse")
+    public Integer saveAnswer(
+        @WebParam(name = "questionAnswer", targetNamespace = "")
+        QuestionAnswer questionAnswer);
 
     /**
      * 
@@ -866,6 +635,21 @@ public interface PaymentService {
         String arg0,
         @WebParam(name = "arg1", targetNamespace = "")
         String arg1);
+
+    /**
+     * 
+     * @param questionnaireId
+     * @return
+     *     returns java.util.List<com.htichina.wsclient.payment.Questions>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getQuestions", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetQuestions")
+    @ResponseWrapper(localName = "getQuestionsResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetQuestionsResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getQuestionsRequest", output = "http://payment.ws.htichina.com/PaymentService/getQuestionsResponse")
+    public List<Questions> getQuestions(
+        @WebParam(name = "questionnaireId", targetNamespace = "")
+        Integer questionnaireId);
 
     /**
      * 
@@ -911,95 +695,311 @@ public interface PaymentService {
 
     /**
      * 
-     * @param questionAnswer
-     * @return
-     *     returns java.lang.Integer
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "saveAnswer", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.SaveAnswer")
-    @ResponseWrapper(localName = "saveAnswerResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.SaveAnswerResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/saveAnswerRequest", output = "http://payment.ws.htichina.com/PaymentService/saveAnswerResponse")
-    public Integer saveAnswer(
-        @WebParam(name = "questionAnswer", targetNamespace = "")
-        QuestionAnswer questionAnswer);
-
-    /**
-     * 
-     * @param address
-     * @param accountNum
-     * @param name
-     * @param telNum
+     * @param acctNum
+     * @param vin
      * @return
      *     returns boolean
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "winUserInfo", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.WinUserInfo")
-    @ResponseWrapper(localName = "winUserInfoResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.WinUserInfoResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/winUserInfoRequest", output = "http://payment.ws.htichina.com/PaymentService/winUserInfoResponse")
-    public boolean winUserInfo(
-        @WebParam(name = "accountNum", targetNamespace = "")
-        String accountNum,
-        @WebParam(name = "name", targetNamespace = "")
-        String name,
-        @WebParam(name = "telNum", targetNamespace = "")
-        String telNum,
-        @WebParam(name = "address", targetNamespace = "")
-        String address);
+    @RequestWrapper(localName = "syncAccnt", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.SyncAccnt")
+    @ResponseWrapper(localName = "syncAccntResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.SyncAccntResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/syncAccntRequest", output = "http://payment.ws.htichina.com/PaymentService/syncAccntResponse")
+    public boolean syncAccnt(
+        @WebParam(name = "acctNum", targetNamespace = "")
+        String acctNum,
+        @WebParam(name = "VIN", targetNamespace = "")
+        String vin);
 
     /**
      * 
-     * @param parentOrderId
+     * @param mobileNum
+     * @param acctNum
+     * @param vin
+     * @return
+     *     returns java.util.List<com.htichina.wsclient.payment.VehicleInfoResponse>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getVehicleInfo", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetVehicleInfo")
+    @ResponseWrapper(localName = "getVehicleInfoResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetVehicleInfoResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getVehicleInfoRequest", output = "http://payment.ws.htichina.com/PaymentService/getVehicleInfoResponse")
+    public List<VehicleInfoResponse> getVehicleInfo(
+        @WebParam(name = "vin", targetNamespace = "")
+        String vin,
+        @WebParam(name = "acctNum", targetNamespace = "")
+        String acctNum,
+        @WebParam(name = "mobileNum", targetNamespace = "")
+        String mobileNum);
+
+    /**
+     * 
+     * @param accountNum
+     * @param productChannel
+     * @return
+     *     returns com.htichina.wsclient.payment.ProductInfoResponse
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getProdInfo", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetProdInfo")
+    @ResponseWrapper(localName = "getProdInfoResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetProdInfoResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getProdInfoRequest", output = "http://payment.ws.htichina.com/PaymentService/getProdInfoResponse")
+    public ProductInfoResponse getProdInfo(
+        @WebParam(name = "product_channel", targetNamespace = "")
+        String productChannel,
+        @WebParam(name = "accountNum", targetNamespace = "")
+        String accountNum);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "sendInvoiceEmail", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.SendInvoiceEmail")
+    @ResponseWrapper(localName = "sendInvoiceEmailResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.SendInvoiceEmailResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/sendInvoiceEmailRequest", output = "http://payment.ws.htichina.com/PaymentService/sendInvoiceEmailResponse")
+    public boolean sendInvoiceEmail(
+        @WebParam(name = "arg0", targetNamespace = "")
+        InvoiceInfoRequest arg0);
+
+    /**
+     * 
+     * @param accountNum
+     * @param newCellphone
      * @return
      *     returns int
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "hasLuckyDrawLink", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.HasLuckyDrawLink")
-    @ResponseWrapper(localName = "hasLuckyDrawLinkResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.HasLuckyDrawLinkResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/hasLuckyDrawLinkRequest", output = "http://payment.ws.htichina.com/PaymentService/hasLuckyDrawLinkResponse")
-    public int hasLuckyDrawLink(
-        @WebParam(name = "parentOrderId", targetNamespace = "")
-        String parentOrderId);
-
-    /**
-     * 
-     * @param arg3
-     * @param arg2
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns com.htichina.wsclient.payment.PaymentOrderResponse
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "createLuckyOrder", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateLuckyOrder")
-    @ResponseWrapper(localName = "createLuckyOrderResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateLuckyOrderResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/createLuckyOrderRequest", output = "http://payment.ws.htichina.com/PaymentService/createLuckyOrderResponse")
-    public PaymentOrderResponse createLuckyOrder(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1,
-        @WebParam(name = "arg2", targetNamespace = "")
-        String arg2,
-        @WebParam(name = "arg3", targetNamespace = "")
-        String arg3);
+    @RequestWrapper(localName = "updateNewCallPhoneByAccountNum", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateNewCallPhoneByAccountNum")
+    @ResponseWrapper(localName = "updateNewCallPhoneByAccountNumResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateNewCallPhoneByAccountNumResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/updateNewCallPhoneByAccountNumRequest", output = "http://payment.ws.htichina.com/PaymentService/updateNewCallPhoneByAccountNumResponse")
+    public int updateNewCallPhoneByAccountNum(
+        @WebParam(name = "accountNum", targetNamespace = "")
+        String accountNum,
+        @WebParam(name = "newCellphone", targetNamespace = "")
+        String newCellphone);
 
     /**
      * 
      * @param questionnaireId
      * @return
-     *     returns java.util.List<com.htichina.wsclient.payment.Questions>
+     *     returns java.lang.String
+     * @throws ParseException_Exception
+     */
+    @WebMethod(operationName = "QuestionnaireFinished")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "QuestionnaireFinished", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.QuestionnaireFinished")
+    @ResponseWrapper(localName = "QuestionnaireFinishedResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.QuestionnaireFinishedResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/QuestionnaireFinishedRequest", output = "http://payment.ws.htichina.com/PaymentService/QuestionnaireFinishedResponse", fault = {
+        @FaultAction(className = ParseException_Exception.class, value = "http://payment.ws.htichina.com/PaymentService/QuestionnaireFinished/Fault/ParseException")
+    })
+    public String questionnaireFinished(
+        @WebParam(name = "questionnaireId", targetNamespace = "")
+        Integer questionnaireId)
+        throws ParseException_Exception
+    ;
+
+    /**
+     * 
+     * @param accountNum
+     * @return
+     *     returns java.util.List<java.lang.String>
+     * @throws Exception_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getQuestions", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetQuestions")
-    @ResponseWrapper(localName = "getQuestionsResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetQuestionsResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getQuestionsRequest", output = "http://payment.ws.htichina.com/PaymentService/getQuestionsResponse")
-    public List<Questions> getQuestions(
+    @RequestWrapper(localName = "getOpenIdByAccountNum", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetOpenIdByAccountNum")
+    @ResponseWrapper(localName = "getOpenIdByAccountNumResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetOpenIdByAccountNumResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getOpenIdByAccountNumRequest", output = "http://payment.ws.htichina.com/PaymentService/getOpenIdByAccountNumResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://payment.ws.htichina.com/PaymentService/getOpenIdByAccountNum/Fault/Exception")
+    })
+    public List<String> getOpenIdByAccountNum(
+        @WebParam(name = "accountNum", targetNamespace = "")
+        String accountNum)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param openId
+     * @param questionnaireId
+     * @param account
+     * @return
+     *     returns com.htichina.wsclient.payment.Questions
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getUnanswerQuestion", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetUnanswerQuestion")
+    @ResponseWrapper(localName = "getUnanswerQuestionResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetUnanswerQuestionResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getUnanswerQuestionRequest", output = "http://payment.ws.htichina.com/PaymentService/getUnanswerQuestionResponse")
+    public Questions getUnanswerQuestion(
+        @WebParam(name = "account", targetNamespace = "")
+        String account,
+        @WebParam(name = "openId", targetNamespace = "")
+        String openId,
         @WebParam(name = "questionnaireId", targetNamespace = "")
         Integer questionnaireId);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns com.htichina.wsclient.payment.PackageUpgradeResponse
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "createUpgradePaymentOrder", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateUpgradePaymentOrder")
+    @ResponseWrapper(localName = "createUpgradePaymentOrderResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateUpgradePaymentOrderResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/createUpgradePaymentOrderRequest", output = "http://payment.ws.htichina.com/PaymentService/createUpgradePaymentOrderResponse")
+    public PackageUpgradeResponse createUpgradePaymentOrder(
+        @WebParam(name = "arg0", targetNamespace = "")
+        PackageUpgradeRequest arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns com.htichina.wsclient.payment.TransactionResponse
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "createTransactionForLuckyDraw", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateTransactionForLuckyDraw")
+    @ResponseWrapper(localName = "createTransactionForLuckyDrawResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CreateTransactionForLuckyDrawResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/createTransactionForLuckyDrawRequest", output = "http://payment.ws.htichina.com/PaymentService/createTransactionForLuckyDrawResponse")
+    public TransactionResponse createTransactionForLuckyDraw(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
+
+    /**
+     * 
+     * @param orderNum
+     * @param tranNo
+     * @param openIds
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "updateOrderStatus", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateOrderStatus")
+    @ResponseWrapper(localName = "updateOrderStatusResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateOrderStatusResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/updateOrderStatusRequest", output = "http://payment.ws.htichina.com/PaymentService/updateOrderStatusResponse")
+    public boolean updateOrderStatus(
+        @WebParam(name = "orderNum", targetNamespace = "")
+        String orderNum,
+        @WebParam(name = "tranNo", targetNamespace = "")
+        String tranNo,
+        @WebParam(name = "openIds", targetNamespace = "")
+        String openIds);
+
+    /**
+     * 
+     * @param accountNum
+     * @return
+     *     returns int
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "hasLuckyDrawLinkByAccountNum", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.HasLuckyDrawLinkByAccountNum")
+    @ResponseWrapper(localName = "hasLuckyDrawLinkByAccountNumResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.HasLuckyDrawLinkByAccountNumResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/hasLuckyDrawLinkByAccountNumRequest", output = "http://payment.ws.htichina.com/PaymentService/hasLuckyDrawLinkByAccountNumResponse")
+    public int hasLuckyDrawLinkByAccountNum(
+        @WebParam(name = "accountNum", targetNamespace = "")
+        String accountNum);
+
+    /**
+     * 
+     * @param transactionNo
+     * @param openIds
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "updateWechatMessageHistory", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateWechatMessageHistory")
+    @ResponseWrapper(localName = "updateWechatMessageHistoryResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateWechatMessageHistoryResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/updateWechatMessageHistoryRequest", output = "http://payment.ws.htichina.com/PaymentService/updateWechatMessageHistoryResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://payment.ws.htichina.com/PaymentService/updateWechatMessageHistory/Fault/Exception")
+    })
+    public boolean updateWechatMessageHistory(
+        @WebParam(name = "openIds", targetNamespace = "")
+        String openIds,
+        @WebParam(name = "transactionNo", targetNamespace = "")
+        String transactionNo)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param accountNum
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getCallPhoneByAccountNum", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetCallPhoneByAccountNum")
+    @ResponseWrapper(localName = "getCallPhoneByAccountNumResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetCallPhoneByAccountNumResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getCallPhoneByAccountNumRequest", output = "http://payment.ws.htichina.com/PaymentService/getCallPhoneByAccountNumResponse")
+    public String getCallPhoneByAccountNum(
+        @WebParam(name = "accountNum", targetNamespace = "")
+        String accountNum);
+
+    /**
+     * 
+     * @param questionId
+     * @return
+     *     returns java.util.List<com.htichina.wsclient.payment.QuestionOptions>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getQuestionOptions", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetQuestionOptions")
+    @ResponseWrapper(localName = "getQuestionOptionsResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetQuestionOptionsResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getQuestionOptionsRequest", output = "http://payment.ws.htichina.com/PaymentService/getQuestionOptionsResponse")
+    public List<QuestionOptions> getQuestionOptions(
+        @WebParam(name = "questionId", targetNamespace = "")
+        Integer questionId);
+
+    /**
+     * 
+     * @param flag
+     * @param accountNum
+     * @return
+     *     returns com.htichina.wsclient.payment.LuckyDrawReponse
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "checkCustemerLuckyDraw", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckCustemerLuckyDraw")
+    @ResponseWrapper(localName = "checkCustemerLuckyDrawResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.CheckCustemerLuckyDrawResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/checkCustemerLuckyDrawRequest", output = "http://payment.ws.htichina.com/PaymentService/checkCustemerLuckyDrawResponse")
+    public LuckyDrawReponse checkCustemerLuckyDraw(
+        @WebParam(name = "accountNum", targetNamespace = "")
+        String accountNum,
+        @WebParam(name = "flag", targetNamespace = "")
+        String flag);
+
+    /**
+     * 
+     * @param openId
+     * @param orderNum
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "updateTransaction", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateTransaction")
+    @ResponseWrapper(localName = "updateTransactionResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.UpdateTransactionResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/updateTransactionRequest", output = "http://payment.ws.htichina.com/PaymentService/updateTransactionResponse")
+    public boolean updateTransaction(
+        @WebParam(name = "orderNum", targetNamespace = "")
+        String orderNum,
+        @WebParam(name = "openId", targetNamespace = "")
+        String openId);
 
 }
