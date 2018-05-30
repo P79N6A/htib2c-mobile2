@@ -68,7 +68,7 @@ public class LuckyDraw2Servlet extends HttpServlet {
 		PaymentServiceClient client = PaymentServiceClient.getInstance();
 		resultBean resultBean = new resultBean();
 		String openId =(String)req.getSession().getAttribute(Constant.OPEN_ID);
-//		String accountNum = "10631813";
+//		String accountNum = "10631810";
         String accountNum = client.getActiveAccountByOpenId(openId);
 		String paymentPlatform = (String)req.getSession().getAttribute(Constant.PAYMENT_PLATFORM);
 		logger.info("openId============================"+openId);
@@ -84,34 +84,40 @@ public class LuckyDraw2Servlet extends HttpServlet {
 		if("1".equals(type)) {
 			LuckyDrawReponse luckyDrawReponse = client.checkCustemerLuckyDraw(accountNum, null);
 			String flag = luckyDrawReponse.getLuckyDrawFlag();
-			resultBean.setLuckyDrawNoticeType(flag);
+
 			if ("2".equals(flag)) {
 				resultBean.setLuckyDrawNotice("您购买的套餐不在活动范围，是否愿意前往购买活动套餐？");
+				resultBean.setLuckyDrawNoticeType("2");
 				resultBean.setTs("1");
 				return resultBean;
 			} else if ("1".equals(flag)) {
 				resultBean.setLuckyDrawNotice("您暂时不符合参加此次抽奖活动的的资格");
+				resultBean.setLuckyDrawNoticeType("3");
 				return resultBean;
 			} else if ("4".equals(flag)) {
 				resultBean.setLuckyDrawNotice("您的抽奖次数已经使用完毕，感谢您的参与");
+				resultBean.setLuckyDrawNoticeType("4");
 				return resultBean;
 			}
 			//再进入状态
 			//本次无奖 总计有奖
 			else if ("6".equals(flag)) {
 				boolean prizflag = checkPrizeList(luckyDrawReponse.getPrizeList(), resultBean);
+				resultBean.setLuckyDrawNoticeType("6");
 				resultBean.setTs(Constant.TX_4);
 				return resultBean;
 			}
 			//本次没中奖，总计无奖
 			else if ("7".equals(flag)) {
 				boolean prizflag = checkPrizeList(luckyDrawReponse.getPrizeList(), resultBean);
+				resultBean.setLuckyDrawNoticeType("7");
 				resultBean.setTs(Constant.TX_3);
 				return resultBean;
 			}
 			//中奖了 最后一次
 			else if ("8".equals(flag)) {
 				boolean prizflag = checkPrizeList(luckyDrawReponse.getPrizeList(), resultBean);
+				resultBean.setLuckyDrawNoticeType("8");
 				resultBean.setTs(Constant.TX_6);
 				resultBean.setTxt(luckyDrawReponse.getPrizeList().get(0));
 				return resultBean;
@@ -144,6 +150,7 @@ public class LuckyDraw2Servlet extends HttpServlet {
 			resultBean.setTs(Constant.TX_6);
 			resultBean.setTxt(ldLtemReponse.getLdItem().getName());
 			checkPrizeList(ldLtemReponse.getPrizeList(),resultBean);
+			checkPrizLevel(ldItem,resultBean);
 		}
 		//未中奖 非最后一次 num ts
 		if (num > 0 && Constant.ITEM_TYPE_0.equals(ldItem.getSubType())) {

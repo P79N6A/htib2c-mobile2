@@ -44,7 +44,7 @@ function ClickEvent(_val,_pv) {
 	console.log(_val+ "," + _pv||"");
 	//alert(_val+ "," + _pv||"");
 	if(_pv){
-		gtag('config', 'UA-119760192-1', {
+		gtag('config', 'UA-98629510-7', {
 		  "page_title":_val
 		});
 	}else{

@@ -303,4 +303,12 @@ img{
     top:636px;
 }
 
-
+.num-img{
+    position: absolute;
+    font-size:2em;
+    color:#ffffff;
+    top:1080px;
+    left:80px;
+    width:100px;
+    text-align: center;
+}

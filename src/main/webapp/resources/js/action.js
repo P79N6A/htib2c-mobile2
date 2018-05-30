@@ -7,7 +7,7 @@
     clearInterval(si_load);
     //si_load = setInterval(loadAni,300);
     var ballNum = 1;
-    si_load = setInterval(loadBall,300);
+    si_load = setInterval(loadBall,200);
     function loadBall(){
         ballNum++;
         if(ballNum>12){
@@ -37,7 +37,7 @@
                     firstFn();
                     //loadNum = 1;
                 }
-            },10);
+            },5);
 
         });
     //******************** loading end********************
@@ -141,7 +141,6 @@
 
         //马上订购
         $(".dg-btn").click(function(){
-            alert("马上订购-链接");
             alphaDown($(".dg-pg"));
             ClickEvent("P2.0_Order");
 
@@ -151,14 +150,17 @@
         });
 
         //开始游戏
+        var keyP=0;
         $(".start-btn").click(function(){
-            if(!touchTF){
-                return;
-            }
-            touchTF = false;
-            setTimeout(function(){
-                touchTF = true;
-            },twTimer*1000);
+            $(".start-btn").hide();
+            // if(!touchTF){
+            //     return;
+            // }
+            // touchTF = false;
+            // setTimeout(function(){
+            //     touchTF = true;
+            // },twTimer*1000);
+
             $.ajax({
                 url:'/htib2c-mobile/servlet/LuckyDraw2Servlet',
                 type:'POST', //post
@@ -171,9 +173,11 @@
                     if(result!=null){
                         var type =result.luckyDrawNoticeType;
                         if(type==3){
+                            keyP=1;
                             alphaUp($(".send-ok-pg"));
                         }
                         if(type==4){
+                            keyP=1;
                             alphaUp($(".send-ok-pg"));
                         }
                         if(type==1){
@@ -270,10 +274,11 @@
             }else if($ts==5){
                 ClickEvent("P3.1_Again");
             }
-            setTimeout(function(){
-                //location.reload();
-                location.href = location.href;
-            },1000);
+            // setTimeout(function(){
+            //     //location.reload();
+            //     location.href = location.href;
+            // },1000);
+            location.href = location.href;
         });
 
         //关闭tip
@@ -294,32 +299,39 @@
 
         //****************** 倒计时 start ******************
         //-28058
-        var numTop = 22;
+        var numTop = 45;
+        //var numTop = 22;
         var numGp2 = false;
         var pgHt = 1336;
         var pgTopInit = -2;
-        console.log(".num-img top值:",(-pgHt*(numTop-1)));
-        $(".num-img").css("top",(pgTopInit-pgHt*(numTop-1))+"px");
+        //console.log(".num-img top值:",(-pgHt*(numTop-1)));
+        //$(".num-img").css("top",(pgTopInit-pgHt*(numTop-1))+"px");
         var si_time = -3;
         function startTime(){
             clearInterval(si_time);
             setTimeout(function(){
                 si_time = setInterval(function(){
-                    numTop--;
-                    if(!numGp2){
-                        if(numTop<=0){
-                            numGp2 = true;
-                            $(".num-img").css("left","-754px");
-                            numTop = 24;
-                        }
-                    }else{
-                        if(numTop<=1){
-                            clearInterval(si_time);
-                            enterFn();
-                        }
+                    if(keyP!=1){
+                        numTop--;
                     }
-                    $(".num-img").css("top",(pgTopInit-pgHt*(numTop-1))+"px");
-
+                    /*if(!numGp2){
+                     if(numTop<=0){
+                     numGp2 = true;
+                     $(".num-img").css("left","-754px");
+                     numTop = 24;
+                     }
+                     }else{
+                     if(numTop<=1){
+                     clearInterval(si_time);
+                     enterFn();
+                     }
+                     }
+                     $(".num-img").css("top",(pgTopInit-pgHt*(numTop-1))+"px");*/
+                    $(".num-img").text(numTop);
+                    if(numTop<=1){
+                        clearInterval(si_time);
+                        enterFn();
+                    }
                 },1000);
             },500);
         }
@@ -598,13 +610,13 @@
                                                     ClickEvent("P3.3", 1);
                                                 }
                                             }
-                                        }, 10);
+                                        }, 7);
                                     }
-                                }, 10);
+                                }, 7);
                             }
-                        }, 10);
+                        }, 7);
                     }
-                }, 10);
+                }, 7);
         }
         //****************** 抓取 end ******************
 
@@ -660,7 +672,7 @@
                 ClickEvent("P4.4", 1);
                 return;
             }
-            if(!checkTel(telVal)){
+            /*if(!checkTel(telVal)){
                 //alphaUp($(".tip-err-pg"));
                 //scaleAni($(".tip-err-pg>img").eq(0));
                 errType = "err";
@@ -668,7 +680,7 @@
                 rota360(".close-btn");
                 ClickEvent("P4.1", 1);
                 return;
-            }
+            }*/
             $.ajax({
                 url:'/htib2c-mobile/servlet/LuckyDraw2DataServlet',
                 type:'POST', //post
