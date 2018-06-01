@@ -70,7 +70,16 @@
     var telVal = "";
     var addrVal = "";
     var errType = "";
+    //
+    var moveBoxInit = Number($(".move-box").css("left").split("px")[0]);
+    var moveHandInit = Number($(".hand").css("left").split("px")[0]);
+    var moveNum = moveBoxInit;
+    var handLeftDis = moveHandInit - moveBoxInit;
 
+    var handTopInit = Number($(".hand").css("top").split("px")[0]);
+    var downNum = handTopInit;
+    var prizeLeftDis = -46;
+    var prizeTopDis = 833;
     //开启-首页
     function firstFn() {
         clearInterval(si_load);
@@ -278,7 +287,31 @@
             //     //location.reload();
             //     location.href = location.href;
             // },1000);
-            location.href = location.href;
+            // location.href = location.href;
+            // $ts = 4;
+            console.log($ts);
+            $(".ctrl-btn").css("display","")
+            $(".enter-btn").show();
+            setTimeout(function(){
+                //location.reload();
+                //location.href = location.href;
+
+                alphaDown($(".lose1-pg"));
+                alphaDown($(".win1-pg"));
+                //alphaUp($(".home-pg"));
+
+                moveNum = moveBoxInit;
+                downNum = handTopInit;
+
+                $(".move-box").css("left",moveBoxInit+"px");
+                $(".hand").css("left",moveHandInit+"px");
+                startTime();
+                enterTf = true;
+                $(".prize").hide();
+                $(".prize").css({"top":(downNum+prizeTopDis)+"px","left":(moveNum+prizeLeftDis)+"px"});
+                moveTf = true;
+                $(".hand").attr("src","../resources/images/img3/hand-1.png");
+            },1000);
         });
 
         //关闭tip
@@ -328,6 +361,10 @@
                      }
                      $(".num-img").css("top",(pgTopInit-pgHt*(numTop-1))+"px");*/
                     $(".num-img").text(numTop);
+                    if(numTop<=0){
+                        clearInterval(si_time);
+                        enterFn();
+                    }
                     if(numTop<=1){
                         clearInterval(si_time);
                         enterFn();
@@ -341,8 +378,8 @@
         //****************** 移动 start ******************
         var dist = 3;
         var moveTf = true;
-        var moveNum = Number($(".move-box").css("left").split("px")[0]);
-        var handLeftDis = Number($(".hand").css("left").split("px")[0])-moveNum;
+        // var moveNum = Number($(".move-box").css("left").split("px")[0]);
+        // var handLeftDis = Number($(".hand").css("left").split("px")[0])-moveNum;
         var si_move = -1;
         console.log("moveNum:",moveNum,"handLeftDis:",handLeftDis);
         $(".left-btn").on("touchstart",function(e){
@@ -397,11 +434,11 @@
 
         //****************** 抓取 start ******************
         var enterTf = true;
-        var downNum = Number($(".hand").css("top").split("px")[0]);
-        var handTopInit = downNum;
+        // var downNum = Number($(".hand").css("top").split("px")[0]);
+        // var handTopInit = downNum;
         var si_down = -2;
-        var prizeLeftDis = -46;
-        var prizeTopDis = 833;
+        // var prizeLeftDis = -46;
+        // var prizeTopDis = 833;
 
         $(".enter-btn").click(function(){
             $(".ctrl-btn").css("display","none")
