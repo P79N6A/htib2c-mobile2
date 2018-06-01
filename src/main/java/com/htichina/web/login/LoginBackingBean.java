@@ -307,6 +307,13 @@ public class LoginBackingBean implements Serializable {
                         "/htib2c-mobile/views/updateNewCellPhone.xhtml");
                 return null;
             }
+            
+            if(ViewPage.LINK2VARIFLIGHT.equals(targetPage)) {
+                context.getExternalContext().redirect(
+                		"/htib2c-mobile/views/variflight.xhtml");
+                return null;
+            }
+            
             if(ViewPage.LINK2LUCKDRAW.equals(targetPage)) {
                 context.getExternalContext().redirect(
                         "/htib2c-mobile/views/luckyDraw.xhtml");

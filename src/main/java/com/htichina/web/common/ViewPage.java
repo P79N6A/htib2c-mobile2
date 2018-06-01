@@ -79,4 +79,7 @@ public class ViewPage {
     public static final String LINK2QUESTIONNAIRE= "/views/questionnaire.xhtml?showwxpaytitle=1";
     //cr426
     public static final String LINK2LUCKDRAW2 = "/views/luckyDraw2.xhtml?showwxpaytitle=1";
+    
+    //飞常准
+    public static final String LINK2VARIFLIGHT = "/views/variflight.xhtml?showwxpaytitle=1";
 }

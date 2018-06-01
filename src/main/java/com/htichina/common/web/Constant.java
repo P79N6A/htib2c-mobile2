@@ -172,6 +172,7 @@ public class Constant {
     public static final String WECHAT_LUCKYDRAW2 = "wechatLuckDraw2";
     public static final String UPDATE_MOBILE ="updateMobile";
     public static final String QUESTIONNAIRE = "questionnaire";
+    public static final String VARIFLIGHT = "variflight";
 
 
     public static final String DB_PACKAGE_CHANNEL_CALL_CENTER = "CC";
