@@ -25,7 +25,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ln on 2018/05/24.
@@ -181,10 +184,22 @@ public class LuckyDraw2Servlet extends HttpServlet {
 	 * 判断是否累计中奖，并赋值
 	 * @return
 	 */
-	public boolean checkPrizeList(List<String > list, resultBean resultBean){
+	public boolean checkPrizeList(List<String > resultList, resultBean resultBean){
 		boolean flag =false;
-		if(list!=null&&list.size()>0) {
+		List<String> list = new ArrayList<String>();
+		Map<String,Integer> result = new HashMap<String,Integer>();
+		if(resultList!=null&&resultList.size()>0) {
+			for(String a:resultList){
+				if(result.containsKey(a)){
+					result.put(a,result.get(a)+1);
+				}else{
+					result.put(a,1);
+				}
+			}
 			flag =true;
+			for(Map.Entry<String, Integer> entry : result.entrySet()){
+				list.add(entry.getKey()+"*"+entry.getValue());
+			}
 			int size = list.size();
 			switch (size){
 				case 1:resultBean.setTt1(list.get(0));break;

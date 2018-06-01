@@ -268,12 +268,15 @@ img{
 }
 .win2-pg>.name,.lose3-pg>.name{
     top:812px;
+    font-size:23px
 }
 .win2-pg>.tel,.lose3-pg>.tel{
     top:912px;
+    font-size:23px
 }
 .win2-pg>.addr,.lose3-pg>.addr{
     top:1012px;
+    font-size:23px
 }
 .send-btn{
     top:1182px;
