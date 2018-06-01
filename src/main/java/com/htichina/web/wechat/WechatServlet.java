@@ -266,6 +266,13 @@ public class WechatServlet extends HttpServlet {
 				QuestionnaireBean questionnaireBean = (QuestionnaireBean)context.getBean("questionnaireBean" );
 				req.getRequestDispatcher(questionnaireBean.doAnswer(qId,req,resp)).forward(req, resp);	
 			}
+			else if(state.equalsIgnoreCase(Constant.VARIFLIGHT)){
+				logger.info("variflight start login");
+				LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
+				String variFlight = "https://app.variflight.com/vipnew/getcardnew?channel=benchi";
+				
+				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2VARIFLIGHT)).forward(req, resp);
+			}  
 		}
 	}
 

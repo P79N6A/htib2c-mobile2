@@ -135,6 +135,7 @@ public class TokenCsrfFilter implements Filter {
 			uri.contains("accountLogin.xhtml")||
 			uri.contains("orderSuccess.xhtml")||
 			uri.contains("updateNewCellPhone.xhtml")||
+			uri.contains("variflight.xhtml")||
 		   uri.contains(".css") ||
 		   uri.contains(".js") || 
 		   uri.contains(".ecss") || 
