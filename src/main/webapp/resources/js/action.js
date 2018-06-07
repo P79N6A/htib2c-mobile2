@@ -183,7 +183,7 @@
                         var type =result.luckyDrawNoticeType;
                         if(type==3){
                             keyP=1;
-                            alphaUp($(".send-ok-pg"));
+                            alphaUp($(".end-pg"));
                         }
                         if(type==4){
                             keyP=1;
@@ -716,6 +716,7 @@
                 ClickEvent("P4.1", 1);
                 return;
             }*/
+            touchTF = false;
             $.ajax({
                 url:'/htib2c-mobile/servlet/LuckyDraw2DataServlet',
                 type:'POST', //post
@@ -725,13 +726,16 @@
                 },
                 dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
                 success:function(result){
+                    touchTF = true;
                     if(result!="0"){
-                        alphaUp($(".send-ok-pg"));
+                        downAni($(".send-ok-pg"));
+                        ClickEvent("P3.4", 1);
                     }else{
                         alphaUp($(".tip-err-pg"));
                     }
                 },
                 error:function(xhr){
+                    touchTF = true;
                     //错误
                     alphaUp($(".tip-err-pg"));
                     return;
@@ -741,43 +745,41 @@
             //测试提交成功
             //alphaUp($(".send-ok-pg"));
             //scaleAni($(".send-ok-pg>img").eq(0));
-            downAni($(".send-ok-pg"));
-            return;
-
-            touchTF = false;
-            myLab.ajax({
-                url: "http://subaru.agenda-bj.com.cn/Subaru/Subaru1225",
-                type: "post",
-                data: {
-                    openid:openid,
-                    name:nameVal,
-                    tel:telVal,
-                    addr:addrVal,
-                    utm_source:utm_source,
-                    utm_medium:utm_medium
-                },
-                dataType: "text",
-                success: function (data) {
-                    /*{ result = 1, msg = "提交成功" }
-                     { result = 0, msg = "提交失败" }*/
-                    touchTF = true;
-                    jsonAll = JSON.parse(data);
-
-                    if(Number(jsonAll.result)==1){
-                        //alert("提交成功");
-                        //alphaUp($(".send-ok-pg"));
-                        //scaleAni($(".send-ok-pg>img").eq(0));
-                        downAni($(".send-ok-pg"));
-                        ClickEvent("P3.4", 1);
-                    }else{
-                        wowUI.dialog.alert("提 示", jsonAll.msg);
-                    }
-                },
-                error:function(data){
-                    touchTF = true;
-                    wowUI.dialog.alert("提 示", data);
-                }
-            });
+            //
+            // touchTF = false;
+            // myLab.ajax({
+            //     url: "http://subaru.agenda-bj.com.cn/Subaru/Subaru1225",
+            //     type: "post",
+            //     data: {
+            //         openid:openid,
+            //         name:nameVal,
+            //         tel:telVal,
+            //         addr:addrVal,
+            //         utm_source:utm_source,
+            //         utm_medium:utm_medium
+            //     },
+            //     dataType: "text",
+            //     success: function (data) {
+            //         /*{ result = 1, msg = "提交成功" }
+            //          { result = 0, msg = "提交失败" }*/
+            //         touchTF = true;
+            //         jsonAll = JSON.parse(data);
+            //
+            //         if(Number(jsonAll.result)==1){
+            //             //alert("提交成功");
+            //             //alphaUp($(".send-ok-pg"));
+            //             //scaleAni($(".send-ok-pg>img").eq(0));
+            //             downAni($(".send-ok-pg"));
+            //             ClickEvent("P3.4", 1);
+            //         }else{
+            //             wowUI.dialog.alert("提 示", jsonAll.msg);
+            //         }
+            //     },
+            //     error:function(data){
+            //         touchTF = true;
+            //         wowUI.dialog.alert("提 示", data);
+            //     }
+            // });
         });
         //****************** 留资 end ******************
 
