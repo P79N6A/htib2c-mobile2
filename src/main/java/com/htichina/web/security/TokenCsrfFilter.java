@@ -122,20 +122,24 @@ public class TokenCsrfFilter implements Filter {
 		   uri.contains("WechatLocateServlet")||
 		   uri.contains("QuestionnaireDataServlet")||
 		   uri.contains("QuestionnaireSaveServlet")||
-				uri.contains("LuckyDraw2Servlet")||
-				uri.contains("LuckyDraw2DataServlet")||
+		   uri.contains("LuckyDraw2Servlet")||
+		   uri.contains("LuckyDraw2DataServlet")||
 		   uri.contains("orderFailed.xhtml")||
 		   uri.contains("luckyDraw.xhtml")||
-				uri.contains("luckyDraw2.xhtml")||
+		   uri.contains("luckyDraw2.xhtml")||
 		   uri.contains("luckyDrawLogin.xhtml")||
 		   uri.contains("luckyDrawPackage.xhtml")||
 		   uri.contains("luckyDrawErrer.xhtml")||
-			uri.contains("luckyDrawContinue.xhtml")||
-			uri.contains("luckyDrawOver.xhtml")||
-			uri.contains("accountLogin.xhtml")||
-			uri.contains("orderSuccess.xhtml")||
-			uri.contains("updateNewCellPhone.xhtml")||
-			uri.contains("variflight.xhtml")||
+		   uri.contains("luckyDrawContinue.xhtml")||
+		   uri.contains("luckyDrawOver.xhtml")||
+		   uri.contains("accountLogin.xhtml")||
+		   uri.contains("orderSuccess.xhtml")||
+		   uri.contains("updateNewCellPhone.xhtml")||
+		   uri.contains("variflight.xhtml")||
+		   uri.contains("location_help.xhtml")||
+		   uri.contains("hornLight_help.xhtml")||
+		   uri.contains("lock_help.xhtml")||
+		   uri.contains("unlock_help.xhtml")||
 		   uri.contains(".css") ||
 		   uri.contains(".js") || 
 		   uri.contains(".ecss") || 
