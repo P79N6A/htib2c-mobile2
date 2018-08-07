@@ -36,6 +36,7 @@ public class ObjectFactory {
     private final static QName _SaveAnswerResponse_QNAME = new QName("http://payment.ws.htichina.com/", "saveAnswerResponse");
     private final static QName _GetVehicleInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getVehicleInfoResponse");
     private final static QName _GetParentOrderInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getParentOrderInfoResponse");
+    private final static QName _FindCouponsByPromotionIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "findCouponsByPromotionIdResponse");
     private final static QName _GetInvoiceInformation_QNAME = new QName("http://payment.ws.htichina.com/", "getInvoiceInformation");
     private final static QName _CreateTransactionResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createTransactionResponse");
     private final static QName _CreateUpgradePaymentOrder_QNAME = new QName("http://payment.ws.htichina.com/", "createUpgradePaymentOrder");
@@ -81,6 +82,7 @@ public class ObjectFactory {
     private final static QName _GetUnanswerQuestion_QNAME = new QName("http://payment.ws.htichina.com/", "getUnanswerQuestion");
     private final static QName _CreateUpgradePaymentOrderResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createUpgradePaymentOrderResponse");
     private final static QName _GetLastLoginUserByOpenId_QNAME = new QName("http://payment.ws.htichina.com/", "getLastLoginUserByOpenId");
+    private final static QName _InsertHistoryResponse_QNAME = new QName("http://payment.ws.htichina.com/", "insertHistoryResponse");
     private final static QName _LogoffResponse_QNAME = new QName("http://payment.ws.htichina.com/", "logoffResponse");
     private final static QName _PaymentHandlerServiceResponse_QNAME = new QName("http://payment.ws.htichina.com/", "paymentHandlerServiceResponse");
     private final static QName _CreateLuckyOrder_QNAME = new QName("http://payment.ws.htichina.com/", "createLuckyOrder");
@@ -88,6 +90,7 @@ public class ObjectFactory {
     private final static QName _GetAnswerCount_QNAME = new QName("http://payment.ws.htichina.com/", "getAnswerCount");
     private final static QName _UpdateWechatMessageHistory_QNAME = new QName("http://payment.ws.htichina.com/", "updateWechatMessageHistory");
     private final static QName _IsWinBackOrEarlyBird_QNAME = new QName("http://payment.ws.htichina.com/", "isWinBackOrEarlyBird");
+    private final static QName _FindPromotionCouponList_QNAME = new QName("http://payment.ws.htichina.com/", "findPromotionCouponList");
     private final static QName _WinUserInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "winUserInfoResponse");
     private final static QName _QuestionnaireFinished_QNAME = new QName("http://payment.ws.htichina.com/", "QuestionnaireFinished");
     private final static QName _CreatePaymentOrder_QNAME = new QName("http://payment.ws.htichina.com/", "createPaymentOrder");
@@ -103,16 +106,21 @@ public class ObjectFactory {
     private final static QName _SaveAnswer_QNAME = new QName("http://payment.ws.htichina.com/", "saveAnswer");
     private final static QName _GetParentOrderInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getParentOrderInfo");
     private final static QName _HasLuckyDrawLinkByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLinkByAccountNum");
+    private final static QName _FindCouponByIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "findCouponByIdResponse");
     private final static QName _HasLuckyDrawLinkByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLinkByAccountNumResponse");
     private final static QName _GetProdInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getProdInfoResponse");
+    private final static QName _InsertHistory_QNAME = new QName("http://payment.ws.htichina.com/", "insertHistory");
     private final static QName _DoLuckDrawResponse_QNAME = new QName("http://payment.ws.htichina.com/", "doLuckDrawResponse");
     private final static QName _GetCurrentAccountInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getCurrentAccountInfo");
     private final static QName _UpdateWechatMessageHistoryResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateWechatMessageHistoryResponse");
+    private final static QName _FindCouponById_QNAME = new QName("http://payment.ws.htichina.com/", "findCouponById");
     private final static QName _CreateWechatUserProfileResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createWechatUserProfileResponse");
     private final static QName _SyncAccntResponse_QNAME = new QName("http://payment.ws.htichina.com/", "syncAccntResponse");
+    private final static QName _FindCouponsByPromotionId_QNAME = new QName("http://payment.ws.htichina.com/", "findCouponsByPromotionId");
     private final static QName _CheckOrderPaied_QNAME = new QName("http://payment.ws.htichina.com/", "checkOrderPaied");
     private final static QName _ValidateLoginResponse_QNAME = new QName("http://payment.ws.htichina.com/", "validateLoginResponse");
     private final static QName _IsReceiveDidi_QNAME = new QName("http://payment.ws.htichina.com/", "isReceiveDidi");
+    private final static QName _FindPromotionCouponListResponse_QNAME = new QName("http://payment.ws.htichina.com/", "findPromotionCouponListResponse");
     private final static QName _InsertInvoiceInfo_QNAME = new QName("http://payment.ws.htichina.com/", "insertInvoiceInfo");
     private final static QName _IsWinBackOrEarlyBirdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isWinBackOrEarlyBirdResponse");
     private final static QName _ParseException_QNAME = new QName("http://payment.ws.htichina.com/", "ParseException");
@@ -181,6 +189,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link InsertHistoryResponse }
+     * 
+     */
+    public InsertHistoryResponse createInsertHistoryResponse() {
+        return new InsertHistoryResponse();
+    }
+
+    /**
      * Create an instance of {@link LogoffResponse }
      * 
      */
@@ -234,6 +250,14 @@ public class ObjectFactory {
      */
     public DoLuckDraw createDoLuckDraw() {
         return new DoLuckDraw();
+    }
+
+    /**
+     * Create an instance of {@link FindCouponByIdResponse }
+     * 
+     */
+    public FindCouponByIdResponse createFindCouponByIdResponse() {
+        return new FindCouponByIdResponse();
     }
 
     /**
@@ -293,6 +317,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindPromotionCouponList }
+     * 
+     */
+    public FindPromotionCouponList createFindPromotionCouponList() {
+        return new FindPromotionCouponList();
+    }
+
+    /**
      * Create an instance of {@link WinUserInfoResponse }
      * 
      */
@@ -341,6 +373,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindPromotionCouponListResponse }
+     * 
+     */
+    public FindPromotionCouponListResponse createFindPromotionCouponListResponse() {
+        return new FindPromotionCouponListResponse();
+    }
+
+    /**
      * Create an instance of {@link IsWinBackOrEarlyBirdResponse }
      * 
      */
@@ -381,6 +421,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindCouponsByPromotionId }
+     * 
+     */
+    public FindCouponsByPromotionId createFindCouponsByPromotionId() {
+        return new FindCouponsByPromotionId();
+    }
+
+    /**
      * Create an instance of {@link SyncAccntResponse }
      * 
      */
@@ -397,11 +445,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindCouponById }
+     * 
+     */
+    public FindCouponById createFindCouponById() {
+        return new FindCouponById();
+    }
+
+    /**
      * Create an instance of {@link GetProdInfoResponse }
      * 
      */
     public GetProdInfoResponse createGetProdInfoResponse() {
         return new GetProdInfoResponse();
+    }
+
+    /**
+     * Create an instance of {@link InsertHistory }
+     * 
+     */
+    public InsertHistory createInsertHistory() {
+        return new InsertHistory();
     }
 
     /**
@@ -749,6 +813,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindCouponsByPromotionIdResponse }
+     * 
+     */
+    public FindCouponsByPromotionIdResponse createFindCouponsByPromotionIdResponse() {
+        return new FindCouponsByPromotionIdResponse();
+    }
+
+    /**
      * Create an instance of {@link GetInvoiceInformation }
      * 
      */
@@ -1053,6 +1125,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PromotionCoupon }
+     * 
+     */
+    public PromotionCoupon createPromotionCoupon() {
+        return new PromotionCoupon();
+    }
+
+    /**
      * Create an instance of {@link PackageUpgradeRequest }
      * 
      */
@@ -1082,6 +1162,14 @@ public class ObjectFactory {
      */
     public ProductInfoResponse createProductInfoResponse() {
         return new ProductInfoResponse();
+    }
+
+    /**
+     * Create an instance of {@link Coupon }
+     * 
+     */
+    public Coupon createCoupon() {
+        return new Coupon();
     }
 
     /**
@@ -1210,6 +1298,14 @@ public class ObjectFactory {
      */
     public TransactionResponse createTransactionResponse() {
         return new TransactionResponse();
+    }
+
+    /**
+     * Create an instance of {@link CouponHistory }
+     * 
+     */
+    public CouponHistory createCouponHistory() {
+        return new CouponHistory();
     }
 
     /**
@@ -1358,6 +1454,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getParentOrderInfoResponse")
     public JAXBElement<GetParentOrderInfoResponse> createGetParentOrderInfoResponse(GetParentOrderInfoResponse value) {
         return new JAXBElement<GetParentOrderInfoResponse>(_GetParentOrderInfoResponse_QNAME, GetParentOrderInfoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindCouponsByPromotionIdResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "findCouponsByPromotionIdResponse")
+    public JAXBElement<FindCouponsByPromotionIdResponse> createFindCouponsByPromotionIdResponse(FindCouponsByPromotionIdResponse value) {
+        return new JAXBElement<FindCouponsByPromotionIdResponse>(_FindCouponsByPromotionIdResponse_QNAME, FindCouponsByPromotionIdResponse.class, null, value);
     }
 
     /**
@@ -1766,6 +1871,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InsertHistoryResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "insertHistoryResponse")
+    public JAXBElement<InsertHistoryResponse> createInsertHistoryResponse(InsertHistoryResponse value) {
+        return new JAXBElement<InsertHistoryResponse>(_InsertHistoryResponse_QNAME, InsertHistoryResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link LogoffResponse }{@code >}}
      * 
      */
@@ -1826,6 +1940,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "isWinBackOrEarlyBird")
     public JAXBElement<IsWinBackOrEarlyBird> createIsWinBackOrEarlyBird(IsWinBackOrEarlyBird value) {
         return new JAXBElement<IsWinBackOrEarlyBird>(_IsWinBackOrEarlyBird_QNAME, IsWinBackOrEarlyBird.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindPromotionCouponList }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "findPromotionCouponList")
+    public JAXBElement<FindPromotionCouponList> createFindPromotionCouponList(FindPromotionCouponList value) {
+        return new JAXBElement<FindPromotionCouponList>(_FindPromotionCouponList_QNAME, FindPromotionCouponList.class, null, value);
     }
 
     /**
@@ -1964,6 +2087,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindCouponByIdResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "findCouponByIdResponse")
+    public JAXBElement<FindCouponByIdResponse> createFindCouponByIdResponse(FindCouponByIdResponse value) {
+        return new JAXBElement<FindCouponByIdResponse>(_FindCouponByIdResponse_QNAME, FindCouponByIdResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link HasLuckyDrawLinkByAccountNumResponse }{@code >}}
      * 
      */
@@ -1979,6 +2111,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getProdInfoResponse")
     public JAXBElement<GetProdInfoResponse> createGetProdInfoResponse(GetProdInfoResponse value) {
         return new JAXBElement<GetProdInfoResponse>(_GetProdInfoResponse_QNAME, GetProdInfoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InsertHistory }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "insertHistory")
+    public JAXBElement<InsertHistory> createInsertHistory(InsertHistory value) {
+        return new JAXBElement<InsertHistory>(_InsertHistory_QNAME, InsertHistory.class, null, value);
     }
 
     /**
@@ -2009,6 +2150,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindCouponById }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "findCouponById")
+    public JAXBElement<FindCouponById> createFindCouponById(FindCouponById value) {
+        return new JAXBElement<FindCouponById>(_FindCouponById_QNAME, FindCouponById.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CreateWechatUserProfileResponse }{@code >}}
      * 
      */
@@ -2024,6 +2174,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "syncAccntResponse")
     public JAXBElement<SyncAccntResponse> createSyncAccntResponse(SyncAccntResponse value) {
         return new JAXBElement<SyncAccntResponse>(_SyncAccntResponse_QNAME, SyncAccntResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindCouponsByPromotionId }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "findCouponsByPromotionId")
+    public JAXBElement<FindCouponsByPromotionId> createFindCouponsByPromotionId(FindCouponsByPromotionId value) {
+        return new JAXBElement<FindCouponsByPromotionId>(_FindCouponsByPromotionId_QNAME, FindCouponsByPromotionId.class, null, value);
     }
 
     /**
@@ -2051,6 +2210,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "isReceiveDidi")
     public JAXBElement<IsReceiveDidi> createIsReceiveDidi(IsReceiveDidi value) {
         return new JAXBElement<IsReceiveDidi>(_IsReceiveDidi_QNAME, IsReceiveDidi.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindPromotionCouponListResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "findPromotionCouponListResponse")
+    public JAXBElement<FindPromotionCouponListResponse> createFindPromotionCouponListResponse(FindPromotionCouponListResponse value) {
+        return new JAXBElement<FindPromotionCouponListResponse>(_FindPromotionCouponListResponse_QNAME, FindPromotionCouponListResponse.class, null, value);
     }
 
     /**
