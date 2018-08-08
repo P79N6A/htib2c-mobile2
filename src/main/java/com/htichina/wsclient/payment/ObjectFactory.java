@@ -34,6 +34,7 @@ public class ObjectFactory {
     private final static QName _UpdateOrderStatusResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateOrderStatusResponse");
     private final static QName _CheckTransactionResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkTransactionResponse");
     private final static QName _SaveAnswerResponse_QNAME = new QName("http://payment.ws.htichina.com/", "saveAnswerResponse");
+    private final static QName _FindEffectCouponList_QNAME = new QName("http://payment.ws.htichina.com/", "findEffectCouponList");
     private final static QName _GetVehicleInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getVehicleInfoResponse");
     private final static QName _GetParentOrderInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getParentOrderInfoResponse");
     private final static QName _FindCouponsByPromotionIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "findCouponsByPromotionIdResponse");
@@ -65,6 +66,7 @@ public class ObjectFactory {
     private final static QName _PaymentHandlerService_QNAME = new QName("http://payment.ws.htichina.com/", "paymentHandlerService");
     private final static QName _UpdateNewCallPhoneByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "updateNewCallPhoneByAccountNum");
     private final static QName _GetAnswerCountResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getAnswerCountResponse");
+    private final static QName _FindEffectCouponListResponse_QNAME = new QName("http://payment.ws.htichina.com/", "findEffectCouponListResponse");
     private final static QName _UpdateLoginTimesResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateLoginTimesResponse");
     private final static QName _CreateTransaction_QNAME = new QName("http://payment.ws.htichina.com/", "createTransaction");
     private final static QName _HasLuckyDrawLinkResponse_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLinkResponse");
@@ -637,6 +639,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindEffectCouponList }
+     * 
+     */
+    public FindEffectCouponList createFindEffectCouponList() {
+        return new FindEffectCouponList();
+    }
+
+    /**
      * Create an instance of {@link GetVehicleInfoResponse }
      * 
      */
@@ -1061,6 +1071,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindEffectCouponListResponse }
+     * 
+     */
+    public FindEffectCouponListResponse createFindEffectCouponListResponse() {
+        return new FindEffectCouponListResponse();
+    }
+
+    /**
      * Create an instance of {@link HasLuckyDrawLinkResponse }
      * 
      */
@@ -1439,6 +1457,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindEffectCouponList }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "findEffectCouponList")
+    public JAXBElement<FindEffectCouponList> createFindEffectCouponList(FindEffectCouponList value) {
+        return new JAXBElement<FindEffectCouponList>(_FindEffectCouponList_QNAME, FindEffectCouponList.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetVehicleInfoResponse }{@code >}}
      * 
      */
@@ -1715,6 +1742,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getAnswerCountResponse")
     public JAXBElement<GetAnswerCountResponse> createGetAnswerCountResponse(GetAnswerCountResponse value) {
         return new JAXBElement<GetAnswerCountResponse>(_GetAnswerCountResponse_QNAME, GetAnswerCountResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindEffectCouponListResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "findEffectCouponListResponse")
+    public JAXBElement<FindEffectCouponListResponse> createFindEffectCouponListResponse(FindEffectCouponListResponse value) {
+        return new JAXBElement<FindEffectCouponListResponse>(_FindEffectCouponListResponse_QNAME, FindEffectCouponListResponse.class, null, value);
     }
 
     /**
