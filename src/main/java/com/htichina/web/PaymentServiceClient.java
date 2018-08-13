@@ -4,11 +4,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-import com.htichina.common.web.ConfigureInfo;
 import org.apache.log4j.Logger;
 
+import com.alipay.util.UtilDate;
+import com.htichina.common.web.ConfigureInfo;
 import com.htichina.common.web.Constant;
 import com.htichina.wsclient.payment.AccountInfoResponse;
+import com.htichina.wsclient.payment.Coupon;
+import com.htichina.wsclient.payment.CouponHistory;
 import com.htichina.wsclient.payment.Exception_Exception;
 import com.htichina.wsclient.payment.InvoiceInfoRequest;
 import com.htichina.wsclient.payment.LdLtemReponse;
@@ -22,13 +25,13 @@ import com.htichina.wsclient.payment.PaymentResultMessage;
 import com.htichina.wsclient.payment.PaymentService;
 import com.htichina.wsclient.payment.PaymentServiceService;
 import com.htichina.wsclient.payment.ProductInfoResponse;
+import com.htichina.wsclient.payment.PromotionCoupon;
 import com.htichina.wsclient.payment.PromotionInfoResponse;
 import com.htichina.wsclient.payment.PurchaseProductResponse;
 import com.htichina.wsclient.payment.QueryChildOrdersByParentOrderNumResponse;
 import com.htichina.wsclient.payment.QueryOrderByParentOrderNumResponse;
 import com.htichina.wsclient.payment.QuestionAnswer;
 import com.htichina.wsclient.payment.QuestionOptions;
-import com.htichina.wsclient.payment.QuestionnaireFinished;
 import com.htichina.wsclient.payment.Questions;
 import com.htichina.wsclient.payment.ServiceOrder;
 import com.htichina.wsclient.payment.Transaction;
@@ -442,6 +445,23 @@ public class PaymentServiceClient {
 
   public boolean winUserInfo(String accountNum,String name,String telNum,String address){
     return service.winUserInfo(accountNum,name,telNum,address);
+  }
+  public List<Coupon> findCouponsByPromotionId(String accountNum,String promotionId){
+	  return service.findCouponsByPromotionId(accountNum, promotionId);
+  }
+  
+  public Coupon findCouponsById(String couponId){
+	  return service.findCouponById(couponId);
+  }
+  public Integer saveDrawCouponHistory(CouponHistory couPonHistory){
+	  return service.insertHistory(couPonHistory);
+  }
+  public List<PromotionCoupon> findPromotionCoupon(){
+	  String currTime=UtilDate.getDateFormatter();
+	  return service.findPromotionCouponList(currTime);
+  }
+  public List<Coupon> findEffectCouponList(String accountNum,String isUserd,String currentDate,String packageId){
+	  return service.findEffectCouponList(accountNum,isUserd,currentDate,packageId);
   }
 }
 

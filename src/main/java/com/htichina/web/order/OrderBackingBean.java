@@ -132,6 +132,11 @@ public class OrderBackingBean implements Serializable {
     private String sPkgId;
     //CR389 是否出现抽奖按钮
     private int hasLuckyDrawLink;
+    //CR435 是否显示优惠券活动
+    //true是显示false是不显示，默认不显示
+    private Integer showCouponPromotion=0;
+    //CR435 显示可用优惠券list
+    private List<Coupon> coupons;
 
     public String toOrderEntry(String oId) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
@@ -210,7 +215,6 @@ public class OrderBackingBean implements Serializable {
     public String toOrderPackage() {
         logger.debug("in toOrderPackage...");
         FacesContext context = FacesContext.getCurrentInstance();
-
         paymentPlatform = (String) FacesUtils.getManagedBeanInSession(Constant.PAYMENT_PLATFORM);
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
         logger.info("openId = " + openId);
@@ -351,6 +355,15 @@ public class OrderBackingBean implements Serializable {
             /*logger.info("baseServiceStatus = " + baseServiceStatus);
             logger.info("wifiFlag = " + wifiFlag);*/
             prods = getProd();
+            //判断是否显示优惠券活动
+            //1判断当前用户是否是目标客户群2判断当前时间是否在优惠券活动范围内
+            boolean isAim=true;
+            List<PromotionCoupon>  promotionCoup=client.findPromotionCoupon();
+            logger.info("promotionCoup数量========"+promotionCoup.size());
+            if(isAim&&promotionCoup.size()>0){
+            	showCouponPromotion=1;
+            }
+            logger.info("showCouponPromotion显示结果========"+showCouponPromotion);
             return ViewPage.LINK2OrderPackage0;
 
         }
@@ -472,8 +485,9 @@ public class OrderBackingBean implements Serializable {
         logger.info("sProdId ==>"+ESAPI.encoder().encodeForHTML(sProdId));
         logger.info("accountNum ==>"+ESAPI.encoder().encodeForHTML(String.valueOf(selectedVehicle.getAcctNum())));
         logger.info("vin ==>"+ESAPI.encoder().encodeForHTML(selectedVehicle.getVin()));
-        logger.info("paymentPlatform ==>"+ESAPI.encoder().encodeForHTML(paymentPlatform));
         logger.info("oId ==>"+ESAPI.encoder().encodeForHTML(oId));
+        logger.info("paymentPlatform ==>"+ESAPI.encoder().encodeForHTML(paymentPlatform));
+        paymentPlatform="111006";
         PaymentOrderResponse paymentOrderResponse = client.createPaymentOrder(
                 sProdId,
                 sProdPrice,
@@ -552,7 +566,10 @@ public class OrderBackingBean implements Serializable {
             logger.info("wechatPrepayResponse=" + ESAPI.encoder().encodeForHTML(wechatPrepayResponse));
 //            logger.infoln("wechatPrepayResponse=" + wechatPrepayResponse);
         }
-
+        //CR435
+        //获取当前可用优惠券list
+        String currentDate=UtilDate.getDateFormatter();
+        coupons=client.findEffectCouponList(accountNum, "0", currentDate,sProdId);
         // setting order information
         WIDout_trade_no = transactionNo+paymentOrderResponse.getOrderNum();
         WIDsubject = orderDesc;
@@ -1713,4 +1730,23 @@ public class OrderBackingBean implements Serializable {
     public void setHasLuckyDrawLink(int hasLuckyDrawLink) {
         this.hasLuckyDrawLink = hasLuckyDrawLink;
     }
+
+    //CR435 cfq 添加是否显示优惠券活动
+	public Integer getShowCouponPromotion() {
+		return showCouponPromotion;
+	}
+
+	public void setShowCouponPromotion(Integer showCouponPromotion) {
+		this.showCouponPromotion = showCouponPromotion;
+	}
+
+	public List<Coupon> getCoupons() {
+		return coupons;
+	}
+
+	public void setCoupons(List<Coupon> coupons) {
+		this.coupons = coupons;
+	}
+
+    
 }

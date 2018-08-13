@@ -18,6 +18,13 @@
         <link rel="stylesheet"
               href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css?v=20170704" charset="utf-8" />
         <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" charset="utf-8" />
+        <style>
+	        html, body {
+			    width: 100% !important;
+			    height: 100% !important;
+			    overflow:visible  !important;
+			}
+        </style>
         <script>
             $(function () {
 
@@ -55,6 +62,9 @@
                         $(this).addClass('btn1')
                     }
                 })
+                $(".coupon_check").click(function(){
+                	alert("aaaaa");
+                })
             })
             function toTermsOfService(){
                 window.location.href = "https://www.cntelematics.com/htib2c-mobile/views/termsOfService.pdf";
@@ -76,7 +86,7 @@
                         <div id="txtlist">
                             <div class="ddmx">
                                 <h3>订单明细</h3>
-                                <div class="info_list" id="info_list1" style="padding-left: 43px;">
+                                <div  class="info_list" id="info_list1" style="padding-left: 43px;">
                                     <ul>
                                         <li>套&#160;&#160;餐&#160;&#160;名&#160;&#160;称&#160;：<span><h:outputText value="#{orderBackingBean.selectProd.shortMarketName}"/></span></li>
                                         <li>套&#160;&#160;餐&#160;&#160;价&#160;&#160;格&#160;：<span><h:outputText value="#{orderBackingBean.selectProd.promotionPrice}">
@@ -85,6 +95,25 @@
                                         <li>合&#160;&#160;计&#160;&#160;金&#160;&#160;额&#160;：<span><h:outputText value="#{orderBackingBean.selectProd.promotionPrice}">
                                             <f:convertNumber type="currency" maxFractionDigits="2" currencySymbol="¥"/>
                                         </h:outputText></span></li>
+                                    </ul>
+                                </div>
+                                <h3>可用优惠券</h3>
+                                <div class="info_list" id="info_list1" style="padding-left: 43px;">
+                                    <ul>
+                                       <c:forEach items="#{orderBackingBean.coupons}" var="couPon" varStatus="x">
+                                            <li secIndex="${x.count}">
+                                              <input type="checkbox" class="coupon_check" style="zoom: 150%" couponType="#{couPon.couoponType}" couponAttribute="#{couPon.couponAttribute}"></input>&#160;&#160;#{couPon.couponName}
+                                            </li>
+                                         </c:forEach>
+                                    </ul>
+                                    <ul>
+                                        <li>应&#160;&#160;付&#160;&#160;金&#160;&#160;额：
+                                           <span>
+	                                           <h:outputText value="#{orderBackingBean.selectProd.promotionPrice}">
+	                                            <f:convertNumber type="currency" maxFractionDigits="2" currencySymbol="¥"/>
+	                                           </h:outputText>
+                                           </span>
+                                       </li>
                                     </ul>
                                 </div>
                                 <h3>账户信息</h3>

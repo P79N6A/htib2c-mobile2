@@ -33,7 +33,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="lastUpdateTime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="promotionCouponStatus" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="promotionDis" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="targetCoustomerId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -60,8 +59,7 @@ import javax.xml.bind.annotation.XmlType;
     "lastUpdateBy",
     "lastUpdateTime",
     "promotionCouponStatus",
-    "promotionDis",
-    "targetCoustomerId"
+    "promotionDis"
 })
 public class PromotionCoupon {
 
@@ -82,7 +80,6 @@ public class PromotionCoupon {
     protected String lastUpdateTime;
     protected String promotionCouponStatus;
     protected String promotionDis;
-    protected String targetCoustomerId;
 
     /**
      * 获取attr1属性的值。
@@ -490,30 +487,6 @@ public class PromotionCoupon {
      */
     public void setPromotionDis(String value) {
         this.promotionDis = value;
-    }
-
-    /**
-     * 获取targetCoustomerId属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTargetCoustomerId() {
-        return targetCoustomerId;
-    }
-
-    /**
-     * 设置targetCoustomerId属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTargetCoustomerId(String value) {
-        this.targetCoustomerId = value;
     }
 
 }
