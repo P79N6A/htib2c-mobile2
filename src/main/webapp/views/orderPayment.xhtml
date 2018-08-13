@@ -18,6 +18,8 @@
         <link rel="stylesheet"
               href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css?v=20170704" charset="utf-8" />
         <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" charset="utf-8" />
+        <script src="#{facesContext.externalContext.request.contextPath}/resources/js/CouponUtil.js" charset="UTF-8" ></script>
+        
         <style>
 	        html, body {
 			    width: 100% !important;
@@ -26,9 +28,12 @@
 			}
         </style>
         <script>
+           var couponJson;
             $(function () {
 
-
+                 couponListString='{<h:outputText value="#{orderBackingBean.couponListString}"/>}';
+                 couponListString=couponListString.substring(1,couponListString.length-1);
+                 couponJson= $.parseJSON(couponListString);
                 //订购须知 展开 收缩
                 $('.Orderbtn').click(function(){
                     // var class_= $('.Orderbtn').attr('class')
@@ -63,11 +68,38 @@
                     }
                 })
                 $(".coupon_check").click(function(){
-                	alert("aaaaa");
+                	#{orderBackingBean.selectProd.promotionPrice}
                 })
             })
             function toTermsOfService(){
                 window.location.href = "https://www.cntelematics.com/htib2c-mobile/views/termsOfService.pdf";
+            }
+            
+            function validateCoupon(dom){
+            	var ids=[];
+            	var effectId=[];
+            	var parentDom=$(dom).parent().parent();
+            	var inputs=parentDom.find("input");
+            	inputs.each(function(i,x){
+            		var ipt=this;
+            		if(this.checked==true){
+            			ids.push($(this).attr("id"));
+            		}
+            	  });
+            	
+            	var resultCoupon=portal.coupon.returnRightCoupons(ids,couponJson);
+            	$(resultCoupon).each(function(i,x){
+            		var couponid=this.id;
+            		effectId.push(couponid);
+            	  });
+            	inputs.each(function(i,x){
+            		var id=$(this).attr("id");
+            		if(!effectId.contains(id)){
+            			$(this).attr("disabled","disabled");
+            		}else{
+            			$(this).removeAttr("disabled");
+            		}
+            	  });
             }
         </script>
 
@@ -98,14 +130,16 @@
                                     </ul>
                                 </div>
                                 <h3>可用优惠券</h3>
-                                <div class="info_list" id="info_list1" style="padding-left: 43px;">
-                                    <ul>
-                                       <c:forEach items="#{orderBackingBean.coupons}" var="couPon" varStatus="x">
+                                <div  class="info_list" id="info_list_coupon" style="padding-left: 43px;">
+                                    <ul id="couponList">
+                                       <c:forEach  items="#{orderBackingBean.coupons}" var="couPon" varStatus="x" onComplete="validateCoupon()">
                                             <li secIndex="${x.count}">
-                                              <input type="checkbox" class="coupon_check" style="zoom: 150%" couponType="#{couPon.couoponType}" couponAttribute="#{couPon.couponAttribute}"></input>&#160;&#160;#{couPon.couponName}
+                                              <input type="checkbox" class="coupon_check" style="zoom: 150%" id="#{couPon.id}" couponType="#{couPon.couoponType}" couponAttribute="#{couPon.couponAttribute}" onchange="validateCoupon(this)" ></input>&#160;&#160;#{couPon.couponName}
                                             </li>
                                          </c:forEach>
+                                         
                                     </ul>
+									
                                     <ul>
                                         <li>应&#160;&#160;付&#160;&#160;金&#160;&#160;额：
                                            <span>
