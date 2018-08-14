@@ -1,6 +1,5 @@
 package com.htichina.web.util.coupon;
 
-import com.google.gson.JsonParser;
 import com.htichina.common.web.Constant;
 import com.htichina.wsclient.payment.Coupon;
 import net.sf.json.JSONArray;
@@ -26,6 +25,12 @@ public class couponUtil {
         typeJson = JSONObject.fromObject(type);
     }
 
+    /**
+     * 判断用户选的优惠券是否合法
+     * @param ids 已选优惠券ID
+     * @param coupons 当前所有可用优惠券
+     * @return
+     */
     public boolean validataCoupon(String[] ids, List<Coupon> coupons) {
         boolean flag = false;
         try {
