@@ -282,4 +282,8 @@ public class Constant {
     public static final String TN_3 = "3";//三等奖
     public static final String TN_4 = "4";//四等奖
 
+    //cr435
+    public static final String KINDJSONSTRING = "{\"1\": \"111\", \"2\": \"110\", \"3\": \"100\", \"4\": \"101\", \"5\": \"211\", \"6\": \"210\", \"7\": \"200\", \"8\": \"201\"}";
+    public static final String TYPEJSONSTRING = "{\"1\": [\"1\", \"2\", \"5\", \"6\"],\"2\": [\"1\", \"2\"],\"3\": [],\"4\": [\"5\", \"6\"],\"5\": [\"1\", \"4\", \"5\", \"6\"],\"6\": [\"1\"],\"7\": [],\"8\": [\"5\"]}";
+
 }
