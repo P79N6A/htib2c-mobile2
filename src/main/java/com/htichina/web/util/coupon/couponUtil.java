@@ -31,7 +31,7 @@ public class couponUtil {
      * @param coupons 当前所有可用优惠券
      * @return
      */
-    public boolean validataCoupon(String[] ids, List<Coupon> coupons) {
+    public static boolean validataCoupon(String[] ids, List<Coupon> coupons) {
         boolean flag = false;
         try {
             List<Coupon> myCouponList = new ArrayList<Coupon>();
@@ -65,7 +65,7 @@ public class couponUtil {
      * @param coupon
      * @return
      */
-    private String checkKind(Coupon coupon) {
+    private static String checkKind(Coupon coupon) {
         Iterator<String> iterator = kindJson.keys();
         String myKey = coupon.getCouponAttribute() + coupon.getCouponIsaddMC() + coupon.getCouponIsaddAC();
         String key = "";
@@ -87,7 +87,7 @@ public class couponUtil {
      * @param keys
      * @return
      */
-    private boolean CheckType(String key, List<String> keys) {
+    private static boolean CheckType(String key, List<String> keys) {
         boolean flag = false;
         JSONArray value = typeJson.getJSONArray(key);
         List<String> result = new ArrayList<String>();
@@ -112,7 +112,7 @@ public class couponUtil {
         return flag;
     }
 
-
+//test
     public static void main(String[] args) {
         String[] ids = {"1", "2","3"};
         List<Coupon> coupons = new ArrayList<>();
@@ -134,7 +134,6 @@ public class couponUtil {
         coupons.add(coupon1);
         coupons.add(coupon2);
         coupons.add(coupon3);
-        couponUtil couponUtil = new couponUtil();
         couponUtil.validataCoupon(ids, coupons);
     }
 }
