@@ -120,7 +120,7 @@
             		shouldPaynew=$("#allPay").text()
             		$("#shouldPay").text(shouldPaynew);
             	}
-            	$("#couponId").val(idstr);
+            	document.getElementById("wcouponId").value=idstr;
             	var resultCoupon=portal.coupon.returnRightCoupons(ids,couponJson);
             	$(resultCoupon).each(function(i,x){
             		var couponid=this.id;
@@ -147,22 +147,32 @@
             	return t.split("").reverse().join("") + "." + r; 
             	} 
             function toPay(data) {
+            	var id=data.source.id;
                 var status = data.status; // Can be "begin", "complete" or "success".
-                var source = data.source; // The parent HTML DOM element.
-                switch (status) {
-                    case "begin":
-                        // ...
-                        break;
-                    case "complete": // After the ajax response is arrived.
-                        // ...
-                        break;
-                    case "success": // After update of HTML DOM based on ajax response.
-                        alert("1111")
-                        break;
+                if(status=="success" &amp;&amp; terms.checked &amp;&amp; id=="wechatForm:wPay"){
+                	callpay();
                 }
             }
-           function btClick(){
-        	  $("#couponBt").click();
+            function callpay() {
+                var response = "{"+document.getElementById("wechatForm:wechatResponse").innerText+"}";
+                WeixinJSBridge.invoke("getBrandWCPayRequest", JSON.parse(response), function (res) {
+                            if (res.err_msg == "get_brand_wcpay_request:ok") {
+                                window.location.href = '<h:outputText value="#{orderBackingBean.wechatNotifyUrl}"/>';
+                            } else {
+                                window.location.href = '<h:outputText value="#{orderBackingBean.wechatPayFailedUrl}"/>';
+                            }
+                        });
+           }
+           function turnCheck(){
+               $("#terms").get(0).checked=!$("#terms").get(0).checked;
+           }
+           
+           function wechatValidate(){
+        	   if(!terms.checked) {
+                   popCheck();
+               }else{
+                   document.getElementById("wechatForm:wPay").onclick()
+               }
            }
         </script>
 
@@ -282,7 +292,7 @@
                                     </div>
                                 </div>
                                     <div id="filer"  style="display:none"></div>-->
-
+<!--                                 <input id="wcouponId" name="couponIds" style="display: none;"/> -->
                                 <c:if test="#{orderBackingBean.wechatPay}">
                                     <h:form id="wechatForm">
                                         <div class="Orderbtn Orderbtn1">订购须知<div
@@ -304,14 +314,16 @@
                                         </div>
 
                                         <div class="text"><span onclick="toTermsOfService()">详见“服务条款与条件”</span></div>
-                                        <input id="couponId" value="" />
-                                        <div class="btn long_btn">
-                                         <h:commandButton  value="确认付款(微信支付)"  action="#{orderBackingBean.wechatCouponPay()}">
-<!-- 							                <f:passThroughAttribute id="couponId"  name="selectedId" value=""/> -->
-							                <f:param name="test" value="$(couponId).val()"></f:param>
+                                        <h:outputText id="wechatResponse" value="#{orderBackingBean.wechatPrepayResponse}"  style="display: none;"/>
+                                        <div class="btn long_btn" onclick="wechatValidate()">
+                                                                                                                            确认付款(微信支付)
+                                         </div>
+                                         <input id="wcouponId" name="couponIds" style="display: none;"/>
+                                         <div style="display: none;">
+                                         <h:commandButton id="wPay"    action="#{orderBackingBean.wechatCouponPay()}">
 							                <f:ajax   event="action" onevent="toPay" />
 							            </h:commandButton>
-                                         </div>
+							            </div>
                                          <script type="text/javascript">
                                             function enablePay(termsObj) {
                                                 var obj = termsObj;
@@ -321,26 +333,8 @@
                                                     payButton.disabled = true;
                                                 }
                                             }
-                                            function turnCheck(){
-                                                $("#terms").get(0).checked=!$("#terms").get(0).checked;
-                                            }
+                                            
 
-                                            function callpay()
-                                            {
-                                                if(!terms.checked) {
-                                                    popCheck();
-                                                } else {;
-                                                    var response = '{<h:outputText value="#{orderBackingBean.wechatPrepayResponse}"/>}';
-                                                    WeixinJSBridge.invoke("getBrandWCPayRequest", JSON.parse(response), function (res) {
-                                                                if (res.err_msg == "get_brand_wcpay_request:ok") {
-                                                                    window.location.href = '<h:outputText value="#{orderBackingBean.wechatNotifyUrl}"/>';
-                                                                } else {
-                                                                    window.location.href = '<h:outputText value="#{orderBackingBean.wechatPayFailedUrl}"/>';
-                                                                }
-                                                            }
-                                                    );
-                                                }
-                                            }
                                         </script>
                                     </h:form>
                                 </c:if>
@@ -360,18 +354,18 @@
                                         </div>
                                         <div class="tiaokuam_bg">
                                             <div class="btn btn1" onclick="turnCheck2()" for="terms2"></div>
-                                            同意并确认《服务条款与条件》
+                                                                                                                           同意并确认《服务条款与条件》
                                             <input type="checkbox" id="terms2" name="terms2" style="display:none"/>
                                         </div>
                                         <div class="text"><span onclick="toTermsOfService()">详见“服务条款与条件”</span></div>
                                         <input style="display: none"  name="WIDout_trade_no" value='#{orderBackingBean.WIDout_trade_no}' />
                                         <input style="display: none"  name="WIDsubject" value='#{orderBackingBean.WIDsubject}' />
                                         <input style="display: none"  name="WIDtotal_fee" value='#{orderBackingBean.WIDtotal_fee}' />
+                                        
                                         <div class="btn long_btn">
-                                            <input type="submit" style="margin-left: 0%;" value="确认付款(支付宝支付)" onclick="return
-                                         callAlipay();"/>
-                                        </div>
-
+                                            <input type="submit" style="margin-left: 0%;" value="确认付款(支付宝支付)" onclick="return callAlipay();"/>
+                                         </div>
+                                         <input id="acouponId" name="couponIds" style="display: none;"/>
                                         <script type="text/javascript">
                                             function callAlipay()
                                             {
