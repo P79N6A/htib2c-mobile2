@@ -4,6 +4,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
+import javax.jws.WebParam;
+
 import org.apache.log4j.Logger;
 
 import com.alipay.util.UtilDate;
@@ -463,6 +465,14 @@ public class PaymentServiceClient {
   public List<Coupon> findEffectCouponList(String accountNum,String isUserd,String currentDate,String packageId){
 	  return service.findEffectCouponList(accountNum,isUserd,currentDate,packageId);
   }
+  public boolean updateParentOrderAmount( String orderNum, String amount){
+	  return service.updateParentOrderAmount(orderNum,amount);
+  }
+  public boolean updateServiceOrderAmount(String orderNum,String amount){
+	  return service.updateServiceOrderAmount(orderNum,amount);
+  }
+
+  
 }
 
 
