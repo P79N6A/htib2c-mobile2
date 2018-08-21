@@ -108,6 +108,7 @@
 		//修改订单
 		boolean parentResult=client.updateParentOrderAmount(orderNumber, total_fee);
         boolean serviceResult= client.updateServiceOrderAmount(orderNumber, total_fee);
+        boolean transActionResult= client.updateTransactionPrice(orderNumber, total_fee);
 		//建立请求
 		String sHtmlTextToken = AlipaySubmit.buildRequest(ALIPAY_GATEWAY_NEW,"", "",sParaTempToken);
 		//URLDECODE返回的信息
