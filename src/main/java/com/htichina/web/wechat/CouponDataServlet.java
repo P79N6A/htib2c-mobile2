@@ -44,7 +44,7 @@ public class CouponDataServlet extends HttpServlet {
 			String promotionId=req.getParameter("promotionId");
 			PaymentServiceClient client = PaymentServiceClient.getInstance();
 //			String accountNum = (String) req.getSession().getAttribute(Constant.ACCOUNT_NUM);
-			String accountNum="10577513";
+			String accountNum="10579676";
 			List<Coupon> couponList=client.findCouponsByPromotionId(accountNum, promotionId);
 			resp.setContentType("text/html;charset=utf-8");
 	        PrintWriter out;
