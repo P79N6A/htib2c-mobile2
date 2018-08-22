@@ -84,6 +84,7 @@ public class ObjectFactory {
     private final static QName _UpdateTransaction_QNAME = new QName("http://payment.ws.htichina.com/", "updateTransaction");
     private final static QName _GetLastLoginUserByOpenIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getLastLoginUserByOpenIdResponse");
     private final static QName _CheckOrderPaiedResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkOrderPaiedResponse");
+    private final static QName _GetEffectiveCouponPromotionByCustomerResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getEffectiveCouponPromotionByCustomerResponse");
     private final static QName _GetUnanswerQuestion_QNAME = new QName("http://payment.ws.htichina.com/", "getUnanswerQuestion");
     private final static QName _CreateUpgradePaymentOrderResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createUpgradePaymentOrderResponse");
     private final static QName _GetLastLoginUserByOpenId_QNAME = new QName("http://payment.ws.htichina.com/", "getLastLoginUserByOpenId");
@@ -105,6 +106,7 @@ public class ObjectFactory {
     private final static QName _GetOpenIdByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getOpenIdByAccountNumResponse");
     private final static QName _Logoff_QNAME = new QName("http://payment.ws.htichina.com/", "logoff");
     private final static QName _UpdateServiceOrderAmount_QNAME = new QName("http://payment.ws.htichina.com/", "updateServiceOrderAmount");
+    private final static QName _GetEffectiveCouponPromotionByCustomer_QNAME = new QName("http://payment.ws.htichina.com/", "getEffectiveCouponPromotionByCustomer");
     private final static QName _GetCallPhoneByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "getCallPhoneByAccountNum");
     private final static QName _UpdateTransactionPriceResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateTransactionPriceResponse");
     private final static QName _GetInvoiceInformationResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getInvoiceInformationResponse");
@@ -117,6 +119,7 @@ public class ObjectFactory {
     private final static QName _HasLuckyDrawLinkByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "hasLuckyDrawLinkByAccountNumResponse");
     private final static QName _GetProdInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getProdInfoResponse");
     private final static QName _InsertHistory_QNAME = new QName("http://payment.ws.htichina.com/", "insertHistory");
+    private final static QName _UpdateCouponHistory_QNAME = new QName("http://payment.ws.htichina.com/", "updateCouponHistory");
     private final static QName _DoLuckDrawResponse_QNAME = new QName("http://payment.ws.htichina.com/", "doLuckDrawResponse");
     private final static QName _GetCurrentAccountInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getCurrentAccountInfo");
     private final static QName _UpdateWechatMessageHistoryResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateWechatMessageHistoryResponse");
@@ -132,6 +135,7 @@ public class ObjectFactory {
     private final static QName _IsWinBackOrEarlyBirdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isWinBackOrEarlyBirdResponse");
     private final static QName _ParseException_QNAME = new QName("http://payment.ws.htichina.com/", "ParseException");
     private final static QName _GetCurrentAccountInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getCurrentAccountInfoResponse");
+    private final static QName _UpdateCouponHistoryResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateCouponHistoryResponse");
     private final static QName _CreateLuckyOrderResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createLuckyOrderResponse");
     private final static QName _GetActiveAccountByOpenIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getActiveAccountByOpenIdResponse");
     private final static QName _GetNewPackageAfterUpgrade_QNAME = new QName("http://payment.ws.htichina.com/", "getNewPackageAfterUpgrade");
@@ -237,6 +241,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetEffectiveCouponPromotionByCustomerResponse }
+     * 
+     */
+    public GetEffectiveCouponPromotionByCustomerResponse createGetEffectiveCouponPromotionByCustomerResponse() {
+        return new GetEffectiveCouponPromotionByCustomerResponse();
+    }
+
+    /**
      * Create an instance of {@link GetUnanswerQuestion }
      * 
      */
@@ -338,6 +350,14 @@ public class ObjectFactory {
      */
     public GetCallPhoneByAccountNum createGetCallPhoneByAccountNum() {
         return new GetCallPhoneByAccountNum();
+    }
+
+    /**
+     * Create an instance of {@link GetEffectiveCouponPromotionByCustomer }
+     * 
+     */
+    public GetEffectiveCouponPromotionByCustomer createGetEffectiveCouponPromotionByCustomer() {
+        return new GetEffectiveCouponPromotionByCustomer();
     }
 
     /**
@@ -493,6 +513,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UpdateCouponHistory }
+     * 
+     */
+    public UpdateCouponHistory createUpdateCouponHistory() {
+        return new UpdateCouponHistory();
+    }
+
+    /**
      * Create an instance of {@link HasLuckyDrawLinkByAccountNumResponse }
      * 
      */
@@ -642,6 +670,14 @@ public class ObjectFactory {
      */
     public GetCurrentAccountInfoResponse createGetCurrentAccountInfoResponse() {
         return new GetCurrentAccountInfoResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateCouponHistoryResponse }
+     * 
+     */
+    public UpdateCouponHistoryResponse createUpdateCouponHistoryResponse() {
+        return new UpdateCouponHistoryResponse();
     }
 
     /**
@@ -1961,6 +1997,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEffectiveCouponPromotionByCustomerResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getEffectiveCouponPromotionByCustomerResponse")
+    public JAXBElement<GetEffectiveCouponPromotionByCustomerResponse> createGetEffectiveCouponPromotionByCustomerResponse(GetEffectiveCouponPromotionByCustomerResponse value) {
+        return new JAXBElement<GetEffectiveCouponPromotionByCustomerResponse>(_GetEffectiveCouponPromotionByCustomerResponse_QNAME, GetEffectiveCouponPromotionByCustomerResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetUnanswerQuestion }{@code >}}
      * 
      */
@@ -2150,6 +2195,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEffectiveCouponPromotionByCustomer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getEffectiveCouponPromotionByCustomer")
+    public JAXBElement<GetEffectiveCouponPromotionByCustomer> createGetEffectiveCouponPromotionByCustomer(GetEffectiveCouponPromotionByCustomer value) {
+        return new JAXBElement<GetEffectiveCouponPromotionByCustomer>(_GetEffectiveCouponPromotionByCustomer_QNAME, GetEffectiveCouponPromotionByCustomer.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetCallPhoneByAccountNum }{@code >}}
      * 
      */
@@ -2255,6 +2309,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "insertHistory")
     public JAXBElement<InsertHistory> createInsertHistory(InsertHistory value) {
         return new JAXBElement<InsertHistory>(_InsertHistory_QNAME, InsertHistory.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateCouponHistory }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateCouponHistory")
+    public JAXBElement<UpdateCouponHistory> createUpdateCouponHistory(UpdateCouponHistory value) {
+        return new JAXBElement<UpdateCouponHistory>(_UpdateCouponHistory_QNAME, UpdateCouponHistory.class, null, value);
     }
 
     /**
@@ -2390,6 +2453,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getCurrentAccountInfoResponse")
     public JAXBElement<GetCurrentAccountInfoResponse> createGetCurrentAccountInfoResponse(GetCurrentAccountInfoResponse value) {
         return new JAXBElement<GetCurrentAccountInfoResponse>(_GetCurrentAccountInfoResponse_QNAME, GetCurrentAccountInfoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateCouponHistoryResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateCouponHistoryResponse")
+    public JAXBElement<UpdateCouponHistoryResponse> createUpdateCouponHistoryResponse(UpdateCouponHistoryResponse value) {
+        return new JAXBElement<UpdateCouponHistoryResponse>(_UpdateCouponHistoryResponse_QNAME, UpdateCouponHistoryResponse.class, null, value);
     }
 
     /**
