@@ -34,6 +34,9 @@ public class couponUtil {
     public static boolean validataCoupon(String[] ids, List<Coupon> coupons) {
         boolean flag = false;
         try {
+            if(ids.length==0){
+                return true;
+            }
             List<Coupon> myCouponList = new ArrayList<Coupon>();
             if (coupons != null && coupons.size() > 0) {
                 for (Coupon coupon : coupons) {
