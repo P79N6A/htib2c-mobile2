@@ -92,13 +92,6 @@
 
 
                 });
-               function(promotionId){
-            	   $.ajax({
-            		   url:'',
-            		   
-            	   });
-               }
-
             </script>
 
 
@@ -110,8 +103,13 @@
                 </div>
                 <div id="zhinengbox" style="background:url(#{facesContext.externalContext.request.contextPath}/resources/images/img2/zhinengbg.jpg) ">
                     <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
-                    <c:if test="#{orderBackingBean.showCouponPromotion==1}">
-                       <div style="height: 30px;width: 100%;color: white;margin-top: 10px;text-align: center;margin: auto;" onclick="toCoupon(1)">优惠券超链#{orderBackingBean.showCouponPromotion}</div>
+                    <c:if test="${!empty orderBackingBean.promotionCoup}">
+                       <c:forEach  items="#{orderBackingBean.promotionCoup}" var="promotion" varStatus="x" >
+                          <li secIndex="${x.count}">
+                            <div style="height: 30px;width: 100%;color: white;margin-top: 10px;text-align: center;margin: auto;" id="#{promotion.id}" onclick="toCoupon(this)">优惠券超链</div>
+                          </li>
+                       </c:forEach>
+                       
                     </c:if>
                     <div id="zhinengnav">
                         <div id="btnbox_">

@@ -85,6 +85,7 @@
             	var voucher=0;
             	var discount=0;
             	var idstr="";
+            	var feeTag='<h:outputText value="#{orderBackingBean.wechatPay}"/>';
             	if(inputs.length>0){
 	            	inputs.each(function(i,x){
 	            		var ipt=this;
@@ -115,12 +116,20 @@
 	            	if(discount!=0){
 	            	    shouldPaynew=shouldPaynew*discount/10;
 	            	}
+	            	if(feeTag!="true"){
+	            		$("#aliFee").val(shouldPaynew);
+	            	}
 	            	$("#shouldPay").text("¥"+fmoney(shouldPaynew,2));
             	}else{
             		shouldPaynew=$("#allPay").text()
             		$("#shouldPay").text(shouldPaynew);
             	}
-            	document.getElementById("wcouponId").value=idstr;
+            	if(feeTag=="true"){
+            		document.getElementById("wcouponId").value=idstr;
+            	}else{
+            		document.getElementById("acouponId").value=idstr;
+            	}
+            	
             	var resultCoupon=portal.coupon.returnRightCoupons(ids,couponJson);
             	$(resultCoupon).each(function(i,x){
             		var couponid=this.id;
@@ -206,11 +215,10 @@
                                 <div  class="info_list" id="info_list_coupon" style="padding-left: 43px;">
                                     <ul id="couponList">
                                       <c:if test="${!empty orderBackingBean.coupons}">
-                                       <c:forEach  items="#{orderBackingBean.coupons}" var="couPon" varStatus="x" onComplete="validateCoupon()">
+                                       <c:forEach  items="#{orderBackingBean.coupons}" var="couPon" varStatus="x">
                                             <li secIndex="${x.count}">
                                               <input type="checkbox" class="coupon_check" style="zoom: 150%" id="#{couPon.id}" couponType="#{couPon.couoponType}" couponContent="#{couPon.couponContent}" onchange="validateCoupon(this)" ></input>&#160;&#160;#{couPon.couponName}
                                             </li>
-                                            
                                          </c:forEach>
                                          <li>应&#160;&#160;付&#160;&#160;金&#160;&#160;额：
                                            <span>
@@ -358,14 +366,17 @@
                                             <input type="checkbox" id="terms2" name="terms2" style="display:none"/>
                                         </div>
                                         <div class="text"><span onclick="toTermsOfService()">详见“服务条款与条件”</span></div>
+                                        <input style="display: none"  name="orderNumber" value="#{orderBackingBean.orderNumber}"></input>
                                         <input style="display: none"  name="WIDout_trade_no" value='#{orderBackingBean.WIDout_trade_no}' />
                                         <input style="display: none"  name="WIDsubject" value='#{orderBackingBean.WIDsubject}' />
-                                        <input style="display: none"  name="WIDtotal_fee" value='#{orderBackingBean.WIDtotal_fee}' />
+                                        <input id="acouponId" name="couponIds" style="display: none;" value=""/>
+                                        <input name="accountNum" style="display: none;" value="#{orderBackingBean.accountNum}"/>
+                                        <input style="display: none" id="aliFee"  name="WIDtotal_fee" value='#{orderBackingBean.WIDtotal_fee}' />
                                         
                                         <div class="btn long_btn">
                                             <input type="submit" style="margin-left: 0%;" value="确认付款(支付宝支付)" onclick="return callAlipay();"/>
                                          </div>
-                                         <input id="acouponId" name="couponIds" style="display: none;"/>
+                                         
                                         <script type="text/javascript">
                                             function callAlipay()
                                             {
