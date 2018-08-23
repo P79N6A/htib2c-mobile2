@@ -599,17 +599,22 @@ public class OrderBackingBean implements Serializable {
     public void wechatCouponPay(){
     	String couponIds=FacesUtils.getRequestParameter("couponIds");
     	String terms=FacesUtils.getRequestParameter("terms");
-    	String[] couponArray=couponIds.split(",");
+    	String[] couponArray={};
+    	boolean ifeffect= false;
+    	if(null!=couponIds&&!couponIds.equals("")){
+    		couponArray=couponIds.split(",");
+    		ifeffect =couponUtil.validataCoupon(couponArray, coupons);
+    	}else{
+    		ifeffect=true;
+    	}
     	//校验是否合规
-    	couponUtil ctil=new couponUtil();
-    	boolean ifeffect=ctil.validataCoupon(couponArray, coupons);
     	if(ifeffect&&terms!=null){
     		//有效
         	//计算金额
         	String orderDesc = "";
         	Double newPrice=0d;
         	//折扣
-        	Integer discount=100;
+        	Integer discount=10;
         	//代金券
         	Double voucher=0d;
             if(selectProd != null){
@@ -647,6 +652,8 @@ public class OrderBackingBean implements Serializable {
                 tpWxPay.setTotalFee(String.valueOf(newPrice));
                 logger.debug("totalFee=" + ESAPI.encoder().encodeForHTML(String.valueOf(amount)));
                 wechatPrepayResponse = demo.getPackage(tpWxPay);
+                String json =JSON.toJSONString(wechatPrepayResponse);
+                logger.info("wechatPrepayJSon=------------------" +json);
                 logger.info("wechatPrepayResponse=" + ESAPI.encoder().encodeForHTML(wechatPrepayResponse));
                 //修改订单金额
                 String payAmount=String.valueOf(newPrice);

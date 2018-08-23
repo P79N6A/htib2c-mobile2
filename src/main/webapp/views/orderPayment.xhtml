@@ -30,7 +30,6 @@
         <script>
            var couponJson;
             $(function () {
-
                  couponListString='{<h:outputText value="#{orderBackingBean.couponListString}"/>}';
                  couponListString=couponListString.substring(1,couponListString.length-1);
                  couponJson= $.parseJSON(couponListString);
@@ -158,12 +157,15 @@
             function toPay(data) {
             	var id=data.source.id;
                 var status = data.status; // Can be "begin", "complete" or "success".
+//                 alert("status=="+status);
+//                 alert("id=="+id);
                 if(status=="success" &amp;&amp; terms.checked &amp;&amp; id=="wechatForm:wPay"){
                 	callpay();
                 }
             }
             function callpay() {
                 var response = "{"+document.getElementById("wechatForm:wechatResponse").innerText+"}";
+//                 alert(response);
                 WeixinJSBridge.invoke("getBrandWCPayRequest", JSON.parse(response), function (res) {
                             if (res.err_msg == "get_brand_wcpay_request:ok") {
                                 window.location.href = '<h:outputText value="#{orderBackingBean.wechatNotifyUrl}"/>';
@@ -329,7 +331,7 @@
                                          <input id="wcouponId" name="couponIds" style="display: none;"/>
                                          <div style="display: none;">
                                          <h:commandButton id="wPay"    action="#{orderBackingBean.wechatCouponPay()}">
-							                <f:ajax   event="action" onevent="toPay" />
+							                <f:ajax   event="action" onevent="toPay" render="wechatResponse" />
 							            </h:commandButton>
 							            </div>
                                          <script type="text/javascript">
