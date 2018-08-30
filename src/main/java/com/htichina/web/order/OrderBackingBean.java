@@ -1,7 +1,6 @@
 package com.htichina.web.order;
 
 import java.io.Serializable;
-import java.lang.Exception;
 import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,10 +14,7 @@ import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-import com.htichina.wsclient.payment.*;
-
 import org.apache.log4j.Logger;
-import org.apache.xerces.parsers.IntegratedParserConfiguration;
 import org.owasp.esapi.ESAPI;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -26,6 +22,7 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
 import com.alipay.config.AlipayConfig;
 import com.alipay.util.AlipaySubmit;
+import com.alipay.util.CharacterReplaceUtil;
 import com.alipay.util.UtilDate;
 import com.google.common.base.Strings;
 import com.htichina.common.web.ConfigureInfo;
@@ -37,6 +34,25 @@ import com.htichina.web.common.ViewPage;
 import com.htichina.web.util.coupon.couponUtil;
 import com.htichina.web.wechat.Demo;
 import com.htichina.web.wechat.WxPayDto;
+import com.htichina.wsclient.payment.AccountInfoResponse;
+import com.htichina.wsclient.payment.Coupon;
+import com.htichina.wsclient.payment.PackageInfoResponse;
+import com.htichina.wsclient.payment.PackageUpgradeRequest;
+import com.htichina.wsclient.payment.PackageUpgradeResponse;
+import com.htichina.wsclient.payment.PaymentOrderResponse;
+import com.htichina.wsclient.payment.ProductInfo;
+import com.htichina.wsclient.payment.ProductInfoResponse;
+import com.htichina.wsclient.payment.PromotionCategoryResult;
+import com.htichina.wsclient.payment.PromotionCoupon;
+import com.htichina.wsclient.payment.PromotionInfoResponse;
+import com.htichina.wsclient.payment.PromotionInfoWS;
+import com.htichina.wsclient.payment.PurchaseProductResponse;
+import com.htichina.wsclient.payment.QueryChildOrdersByParentOrderNumResponse;
+import com.htichina.wsclient.payment.QueryOrderByParentOrderNumResponse;
+import com.htichina.wsclient.payment.Transaction;
+import com.htichina.wsclient.payment.TransactionRequest;
+import com.htichina.wsclient.payment.TransactionResponse;
+import com.htichina.wsclient.payment.VehicleInfoResponse;
 import com.tencent.common.RandomStringGenerator;
 
 
@@ -145,19 +161,34 @@ public class OrderBackingBean implements Serializable {
     private String transactionNo;
     
     private PaymentOrderResponse paymentOrderResponse ;
-
+    private String mobilePhoneConvert;
+    private String accountNumConvert;
+    private String vinConvert;
     public String toOrderEntry(String oId) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
         Date date2 = new Date();
         openId = oId;
         targetPage = ViewPage.LINK2MyAccount;
         String an = PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
-
         AccountInfoResponse aInfo = PaymentServiceClient.getInstance().getCurrentAccountInfo(an);
         if(aInfo != null){
             mobilePhone = aInfo.getMobilePhone();
             accountNum = aInfo.getAccountNum();
             vin = aInfo.getVin();
+            //=======================
+            mobilePhone = "18515581557";
+            accountNum = "10579676";
+            vin = "WWCHINAMBTEST0638";
+            //=======================
+            if(mobilePhone!=null){
+            	mobilePhoneConvert=CharacterReplaceUtil.formater(3, 4, mobilePhone);
+            }
+			if(accountNum!=null){
+				accountNumConvert=CharacterReplaceUtil.formater(2, 2, accountNum);       	
+			}
+			if(vin!=null){
+				vinConvert=CharacterReplaceUtil.formater(0, 6, vin);
+			}
         }
         Date date4 = new Date();
         String time4 = sdf.format(date4);
@@ -710,6 +741,18 @@ public class OrderBackingBean implements Serializable {
         logger.info("accountNum=" + ESAPI.encoder().encodeForHTML(accountNum));
         logger.info("mobilePhone=" + ESAPI.encoder().encodeForHTML(mobilePhone));
         logger.info("vin=" + ESAPI.encoder().encodeForHTML(vin));
+        accountNumConvert=FacesUtils.getRequestParameter("accountNumConvert");
+        mobilePhoneConvert=FacesUtils.getRequestParameter("mobilePhoneConvert");
+        vinConvert=FacesUtils.getRequestParameter("vinConvert");
+        if(!Strings.isNullOrEmpty(accountNumConvert) && !accountNumConvert.contains("*")){
+        	accountNum=accountNumConvert;
+        }
+        if(!Strings.isNullOrEmpty(mobilePhoneConvert) && !mobilePhoneConvert.contains("*")){
+        	mobilePhone=mobilePhoneConvert;
+        }
+        if(!Strings.isNullOrEmpty(vinConvert) && !vinConvert.contains("*")){
+        	vin=vinConvert;
+        }
         if(Strings.isNullOrEmpty(accountNum) && Strings.isNullOrEmpty(mobilePhone) && Strings.isNullOrEmpty(vin)) {
             orderEntryPop = "请输入智能互联客户编号或者智能互联关联手机号码或者车架号！";
             context.addMessage(null, new FacesMessage(
@@ -1872,6 +1915,38 @@ public class OrderBackingBean implements Serializable {
 
 	public void setPaymentOrderResponse(PaymentOrderResponse paymentOrderResponse) {
 		this.paymentOrderResponse = paymentOrderResponse;
+	}
+
+	public String getSelectBaseProdId() {
+		return selectBaseProdId;
+	}
+
+	public void setSelectBaseProdId(String selectBaseProdId) {
+		this.selectBaseProdId = selectBaseProdId;
+	}
+
+	public String getMobilePhoneConvert() {
+		return mobilePhoneConvert;
+	}
+
+	public void setMobilePhoneConvert(String mobilePhoneConvert) {
+		this.mobilePhoneConvert = mobilePhoneConvert;
+	}
+
+	public String getVinConvert() {
+		return vinConvert;
+	}
+
+	public void setVinConvert(String vinConvert) {
+		this.vinConvert = vinConvert;
+	}
+
+	public String getAccountNumConvert() {
+		return accountNumConvert;
+	}
+
+	public void setAccountNumConvert(String accountNumConvert) {
+		this.accountNumConvert = accountNumConvert;
 	}
 
     
