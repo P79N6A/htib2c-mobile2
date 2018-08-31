@@ -175,11 +175,6 @@ public class OrderBackingBean implements Serializable {
             mobilePhone = aInfo.getMobilePhone();
             accountNum = aInfo.getAccountNum();
             vin = aInfo.getVin();
-            //=======================
-            mobilePhone = "18515581557";
-            accountNum = "10579676";
-            vin = "WWCHINAMBTEST0638";
-            //=======================
             if(mobilePhone!=null){
             	mobilePhoneConvert=CharacterReplaceUtil.formater(3, 4, mobilePhone);
             }
@@ -218,10 +213,6 @@ public class OrderBackingBean implements Serializable {
             accountNum = (String) FacesUtils.getManagedBeanInSession(Constant.ACCOUNT_NUM);
             if(Strings.isNullOrEmpty(accountNum)) {
                 String openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
-                //-------------------------------------假openid--------------------------------
-                openId ="o8rKvs2EeP8RdQSk0itqWSQj90hc";
-                FacesUtils.setManagedBeanInSession(Constant.OPEN_ID, openId);
-                //-------------------------------------假openid--------------------------------
                 accountNum = PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
             }
             if(Strings.isNullOrEmpty(accountNum)) {
