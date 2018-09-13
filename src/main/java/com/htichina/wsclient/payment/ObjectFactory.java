@@ -1409,6 +1409,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link MileageResponse }
+     * 
+     */
+    public MileageResponse createMileageResponse() {
+        return new MileageResponse();
+    }
+
+    /**
      * Create an instance of {@link CouponHistory }
      * 
      */

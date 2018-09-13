@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="fullName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="isReceiveDidiForFirstLogin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="isReceiveDidiForRenew" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="mileageResponse" type="{http://payment.ws.htichina.com/}mileageResponse" minOccurs="0"/>
  *         &lt;element name="mobilePhone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="vin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -47,6 +48,7 @@ import javax.xml.bind.annotation.XmlType;
     "fullName",
     "isReceiveDidiForFirstLogin",
     "isReceiveDidiForRenew",
+    "mileageResponse",
     "mobilePhone",
     "vin"
 })
@@ -62,6 +64,7 @@ public class AccountInfoResponse {
     protected String fullName;
     protected String isReceiveDidiForFirstLogin;
     protected String isReceiveDidiForRenew;
+    protected MileageResponse mileageResponse;
     protected String mobilePhone;
     protected String vin;
 
@@ -265,6 +268,30 @@ public class AccountInfoResponse {
      */
     public void setIsReceiveDidiForRenew(String value) {
         this.isReceiveDidiForRenew = value;
+    }
+
+    /**
+     * 获取mileageResponse属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link MileageResponse }
+     *     
+     */
+    public MileageResponse getMileageResponse() {
+        return mileageResponse;
+    }
+
+    /**
+     * 设置mileageResponse属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MileageResponse }
+     *     
+     */
+    public void setMileageResponse(MileageResponse value) {
+        this.mileageResponse = value;
     }
 
     /**

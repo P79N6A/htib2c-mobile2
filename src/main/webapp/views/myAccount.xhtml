@@ -116,6 +116,33 @@
 
                                             </c:forEach>
                                         </c:if>
+                                        
+                                        <h3>我的里程数</h3>
+                                        <div class="my_list">
+                                            <ul>
+                                                <li>过&#160;去&#160;十&#160;天&#160;的&#160;里&#160;程&#160;：
+                                                <span>
+	                                                <h:outputText value="#{loginBackingBean.accountInfo.mileageResponse.mileage}">
+<!-- 	                                                    <f:converter converterId="UserNameConverter"/> -->
+	                                                </h:outputText>&#160;km
+                                                </span>
+                                                </li>
+                                                <li>总&#160;&#160;行&#160;&#160;驶&#160;&#160;里&#160;&#160;程&#160;&#160;数&#160;：
+                                                <span>
+                                                <h:outputText value="#{loginBackingBean.accountInfo.mileageResponse.mileageTotal}">
+<!--                                                     <f:converter converterId="AccountNumConverter"/> -->
+                                                </h:outputText>&#160;km
+                                                </span>
+                                                </li>
+                                                <li>恭喜您，您过去十天的行驶里程已超过
+                                                <h:outputText value="#{loginBackingBean.accountInfo.mileageResponse.rankPercent}">
+                                                </h:outputText>
+                                                                                                                                         的用户！</li>
+                                            </ul>
+                                            <ul>
+                                            <h6>该数据仅供参考</h6>
+                                            </ul>
+                                        </div>
                                         <div id="luckDrawLink" style="font-size: 37px;color: #fff;line-height: 87px;margin-top: 23px;">
                                             您共有<h:outputText id="luckyNum" value="#{loginBackingBean.luckyDrawAmount}" style="color: #f57e24;"/>
                                             次抽奖机会
@@ -227,15 +254,15 @@
                     mousewheelControl: true,
                     freeMode: true
                 });
-                window.onload=function(){
-                 var flag = $("input[flag='renewFlag']").val();
-                    if("OK" == flag){
-                        $("#didiDiv").removeAttr("style");
-                        window.location.href="https://dc.tt/Rhv6";
+//                 window.onload=function(){
+//                  var flag = $("input[flag='renewFlag']").val();
+//                     if("OK" == flag){
+//                         $("#didiDiv").removeAttr("style");
+//                         window.location.href="https://dc.tt/Rhv6";
 
-                    }
+//                     }
 
-                 }
+//                  }
                 function clickDidi(){
                     $("input[btn='didiBtn']").click();
                 }
