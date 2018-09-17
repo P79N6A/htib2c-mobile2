@@ -643,11 +643,11 @@ public class OrderBackingBean implements Serializable {
                 Double amount = selectProd.getPromotionPrice();
                 for(Coupon c:coupons){
                 	//代金券
-                	if(couponIds.contains(c.getId())&&c.getCouoponType().equals("3")){
+                	if(couponIds.contains(c.getId())&&c.getCouponType().equals("3")){
                 		voucher=Double.parseDouble(c.getCouponContent());
                 	}
                 	//折扣
-                	if(couponIds.contains(c.getId())&&c.getCouoponType().equals("1")){
+                	if(couponIds.contains(c.getId())&&c.getCouponType().equals("1")){
                 		discount=Integer.parseInt(c.getCouponContent());
                 	}
                 }
