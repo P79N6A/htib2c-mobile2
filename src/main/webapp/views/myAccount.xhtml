@@ -11,7 +11,7 @@
                 template="./template.xhtml">
 
     <ui:define name="header">
-        账户信息
+           账户信息
     </ui:define> 
 
     <ui:define name="workspace">
@@ -517,8 +517,8 @@
                 </div>
             </div>
             <div class="ticket">
-    <img class="close" src="#{facesContext.externalContext.request.contextPath}/resources/images/coupon/close.png" alt=""/>
-    <img class="printer" src="#{facesContext.externalContext.request.contextPath}/resources/images/coupon/printer.png" alt=""/>
+    <img class="close" src="#{facesContext.externalContext.request.contextPath}/resources/coupon/images/close.png" alt=""/>
+    <img class="printer" src="#{facesContext.externalContext.request.contextPath}/resources/coupon/images/printer.png" alt=""/>
     <div class="scroll_handle">
         <div class="scroll_bar"></div>
     </div>
@@ -584,7 +584,7 @@
 		                        <p>#{couponUsed.couponDis}</p>
 		                        <p>有效期至#{couponUsed.effectEndDate}</p>
 		                    </div>
-		                    <a href="" class="btn reCenter"><span>已使用</span></a>
+		                    <a href="javascript:void(0)" class="btn reCenter"><span>已使用</span></a>
 		                    <span class="tips">NEW</span>
 		                </div>
 		            </li>
@@ -602,7 +602,7 @@
 		                        <p>#{couponUnused.couponDis}</p>
 		                        <p>有效期至#{couponUnused.effectEndDate}</p>
 		                    </div>
-		                    <a href="" class="btn reCenter"><span>已使用</span></a>
+		                    <a href="javascript:void(0)" class="btn reCenter"><span>已使用</span></a>
 		                    <span class="tips">NEW</span>
 		                </div>
 		            </li>
@@ -625,9 +625,9 @@
 		                            <em>#{couponUsed.couponContent}</em>
 		                        </div>
 		                        <p>#{couponUsed.couponDis}</p>
-		                        <p>有效期至#{couponUsed.effectEndDate}</p>
+		                        <p>有效期至： #{couponUsed.effectEndDate}</p>
 		                    </div>
-		                    <a href="" class="btn reCenter"><span>已过期</span></a>
+		                    <a href="javascript:void(0)" class="btn reCenter"><span>已过期</span></a>
 		                    <span class="tips">NEW</span>
 		                </div>
 		            </li>
@@ -642,9 +642,9 @@
 		                            <em>#{couponUnused.couponContent}</em>
 		                        </div>
 		                        <p>#{couponUnused.couponDis}</p>
-		                        <p>有效期至#{couponUnused.effectEndDate}</p>
+		                        <p>有效期至 ： #{couponUnused.effectEndDate}</p>
 		                    </div>
-		                    <a href="" class="btn reCenter"><span>已过期</span></a>
+		                    <a href="javascript:void(0)" class="btn reCenter"><span>已过期</span></a>
 		                    <span class="tips">NEW</span>
 		                </div>
 		            </li>

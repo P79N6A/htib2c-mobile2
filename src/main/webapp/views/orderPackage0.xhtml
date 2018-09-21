@@ -22,7 +22,121 @@
             <link rel="stylesheet"
                   href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css?v=20170704" charset="utf-8" />
             <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" charset="utf-8" />
-
+            <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/css.css" />
+            <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
+            <script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/v.js"></script>
+            <script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/js.js"></script>
+            <script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/swiper.js"></script>
+            <style>
+                #btnbox_{
+		            zoom: 1;
+		            overflow:auto;
+		            height: auto;
+		        }
+		        #showbtn{
+		            width: 100%;
+		            height: 55px;
+		            background: url("../resources/coupon/images/showbtn.png");
+		            line-height: 55px;
+		            color: #fff;
+		            font-size: 26px;
+		            display: none;
+		        }
+		        .btns{
+		            display: none;
+		        }
+		        .showbtns{
+		            display: block
+		        }
+		        #zhinengbox .zhinengbtnbox1 .btn1{
+		            background: #707070;
+		        }
+		        #zhinengnav #btnbox_ .gradient{
+		            background: #116AB7;
+		        }
+		        #btnsbox {
+		            height: 110px;
+		        }
+		        .clearfix:after {
+		            content: '';
+		            height: 100%;
+		            display: block;
+		            overflow: hidden;
+		            clear: both;
+		        }
+		        .sixlistbg .num {
+		            background: none;
+		        }
+		        a,a:hover,a:active,a:visited,a:link,a:focus{
+		            -webkit-tap-highlight-color: transparent;
+		            outline:none;
+		            text-decoration: none;
+		        }
+		        .notice {
+		            display: block;
+		            text-decoration: inherit;
+		            width: 616px;
+		            height: 139px;
+		            margin: 0 auto;
+		            background: url(../resources/coupon/images/text.png) top left no-repeat;
+		            background-size: contain;
+		        }
+		        .notice .wrap {
+		            position: relative;
+		            width: 100%;
+		            height: 100%;
+		            padding-top: 10px;
+		            -webkit-box-sizing: border-box;
+		            box-sizing: border-box;
+		        }
+		        .notice .wrap .text {
+		            position: relative;
+		            width: 75%;
+		            top: 50%;
+		            left: 50%;
+		            -webkit-transform: translate(-50%,-50%);
+		            transform: translate(-50%,-50%);
+		            font-size: 36px;
+		            line-height: 46px;
+		            color: #fff;
+		        }
+		        .notice .wrap .text .btn {
+		            display: inline-block;
+		            vertical-align: middle;
+		            width: 96px;
+		            height: 42px;
+		            background: url(../resources/coupon/images/btn_03.jpg) no-repeat;
+		            background-size: contain;
+		            text-align: center;
+		            font-size: 26px;
+		            line-height: 40px;
+		            float: right;
+		            margin-top: 6px;
+		        }
+		        .chiose {
+		            width: 616px;
+		            height: 55px;
+		            line-height: 55px;
+		            text-align: center;
+		            color: #fff;
+		            font-size: 25px;
+		            background: url(../resources/coupon/images/btn2.jpg) top left no-repeat;
+		            background-size: contain;
+		            margin: 20px auto 0;
+		        }
+		        .sixbtn {
+		            display: none;
+		        }
+		        .sixlistbg .num div.number {
+		            float: inherit;
+		            width: 72px;
+		            text-align: center;
+		            font-size: 30px;
+		            line-height: 36px;
+		            margin: 0 auto;
+		            text-decoration: inherit;
+		        }
+		    </style>
             <script>
                 if("1" == broserNum){
                     window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
@@ -103,14 +217,7 @@
                 </div>
                 <div id="zhinengbox" style="background:url(#{facesContext.externalContext.request.contextPath}/resources/images/img2/zhinengbg.jpg) ">
                     <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img2/fri_line.jpg" id="linetop"/>
-                    <c:if test="${!empty orderBackingBean.promotionCoup}">
-                       <c:forEach  items="#{orderBackingBean.promotionCoup}" var="promotion" varStatus="x" >
-                          <li secIndex="${x.count}">
-                            <div style="height: 30px;width: 100%;color: white;margin-top: 10px;text-align: center;margin: auto;" id="#{promotion.id}" onclick="toCoupon(this)">优惠券超链</div>
-                          </li>
-                       </c:forEach>
-                       
-                    </c:if>
+
                     <div id="zhinengnav">
                         <div id="btnbox_">
                             <div id="btnsbox" class="zhinengbtnbox1">
@@ -126,6 +233,21 @@
                                 </c:forEach>
                             </div>
                         </div>
+                    <c:if test="${!empty orderBackingBean.promotionCoup}">
+<!--                        <c:forEach  items="#{orderBackingBean.promotionCoup}" var="promotion" varStatus="x" > -->
+<!--                           <li secIndex="${x.count}"> -->
+                      <h:commandLink class="notice" action="#{orderBackingBean.toDrawCoupon}" >
+                       <f:param id="promotionId" name="promotionId" value="10510"></f:param>
+			                    <div class="wrap">
+			                        <div class="text clearfix">
+			                            8月老友季限时钜惠！即刻续约，立享优惠。
+			                            <span class="btn">GO</span>
+			                        </div>
+			                    </div>
+			         </h:commandLink>
+<!--                           </li> -->
+<!--                        </c:forEach> -->
+                    </c:if>
                         <div class="long_btn" id="showbtn" style="margin:auto;"></div><c:set var="length"  value="${1}"/>
                          
                         <c:forEach items="#{orderBackingBean.prods}" var="baseProduct" varStatus="x" >

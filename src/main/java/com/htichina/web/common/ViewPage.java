@@ -82,4 +82,6 @@ public class ViewPage {
     
     //飞常准
     public static final String LINK2VARIFLIGHT = "/views/variflight.xhtml?showwxpaytitle=1";
+    //优惠券
+    public static final String LINK2COUPONS = "/views/drawCoupon.xhtml?showwxpaytitle=1";
 }
