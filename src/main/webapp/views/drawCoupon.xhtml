@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./template.xhtml">
+
+<ui:define name="header">
+      福利放送
+</ui:define> 
+<ui:define name="workspace">
+<h:form id="package">
+<link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/coupon/css/common.css" />
+<link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/coupon/css/style.css" />
+<!-- 福利放送 start -->
+<div class="page" id="welfare">
+    <div class="title">
+    </div>
+    <div class="tips">
+        <h3>VIP 专 享 优 惠 礼 包</h3>
+    </div>
+    <div class="scroll-wrap">
+        <div class="grey grey1"></div>
+        <div class="grey grey2"></div>
+        <div class="scroll_cont">
+            <div class="scroll_content">
+                <div class="aside">
+                    <ul>
+                      <c:if test="#{not empty orderBackingBean.drawCoupon}">
+                        <c:forEach items="#{orderBackingBean.drawCoupon}" var="coupon" varStatus="loop">
+                        <c:if test="#{coupon.attr1=='0'}">
+	                        <li class="">
+	                            <div class="center clearfix">
+	                                <div class="number reCenter">
+	                                    <i>¥</i>
+	                                    <em>#{coupon.couponContent}</em>
+	                                </div>
+	                                <div class="text reCenter">
+	                                    <h3>#{coupon.couponName}</h3>
+	                                    <p>仅限续约智能互联优享套餐使用</p>
+	                                    <p>有效期至：#{coupon.effectEndDate}</p>
+	                                </div>
+                                    <div class="btn reCenter" id="#{coupon.id}">
+	                                    <span>立即领取</span>
+	                                </div>
+	                            </div>
+	                        </li>
+	                        </c:if>
+	                        <c:if test="#{coupon.attr1=='1'}">
+	                        <li class="active">
+	                            <div class="center clearfix">
+	                                <div class="number reCenter">
+	                                    <i>¥</i>
+	                                    <em>#{coupon.couponContent}</em>
+	                                </div>
+	                                <div class="text reCenter">
+	                                    <h3>#{coupon.couponName}</h3>
+	                                    <p>仅限续约智能互联优享套餐使用</p>
+	                                    <p>有效期至：#{coupon.effectEndDate}</p>
+	                                </div>
+	                                <div class="btn reCenter" id="#{coupon.id}">
+	                                    <span>去使用</span>
+	                                </div>
+<!-- 	                                <h:commandLink class="btn reCenter" action="#{orderBackingBean.drawCoupon}" > -->
+<!-- 		                                <f:param id="couponId" name="couponId" value="#{coupon.id}"></f:param> -->
+<!-- 										<span>去使用</span> -->
+<!-- 									</h:commandLink>  -->
+	                            </div>
+	                        </li>
+	                        </c:if>
+                        </c:forEach>
+                        </c:if>
+                    </ul>
+                    <h:commandButton id="toOrderPackage" style="display:none" action="#{orderBackingBean.toOrderPackage}"/>
+                </div>
+            </div>
+        </div>
+        <div class="scroll_handle">
+            <div class="scroll_bar"></div>
+        </div>
+    </div>
+    <img class="buling" src="../resources/coupon/images/buling.png" alt=""></img>
+</div>
+<!-- 福利放送 end -->
+<script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/zepto.min.js"></script>
+<script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/fx.js"></script>
+<script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/scrollBar.js"></script>
+<script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/common.js"></script>
+<script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/index.js"></script>
+</h:form>
+</ui:define>
+</ui:composition>
+</body>
+</html>

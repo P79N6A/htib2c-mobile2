@@ -217,19 +217,19 @@
             overflow: hidden;
             clear: both;
         }
-        #infobox #text {
+        #infobox .text {
             position: relative;
             width: 490px;
             margin: 15px auto 20px;
             font-size: 26px;
         }
-        #infobox #text span {
+        #infobox .text span {
             border-bottom: solid 1px #B3B2B2;
         }
-        #infobox #text .span1 {
+        #infobox .text .span1 {
             float: left;
         }
-        #infobox #text .rule {
+        #infobox .text .rule1 {
             float: right;
         }
 
@@ -242,7 +242,7 @@
             width: 490px;
             z-index: 999;
             height: 461px;
-            background: url(../resources/coupon/imagesrule.png) center center no-repeat;
+            background: url(../resources/coupon/images/rule.png) center center no-repeat;
             background-size: cover;
             overflow: hidden;
             display: none;
@@ -267,7 +267,7 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: url(../img/close.png) center center no-repeat #3F7181;
+            background: url(../resources/coupon/close.png) center center no-repeat #3F7181;
         }
         .float .content .cont {
             position: relative;
@@ -669,7 +669,43 @@
                                             <input type="checkbox" id="terms" name="terms" style="display:none"/>
                                         </div>
 
-                                        <div class="text"><span onclick="toTermsOfService()">详见“服务条款与条件”</span></div>
+                                        <div class="text clearfix" >
+                                            <span class="span1"  onclick="toTermsOfService()">详见“服务条款与条件”</span>
+                                            <span class="rule1">优惠券使用规则</span>
+                                            <!-- 浮层-活动规则 开始 -->
+				                            <div class="float float1">
+				                                <div class="content">
+				                                    <div class="cont">
+				                                        <div class="close"><img src="../resources/coupon/images/close.png" alt=""></img></div>
+				                                        <p class="title">- 优惠券使用规则 -</p>
+				                                        <div class="scroll-wrap">
+				                                            <div class="scroll_cont">
+				                                                <div class="scroll_content">
+				                                                    <div class="aside">
+				                                                        <p>一. 优惠券可在套餐选择页面出现，由客户点击领取。</p>
+				                                                        <p>二. 礼券的使用规则：</p>
+				                                                        <div class="padding">
+				                                                            <p>1. 礼券仅限订单选择在线支付时使用；</p>
+				                                                            <p>2. 每个订单仅限使用一个礼券，每张礼券只能使用一次，不能叠加或拆分使用；</p>
+				                                                            <p>3. 礼券如有套餐和时间限制，订单需满足对应条件后才可使用；</p>
+				                                                            <p>4. 礼券使用不设找零；</p>
+				                                                            <p>5. 如果订单已支付成功，且未使用礼券，则该礼券仅限在下个可用该礼券的订单中使用；</p>
+				                                                            <p>6. 如果订单已支付成功，不可追加使用任何礼券;</p>
+				                                                        </div>
+				                                                        <p>三. 下单的时候如使用过礼券，则在订单尚未付款成功时，礼券在可领取时间范围内仍可再次领取。</p>
+				                                                    </div>
+				                                                </div>
+				                                            </div>
+				                                            <div class="scroll_handle active">
+				                                                <div class="scroll_bar"></div>
+				                                            </div>
+				                                        </div>
+				                                    </div>
+				
+				                                </div>
+				                            </div>
+				                            <!-- 浮层-活动规则 结束 -->
+                                        </div>
                                         <h:outputText id="wechatResponse" value="#{orderBackingBean.wechatPrepayResponse}"  style="display: none;"/>
                                         <div class="btn long_btn" onclick="wechatValidate()">
                                                                                                                             确认付款(微信支付)
@@ -713,7 +749,43 @@
                                                                                                                            同意并确认《服务条款与条件》
                                             <input type="checkbox" id="terms2" name="terms2" style="display:none"/>
                                         </div>
-                                        <div class="text"><span onclick="toTermsOfService()">详见“服务条款与条件”</span></div>
+                                        <div  class="text clearfix">
+                                        <span class="span1"  onclick="toTermsOfService()">详见“服务条款与条件”</span>
+                                        <span class="rule1">优惠券使用规则</span>
+                                           <!-- 浮层-活动规则 开始 -->
+			                            <div class="float float1">
+			                                <div class="content">
+			                                    <div class="cont">
+			                                        <div class="close"><img src="../resources/coupon/images/close.png" alt=""></img></div>
+			                                        <p class="title">- 优惠券使用规则 -</p>
+			                                        <div class="scroll-wrap">
+			                                            <div class="scroll_cont">
+			                                                <div class="scroll_content">
+			                                                    <div class="aside">
+			                                                        <p>一. 优惠券可在套餐选择页面出现，由客户点击领取。</p>
+			                                                        <p>二. 礼券的使用规则：</p>
+			                                                        <div class="padding">
+			                                                            <p>1. 礼券仅限订单选择在线支付时使用；</p>
+			                                                            <p>2. 每个订单仅限使用一个礼券，每张礼券只能使用一次，不能叠加或拆分使用；</p>
+			                                                            <p>3. 礼券如有套餐和时间限制，订单需满足对应条件后才可使用；</p>
+			                                                            <p>4. 礼券使用不设找零；</p>
+			                                                            <p>5. 如果订单已支付成功，且未使用礼券，则该礼券仅限在下个可用该礼券的订单中使用；</p>
+			                                                            <p>6. 如果订单已支付成功，不可追加使用任何礼券;</p>
+			                                                        </div>
+			                                                        <p>三. 下单的时候如使用过礼券，则在订单尚未付款成功时，礼券在可领取时间范围内仍可再次领取。</p>
+			                                                    </div>
+			                                                </div>
+			                                            </div>
+			                                            <div class="scroll_handle active">
+			                                                <div class="scroll_bar"></div>
+			                                            </div>
+			                                        </div>
+			                                    </div>
+			
+			                                </div>
+			                            </div>
+			                            <!-- 浮层-活动规则 结束 -->
+                                        </div>
                                         <input style="display: none"  name="orderNumber" value="#{orderBackingBean.orderNumber}"></input>
                                         <input style="display: none"  name="WIDout_trade_no" value='#{orderBackingBean.WIDout_trade_no}' />
                                         <input style="display: none"  name="WIDsubject" value='#{orderBackingBean.WIDsubject}' />
@@ -846,7 +918,7 @@
             addBtn = oBox.find('.addBtn'),
             scrollWrap = oBox.find('.scroll-wrap'),
             oUl = scrollWrap.find('.aside ul'),
-            text = jq('#text'),
+            text = jq('.text'),
             float = jq('.float');
 
 
@@ -965,7 +1037,7 @@
         	}
         });
         //优惠券使用规则
-        text.find('.rule').on('click',function() {
+        text.find('.rule1').on('click',function() {
             var _this = $(this);
             if( _this.hasClass('active') ) {
                 _this.removeClass('active');
@@ -976,7 +1048,7 @@
             }
         });
         float.find('.close').on('click',function() {
-            text.find('.rule').removeClass('active');
+            text.find('.rule1').removeClass('active');
             float.stop().fadeOut(500);
         });
 

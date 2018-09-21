@@ -539,11 +539,10 @@
 		                            <i>¥</i>
 		                            <em>#{couponUnused.couponContent}</em>
 		                        </div>
-		                        <p>#{couponUnused.couponType}</p>
 		                        <p>#{couponUnused.couponDis}</p>
 		                        <p>有效期至#{couponUnused.effectEndDate}</p>
 		                    </div>
-		                    <a href="" class="btn reCenter"><span>去使用</span></a>
+		                    <div onclick="toUseCoupon()"  class="btn reCenter"><span>去使用</span></div>
 		                    <span class="tips">NEW</span>
 		                </div>
 		            </li>
@@ -561,12 +560,13 @@
 		                        <p>#{couponUnused.couponDis}</p>
 		                        <p>有效期至#{couponUnused.effectEndDate}</p>
 		                    </div>
-		                    <a href="" class="btn reCenter"><span>去使用</span></a>
+		                    <div onclick="toUseCoupon()"  class="btn reCenter"><span>去使用</span></div>
 		                    <span class="tips">NEW</span>
 		                </div>
 		            </li>
 		           </c:if>
 		        </c:forEach>
+		        <h:commandButton id="toOrderPackage" style="display:none" action="#{orderBackingBean.toOrderPackage}"/>
         </c:if>
         </ul>
         <ul class="oUl">
@@ -790,7 +790,9 @@
 	        mousewheelControl: true,
 	        freeMode: true
 	    });
-	
+	    function toUseCoupon(){
+	    	document.getElementById("logout:toOrderPackage").click();
+	    }
 	    //add JS
 	    ;(function($,jq) {
 	        //活动规则 滚动条
