@@ -979,7 +979,7 @@
             		ids.push($(item).attr("id"));
             			if($(item).attr("couponType")=="1"){
             				//折扣
-            				discount=$(item).find("em").text();
+            			  var dis=$(item).find("em").text();
             			}
 //             			if($(this).attr("couponType")=="2"){
 //             				//礼品
@@ -988,18 +988,26 @@
             			
             			if($(item).attr("couponType")=="3"){
             				//代金券 先减
-            				voucher=$(item).find("em").text();
+            				var vo=$(item).find("em").text();
+            			}
+            			if(discount==0&amp;&amp;dis!=undefined){
+            				discount=parseFloat(dis)/10;
+            			}else if(discount!=0&amp;&amp;dis!="0"){
+            				discount=discount*(parseFloat(dis)/10);
+            			}
+            			if(vo!=undefined){
+            			   voucher=voucher+parseFloat(vo);
             			}
             	  });
             	//把选中的ids拼成字符串赋值等待传递到后台
             	idstr=idstr.substring(0,idstr.length-1);
-            	var sub=parseFloat(shouldPay)-parseFloat(voucher);
+            	var sub=parseFloat(shouldPay)-voucher;
             	if(sub &lt; 0){
             		sub=parseFloat(0);
             	}
             	shouldPaynew=sub;
             	if(discount!=0){
-            	    shouldPaynew=shouldPaynew*discount/10;
+            	    shouldPaynew=shouldPaynew*discount;
             	}
             	if(feeTag!="true"){
             		$("#aliFee").val(shouldPaynew);
