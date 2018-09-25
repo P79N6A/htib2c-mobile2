@@ -33,15 +33,15 @@
 		            overflow:auto;
 		            height: auto;
 		        }
-		        #showbtn{
-		            width: 100%;
-		            height: 55px;
-		            background: url("../resources/coupon/images/showbtn.png");
-		            line-height: 55px;
-		            color: #fff;
-		            font-size: 26px;
-		            display: none;
-		        }
+/* 		        #showbtn{ */
+/* 		            width: 100%; */
+/* 		            height: 55px; */
+/* 		            background: url("../resources/coupon/images/showbtn.png"); */
+/* 		            line-height: 55px; */
+/* 		            color: #fff; */
+/* 		            font-size: 26px; */
+/* 		            display: none; */
+/* 		        } */
 		        .btns{
 		            display: none;
 		        }
@@ -234,22 +234,22 @@
                             </div>
                         </div>
                     <c:if test="${!empty orderBackingBean.promotionCoup}">
-<!--                        <c:forEach  items="#{orderBackingBean.promotionCoup}" var="promotion" varStatus="x" > -->
-<!--                           <li secIndex="${x.count}"> -->
-                      <h:commandLink class="notice" action="#{orderBackingBean.toDrawCoupon}" >
-                       <f:param id="promotionId" name="promotionId" value="10510"></f:param>
-			                    <div class="wrap">
-			                        <div class="text clearfix">
-			                            8月老友季限时钜惠！即刻续约，立享优惠。
-			                            <span class="btn">GO</span>
-			                        </div>
-			                    </div>
-			         </h:commandLink>
-<!--                           </li> -->
-<!--                        </c:forEach> -->
+                      <c:forEach  items="#{orderBackingBean.promotionCoup}" var="promotion" varStatus="x" >
+                         <li secIndex="${x.count}">
+	                      <h:commandLink class="notice" action="#{orderBackingBean.toDrawCoupon}" >
+	                       <f:param id="promotionId" name="promotionId" value="#{promotion.id}"></f:param>
+				                    <div class="wrap">
+				                        <div class="text clearfix">
+				                            #{promotion.couponTheme}
+				                            <span class="btn">GO</span>
+				                        </div>
+				                    </div>
+				         </h:commandLink>
+                         </li>
+                      </c:forEach>
                     </c:if>
-                        <div class="long_btn" id="showbtn" style="margin:auto;"></div><c:set var="length"  value="${1}"/>
-                         
+                        <div class="long_btn" id="showbtn" style="margin:auto;"></div>
+                        <c:set var="length"  value="${1}"/>
                         <c:forEach items="#{orderBackingBean.prods}" var="baseProduct" varStatus="x" >
                             <c:if test="${baseProduct.productCategoryId != 2}">
                                 <c:if test="${baseProduct.productCategoryId == 1}">

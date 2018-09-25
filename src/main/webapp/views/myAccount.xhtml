@@ -121,6 +121,14 @@
             height: 60px;
             margin-left: 88px;
         }
+        
+        .ticket .ticket-list li .discount {
+            overflow: hidden;
+            text-align: right;
+            width: 110px;
+            height: 60px;
+            margin-left: 88px;
+        }
         .ticket .ticket-list li .number i {
             font-style: normal;
             font-weight: bolder;
@@ -128,20 +136,28 @@
             line-height: 30px;
         }
         
-       /** .ticket .ticket-list li .number .discount i {
+       .ticket .ticket-list li .discount i {
             font-style: normal;
             font-weight: bolder;
-            font-size: 20px;
+            font-size: 26px;
             line-height: 30px;
-        }*/
+        }
         
         .ticket .ticket-list li .number em {
-            font-size: 50px;
+            font-size: 45px;
             line-height: 60px;
             font-weight: bolder;
             font-style: normal;
             display: inline-block;
             width: 78px;
+        }
+        .ticket .ticket-list li .discount em {
+            font-size: 40px;
+            line-height: 60px;
+            font-weight: bolder;
+            font-style: normal;
+            display: inline-block;
+            width: 60px;
         }
         .ticket .ticket-list li .text {
             position: relative;
@@ -553,8 +569,8 @@
 		                <div class="center">
 		                    <div class="text reCenter">
 		                        <h3>#{couponUnused.couponName}</h3>
-		                        <div class="number">
-		                            <i style="font-size: 20px!important;">折</i>
+		                        <div class="discount">
+		                            <i>折</i>
 		                            <em>#{couponUnused.couponContent}</em>
 		                        </div>
 		                        <p>#{couponUnused.couponDis}</p>
@@ -593,14 +609,14 @@
 		             <li class="Used">
 		                <div class="center">
 		                    <div class="text reCenter">
-		                        <h3>#{couponUnused.couponName}</h3>
-		                        <div class="number discount">
-		                            <i style="font-size: 20px!important;">折</i>
-		                            <em>#{couponUnused.couponContent}</em>
+		                        <h3>#{couponUsed.couponName}</h3>
+		                        <div class="discount">
+		                            <i>折</i>
+		                            <em>#{couponUsed.couponContent}</em>
 		                            
 		                        </div>
 		                        <p>#{couponUnused.couponDis}</p>
-		                        <p>有效期至#{couponUnused.effectEndDate}</p>
+		                        <p>有效期至#{couponUsed.effectEndDate}</p>
 		                    </div>
 		                    <a href="javascript:void(0)" class="btn reCenter"><span>已使用</span></a>
 		                    <span class="tips">NEW</span>
@@ -619,13 +635,13 @@
 				    <li class="Expired">
 		                <div class="center">
 		                    <div class="text reCenter">
-		                        <h3>#{couponUsed.couponName}</h3>
+		                        <h3>#{couponExpired.couponName}</h3>
 		                        <div class="number">
 		                            <i>¥</i>
-		                            <em>#{couponUsed.couponContent}</em>
+		                            <em>#{couponExpired.couponContent}</em>
 		                        </div>
-		                        <p>#{couponUsed.couponDis}</p>
-		                        <p>有效期至： #{couponUsed.effectEndDate}</p>
+		                        <p>#{couponExpired.couponDis}</p>
+		                        <p>有效期至： #{couponExpired.effectEndDate}</p>
 		                    </div>
 		                    <a href="javascript:void(0)" class="btn reCenter"><span>已过期</span></a>
 		                    <span class="tips">NEW</span>
@@ -636,13 +652,13 @@
 		             <li class="Expired">
 		                <div class="center">
 		                    <div class="text reCenter">
-		                        <h3>#{couponUnused.couponName}</h3>
-		                        <div class="number discount">
-		                            <i style="font-size: 20px!important;">折</i>
-		                            <em>#{couponUnused.couponContent}</em>
+		                        <h3>#{couponExpired.couponName}</h3>
+		                        <div class="discount">
+		                            <i>折</i>
+		                            <em>#{couponExpired.couponContent}</em>
 		                        </div>
-		                        <p>#{couponUnused.couponDis}</p>
-		                        <p>有效期至 ： #{couponUnused.effectEndDate}</p>
+		                        <p>#{couponExpired.couponDis}</p>
+		                        <p>有效期至 ： #{couponExpired.effectEndDate}</p>
 		                    </div>
 		                    <a href="javascript:void(0)" class="btn reCenter"><span>已过期</span></a>
 		                    <span class="tips">NEW</span>
