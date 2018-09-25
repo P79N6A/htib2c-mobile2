@@ -33,7 +33,8 @@
                     <ul>
                       <c:if test="#{not empty orderBackingBean.drawCoupon}">
                         <c:forEach items="#{orderBackingBean.drawCoupon}" var="coupon" varStatus="loop">
-                        <c:if test="#{coupon.attr1=='0'}">
+                        <!-- 代金券未领取 -->
+                        <c:if test="#{coupon.attr1=='0' &amp;&amp; coupon.couponType=='3'}">
 	                        <li class="">
 	                            <div class="center clearfix">
 	                                <div class="number reCenter">
@@ -51,7 +52,27 @@
 	                            </div>
 	                        </li>
 	                        </c:if>
-	                        <c:if test="#{coupon.attr1=='1'}">
+	                        <!-- 折扣未领取 -->
+	                        <c:if test="#{coupon.attr1=='0' &amp;&amp; coupon.couponType=='1'}">
+	                        <li class="">
+	                            <div class="center clearfix">
+	                                <div class="number reCenter">
+	                                    <i>折</i>
+	                                    <em>#{coupon.couponContent}</em>
+	                                </div>
+	                                <div class="text reCenter">
+	                                    <h3>#{coupon.couponName}</h3>
+	                                    <p>仅限续约智能互联优享套餐使用</p>
+	                                    <p>有效期至：#{coupon.effectEndDate}</p>
+	                                </div>
+                                    <div class="btn reCenter" id="#{coupon.id}">
+	                                    <span>立即领取</span>
+	                                </div>
+	                            </div>
+	                        </li>
+	                        </c:if>
+	                        <!-- 代金券已领取 -->
+	                        <c:if test="#{coupon.attr1=='1' &amp;&amp; coupon.couponType=='3'}">
 	                        <li class="active">
 	                            <div class="center clearfix">
 	                                <div class="number reCenter">
@@ -66,10 +87,25 @@
 	                                <div class="btn reCenter" id="#{coupon.id}">
 	                                    <span>去使用</span>
 	                                </div>
-<!-- 	                                <h:commandLink class="btn reCenter" action="#{orderBackingBean.drawCoupon}" > -->
-<!-- 		                                <f:param id="couponId" name="couponId" value="#{coupon.id}"></f:param> -->
-<!-- 										<span>去使用</span> -->
-<!-- 									</h:commandLink>  -->
+	                            </div>
+	                        </li>
+	                        </c:if>
+	                        <!-- 折扣已领取 -->
+	                        <c:if test="#{coupon.attr1=='1' &amp;&amp; coupon.couponType=='1'}">
+	                        <li class="active">
+	                            <div class="center clearfix">
+	                                <div class="number reCenter">
+	                                    <i>折</i>
+	                                    <em>#{coupon.couponContent}</em>
+	                                </div>
+	                                <div class="text reCenter">
+	                                    <h3>#{coupon.couponName}</h3>
+	                                    <p>仅限续约智能互联优享套餐使用</p>
+	                                    <p>有效期至：#{coupon.effectEndDate}</p>
+	                                </div>
+	                                <div class="btn reCenter" id="#{coupon.id}">
+	                                    <span>去使用</span>
+	                                </div>
 	                            </div>
 	                        </li>
 	                        </c:if>
