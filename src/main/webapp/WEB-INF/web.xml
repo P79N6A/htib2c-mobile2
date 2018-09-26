@@ -183,14 +183,6 @@
 		<servlet-name>CouponDataServlet</servlet-name>
 		<url-pattern>/servlet/CouponDataServlet</url-pattern>
 	</servlet-mapping>
-	<servlet>
-		<servlet-name>CouponSaveServlet</servlet-name>
-		<servlet-class>com.htichina.web.wechat.CouponSaveServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>CouponSaveServlet</servlet-name>
-		<url-pattern>/servlet/CouponSaveServlet</url-pattern>
-	</servlet-mapping>
     <!-- Coupon End -->
     
 	<servlet>
