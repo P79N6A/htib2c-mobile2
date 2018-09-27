@@ -553,13 +553,13 @@
 		                                                            <div class="span1">
 		                                                                <em>#{couPon.couponContent}</em><i><u>元</u> <span>#{couPon.couponName}</span></i>
 		                                                            </div>
-		                                                            <p>仅限优享套餐使用</p>
+		                                                            <p>#{couPon.couponDis}</p>
 		                                                            </c:if>
 		                                                            <c:if test="#{couPon.couponType=='1'}">
 			                                                            <div class="span1">
 			                                                                <em>#{couPon.couponContent}</em><i><u>折</u> <span>#{couPon.couponName}</span></i>
 			                                                            </div>
-		                                                            <p>仅限优享套餐使用</p>
+		                                                            <p>#{couPon.couponDis}</p>
 		                                                            </c:if>
 		                                                        </div>
 		                                                    </div>
@@ -993,9 +993,11 @@
         		_lis.each(function(index,item){
             		idstr+=$(item).attr("id")+",";
             		ids.push($(item).attr("id"));
+            		var vo="0";
+            		var dis="0";
             			if($(item).attr("couponType")=="1"){
             				//折扣
-            			  var dis=$(item).find("em").text();
+            			   dis=$(item).find("em").text();
             			}
 //             			if($(this).attr("couponType")=="2"){
 //             				//礼品
@@ -1004,7 +1006,7 @@
             			
             			if($(item).attr("couponType")=="3"){
             				//代金券 先减
-            				var vo=$(item).find("em").text();
+            				vo=$(item).find("em").text();
             			}
             			if(discount==0&amp;&amp;dis!=undefined){
             				discount=parseFloat(dis)/10;

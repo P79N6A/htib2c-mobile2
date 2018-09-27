@@ -15,11 +15,11 @@ html, body {
   margin-bottom:10px;
 }
 
-@font-face
-{
-font-family: newsFonts;
-src: url('../fonts/newsFonts.ttf');
-}
+/* @font-face */
+/* { */
+/* font-family: newsFonts; */
+/* src: url('../fonts/newsFonts.ttf'); */
+/* } */
 body {
   background: url("../img/bg.jpg") no-repeat;
   background-size: 100% 100%;

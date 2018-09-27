@@ -341,7 +341,6 @@ public class LoginBackingBean implements Serializable {
 //        String wToken = getWManAccessToken();
         String wToken = WechatAccessTokenUtils.getWechatToken();
       //2018-2-28,Tommy,调整微信access_token的获取方式，减少新token的生成以避免不够使用--------end
-        
         String[] tags = tagBean.getTagsByOpenId(wToken,openId);
         if(tags != null){
             logger.info("inSetTagtoWechatUser getTags"+ESAPI.encoder().encodeForHTML(tags.toString()));
