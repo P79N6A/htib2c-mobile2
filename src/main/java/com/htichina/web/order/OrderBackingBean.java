@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
@@ -36,6 +38,7 @@ import com.htichina.web.wechat.Demo;
 import com.htichina.web.wechat.WxPayDto;
 import com.htichina.wsclient.payment.AccountInfoResponse;
 import com.htichina.wsclient.payment.Coupon;
+import com.htichina.wsclient.payment.CouponHistory;
 import com.htichina.wsclient.payment.PackageInfoResponse;
 import com.htichina.wsclient.payment.PackageUpgradeRequest;
 import com.htichina.wsclient.payment.PackageUpgradeResponse;
@@ -164,6 +167,7 @@ public class OrderBackingBean implements Serializable {
     private String mobilePhoneConvert;
     private String accountNumConvert;
     private String vinConvert;
+    private List<Coupon> drawCoupon;
     public String toOrderEntry(String oId) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
         Date date2 = new Date();
@@ -398,7 +402,14 @@ public class OrderBackingBean implements Serializable {
         }
         return ViewPage.LINK2OrderEntry;
     }
-
+    public String toDrawCoupon(){
+    	HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+    	String promotionId = request.getParameter("promotionId");
+    	//根据活动id获取优惠券列表
+    	drawCoupon=client.findCouponsByPromotionId(accountNum, promotionId);
+    	System.out.println("promotionId-----"+promotionId);
+    	return ViewPage.LINK2COUPONS;
+    }
     private boolean checkOneCentPromotionTaken(VehicleInfoResponse vehicle) {
         logger.debug("in checkOneCentPromotionTaken...");
         boolean taken = false;
@@ -622,21 +633,21 @@ public class OrderBackingBean implements Serializable {
     	String couponIds=FacesUtils.getRequestParameter("couponIds");
     	String terms=FacesUtils.getRequestParameter("terms");
     	String[] couponArray={};
-    	boolean ifeffect= false;
-    	if(null!=couponIds&&!couponIds.equals("")){
-    		couponArray=couponIds.split(",");
-    		ifeffect =couponUtil.validataCoupon(couponArray, coupons);
-    	}else{
-    		ifeffect=true;
-    	}
+//    	boolean ifeffect= false;
+//    	if(null!=couponIds&&!couponIds.equals("")){
+//    		couponArray=couponIds.split(",");
+//    		ifeffect =couponUtil.validataCoupon(couponArray, coupons);
+//    	}else{
+//    		ifeffect=true;
+//    	}
     	//校验是否合规
-    	if(ifeffect&&terms!=null){
+    	if(terms!=null){
     		//有效
         	//计算金额
         	String orderDesc = "";
         	Double newPrice=0d;
         	//折扣
-        	Integer discount=10;
+        	Double discount=1d;
         	//代金券
         	Double voucher=0d;
             if(selectProd != null){
@@ -644,15 +655,15 @@ public class OrderBackingBean implements Serializable {
                 for(Coupon c:coupons){
                 	//代金券
                 	if(couponIds.contains(c.getId())&&c.getCouponType().equals("3")){
-                		voucher=Double.parseDouble(c.getCouponContent());
+                		voucher=voucher+Double.parseDouble(c.getCouponContent());
                 	}
                 	//折扣
                 	if(couponIds.contains(c.getId())&&c.getCouponType().equals("1")){
-                		discount=Integer.parseInt(c.getCouponContent());
+                		discount=discount*Double.parseDouble(c.getCouponContent())/10;
                 	}
                 }
                 //计算
-                newPrice=(amount-voucher)*discount/10;
+                newPrice=(amount-voucher)*discount;
                 if(newPrice<0){
                 	newPrice=0d;
                 }
@@ -691,7 +702,6 @@ public class OrderBackingBean implements Serializable {
                 logger.info("serviceResult=" + serviceResult);
                 logger.info("transActionResult=" + transActionResult);
             }
-            
     	}
     }
     
@@ -1940,5 +1950,13 @@ public class OrderBackingBean implements Serializable {
 		this.accountNumConvert = accountNumConvert;
 	}
 
-    
+	public List<Coupon> getDrawCoupon() {
+		return drawCoupon;
+	}
+
+	public void setDrawCoupon(List<Coupon> drawCoupon) {
+		this.drawCoupon = drawCoupon;
+	}
+
+	
 }
