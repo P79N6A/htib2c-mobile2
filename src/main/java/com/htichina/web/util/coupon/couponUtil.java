@@ -34,7 +34,7 @@ public class couponUtil {
     public static boolean validataCoupon(String[] ids, List<Coupon> coupons) {
         boolean flag = false;
         try {
-            if(ids.length==0){
+            if(ids.length==0||ids.length==1){
                 return true;
             }
             List<Coupon> myCouponList = new ArrayList<Coupon>();
@@ -129,14 +129,14 @@ public class couponUtil {
         coupon2.setCouponAttribute("1");
         coupon2.setCouponIsaddMC("1");
         coupon2.setCouponIsaddAC("1");
-        Coupon coupon3 = new Coupon();
-        coupon3.setId("3");
-        coupon3.setCouponAttribute("1");
-        coupon3.setCouponIsaddMC("1");
-        coupon3.setCouponIsaddAC("1");
+//        Coupon coupon3 = new Coupon();
+//        coupon3.setId("3");
+//        coupon3.setCouponAttribute("1");
+//        coupon3.setCouponIsaddMC("1");
+//        coupon3.setCouponIsaddAC("1");
         coupons.add(coupon1);
         coupons.add(coupon2);
-        coupons.add(coupon3);
+//        coupons.add(coupon3);
         couponUtil.validataCoupon(ids, coupons);
     }
 }
