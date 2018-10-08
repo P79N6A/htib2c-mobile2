@@ -19,7 +19,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="attr1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="attr2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="attr3" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="couoponType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="couponAttribute" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="couponContent" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="couponDis" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -29,10 +28,13 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="couponName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="couponNo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="couponPackage" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="couponType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="createdBy" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="createdTime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="deleted" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="effectEndDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="isUsed" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="lastUpdateBy" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="lastUpdateTime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="promotionCouponId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -49,7 +51,6 @@ import javax.xml.bind.annotation.XmlType;
     "attr1",
     "attr2",
     "attr3",
-    "couoponType",
     "couponAttribute",
     "couponContent",
     "couponDis",
@@ -59,10 +60,13 @@ import javax.xml.bind.annotation.XmlType;
     "couponName",
     "couponNo",
     "couponPackage",
+    "couponType",
     "createdBy",
     "createdTime",
     "deleted",
+    "effectEndDate",
     "id",
+    "isUsed",
     "lastUpdateBy",
     "lastUpdateTime",
     "promotionCouponId"
@@ -72,7 +76,6 @@ public class Coupon {
     protected String attr1;
     protected String attr2;
     protected String attr3;
-    protected String couoponType;
     protected String couponAttribute;
     protected String couponContent;
     protected String couponDis;
@@ -82,10 +85,13 @@ public class Coupon {
     protected String couponName;
     protected String couponNo;
     protected String couponPackage;
+    protected String couponType;
     protected String createdBy;
     protected String createdTime;
     protected String deleted;
+    protected String effectEndDate;
     protected String id;
+    protected String isUsed;
     protected String lastUpdateBy;
     protected String lastUpdateTime;
     protected String promotionCouponId;
@@ -160,30 +166,6 @@ public class Coupon {
      */
     public void setAttr3(String value) {
         this.attr3 = value;
-    }
-
-    /**
-     * 获取couoponType属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCouoponType() {
-        return couoponType;
-    }
-
-    /**
-     * 设置couoponType属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCouoponType(String value) {
-        this.couoponType = value;
     }
 
     /**
@@ -403,6 +385,30 @@ public class Coupon {
     }
 
     /**
+     * 获取couponType属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCouponType() {
+        return couponType;
+    }
+
+    /**
+     * 设置couponType属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCouponType(String value) {
+        this.couponType = value;
+    }
+
+    /**
      * 获取createdBy属性的值。
      * 
      * @return
@@ -475,6 +481,30 @@ public class Coupon {
     }
 
     /**
+     * 获取effectEndDate属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getEffectEndDate() {
+        return effectEndDate;
+    }
+
+    /**
+     * 设置effectEndDate属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEffectEndDate(String value) {
+        this.effectEndDate = value;
+    }
+
+    /**
      * 获取id属性的值。
      * 
      * @return
@@ -496,6 +526,30 @@ public class Coupon {
      */
     public void setId(String value) {
         this.id = value;
+    }
+
+    /**
+     * 获取isUsed属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIsUsed() {
+        return isUsed;
+    }
+
+    /**
+     * 设置isUsed属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIsUsed(String value) {
+        this.isUsed = value;
     }
 
     /**

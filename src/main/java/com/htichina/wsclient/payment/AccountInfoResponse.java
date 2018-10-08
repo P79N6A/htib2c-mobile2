@@ -24,10 +24,14 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="accountType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="currentCanBeUpgratedPackages" type="{http://payment.ws.htichina.com/}packageInfoResponse" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="currentPackages" type="{http://payment.ws.htichina.com/}packageInfoResponse" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="expiredCoupons" type="{http://payment.ws.htichina.com/}coupon" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="fullName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="isReceiveDidiForFirstLogin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="isReceiveDidiForRenew" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="mileageResponse" type="{http://payment.ws.htichina.com/}mileageResponse" minOccurs="0"/>
  *         &lt;element name="mobilePhone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="unUsedCoupons" type="{http://payment.ws.htichina.com/}coupon" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="usedCoupons" type="{http://payment.ws.htichina.com/}coupon" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="vin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -44,10 +48,14 @@ import javax.xml.bind.annotation.XmlType;
     "accountType",
     "currentCanBeUpgratedPackages",
     "currentPackages",
+    "expiredCoupons",
     "fullName",
     "isReceiveDidiForFirstLogin",
     "isReceiveDidiForRenew",
+    "mileageResponse",
     "mobilePhone",
+    "unUsedCoupons",
+    "usedCoupons",
     "vin"
 })
 public class AccountInfoResponse {
@@ -59,10 +67,17 @@ public class AccountInfoResponse {
     protected List<PackageInfoResponse> currentCanBeUpgratedPackages;
     @XmlElement(nillable = true)
     protected List<PackageInfoResponse> currentPackages;
+    @XmlElement(nillable = true)
+    protected List<Coupon> expiredCoupons;
     protected String fullName;
     protected String isReceiveDidiForFirstLogin;
     protected String isReceiveDidiForRenew;
+    protected MileageResponse mileageResponse;
     protected String mobilePhone;
+    @XmlElement(nillable = true)
+    protected List<Coupon> unUsedCoupons;
+    @XmlElement(nillable = true)
+    protected List<Coupon> usedCoupons;
     protected String vin;
 
     /**
@@ -196,6 +211,35 @@ public class AccountInfoResponse {
     }
 
     /**
+     * Gets the value of the expiredCoupons property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the expiredCoupons property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getExpiredCoupons().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Coupon }
+     * 
+     * 
+     */
+    public List<Coupon> getExpiredCoupons() {
+        if (expiredCoupons == null) {
+            expiredCoupons = new ArrayList<Coupon>();
+        }
+        return this.expiredCoupons;
+    }
+
+    /**
      * 获取fullName属性的值。
      * 
      * @return
@@ -268,6 +312,30 @@ public class AccountInfoResponse {
     }
 
     /**
+     * 获取mileageResponse属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link MileageResponse }
+     *     
+     */
+    public MileageResponse getMileageResponse() {
+        return mileageResponse;
+    }
+
+    /**
+     * 设置mileageResponse属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MileageResponse }
+     *     
+     */
+    public void setMileageResponse(MileageResponse value) {
+        this.mileageResponse = value;
+    }
+
+    /**
      * 获取mobilePhone属性的值。
      * 
      * @return
@@ -289,6 +357,64 @@ public class AccountInfoResponse {
      */
     public void setMobilePhone(String value) {
         this.mobilePhone = value;
+    }
+
+    /**
+     * Gets the value of the unUsedCoupons property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the unUsedCoupons property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getUnUsedCoupons().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Coupon }
+     * 
+     * 
+     */
+    public List<Coupon> getUnUsedCoupons() {
+        if (unUsedCoupons == null) {
+            unUsedCoupons = new ArrayList<Coupon>();
+        }
+        return this.unUsedCoupons;
+    }
+
+    /**
+     * Gets the value of the usedCoupons property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the usedCoupons property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getUsedCoupons().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Coupon }
+     * 
+     * 
+     */
+    public List<Coupon> getUsedCoupons() {
+        if (usedCoupons == null) {
+            usedCoupons = new ArrayList<Coupon>();
+        }
+        return this.usedCoupons;
     }
 
     /**

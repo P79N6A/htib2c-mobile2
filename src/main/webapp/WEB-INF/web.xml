@@ -155,7 +155,7 @@
 		<servlet-name>notifyServlet</servlet-name>
 		<url-pattern>/notifyServlet</url-pattern>
 	</servlet-mapping>
-
+    <!-- Questionnaire Start -->
 	<servlet>
 		<servlet-name>QuestionnaireDataServlet</servlet-name>
 		<servlet-class>com.htichina.web.wechat.QuestionnaireDataServlet</servlet-class>
@@ -173,7 +173,26 @@
 		<servlet-name>QuestionnaireSaveServlet</servlet-name>
 		<url-pattern>/servlet/QuestionnaireSaveServlet</url-pattern>
 	</servlet-mapping>
-
+    <!-- Questionnaire End -->
+    <!-- Coupon Start -->
+	<servlet>
+		<servlet-name>CouponDataServlet</servlet-name>
+		<servlet-class>com.htichina.web.wechat.CouponDataServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CouponDataServlet</servlet-name>
+		<url-pattern>/servlet/CouponDataServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>CouponSaveServlet</servlet-name>
+		<servlet-class>com.htichina.web.wechat.CouponSaveServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CouponSaveServlet</servlet-name>
+		<url-pattern>/servlet/CouponSaveServlet</url-pattern>
+	</servlet-mapping>
+    <!-- Coupon End -->
+    
 	<servlet>
 		<servlet-name>WechatLocateServlet</servlet-name>
 		<servlet-class>com.htichina.web.wechat.WechatLocateServlet</servlet-class>

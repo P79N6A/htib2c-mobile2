@@ -4,11 +4,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
+import javax.jws.WebParam;
+
 import org.apache.log4j.Logger;
 
 import com.alipay.util.UtilDate;
 import com.htichina.common.web.ConfigureInfo;
 import com.htichina.common.web.Constant;
+import com.htichina.web.common.FacesUtils;
 import com.htichina.wsclient.payment.AccountInfoResponse;
 import com.htichina.wsclient.payment.Coupon;
 import com.htichina.wsclient.payment.CouponHistory;
@@ -456,13 +459,29 @@ public class PaymentServiceClient {
   public Integer saveDrawCouponHistory(CouponHistory couPonHistory){
 	  return service.insertHistory(couPonHistory);
   }
-  public List<PromotionCoupon> findPromotionCoupon(){
-	  String currTime=UtilDate.getDateFormatter();
-	  return service.findPromotionCouponList(currTime);
+  public List<PromotionCoupon> findPromotionCoupon(String accountNum,String tag){
+	  return service.getEffectiveCouponPromotionByCustomer(accountNum,tag);
   }
   public List<Coupon> findEffectCouponList(String accountNum,String isUserd,String currentDate,String packageId){
 	  return service.findEffectCouponList(accountNum,isUserd,currentDate,packageId);
   }
+  public boolean updateParentOrderAmount( String orderNum, String amount){
+	  return service.updateParentOrderAmount(orderNum,amount);
+  }
+  public boolean updateServiceOrderAmount(String orderNum,String amount){
+	  return service.updateServiceOrderAmount(orderNum,amount);
+  }
+  
+  public boolean updateTransactionPrice(String orderNum,String amount){
+	  return service.updateTransactionPrice(orderNum,amount);
+  }
+  public boolean updateCouponHistory(String orderNum,String couponId,String accountNum){
+	  if(accountNum==null){
+		  accountNum = (String) FacesUtils.getManagedBeanInSession(Constant.ACCOUNT_NUM);
+	  }
+	  return service.updateCouponHistory(orderNum,couponId,accountNum);
+  };
+  
 }
 
 

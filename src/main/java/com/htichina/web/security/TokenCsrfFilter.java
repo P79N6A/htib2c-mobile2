@@ -122,6 +122,7 @@ public class TokenCsrfFilter implements Filter {
 		   uri.contains("WechatLocateServlet")||
 		   uri.contains("QuestionnaireDataServlet")||
 		   uri.contains("QuestionnaireSaveServlet")||
+		   uri.contains("CouponDataServlet")||
 		   uri.contains("LuckyDraw2Servlet")||
 		   uri.contains("LuckyDraw2DataServlet")||
 		   uri.contains("orderFailed.xhtml")||
@@ -146,6 +147,7 @@ public class TokenCsrfFilter implements Filter {
 		   uri.contains(".png")||
 		   uri.contains(".ico")||
 		   uri.contains(".jpg")||
+		   uri.contains(".ttf")||
 		   uri.contains(".gif")){
 			return true;
 		}  

@@ -18,6 +18,14 @@
         <link rel="stylesheet"
               href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/seccss.css?v=20170704" charset="utf-8" />
         <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" charset="utf-8" />
+        <script src="#{facesContext.externalContext.request.contextPath}/resources/js/CouponUtil.js" charset="UTF-8" ></script>
+        <!-- 福利放送 end -->
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/zepto.min.js"></script>
+		
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/scrollBar.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/v.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/js.js"></script>
+		<script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/swiper.js "></script>
         <style>
 	        html, body {
 			    width: 100% !important;
@@ -25,10 +33,327 @@
 			    overflow:visible  !important;
 			}
         </style>
+        <style>
+        .addPage {
+            width: 490px;
+            overflow: hidden;
+            margin: 50px auto 0;
+        }
+        .addPage .addBtn {
+            position: relative;
+            width: 100%;
+            height: 72px;
+            background: url(../resources/coupon/images/btn-red.png) top left no-repeat;
+            background-size: contain;
+            line-height: 77px;
+            text-align: center;
+            color: #fff;
+            font-size: 36px;
+        }
+        .addPage .addBtn.active span {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        
+        .addPage .addBtn.active span {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        
+        .addPage .addBtn span {
+            position: absolute;
+            top: 50%;
+            right: 40px;
+            margin-top: -15px;
+            width: 30px;
+            height: 30px;
+            background: #6C0007;
+            border-radius: 8px;
+            -webkit-box-shadow: 1px 0 10px 0 #530005 inset;
+            box-shadow: 1px 0 10px 0 #530005 inset;
+        }
+        .addPage .addBtn span::before {
+            -webkit-transition: all .5s;
+            transition: all .5s;
+            content: '';
+            display: block;
+            width:0;
+            height:0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 11px auto 0;
+            border-width: 8px;
+            border-style:solid;
+            border-color:#fff transparent transparent transparent;
+        }
+        #infobox #txtlist h3 {
+            margin-top: 30px;
+        }
+        .addPage .scroll_cont {
+            height: 100%;
+        }
+        .addPage .scroll_cont ul {
+            margin-top: -1px;
+            background: url(../resources/coupon/images/bg2.jpg);
+        }
+        .addPage .scroll-wrap {
+            position: relative;
+            height: 272px;
+            overflow: hidden;
+            display: none;
+        }
+        .addPage .scroll_handle {
+            position: absolute;
+            top: 0;
+            right: 5px;
+            width: 10px;
+            height: 100%;
+        }
+        .addPage .scroll_handle .scroll_bar {
+            position: relative;
+            width: 100%;
+            height: 90px;
+            border-radius: 5px;
+            background: #fff;
+        }
+        .addPage .scroll_cont ul li {
+            margin: 0 10px;
+            border-top: solid 1px #000;
+            overflow: hidden;
+        }
+        .addPage .scroll_cont ul li .center {
+            position: relative;
+            margin: 10px 0;
+            height: 110px;
+            -webkit-transition: all .5s;
+            transition: all .5s;
+            background: none;
+        }
+        .addPage .scroll_cont ul li.active .center {
+            background: url(../resources/coupon/images/bg1.jpg);
+        }
+        .addPage .scroll_cont ul li.inActive .center {
+            background: url(../resources/coupon/images/bg3.jpg);
+        }
+        .addPage .scroll_cont ul li.inActive .center .number {
+            color: #fff;
+        }
+        .addPage .scroll_cont ul li .center .number em {
+            max-width: 80px!important;
+        }
+        .addPage .scroll_cont ul li.inActive .center .number p::before {
+            background: #fff;
+        }
+        .addPage .scroll-wrap .grey {
+            display: none;
+        }
+        
+        .addPage .scroll_cont ul li .center .number {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+            color: #677F8D;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: bold;
+            overflow: hidden;
+        }
+        .addPage .scroll_cont ul li.active .center .number {
+            color: #fff;
+        }
+        .addPage .scroll_cont ul li .center .number .span1 {
+            margin-bottom: 5px;
+        }
+        .addPage .scroll_cont ul li .center .number .span1 i {
+            max-height: 50px;
+            display: inline-block;
+            overflow: hidden;
+            max-width: 260px;
+        }
+        .addPage .scroll_cont ul li .center .number em {
+            font-size: 50px;
+            line-height: 40px;
+            font-style: normal;
+            font-weight: bold;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: bottom;
+            max-width: 80px;
+        }
+        .addPage .scroll_cont ul li .center .number i {
+            font-style: normal;
+            font-size: 20px;
+            line-height: 24px;
+        }
+        .addPage .scroll_cont ul li .center .number u {
+            text-decoration: none;
+        }
+        .addPage .scroll_cont ul li .center .number i span {
+            display: inline-block;
+            vertical-align: bottom;
+            height: 24px;
+            width: 220px;
+            overflow: hidden;
+        }
+        .addPage .scroll_cont ul li .center .number p {
+            position: relative;
+            font-size: 20px;
+            line-height: 25px;
+            /*height: 58px;*/
+            overflow: hidden;
+            padding-left: 15px;
+            font-weight: normal;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+        .addPage .scroll_cont ul li .center .number p::before {
+            position: absolute;
+            left: 0;
+            top: 12px;
+            content: '';
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #677F8D;
+        }
+        .addPage .scroll_cont ul li.active .center .number p::before {
+            background: #fff;
+        }
+        .clearfix:after {
+            content: '';
+            height: 100%;
+            display: block;
+            overflow: hidden;
+            clear: both;
+        }
+        #infobox .text {
+            position: relative;
+            width: 490px;
+            margin: 15px auto 20px;
+            font-size: 26px;
+        }
+        #infobox .text span {
+            border-bottom: solid 1px #B3B2B2;
+        }
+        #infobox .text .span1 {
+            float: left;
+        }
+        #infobox .text .rule1 {
+            float: right;
+        }
+
+        /* 活动规则 */
+        .float {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            margin: 0 auto;
+            width: 490px;
+            z-index: 999;
+            height: 461px;
+            background: url(../resources/coupon/images/rule.png) center center no-repeat;
+            background-size: cover;
+            overflow: hidden;
+            display: none;
+            text-align: left;
+        }
+        .float.active {
+            display: block;
+        }
+        .float .content .close {
+            padding: 13px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 20;
+            width: 43px;
+        }
+        .float .content .close img {
+            width: 100%;
+        }
+        .float .content .close span {
+            display: block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: url(../resources/coupon/close.png) center center no-repeat #3F7181;
+        }
+        .float .content .cont {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .float1 .content {
+            height: 420px;
+            padding: 15px 15px 30px;
+        }
+        .float1 .content .title {
+            font-size: 36px;
+            line-height: 36px;
+            font-weight: bolder;
+            color: #fff;
+            text-align: center;
+            padding: 40px 0 30px;
+        }
+        .float1 .content .scroll-wrap {
+            position: relative;
+            width: 420px;
+            height: 294px;
+            margin: 0 auto;
+        }
+        .float1 .content .scroll-wrap .scroll_cont {
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+            line-height: 32px;
+            height: 100%;
+        }
+        .float1 .content .scroll-wrap .scroll_cont .aside {
+            width: 100%;
+            color: #fff;
+        }
+        .float1 .content .scroll-wrap .scroll_cont .aside p {
+            font-size: 20px;
+            line-height: 26px;
+            padding-bottom: 5px;
+        }
+        .float1 .content .scroll-wrap .scroll_cont .aside .padding {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            padding-left: 40px;
+        }
+        .float1 .content .scroll-wrap .scroll_handle {
+            width: 8px;
+            height: 100%;
+            background: rgba(190,234,251,.5);
+            position: absolute;
+            top: 0;
+            right: -15px;
+            border-radius: 8px;
+            /*display: none;*/
+        }
+        .float1 .content .scroll-wrap .scroll_handle .scroll_bar {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 65px;
+            background: #fff;
+            border-radius: 8px;
+        }
+    </style>
         <script>
+           var couponJson;
             $(function () {
-
-
+                 couponListString='{<h:outputText value="#{orderBackingBean.couponListString}"/>}';
+                 couponListString=couponListString.substring(1,couponListString.length-1);
+                 couponJson= $.parseJSON(couponListString);
                 //订购须知 展开 收缩
                 $('.Orderbtn').click(function(){
                     // var class_= $('.Orderbtn').attr('class')
@@ -63,12 +388,121 @@
                     }
                 })
                 $(".coupon_check").click(function(){
-                	alert("aaaaa");
+                	#{orderBackingBean.selectProd.promotionPrice}
                 })
             })
             function toTermsOfService(){
                 window.location.href = "https://www.cntelematics.com/htib2c-mobile/views/termsOfService.pdf";
             }
+            
+            function validateCoupon(dom){
+            	var ids=[];
+            	var effectId=[];
+            	var parentDom=$(dom).parent().parent();
+            	var inputs=parentDom.find("input:checkbox:checked");
+            	var shouldPay=$("#allPay").text().replace("¥","").replace(",","");
+            	var shouldPaynew=0;
+            	var voucher=0;
+            	var discount=0;
+            	var idstr="";
+            	var feeTag='<h:outputText value="#{orderBackingBean.wechatPay}"/>';
+            	if(inputs.length>0){
+	            	inputs.each(function(i,x){
+	            		var ipt=this;
+	            		idstr+=ipt.id+",";
+	            		ids.push(ipt.id);
+	            			if($(this).attr("couponType")=="1"){
+	            				//折扣
+	            				discount=$(this).attr("couponContent");
+	            			}
+	//             			if($(this).attr("couponType")=="2"){
+	//             				//礼品
+	//             				voucher=$(this).attr("couponContent");
+	//             			}
+	            			
+	            			if($(this).attr("couponType")=="3"){
+	            				//代金券 先减
+	            				voucher=$(this).attr("couponContent");
+	            			}
+	            	  });
+	            	//把选中的ids拼成字符串赋值等待传递到后台
+	            	idstr=idstr.substring(0,idstr.length-1);
+	            	
+	            	var sub=parseFloat(shouldPay)-parseFloat(voucher);
+	            	if(sub &lt; 0){
+	            		sub=parseFloat(0);
+	            	}
+	            	shouldPaynew=sub;
+	            	if(discount!=0){
+	            	    shouldPaynew=shouldPaynew*discount/10;
+	            	}
+	            	if(feeTag!="true"){
+	            		$("#aliFee").val(shouldPaynew);
+	            	}
+	            	$("#shouldPay").text("¥"+fmoney(shouldPaynew,2));
+            	}else{
+            		shouldPaynew=$("#allPay").text()
+            		$("#shouldPay").text(shouldPaynew);
+            	}
+            	if(feeTag=="true"){
+            		document.getElementById("wcouponId").value=idstr;
+            	}else{
+            		document.getElementById("acouponId").value=idstr;
+            	}
+            	
+            	var resultCoupon=portal.coupon.returnRightCoupons(ids,couponJson);
+            	$(resultCoupon).each(function(i,x){
+            		var couponid=this.id;
+            		effectId.push(couponid);
+            	  });
+            	inputs=parentDom.find("input:checkbox");
+            	inputs.each(function(i,x){
+            		var id=$(this).attr("id");
+            		if(!effectId.contains(id)){
+            			$(this).attr("disabled","disabled");
+            		}else{
+            			$(this).removeAttr("disabled");
+            		}
+            	  });
+            }
+            
+            function fmoney(s, n) { 
+            	s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + ""; 
+            	var l = s.split(".")[0].split("").reverse(), r = s.split(".")[1]; 
+            	t = ""; 
+            	for (i = 0; i &lt; l.length; i++) { 
+            	t += l[i] + ((i + 1) % 3 == 0 &amp;&amp; (i + 1) != l.length ? "," : ""); 
+            	} 
+            	return t.split("").reverse().join("") + "." + r; 
+            	} 
+            function toPay(data) {
+            	var id=data.source.id;
+                var status = data.status; // Can be "begin", "complete" or "success".
+                if(status=="success" &amp;&amp; terms.checked &amp;&amp; id=="wechatForm:wPay"){
+                	callpay();
+                }
+            }
+            function callpay() {
+                var response = "{"+document.getElementById("wechatForm:wechatResponse").innerText+"}";
+                WeixinJSBridge.invoke("getBrandWCPayRequest", JSON.parse(response), function (res) {
+                            if (res.err_msg == "get_brand_wcpay_request:ok") {
+                                window.location.href = '<h:outputText value="#{orderBackingBean.wechatNotifyUrl}"/>';
+                            } else {
+                                window.location.href = '<h:outputText value="#{orderBackingBean.wechatPayFailedUrl}"/>';
+                            }
+                        });
+           }
+           function turnCheck(){
+               $("#terms").get(0).checked=!$("#terms").get(0).checked;
+           }
+           
+           function wechatValidate(){
+        	   if(!terms.checked) {
+                   popCheck();
+               }else{
+                   document.getElementById("wechatForm:wPay").onclick()
+               }
+           }
         </script>
 
         <div class="page">
@@ -92,30 +526,74 @@
                                         <li>套&#160;&#160;餐&#160;&#160;价&#160;&#160;格&#160;：<span><h:outputText value="#{orderBackingBean.selectProd.promotionPrice}">
                                             <f:convertNumber type="currency" currencySymbol="¥"/>
                                         </h:outputText></span></li>
-                                        <li>合&#160;&#160;计&#160;&#160;金&#160;&#160;额&#160;：<span><h:outputText value="#{orderBackingBean.selectProd.promotionPrice}">
+                                        <li>合&#160;&#160;计&#160;&#160;金&#160;&#160;额&#160;：<span><h:outputText id="allPay" value="#{orderBackingBean.selectProd.promotionPrice}">
+                                            <f:convertNumber type="currency" maxFractionDigits="2" currencySymbol="¥"/>
+                                        </h:outputText></span></li>
+                                        <li>应&#160;&#160;付&#160;&#160;金&#160;&#160;额&#160;：<span><h:outputText id="shouldPay" value="#{orderBackingBean.selectProd.promotionPrice}">
                                             <f:convertNumber type="currency" maxFractionDigits="2" currencySymbol="¥"/>
                                         </h:outputText></span></li>
                                     </ul>
                                 </div>
-                                <h3>可用优惠券</h3>
-                                <div class="info_list" id="info_list1" style="padding-left: 43px;">
-                                    <ul>
-                                       <c:forEach items="#{orderBackingBean.coupons}" var="couPon" varStatus="x">
-                                            <li secIndex="${x.count}">
-                                              <input type="checkbox" class="coupon_check" style="zoom: 150%" couponType="#{couPon.couoponType}" couponAttribute="#{couPon.couponAttribute}"></input>&#160;&#160;#{couPon.couponName}
-                                            </li>
-                                         </c:forEach>
-                                    </ul>
-                                    <ul>
-                                        <li>应&#160;&#160;付&#160;&#160;金&#160;&#160;额：
-                                           <span>
-	                                           <h:outputText value="#{orderBackingBean.selectProd.promotionPrice}">
-	                                            <f:convertNumber type="currency" maxFractionDigits="2" currencySymbol="¥"/>
-	                                           </h:outputText>
-                                           </span>
-                                       </li>
-                                    </ul>
+                                <!-- coupon -->
+                         <div class="addPage">
+                            <div class="addBtn">可用优惠券 <span></span></div>
+                            <div class="scroll-wrap">
+                                <div class="grey grey1"></div>
+                                <div class="grey grey2"></div>
+                                <div class="scroll_cont">
+                                    <div class="scroll_content">
+                                        <div class="aside">
+                                            <ul>
+                                             <c:if test="${!empty orderBackingBean.coupons}">
+		                                       <c:forEach  items="#{orderBackingBean.coupons}" var="couPon" varStatus="x">
+		                                                <li class="" id="#{couPon.id}" couponType="#{couPon.couponType}" >
+		                                                    <div class="center">
+		                                                        <div class="number clearfix">
+		                                                          <c:if test="#{couPon.couponType=='3'}">
+		                                                            <div class="span1">
+		                                                                <em>#{couPon.couponContent}</em><i><u>元</u> <span>#{couPon.couponName}</span></i>
+		                                                            </div>
+		                                                            <p>仅限优享套餐使用</p>
+		                                                            </c:if>
+		                                                            <c:if test="#{couPon.couponType=='1'}">
+			                                                            <div class="span1">
+			                                                                <em>#{couPon.couponContent}</em><i><u>折</u> <span>#{couPon.couponName}</span></i>
+			                                                            </div>
+		                                                            <p>仅限优享套餐使用</p>
+		                                                            </c:if>
+		                                                        </div>
+		                                                    </div>
+		                                                </li>
+		                                         </c:forEach>
+		                                       </c:if>   
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div class="scroll_handle">
+                                    <div class="scroll_bar"></div>
+                                </div>
+                            </div>
+                        </div>
+<!--                                 <h3>可用优惠券</h3> -->
+<!--                                 <div  class="info_list" id="info_list_coupon" style="padding-left: 43px;"> -->
+<!--                                     <ul id="couponList"> -->
+<!--                                       <c:if test="${!empty orderBackingBean.coupons}"> -->
+<!--                                        <c:forEach  items="#{orderBackingBean.coupons}" var="couPon" varStatus="x"> -->
+<!--                                             <li secIndex="${x.count}"> -->
+<!--                                               <input type="checkbox" class="coupon_check" style="zoom: 150%" id="#{couPon.id}" couponType="#{couPon.couponType}" couponContent="#{couPon.couponContent}" onchange="validateCoupon(this)" ></input>&#160;&#160;#{couPon.couponName} -->
+<!--                                             </li> -->
+<!--                                          </c:forEach> -->
+<!--                                          <li>应&#160;&#160;付&#160;&#160;金&#160;&#160;额： -->
+<!--                                            <span> -->
+<!-- 	                                           <h:outputText id="shouldPay" value="#{orderBackingBean.selectProd.promotionPrice}"> -->
+<!-- 	                                            <f:convertNumber type="currency" maxFractionDigits="2" currencySymbol="¥"/> -->
+<!-- 	                                           </h:outputText> -->
+<!--                                            </span> -->
+<!--                                        </li> -->
+<!--                                       </c:if>   -->
+<!--                                     </ul> -->
+<!--                                 </div> -->
                                 <h3>账户信息</h3>
                                 <div class="info_list" id="info_list2" style=" padding-left: 40px;">
 
@@ -186,7 +664,7 @@
                                     </div>
                                 </div>
                                     <div id="filer"  style="display:none"></div>-->
-
+<!--                                 <input id="wcouponId" name="couponIds" style="display: none;"/> -->
                                 <c:if test="#{orderBackingBean.wechatPay}">
                                     <h:form id="wechatForm">
                                         <div class="Orderbtn Orderbtn1">订购须知<div
@@ -203,15 +681,58 @@
                                         </div>
                                         <div class="tiaokuam_bg">
                                             <div class="btn btn1" onclick="turnCheck()" for="terms"></div>
-                                            同意并确认《服务条款与条件》
+                                                                                                                           同意并确认《服务条款与条件》
                                             <input type="checkbox" id="terms" name="terms" style="display:none"/>
                                         </div>
 
-                                        <div class="text"><span onclick="toTermsOfService()">详见“服务条款与条件”</span></div>
-                                        <div class="btn long_btn"> <input type="button"
-                                                                          style="margin-left: 0%;"
-                                                                          id="payButton" value="确认付款(微信支付)" onclick="callpay()"/></div>
-                                        <script type="text/javascript">
+                                        <div class="text clearfix" >
+                                            <span class="span1"  onclick="toTermsOfService()">详见“服务条款与条件”</span>
+                                            <span class="rule1">优惠券使用规则</span>
+                                            <!-- 浮层-活动规则 开始 -->
+				                            <div class="float float1">
+				                                <div class="content">
+				                                    <div class="cont">
+				                                        <div class="close"><img src="../resources/coupon/images/close.png" alt=""></img></div>
+				                                        <p class="title">- 优惠券使用规则 -</p>
+				                                        <div class="scroll-wrap">
+				                                            <div class="scroll_cont">
+				                                                <div class="scroll_content">
+				                                                    <div class="aside">
+				                                                        <p>一. 优惠券可在套餐选择页面出现，由客户点击领取。</p>
+				                                                        <p>二. 礼券的使用规则：</p>
+				                                                        <div class="padding">
+				                                                            <p>1. 礼券仅限订单选择在线支付时使用；</p>
+				                                                            <p>2. 每个订单仅限使用一个礼券，每张礼券只能使用一次，不能叠加或拆分使用；</p>
+				                                                            <p>3. 礼券如有套餐和时间限制，订单需满足对应条件后才可使用；</p>
+				                                                            <p>4. 礼券使用不设找零；</p>
+				                                                            <p>5. 如果订单已支付成功，且未使用礼券，则该礼券仅限在下个可用该礼券的订单中使用；</p>
+				                                                            <p>6. 如果订单已支付成功，不可追加使用任何礼券;</p>
+				                                                        </div>
+				                                                        <p>三. 下单的时候如使用过礼券，则在订单尚未付款成功时，礼券在可领取时间范围内仍可再次领取。</p>
+				                                                    </div>
+				                                                </div>
+				                                            </div>
+				                                            <div class="scroll_handle active">
+				                                                <div class="scroll_bar"></div>
+				                                            </div>
+				                                        </div>
+				                                    </div>
+				
+				                                </div>
+				                            </div>
+				                            <!-- 浮层-活动规则 结束 -->
+                                        </div>
+                                        <h:outputText id="wechatResponse" value="#{orderBackingBean.wechatPrepayResponse}"  style="display: none;"/>
+                                        <div class="btn long_btn" onclick="wechatValidate()">
+                                                                                                                            确认付款(微信支付)
+                                         </div>
+                                         <input id="wcouponId" name="couponIds" style="display: none;"/>
+                                         <div style="display: none;">
+                                         <h:commandButton id="wPay"    action="#{orderBackingBean.wechatCouponPay()}">
+							                <f:ajax   event="action" onevent="toPay" render="wechatResponse" />
+							            </h:commandButton>
+							            </div>
+                                         <script type="text/javascript">
                                             function enablePay(termsObj) {
                                                 var obj = termsObj;
                                                 if(obj.checked) {
@@ -220,26 +741,8 @@
                                                     payButton.disabled = true;
                                                 }
                                             }
-                                            function turnCheck(){
-                                                $("#terms").get(0).checked=!$("#terms").get(0).checked;
-                                            }
+                                            
 
-                                            function callpay()
-                                            {
-                                                if(!terms.checked) {
-                                                    popCheck();
-                                                } else {;
-                                                    var response = '{<h:outputText value="#{orderBackingBean.wechatPrepayResponse}"/>}';
-                                                    WeixinJSBridge.invoke("getBrandWCPayRequest", JSON.parse(response), function (res) {
-                                                                if (res.err_msg == "get_brand_wcpay_request:ok") {
-                                                                    window.location.href = '<h:outputText value="#{orderBackingBean.wechatNotifyUrl}"/>';
-                                                                } else {
-                                                                    window.location.href = '<h:outputText value="#{orderBackingBean.wechatPayFailedUrl}"/>';
-                                                                }
-                                                            }
-                                                    );
-                                                }
-                                            }
                                         </script>
                                     </h:form>
                                 </c:if>
@@ -259,18 +762,57 @@
                                         </div>
                                         <div class="tiaokuam_bg">
                                             <div class="btn btn1" onclick="turnCheck2()" for="terms2"></div>
-                                            同意并确认《服务条款与条件》
+                                                                                                                           同意并确认《服务条款与条件》
                                             <input type="checkbox" id="terms2" name="terms2" style="display:none"/>
                                         </div>
-                                        <div class="text"><span onclick="toTermsOfService()">详见“服务条款与条件”</span></div>
+                                        <div  class="text clearfix">
+                                        <span class="span1"  onclick="toTermsOfService()">详见“服务条款与条件”</span>
+                                        <span class="rule1">优惠券使用规则</span>
+                                           <!-- 浮层-活动规则 开始 -->
+			                            <div class="float float1">
+			                                <div class="content">
+			                                    <div class="cont">
+			                                        <div class="close"><img src="../resources/coupon/images/close.png" alt=""></img></div>
+			                                        <p class="title">- 优惠券使用规则 -</p>
+			                                        <div class="scroll-wrap">
+			                                            <div class="scroll_cont">
+			                                                <div class="scroll_content">
+			                                                    <div class="aside">
+			                                                        <p>一. 优惠券可在套餐选择页面出现，由客户点击领取。</p>
+			                                                        <p>二. 礼券的使用规则：</p>
+			                                                        <div class="padding">
+			                                                            <p>1. 礼券仅限订单选择在线支付时使用；</p>
+			                                                            <p>2. 每个订单仅限使用一个礼券，每张礼券只能使用一次，不能叠加或拆分使用；</p>
+			                                                            <p>3. 礼券如有套餐和时间限制，订单需满足对应条件后才可使用；</p>
+			                                                            <p>4. 礼券使用不设找零；</p>
+			                                                            <p>5. 如果订单已支付成功，且未使用礼券，则该礼券仅限在下个可用该礼券的订单中使用；</p>
+			                                                            <p>6. 如果订单已支付成功，不可追加使用任何礼券;</p>
+			                                                        </div>
+			                                                        <p>三. 下单的时候如使用过礼券，则在订单尚未付款成功时，礼券在可领取时间范围内仍可再次领取。</p>
+			                                                    </div>
+			                                                </div>
+			                                            </div>
+			                                            <div class="scroll_handle active">
+			                                                <div class="scroll_bar"></div>
+			                                            </div>
+			                                        </div>
+			                                    </div>
+			
+			                                </div>
+			                            </div>
+			                            <!-- 浮层-活动规则 结束 -->
+                                        </div>
+                                        <input style="display: none"  name="orderNumber" value="#{orderBackingBean.orderNumber}"></input>
                                         <input style="display: none"  name="WIDout_trade_no" value='#{orderBackingBean.WIDout_trade_no}' />
                                         <input style="display: none"  name="WIDsubject" value='#{orderBackingBean.WIDsubject}' />
-                                        <input style="display: none"  name="WIDtotal_fee" value='#{orderBackingBean.WIDtotal_fee}' />
+                                        <input id="acouponId" name="couponIds" style="display: none;" value=""/>
+                                        <input name="accountNum" style="display: none;" value="#{orderBackingBean.accountNum}"/>
+                                        <input style="display: none" id="aliFee"  name="WIDtotal_fee" value='#{orderBackingBean.WIDtotal_fee}' />
+                                        
                                         <div class="btn long_btn">
-                                            <input type="submit" style="margin-left: 0%;" value="确认付款(支付宝支付)" onclick="return
-                                         callAlipay();"/>
-                                        </div>
-
+                                            <input type="submit" style="margin-left: 0%;" value="确认付款(支付宝支付)" onclick="return callAlipay();"/>
+                                         </div>
+                                         
                                         <script type="text/javascript">
                                             function callAlipay()
                                             {
@@ -310,6 +852,233 @@
                                              onclick="hideLogOff()" class="csinput"/></div>
         </div>
         <div id="filer"  style="display:none"></div>
+  <script>
+    //订购须知 展开 收缩
+    $('#Orderbtn').click(function(){
+      // var class_= $('#Orderbtn').attr('class')
+        if($('#Orderbtn').hasClass('Orderbtn1')){
+            $('#Orderbtn').removeClass('Orderbtn1');
+            $('#Orderbtn').addClass('Orderbtn2');
+            $('#Pay_infotxt').show();
+            //alert()
+            //$('.swiper-wrapper').height(document.getElementById('txtlist').clientHeight)
+
+        }else{
+            $('#Orderbtn').addClass('Orderbtn1');
+            $('#Orderbtn').removeClass('Orderbtn2');
+            $('#Pay_infotxt').hide();
+            if(parseInt($("#move").css('marginTop')) &lt; $('#infobox').height()-$('#move').height()){
+                slide($('#infobox').height()-$('#move').height())
+                return false;
+            }
+            // $('.swiper-wrapper').height(document.getElementById('txtlist').clientHeight)
+
+        }
+    })
+    //同意并确认
+    $('#tiaokuam_bg .btn').click(function(){
+            if($(this).hasClass('btn1')){
+                $(this).removeClass('btn1')
+                $(this).addClass('btn2')
+            }else{
+                $(this).removeClass('btn2')
+                $(this).addClass('btn1')
+            }
+    });
+
+    //add
+    ;(function($,jq) {
+        //活动规则 滚动条
+        var detailsCommon = function( opts ) {
+            opts.content.scrollBar({'handle': opts.handle, 'bar': opts.bar});
+        };
+
+        ;(function() {
+            var getSrc = function () {
+                var arr = [];
+                $('img').each(function (index, elm) {
+                    arr.push($(elm).attr("src"));
+                });
+                arr.push('../resources/coupon/images/bg1.jpg');
+                arr.push('../resources/coupon/images/bg2.jpg');
+                arr.push('../resources/coupon/images/rule.png');
+                arr.push('../resources/coupon/images/close.png');
+                arr.push('../resources/coupon/images/btn-red.png');
+                return arr;
+            };
+            var loading = function (aSrc, loadFn, callBack) {
+                var loadI = 0;
+                var totalImg = aSrc.length;
+                for (var i = 0; i &lt; totalImg; i++) {
+                    var image = new Image();
+                    image.onload = function () {
+                        loadI++;
+                        var Scale = loadI / totalImg;
+                        var Percent = Math.floor(Scale * 100);
+                        loadFn &amp;&amp; loadFn(Percent);
+                        loadI == totalImg &amp;&amp; callBack &amp;&amp; callBack();
+                    };
+                    image.src = aSrc[i];
+                }
+            };
+            loading(getSrc(), function (num) {
+            }, function () {
+                var welfare = $('.page');
+
+                welfare.addClass('active');
+            });
+        })();
+
+
+        var oBox = jq('.addPage'),
+            addBtn = oBox.find('.addBtn'),
+            scrollWrap = oBox.find('.scroll-wrap'),
+            oUl = scrollWrap.find('.aside ul'),
+            text = jq('.text'),
+            float = jq('.float');
+
+
+        //初始化滚动条
+        detailsCommon({
+            'content': $('.addPage .scroll-wrap .scroll_cont'),
+            'handle': $('.addPage .scroll-wrap .scroll_handle'),
+            'bar': $('.addPage .scroll-wrap .scroll_bar')
+        });
+        detailsCommon({
+            'content': $('.float .scroll_cont'),
+            'handle': $('.float .scroll_handle'),
+            'bar': $('.float .scroll_bar')
+        });
+
+        //可用优惠券
+        addBtn.on('click',function() {
+            var _this = jq(this);
+
+            if( !_this.hasClass('active') ) {
+                _this.addClass('active');
+                scrollWrap.stop().slideDown(500);
+            }else {
+                _this.removeClass('active');
+                scrollWrap.stop().slideUp(500);
+            }
+
+        });
+
+        //选择票卷
+        oUl.on('click','li',function() {
+//         	var _index = $(this).index();
+//             oUl.find('li').eq(_index).addClass('active');
+        	var _id=$(this).attr("id");
+        	var _class=$(this).attr("class");
+        	var _ul=$(this).parent();
+        	
+        	var ids=[];
+        	var shouldPay=$("#allPay").text().replace("¥","").replace(",","");
+        	var shouldPaynew=0;
+        	var voucher=0;
+        	var discount=0;
+        	var idstr="";
+        	var feeTag='<h:outputText value="#{orderBackingBean.wechatPay}"/>';
+        	if(_class=="inActive"){
+            	return false;
+            }
+        	if(_class=="active"){
+        		$(this).removeClass().addClass("");
+            }
+        	if(_class==""){
+        		$(this).removeClass().addClass("active");
+        	}
+        	var _lis=_ul.find("li.active");
+        	if(_lis.length>0){
+        		_lis.each(function(index,item){
+            		idstr+=$(item).attr("id")+",";
+            		ids.push($(item).attr("id"));
+            			if($(item).attr("couponType")=="1"){
+            				//折扣
+            			  var dis=$(item).find("em").text();
+            			}
+//             			if($(this).attr("couponType")=="2"){
+//             				//礼品
+//             				voucher=$(this).attr("couponContent");
+//             			}
+            			
+            			if($(item).attr("couponType")=="3"){
+            				//代金券 先减
+            				var vo=$(item).find("em").text();
+            			}
+            			if(discount==0&amp;&amp;dis!=undefined){
+            				discount=parseFloat(dis)/10;
+            			}else if(discount!=0&amp;&amp;dis!="0"){
+            				discount=discount*(parseFloat(dis)/10);
+            			}
+            			if(vo!=undefined){
+            			   voucher=voucher+parseFloat(vo);
+            			}
+            	  });
+            	//把选中的ids拼成字符串赋值等待传递到后台
+            	idstr=idstr.substring(0,idstr.length-1);
+            	var sub=parseFloat(shouldPay)-voucher;
+            	if(sub &lt; 0){
+            		sub=parseFloat(0);
+            	}
+            	shouldPaynew=sub;
+            	if(discount!=0){
+            	    shouldPaynew=shouldPaynew*discount;
+            	}
+            	if(feeTag!="true"){
+            		$("#aliFee").val(shouldPaynew);
+            	}
+            	$("#shouldPay").text("¥"+fmoney(shouldPaynew,2));
+        	}else{
+        		shouldPaynew=$("#allPay").text()
+        		$("#shouldPay").text(shouldPaynew);
+        	}
+        	if(feeTag=="true"){
+        		document.getElementById("wcouponId").value=idstr;
+        	}else{
+        		document.getElementById("acouponId").value=idstr;
+        	}
+        	
+        	var resultCoupon=portal.coupon.returnRightCoupons(ids,couponJson);
+        	var effectId=[];
+        	$(resultCoupon).each(function(index,item){
+        		var couponid=item.id;
+        		effectId.push(couponid);
+        	  });
+        	var lis=oUl.find('li');
+        	lis.each(function(i,x){
+        		var id=$(x).attr("id");
+        		var _class=$(x).attr("class");
+        		if(!effectId.contains(id)){
+        			$(x).removeClass().addClass("inActive");
+        		}
+        	});
+        	var _lis2=_ul.find("li.active");
+        	if(_lis2.length==0){
+        		lis.each(function(i,x){
+            	   $(x).removeClass().addClass("");
+            	});
+        	}
+        });
+        //优惠券使用规则
+        text.find('.rule1').on('click',function() {
+            var _this = $(this);
+            if( _this.hasClass('active') ) {
+                _this.removeClass('active');
+                float.stop().fadeOut(500);
+            }else {
+                _this.addClass('active');
+                float.stop().fadeIn(500);
+            }
+        });
+        float.find('.close').on('click',function() {
+            text.find('.rule1').removeClass('active');
+            float.stop().fadeOut(500);
+        });
+
+    })(Zepto,jQuery);
+
+</script>
         <script type="text/javascript">
             if("1" == broserNum){
                 window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";

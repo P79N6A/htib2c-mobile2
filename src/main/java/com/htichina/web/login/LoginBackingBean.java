@@ -207,7 +207,6 @@ public class LoginBackingBean implements Serializable {
         logger.info("context ===>"+context);
         openId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
         logger.info("validateLogin openId="+ESAPI.encoder().encodeForHTML(openId));
-
         if(Strings.isNullOrEmpty(targetPage)){
         	logger.info("loginbean........validateLogin()........targetPage is null");
         }else{

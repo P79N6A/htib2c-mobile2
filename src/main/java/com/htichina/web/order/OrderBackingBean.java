@@ -1,7 +1,6 @@
 package com.htichina.web.order;
 
 import java.io.Serializable;
-import java.lang.Exception;
 import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,15 +14,15 @@ import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-import com.htichina.wsclient.payment.*;
-
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.alibaba.fastjson.JSON;
 import com.alipay.config.AlipayConfig;
 import com.alipay.util.AlipaySubmit;
+import com.alipay.util.CharacterReplaceUtil;
 import com.alipay.util.UtilDate;
 import com.google.common.base.Strings;
 import com.htichina.common.web.ConfigureInfo;
@@ -32,8 +31,28 @@ import com.htichina.web.PaymentServiceClient;
 import com.htichina.web.common.FacesUtils;
 import com.htichina.web.common.MessageBundle;
 import com.htichina.web.common.ViewPage;
+import com.htichina.web.util.coupon.couponUtil;
 import com.htichina.web.wechat.Demo;
 import com.htichina.web.wechat.WxPayDto;
+import com.htichina.wsclient.payment.AccountInfoResponse;
+import com.htichina.wsclient.payment.Coupon;
+import com.htichina.wsclient.payment.PackageInfoResponse;
+import com.htichina.wsclient.payment.PackageUpgradeRequest;
+import com.htichina.wsclient.payment.PackageUpgradeResponse;
+import com.htichina.wsclient.payment.PaymentOrderResponse;
+import com.htichina.wsclient.payment.ProductInfo;
+import com.htichina.wsclient.payment.ProductInfoResponse;
+import com.htichina.wsclient.payment.PromotionCategoryResult;
+import com.htichina.wsclient.payment.PromotionCoupon;
+import com.htichina.wsclient.payment.PromotionInfoResponse;
+import com.htichina.wsclient.payment.PromotionInfoWS;
+import com.htichina.wsclient.payment.PurchaseProductResponse;
+import com.htichina.wsclient.payment.QueryChildOrdersByParentOrderNumResponse;
+import com.htichina.wsclient.payment.QueryOrderByParentOrderNumResponse;
+import com.htichina.wsclient.payment.Transaction;
+import com.htichina.wsclient.payment.TransactionRequest;
+import com.htichina.wsclient.payment.TransactionResponse;
+import com.htichina.wsclient.payment.VehicleInfoResponse;
 import com.tencent.common.RandomStringGenerator;
 
 
@@ -64,7 +83,6 @@ public class OrderBackingBean implements Serializable {
     private PackageUpgradeRequest upgradeRequest;
     private PackageUpgradeResponse upgradeResponse;
     private String toInvoiceEntry = ViewPage.LINK2ApplyInvoice;
-
     // select base package
 //    private String selectBasePackageShortName;
 //    private String selectBasePackageDuration;
@@ -132,24 +150,40 @@ public class OrderBackingBean implements Serializable {
     private String sPkgId;
     //CR389 是否出现抽奖按钮
     private int hasLuckyDrawLink;
-    //CR435 是否显示优惠券活动
-    //true是显示false是不显示，默认不显示
-    private Integer showCouponPromotion=0;
+    //CR435 目标客户群显示活动
+    private List<PromotionCoupon>  promotionCoup;
     //CR435 显示可用优惠券list
     private List<Coupon> coupons;
-
+    //CR435 couponList Sitrng json;
+    private String couponListString;
+    private String orderNumber;
+    
+    private String transactionNo;
+    
+    private PaymentOrderResponse paymentOrderResponse ;
+    private String mobilePhoneConvert;
+    private String accountNumConvert;
+    private String vinConvert;
     public String toOrderEntry(String oId) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
         Date date2 = new Date();
         openId = oId;
         targetPage = ViewPage.LINK2MyAccount;
         String an = PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
-
         AccountInfoResponse aInfo = PaymentServiceClient.getInstance().getCurrentAccountInfo(an);
         if(aInfo != null){
             mobilePhone = aInfo.getMobilePhone();
             accountNum = aInfo.getAccountNum();
             vin = aInfo.getVin();
+            if(mobilePhone!=null){
+            	mobilePhoneConvert=CharacterReplaceUtil.formater(3, 4, mobilePhone);
+            }
+			if(accountNum!=null){
+				accountNumConvert=CharacterReplaceUtil.formater(2, 2, accountNum);       	
+			}
+			if(vin!=null){
+				vinConvert=CharacterReplaceUtil.formater(0, 6, vin);
+			}
         }
         Date date4 = new Date();
         String time4 = sdf.format(date4);
@@ -357,13 +391,8 @@ public class OrderBackingBean implements Serializable {
             prods = getProd();
             //判断是否显示优惠券活动
             //1判断当前用户是否是目标客户群2判断当前时间是否在优惠券活动范围内
-            boolean isAim=true;
-            List<PromotionCoupon>  promotionCoup=client.findPromotionCoupon();
+            promotionCoup=client.findPromotionCoupon(accountNum,"2");
             logger.info("promotionCoup数量========"+promotionCoup.size());
-            if(isAim&&promotionCoup.size()>0){
-            	showCouponPromotion=1;
-            }
-            logger.info("showCouponPromotion显示结果========"+showCouponPromotion);
             return ViewPage.LINK2OrderPackage0;
 
         }
@@ -480,6 +509,10 @@ public class OrderBackingBean implements Serializable {
             sProdPrice = selectProd.getPromotionPrice();
         }
         String oId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
+      //-------------------------------------假openid--------------------------------
+//        oId ="o8rKvs2EeP8RdQSk0itqWSQj90hc";
+//        FacesUtils.setManagedBeanInSession(Constant.OPEN_ID, oId);
+        //-------------------------------------假openid--------------------------------
         logger.info("sPkgId  == "+ESAPI.encoder().encodeForHTML(sPkgId));
         logger.info("sProdPrice =="+ESAPI.encoder().encodeForHTML(sProdPrice+""));
         logger.info("sProdId ==>"+ESAPI.encoder().encodeForHTML(sProdId));
@@ -487,8 +520,8 @@ public class OrderBackingBean implements Serializable {
         logger.info("vin ==>"+ESAPI.encoder().encodeForHTML(selectedVehicle.getVin()));
         logger.info("oId ==>"+ESAPI.encoder().encodeForHTML(oId));
         logger.info("paymentPlatform ==>"+ESAPI.encoder().encodeForHTML(paymentPlatform));
-        paymentPlatform="111006";
-        PaymentOrderResponse paymentOrderResponse = client.createPaymentOrder(
+//        paymentPlatform="111005";
+        paymentOrderResponse = client.createPaymentOrder(
                 sProdId,
                 sProdPrice,
                 sPkgId,
@@ -506,9 +539,9 @@ public class OrderBackingBean implements Serializable {
             orderPackagePop = "创建订单失败，原因："+paymentOrderResponse.getRespMsg()+"请重试或致电<span style=\"text-decoration: underline;\" class=\"span2\">400-898-0050</span>联系梅赛德斯-奔驰智能互联服务中心寻求帮助";
             return ViewPage.LINK2OrderPackage0;
         }
-
+        orderNumber=paymentOrderResponse.getOrderNum();
         // create transaction
-        String transactionNo = getTransactionNo();
+        transactionNo = getTransactionNo();
         String serialNo = getSerialNo();
         String transChannel = null;
         if(isWechatPay()) {
@@ -548,10 +581,14 @@ public class OrderBackingBean implements Serializable {
 
         }
 
-        if(isWechatPay()) {
+        /*if(isWechatPay()) {
             // Do not need the rest
             WxPayDto tpWxPay = new WxPayDto();
             Demo demo = new Demo();
+          //-------------------------------------假openid--------------------------------
+            oId ="o8rKvs2EeP8RdQSk0itqWSQj90hc";
+            FacesUtils.setManagedBeanInSession(Constant.OPEN_ID, oId);
+            //-------------------------------------假openid--------------------------------
             tpWxPay.setOpenId((String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID));
             logger.debug("open_id=" + ESAPI.encoder().encodeForHTML(FacesUtils.getManagedBeanInSession(Constant.OPEN_ID).toString()));
             tpWxPay.setBody(orderDesc);
@@ -565,11 +602,12 @@ public class OrderBackingBean implements Serializable {
             wechatPrepayResponse = demo.getPackage(tpWxPay);
             logger.info("wechatPrepayResponse=" + ESAPI.encoder().encodeForHTML(wechatPrepayResponse));
 //            logger.infoln("wechatPrepayResponse=" + wechatPrepayResponse);
-        }
+        }*/
         //CR435
         //获取当前可用优惠券list
         String currentDate=UtilDate.getDateFormatter();
         coupons=client.findEffectCouponList(accountNum, "0", currentDate,sProdId);
+        couponListString=JSON.toJSONString(coupons);
         // setting order information
         WIDout_trade_no = transactionNo+paymentOrderResponse.getOrderNum();
         WIDsubject = orderDesc;
@@ -579,7 +617,84 @@ public class OrderBackingBean implements Serializable {
 
         return ViewPage.LINK2OrderPayment;
     }
-
+    //修改微信订单金额
+    public void wechatCouponPay(){
+    	String couponIds=FacesUtils.getRequestParameter("couponIds");
+    	String terms=FacesUtils.getRequestParameter("terms");
+    	String[] couponArray={};
+    	boolean ifeffect= false;
+    	if(null!=couponIds&&!couponIds.equals("")){
+    		couponArray=couponIds.split(",");
+    		ifeffect =couponUtil.validataCoupon(couponArray, coupons);
+    	}else{
+    		ifeffect=true;
+    	}
+    	//校验是否合规
+    	if(ifeffect&&terms!=null){
+    		//有效
+        	//计算金额
+        	String orderDesc = "";
+        	Double newPrice=0d;
+        	//折扣
+        	Integer discount=10;
+        	//代金券
+        	Double voucher=0d;
+            if(selectProd != null){
+                Double amount = selectProd.getPromotionPrice();
+                for(Coupon c:coupons){
+                	//代金券
+                	if(couponIds.contains(c.getId())&&c.getCouponType().equals("3")){
+                		voucher=Double.parseDouble(c.getCouponContent());
+                	}
+                	//折扣
+                	if(couponIds.contains(c.getId())&&c.getCouponType().equals("1")){
+                		discount=Integer.parseInt(c.getCouponContent());
+                	}
+                }
+                //计算
+                newPrice=(amount-voucher)*discount/10;
+                if(newPrice<0){
+                	newPrice=0d;
+                }
+                //修改订单价格
+                
+                if(Strings.isNullOrEmpty(orderDesc)) {
+                    orderDesc += selectProd.getShortMarketName();
+                } else {
+                    orderDesc += "和" + selectProd.getShortMarketName();
+                }
+                	//微信重写报文并修改订单价格
+            	WxPayDto tpWxPay = new WxPayDto();
+                Demo demo = new Demo();
+                tpWxPay.setOpenId((String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID));
+                tpWxPay.setBody(orderDesc);
+                tpWxPay.setOrderId(transactionNo+paymentOrderResponse.getOrderNum());
+                logger.debug("orderId=" + ESAPI.encoder().encodeForHTML(transactionNo + paymentOrderResponse.getOrderNum()));
+                tpWxPay.setSpbillCreateIp("127.0.0.1");
+                tpWxPay.setTotalFee(String.valueOf(newPrice));
+                logger.debug("totalFee=" + ESAPI.encoder().encodeForHTML(String.valueOf(amount)));
+                wechatPrepayResponse = demo.getPackage(tpWxPay);
+                String json =JSON.toJSONString(wechatPrepayResponse);
+                logger.info("wechatPrepayJSon=------------------" +json);
+                logger.info("wechatPrepayResponse=" + ESAPI.encoder().encodeForHTML(wechatPrepayResponse));
+                //修改订单金额
+                String payAmount=String.valueOf(newPrice);
+                boolean parentResult=client.updateParentOrderAmount(orderNumber, payAmount);
+                boolean serviceResult= client.updateServiceOrderAmount(orderNumber, payAmount);
+                boolean transActionResult= client.updateTransactionPrice(orderNumber, payAmount);
+                //修改优惠券使用记录为已使用
+                for(String s:couponArray){
+                	boolean couponHistoryResult=client.updateCouponHistory(orderNumber, s, accountNum);
+                	logger.info("couponHistoryResult=" + couponHistoryResult);
+                }
+                logger.info("parentResult=" + parentResult);
+                logger.info("serviceResult=" + serviceResult);
+                logger.info("transActionResult=" + transActionResult);
+            }
+            
+    	}
+    }
+    
     public String toOneCentPromotion() {
         // TODO: changed for compile
         logger.info("in toOneCentPromotion..");
@@ -617,6 +732,18 @@ public class OrderBackingBean implements Serializable {
         logger.info("accountNum=" + ESAPI.encoder().encodeForHTML(accountNum));
         logger.info("mobilePhone=" + ESAPI.encoder().encodeForHTML(mobilePhone));
         logger.info("vin=" + ESAPI.encoder().encodeForHTML(vin));
+        accountNumConvert=FacesUtils.getRequestParameter("accountNumConvert");
+        mobilePhoneConvert=FacesUtils.getRequestParameter("mobilePhoneConvert");
+        vinConvert=FacesUtils.getRequestParameter("vinConvert");
+        if(!Strings.isNullOrEmpty(accountNumConvert) && !accountNumConvert.contains("*")){
+        	accountNum=accountNumConvert;
+        }
+        if(!Strings.isNullOrEmpty(mobilePhoneConvert) && !mobilePhoneConvert.contains("*")){
+        	mobilePhone=mobilePhoneConvert;
+        }
+        if(!Strings.isNullOrEmpty(vinConvert) && !vinConvert.contains("*")){
+        	vin=vinConvert;
+        }
         if(Strings.isNullOrEmpty(accountNum) && Strings.isNullOrEmpty(mobilePhone) && Strings.isNullOrEmpty(vin)) {
             orderEntryPop = "请输入智能互联客户编号或者智能互联关联手机号码或者车架号！";
             context.addMessage(null, new FacesMessage(
@@ -1340,6 +1467,12 @@ public class OrderBackingBean implements Serializable {
 
         return ViewPage.LINK2OrderUpgradePayment;
     }
+    
+    
+    public void getEffectCoupons(){
+    	List<Coupon> couponList=new ArrayList<>();
+    	coupons=couponList;
+    }
 
     public String getAlipayRequest() {
         return alipayRequest;
@@ -1644,7 +1777,6 @@ public class OrderBackingBean implements Serializable {
             transactionRequest.setSeraialno(serialNo);
             logger.debug("creating transaction");
             TransactionResponse transactionResponse = client.createTransaction(parentOrderNum, transactionRequest);
-            ;
             if (!transactionResponse.getRespcode().equals(Constant.SERVICE_B2C_PAYMENT_RESPONSE_CODE_SUCCESS)) {
 //                  logger.error("create new transaction failed, error message: " + ESAPI.encoder().encodeForHTML(transactionResponse.getRespMsg()));
 //                  context.addMessage(null, new FacesMessage(
@@ -1732,20 +1864,80 @@ public class OrderBackingBean implements Serializable {
     }
 
     //CR435 cfq 添加是否显示优惠券活动
-	public Integer getShowCouponPromotion() {
-		return showCouponPromotion;
+	public List<PromotionCoupon> getPromotionCoup() {
+		return promotionCoup;
 	}
 
-	public void setShowCouponPromotion(Integer showCouponPromotion) {
-		this.showCouponPromotion = showCouponPromotion;
+	public void setPromotionCoup(List<PromotionCoupon> promotionCoup) {
+		this.promotionCoup = promotionCoup;
 	}
-
+	
 	public List<Coupon> getCoupons() {
 		return coupons;
 	}
 
 	public void setCoupons(List<Coupon> coupons) {
 		this.coupons = coupons;
+	}
+
+	public String getCouponListString() {
+		return couponListString;
+	}
+
+	public void setCouponListString(String couponListString) {
+		this.couponListString = couponListString;
+	}
+
+	public String getOrderNumber() {
+		return orderNumber;
+	}
+
+	public void setOrderNumber(String orderNumber) {
+		this.orderNumber = orderNumber;
+	}
+
+	public void setTransactionNo(String transactionNo) {
+		this.transactionNo = transactionNo;
+	}
+
+	public PaymentOrderResponse getPaymentOrderResponse() {
+		return paymentOrderResponse;
+	}
+
+	public void setPaymentOrderResponse(PaymentOrderResponse paymentOrderResponse) {
+		this.paymentOrderResponse = paymentOrderResponse;
+	}
+
+	public String getSelectBaseProdId() {
+		return selectBaseProdId;
+	}
+
+	public void setSelectBaseProdId(String selectBaseProdId) {
+		this.selectBaseProdId = selectBaseProdId;
+	}
+
+	public String getMobilePhoneConvert() {
+		return mobilePhoneConvert;
+	}
+
+	public void setMobilePhoneConvert(String mobilePhoneConvert) {
+		this.mobilePhoneConvert = mobilePhoneConvert;
+	}
+
+	public String getVinConvert() {
+		return vinConvert;
+	}
+
+	public void setVinConvert(String vinConvert) {
+		this.vinConvert = vinConvert;
+	}
+
+	public String getAccountNumConvert() {
+		return accountNumConvert;
+	}
+
+	public void setAccountNumConvert(String accountNumConvert) {
+		this.accountNumConvert = accountNumConvert;
 	}
 
     

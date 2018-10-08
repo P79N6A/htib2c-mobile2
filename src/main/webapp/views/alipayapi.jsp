@@ -26,6 +26,7 @@
 <%@ page import="org.apache.log4j.Logger" %>
 <%@ page import="com.htichina.web.order.OrderBackingBean" %>
 <%@ page import="org.owasp.esapi.ESAPI" %>
+<%@ page import="com.htichina.web.PaymentServiceClient" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
@@ -36,6 +37,7 @@
 		Logger logger = Logger.getLogger(OrderBackingBean.class.getName());
 		//支付宝网关地址
 		String ALIPAY_GATEWAY_NEW = "http://wappaygw.alipay.com/service/rest.htm?";
+		PaymentServiceClient client = PaymentServiceClient.getInstance();
 
 		////////////////////////////////////调用授权接口alipay.wap.trade.create.direct获取授权码token//////////////////////////////////////
 		
@@ -69,7 +71,7 @@
 		String out_trade_no = new String(request.getParameter("WIDout_trade_no").getBytes("ISO-8859-1"),"UTF-8");
 		logger.info("out_trade_no = "+ ESAPI.encoder().encodeForHTML(out_trade_no));
 		//商户网站订单系统中唯一订单号，必填
-
+        
 		//订单名称
 		String subject = new String(request.getParameter("WIDsubject"));
 		//String subject = new String(request.getParameter("WIDsubject").getBytes("ISO-8859-1"),"UTF-8");
@@ -78,6 +80,11 @@
 
 		//付款金额
 		String total_fee = new String(request.getParameter("WIDtotal_fee").getBytes("ISO-8859-1"),"UTF-8");
+		//商品订单号
+        String orderNumber = new String(request.getParameter("orderNumber").getBytes("ISO-8859-1"),"UTF-8");
+		//couponIds
+		String couponIds = new String(request.getParameter("couponIds").getBytes("ISO-8859-1"),"UTF-8");
+		String accountNum = new String(request.getParameter("accountNum").getBytes("ISO-8859-1"),"UTF-8");
 		//必填
 		System.out.println("--------------:"+request.getParameter("WIDsubject"));
 		System.out.println("订单名称:"+subject);
@@ -101,6 +108,16 @@
 		sParaTempToken.put("req_data", req_dataToken);
 
 		System.out.println("获取授权码token...");
+		//修改订单
+		boolean parentResult=client.updateParentOrderAmount(orderNumber, total_fee);
+        boolean serviceResult= client.updateServiceOrderAmount(orderNumber, total_fee);
+        boolean transActionResult= client.updateTransactionPrice(orderNumber, total_fee);
+        //修改优惠券使用状态
+        String[] couponIdArray=couponIds.split(",");
+        for(String s:couponIdArray){
+        	boolean couponHistoryResult=client.updateCouponHistory(orderNumber, s, accountNum);
+        	logger.info("couponHistoryResult=" + couponHistoryResult);
+        }
 		//建立请求
 		String sHtmlTextToken = AlipaySubmit.buildRequest(ALIPAY_GATEWAY_NEW,"", "",sParaTempToken);
 		//URLDECODE返回的信息
@@ -129,9 +146,7 @@
 		sParaTemp.put("format", format);
 		sParaTemp.put("v", v);
 		sParaTemp.put("req_data", req_data);
-
 		logger.info("toAlipay sParaTemp="+ESAPI.encoder().encodeForHTML(sParaTemp.toString()));
-		
 		//建立请求
 		String sHtmlText = AlipaySubmit.buildRequest(ALIPAY_GATEWAY_NEW, sParaTemp, "get", "确认");
 		out.println(sHtmlText);

@@ -17,10 +17,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.alipay.util.UtilDate;
 import com.google.gson.Gson;
 import com.htichina.common.web.Constant;
 import com.htichina.web.PaymentServiceClient;
 import com.htichina.wsclient.payment.Coupon;
+import com.htichina.wsclient.payment.CouponHistory;
 
 /**
  * Created by cfq on 2018/3/23.
@@ -41,23 +43,36 @@ public class CouponDataServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		try {
-			String promotionId=req.getParameter("promotionId");
+			String couponId=req.getParameter("couponId");
 			PaymentServiceClient client = PaymentServiceClient.getInstance();
 //			String accountNum = (String) req.getSession().getAttribute(Constant.ACCOUNT_NUM);
 			String accountNum="10577513";
-			List<Coupon> couponList=client.findCouponsByPromotionId(accountNum, promotionId);
+			Coupon coupon=client.findCouponsById(couponId);
+			Integer result=0;
+			if(coupon!=null){
+	    		CouponHistory history=new CouponHistory();
+	    		history.setCouponId(coupon.getId());
+	    		history.setCoustomerId(accountNum);
+	    		history.setCreatedTime(UtilDate.getDateFormatter());
+	    		history.setIsUsed("0");
+	    		result=client.saveDrawCouponHistory(history);
+	    	}
 			resp.setContentType("text/html;charset=utf-8");
 	        PrintWriter out;
             out = resp.getWriter();
             Gson gson = new Gson();
-            String str = gson.toJson(couponList);
+            String str="";
+            if(result>0){
+            	str = gson.toJson("1");
+            }else{
+            	str = gson.toJson("0");
+            }
             logger.info("locate result = "+str);
             out.write(str);
             out.flush();
             out.close();
         } catch (IOException e) {
         	logger.info(ESAPI.encoder().encodeForHTML(e.getMessage()));
-            //e.printStackTrace();
         }
 	}
 
