@@ -41,7 +41,7 @@
             width: 100%;
             height: 100%;
             z-index: 90;
-            background: url(../htib2c-mobile/resources/coupon/images/bg.jpg) top left;
+            background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/bg.jpg) top left;
             background-size: 100% auto;
             display: none;
         }
@@ -80,7 +80,7 @@
             position: relative;
             width: 100%;
             height: 126px;
-            background: url(../htib2c-mobile/resources/coupon/images/ticket.png) center center no-repeat;
+            background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/ticket.png) center center no-repeat;
             background-size: contain;
             color: #fff;
             z-index: 2;
@@ -289,7 +289,7 @@
             line-height: 68px;
             font-size: 24px;
             color: #fff;
-            background: url(../htib2c-mobile/resources/coupon/images/btn2.png) top left no-repeat;
+            background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/btn2.png) top left no-repeat;
             background-size: contain;
             display: inline-block;
             vertical-align: middle;
@@ -298,7 +298,7 @@
             transition: all .5s;
         }
         .ticket .btn-wrap .btn.active {
-            background: url(../htib2c-mobile/resources/coupon/images/btn1.png) top left no-repeat;
+            background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/btn1.png) top left no-repeat;
             background-size: contain;
         }
 
@@ -306,7 +306,7 @@
             display: none;
         }
         .ticket .ticket-list li.Expired {
-            background: url(../htib2c-mobile/resources/coupon/images/ticket-grey.png) center center no-repeat;
+            background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/ticket-grey.png) center center no-repeat;
             background-size: contain;
         }
         .ticket .ticket-list li.Expired .btn::after {
@@ -325,7 +325,7 @@
             width: 520px;
             height: 77px;
             margin: 60px auto 0;
-            background: url(../htib2c-mobile/resources/coupon/images/btn-red.png) top left no-repeat;
+            background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/btn-red.png) top left no-repeat;
             background-size: contain;
             line-height: 77px;
             text-align: center;
@@ -438,8 +438,7 @@
                                         <h3>我的套餐</h3>
                                         <c:if test="#{loginBackingBean.accountInfo.currentPackages.size() == 0 || loginBackingBean.accountInfo.currentPackages == null}">
                                             <div class="my_list" style="height:222px;padding-left:170px;padding-top: 82px;">
-                                                暂无已购买套餐
-
+                                                                                                                                  暂无已购买套餐
                                             </div>
                                         </c:if>
                                         <c:if test="#{loginBackingBean.accountInfo.currentPackages.size() != 0}">
@@ -582,7 +581,8 @@
 		            </li>
 		           </c:if>
 		        </c:forEach>
-		        <h:commandButton id="toOrderPackage" style="display:none" action="#{orderBackingBean.toOrderPackage}"/>
+		        <h:commandButton id="toOrderPackage" style="display:none" action="#{orderBackingBean.toOrderEntry('')}">
+		        </h:commandButton>
         </c:if>
         </ul>
         <ul class="oUl">
@@ -706,98 +706,7 @@
             <script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/scrollBar.js"></script>
             <script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/js.js"></script>
             <script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/swiper.js"></script>
-            <script type="text/javascript">
-                if("1" == broserNum){
-                    window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
-                }
-                function toluckDraw(){
-                    window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4ca6cc680a7e0fa3&amp;redirect_uri=https%3A%2F%2Fwww.cntelematics.com%2Fhtib2c-mobile%2FwechatServlet%3Fshowwxpaytitle%3D1&amp;response_type=code&amp;scope=snsapi_userinfo&amp;state=wechatLuckDraw#wechat_redirect;";
-                }
-                $(function(){
-                    //CR428 关掉luckydraw1
-                    if($("#luckDrawLink").find("span").text()==0){
-                        $("#luckDrawLink").hide();
-                    }
-                })
-                /*判断是否弹窗提示*/
-                var myAccountPopVal = $("input[nm3='myAccountPop']").val();
-                if(myAccountPopVal == null || myAccountPopVal == ""){
-                    $('#filer').hide();
-                    $('#sn_err').hide();
-                }else{
-                    $('#filer').show();
-                    $('#sn_err').show();
-                    $('#perro').html(myAccountPopVal);
-                }
-                function hideLogOff() {
-                    $('#filer').hide();
-                    $('#sn_err').hide();
-                }
-                function hide3000Pop(){
-                    $('#filer').hide();
-                    $('#xiexie').hide();
-                }
-                
-                function toInvoice(){
-                    window.location.href="#{facesContext.externalContext.request.contextPath}/views/invoiceEntry.xhtml";
-                }
-                var ua = navigator.userAgent.toLowerCase();
-                if(ua.indexOf("alipay")==-1) {
-                    $("#sBtn2").hide();
-                    $("#sBtn1").show();
-                }
-                else{
-                    $("#sBtn1").hide();
-                    $("#sBtn2").show();
-                }
-                $('#mybox').height($(window).height()*0.84);
-                var swiper = new Swiper('.swiper-container', {
-                    scrollbar: '.swiper-scrollbar',
-                    direction: 'vertical',
-                    slidesPerView: 'auto',
-                    mousewheelControl: true,
-                    freeMode: true
-                });
-//                 window.onload=function(){
-//                  var flag = $("input[flag='renewFlag']").val();
-//                     if("OK" == flag){
-//                         $("#didiDiv").removeAttr("style");
-//                         window.location.href="https://dc.tt/Rhv6";
-
-//                     }
-
-//                  }
-                function clickDidi(){
-                    $("input[btn='didiBtn']").click();
-                }
-                function  showExit() {
-                    $('#Unueer').show();
-                    $('#filer').show();
-                };
-                function  hideExit() {
-                    $('#Unueer').hide();
-                    $('#filer').hide();
-                }
-                $(function() {
-                    pushHistory();
-                    window.addEventListener("popstate", function(e) {
-                        var ua = navigator.userAgent.toLowerCase();
-                        if(ua.indexOf("alipay")!=-1){
-                        	AlipayJSBridge.call('closeWebview');
-                        	//Brook,fix issue that alipay can't backwards
-                           // window.location.href = window.location.href;
-                        }
-                    }, false);
-                    function pushHistory() {
-                        var state = {
-                            title : "title",
-                            url : "#"
-                        };
-                        window.history.pushState(state, "title", "#");
-                    }
-                });
-</script>
-<script>
+            <script>
 	    $('#mybox').height($(window).height()*0.84);
 	    var swiper = new Swiper('.swiper-container', {
 	        scrollbar: '.swiper-scrollbar',
@@ -895,6 +804,96 @@
 	
 	    })(Zepto,jQuery);
 </script>
+            <script type="text/javascript">
+                if("1" == broserNum){
+                    window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
+                }
+                function toluckDraw(){
+                    window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4ca6cc680a7e0fa3&amp;redirect_uri=https%3A%2F%2Fwww.cntelematics.com%2Fhtib2c-mobile%2FwechatServlet%3Fshowwxpaytitle%3D1&amp;response_type=code&amp;scope=snsapi_userinfo&amp;state=wechatLuckDraw#wechat_redirect;";
+                }
+                $(function(){
+                    //CR428 关掉luckydraw1
+                    if($("#luckDrawLink").find("span").text()==0){
+                        $("#luckDrawLink").hide();
+                    }
+                })
+                /*判断是否弹窗提示*/
+                var myAccountPopVal = $("input[nm3='myAccountPop']").val();
+                if(myAccountPopVal == null || myAccountPopVal == ""){
+                    $('#filer').hide();
+                    $('#sn_err').hide();
+                }else{
+                    $('#filer').show();
+                    $('#sn_err').show();
+                    $('#perro').html(myAccountPopVal);
+                }
+                function hideLogOff() {
+                    $('#filer').hide();
+                    $('#sn_err').hide();
+                }
+                function hide3000Pop(){
+                    $('#filer').hide();
+                    $('#xiexie').hide();
+                }
+                
+                function toInvoice(){
+                    window.location.href="#{facesContext.externalContext.request.contextPath}/views/invoiceEntry.xhtml";
+                }
+                var ua = navigator.userAgent.toLowerCase();
+                if(ua.indexOf("alipay")==-1) {
+                    $("#sBtn2").hide();
+                    $("#sBtn1").show();
+                }
+                else{
+                    $("#sBtn1").hide();
+                    $("#sBtn2").show();
+                }
+                $('#mybox').height($(window).height()*0.84);
+                var swiper = new Swiper('.swiper-container', {
+                    scrollbar: '.swiper-scrollbar',
+                    direction: 'vertical',
+                    slidesPerView: 'auto',
+                    mousewheelControl: true,
+                    freeMode: true
+                });
+                window.onload=function(){
+                 var flag = $("input[flag='renewFlag']").val();
+                    if("OK" == flag){
+                        $("#didiDiv").removeAttr("style");
+                        window.location.href="https://dc.tt/Rhv6";
+                    }
+                 }
+                function clickDidi(){
+                    $("input[btn='didiBtn']").click();
+                }
+                function  showExit() {
+                    $('#Unueer').show();
+                    $('#filer').show();
+                };
+                function  hideExit() {
+                    $('#Unueer').hide();
+                    $('#filer').hide();
+                }
+                $(function() {
+                    pushHistory();
+                    window.addEventListener("popstate", function(e) {
+                        var ua = navigator.userAgent.toLowerCase();
+                        if(ua.indexOf("alipay")!=-1){
+                        	AlipayJSBridge.call('closeWebview');
+                        	//Brook,fix issue that alipay can't backwards
+                           // window.location.href = window.location.href;
+                        }
+                    }, false);
+                    function pushHistory() {
+                        var state = {
+                            title : "title",
+                            url : "#"
+                        };
+                        window.history.pushState(state, "title", "#");
+                    }
+                });
+</script>
+
         </h:form>
     </ui:define>
 </ui:composition>

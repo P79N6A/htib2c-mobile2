@@ -453,7 +453,7 @@ public class PaymentServiceClient {
 	  return service.findCouponsByPromotionId(accountNum, promotionId);
   }
   
-  public Coupon findCouponsById(String couponId){
+  public Coupon findCouponById(String couponId){
 	  return service.findCouponById(couponId);
   }
   public Integer saveDrawCouponHistory(CouponHistory couPonHistory){

@@ -114,6 +114,8 @@ public class LoginBackingBean implements Serializable {
         String an = null;
         logger.info("Login bakcing oId ==>"+ESAPI.encoder().encodeForHTML(oId) );
         if(!Strings.isNullOrEmpty(oId)){
+           openId=oId;
+           logger.info("openId111111111111111111111111 ==>"+ESAPI.encoder().decodeForHTML(openId));
            an = PaymentServiceClient.getInstance().getActiveAccountByOpenId(oId);//根据openid获取账号
            logger.info("Login bakcing an ==>"+ESAPI.encoder().decodeForHTML(an));
         }

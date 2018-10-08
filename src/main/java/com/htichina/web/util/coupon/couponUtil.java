@@ -37,6 +37,9 @@ public class couponUtil {
             if(ids.length==0){
                 return true;
             }
+//            if(ids.length==1&&coupons.size()==1&&ids[0].equals(coupons.get(0).getId())){
+//            	return true;
+//            }
             List<Coupon> myCouponList = new ArrayList<Coupon>();
             if (coupons != null && coupons.size() > 0) {
                 for (Coupon coupon : coupons) {

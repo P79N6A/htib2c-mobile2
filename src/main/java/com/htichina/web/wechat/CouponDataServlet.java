@@ -46,7 +46,7 @@ public class CouponDataServlet extends HttpServlet {
 			String couponId=req.getParameter("couponId");
 			PaymentServiceClient client = PaymentServiceClient.getInstance();
 			String accountNum = (String) req.getSession().getAttribute(Constant.ACCOUNT_NUM);
-			Coupon coupon=client.findCouponsById(couponId);
+			Coupon coupon=client.findCouponById(couponId);
 			Integer result=0;
 			if(coupon!=null){
 	    		CouponHistory history=new CouponHistory();

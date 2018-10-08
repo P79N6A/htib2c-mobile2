@@ -170,8 +170,12 @@ public class OrderBackingBean implements Serializable {
     private List<Coupon> drawCoupon;
     public String toOrderEntry(String oId) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
-        Date date2 = new Date();
-        openId = oId;
+        if(!Strings.isNullOrEmpty(oId)){
+            openId = oId;
+        }else{
+        	openId=(String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
+        }
+        
         targetPage = ViewPage.LINK2MyAccount;
         String an = PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
         AccountInfoResponse aInfo = PaymentServiceClient.getInstance().getCurrentAccountInfo(an);
@@ -617,7 +621,10 @@ public class OrderBackingBean implements Serializable {
         //CR435
         //获取当前可用优惠券list
         String currentDate=UtilDate.getDateFormatter();
+        System.out.println("accountNum=="+accountNum+"isUsed=="+0+"currentDate=="+currentDate+"sProdId=="+sProdId);
         coupons=client.findEffectCouponList(accountNum, "0", currentDate,sProdId);
+        String couponsString= JSON.toJSONString(coupons);
+        System.out.println(couponsString);
         couponListString=JSON.toJSONString(coupons);
         // setting order information
         WIDout_trade_no = transactionNo+paymentOrderResponse.getOrderNum();
@@ -632,16 +639,16 @@ public class OrderBackingBean implements Serializable {
     public void wechatCouponPay(){
     	String couponIds=FacesUtils.getRequestParameter("couponIds");
     	String terms=FacesUtils.getRequestParameter("terms");
-    	String[] couponArray={};
-//    	boolean ifeffect= false;
-//    	if(null!=couponIds&&!couponIds.equals("")){
-//    		couponArray=couponIds.split(",");
-//    		ifeffect =couponUtil.validataCoupon(couponArray, coupons);
-//    	}else{
-//    		ifeffect=true;
-//    	}
+    	String[] couponArray=couponIds.split(",");
+    	boolean ifeffect= false;
+    	if(null!=couponIds&&!couponIds.equals("")){
+    		couponArray=couponIds.split(",");
+    		ifeffect =couponUtil.validataCoupon(couponArray, coupons);
+    	}else{
+    		ifeffect=true;
+    	}
     	//校验是否合规
-    	if(terms!=null){
+    	if(ifeffect&&terms!=null&&!Strings.isNullOrEmpty(couponIds)){
     		//有效
         	//计算金额
         	String orderDesc = "";
@@ -651,18 +658,31 @@ public class OrderBackingBean implements Serializable {
         	//代金券
         	Double voucher=0d;
             if(selectProd != null){
-                Double amount = selectProd.getPromotionPrice();
-                for(Coupon c:coupons){
+                Double amount = 0d;
+//                Double amount = selectProd.getPromotionPrice();
+                boolean  promotiontag=false;
+                for(String c:couponArray){
+                	Coupon coupon=PaymentServiceClient.getInstance().findCouponById(c);
                 	//代金券
-                	if(couponIds.contains(c.getId())&&c.getCouponType().equals("3")){
-                		voucher=voucher+Double.parseDouble(c.getCouponContent());
-                	}
-                	//折扣
-                	if(couponIds.contains(c.getId())&&c.getCouponType().equals("1")){
-                		discount=discount*Double.parseDouble(c.getCouponContent())/10;
-                	}
+	                if(coupon!=null&&coupon.getCouponType().equals("3")){
+	                	voucher=voucher+Double.parseDouble(coupon.getCouponContent());
+	                }
+	                //折扣
+                    if(coupon!=null&&coupon.getCouponType().equals("1")){
+                    	discount=discount*Double.parseDouble(coupon.getCouponContent())/10;
+	                }
+                    if(coupon.getCouponIsaddPromotion().equals("1")){
+                    	promotiontag=true;
+                    }else{
+                    	promotiontag=false;
+                    }
                 }
                 //计算
+                if(promotiontag){
+                	amount=selectProd.getPromotionPrice();
+                }else{
+                	amount=Double.parseDouble(selectProd.getPromotionDesc5A());
+                }
                 newPrice=(amount-voucher)*discount;
                 if(newPrice<0){
                 	newPrice=0d;
@@ -683,7 +703,7 @@ public class OrderBackingBean implements Serializable {
                 logger.debug("orderId=" + ESAPI.encoder().encodeForHTML(transactionNo + paymentOrderResponse.getOrderNum()));
                 tpWxPay.setSpbillCreateIp("127.0.0.1");
                 tpWxPay.setTotalFee(String.valueOf(newPrice));
-                logger.debug("totalFee=" + ESAPI.encoder().encodeForHTML(String.valueOf(amount)));
+                logger.debug("totalFee=" + ESAPI.encoder().encodeForHTML(String.valueOf(newPrice)));
                 wechatPrepayResponse = demo.getPackage(tpWxPay);
                 String json =JSON.toJSONString(wechatPrepayResponse);
                 logger.info("wechatPrepayJSon=------------------" +json);
@@ -694,9 +714,11 @@ public class OrderBackingBean implements Serializable {
                 boolean serviceResult= client.updateServiceOrderAmount(orderNumber, payAmount);
                 boolean transActionResult= client.updateTransactionPrice(orderNumber, payAmount);
                 //修改优惠券使用记录为已使用
-                for(String s:couponArray){
-                	boolean couponHistoryResult=client.updateCouponHistory(orderNumber, s, accountNum);
-                	logger.info("couponHistoryResult=" + couponHistoryResult);
+                if(parentResult&&serviceResult&&transActionResult){
+	                for(String s:couponArray){
+	                	boolean couponHistoryResult=client.updateCouponHistory(orderNumber, s, accountNum);
+	                	logger.info("couponHistoryResult=" + couponHistoryResult);
+	                }
                 }
                 logger.info("parentResult=" + parentResult);
                 logger.info("serviceResult=" + serviceResult);

@@ -523,9 +523,11 @@
                                 <div  class="info_list" id="info_list1" style="padding-left: 43px;">
                                     <ul>
                                         <li>套&#160;&#160;餐&#160;&#160;名&#160;&#160;称&#160;：<span><h:outputText value="#{orderBackingBean.selectProd.shortMarketName}"/></span></li>
-                                        <li>套&#160;&#160;餐&#160;&#160;价&#160;&#160;格&#160;：<span><h:outputText value="#{orderBackingBean.selectProd.promotionPrice}">
+                                        <li>套&#160;&#160;餐&#160;&#160;价&#160;&#160;格&#160;：<span><h:outputText id="price" value="#{orderBackingBean.selectProd.promotionPrice}">
                                             <f:convertNumber type="currency" currencySymbol="¥"/>
                                         </h:outputText></span></li>
+                                        <h:inputHidden id="primePrice" value="#{orderBackingBean.selectProd.promotionDesc5A}" />
+                                        <h:inputHidden id="promotionPrice" value="#{orderBackingBean.selectProd.promotionPrice}" />
                                         <li>合&#160;&#160;计&#160;&#160;金&#160;&#160;额&#160;：<span><h:outputText id="allPay" value="#{orderBackingBean.selectProd.promotionPrice}">
                                             <f:convertNumber type="currency" maxFractionDigits="2" currencySymbol="¥"/>
                                         </h:outputText></span></li>
@@ -534,7 +536,8 @@
                                         </h:outputText></span></li>
                                     </ul>
                                 </div>
-                                <!-- coupon -->
+                        <!-- coupon -->
+                        <c:if test="${!empty orderBackingBean.coupons}">
                          <div class="addPage">
                             <div class="addBtn">可用优惠券 <span></span></div>
                             <div class="scroll-wrap">
@@ -544,9 +547,9 @@
                                     <div class="scroll_content">
                                         <div class="aside">
                                             <ul>
-                                             <c:if test="${!empty orderBackingBean.coupons}">
+                                             
 		                                       <c:forEach  items="#{orderBackingBean.coupons}" var="couPon" varStatus="x">
-		                                                <li class="" id="#{couPon.id}" couponType="#{couPon.couponType}" >
+		                                                <li class="" id="#{couPon.id}" couponType="#{couPon.couponType}" addPromtion="#{couPon.couponIsaddPromotion}">
 		                                                    <div class="center">
 		                                                        <div class="number clearfix">
 		                                                          <c:if test="#{couPon.couponType=='3'}">
@@ -565,7 +568,7 @@
 		                                                    </div>
 		                                                </li>
 		                                         </c:forEach>
-		                                       </c:if>   
+		                                       
                                             </ul>
                                         </div>
                                     </div>
@@ -575,6 +578,7 @@
                                 </div>
                             </div>
                         </div>
+                       </c:if>   
 <!--                                 <h3>可用优惠券</h3> -->
 <!--                                 <div  class="info_list" id="info_list_coupon" style="padding-left: 43px;"> -->
 <!--                                     <ul id="couponList"> -->
@@ -966,19 +970,27 @@
 
         //选择票卷
         oUl.on('click','li',function() {
-//         	var _index = $(this).index();
-//             oUl.find('li').eq(_index).addClass('active');
         	var _id=$(this).attr("id");
         	var _class=$(this).attr("class");
         	var _ul=$(this).parent();
-        	
+        	var _addPromtion=$(this).attr("addPromtion");
         	var ids=[];
+        	if(_addPromtion=="2"){
+        		var primePrice=$("#primePrice").val();
+        		$("#price").text("¥"+fmoney(primePrice,2));
+        		$("#allPay").text("¥"+fmoney(primePrice,2));
+        	}else{
+        		var promotionPrice=$("#promotionPrice").val();
+        		$("#price").text("¥"+fmoney(promotionPrice,2));
+        		$("#allPay").text("¥"+fmoney(promotionPrice,2));
+        	}
         	var shouldPay=$("#allPay").text().replace("¥","").replace(",","");
         	var shouldPaynew=0;
         	var voucher=0;
         	var discount=0;
         	var idstr="";
         	var feeTag='<h:outputText value="#{orderBackingBean.wechatPay}"/>';
+        	
         	if(_class=="inActive"){
             	return false;
             }
@@ -1051,9 +1063,13 @@
         	lis.each(function(i,x){
         		var id=$(x).attr("id");
         		var _class=$(x).attr("class");
-        		if(!effectId.contains(id)){
-        			$(x).removeClass().addClass("inActive");
-        		}
+        		var addPromtion=$(x).attr("addPromtion");
+	            if(_addPromtion!=addPromtion){
+	            	$(x).removeClass().addClass("inActive");
+	            }else if(!effectId.contains(id)){
+	        			$(x).removeClass().addClass("inActive");
+	            }
+        		
         	});
         	var _lis2=_ul.find("li.active");
         	if(_lis2.length==0){
