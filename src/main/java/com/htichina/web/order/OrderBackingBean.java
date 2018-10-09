@@ -614,6 +614,7 @@ public class OrderBackingBean implements Serializable {
             tpWxPay.setTotalFee(String.valueOf(amount));
             logger.debug("totalFee=" + ESAPI.encoder().encodeForHTML(String.valueOf(amount)));
             wechatPrepayResponse = demo.getPackage(tpWxPay);
+            logger.debug("wechatPrepayResponse========="+wechatPrepayResponse);
             logger.info("wechatPrepayResponse=" + ESAPI.encoder().encodeForHTML(wechatPrepayResponse));
         }
         //CR435
@@ -658,7 +659,7 @@ public class OrderBackingBean implements Serializable {
             if(selectProd != null){
                 Double amount = 0d;
 //                Double amount = selectProd.getPromotionPrice();
-                boolean  promotiontag=true;
+//                boolean  promotiontag=true;
                 if(couponArray.length>0){
 	                for(String c:couponArray){
 	                	Coupon coupon=PaymentServiceClient.getInstance().findCouponById(c);
@@ -670,19 +671,19 @@ public class OrderBackingBean implements Serializable {
 	                    if(coupon!=null&&coupon.getCouponType().equals("1")){
 	                    	discount=discount*Double.parseDouble(coupon.getCouponContent())/10;
 		                }
-	                    if(coupon.getCouponIsaddPromotion().equals("1")){
-	                    	promotiontag=true;
-	                    }else{
-	                    	promotiontag=false;
-	                    }
+//	                    if(coupon.getCouponIsaddPromotion().equals("1")){
+//	                    	promotiontag=true;
+//	                    }else{
+//	                    	promotiontag=false;
+//	                    }
 	                }
                 }
                 //计算
-                if(promotiontag){
+//                if(promotiontag){
                 	amount=selectProd.getPromotionPrice();
-                }else{
-                	amount=Double.parseDouble(selectProd.getPromotionDesc5A());
-                }
+//                }else{
+//                	amount=Double.parseDouble(selectProd.getPromotionDesc5A());
+//                }
                 newPrice=(amount-voucher)*discount;
                 if(newPrice<0){
                 	newPrice=0d;
@@ -699,12 +700,14 @@ public class OrderBackingBean implements Serializable {
                 Demo demo = new Demo();
                 tpWxPay.setOpenId((String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID));
                 tpWxPay.setBody(orderDesc);
+                transactionNo = getTransactionNo();
                 tpWxPay.setOrderId(transactionNo+paymentOrderResponse.getOrderNum());
                 logger.debug("orderId=" + ESAPI.encoder().encodeForHTML(transactionNo + paymentOrderResponse.getOrderNum()));
                 tpWxPay.setSpbillCreateIp("127.0.0.1");
                 tpWxPay.setTotalFee(String.valueOf(newPrice));
                 logger.debug("totalFee=" + ESAPI.encoder().encodeForHTML(String.valueOf(newPrice)));
                 wechatPrepayResponse = demo.getPackage(tpWxPay);
+                logger.debug("wechatPrepayResponse========="+wechatPrepayResponse);
                 String json =JSON.toJSONString(wechatPrepayResponse);
                 logger.info("wechatPrepayJSon=------------------" +json);
                 logger.info("wechatPrepayResponse=" + ESAPI.encoder().encodeForHTML(wechatPrepayResponse));

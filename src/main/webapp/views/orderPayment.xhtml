@@ -529,8 +529,8 @@
                                         <li>套&#160;&#160;餐&#160;&#160;价&#160;&#160;格&#160;：<span><h:outputText id="price" value="#{orderBackingBean.selectProd.promotionPrice}">
                                             <f:convertNumber type="currency" currencySymbol="¥"/>
                                         </h:outputText></span></li>
-                                        <h:inputHidden id="primePrice" value="#{orderBackingBean.selectProd.promotionDesc5A}" />
-                                        <h:inputHidden id="promotionPrice" value="#{orderBackingBean.selectProd.promotionPrice}" />
+<!--                                         <h:inputHidden id="primePrice" value="#{orderBackingBean.selectProd.promotionDesc5A}" /> -->
+<!--                                         <h:inputHidden id="promotionPrice" value="#{orderBackingBean.selectProd.promotionPrice}" /> -->
                                         <li>合&#160;&#160;计&#160;&#160;金&#160;&#160;额&#160;：<span><h:outputText id="allPay" value="#{orderBackingBean.selectProd.promotionPrice}">
                                             <f:convertNumber type="currency" maxFractionDigits="2" currencySymbol="¥"/>
                                         </h:outputText></span></li>
@@ -978,15 +978,15 @@
         	var _ul=$(this).parent();
         	var _addPromtion=$(this).attr("addPromtion");
         	var ids=[];
-        	if(_addPromtion=="2"){
-        		var primePrice=$("#primePrice").val();
-        		$("#price").text("¥"+fmoney(primePrice,2));
-        		$("#allPay").text("¥"+fmoney(primePrice,2));
-        	}else{
-        		var promotionPrice=$("#promotionPrice").val();
-        		$("#price").text("¥"+fmoney(promotionPrice,2));
-        		$("#allPay").text("¥"+fmoney(promotionPrice,2));
-        	}
+//         	if(_addPromtion=="2"){
+//         		var primePrice=$("#primePrice").val();
+//         		$("#price").text("¥"+fmoney(primePrice,2));
+//         		$("#allPay").text("¥"+fmoney(primePrice,2));
+//         	}else{
+//         		var promotionPrice=$("#price").val();
+//         		$("#price").text("¥"+fmoney(promotionPrice,2));
+//         		$("#allPay").text("¥"+fmoney(promotionPrice,2));
+//         	}
         	var shouldPay=$("#allPay").text().replace("¥","").replace(",","");
         	var shouldPaynew=0;
         	var voucher=0;

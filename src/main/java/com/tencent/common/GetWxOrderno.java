@@ -54,8 +54,8 @@ public class GetWxOrderno
 		 httpost.setEntity(new StringEntity(xmlParam, "UTF-8"));
 		 HttpResponse response = httpclient.execute(httpost);
 	     String jsonStr = EntityUtils.toString(response.getEntity(), "UTF-8");
-//	     System.out.println(jsonStr);
-//	     logger.info("jsonStr----------------"+jsonStr);
+	     System.out.println(jsonStr);
+	     logger.info("jsonStr----------------"+jsonStr);
 	    if(jsonStr.indexOf("FAIL")!=-1){
 	    	return prepay_id;
 	    }
