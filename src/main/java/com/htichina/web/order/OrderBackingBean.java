@@ -526,7 +526,7 @@ public class OrderBackingBean implements Serializable {
         String oId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
       //-------------------------------------假openid--------------------------------
 //        oId ="o8rKvs2EeP8RdQSk0itqWSQj90hc";
-//        FacesUtils.setManagedBeanInSession(Constant.OPEN_ID, oId);
+        FacesUtils.setManagedBeanInSession(Constant.OPEN_ID, oId);
         //-------------------------------------假openid--------------------------------
         logger.info("sPkgId  == "+ESAPI.encoder().encodeForHTML(sPkgId));
         logger.info("sProdPrice =="+ESAPI.encoder().encodeForHTML(sProdPrice+""));
@@ -596,19 +596,18 @@ public class OrderBackingBean implements Serializable {
 
         }
 
-        /*if(isWechatPay()) {
+        if(isWechatPay()) {
             // Do not need the rest
             WxPayDto tpWxPay = new WxPayDto();
             Demo demo = new Demo();
           //-------------------------------------假openid--------------------------------
-            oId ="o8rKvs2EeP8RdQSk0itqWSQj90hc";
-            FacesUtils.setManagedBeanInSession(Constant.OPEN_ID, oId);
+//            oId ="o8rKvs2EeP8RdQSk0itqWSQj90hc";
+//            FacesUtils.setManagedBeanInSession(Constant.OPEN_ID, oId);
             //-------------------------------------假openid--------------------------------
             tpWxPay.setOpenId((String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID));
             logger.debug("open_id=" + ESAPI.encoder().encodeForHTML(FacesUtils.getManagedBeanInSession(Constant.OPEN_ID).toString()));
             tpWxPay.setBody(orderDesc);
             logger.debug("prodName=" + ESAPI.encoder().encodeForHTML(orderDesc));
-//                tpWxPay.setOrderId(paymentOrderResponse.getOrderNum());
             tpWxPay.setOrderId(transactionNo+paymentOrderResponse.getOrderNum());
             logger.debug("orderId=" + ESAPI.encoder().encodeForHTML(transactionNo + paymentOrderResponse.getOrderNum()));
             tpWxPay.setSpbillCreateIp("127.0.0.1");
@@ -616,8 +615,7 @@ public class OrderBackingBean implements Serializable {
             logger.debug("totalFee=" + ESAPI.encoder().encodeForHTML(String.valueOf(amount)));
             wechatPrepayResponse = demo.getPackage(tpWxPay);
             logger.info("wechatPrepayResponse=" + ESAPI.encoder().encodeForHTML(wechatPrepayResponse));
-//            logger.infoln("wechatPrepayResponse=" + wechatPrepayResponse);
-        }*/
+        }
         //CR435
         //获取当前可用优惠券list
         String currentDate=UtilDate.getDateFormatter();
@@ -639,7 +637,7 @@ public class OrderBackingBean implements Serializable {
     public void wechatCouponPay(){
     	String couponIds=FacesUtils.getRequestParameter("couponIds");
     	String terms=FacesUtils.getRequestParameter("terms");
-    	String[] couponArray=couponIds.split(",");
+    	String[] couponArray=new String[]{};
     	boolean ifeffect= false;
     	if(null!=couponIds&&!couponIds.equals("")){
     		couponArray=couponIds.split(",");
@@ -648,7 +646,7 @@ public class OrderBackingBean implements Serializable {
     		ifeffect=true;
     	}
     	//校验是否合规
-    	if(ifeffect&&terms!=null&&!Strings.isNullOrEmpty(couponIds)){
+    	if(ifeffect&&terms!=null){
     		//有效
         	//计算金额
         	String orderDesc = "";
@@ -660,22 +658,24 @@ public class OrderBackingBean implements Serializable {
             if(selectProd != null){
                 Double amount = 0d;
 //                Double amount = selectProd.getPromotionPrice();
-                boolean  promotiontag=false;
-                for(String c:couponArray){
-                	Coupon coupon=PaymentServiceClient.getInstance().findCouponById(c);
-                	//代金券
-	                if(coupon!=null&&coupon.getCouponType().equals("3")){
-	                	voucher=voucher+Double.parseDouble(coupon.getCouponContent());
+                boolean  promotiontag=true;
+                if(couponArray.length>0){
+	                for(String c:couponArray){
+	                	Coupon coupon=PaymentServiceClient.getInstance().findCouponById(c);
+	                	//代金券
+		                if(coupon!=null&&coupon.getCouponType().equals("3")){
+		                	voucher=voucher+Double.parseDouble(coupon.getCouponContent());
+		                }
+		                //折扣
+	                    if(coupon!=null&&coupon.getCouponType().equals("1")){
+	                    	discount=discount*Double.parseDouble(coupon.getCouponContent())/10;
+		                }
+	                    if(coupon.getCouponIsaddPromotion().equals("1")){
+	                    	promotiontag=true;
+	                    }else{
+	                    	promotiontag=false;
+	                    }
 	                }
-	                //折扣
-                    if(coupon!=null&&coupon.getCouponType().equals("1")){
-                    	discount=discount*Double.parseDouble(coupon.getCouponContent())/10;
-	                }
-                    if(coupon.getCouponIsaddPromotion().equals("1")){
-                    	promotiontag=true;
-                    }else{
-                    	promotiontag=false;
-                    }
                 }
                 //计算
                 if(promotiontag){

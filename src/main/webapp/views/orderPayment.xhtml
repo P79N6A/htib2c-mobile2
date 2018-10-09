@@ -497,10 +497,13 @@
            }
            
            function wechatValidate(){
+        	   var selectCoupon=$("#couponDiv").find("li.active");
         	   if(!terms.checked) {
                    popCheck();
-               }else{
+               }else if(selectCoupon.length &gt;0 &amp;&amp; terms.checked){
                    document.getElementById("wechatForm:wPay").onclick()
+               }else if(selectCoupon.length==0&amp;&amp; terms.checked){
+            	   callpay();
                }
            }
         </script>
@@ -545,7 +548,7 @@
                                 <div class="grey grey2"></div>
                                 <div class="scroll_cont">
                                     <div class="scroll_content">
-                                        <div class="aside">
+                                        <div id="couponDiv" class="aside">
                                             <ul>
                                              
 		                                       <c:forEach  items="#{orderBackingBean.coupons}" var="couPon" varStatus="x">
