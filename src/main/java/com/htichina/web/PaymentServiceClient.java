@@ -475,11 +475,11 @@ public class PaymentServiceClient {
   public boolean updateTransactionPrice(String orderNum,String amount){
 	  return service.updateTransactionPrice(orderNum,amount);
   }
-  public boolean updateCouponHistory(String orderNum,String couponId,String accountNum){
+  public boolean updateCouponHistory(String orderNum,String primePrice,String couponId,String accountNum){
 	  if(accountNum==null){
 		  accountNum = (String) FacesUtils.getManagedBeanInSession(Constant.ACCOUNT_NUM);
 	  }
-	  return service.updateCouponHistory(orderNum,couponId,accountNum);
+	  return service.updateCouponHistory(orderNum,primePrice,couponId,accountNum);
   };
   
 }
