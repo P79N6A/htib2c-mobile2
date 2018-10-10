@@ -443,6 +443,7 @@ public class LoginBackingBean implements Serializable {
             HttpSession Session1 = (HttpSession) fc.getExternalContext().getSession(true);
             Session1.setAttribute(Constant.CSRFTOKEN,sToken); 
             Session1.setAttribute("openId", openId);
+            Session1.setAttribute(Constant.PAYMENT_PLATFORM, Constant.DB_ORDER_PAYMENT_TYPE_WEIXINPAY);
             return ViewPage.LINK2Login;
         } else {
             logger.debug("logoff failed!");
