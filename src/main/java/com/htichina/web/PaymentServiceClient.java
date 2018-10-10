@@ -462,8 +462,8 @@ public class PaymentServiceClient {
   public List<PromotionCoupon> findPromotionCoupon(String accountNum,String tag){
 	  return service.getEffectiveCouponPromotionByCustomer(accountNum,tag);
   }
-  public List<Coupon> findEffectCouponList(String accountNum,String isUserd,String currentDate,String packageId){
-	  return service.findEffectCouponList(accountNum,isUserd,currentDate,packageId);
+  public List<Coupon> findEffectCouponList(String accountNum,String isUserd,String currentDate,String packageId,String pkgTag){
+	  return service.findEffectCouponList(accountNum,isUserd,currentDate,packageId,pkgTag);
   }
   public boolean updateParentOrderAmount( String orderNum, String amount){
 	  return service.updateParentOrderAmount(orderNum,amount);

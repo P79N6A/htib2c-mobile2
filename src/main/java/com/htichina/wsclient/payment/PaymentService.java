@@ -54,24 +54,6 @@ public interface PaymentService {
 
     /**
      * 
-     * @param flag
-     * @param customerId
-     * @return
-     *     returns java.util.List<com.htichina.wsclient.payment.PromotionCoupon>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getEffectiveCouponPromotionByCustomer", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetEffectiveCouponPromotionByCustomer")
-    @ResponseWrapper(localName = "getEffectiveCouponPromotionByCustomerResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetEffectiveCouponPromotionByCustomerResponse")
-    @Action(input = "http://payment.ws.htichina.com/PaymentService/getEffectiveCouponPromotionByCustomerRequest", output = "http://payment.ws.htichina.com/PaymentService/getEffectiveCouponPromotionByCustomerResponse")
-    public List<PromotionCoupon> getEffectiveCouponPromotionByCustomer(
-        @WebParam(name = "customerId", targetNamespace = "")
-        String customerId,
-        @WebParam(name = "flag", targetNamespace = "")
-        String flag);
-
-    /**
-     * 
      * @param ordernum
      * @return
      *     returns com.htichina.wsclient.payment.InvoiceInfoRequest
@@ -714,6 +696,7 @@ public interface PaymentService {
      * @param accountNum
      * @param packageId
      * @param currentDate
+     * @param pkgTag
      * @return
      *     returns java.util.List<com.htichina.wsclient.payment.Coupon>
      */
@@ -730,7 +713,9 @@ public interface PaymentService {
         @WebParam(name = "currentDate", targetNamespace = "")
         String currentDate,
         @WebParam(name = "packageId", targetNamespace = "")
-        String packageId);
+        String packageId,
+        @WebParam(name = "pkgTag", targetNamespace = "")
+        String pkgTag);
 
     /**
      * 
@@ -788,6 +773,24 @@ public interface PaymentService {
         String couponId,
         @WebParam(name = "accountNum", targetNamespace = "")
         String accountNum);
+
+    /**
+     * 
+     * @param flag
+     * @param customerId
+     * @return
+     *     returns java.util.List<com.htichina.wsclient.payment.PromotionCoupon>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getEffectiveCouponPromotionByCustomer", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetEffectiveCouponPromotionByCustomer")
+    @ResponseWrapper(localName = "getEffectiveCouponPromotionByCustomerResponse", targetNamespace = "http://payment.ws.htichina.com/", className = "com.htichina.wsclient.payment.GetEffectiveCouponPromotionByCustomerResponse")
+    @Action(input = "http://payment.ws.htichina.com/PaymentService/getEffectiveCouponPromotionByCustomerRequest", output = "http://payment.ws.htichina.com/PaymentService/getEffectiveCouponPromotionByCustomerResponse")
+    public List<PromotionCoupon> getEffectiveCouponPromotionByCustomer(
+        @WebParam(name = "customerId", targetNamespace = "")
+        String customerId,
+        @WebParam(name = "flag", targetNamespace = "")
+        String flag);
 
     /**
      * 

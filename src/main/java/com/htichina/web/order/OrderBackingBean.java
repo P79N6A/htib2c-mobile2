@@ -564,10 +564,12 @@ public class OrderBackingBean implements Serializable {
         } else if(isAlipay()) {
             transChannel = "04";
         }
-        double amount = 0;
+        double amount = 0d;
+        double primePrice = 0d;
         String orderDesc = "";
         if(selectProd != null){
             amount = selectProd.getPromotionPrice();
+            primePrice=Double.parseDouble(selectProd.getPromotionDesc5B());
             if(Strings.isNullOrEmpty(orderDesc)) {
                 orderDesc += selectProd.getShortMarketName();
             } else {
@@ -621,7 +623,11 @@ public class OrderBackingBean implements Serializable {
         //获取当前可用优惠券list
         String currentDate=UtilDate.getDateFormatter();
         System.out.println("accountNum=="+accountNum+"isUsed=="+0+"currentDate=="+currentDate+"sProdId=="+sProdId);
-        coupons=client.findEffectCouponList(accountNum, "0", currentDate,sProdId);
+        String pakgTag="0";
+        if(primePrice==amount){
+        	pakgTag="1";
+        }
+        coupons=client.findEffectCouponList(accountNum, "0", currentDate,sProdId,pakgTag);
         String couponsString= JSON.toJSONString(coupons);
         System.out.println(couponsString);
         couponListString=JSON.toJSONString(coupons);
