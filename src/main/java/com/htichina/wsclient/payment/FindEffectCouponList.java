@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="isUserd" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="currentDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="packageId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="pkgTag" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +34,8 @@ import javax.xml.bind.annotation.XmlType;
     "accountNum",
     "isUserd",
     "currentDate",
-    "packageId"
+    "packageId",
+    "pkgTag"
 })
 public class FindEffectCouponList {
 
@@ -41,6 +43,7 @@ public class FindEffectCouponList {
     protected String isUserd;
     protected String currentDate;
     protected String packageId;
+    protected String pkgTag;
 
     /**
      * 获取accountNum属性的值。
@@ -136,6 +139,30 @@ public class FindEffectCouponList {
      */
     public void setPackageId(String value) {
         this.packageId = value;
+    }
+
+    /**
+     * 获取pkgTag属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPkgTag() {
+        return pkgTag;
+    }
+
+    /**
+     * 设置pkgTag属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPkgTag(String value) {
+        this.pkgTag = value;
     }
 
 }

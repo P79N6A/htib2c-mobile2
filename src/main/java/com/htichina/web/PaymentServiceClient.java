@@ -462,8 +462,8 @@ public class PaymentServiceClient {
   public List<PromotionCoupon> findPromotionCoupon(String accountNum,String tag){
 	  return service.getEffectiveCouponPromotionByCustomer(accountNum,tag);
   }
-  public List<Coupon> findEffectCouponList(String accountNum,String isUserd,String currentDate,String packageId){
-	  return service.findEffectCouponList(accountNum,isUserd,currentDate,packageId);
+  public List<Coupon> findEffectCouponList(String accountNum,String isUserd,String currentDate,String packageId,String pkgTag){
+	  return service.findEffectCouponList(accountNum,isUserd,currentDate,packageId,pkgTag);
   }
   public boolean updateParentOrderAmount( String orderNum, String amount){
 	  return service.updateParentOrderAmount(orderNum,amount);
@@ -475,11 +475,11 @@ public class PaymentServiceClient {
   public boolean updateTransactionPrice(String orderNum,String amount){
 	  return service.updateTransactionPrice(orderNum,amount);
   }
-  public boolean updateCouponHistory(String orderNum,String couponId,String accountNum){
+  public boolean updateCouponHistory(String orderNum,String primePrice,String couponId,String accountNum){
 	  if(accountNum==null){
 		  accountNum = (String) FacesUtils.getManagedBeanInSession(Constant.ACCOUNT_NUM);
 	  }
-	  return service.updateCouponHistory(orderNum,couponId,accountNum);
+	  return service.updateCouponHistory(orderNum,primePrice,couponId,accountNum);
   };
   
 }

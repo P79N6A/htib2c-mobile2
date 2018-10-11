@@ -565,10 +565,12 @@ public class OrderBackingBean implements Serializable {
         } else if(isAlipay()) {
             transChannel = "04";
         }
-        double amount = 0;
+        double amount = 0d;
+        double primePrice = 0d;
         String orderDesc = "";
         if(selectProd != null){
             amount = selectProd.getPromotionPrice();
+            primePrice=Double.parseDouble(selectProd.getPromotionDesc5A());
             if(Strings.isNullOrEmpty(orderDesc)) {
                 orderDesc += selectProd.getShortMarketName();
             } else {
@@ -622,7 +624,11 @@ public class OrderBackingBean implements Serializable {
         //获取当前可用优惠券list
         String currentDate=UtilDate.getDateFormatter();
         System.out.println("accountNum=="+accountNum+"isUsed=="+0+"currentDate=="+currentDate+"sProdId=="+sProdId);
-        coupons=client.findEffectCouponList(accountNum, "0", currentDate,sProdId);
+        String pakgTag="0";
+        if(primePrice==amount){
+        	pakgTag="1";
+        }
+        coupons=client.findEffectCouponList(accountNum, "0", currentDate,sProdId,pakgTag);
         String couponsString= JSON.toJSONString(coupons);
         System.out.println(couponsString);
         couponListString=JSON.toJSONString(coupons);
@@ -659,6 +665,7 @@ public class OrderBackingBean implements Serializable {
         	Double voucher=0d;
             if(selectProd != null){
                 Double amount = 0d;
+                String primePrice = "";
 //                Double amount = selectProd.getPromotionPrice();
 //                boolean  promotiontag=true;
                 if(couponArray.length>0){
@@ -682,6 +689,7 @@ public class OrderBackingBean implements Serializable {
                 //计算
 //                if(promotiontag){
                 	amount=selectProd.getPromotionPrice();
+                	primePrice=selectProd.getPromotionDesc5A();
 //                }else{
 //                	amount=Double.parseDouble(selectProd.getPromotionDesc5A());
 //                }
@@ -720,7 +728,7 @@ public class OrderBackingBean implements Serializable {
                 //修改优惠券使用记录为已使用
                 if(parentResult&&serviceResult&&transActionResult){
 	                for(String s:couponArray){
-	                	boolean couponHistoryResult=client.updateCouponHistory(orderNumber, s, accountNum);
+	                	boolean couponHistoryResult=client.updateCouponHistory(orderNumber,primePrice, s, accountNum);
 	                	logger.info("couponHistoryResult=" + couponHistoryResult);
 	                }
                 }

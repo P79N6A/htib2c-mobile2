@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="orderNum" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="primePrice" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="couponId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="accountNum" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -30,12 +31,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "updateCouponHistory", propOrder = {
     "orderNum",
+    "primePrice",
     "couponId",
     "accountNum"
 })
 public class UpdateCouponHistory {
 
     protected String orderNum;
+    protected String primePrice;
     protected String couponId;
     protected String accountNum;
 
@@ -61,6 +64,30 @@ public class UpdateCouponHistory {
      */
     public void setOrderNum(String value) {
         this.orderNum = value;
+    }
+
+    /**
+     * 获取primePrice属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPrimePrice() {
+        return primePrice;
+    }
+
+    /**
+     * 设置primePrice属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPrimePrice(String value) {
+        this.primePrice = value;
     }
 
     /**
