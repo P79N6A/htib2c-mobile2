@@ -46,7 +46,7 @@ portal.coupon = {
             var myKind = myCouponJson[i].couponAttribute + "" + myCouponJson[i].couponIsaddMC + "" + myCouponJson[i].couponIsaddAC;
             var myType = portal.coupon.checkCouponType(myKind);
             var array = portal.coupon.getCouponTypes(myType);
-            result = result.concat(array);
+            result = result.concat(array).distinct();
         }
         ;
         if (myCouponJson.length == 1) {
