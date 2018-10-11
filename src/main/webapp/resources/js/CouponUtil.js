@@ -52,7 +52,7 @@ portal.coupon = {
         if (myCouponJson.length == 1) {
             result = result.distinct();
         } else {
-            result = result.undistinct().distinct();
+            result = result.distinct();
         }
         return result.contains(domType);
     },
@@ -96,12 +96,13 @@ portal.coupon = {
         var sourceMessage = '';
         var packageName = '';
 
-        var money = sourceMoney;
+         
+        var money =sourceMoney;
         if (type == "1") {//已使用过优惠券
             var arr = message.split(' 套餐价格：');
 
 
-            sourceMessage = arr[0] + " 套餐价格：" + sourceMoney + "\n";
+            sourceMessage = arr[0] + " 套餐价格：" + sourceMoney+ "\n";
 
         } else {//未使用过优惠券
             var arr = message.split('- <应付金额>：');
@@ -110,7 +111,7 @@ portal.coupon = {
 
             packageName = arr1[1];
             sourceMessage = sourceMessage + "套餐名称：" + packageName + "\n";
-            sourceMessage = sourceMessage + "套餐价格：￥" + sourceMoney;
+            sourceMessage = sourceMessage + "套餐价格：￥" + sourceMoney+ "\n";
 
 
         }
@@ -149,7 +150,7 @@ portal.coupon = {
         ;
 
         money = money.toFixed(2) + "\n";
-        sourceMessage = sourceMessage.replace(sourceMoney, money);
+        //sourceMessage = sourceMessage.replace(sourceMoney, money);
         sourceMessage = sourceMessage + cMessage + "合计金额：￥" + money;
 
         return sourceMessage;
