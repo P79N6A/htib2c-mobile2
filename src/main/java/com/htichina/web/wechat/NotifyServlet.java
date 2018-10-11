@@ -94,7 +94,7 @@ public class NotifyServlet extends HttpServlet {
 				String neworder = "";
 //				logger.info("wpr.getOutTradeNo()=============================="+wpr.getOutTradeNo());
 				if(wpr.getOutTradeNo().length()>13){
-					neworder = wpr.getOutTradeNo().substring(0, 13);
+					neworder = wpr.getOutTradeNo().substring(1, 13);
 				}
 //				logger.info("order======================>"+order);
 //				logger.info("neworder======================>"+neworder);

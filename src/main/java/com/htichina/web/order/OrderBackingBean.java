@@ -581,7 +581,7 @@ public class OrderBackingBean implements Serializable {
         transactionRequest.setAmoumt(String.valueOf(amount));
         transactionRequest.setChannel(transChannel);
         transactionRequest.setOrderDescription(orderDesc);
-        transactionRequest.setPaymentno(transactionNo);
+        transactionRequest.setPaymentno("1"+transactionNo+"orderNumber");
         transactionRequest.setRemark("微信支付，OpenID:" + FacesUtils.getManagedBeanInSession(Constant.OPEN_ID));
         transactionRequest.setRespcode("00A4");
         transactionRequest.setResponse("已下单，等待支付");
@@ -709,8 +709,8 @@ public class OrderBackingBean implements Serializable {
                 Demo demo = new Demo();
                 tpWxPay.setOpenId((String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID));
                 tpWxPay.setBody(orderDesc);
-                transactionNo = getTransactionNo();
-                tpWxPay.setOrderId(transactionNo+paymentOrderResponse.getOrderNum());
+//                transactionNo = getTransactionNo();
+                tpWxPay.setOrderId("2"+transactionNo+paymentOrderResponse.getOrderNum());
                 logger.debug("orderId=" + ESAPI.encoder().encodeForHTML(transactionNo + paymentOrderResponse.getOrderNum()));
                 tpWxPay.setSpbillCreateIp("127.0.0.1");
                 tpWxPay.setTotalFee(String.valueOf(newPrice));
@@ -1884,7 +1884,8 @@ public class OrderBackingBean implements Serializable {
         WxPayDto tpWxPay = new WxPayDto();
         Demo demo = new Demo();
         tpWxPay.setOpenId(openId);
-        tpWxPay.setOrderId(orderIds);
+        
+        tpWxPay.setOrderId("1"+orderIds);
         tpWxPay.setBody(orderDescs);
         tpWxPay.setSpbillCreateIp("127.0.0.1");
         tpWxPay.setTotalFee(String.valueOf(queryOrderByParentOrderNumResponse.getPrice()));
@@ -1991,6 +1992,15 @@ public class OrderBackingBean implements Serializable {
 
 	public void setDrawCoupon(List<Coupon> drawCoupon) {
 		this.drawCoupon = drawCoupon;
+	}
+
+	public QueryOrderByParentOrderNumResponse getQueryOrderByParentOrderNumResponse() {
+		return queryOrderByParentOrderNumResponse;
+	}
+
+	public void setQueryOrderByParentOrderNumResponse(
+			QueryOrderByParentOrderNumResponse queryOrderByParentOrderNumResponse) {
+		this.queryOrderByParentOrderNumResponse = queryOrderByParentOrderNumResponse;
 	}
 
 	
