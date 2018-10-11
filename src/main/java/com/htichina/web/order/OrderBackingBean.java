@@ -170,7 +170,6 @@ public class OrderBackingBean implements Serializable {
     private List<Coupon> drawCoupon;
     private QueryOrderByParentOrderNumResponse queryOrderByParentOrderNumResponse;
     public String toOrderEntry(String oId) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
         if(!Strings.isNullOrEmpty(oId)){
             openId = oId;
         }else{
@@ -194,8 +193,6 @@ public class OrderBackingBean implements Serializable {
 				vinConvert=CharacterReplaceUtil.formater(0, 6, vin);
 			}
         }
-        Date date4 = new Date();
-        String time4 = sdf.format(date4);
         return ViewPage.LINK2OrderEntry;
     }
 
@@ -1752,9 +1749,6 @@ public class OrderBackingBean implements Serializable {
     //add by liuning CR345 20171023 begin
 
     public String toOrderPaymentForWechat(String parentOrderNum,String accountNum,String openId) {
-
-        FacesContext context = FacesContext.getCurrentInstance();
-
         String orderDescs = "";
         String orderIds = "";
         String transactionType = "0";
