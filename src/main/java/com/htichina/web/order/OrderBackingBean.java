@@ -168,6 +168,7 @@ public class OrderBackingBean implements Serializable {
     private String accountNumConvert;
     private String vinConvert;
     private List<Coupon> drawCoupon;
+    private QueryOrderByParentOrderNumResponse queryOrderByParentOrderNumResponse;
     public String toOrderEntry(String oId) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
         if(!Strings.isNullOrEmpty(oId)){
@@ -1743,13 +1744,14 @@ public class OrderBackingBean implements Serializable {
     //add by liuning CR345 20171023 begin
 
     public String toOrderPaymentForWechat(String parentOrderNum,String accountNum,String openId) {
+
         FacesContext context = FacesContext.getCurrentInstance();
 
         String orderDescs = "";
         String orderIds = "";
         String transactionType = "0";
 //        List<Transaction> list = client.checkTransactionPaied(transactionNos.get(0));
-        QueryOrderByParentOrderNumResponse queryOrderByParentOrderNumResponse = client.queryOrderByParentOrderNum(parentOrderNum,accountNum);
+        queryOrderByParentOrderNumResponse = client.queryOrderByParentOrderNum(parentOrderNum,accountNum);
         List<QueryChildOrdersByParentOrderNumResponse> orders = client.queryChildOrdersByParentOrderNum(parentOrderNum);
         if (orders == null || orders.size() == 0) {
             //没创建订单
