@@ -101,7 +101,7 @@ public class couponUtil {
             String typeValue = (String) value.get(i);
             result.add(typeValue);
         }
-        if (result.size() > keys.size()) {
+        if (result.size() >= keys.size()) {
             if (!(("1".equals(key) && keys.contains("2") && keys.contains("5")) || ("5".equals(key) && keys.contains("4") && keys.contains("6")))) {
                 int num=0;
                 for(String type:keys){
@@ -125,21 +125,21 @@ public class couponUtil {
         Coupon coupon1 = new Coupon();
         coupon1.setId("1");
         coupon1.setCouponAttribute("2");
-        coupon1.setCouponIsaddMC("0");
-        coupon1.setCouponIsaddAC("1");
+        coupon1.setCouponIsaddMC("1");
+        coupon1.setCouponIsaddAC("2");
         Coupon coupon2 = new Coupon();
         coupon2.setId("2");
         coupon2.setCouponAttribute("1");
         coupon2.setCouponIsaddMC("1");
         coupon2.setCouponIsaddAC("1");
-//        Coupon coupon3 = new Coupon();
-//        coupon3.setId("3");
-//        coupon3.setCouponAttribute("1");
-//        coupon3.setCouponIsaddMC("1");
-//        coupon3.setCouponIsaddAC("1");
+        Coupon coupon3 = new Coupon();
+        coupon3.setId("3");
+        coupon3.setCouponAttribute("1");
+        coupon3.setCouponIsaddMC("2");
+        coupon3.setCouponIsaddAC("1");
         coupons.add(coupon1);
         coupons.add(coupon2);
-//        coupons.add(coupon3);
+        coupons.add(coupon3);
         couponUtil.validataCoupon(ids, coupons);
     }
 }
