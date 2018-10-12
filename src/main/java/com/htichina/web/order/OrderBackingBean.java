@@ -691,8 +691,8 @@ public class OrderBackingBean implements Serializable {
 //                	amount=Double.parseDouble(selectProd.getPromotionDesc5A());
 //                }
                 newPrice=(amount-voucher)*discount;
-                if(newPrice<0){
-                	newPrice=0d;
+                if(newPrice<0.01){
+                	newPrice=0.01d;
                 }
                 //修改订单价格
                 
