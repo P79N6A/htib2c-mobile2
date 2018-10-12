@@ -42,18 +42,20 @@ portal.coupon = {
         var domKind = domCouponJson.couponAttribute + "" + domCouponJson.couponIsaddMC + "" + domCouponJson.couponIsaddAC;
         var domType = portal.coupon.checkCouponType(domKind);
         var result = [];
-        for (var i = 0; i < myCouponJson.length; i++) {
-            var myKind = myCouponJson[i].couponAttribute + "" + myCouponJson[i].couponIsaddMC + "" + myCouponJson[i].couponIsaddAC;
-            var myType = portal.coupon.checkCouponType(myKind);
-            var array = portal.coupon.getCouponTypes(myType);
-            result = result.concat(array).distinct();
+
+        var myKind1 = myCouponJson[0].couponAttribute + "" + myCouponJson[0].couponIsaddMC + "" + myCouponJson[0].couponIsaddAC;
+        var myType1 = portal.coupon.checkCouponType(myKind1);
+        var array1 = portal.coupon.getCouponTypes(myType1);
+        result = result.concat(array1)
+        if (myCouponJson.length > 1) {
+            for (var i = 1; i < myCouponJson.length; i++) {
+                var myKind = myCouponJson[i].couponAttribute + "" + myCouponJson[i].couponIsaddMC + "" + myCouponJson[i].couponIsaddAC;
+                var myType = portal.coupon.checkCouponType(myKind);
+                var array = portal.coupon.getCouponTypes(myType);
+                result = result.concat(array).undistinct();
+            }
         }
-        ;
-        if (myCouponJson.length == 1) {
-            result = result.distinct();
-        } else {
-            result = result.distinct();
-        }
+        result = result.distinct();
         return result.contains(domType);
     },
     checkCouponType: function (kind) {
@@ -72,7 +74,7 @@ portal.coupon = {
             "3": [],
             "4": ["5", "6"],
             "5": ["1", "4", "5", "6"],
-            "6": ["1","4"],
+            "6": ["1", "4"],
             "7": [],
             "8": ["5"]
         };
@@ -96,13 +98,13 @@ portal.coupon = {
         var sourceMessage = '';
         var packageName = '';
 
-         
-        var money =sourceMoney;
+
+        var money = sourceMoney;
         if (type == "1") {//已使用过优惠券
             var arr = message.split(' 套餐价格：');
 
 
-            sourceMessage = arr[0] + " 套餐价格：" + sourceMoney+ "\n";
+            sourceMessage = arr[0] + " 套餐价格：" + sourceMoney + "\n";
 
         } else {//未使用过优惠券
             var arr = message.split('- <应付金额>：');
@@ -111,7 +113,7 @@ portal.coupon = {
 
             packageName = arr1[1];
             sourceMessage = sourceMessage + "套餐名称：" + packageName + "\n";
-            sourceMessage = sourceMessage + "套餐价格：￥" + sourceMoney+ "\n";
+            sourceMessage = sourceMessage + "套餐价格：￥" + sourceMoney + "\n";
 
 
         }
