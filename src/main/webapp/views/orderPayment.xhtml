@@ -380,6 +380,10 @@
         .addPage .scroll_cont ul li .center .number i span {
             display: inline!important;
         }
+        /* 1015 */
+        .addPage .scroll-wrap.active .scroll_handle {
+            display: none;
+        }
     </style>
         <script>
            var couponJson;
@@ -999,6 +1003,24 @@
 
             if( !_this.hasClass('active') ) {
                 _this.addClass('active');
+                text.find('.rule').removeClass('active');
+                float.stop().fadeOut(500);
+                //初始化滚动条
+                if( oUl.find('li').length &lt;= 2 ) {
+                    scrollWrap.addClass('active');
+                }else {
+                    scrollWrap.removeClass('active');
+                    //初始化滚动条
+                    if( !activeFunction1 ) {
+                        detailsCommon({
+                            'content': $('.addPage .scroll-wrap .scroll_cont'),
+                            'handle': $('.addPage .scroll-wrap .scroll_handle'),
+                            'bar': $('.addPage .scroll-wrap .scroll_bar')
+                        });
+                        activeFunction1 = true;
+                    }
+                }
+
                 scrollWrap.stop().slideDown(500);
             }else {
                 _this.removeClass('active');
