@@ -347,6 +347,18 @@
         .scroll_handle {
             display: none;
         }
+        /* add10-15 */
+        .scroll_handle {
+            width: 30px;
+            height: 525px;
+        }
+        .scroll_handle .scroll_bar {
+            width: 100%;
+            height: 80px;
+        }
+        .ticket .ticket-list .oUl {
+            min-height: 525px;
+        }
     </style>
         <h:form id="logout">
             <div class="page">
@@ -413,7 +425,9 @@
                                             领取代驾礼券包
                                         </h:commandButton> -->
                                         <!-- add Btn -->
+                                        <c:if test="#{not empty loginBackingBean.accountInfo.unUsedCoupons &amp;&amp; not empty loginBackingBean.accountInfo.expiredCoupons}">
 			                            <div class="addBtn">我的优惠券</div>
+			                            </c:if>
 			                            <!-- add Btn -->
                                         <h3>我的套餐</h3>
                                         <c:if test="#{loginBackingBean.accountInfo.currentPackages.size() == 0 || loginBackingBean.accountInfo.currentPackages == null}">
@@ -700,16 +714,24 @@
 	    }
 	    //add JS
 	    ;(function($,jq) {
-	        //活动规则 滚动条
+            // 	        活动规则 滚动条
 	        var detailsCommon = function( opts ) {
-	            opts.content.scrollBar({'handle': opts.handle, 'bar': opts.bar});
+	            opts.content.vScrollbar({'handle': opts.handle, 'bar': opts.bar});
 	        };
-	        //初始化滚动条
-	        detailsCommon({
-	            'content': $('.ticket .ticket-list'),
-	            'handle': $('.ticket .scroll_handle'),
-	            'bar': $('.ticket .scroll_bar')
-	        });
+	      //初始化滚动条
+	        var contWrap = $('.ticket .ticket-list .oUl'),
+	            scrollHandle = $('.ticket .scroll_handle'),
+	            activeFunction1 = false;
+	            //初始化第一屏
+	            if(!activeFunction1) {
+	                detailsCommon({
+	                    'content': contWrap.eq(0),
+	                    'handle': scrollHandle,
+	                    'bar': scrollHandle.find('.scroll_bar')
+	                });
+	                activeFunction1 = true;
+	            }
+
 	
 	        (function() {
 	            var getSrc = function () {
@@ -840,7 +862,7 @@
                  var flag = $("input[flag='renewFlag']").val();
                     if("OK" == flag){
                         $("#didiDiv").removeAttr("style");
-                        window.location.href="https://dc.tt/Rhv6";
+//                         window.location.href="https://dc.tt/Rhv6";
                     }
                  }
                 function clickDidi(){

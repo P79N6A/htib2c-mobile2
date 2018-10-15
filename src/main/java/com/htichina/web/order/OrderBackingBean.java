@@ -9,8 +9,11 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -169,6 +172,7 @@ public class OrderBackingBean implements Serializable {
     private String vinConvert;
     private List<Coupon> drawCoupon;
     private QueryOrderByParentOrderNumResponse queryOrderByParentOrderNumResponse;
+    
     public String toOrderEntry(String oId) {
         if(!Strings.isNullOrEmpty(oId)){
             openId = oId;
@@ -395,7 +399,27 @@ public class OrderBackingBean implements Serializable {
             /*logger.info("baseServiceStatus = " + baseServiceStatus);
             logger.info("wifiFlag = " + wifiFlag);*/
             prods = getProd();
-            //判断是否显示优惠券活动
+            if(null!=prods&&prods.size()>0){
+        		for(PromotionInfoResponse pr:prods){
+        			if(pr.getProductCategoryId().equals("1")){
+        				List<PromotionCategoryResult> productCategoryList=pr.getProductCategoryList();
+        				if(null!=productCategoryList&&productCategoryList.size()>0){
+        					for(PromotionCategoryResult res:productCategoryList){
+        						if(res.getPromotionCategoryName().equals("早订优惠")){
+        							List<PromotionInfoWS> promotionCategoryList =res.getPromotionCategoryList();
+        							if(null!=promotionCategoryList&&promotionCategoryList.size()>0){
+        								for(PromotionInfoWS pws:promotionCategoryList){
+        									pws.setPkgId(pws.getPkgId()+"A");
+        								}
+        							}
+        						}
+        					}
+        				}
+        			}
+        		}
+        	}
+            String prodsStr= JSON.toJSONString(prods);
+            System.out.println("prodsStr================"+prodsStr);
             //1判断当前用户是否是目标客户群2判断当前时间是否在优惠券活动范围内
             promotionCoup=client.findPromotionCoupon(accountNum,"2");
             logger.info("promotionCoup数量========"+promotionCoup.size());
@@ -409,7 +433,46 @@ public class OrderBackingBean implements Serializable {
     	String promotionId = request.getParameter("promotionId");
     	//根据活动id获取优惠券列表
     	drawCoupon=client.findCouponsByPromotionId(accountNum, promotionId);
-    	System.out.println("promotionId-----"+promotionId);
+    	Set<String> packageIds=new HashSet<>();
+        if(null!=prods&&prods.size()>0){
+    		for(PromotionInfoResponse pr:prods){
+    				List<PromotionCategoryResult> productCategoryList=pr.getProductCategoryList();
+    				if(null!=productCategoryList&&productCategoryList.size()>0){
+    					for(PromotionCategoryResult res:productCategoryList){
+    							List<PromotionInfoWS> promotionCategoryList =res.getPromotionCategoryList();
+    							if(null!=promotionCategoryList&&promotionCategoryList.size()>0){
+    								for(PromotionInfoWS pws:promotionCategoryList){
+    									packageIds.add(pws.getPkgId());
+    								}
+    							}
+	    					}
+	    				}
+		    		}
+		    	}
+        Iterator<String> packages=packageIds.iterator();
+        String packagesStr= JSON.toJSONString(packages);
+        System.out.println("packagesStr================"+packagesStr);
+        while(packages.hasNext()){
+        	String packageId=packages.next();
+        	System.out.println("packageId================"+packageId);
+        	Iterator<Coupon> iterator = drawCoupon.iterator();
+        	while(iterator.hasNext()){
+        		String couponPackage=iterator.next().getCouponPackage();
+                System.out.println("couponPackageIDs================"+couponPackage);
+        		String removetag="0";
+        		for(String id:couponPackage.split(",")){
+        			if(id.equals(packageId)){
+        				removetag="1";
+            		}
+        		}
+        		if(removetag.equals("0")){
+        			iterator.remove();
+        			 System.out.println("删除----================");
+        		}
+        	}
+        }
+        String drawCouponStr= JSON.toJSONString(drawCoupon);
+        System.out.println("drawCouponStr================"+drawCouponStr);
     	return ViewPage.LINK2COUPONS;
     }
     private boolean checkOneCentPromotionTaken(VehicleInfoResponse vehicle) {
@@ -516,10 +579,15 @@ public class OrderBackingBean implements Serializable {
         // create new order
         logger.debug("creating order...");
         String sProdId = "";
+        String couponPid="";
         double sProdPrice = 0;
         if(selectProd != null){
             sProdId = String.valueOf(selectProd.getPkgId());
+            couponPid=couponPid;
             sProdPrice = selectProd.getPromotionPrice();
+        }
+        if(sProdId.indexOf("A")>0){
+        	sProdId=sProdId.replace("A", "");
         }
         String oId = (String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
       //-------------------------------------假openid--------------------------------
@@ -625,7 +693,7 @@ public class OrderBackingBean implements Serializable {
         if(primePrice==amount){
         	pakgTag="1";
         }
-        coupons=client.findEffectCouponList(accountNum, "0", currentDate,sProdId,pakgTag);
+        coupons=client.findEffectCouponList(accountNum, "0", currentDate,couponPid,pakgTag);
         String couponsString= JSON.toJSONString(coupons);
         System.out.println(couponsString);
         couponListString=JSON.toJSONString(coupons);
@@ -646,6 +714,8 @@ public class OrderBackingBean implements Serializable {
     	boolean ifeffect= false;
     	if(null!=couponIds&&!couponIds.equals("")){
     		couponArray=couponIds.split(",");
+             logger.info("couponIds=------------------" +couponIds);
+             logger.info("coupons=------------------" +JSON.toJSONString(coupons));
     		ifeffect =couponUtil.validataCoupon(couponArray, coupons);
     	}else{
     		ifeffect=true;
@@ -694,6 +764,8 @@ public class OrderBackingBean implements Serializable {
                 if(newPrice<0.01){
                 	newPrice=0.01d;
                 }
+                //向下取整
+                amount=Math.floor(amount);
                 //修改订单价格
                 
                 if(Strings.isNullOrEmpty(orderDesc)) {

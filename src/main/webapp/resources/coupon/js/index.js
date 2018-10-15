@@ -5,7 +5,7 @@
 
     //活动规则 滚动条
     var detailsCommon = function( opts ) {
-        opts.content.scrollBar({'handle': opts.handle, 'bar': opts.bar});
+    	opts.content.vScrollbar({'handle': opts.handle, 'bar': opts.bar});
     };
 
     /**

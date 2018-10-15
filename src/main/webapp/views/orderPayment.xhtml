@@ -347,6 +347,39 @@
             background: #fff;
             border-radius: 8px;
         }
+        /*add 10.12*/
+        .addPage .scroll-wrap {
+            background: url(../resources/coupon/images/bg2.jpg);
+        }
+        .addPage .scroll_cont {
+            height: auto;
+        }
+        .addPage .scroll_handle {
+            height: 272px;
+        }
+        .float1 .content .scroll-wrap {
+            width: 100%;
+            overflow: hidden;
+        }
+        .float1 .content .scroll-wrap .scroll_cont {
+            width: 420px;
+            height: auto;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .float1 .content .scroll-wrap .scroll_handle {
+            height: 294px;
+            right: 3px;
+        }
+        .addPage .scroll_cont ul li .center .number em {
+            max-width: inherit!important;
+        }
+        .addPage .scroll_cont ul li .center .number .span1 i {
+            display: inline!important;
+        }
+        .addPage .scroll_cont ul li .center .number i span {
+            display: inline!important;
+        }
     </style>
         <script>
            var couponJson;
@@ -895,9 +928,11 @@
 
     //add
     ;(function($,jq) {
-        //活动规则 滚动条
+    	 //活动规则 滚动条
+        var activeFunction1 = false;
+        var activeFunction2 = false;
         var detailsCommon = function( opts ) {
-            opts.content.scrollBar({'handle': opts.handle, 'bar': opts.bar});
+            opts.content.vScrollbar({'handle': opts.handle, 'bar': opts.bar});
         };
 
         ;(function() {
@@ -908,6 +943,7 @@
                 });
                 arr.push('../resources/coupon/images/bg1.jpg');
                 arr.push('../resources/coupon/images/bg2.jpg');
+                arr.push('../resources/coupon/images/bg3.jpg');
                 arr.push('../resources/coupon/images/rule.png');
                 arr.push('../resources/coupon/images/close.png');
                 arr.push('../resources/coupon/images/btn-red.png');
@@ -1045,7 +1081,7 @@
             	if(feeTag!="true"){
             		$("#aliFee").val(shouldPaynew);
             	}
-            	$("#shouldPay").text("¥"+fmoney(shouldPaynew,2));
+            	$("#shouldPay").text("¥"+fmoney(Math.floor(shouldPaynew),2));
         	}else{
         		shouldPaynew=$("#allPay").text()
         		$("#shouldPay").text(shouldPaynew);
@@ -1089,6 +1125,14 @@
                 float.stop().fadeOut(500);
             }else {
                 _this.addClass('active');
+                if( !activeFunction2 ) {
+                    detailsCommon({
+                        'content': $('.float .scroll_cont'),
+                        'handle': $('.float .scroll_handle'),
+                        'bar': $('.float .scroll_bar')
+                    });
+                    activeFunction2 = true;
+                }
                 float.stop().fadeIn(500);
             }
         });

@@ -23,6 +23,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="insurancePresentOrder" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="luckyDrawOrder" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="order_status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="packagePrice" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="price" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="start_dt" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="vin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -40,6 +41,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "insurancePresentOrder",
     "luckyDrawOrder",
     "orderStatus",
+    "packagePrice",
     "price",
     "startDt",
     "vin"
@@ -51,6 +53,7 @@ public class QueryOrderByParentOrderNumResponse {
     protected boolean luckyDrawOrder;
     @XmlElement(name = "order_status")
     protected String orderStatus;
+    protected double packagePrice;
     protected double price;
     @XmlElement(name = "start_dt")
     @XmlSchemaType(name = "dateTime")
@@ -135,6 +138,22 @@ public class QueryOrderByParentOrderNumResponse {
      */
     public void setOrderStatus(String value) {
         this.orderStatus = value;
+    }
+
+    /**
+     * 获取packagePrice属性的值。
+     * 
+     */
+    public double getPackagePrice() {
+        return packagePrice;
+    }
+
+    /**
+     * 设置packagePrice属性的值。
+     * 
+     */
+    public void setPackagePrice(double value) {
+        this.packagePrice = value;
     }
 
     /**
