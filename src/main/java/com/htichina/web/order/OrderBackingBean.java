@@ -2,12 +2,9 @@ package com.htichina.web.order;
 
 import java.io.Serializable;
 import java.net.URLDecoder;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
-import java.util.Formatter;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -19,6 +16,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.collections.IteratorUtils;
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
 import org.springframework.context.annotation.Scope;
@@ -41,7 +39,6 @@ import com.htichina.web.wechat.Demo;
 import com.htichina.web.wechat.WxPayDto;
 import com.htichina.wsclient.payment.AccountInfoResponse;
 import com.htichina.wsclient.payment.Coupon;
-import com.htichina.wsclient.payment.CouponHistory;
 import com.htichina.wsclient.payment.PackageInfoResponse;
 import com.htichina.wsclient.payment.PackageUpgradeRequest;
 import com.htichina.wsclient.payment.PackageUpgradeResponse;
@@ -159,7 +156,7 @@ public class OrderBackingBean implements Serializable {
     //CR435 目标客户群显示活动
     private List<PromotionCoupon>  promotionCoup;
     //CR435 显示可用优惠券list
-    private List<Coupon> coupons;
+    private List<Coupon> coupons =new ArrayList<>();
     //CR435 couponList Sitrng json;
     private String couponListString;
     private String orderNumber;
@@ -583,7 +580,7 @@ public class OrderBackingBean implements Serializable {
         double sProdPrice = 0;
         if(selectProd != null){
             sProdId = String.valueOf(selectProd.getPkgId());
-            couponPid=couponPid;
+            couponPid=sProdId;
             sProdPrice = selectProd.getPromotionPrice();
         }
         if(sProdId.indexOf("A")>0){
@@ -631,11 +628,11 @@ public class OrderBackingBean implements Serializable {
             transChannel = "04";
         }
         double amount = 0d;
-        double primePrice = 0d;
+//        double primePrice = 0d;
         String orderDesc = "";
         if(selectProd != null){
             amount = selectProd.getPromotionPrice();
-            primePrice=Double.parseDouble(selectProd.getPromotionDesc5A());
+//            primePrice=Double.parseDouble(selectProd.getPromotionDesc5A());
             if(Strings.isNullOrEmpty(orderDesc)) {
                 orderDesc += selectProd.getShortMarketName();
             } else {
@@ -689,11 +686,28 @@ public class OrderBackingBean implements Serializable {
         //获取当前可用优惠券list
         String currentDate=UtilDate.getDateFormatter();
         System.out.println("accountNum=="+accountNum+"isUsed=="+0+"currentDate=="+currentDate+"sProdId=="+sProdId);
-        String pakgTag="0";
-        if(primePrice==amount){
-        	pakgTag="1";
+//        String pakgTag="0";
+//        if(primePrice==amount){
+//        	pakgTag="1";
+//        }
+        List<Coupon> couponsLsit=client.findEffectCouponList(accountNum, "0", currentDate);
+        Iterator<Coupon> couponsIterator= couponsLsit.iterator();
+        while(couponsIterator.hasNext()){
+        	Coupon c=couponsIterator.next();
+        	String pkgIds=c.getCouponPackage();
+        	String rmTag="0";
+        	for(String s:pkgIds.split(",")){
+        		if(s.equals(couponPid)){
+        			rmTag="1";
+        		}
+        	}
+        	if(rmTag.equals("0")){
+        		couponsIterator.remove();
+        	}else{
+        		coupons.add(c);
+        	}
+        	
         }
-        coupons=client.findEffectCouponList(accountNum, "0", currentDate,couponPid,pakgTag);
         String couponsString= JSON.toJSONString(coupons);
         System.out.println(couponsString);
         couponListString=JSON.toJSONString(coupons);
@@ -765,7 +779,7 @@ public class OrderBackingBean implements Serializable {
                 	newPrice=0.01d;
                 }
                 //向下取整
-                amount=Math.floor(amount);
+                newPrice=Math.floor(newPrice);
                 //修改订单价格
                 
                 if(Strings.isNullOrEmpty(orderDesc)) {

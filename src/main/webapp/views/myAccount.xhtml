@@ -359,6 +359,9 @@
         .ticket .ticket-list .oUl {
             min-height: 525px;
         }
+        .ticket .ticket-list {
+            overflow: hidden;
+        }
     </style>
         <h:form id="logout">
             <div class="page">
@@ -528,7 +531,13 @@
             <div class="ticket">
     <img class="close" src="#{facesContext.externalContext.request.contextPath}/resources/coupon/images/close.png" alt=""/>
     <img class="printer" src="#{facesContext.externalContext.request.contextPath}/resources/coupon/images/printer.png" alt=""/>
-    <div class="scroll_handle">
+    <div class="scroll_handle scroll_handle1">
+        <div class="scroll_bar"></div>
+    </div>
+    <div class="scroll_handle scroll_handle2">
+        <div class="scroll_bar"></div>
+    </div>
+    <div class="scroll_handle scroll_handle3">
         <div class="scroll_bar"></div>
     </div>
     <div class="ticket-list">
@@ -718,22 +727,21 @@
 	        var detailsCommon = function( opts ) {
 	            opts.content.vScrollbar({'handle': opts.handle, 'bar': opts.bar});
 	        };
-	      //初始化滚动条
-	        var contWrap = $('.ticket .ticket-list .oUl'),
-	            scrollHandle = $('.ticket .scroll_handle'),
-	            activeFunction1 = false;
-	            //初始化第一屏
-	            if(!activeFunction1) {
-	                detailsCommon({
-	                    'content': contWrap.eq(0),
-	                    'handle': scrollHandle,
-	                    'bar': scrollHandle.find('.scroll_bar')
-	                });
-	                activeFunction1 = true;
-	            }
-
+          //初始化滚动条
+            var contWrap = $('.ticket .ticket-list .oUl'),
+                scrollHandle = $('.ticket .scroll_handle');
+                //初始化滚动条
+                for(var i = 0; i &lt; contWrap.length; i ++) {
+                    if( contWrap.eq(i).find('li').length &gt; 4 ) {
+                        detailsCommon({
+                            'content': contWrap.eq(i),
+                            'handle': scrollHandle.eq(i),
+                            'bar': scrollHandle.eq(i).find('.scroll_bar')
+                        });
+                    }
+                }
 	
-	        (function() {
+	        ;(function() {
 	            var getSrc = function () {
 	                var arr = [];
 	                $('img').each(function (index, elm) {
@@ -862,7 +870,7 @@
                  var flag = $("input[flag='renewFlag']").val();
                     if("OK" == flag){
                         $("#didiDiv").removeAttr("style");
-//                         window.location.href="https://dc.tt/Rhv6";
+                        window.location.href="https://dc.tt/Rhv6";
                     }
                  }
                 function clickDidi(){
