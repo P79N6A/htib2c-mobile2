@@ -1925,7 +1925,7 @@ public class OrderBackingBean implements Serializable {
         //页面显示需要
         PromotionInfoWS promotionInfoWS = new PromotionInfoWS();
         promotionInfoWS.setShortMarketName(orderDescs);
-        promotionInfoWS.setPromotionPrice(selectProd.getPromotionPrice());
+        promotionInfoWS.setPromotionPrice(queryOrderByParentOrderNumResponse.getPackagePrice());
         selectProd = promotionInfoWS;
         accountInfo = client.getCurrentAccountInfo(accountNum);
         VehicleInfoResponse vehicleInfoResponse = new VehicleInfoResponse();
