@@ -382,26 +382,6 @@
                                                 </h:outputText></span></li>
                                             </ul>
                                         </div>
-                                        <div class="my_list">
-                                            <ul>
-                                                <li>用&#160;&#160;户&#160;&#160;姓&#160;&#160;名&#160;：<span><h:outputText value="#{loginBackingBean.accountInfo.fullName}">
-                                                    <f:converter converterId="UserNameConverter"/>
-                                                </h:outputText></span></li>
-                                                <li>智&#160;&#160;能&#160;&#160;互&#160;&#160;联</li>
-                                                <li>客&#160;&#160;户&#160;&#160;编&#160;&#160;号&#160;：<span><h:outputText value="#{loginBackingBean.accountInfo.accountNum}">
-                                                    <f:converter converterId="AccountNumConverter"/>
-                                                </h:outputText></span></li>
-                                                <li>关联手机号码：<span> <h:outputText value="#{loginBackingBean.accountInfo.mobilePhone}">
-                                                    <f:converter converterId="MobilePhoneConverter"/>
-                                                </h:outputText></span></li>
-                                                <li>账&#160;&#160;户&#160;&#160;状&#160;&#160;态&#160;：<span><h:outputText value="#{loginBackingBean.accountInfo.accountStatus}">
-                                                    <f:converter converterId="AccountStatusConverter"/>
-                                                </h:outputText></span></li>
-                                                <li>车&#160;&#160;&#160;&#160;&#160;架&#160;&#160;&#160;&#160;&#160;号：<span><h:outputText value="#{loginBackingBean.accountInfo.vin}">
-                                                    <f:converter converterId="VinConverter"/>
-                                                </h:outputText></span></li>
-                                            </ul>
-                                        </div>
                                         <!-- 2018-03-05 去除100元代驾券领取 -->
                                         <!-- <c:if test="#{'0' eq loginBackingBean.renewFlag}"><div onclick="clickDidi()">
 
