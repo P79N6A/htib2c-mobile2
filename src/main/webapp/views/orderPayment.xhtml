@@ -1146,6 +1146,8 @@
                 _this.removeClass('active');
                 float.stop().fadeOut(500);
             }else {
+            	 addBtn.removeClass('active');
+                 scrollWrap.stop().slideUp(500);
                 _this.addClass('active');
                 if( !activeFunction2 ) {
                     detailsCommon({

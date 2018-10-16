@@ -28,6 +28,7 @@ import com.alipay.util.AlipaySubmit;
 import com.alipay.util.CharacterReplaceUtil;
 import com.alipay.util.UtilDate;
 import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
 import com.htichina.common.web.ConfigureInfo;
 import com.htichina.common.web.Constant;
 import com.htichina.web.PaymentServiceClient;
@@ -156,7 +157,7 @@ public class OrderBackingBean implements Serializable {
     //CR435 目标客户群显示活动
     private List<PromotionCoupon>  promotionCoup;
     //CR435 显示可用优惠券list
-    private List<Coupon> coupons =new ArrayList<>();
+    private List<Coupon> coupons;
     //CR435 couponList Sitrng json;
     private String couponListString;
     private String orderNumber;
@@ -429,7 +430,7 @@ public class OrderBackingBean implements Serializable {
     	HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
     	String promotionId = request.getParameter("promotionId");
     	//根据活动id获取优惠券列表
-    	drawCoupon=client.findCouponsByPromotionId(accountNum, promotionId);
+    	List<Coupon> getCoupons=client.findCouponsByPromotionId(accountNum, promotionId);
     	Set<String> packageIds=new HashSet<>();
         if(null!=prods&&prods.size()>0){
     		for(PromotionInfoResponse pr:prods){
@@ -446,28 +447,73 @@ public class OrderBackingBean implements Serializable {
 	    				}
 		    		}
 		    	}
-        Iterator<String> packages=packageIds.iterator();
-        String packagesStr= JSON.toJSONString(packages);
-        System.out.println("packagesStr================"+packagesStr);
-        while(packages.hasNext()){
+        List<String> packages = Lists.newArrayList(packageIds);
+        String saaa=JSON.toJSONString(packages);
+		System.out.println(saaa);
+        drawCoupon=new ArrayList<>();
+        for(Coupon c:getCoupons){
+        	String removetag="0";
+        	String pckIds=c.getCouponPackage();
+        	for(String s:pckIds.split(",")){
+        		for(String spk:packages){
+        			if(s.equals(spk)){
+        				removetag="1";
+            		}
+        		}
+        	}
+        	if(removetag.equals("1")){
+        		if(c.getCouponType().equals("1")){
+					if(c.getCouponContent().indexOf(".00")>0){
+						c.setCouponContent(c.getCouponContent().replace(".00",""));
+					}else{
+						c.setCouponContent(c.getCouponContent().substring(0,c.getCouponContent().length()-1));
+					}
+					drawCoupon.add(c);
+				}
+				if(c.getCouponType().equals("3")){
+					if(c.getCouponContent().indexOf(".00")>0){
+						c.setCouponContent(c.getCouponContent().replace(".00",""));
+					}
+					drawCoupon.add(c);
+				}
+			}
+        }
+        /* while(packages.hasNext()){
         	String packageId=packages.next();
-        	System.out.println("packageId================"+packageId);
-        	Iterator<Coupon> iterator = drawCoupon.iterator();
+        	Iterator<Coupon> iterator = getCoupons.iterator();
+        	int i=0;
         	while(iterator.hasNext()){
-        		String couponPackage=iterator.next().getCouponPackage();
-                System.out.println("couponPackageIDs================"+couponPackage);
+        		i++;
+        		System.out.println("i========"+i);
+        		Coupon c=iterator.next();
         		String removetag="0";
-        		for(String id:couponPackage.split(",")){
+        		for(String id:c.getCouponPackage().split(",")){
         			if(id.equals(packageId)){
         				removetag="1";
             		}
         		}
-        		if(removetag.equals("0")){
-        			iterator.remove();
-        			 System.out.println("删除----================");
+        		if(removetag.equals("1")){
+        			if(c.getCouponType().equals("1")){
+						if(c.getCouponContent().indexOf(".00")>0){
+							System.out.println("111================+++++++"+c.getId());
+							c.setCouponContent(c.getCouponContent().replace(".00",""));
+						}else{
+							System.out.println("222================+++++++"+c.getId());
+							c.setCouponContent(c.getCouponContent().substring(0,c.getCouponContent().length()-1));
+						}
+						drawCoupon.add(c);
+					}
+					if(c.getCouponType().equals("3")){
+						if(c.getCouponContent().indexOf(".00")>0){
+							System.out.println("33334================+++++++"+c.getId());
+							c.setCouponContent(c.getCouponContent().replace(".00",""));
+						}
+						drawCoupon.add(c);
+					}
+        			
         		}
         	}
-        }
+        }*/
         String drawCouponStr= JSON.toJSONString(drawCoupon);
         System.out.println("drawCouponStr================"+drawCouponStr);
     	return ViewPage.LINK2COUPONS;
@@ -592,8 +638,8 @@ public class OrderBackingBean implements Serializable {
         FacesUtils.setManagedBeanInSession(Constant.OPEN_ID, oId);
         //-------------------------------------假openid--------------------------------
         logger.info("sPkgId  == "+ESAPI.encoder().encodeForHTML(sPkgId));
-        logger.info("sProdPrice =="+ESAPI.encoder().encodeForHTML(sProdPrice+""));
         logger.info("sProdId ==>"+ESAPI.encoder().encodeForHTML(sProdId));
+        logger.info("sProdPrice =="+ESAPI.encoder().encodeForHTML(sProdPrice+""));
         logger.info("accountNum ==>"+ESAPI.encoder().encodeForHTML(String.valueOf(selectedVehicle.getAcctNum())));
         logger.info("vin ==>"+ESAPI.encoder().encodeForHTML(selectedVehicle.getVin()));
         logger.info("oId ==>"+ESAPI.encoder().encodeForHTML(oId));
@@ -690,10 +736,9 @@ public class OrderBackingBean implements Serializable {
 //        if(primePrice==amount){
 //        	pakgTag="1";
 //        }
-        List<Coupon> couponsLsit=client.findEffectCouponList(accountNum, "0", currentDate);
-        Iterator<Coupon> couponsIterator= couponsLsit.iterator();
-        while(couponsIterator.hasNext()){
-        	Coupon c=couponsIterator.next();
+        coupons=new ArrayList<>();
+        List<Coupon> couponsList=client.findEffectCouponList(accountNum, "0", currentDate);
+        for(Coupon c:couponsList){
         	String pkgIds=c.getCouponPackage();
         	String rmTag="0";
         	for(String s:pkgIds.split(",")){
@@ -701,9 +746,19 @@ public class OrderBackingBean implements Serializable {
         			rmTag="1";
         		}
         	}
-        	if(rmTag.equals("0")){
-        		couponsIterator.remove();
-        	}else{
+        	if(rmTag.equals("1")){
+        		if(c.getCouponType().equals("1")){
+					if(c.getCouponContent().indexOf(".00")>0){
+						c.setCouponContent(c.getCouponContent().replace(".00",""));
+					}else{
+						c.setCouponContent(c.getCouponContent().substring(0,c.getCouponContent().length()-1));
+					}
+				}
+				if(c.getCouponType().equals("3")){
+					if(c.getCouponContent().indexOf(".00")>0){
+						c.setCouponContent(c.getCouponContent().replace(".00",""));
+					}
+				}
         		coupons.add(c);
         	}
         	
@@ -1840,6 +1895,7 @@ public class OrderBackingBean implements Serializable {
         String transactionType = "0";
 //        List<Transaction> list = client.checkTransactionPaied(transactionNos.get(0));
         queryOrderByParentOrderNumResponse = client.queryOrderByParentOrderNum(parentOrderNum,accountNum);
+        logger.info("queryOrderByParentOrderNumResponse================>"+transactionType);
         List<QueryChildOrdersByParentOrderNumResponse> orders = client.queryChildOrdersByParentOrderNum(parentOrderNum);
         if (orders == null || orders.size() == 0) {
             //没创建订单
