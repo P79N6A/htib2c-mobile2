@@ -384,6 +384,8 @@
         .addPage .scroll-wrap.active .scroll_handle {
             display: none;
         }
+        .addPage .scroll-wrap.active {height: auto
+        }
     </style>
         <script>
            var couponJson;
@@ -984,18 +986,6 @@
             text = jq('.text'),
             float = jq('.float');
 
-
-        //初始化滚动条
-        detailsCommon({
-            'content': $('.addPage .scroll-wrap .scroll_cont'),
-            'handle': $('.addPage .scroll-wrap .scroll_handle'),
-            'bar': $('.addPage .scroll-wrap .scroll_bar')
-        });
-        detailsCommon({
-            'content': $('.float .scroll_cont'),
-            'handle': $('.float .scroll_handle'),
-            'bar': $('.float .scroll_bar')
-        });
 
         //可用优惠券
         addBtn.on('click',function() {

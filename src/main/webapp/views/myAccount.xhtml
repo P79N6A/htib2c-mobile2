@@ -428,7 +428,7 @@
                                             领取代驾礼券包
                                         </h:commandButton> -->
                                         <!-- add Btn -->
-                                        <c:if test="#{not empty loginBackingBean.accountInfo.unUsedCoupons &amp;&amp; not empty loginBackingBean.accountInfo.expiredCoupons}">
+                                        <c:if test="#{not empty loginBackingBean.accountInfo.unUsedCoupons || not empty loginBackingBean.accountInfo.expiredCoupons}">
 			                            <div class="addBtn">我的优惠券</div>
 			                            </c:if>
 			                            <!-- add Btn -->
