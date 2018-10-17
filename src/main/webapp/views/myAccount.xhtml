@@ -362,6 +362,19 @@
         .ticket .ticket-list {
             overflow: hidden;
         }
+        .no-text {
+		    font-size: 30px;
+		    line-height: 30px;
+		    position: relative;
+		    width: 100%;
+		    top: 50%;
+		    color: #fff;
+		    left: 50%;
+		    text-align: center;
+		    -webkit-transform: translate(-50%,-50%);
+		    transform: t	ranslate(-50%,-50%);
+		    margin-top: 80%;
+		}
     </style>
         <h:form id="logout">
             <div class="page">
@@ -584,10 +597,17 @@
 		            </li>
 		           </c:if>
 		        </c:forEach>
-		        <h:commandButton id="toOrderPackage" style="display:none" action="#{orderBackingBean.toOrderEntry('')}">
-		        </h:commandButton>
+		        
         </c:if>
+         <c:if test="#{empty loginBackingBean.accountInfo.unUsedCoupons}">
+             <div class="no-text" onclick="toUseCoupon()">
+				    点击前往领取优惠券
+			  </div>
+        </c:if>
+        <h:commandButton id="toOrderPackage" style="display:none" action="#{orderBackingBean.toOrderEntry('')}">
+		</h:commandButton>
         </ul>
+        
         <ul class="oUl">
         <c:if test="#{not empty loginBackingBean.accountInfo.usedCoupons}">
 		        <c:forEach items="#{loginBackingBean.accountInfo.usedCoupons}" var="couponUsed" varStatus="loop">
@@ -671,6 +691,7 @@
 		        </c:forEach>
         </c:if>
         </ul>
+        
     </div>
     <div class="btn-wrap">
         <div class="btn active">未使用</div>
