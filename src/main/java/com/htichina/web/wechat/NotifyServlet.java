@@ -94,7 +94,7 @@ public class NotifyServlet extends HttpServlet {
 				String neworder = "";
 //				logger.info("wpr.getOutTradeNo()=============================="+wpr.getOutTradeNo());
 				if(wpr.getOutTradeNo().length()>13){
-					neworder = wpr.getOutTradeNo().substring(1, 13);
+					neworder = wpr.getOutTradeNo().substring(1, 14);
 				}
 //				logger.info("order======================>"+order);
 //				logger.info("neworder======================>"+neworder);
@@ -150,7 +150,7 @@ public class NotifyServlet extends HttpServlet {
 //						this.sendMessage(wpr.getOutTradeNo().substring(13), wpr.getOpenid());
 
 
-						String orderNum = wpr.getOutTradeNo().substring(13, 19);
+						String orderNum = wpr.getOutTradeNo().substring(14, 20);
 						String body = "";
 						List<QueryChildOrdersByParentOrderNumResponse> list1 = client.queryChildOrdersByParentOrderNum(orderNum);
 						if(wpr.getOutTradeNo().length()>13){
@@ -191,7 +191,7 @@ public class NotifyServlet extends HttpServlet {
 						
 						this.sendMessage(body,orderNum, wpr.getOpenid());
 						//更新
-						client.updatewechatMessage(wpr.getOpenid(),wpr.getOutTradeNo().substring(13, 19));
+						client.updatewechatMessage(wpr.getOpenid(),wpr.getOutTradeNo().substring(14, 20));
 
 						response.setContentType("text/html;charset=UTF-8");
 						BufferedOutputStream out = new BufferedOutputStream(

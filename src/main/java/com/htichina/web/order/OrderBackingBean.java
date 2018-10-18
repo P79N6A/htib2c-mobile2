@@ -462,58 +462,9 @@ public class OrderBackingBean implements Serializable {
         		}
         	}
         	if(removetag.equals("1")){
-        		if(c.getCouponType().equals("1")){
-					if(c.getCouponContent().indexOf(".00")>0){
-						c.setCouponContent(c.getCouponContent().replace(".00",""));
-					}else{
-						c.setCouponContent(c.getCouponContent().substring(0,c.getCouponContent().length()-1));
-					}
-					drawCoupon.add(c);
-				}
-				if(c.getCouponType().equals("3")){
-					if(c.getCouponContent().indexOf(".00")>0){
-						c.setCouponContent(c.getCouponContent().replace(".00",""));
-					}
-					drawCoupon.add(c);
-				}
+				drawCoupon.add(c);
 			}
         }
-        /* while(packages.hasNext()){
-        	String packageId=packages.next();
-        	Iterator<Coupon> iterator = getCoupons.iterator();
-        	int i=0;
-        	while(iterator.hasNext()){
-        		i++;
-        		System.out.println("i========"+i);
-        		Coupon c=iterator.next();
-        		String removetag="0";
-        		for(String id:c.getCouponPackage().split(",")){
-        			if(id.equals(packageId)){
-        				removetag="1";
-            		}
-        		}
-        		if(removetag.equals("1")){
-        			if(c.getCouponType().equals("1")){
-						if(c.getCouponContent().indexOf(".00")>0){
-							System.out.println("111================+++++++"+c.getId());
-							c.setCouponContent(c.getCouponContent().replace(".00",""));
-						}else{
-							System.out.println("222================+++++++"+c.getId());
-							c.setCouponContent(c.getCouponContent().substring(0,c.getCouponContent().length()-1));
-						}
-						drawCoupon.add(c);
-					}
-					if(c.getCouponType().equals("3")){
-						if(c.getCouponContent().indexOf(".00")>0){
-							System.out.println("33334================+++++++"+c.getId());
-							c.setCouponContent(c.getCouponContent().replace(".00",""));
-						}
-						drawCoupon.add(c);
-					}
-        			
-        		}
-        	}
-        }*/
         String drawCouponStr= JSON.toJSONString(drawCoupon);
         System.out.println("drawCouponStr================"+drawCouponStr);
     	return ViewPage.LINK2COUPONS;
@@ -689,7 +640,7 @@ public class OrderBackingBean implements Serializable {
         transactionRequest.setAmoumt(String.valueOf(amount));
         transactionRequest.setChannel(transChannel);
         transactionRequest.setOrderDescription(orderDesc);
-        transactionRequest.setPaymentno("1"+transactionNo+"orderNumber");
+        transactionRequest.setPaymentno(transactionNo);
         transactionRequest.setRemark("微信支付，OpenID:" + FacesUtils.getManagedBeanInSession(Constant.OPEN_ID));
         transactionRequest.setRespcode("00A4");
         transactionRequest.setResponse("已下单，等待支付");
@@ -719,7 +670,7 @@ public class OrderBackingBean implements Serializable {
             logger.debug("open_id=" + ESAPI.encoder().encodeForHTML(FacesUtils.getManagedBeanInSession(Constant.OPEN_ID).toString()));
             tpWxPay.setBody(orderDesc);
             logger.debug("prodName=" + ESAPI.encoder().encodeForHTML(orderDesc));
-            tpWxPay.setOrderId(transactionNo+paymentOrderResponse.getOrderNum());
+            tpWxPay.setOrderId("1"+transactionNo+paymentOrderResponse.getOrderNum());
             logger.debug("orderId=" + ESAPI.encoder().encodeForHTML(transactionNo + paymentOrderResponse.getOrderNum()));
             tpWxPay.setSpbillCreateIp("127.0.0.1");
             tpWxPay.setTotalFee(String.valueOf(amount));
@@ -747,18 +698,6 @@ public class OrderBackingBean implements Serializable {
         		}
         	}
         	if(rmTag.equals("1")){
-        		if(c.getCouponType().equals("1")){
-					if(c.getCouponContent().indexOf(".00")>0){
-						c.setCouponContent(c.getCouponContent().replace(".00",""));
-					}else{
-						c.setCouponContent(c.getCouponContent().substring(0,c.getCouponContent().length()-1));
-					}
-				}
-				if(c.getCouponType().equals("3")){
-					if(c.getCouponContent().indexOf(".00")>0){
-						c.setCouponContent(c.getCouponContent().replace(".00",""));
-					}
-				}
         		coupons.add(c);
         	}
         	
