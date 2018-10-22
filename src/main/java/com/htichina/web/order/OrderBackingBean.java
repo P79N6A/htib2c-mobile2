@@ -764,7 +764,7 @@ public class OrderBackingBean implements Serializable {
                 //计算
 //                if(promotiontag){
                 	amount=selectProd.getPromotionPrice();
-                	primePrice=selectProd.getPromotionDesc5A();
+                	primePrice=selectProd.getPromotionDesc5B();
 //                }else{
 //                	amount=Double.parseDouble(selectProd.getPromotionDesc5A());
 //                }
