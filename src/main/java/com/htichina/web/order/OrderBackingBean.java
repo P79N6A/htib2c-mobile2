@@ -2,12 +2,9 @@ package com.htichina.web.order;
 
 import java.io.Serializable;
 import java.net.URLDecoder;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
-import java.util.Formatter;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -19,6 +16,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.collections.IteratorUtils;
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
 import org.springframework.context.annotation.Scope;
@@ -30,6 +28,7 @@ import com.alipay.util.AlipaySubmit;
 import com.alipay.util.CharacterReplaceUtil;
 import com.alipay.util.UtilDate;
 import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
 import com.htichina.common.web.ConfigureInfo;
 import com.htichina.common.web.Constant;
 import com.htichina.web.PaymentServiceClient;
@@ -41,7 +40,6 @@ import com.htichina.web.wechat.Demo;
 import com.htichina.web.wechat.WxPayDto;
 import com.htichina.wsclient.payment.AccountInfoResponse;
 import com.htichina.wsclient.payment.Coupon;
-import com.htichina.wsclient.payment.CouponHistory;
 import com.htichina.wsclient.payment.PackageInfoResponse;
 import com.htichina.wsclient.payment.PackageUpgradeRequest;
 import com.htichina.wsclient.payment.PackageUpgradeResponse;
@@ -432,7 +430,7 @@ public class OrderBackingBean implements Serializable {
     	HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
     	String promotionId = request.getParameter("promotionId");
     	//根据活动id获取优惠券列表
-    	drawCoupon=client.findCouponsByPromotionId(accountNum, promotionId);
+    	List<Coupon> getCoupons=client.findCouponsByPromotionId(accountNum, promotionId);
     	Set<String> packageIds=new HashSet<>();
         if(null!=prods&&prods.size()>0){
     		for(PromotionInfoResponse pr:prods){
@@ -449,27 +447,23 @@ public class OrderBackingBean implements Serializable {
 	    				}
 		    		}
 		    	}
-        Iterator<String> packages=packageIds.iterator();
-        String packagesStr= JSON.toJSONString(packages);
-        System.out.println("packagesStr================"+packagesStr);
-        while(packages.hasNext()){
-        	String packageId=packages.next();
-        	System.out.println("packageId================"+packageId);
-        	Iterator<Coupon> iterator = drawCoupon.iterator();
-        	while(iterator.hasNext()){
-        		String couponPackage=iterator.next().getCouponPackage();
-                System.out.println("couponPackageIDs================"+couponPackage);
-        		String removetag="0";
-        		for(String id:couponPackage.split(",")){
-        			if(id.equals(packageId)){
+        List<String> packages = Lists.newArrayList(packageIds);
+        String saaa=JSON.toJSONString(packages);
+		System.out.println(saaa);
+        drawCoupon=new ArrayList<>();
+        for(Coupon c:getCoupons){
+        	String removetag="0";
+        	String pckIds=c.getCouponPackage();
+        	for(String s:pckIds.split(",")){
+        		for(String spk:packages){
+        			if(s.equals(spk)){
         				removetag="1";
             		}
         		}
-        		if(removetag.equals("0")){
-        			iterator.remove();
-        			 System.out.println("删除----================");
-        		}
         	}
+        	if(removetag.equals("1")){
+				drawCoupon.add(c);
+			}
         }
         String drawCouponStr= JSON.toJSONString(drawCoupon);
         System.out.println("drawCouponStr================"+drawCouponStr);
@@ -583,7 +577,7 @@ public class OrderBackingBean implements Serializable {
         double sProdPrice = 0;
         if(selectProd != null){
             sProdId = String.valueOf(selectProd.getPkgId());
-            couponPid=couponPid;
+            couponPid=sProdId;
             sProdPrice = selectProd.getPromotionPrice();
         }
         if(sProdId.indexOf("A")>0){
@@ -595,8 +589,8 @@ public class OrderBackingBean implements Serializable {
         FacesUtils.setManagedBeanInSession(Constant.OPEN_ID, oId);
         //-------------------------------------假openid--------------------------------
         logger.info("sPkgId  == "+ESAPI.encoder().encodeForHTML(sPkgId));
-        logger.info("sProdPrice =="+ESAPI.encoder().encodeForHTML(sProdPrice+""));
         logger.info("sProdId ==>"+ESAPI.encoder().encodeForHTML(sProdId));
+        logger.info("sProdPrice =="+ESAPI.encoder().encodeForHTML(sProdPrice+""));
         logger.info("accountNum ==>"+ESAPI.encoder().encodeForHTML(String.valueOf(selectedVehicle.getAcctNum())));
         logger.info("vin ==>"+ESAPI.encoder().encodeForHTML(selectedVehicle.getVin()));
         logger.info("oId ==>"+ESAPI.encoder().encodeForHTML(oId));
@@ -631,11 +625,11 @@ public class OrderBackingBean implements Serializable {
             transChannel = "04";
         }
         double amount = 0d;
-        double primePrice = 0d;
+//        double primePrice = 0d;
         String orderDesc = "";
         if(selectProd != null){
             amount = selectProd.getPromotionPrice();
-            primePrice=Double.parseDouble(selectProd.getPromotionDesc5A());
+//            primePrice=Double.parseDouble(selectProd.getPromotionDesc5A());
             if(Strings.isNullOrEmpty(orderDesc)) {
                 orderDesc += selectProd.getShortMarketName();
             } else {
@@ -646,7 +640,7 @@ public class OrderBackingBean implements Serializable {
         transactionRequest.setAmoumt(String.valueOf(amount));
         transactionRequest.setChannel(transChannel);
         transactionRequest.setOrderDescription(orderDesc);
-        transactionRequest.setPaymentno("1"+transactionNo+"orderNumber");
+        transactionRequest.setPaymentno(transactionNo);
         transactionRequest.setRemark("微信支付，OpenID:" + FacesUtils.getManagedBeanInSession(Constant.OPEN_ID));
         transactionRequest.setRespcode("00A4");
         transactionRequest.setResponse("已下单，等待支付");
@@ -676,7 +670,7 @@ public class OrderBackingBean implements Serializable {
             logger.debug("open_id=" + ESAPI.encoder().encodeForHTML(FacesUtils.getManagedBeanInSession(Constant.OPEN_ID).toString()));
             tpWxPay.setBody(orderDesc);
             logger.debug("prodName=" + ESAPI.encoder().encodeForHTML(orderDesc));
-            tpWxPay.setOrderId(transactionNo+paymentOrderResponse.getOrderNum());
+            tpWxPay.setOrderId("1"+transactionNo+paymentOrderResponse.getOrderNum());
             logger.debug("orderId=" + ESAPI.encoder().encodeForHTML(transactionNo + paymentOrderResponse.getOrderNum()));
             tpWxPay.setSpbillCreateIp("127.0.0.1");
             tpWxPay.setTotalFee(String.valueOf(amount));
@@ -689,11 +683,25 @@ public class OrderBackingBean implements Serializable {
         //获取当前可用优惠券list
         String currentDate=UtilDate.getDateFormatter();
         System.out.println("accountNum=="+accountNum+"isUsed=="+0+"currentDate=="+currentDate+"sProdId=="+sProdId);
-        String pakgTag="0";
-        if(primePrice==amount){
-        	pakgTag="1";
+//        String pakgTag="0";
+//        if(primePrice==amount){
+//        	pakgTag="1";
+//        }
+        coupons=new ArrayList<>();
+        List<Coupon> couponsList=client.findEffectCouponList(accountNum, "0", currentDate);
+        for(Coupon c:couponsList){
+        	String pkgIds=c.getCouponPackage();
+        	String rmTag="0";
+        	for(String s:pkgIds.split(",")){
+        		if(s.equals(couponPid)){
+        			rmTag="1";
+        		}
+        	}
+        	if(rmTag.equals("1")){
+        		coupons.add(c);
+        	}
+        	
         }
-        coupons=client.findEffectCouponList(accountNum, "0", currentDate,couponPid,pakgTag);
         String couponsString= JSON.toJSONString(coupons);
         System.out.println(couponsString);
         couponListString=JSON.toJSONString(coupons);
@@ -756,7 +764,7 @@ public class OrderBackingBean implements Serializable {
                 //计算
 //                if(promotiontag){
                 	amount=selectProd.getPromotionPrice();
-                	primePrice=selectProd.getPromotionDesc5A();
+                	primePrice=selectProd.getPromotionDesc5B();
 //                }else{
 //                	amount=Double.parseDouble(selectProd.getPromotionDesc5A());
 //                }
@@ -765,7 +773,7 @@ public class OrderBackingBean implements Serializable {
                 	newPrice=0.01d;
                 }
                 //向下取整
-                amount=Math.floor(amount);
+                newPrice=Math.floor(newPrice);
                 //修改订单价格
                 
                 if(Strings.isNullOrEmpty(orderDesc)) {
@@ -1826,6 +1834,7 @@ public class OrderBackingBean implements Serializable {
         String transactionType = "0";
 //        List<Transaction> list = client.checkTransactionPaied(transactionNos.get(0));
         queryOrderByParentOrderNumResponse = client.queryOrderByParentOrderNum(parentOrderNum,accountNum);
+        logger.info("queryOrderByParentOrderNumResponse================>"+transactionType);
         List<QueryChildOrdersByParentOrderNumResponse> orders = client.queryChildOrdersByParentOrderNum(parentOrderNum);
         if (orders == null || orders.size() == 0) {
             //没创建订单

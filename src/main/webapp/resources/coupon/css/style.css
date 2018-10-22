@@ -335,3 +335,35 @@
         opacity: 1;
     }
 }
+
+/* add 10.12 */
+#welfare .scroll_content .aside ul li .btn span {
+    width: 40px;
+}
+#welfare .scroll_content .aside ul li.active .btn span {
+    width: 100%;
+}
+#welfare .scroll-wrap.active .scroll_cont .scroll_content ul {
+    position: relative;
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding-bottom: 0;
+}
+#welfare .scroll-wrap .scroll_cont {
+    height: 395px;
+}
+#welfare .scroll-wrap .scroll_cont .scroll_content {
+    height: 368px;
+}
+#welfare .scroll-wrap.active .scroll_cont .scroll_content {
+    height: 368px;
+    overflow: hidden;
+}
+#welfare .scroll-wrap.active .scroll_cont .scroll_content .aside {
+    height: 368px;
+}
+#welfare .scroll-wrap.active .scroll_handle {
+    display: none;
+}

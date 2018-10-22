@@ -62,16 +62,16 @@
         }
         .ticket .ticket-list {
             position: relative;
-            width: 370px;
-            /*height: 490px;*/
+            width: 100%;
             height: 525px;
             -webkit-overflow-scrolling: touch;
-            overflow-y: scroll;
-            padding: 0 60px;
-            margin: 326px auto 0;
+            overflow: auto;
+            margin: 326px 0 0 0;
         }
         .ticket .ticket-list .oUl {
             display: none;
+            width: 370px;
+            margin: 0 auto;
         }
         .ticket .ticket-list .oUl.active {
             display: block;
@@ -91,17 +91,10 @@
         .ticket .ticket-list li:last-of-type {
             -webkit-transform: rotate(5deg);
             transform: rotate(5deg);
-            margin-left: -5px;
+/*             margin-left: -55px; */
             z-index: 1;
             margin-top: 10px;
         }
-        /*.ticket .ticket-list li:first-of-type {*/
-            /*-webkit-transform: rotate(0)!important;*/
-            /*transform: rotate(0)!important;*/
-            /*margin-left: 0!important;*/
-            /*z-index: 2!important;*/
-            /*margin-top: 0!important;*/
-        /*}*/
         .reCenter {
             position: relative;
             top: 50%;
@@ -121,7 +114,6 @@
             height: 60px;
             margin-left: 88px;
         }
-        
         .ticket .ticket-list li .discount {
             overflow: hidden;
             text-align: right;
@@ -135,21 +127,19 @@
             font-size: 26px;
             line-height: 30px;
         }
-        
-       .ticket .ticket-list li .discount i {
+        .ticket .ticket-list li .discount i {
             font-style: normal;
             font-weight: bolder;
             font-size: 26px;
             line-height: 30px;
         }
-        
         .ticket .ticket-list li .number em {
             font-size: 45px;
             line-height: 60px;
             font-weight: bolder;
             font-style: normal;
             display: inline-block;
-            width: 78px;
+            max-width: 78px;
         }
         .ticket .ticket-list li .discount em {
             font-size: 40px;
@@ -161,8 +151,6 @@
         }
         .ticket .ticket-list li .text {
             position: relative;
-            /*max-width: 196px;*/
-            /*margin-left: 30px;*/
             max-width: 200px;
             margin-left: 40px;
         }
@@ -207,7 +195,6 @@
             display: inline-block;
             font-size: 16px;
             line-height: 16px;
-            /*letter-spacing: 2px;*/
             background: #fff;
             color: #A8723D;
             padding: 4px 12px;
@@ -275,7 +262,7 @@
         }
         .ticket .btn-wrap {
             position: absolute;
-            top: 86%;
+            top: 88%;
             left: 0;
             width: 100%;
             z-index: 100;
@@ -332,7 +319,7 @@
             color: #fff;
             font-size: 36px;
         }
-        .ticket .ticket-list .grey {
+        .ticket .grey {
             width: 440px;
             height: 46px;
             position: fixed;
@@ -358,6 +345,18 @@
         }
         .ticket .ticket-list .oUl {
             min-height: 525px;
+        }
+        .no-text {
+            font-size: 30px;
+            line-height: 30px;
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            color: #fff;
+            left: 50%;
+            text-align: center;
+            -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
         }
     </style>
         <h:form id="logout">
@@ -425,7 +424,7 @@
                                             领取代驾礼券包
                                         </h:commandButton> -->
                                         <!-- add Btn -->
-                                        <c:if test="#{not empty loginBackingBean.accountInfo.unUsedCoupons &amp;&amp; not empty loginBackingBean.accountInfo.expiredCoupons}">
+                                        <c:if test="#{not empty loginBackingBean.accountInfo.unUsedCoupons || not empty loginBackingBean.accountInfo.expiredCoupons || not empty loginBackingBean.accountInfo.usedCoupons}">
 			                            <div class="addBtn">我的优惠券</div>
 			                            </c:if>
 			                            <!-- add Btn -->
@@ -466,7 +465,10 @@
                                         
                                         <h3>我的里程数</h3>
                                         <div class="my_list">
+                                        <div style="margin-left: 60px">（截至<h:outputText value="#{loginBackingBean.accountInfo.mileageResponse.lastMileageDate}">
+                                        </h:outputText>）</div>
                                             <ul>
+                                                
                                                 <li>过&#160;去&#160;十&#160;天&#160;的&#160;里&#160;程&#160;：
                                                 <span>
 	                                                <h:outputText value="#{loginBackingBean.accountInfo.mileageResponse.mileage}">
@@ -528,11 +530,18 @@
             <div class="ticket">
     <img class="close" src="#{facesContext.externalContext.request.contextPath}/resources/coupon/images/close.png" alt=""/>
     <img class="printer" src="#{facesContext.externalContext.request.contextPath}/resources/coupon/images/printer.png" alt=""/>
-    <div class="scroll_handle">
+    <div class="scroll_handle scroll_handle1">
         <div class="scroll_bar"></div>
     </div>
+    <div class="scroll_handle scroll_handle2">
+        <div class="scroll_bar"></div>
+    </div>
+    <div class="scroll_handle scroll_handle3">
+        <div class="scroll_bar"></div>
+    </div>
+    <div class="grey"></div>
     <div class="ticket-list">
-        <div class="grey"></div>
+        
         <!-- 未使用 -->
         
         <ul class="oUl active">
@@ -563,8 +572,8 @@
 		                    <div class="text reCenter">
 		                        <h3>#{couponUnused.couponName}</h3>
 		                        <div class="discount">
-		                            <i>折</i>
 		                            <em>#{couponUnused.couponContent}</em>
+		                            <i>折</i>
 		                        </div>
 		                        <p>#{couponUnused.couponDis}</p>
 		                        <p>有效期至#{couponUnused.effectEndDate}</p>
@@ -575,10 +584,17 @@
 		            </li>
 		           </c:if>
 		        </c:forEach>
-		        <h:commandButton id="toOrderPackage" style="display:none" action="#{orderBackingBean.toOrderEntry('')}">
-		        </h:commandButton>
+		        
         </c:if>
+         <c:if test="#{empty loginBackingBean.accountInfo.unUsedCoupons}">
+             <div class="no-text" onclick="toUseCoupon()">
+				    点击前往领取优惠券
+			  </div>
+        </c:if>
+        <h:commandButton id="toOrderPackage" style="display:none" action="#{orderBackingBean.toOrderEntry('')}">
+		</h:commandButton>
         </ul>
+        
         <ul class="oUl">
         <c:if test="#{not empty loginBackingBean.accountInfo.usedCoupons}">
 		        <c:forEach items="#{loginBackingBean.accountInfo.usedCoupons}" var="couponUsed" varStatus="loop">
@@ -605,9 +621,8 @@
 		                    <div class="text reCenter">
 		                        <h3>#{couponUsed.couponName}</h3>
 		                        <div class="discount">
-		                            <i>折</i>
 		                            <em>#{couponUsed.couponContent}</em>
-		                            
+		                            <i>折</i>
 		                        </div>
 		                        <p>#{couponUsed.couponDis}</p>
 		                        <p>有效期至#{couponUsed.effectEndDate}</p>
@@ -648,8 +663,9 @@
 		                    <div class="text reCenter">
 		                        <h3>#{couponExpired.couponName}</h3>
 		                        <div class="discount">
-		                            <i>折</i>
+		                            
 		                            <em>#{couponExpired.couponContent}</em>
+		                            <i>折</i>
 		                        </div>
 		                        <p>#{couponExpired.couponDis}</p>
 		                        <p>有效期至 ： #{couponExpired.effectEndDate}</p>
@@ -662,6 +678,7 @@
 		        </c:forEach>
         </c:if>
         </ul>
+        
     </div>
     <div class="btn-wrap">
         <div class="btn active">未使用</div>
@@ -714,26 +731,25 @@
 	    }
 	    //add JS
 	    ;(function($,jq) {
-            // 	        活动规则 滚动条
-	        var detailsCommon = function( opts ) {
-	            opts.content.vScrollbar({'handle': opts.handle, 'bar': opts.bar});
-	        };
-	      //初始化滚动条
-	        var contWrap = $('.ticket .ticket-list .oUl'),
-	            scrollHandle = $('.ticket .scroll_handle'),
-	            activeFunction1 = false;
-	            //初始化第一屏
-	            if(!activeFunction1) {
-	                detailsCommon({
-	                    'content': contWrap.eq(0),
-	                    'handle': scrollHandle,
-	                    'bar': scrollHandle.find('.scroll_bar')
-	                });
-	                activeFunction1 = true;
-	            }
-
+//             // 	        活动规则 滚动条
+// 	        var detailsCommon = function( opts ) {
+// 	            opts.content.vScrollbar({'handle': opts.handle, 'bar': opts.bar});
+// 	        };
+//           //初始化滚动条
+//             var contWrap = $('.ticket .ticket-list .oUl'),
+//                 scrollHandle = $('.ticket .scroll_handle');
+//                 //初始化滚动条
+//                 for(var i = 0; i &lt; contWrap.length; i ++) {
+//                     if( contWrap.eq(i).find('li').length &gt; 4 ) {
+//                         detailsCommon({
+//                             'content': contWrap.eq(i),
+//                             'handle': scrollHandle.eq(i),
+//                             'bar': scrollHandle.eq(i).find('.scroll_bar')
+//                         });
+//                     }
+//                 }
 	
-	        (function() {
+	        ;(function() {
 	            var getSrc = function () {
 	                var arr = [];
 	                $('img').each(function (index, elm) {

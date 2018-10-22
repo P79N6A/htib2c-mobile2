@@ -7,7 +7,7 @@
     var detailsCommon = function( opts ) {
     	opts.content.vScrollbar({'handle': opts.handle, 'bar': opts.bar});
     };
-
+    var activeFunction = false;
     /**
      * loading页
      */
@@ -43,15 +43,8 @@
         loading( getSrc(), function( num ){
         },function(){
             var welfare = $('#welfare');
-
-            welfare.addClass('active');
-            //初始化滚动条
-            detailsCommon({
-                'content': welfare.find('.scroll_cont'),
-                'handle': welfare.find('.scroll_handle'),
-                'bar': welfare.find('.scroll_bar')
-            });
-        });
+		    welfare.addClass('active');
+		});
 
         //微信锁屏
         $('.page').on('touchmove',function(ev) {
@@ -66,7 +59,7 @@
     ;(function() {
         var welfare = $('#welfare'),
             oUl = welfare.find('.scroll-wrap ul');
-
+            scrollWrap = welfare.find('.scroll-wrap');
         oUl.on('click','li .btn',function() {
         	var btn= $(this);
             var _this = $(this).parents('li');
@@ -91,6 +84,20 @@
             }
 
         });
+        if( oUl.find('li').length <= 2 ) {
+            scrollWrap.addClass('active');
+        }else {
+            scrollWrap.removeClass('active');
+            //初始化滚动条
+            if(!activeFunction) {
+                detailsCommon({
+                    'content': welfare.find('.scroll_content .aside'),
+                    'handle': welfare.find('.scroll_handle'),
+                    'bar': welfare.find('.scroll_bar')
+                });
+                activeFunction = true;
+            }
+        }
 
     })();
 
