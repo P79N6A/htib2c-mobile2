@@ -85,6 +85,9 @@
                                         <li>合&#160;&#160;计&#160;&#160;金&#160;&#160;额&#160;：<span><h:outputText value="#{orderBackingBean.selectProd.promotionPrice}">
                                             <f:convertNumber type="currency" maxFractionDigits="2" currencySymbol="¥"/>
                                         </h:outputText></span></li>
+                                        <li>应&#160;&#160;付&#160;&#160;金&#160;&#160;额&#160;：<span><h:outputText id="shouldPay" value="#{orderBackingBean.queryOrderByParentOrderNumResponse.price}">
+                                            <f:convertNumber type="currency" maxFractionDigits="2" currencySymbol="¥"/>
+                                        </h:outputText></span></li>
                                     </ul>
                                 </div>
                                 <h3>账户信息</h3>
