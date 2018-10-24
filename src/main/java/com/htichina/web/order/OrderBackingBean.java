@@ -1960,7 +1960,7 @@ public class OrderBackingBean implements Serializable {
         Demo demo = new Demo();
         tpWxPay.setOpenId(openId);
         
-        tpWxPay.setOrderId("1"+orderIds);
+        tpWxPay.setOrderId((int)(Math.random()*10)+orderIds);
         tpWxPay.setBody(orderDescs);
         tpWxPay.setSpbillCreateIp("127.0.0.1");
         tpWxPay.setTotalFee(String.valueOf(queryOrderByParentOrderNumResponse.getPrice()));
