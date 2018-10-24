@@ -740,7 +740,7 @@ public class OrderBackingBean implements Serializable {
         	Double voucher=0d;
             if(selectProd != null){
                 Double amount = 0d;
-                String primePrice = "";
+//                String primePrice = "";
 //                Double amount = selectProd.getPromotionPrice();
 //                boolean  promotiontag=true;
                 if(couponArray.length>0){
