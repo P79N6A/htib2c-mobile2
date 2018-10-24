@@ -462,7 +462,7 @@
 
                                             </c:forEach>
                                         </c:if>
-                                        
+                                        <c:if test="#{not empty loginBackingBean.accountInfo.mileageResponse}">
                                         <h3>我的里程数</h3>
                                         <div class="my_list">
                                         <div style="margin-left: 60px">（截至<h:outputText value="#{loginBackingBean.accountInfo.mileageResponse.lastMileageDate}">
@@ -492,6 +492,7 @@
                                             <h6>该数据仅供参考</h6>
                                             </ul>
                                         </div>
+                                        </c:if>
                                         <div id="luckDrawLink" style="font-size: 37px;color: #fff;line-height: 87px;margin-top: 23px;">
                                             您共有<h:outputText id="luckyNum" value="#{loginBackingBean.luckyDrawAmount}" style="color: #f57e24;"/>
                                             次抽奖机会
