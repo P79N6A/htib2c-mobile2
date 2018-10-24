@@ -764,7 +764,7 @@ public class OrderBackingBean implements Serializable {
                 //计算
 //                if(promotiontag){
                 	amount=selectProd.getPromotionPrice();
-                	primePrice=selectProd.getPromotionDesc5B();
+//                	primePrice=selectProd.getPromotionDesc5B();
 //                }else{
 //                	amount=Double.parseDouble(selectProd.getPromotionDesc5A());
 //                }
@@ -805,7 +805,7 @@ public class OrderBackingBean implements Serializable {
                 //修改优惠券使用记录为已使用
                 if(parentResult&&serviceResult&&transActionResult){
 	                for(String s:couponArray){
-	                	boolean couponHistoryResult=client.updateCouponHistory(orderNumber,primePrice, s, accountNum);
+	                	boolean couponHistoryResult=client.updateCouponHistory(orderNumber,amount+"", s, accountNum);
 	                	logger.info("couponHistoryResult=" + couponHistoryResult);
 	                }
                 }
