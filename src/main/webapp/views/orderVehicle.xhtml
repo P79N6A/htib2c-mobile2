@@ -15,7 +15,13 @@
     </ui:define>
 
     <ui:define name="workspace">
-
+      <style>
+        html, body {
+		    width: 100% !important;
+		    height: 100% !important;
+		    overflow:visible  !important;
+		}
+        </style>
         <script type="text/javascript">
             if("1" == broserNum){
                 window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
