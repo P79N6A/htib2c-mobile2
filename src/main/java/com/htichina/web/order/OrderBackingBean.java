@@ -168,7 +168,11 @@ public class OrderBackingBean implements Serializable {
     private QueryOrderByParentOrderNumResponse queryOrderByParentOrderNumResponse;
     
     public String toOrderEntry(String oId) {
-        openId = oId;
+    	if(!Strings.isNullOrEmpty(oId)){
+            openId = oId;
+        }else{
+        	openId=(String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
+        }
         targetPage = ViewPage.LINK2MyAccount;
         String an = PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
 
