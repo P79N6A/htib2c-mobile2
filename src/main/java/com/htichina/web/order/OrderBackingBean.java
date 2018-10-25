@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -16,7 +15,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.collections.IteratorUtils;
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
 import org.springframework.context.annotation.Scope;
@@ -25,7 +23,6 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
 import com.alipay.config.AlipayConfig;
 import com.alipay.util.AlipaySubmit;
-import com.alipay.util.CharacterReplaceUtil;
 import com.alipay.util.UtilDate;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
@@ -171,28 +168,15 @@ public class OrderBackingBean implements Serializable {
     private QueryOrderByParentOrderNumResponse queryOrderByParentOrderNumResponse;
     
     public String toOrderEntry(String oId) {
-        if(!Strings.isNullOrEmpty(oId)){
-            openId = oId;
-        }else{
-        	openId=(String) FacesUtils.getManagedBeanInSession(Constant.OPEN_ID);
-        }
-        
+        openId = oId;
         targetPage = ViewPage.LINK2MyAccount;
         String an = PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
+
         AccountInfoResponse aInfo = PaymentServiceClient.getInstance().getCurrentAccountInfo(an);
         if(aInfo != null){
             mobilePhone = aInfo.getMobilePhone();
             accountNum = aInfo.getAccountNum();
             vin = aInfo.getVin();
-            if(mobilePhone!=null){
-            	mobilePhoneConvert=CharacterReplaceUtil.formater(3, 4, mobilePhone);
-            }
-			if(accountNum!=null){
-				accountNumConvert=CharacterReplaceUtil.formater(2, 2, accountNum);       	
-			}
-			if(vin!=null){
-				vinConvert=CharacterReplaceUtil.formater(0, 6, vin);
-			}
         }
         return ViewPage.LINK2OrderEntry;
     }
