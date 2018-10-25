@@ -66,7 +66,6 @@ import com.tencent.common.RandomStringGenerator;
  */
 @Component
 @Scope("session")
-
 public class OrderBackingBean implements Serializable {
     private static Logger logger = Logger.getLogger(OrderBackingBean.class.getName());
     PaymentServiceClient client = PaymentServiceClient.getInstance();
@@ -301,7 +300,7 @@ public class OrderBackingBean implements Serializable {
                 selectedVehicle = tmpVehicleList.get(0);
 
             } else {
-                if ((vin.indexOf("*") > -1) || (mobilePhone.indexOf("*") > -1)){
+                if ((vin!=null &&vin.indexOf("*") > -1) || (mobilePhone!=null && mobilePhone.indexOf("*") > -1)){
                     orderEntryPop = "如您对默认信息进行了修改，请输入完整信息不要包含*号";
                     context.addMessage(null, new FacesMessage(
                             FacesMessage.SEVERITY_ERROR, "如您对默认信息进行了修改，请输入完整信息不要包含*号", ""));
