@@ -85,6 +85,7 @@
 		//couponIds
 		String couponIds = new String(request.getParameter("couponIds").getBytes("ISO-8859-1"),"UTF-8");
 		String accountNum = new String(request.getParameter("accountNum").getBytes("ISO-8859-1"),"UTF-8");
+		String promotionPrice = new String(request.getParameter("promotionPrice").getBytes("ISO-8859-1"),"UTF-8");
 		//必填
 		System.out.println("--------------:"+request.getParameter("WIDsubject"));
 		System.out.println("订单名称:"+subject);
@@ -115,7 +116,7 @@
         //修改优惠券使用状态
         String[] couponIdArray=couponIds.split(",");
         for(String s:couponIdArray){
-        	boolean couponHistoryResult=client.updateCouponHistory(orderNumber, s, accountNum);
+        	boolean couponHistoryResult=client.updateCouponHistory(orderNumber,promotionPrice, s, accountNum);
         	logger.info("couponHistoryResult=" + couponHistoryResult);
         }
 		//建立请求
