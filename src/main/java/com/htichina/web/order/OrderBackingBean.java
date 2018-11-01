@@ -1556,7 +1556,7 @@ public class OrderBackingBean implements Serializable {
             tpWxPay.setBody(orderDesc);
             logger.debug("prodName=" + ESAPI.encoder().encodeForHTML(orderDesc));
 //                tpWxPay.setOrderId(paymentOrderResponse.getOrderNum());
-            tpWxPay.setOrderId(transactionNo+upgradeResponse.getUpgratedParentOrderNum());
+            tpWxPay.setOrderId((int)(Math.random()*10)+transactionNo+upgradeResponse.getUpgratedParentOrderNum());
             logger.debug("orderId=" + ESAPI.encoder().encodeForHTML(transactionNo+upgradeResponse.getUpgratedParentOrderNum()));
             tpWxPay.setSpbillCreateIp("127.0.0.1");
             tpWxPay.setTotalFee(String.valueOf(amount));
