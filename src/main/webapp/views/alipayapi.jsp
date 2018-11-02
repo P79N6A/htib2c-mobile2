@@ -81,11 +81,11 @@
 		//付款金额
 		String total_fee = new String(request.getParameter("WIDtotal_fee").getBytes("ISO-8859-1"),"UTF-8");
 		//商品订单号
-        String orderNumber = new String(request.getParameter("orderNumber").getBytes("ISO-8859-1"),"UTF-8");
+        String orderNumber = request.getParameter("orderNumber")==null?"":new String(request.getParameter("orderNumber").getBytes("ISO-8859-1"),"UTF-8");
 		//couponIds
-		String couponIds = new String(request.getParameter("couponIds").getBytes("ISO-8859-1"),"UTF-8");
-		String accountNum = new String(request.getParameter("accountNum").getBytes("ISO-8859-1"),"UTF-8");
-		String promotionPrice = new String(request.getParameter("promotionPrice").getBytes("ISO-8859-1"),"UTF-8");
+		String couponIds = request.getParameter("couponIds")==null?"":new String(request.getParameter("couponIds").getBytes("ISO-8859-1"),"UTF-8");
+		String accountNum = request.getParameter("accountNum")==null?"":new String(request.getParameter("accountNum").getBytes("ISO-8859-1"),"UTF-8");
+		String promotionPrice = request.getParameter("promotionPrice")==null?"":new String(request.getParameter("promotionPrice").getBytes("ISO-8859-1"),"UTF-8");
 		//必填
 		System.out.println("--------------:"+request.getParameter("WIDsubject"));
 		System.out.println("订单名称:"+subject);
@@ -110,14 +110,18 @@
 
 		System.out.println("获取授权码token...");
 		//修改订单
-		boolean parentResult=client.updateParentOrderAmount(orderNumber, total_fee);
-        boolean serviceResult= client.updateServiceOrderAmount(orderNumber, total_fee);
-        boolean transActionResult= client.updateTransactionPrice(orderNumber, total_fee);
+		if(!orderNumber.equals("")){
+		    boolean parentResult=client.updateParentOrderAmount(orderNumber, total_fee);
+	        boolean serviceResult= client.updateServiceOrderAmount(orderNumber, total_fee);
+	        boolean transActionResult= client.updateTransactionPrice(orderNumber, total_fee);
+		}
         //修改优惠券使用状态
+        if(!couponIds.equals("")){
         String[] couponIdArray=couponIds.split(",");
-        for(String s:couponIdArray){
-        	boolean couponHistoryResult=client.updateCouponHistory(orderNumber,promotionPrice, s, accountNum);
-        	logger.info("couponHistoryResult=" + couponHistoryResult);
+	        for(String s:couponIdArray){
+	        	boolean couponHistoryResult=client.updateCouponHistory(orderNumber,promotionPrice, s, accountNum);
+	        	logger.info("couponHistoryResult=" + couponHistoryResult);
+	        }
         }
 		//建立请求
 		String sHtmlTextToken = AlipaySubmit.buildRequest(ALIPAY_GATEWAY_NEW,"", "",sParaTempToken);
