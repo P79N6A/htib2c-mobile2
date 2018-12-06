@@ -17,6 +17,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -194,11 +195,13 @@ public class NotifyServlet extends HttpServlet {
 						client.updatewechatMessage(wpr.getOpenid(),wpr.getOutTradeNo().substring(14, 20));
 
 						response.setContentType("text/html;charset=UTF-8");
+						ServletOutputStream outSTr = response.getOutputStream(); // 建立
 						BufferedOutputStream out = new BufferedOutputStream(
-								response.getOutputStream());
+								outSTr);
 						out.write(resXml.getBytes());
 						out.flush();
 						out.close();
+						outSTr.close();
 						// response.getWriter().write(resXml);
 
 					}

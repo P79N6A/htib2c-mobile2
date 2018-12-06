@@ -50,7 +50,7 @@ import java.util.List;
 @Component
 @Scope("session")
 public class LoginBackingBean implements Serializable {
-    @Autowired
+//    @Autowired
     private static Logger logger = Logger.getLogger(LoginBackingBean.class.getName());
 
     //    private String paymentPlatform;

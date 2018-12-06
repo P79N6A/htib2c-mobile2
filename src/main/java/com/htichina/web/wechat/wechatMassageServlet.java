@@ -54,8 +54,9 @@ public class wechatMassageServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         // 调用核心业务类接收消息、处理消息
-        String respMessage = MessageServer.processRequest(request);
-        logger.info("respMessage---->"+ ESAPI.encoder().encodeForHTML(respMessage));
+        MessageServer messageServer = new MessageServer();
+        String respMessage = messageServer.processRequest(request);
+        logger.info("respMessage---->"+ respMessage);
         // 响应消息
         PrintWriter out = response.getWriter();
         out.print(respMessage);

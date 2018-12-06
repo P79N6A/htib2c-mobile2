@@ -252,7 +252,8 @@ public class WechatServlet extends HttpServlet {
 //				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW)).redirect(req, resp);
 //				logger.info("======================"+loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW));
 //				LoginBackingBean loginBackingBean = new LoginBackingBean();
-				resp.sendRedirect("/htib2c-mobile/views/luckyDraw2.xhtml?openId="+oId+"&utm_source="+oId);
+//				resp.sendRedirect("/htib2c-mobile/views/luckyDraw2.xhtml?openId="+oId+"&utm_source="+oId);
+				resp.sendRedirect("/htib2c-mobile/views/luckyDraw.html");
 
 			}
 			else if(state.equalsIgnoreCase(Constant.QUESTIONNAIRE)){

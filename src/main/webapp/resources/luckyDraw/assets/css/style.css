@@ -1,0 +1,560 @@
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url('../fonts/Roboto-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/Roboto-Light.woff') format('woff'), url('../fonts/Roboto-Light.ttf') format('truetype'), url('../fonts/Roboto-Light.svg#Roboto-Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Roboto-Light', sans-serif;
+}
+
+html {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #00004c;
+}
+
+img {
+  border: none;
+}
+
+ul, li, dd, dl {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  display: block;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #fff;
+}
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #fff;
+}
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #fff;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #fff;
+}
+
+.ab {
+  position: absolute;
+}
+
+.ab00 {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.ab01 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.ab10 {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.ab11 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.tc {
+  text-align: center;
+}
+
+.rlt100 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(1, 6, 26, 0.8);
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.rule::before, .sorry::before {
+  width: 100%;
+  height: 100%;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+  background: url(../i/page1bg.jpg) no-repeat top center;
+}
+
+.wrap {
+  max-width: 750px;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  transition: -webkit-transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+  transition: transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+  transition: transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99), -webkit-transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+  transition: transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+  -webkit-transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+  -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+  overflow: hidden;
+}
+
+.landingPage {
+  background-color: #00004c;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: distribute;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: flex-start;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.logo {
+  margin-left: 35px;
+  margin-top: 35px;
+}
+
+.sologan {
+  margin-left: 25px;
+}
+
+.btn_start {
+  margin-bottom: 50px;
+  margin-left: 30px;
+}
+
+.formpage {
+  width: 100%;
+  height: 100%;
+  background-color: #00004c;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  overflow-y: scroll;
+}
+
+.inputBlock {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: #fff;
+  padding: 0px;
+  outline: none;
+  display: block;
+  padding: 10px 20px;
+  width: 550px;
+  height: 60px;
+  font-size: 28px;
+  text-align: center;
+}
+
+.selectBlock {
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  color: #000;
+  outline: none;
+  display: block;
+  width: 680px;
+  line-height: 1.5;
+  height: 68px;
+  padding-left: 20px;
+}
+
+.form-row {
+  font-size: 2em;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.formContainer {
+  display: block;
+  padding: 80px 35px 40px 35px;
+  width: 100%;
+  max-width: 680px;
+}
+
+.form-row {
+  width: 100%;
+  padding-top: 25px;
+}
+
+.form-row p {
+  padding: 15px 0;
+}
+
+.form-row span.tips {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.choosefile {
+  background-color: #222bbb;
+  border: none;
+  border-radius: 0;
+  color: #fff;
+  padding: 0px;
+  outline: none;
+  letter-spacing: 2px;
+  padding: 10px 20px;
+  width: auto;
+}
+
+.btn_submit {
+  margin-top: 25px;
+  background: #222bbb;
+  border: none;
+  border-radius: 0;
+  color: #fff;
+  padding: 0px;
+  outline: none;
+  display: block;
+  padding: 10px 20px;
+  width: 640px;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+.preview {
+  width: 750px;
+  height: 1062px;
+  overflow: hidden;
+  position: relative;
+}
+
+.processWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.dn {
+  display: none;
+}
+
+.db {
+  display: block;
+}
+
+.imgFluid {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.btn_login {
+  top: 1025px;
+  left: 135px;
+}
+
+.btn_rule {
+  top: 1150px;
+  left: 214px;
+}
+
+.popRule, .popSorry, .popFail,.popSuccess {
+  top: 250px;
+  left: 35px;
+}
+
+.loginPage {
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+}
+
+.inputName {
+  left: 80px;
+  top: 615px;
+}
+
+.inputPswd {
+  left: 80px;
+      top: 743px;
+}
+.loginTips {
+  width: 600px;
+  left: 87px;
+  font-size: 24px;
+  color: #fff;
+  top: 844px;
+  line-height: 1.5;
+}
+
+.btn_login2 {
+  left: 86px;
+  top: 1070px;
+}
+
+.luckyDraw {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.btn_play {
+  left: 217px;
+  top: 1010px;
+}
+
+.gift {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.gift1 {
+  top: 660px;
+  -webkit-animation: gift1Ani 1800ms ease-in-out infinite;
+  animation: gift1Ani 1800ms ease-in-out infinite;
+}
+
+@-webkit-keyframes gift1Ani {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes gift1Ani {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.gift2 {
+  top: 630px;
+  -webkit-animation: gift1Ani 1800ms ease-in-out infinite 600ms;
+  animation: gift1Ani 1800ms ease-in-out infinite 600ms;
+}
+
+.gift3 {
+  top: 590px;
+  -webkit-animation: gift1Ani 1800ms ease-in-out infinite 1200ms;
+  animation: gift1Ani 1800ms ease-in-out infinite 1200ms;
+}
+
+.btn_congra {
+  left: 204px;
+  top: 1010px;
+  z-index: 1111;
+}
+
+.prizebg {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 620px;
+}
+
+.lighting {
+  top: 200px;
+  left: 0;
+}
+
+.award {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.award1 {
+  top: 727px;
+}
+
+.award2 {
+  top: 706px;
+}
+
+.award3 {
+  top: 703px;
+}
+
+.lucky {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.luckyBlock {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: #fff;
+  padding: 0px;
+  outline: none;
+  display: block;
+  padding: 5px 0px;
+  width: 500px;
+  height: 60px;
+  font-size: 24px;
+  text-align: left;
+  letter-spacing: 2px
+}
+
+.luckyName {
+  left: 138px;
+  top: 570px;
+  text-align: left;
+}
+
+.formcopy {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 335px;
+}
+
+.formtips {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 845px;
+}
+
+.btn_submit2 {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 1040px;
+}
+.luckyMobi {
+    left: 138px;
+    top: 670px;
+}
+.luckyAdd {
+    left: 138px;
+    top: 770px;
+}
+.starlight {
+  left: 34px;
+  top: 420px;
+  -webkit-animation: starL 2s ease-in-out infinite;
+          animation: starL 2s ease-in-out infinite;
+}
+@-webkit-keyframes starL {
+  0% {
+    opacity: .3;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .3;
+  }
+}
+@keyframes starL {
+  0% {
+    opacity: .3;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .3;
+  }
+}
+.loading {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.loadingCopy {
+  text-align: center;
+  color: #fff;
+  font-size: 28px;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}

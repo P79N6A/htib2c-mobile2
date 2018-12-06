@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>登录赢好礼</title>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta property="og:image" content="" />
+    <meta name="twitter:card" content=""/>
+    <meta name="twitter:title" content=""/>
+    <meta name="twitter:description" content=""/>
+    <meta name="twitter:image" content=""/>
+
+    <script>
+        var u = navigator.userAgent;
+
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+        function IsPC() {
+            var userAgentInfo = navigator.userAgent;
+            var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"
+            ];
+            var flag = true;
+            for (var v = 0; v < Agents.length; v++) {
+                if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
+
+        var flag = IsPC();
+
+        // if( flag ) {
+        // 	location.href = 'tip.html';
+        // }
+
+        function writeViewPort() {
+            var ua = navigator.userAgent;
+            var viewportChanged = false;
+            var scale = 0;
+            if (ua.indexOf("Android") >= 0 && ua.indexOf("AppleWebKit") >= 0) {
+                var webkitVersion = parseFloat(ua.slice(ua.indexOf("AppleWebKit") + 12));
+                // targets android browser, not chrome browser (http://jimbergman.net/webkit-version-in-android-version/)
+                if (webkitVersion < 535) {
+                    viewportChanged = true;
+                    scale = getScaleWithScreenwidth();
+                    document.write('<meta name="viewport" content="width=750, initial-scale=' + scale + ', minimum-scale=' + scale + ', maximum-scale=' + scale + ',target-densitydpi=device-dpi" />');
+                }
+            }
+            if (ua.indexOf("Firefox") >= 0) {
+                viewportChanged = true;
+                scale = (getScaleWithScreenwidth() / 2);
+                document.write('<meta name="viewport" content="width=750, user-scalable=0, initial-scale=' + scale + ',target-densitydpi=device-dpi" />');
+            }
+
+            if (!viewportChanged) {
+                document.write('<meta name="viewport" content="width=750, user-scalable=0,target-densitydpi=device-dpi" />');
+            }
+
+            if (ua.indexOf("IEMobile") >= 0) {
+                document.write('<meta name="MobileOptimized" content="750" />');
+            }
+
+            document.write('<meta name="HandheldFriendly" content="true"/>');
+        }
+
+        function getScaleWithScreenwidth() {
+            var viewportWidth = 750;
+            var screenWidth = window.innerWidth;
+            return (screenWidth / viewportWidth);
+        }
+        writeViewPort();
+    </script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129595987-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-129595987-1');
+
+        var G = {
+            GAPageView: function(_pagename) {
+                gtag('config', 'UA-129595987-1', {
+                    'page_title': _pagename
+                });
+                console.log("_pagename:" + _pagename);
+            },
+            GAEvent: function(_eventAction, _eventCategory, _eventLable) {
+                gtag('event', _eventAction, {
+                    'event_category': _eventCategory,
+                    'event_label': _eventLable
+                });
+                console.log("event_category:" + _eventCategory + "///event_label:" + _eventAction);
+            },
+        }
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="../resources/luckyDraw/assets/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../resources/luckyDraw/assets/css/style.css">
+</head>
+
+<body>
+<div class="imgGroup dn">
+</div>
+<div class="wrap dn">
+    <div class="landingPage">
+        <img baksrc="../resources/luckyDraw/assets/i/page1bg.jpg" alt="" class="imgFluid">
+        <img baksrc="../resources/luckyDraw/assets/i/starlight.png" alt="" class="starlight ab">
+        <img baksrc="../resources/luckyDraw/assets/i/btn_login.png" alt="" class="btn_login ab">
+        <img baksrc="../resources/luckyDraw/assets/i/btn_rule.png" alt="" class="btn_rule ab">
+    </div>
+    <div class="loginPage ab00 dn">
+        <img baksrc="../resources/luckyDraw/assets/i/loginBg.jpg" alt="" class="imgFluid">
+        <input type="text" name="" value="" placeholder="智能互联客户编号8位数字" class="inputBlock inputName ab" maxlength="8">
+        <input type="text" name="" value="" placeholder="用户密码4位数字" class="inputBlock inputPswd ab" maxlength="4">
+        <div class="loginTips ab">
+            <p>忘记客户编号或个人密码？</p>
+            <p>请致电<a href="tel://4008980050">400-898-0050</a>寻求帮助</p>
+        </div>
+        <img baksrc="../resources/luckyDraw/assets/i/btn_login2.png" alt="" class="btn_login2 ab">
+    </div>
+    <div class="luckyDraw ab00 dn">
+        <img baksrc="../resources/luckyDraw/assets/i/page2bg.jpg" alt="" class="imgFluid">
+        <img baksrc="../resources/luckyDraw/assets/i/gift1.png" alt="" class="gift gift1 ab">
+        <img baksrc="../resources/luckyDraw/assets/i/gift2.png" alt="" class="gift gift2 ab">
+        <img baksrc="../resources/luckyDraw/assets/i/gift3.png" alt="" class="gift gift3 ab">
+        <img baksrc="../resources/luckyDraw/assets/i/Prize1.png" alt="" class="prizebg ab dn">
+        <img baksrc="../resources/luckyDraw/assets/i/award1.png" alt="" class="award award1 ab dn">
+        <img baksrc="../resources/luckyDraw/assets/i/award2.png" alt="" class="award award2 ab dn">
+        <img baksrc="../resources/luckyDraw/assets/i/award3.png" alt="" class="award award3 ab dn">
+        <img baksrc="../resources/luckyDraw/assets/i/lighting.png" alt="" class="lighting imgFluid ab dn">
+        <img baksrc="../resources/luckyDraw/assets/i/btn_play.png" alt="" class="btn_play ab">
+        <img baksrc="../resources/luckyDraw/assets/i/btn_congra.png" alt="" class="btn_congra ab dn">
+    </div>
+    <div class="overlay unlucky dn">
+        <img baksrc="../resources/luckyDraw/assets/i/popFail.png" alt="" class="popFail ab">
+    </div>
+    <div class="lucky ab00 dn">
+        <img baksrc="../resources/luckyDraw/assets/i/setformbg.jpg" alt="" class="imgFluid">
+        <input type="text" name="" value="" placeholder="*姓名:" class="luckyBlock luckyName ab">
+        <input type="text" name="" value="" placeholder="*手机:" class="luckyBlock luckyMobi ab">
+        <input type="text" name="" value="" placeholder="*邮寄地址:" class="luckyBlock luckyAdd ab">
+        <img baksrc="../resources/luckyDraw/assets/i/formcopy.png" alt="" class="formcopy ab">
+        <img baksrc="../resources/luckyDraw/assets/i/formtips.png" alt="" class="formtips ab">
+        <img baksrc="../resources/luckyDraw/assets/i/btn_submit.png" alt="" class="btn_submit2 ab">
+    </div>
+</div>
+<div class="overlay rule dn">
+    <img baksrc="../resources/luckyDraw/assets/i/popRule.png" alt="" class="popRule ab">
+</div>
+<div class="overlay sorry dn">
+    <img baksrc="../resources/luckyDraw/assets/i/popSorry.png" alt="" class="popSorry ab">
+</div>
+<div class="overlay success dn">
+    <img baksrc="../resources/luckyDraw/assets/i/popSuccess.png" alt="" class="popSuccess ab">
+</div>
+<div class="loading ab00">
+    <div class="loadingCopy ab">
+        正在加载中 请稍候...
+    </div>
+</div>
+<!-- Script -->
+<script type="text/javascript" src="../resources/luckyDraw/assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../resources/luckyDraw/assets/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://res2.wx.qq.com/open/js/jweixin-1.4.0.js "></script>
+<script type="text/javascript" src="../resources/luckyDraw/assets/js/wechat.js"></script>
+<script type="text/javascript" src="../resources/luckyDraw/assets/js/index.js"></script>
+</body>
+
+</html>

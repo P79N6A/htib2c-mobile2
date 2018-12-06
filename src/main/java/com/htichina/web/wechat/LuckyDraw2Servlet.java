@@ -71,7 +71,7 @@ public class LuckyDraw2Servlet extends HttpServlet {
 		PaymentServiceClient client = PaymentServiceClient.getInstance();
 		resultBean resultBean = new resultBean();
 		String openId =(String)req.getSession().getAttribute(Constant.OPEN_ID);
-//		String accountNum = "12383706";
+//		String accountNum = "10631849";
         String accountNum = client.getActiveAccountByOpenId(openId);
 		String paymentPlatform = (String)req.getSession().getAttribute(Constant.PAYMENT_PLATFORM);
 		logger.info("openId============================"+openId);

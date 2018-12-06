@@ -128,6 +128,7 @@ public class TokenCsrfFilter implements Filter {
 		   uri.contains("orderFailed.xhtml")||
 		   uri.contains("luckyDraw.xhtml")||
 		   uri.contains("luckyDraw2.xhtml")||
+			uri.contains("luckyDraw.html")||
 		   uri.contains("luckyDrawLogin.xhtml")||
 		   uri.contains("luckyDrawPackage.xhtml")||
 		   uri.contains("luckyDrawErrer.xhtml")||

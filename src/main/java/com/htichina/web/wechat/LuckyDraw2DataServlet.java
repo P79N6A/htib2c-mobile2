@@ -44,7 +44,7 @@ public class LuckyDraw2DataServlet extends HttpServlet {
 		String telNum=req.getParameter("telNum");
 		String address=req.getParameter("address");
 		String openId =(String)req.getSession().getAttribute(Constant.OPEN_ID);
-//		String accountNum = "10631819";
+//		String accountNum = "10631849";
         String accountNum = client.getActiveAccountByOpenId(openId);
 		String resultBean = winUserInfo(client,accountNum,name,telNum,address);
 		resp.setContentType("text/html;charset=utf-8");
