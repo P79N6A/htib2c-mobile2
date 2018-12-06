@@ -149,7 +149,7 @@ public class OrderBackingBean implements Serializable {
     // CR147选定套餐类型
     private String sPkgId;
     //CR389 是否出现抽奖按钮
-    private int hasLuckyDrawLink;
+//    private int hasLuckyDrawLink;
     //CR435 目标客户群显示活动
     private List<PromotionCoupon>  promotionCoup;
     //CR435 显示可用优惠券list
@@ -697,7 +697,7 @@ public class OrderBackingBean implements Serializable {
         WIDsubject = orderDesc;
         WIDtotal_fee = amount;
         //CR389 lucky draw
-        hasLuckyDrawLink = client.hasLuckyDrawLink(WIDout_trade_no.substring(13));
+//        hasLuckyDrawLink = client.hasLuckyDrawLink(WIDout_trade_no.substring(13));
 
         return ViewPage.LINK2OrderPayment;
     }
@@ -1571,7 +1571,7 @@ public class OrderBackingBean implements Serializable {
         WIDsubject = orderDesc;
         WIDtotal_fee = amount;
         //CR389 lucky draw
-        hasLuckyDrawLink = client.hasLuckyDrawLink(WIDout_trade_no.substring(13));
+//        hasLuckyDrawLink = client.hasLuckyDrawLink(WIDout_trade_no.substring(13));
 
         return ViewPage.LINK2OrderUpgradePayment;
     }
@@ -1957,19 +1957,19 @@ public class OrderBackingBean implements Serializable {
         WIDsubject = orderDescs;
         WIDtotal_fee = queryOrderByParentOrderNumResponse.getPrice();
         //CR389 lucky draw
-        hasLuckyDrawLink = client.hasLuckyDrawLink(WIDout_trade_no.substring(13));
+//        hasLuckyDrawLink = client.hasLuckyDrawLink(WIDout_trade_no.substring(13));
 
         return ViewPage.LINK2OrderPaymentForWechat;
     }
     //add by liunig CR345 20171023 end
 
-    public int getHasLuckyDrawLink() {
-        return hasLuckyDrawLink;
-    }
-
-    public void setHasLuckyDrawLink(int hasLuckyDrawLink) {
-        this.hasLuckyDrawLink = hasLuckyDrawLink;
-    }
+//    public int getHasLuckyDrawLink() {
+//        return hasLuckyDrawLink;
+//    }
+//
+//    public void setHasLuckyDrawLink(int hasLuckyDrawLink) {
+//        this.hasLuckyDrawLink = hasLuckyDrawLink;
+//    }
 
     //CR435 cfq 添加是否显示优惠券活动
 	public List<PromotionCoupon> getPromotionCoup() {

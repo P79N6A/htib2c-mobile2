@@ -182,7 +182,7 @@ function checkMember() {
                 dtd.resolve(res);
                 var type = res.luckyDrawNoticeType;
                 if (type == 1) {//未登录
-                    window.location.href = "accountLogin.xhtml?flag=luckyDraw2";
+                    window.location.href = "accountLogin.xhtml?flag=luckyDraw";
                     //            window.location.href="http://www.baidu.com";
                 }
                 else if (type == 3) {//不符合资格

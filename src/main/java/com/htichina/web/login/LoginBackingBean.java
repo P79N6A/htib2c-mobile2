@@ -91,7 +91,7 @@ public class LoginBackingBean implements Serializable {
     // POC短信验证用户填写的短信
     private String registrationCode;
     //luckyDraw Link
-    private int luckyDrawAmount=0;
+//    private int luckyDrawAmount=0;
 
 
     /*2017-10-25;Alex:优化代码，日志安全加密;CR-代码规范*/
@@ -129,7 +129,7 @@ public class LoginBackingBean implements Serializable {
             logger.info("Login bakcing accountInfo.getAccountNum() ==>"+accountInfo.getAccountNum());
             /*context.getExternalContext().getSessionMap()
                     .put(LoginFilter.CURRENT_USER,accountInfo.getAccountNum());*/
-            luckyDrawAmount = PaymentServiceClient.getInstance().hasLuckyDrawLinkByAccountNum(accountInfo.getAccountNum());
+//            luckyDrawAmount = PaymentServiceClient.getInstance().hasLuckyDrawLinkByAccountNum(accountInfo.getAccountNum());
             if(session != null){
                 session.putValue(LoginFilter.CURRENT_USER,accountInfo.getAccountNum());
             }
@@ -200,7 +200,7 @@ public class LoginBackingBean implements Serializable {
 
     public String validateLogin(String targetPage) throws IOException, ParseException {
         targetPg = targetPage;
-        luckyDrawAmount = PaymentServiceClient.getInstance().hasLuckyDrawLinkByAccountNum(accountNum);
+//        luckyDrawAmount = PaymentServiceClient.getInstance().hasLuckyDrawLinkByAccountNum(accountNum);
 
         System.out.println("validateLogin");
         logger.info("loginbean........validateLogin()........targetPage="+targetPage);
@@ -317,7 +317,7 @@ public class LoginBackingBean implements Serializable {
             
             if(ViewPage.LINK2LUCKDRAW.equals(targetPage)) {
                 context.getExternalContext().redirect(
-                        "/htib2c-mobile/views/luckyDraw.xhtml");
+                        "/htib2c-mobile/views/luckyDraw.html");
                 return null;
             }if(ViewPage.LINK2LUCKDRAW2.equals(targetPage)) {
                 context.getExternalContext().redirect(
@@ -694,11 +694,11 @@ public class LoginBackingBean implements Serializable {
 		this.orderUpgradePage = orderUpgradePage;
 	}
 
-    public int getLuckyDrawAmount() {
-        return luckyDrawAmount;
-    }
-
-    public void setLuckyDrawAmount(int luckyDrawAmount) {
-        this.luckyDrawAmount = luckyDrawAmount;
-    }
+//    public int getLuckyDrawAmount() {
+//        return luckyDrawAmount;
+//    }
+//
+//    public void setLuckyDrawAmount(int luckyDrawAmount) {
+//        this.luckyDrawAmount = luckyDrawAmount;
+//    }
 }
