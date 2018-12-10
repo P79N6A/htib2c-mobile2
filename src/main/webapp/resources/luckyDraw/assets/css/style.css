@@ -276,10 +276,12 @@ input[type="file"] {
   width: 640px;
   text-align: center;
 }
+
 a {
   text-decoration: none;
   color: #fff;
 }
+
 .preview {
   width: 750px;
   height: 1062px;
@@ -329,7 +331,7 @@ a {
   left: 214px;
 }
 
-.popRule, .popSorry, .popFail,.popSuccess {
+.popRule, .popSorry, .popFail, .popSuccess {
   top: 250px;
   left: 35px;
 }
@@ -342,25 +344,26 @@ a {
 
 .inputName {
   left: 80px;
-  top: 615px;
+  top: 556px;
 }
 
 .inputPswd {
   left: 80px;
-      top: 743px;
+  top: 683px;
 }
+
 .loginTips {
   width: 600px;
   left: 87px;
   font-size: 24px;
   color: #fff;
-  top: 844px;
+  top: 794px;
   line-height: 1.5;
 }
 
 .btn_login2 {
   left: 86px;
-  top: 1070px;
+  top: 1020px;
 }
 
 .luckyDraw {
@@ -391,9 +394,11 @@ a {
   0% {
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -403,9 +408,11 @@ a {
   0% {
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -424,9 +431,9 @@ a {
 }
 
 .btn_congra {
-  left: 204px;
-  top: 1010px;
-  z-index: 1111;
+  left: 209px;
+  top: 1048px;
+  /* z-index: 1111; */
 }
 
 .prizebg {
@@ -448,15 +455,15 @@ a {
 }
 
 .award1 {
-  top: 727px;
+  top: 717px;
 }
 
 .award2 {
-  top: 706px;
+  top: 689px;
 }
 
 .award3 {
-  top: 703px;
+  top: 597px
 }
 
 .lucky {
@@ -507,47 +514,87 @@ a {
   transform: translateX(-50%);
   top: 1040px;
 }
+
 .luckyMobi {
-    left: 138px;
-    top: 670px;
+  left: 138px;
+  top: 670px;
 }
+
 .luckyAdd {
-    left: 138px;
-    top: 770px;
+  left: 138px;
+  top: 770px;
 }
+
 .starlight {
   left: 34px;
   top: 420px;
   -webkit-animation: starL 2s ease-in-out infinite;
-          animation: starL 2s ease-in-out infinite;
+  animation: starL 2s ease-in-out infinite;
 }
+
+.finger {
+  top: 1040px;
+  left: 460px;
+    -webkit-animation: ff 1.5s ease-in-out infinite;
+    animation: ff 1.5s ease-in-out infinite;
+}
+@-webkit-keyframes ff {
+  0% {
+    opacity: .3;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .3;
+  }
+}
+@keyframes ff {
+  0% {
+    opacity: .3;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .3;
+  }
+}
+
 @-webkit-keyframes starL {
   0% {
     opacity: .3;
   }
+
   75% {
     opacity: 1;
   }
+
   100% {
     opacity: .3;
   }
 }
+
 @keyframes starL {
   0% {
     opacity: .3;
   }
+
   75% {
     opacity: 1;
   }
+
   100% {
     opacity: .3;
   }
 }
+
 .loading {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
+
 .loadingCopy {
   text-align: center;
   color: #fff;
@@ -556,5 +603,33 @@ a {
   left: 0;
   width: 100%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* add 2018-12-6 */
+.awardPopw {
+  position: absolute;
+  left: 46px;
+  top: -11px;
+}
+
+.btn_back {
+  position: absolute;
+  left: 50%;
+  top: 1060px;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.awardshow1 {
+  left: 129px;
+  top: 417px;
+}
+.awardshow2 {
+  left: 140px;
+  top: 370px;
+}
+.awardshow3 {
+  left: 140px;
+  top: 350px;
 }

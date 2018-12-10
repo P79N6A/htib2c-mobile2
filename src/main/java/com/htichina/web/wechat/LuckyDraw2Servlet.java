@@ -123,6 +123,9 @@ public class LuckyDraw2Servlet extends HttpServlet {
 				resultBean.setLuckyDrawNoticeType("8");
 				resultBean.setTs(Constant.TX_6);
 				resultBean.setTxt(luckyDrawReponse.getPrizeList().get(0));
+				LdItem ldItem = new LdItem();
+				ldItem.setSubType(luckyDrawReponse.getPrizeList().get(0));
+				checkPrizLevel(ldItem,resultBean);
 				return resultBean;
 			}
 			return resultBean;
@@ -217,9 +220,9 @@ public class LuckyDraw2Servlet extends HttpServlet {
 	public void checkPrizLevel(LdItem ldItem,resultBean resultBean){
 		String prizeType = ldItem.getSubType();
 		switch (prizeType){
-			case "9":resultBean.setTn("1");break;
+			case "9":resultBean.setTn("3");break;
 			case "10":resultBean.setTn("2");break;
-			case "11":resultBean.setTn("3");break;
+			case "11":resultBean.setTn("1");break;
 //			case "8":resultBean.setTn("4");break;
 
 		}
