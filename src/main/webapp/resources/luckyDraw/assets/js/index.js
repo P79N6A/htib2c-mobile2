@@ -212,7 +212,7 @@ function checkMember() {
                 window.location.href = "accountLogin.xhtml?flag=luckyDraw";
                 //            window.location.href="http://www.baidu.com";
             }
-            else if (type == 3||type==4) {//不符合资格
+            else if (type == 3||type==4||type==7) {//不符合资格
                 $('.sorry').fadeIn();
                 G.GAPageView('No lucky draw');
             }

@@ -11,354 +11,354 @@
                 template="./template.xhtml">
 
     <ui:define name="header">
-           账户信息
-    </ui:define> 
+        账户信息
+    </ui:define>
 
     <ui:define name="workspace">
         <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/css.css" />
         <link rel="stylesheet" href="#{facesContext.externalContext.request.contextPath}/resources/css/themes/hti5/swiper.css" />
         <style>
-      /*   .swiper-container {
-            width: 100%;
-            height:100%;
-        }
-        .swiper-slide {
-            font-size: 18px;
-            height: auto;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            min-height: 100%;;
-        } */
+            /*   .swiper-container {
+                  width: 100%;
+                  height:100%;
+              }
+              .swiper-slide {
+                  font-size: 18px;
+                  height: auto;
+                  -webkit-box-sizing: border-box;
+                  box-sizing: border-box;
+                  min-height: 100%;;
+              } */
 
-        /* 18.9.11  add */
-        body {
-            background: #000;
-        }
-        .ticket {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 90;
-            background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/bg.jpg) top left;
-            background-size: 100% auto;
-            display: none;
-        }
-        .ticket .close {
-            position: absolute;
-            top: 110px;
-            right: 20px;
-            padding: 10px;
-            width: 66px;
-        }
-        .ticket .printer {
-            position: absolute;
-            top: 220px;
-            left: 0;
-            right: 0;
-            margin: 0 auto;
-            width: 580px;
-        }
-        .ticket .ticket-list {
-            position: relative;
-            width: 100%;
-            height: 525px;
-            -webkit-overflow-scrolling: touch;
-            overflow: auto;
-            margin: 326px 0 0 0;
-        }
-        .ticket .ticket-list .oUl {
-            display: none;
-            width: 370px;
-            margin: 0 auto;
-        }
-        .ticket .ticket-list .oUl.active {
-            display: block;
-        }
-        .ticket .ticket-list li {
-            position: relative;
-            width: 100%;
-            height: 126px;
-            background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/ticket.png) center center no-repeat;
-            background-size: contain;
-            color: #fff;
-            z-index: 2;
-            margin-top: -3px;
-            -webkit-transition: all .5s;
-            transition: all .5s;
-        }
-        .ticket .ticket-list li:last-of-type {
-            -webkit-transform: rotate(5deg);
-            transform: rotate(5deg);
-/*             margin-left: -55px; */
-            z-index: 1;
-            margin-top: 10px;
-        }
-        .reCenter {
-            position: relative;
-            top: 50%;
-            left: 0;
-            -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-        }
-        .ticket .ticket-list li .center {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-        .ticket .ticket-list li .number {
-            overflow: hidden;
-            text-align: right;
-            width: 110px;
-            height: 60px;
-            margin-left: 88px;
-        }
-        .ticket .ticket-list li .discount {
-            overflow: hidden;
-            text-align: right;
-            width: 110px;
-            height: 60px;
-            margin-left: 88px;
-        }
-        .ticket .ticket-list li .number i {
-            font-style: normal;
-            font-weight: bolder;
-            font-size: 26px;
-            line-height: 30px;
-        }
-        .ticket .ticket-list li .discount i {
-            font-style: normal;
-            font-weight: bolder;
-            font-size: 26px;
-            line-height: 30px;
-        }
-        .ticket .ticket-list li .number em {
-            font-size: 45px;
-            line-height: 60px;
-            font-weight: bolder;
-            font-style: normal;
-            display: inline-block;
-            max-width: 82px;
-        }
-        .ticket .ticket-list li .discount em {
-            font-size: 45px;
-            line-height: 60px;
-            font-weight: bolder;
-            font-style: normal;
-            display: inline-block;
-            width: 60px;
-        }
-        .ticket .ticket-list li .text {
-            position: relative;
-            max-width: 200px;
-            margin-left: 40px;
-        }
-        .ticket .ticket-list li .text h3 {
-            position: absolute;
-            top: 0;
-            left: -10px;
-            font-size: 20px;
-            line-height: 30px;
-            width: 130px;
-            height: 30px;
-            overflow: hidden;
-        }
-        .ticket .ticket-list li .text p {
-            position: relative;
-            font-size: 14px;
-            line-height: 18px;
-            overflow: hidden;
-            height: 18px;
-        }
-        .ticket .ticket-list li .text p:first-of-type {
-            height: auto;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
-        }
-        .ticket .ticket-list li .text p::before {
-            position: absolute;
-            left: -10px;
-            top: 7px;
-            content: '';
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: #fff;
-        }
-        .ticket .ticket-list li .tips {
-            position: absolute;
-            left: 350px;
-            bottom: 15px;
-            z-index: 90;
-            display: inline-block;
-            font-size: 16px;
-            line-height: 16px;
-            background: #fff;
-            color: #A8723D;
-            padding: 4px 12px;
-            border-radius: 16px;
-            -webkit-transform: rotate(15deg);
-            transform: rotate(15deg);
-            -webkit-box-shadow: 3px 2px 8px 0 #000;
-            box-shadow: 3px 2px 8px 0 #000;
-        }
-        .ticket .ticket-list li .btn {
-            position: absolute;
-            width: 62px;
-            height: 62px;
-            right: 30px;
-            left: inherit;
-            vertical-align: middle;
-        }
-        a,a:hover,a:active,a:visited,a:link,a:focus{
-            -webkit-tap-highlight-color: transparent;
-            outline:none;
-            background: none;
-            text-decoration: none;
-        }
-        .ticket .ticket-list li .btn::before {
-            position: absolute;
-            top: 3px;
-            left: 6px;
-            content: '';
-            display: block;
-            width: 50px;
-            height: 50px;
-            border: solid 1px #fff;
-        }
-        .ticket .ticket-list li .btn::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 50px;
-            border: solid 1px #fff;
-            position: absolute;
-            top: 7px;
-            left: 3px;
-        }
-        .ticket .ticket-list li .btn span {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            display: block;
-            width: 100%;
-            font-size: 14px;
-            line-height: 18px;
-            text-align: center;
-            -webkit-transform: translate(-50%,-50%);
-            transform: translate(-50%,-50%);
-        }
-        .ticket .ticket-list li .btn {
-            color: #A8733D;
-            background: #fff;
-        }
-        .ticket .ticket-list li .btn::before {
-            border: solid 1px #A8723D;
-        }
-        .ticket .ticket-list li .btn::after {
-            border: solid 1px #A8723D;
-        }
-        .ticket .btn-wrap {
-            position: absolute;
-            top: 88%;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            text-align: center;
-        }
-        .ticket .btn-wrap .btn {
-            -webkit-tap-highlight-color: transparent;
-            -webkit-tap-highlight-background: transparent;
-            width: 170px;
-            height: 68px;
-            line-height: 68px;
-            font-size: 24px;
-            color: #fff;
-            background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/btn2.png) top left no-repeat;
-            background-size: contain;
-            display: inline-block;
-            vertical-align: middle;
-            margin: 0 7px;
-            -webkit-transition: all .5s;
-            transition: all .5s;
-        }
-        .ticket .btn-wrap .btn.active {
-            background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/btn1.png) top left no-repeat;
-            background-size: contain;
-        }
+            /* 18.9.11  add */
+            body {
+                background: #000;
+            }
+            .ticket {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 90;
+                background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/bg.jpg) top left;
+                background-size: 100% auto;
+                display: none;
+            }
+            .ticket .close {
+                position: absolute;
+                top: 110px;
+                right: 20px;
+                padding: 10px;
+                width: 66px;
+            }
+            .ticket .printer {
+                position: absolute;
+                top: 220px;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                width: 580px;
+            }
+            .ticket .ticket-list {
+                position: relative;
+                width: 100%;
+                height: 525px;
+                -webkit-overflow-scrolling: touch;
+                overflow: auto;
+                margin: 326px 0 0 0;
+            }
+            .ticket .ticket-list .oUl {
+                display: none;
+                width: 370px;
+                margin: 0 auto;
+            }
+            .ticket .ticket-list .oUl.active {
+                display: block;
+            }
+            .ticket .ticket-list li {
+                position: relative;
+                width: 100%;
+                height: 126px;
+                background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/ticket.png) center center no-repeat;
+                background-size: contain;
+                color: #fff;
+                z-index: 2;
+                margin-top: -3px;
+                -webkit-transition: all .5s;
+                transition: all .5s;
+            }
+            .ticket .ticket-list li:last-of-type {
+                -webkit-transform: rotate(5deg);
+                transform: rotate(5deg);
+                /*             margin-left: -55px; */
+                z-index: 1;
+                margin-top: 10px;
+            }
+            .reCenter {
+                position: relative;
+                top: 50%;
+                left: 0;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+            .ticket .ticket-list li .center {
+                position: relative;
+                width: 100%;
+                height: 100%;
+            }
+            .ticket .ticket-list li .number {
+                overflow: hidden;
+                text-align: right;
+                width: 110px;
+                height: 60px;
+                margin-left: 88px;
+            }
+            .ticket .ticket-list li .discount {
+                overflow: hidden;
+                text-align: right;
+                width: 110px;
+                height: 60px;
+                margin-left: 88px;
+            }
+            .ticket .ticket-list li .number i {
+                font-style: normal;
+                font-weight: bolder;
+                font-size: 26px;
+                line-height: 30px;
+            }
+            .ticket .ticket-list li .discount i {
+                font-style: normal;
+                font-weight: bolder;
+                font-size: 26px;
+                line-height: 30px;
+            }
+            .ticket .ticket-list li .number em {
+                font-size: 45px;
+                line-height: 60px;
+                font-weight: bolder;
+                font-style: normal;
+                display: inline-block;
+                max-width: 82px;
+            }
+            .ticket .ticket-list li .discount em {
+                font-size: 45px;
+                line-height: 60px;
+                font-weight: bolder;
+                font-style: normal;
+                display: inline-block;
+                width: 60px;
+            }
+            .ticket .ticket-list li .text {
+                position: relative;
+                max-width: 200px;
+                margin-left: 40px;
+            }
+            .ticket .ticket-list li .text h3 {
+                position: absolute;
+                top: 0;
+                left: -10px;
+                font-size: 20px;
+                line-height: 30px;
+                width: 130px;
+                height: 30px;
+                overflow: hidden;
+            }
+            .ticket .ticket-list li .text p {
+                position: relative;
+                font-size: 14px;
+                line-height: 18px;
+                overflow: hidden;
+                height: 18px;
+            }
+            .ticket .ticket-list li .text p:first-of-type {
+                height: auto;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+            }
+            .ticket .ticket-list li .text p::before {
+                position: absolute;
+                left: -10px;
+                top: 7px;
+                content: '';
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+                background: #fff;
+            }
+            .ticket .ticket-list li .tips {
+                position: absolute;
+                left: 350px;
+                bottom: 15px;
+                z-index: 90;
+                display: inline-block;
+                font-size: 16px;
+                line-height: 16px;
+                background: #fff;
+                color: #A8723D;
+                padding: 4px 12px;
+                border-radius: 16px;
+                -webkit-transform: rotate(15deg);
+                transform: rotate(15deg);
+                -webkit-box-shadow: 3px 2px 8px 0 #000;
+                box-shadow: 3px 2px 8px 0 #000;
+            }
+            .ticket .ticket-list li .btn {
+                position: absolute;
+                width: 62px;
+                height: 62px;
+                right: 30px;
+                left: inherit;
+                vertical-align: middle;
+            }
+            a,a:hover,a:active,a:visited,a:link,a:focus{
+                -webkit-tap-highlight-color: transparent;
+                outline:none;
+                background: none;
+                text-decoration: none;
+            }
+            .ticket .ticket-list li .btn::before {
+                position: absolute;
+                top: 3px;
+                left: 6px;
+                content: '';
+                display: block;
+                width: 50px;
+                height: 50px;
+                border: solid 1px #fff;
+            }
+            .ticket .ticket-list li .btn::after {
+                content: '';
+                display: block;
+                width: 50px;
+                height: 50px;
+                border: solid 1px #fff;
+                position: absolute;
+                top: 7px;
+                left: 3px;
+            }
+            .ticket .ticket-list li .btn span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                display: block;
+                width: 100%;
+                font-size: 14px;
+                line-height: 18px;
+                text-align: center;
+                -webkit-transform: translate(-50%,-50%);
+                transform: translate(-50%,-50%);
+            }
+            .ticket .ticket-list li .btn {
+                color: #A8733D;
+                background: #fff;
+            }
+            .ticket .ticket-list li .btn::before {
+                border: solid 1px #A8723D;
+            }
+            .ticket .ticket-list li .btn::after {
+                border: solid 1px #A8723D;
+            }
+            .ticket .btn-wrap {
+                position: absolute;
+                top: 88%;
+                left: 0;
+                width: 100%;
+                z-index: 100;
+                text-align: center;
+            }
+            .ticket .btn-wrap .btn {
+                -webkit-tap-highlight-color: transparent;
+                -webkit-tap-highlight-background: transparent;
+                width: 170px;
+                height: 68px;
+                line-height: 68px;
+                font-size: 24px;
+                color: #fff;
+                background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/btn2.png) top left no-repeat;
+                background-size: contain;
+                display: inline-block;
+                vertical-align: middle;
+                margin: 0 7px;
+                -webkit-transition: all .5s;
+                transition: all .5s;
+            }
+            .ticket .btn-wrap .btn.active {
+                background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/btn1.png) top left no-repeat;
+                background-size: contain;
+            }
 
-        .ticket .ticket-list li.Used .tips {
-            display: none;
-        }
-        .ticket .ticket-list li.Expired {
-            background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/ticket-grey.png) center center no-repeat;
-            background-size: contain;
-        }
-        .ticket .ticket-list li.Expired .btn::after {
-            border-color: #939393;
-        }
-        .ticket .ticket-list li.Expired .btn::before {
-            border-color: #939393;
-        }
-        .ticket .ticket-list li.Expired .btn {
-            color: #939393;
-        }
-        .ticket .ticket-list li.Expired .tips {
-            display: none;
-        }
-        .addBtn {
-            width: 520px;
-            height: 77px;
-            margin: 60px auto 0;
-            background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/btn-red.png) top left no-repeat;
-            background-size: contain;
-            line-height: 77px;
-            text-align: center;
-            color: #fff;
-            font-size: 36px;
-        }
-        .ticket .grey {
-            width: 440px;
-            height: 46px;
-            position: fixed;
-            top: 320px;
-            left: 0;
-            right: 0;
-            margin: 0 auto;
-            z-index: 90;
-            background: -webkit-linear-gradient(#1B1718, transparent);
-            background: linear-gradient(#1B1718, transparent);
-        }
-        .scroll_handle {
-            display: none;
-        }
-        /* add10-15 */
-        .scroll_handle {
-            width: 30px;
-            height: 525px;
-        }
-        .scroll_handle .scroll_bar {
-            width: 100%;
-            height: 80px;
-        }
-        .ticket .ticket-list .oUl {
-            min-height: 525px;
-        }
-        .no-text {
-            font-size: 30px;
-            line-height: 30px;
-            position: absolute;
-            width: 100%;
-            top: 50%;
-            color: #fff;
-            left: 50%;
-            text-align: center;
-            -webkit-transform: translate(-50%,-50%);
-            transform: translate(-50%,-50%);
-        }
-    </style>
+            .ticket .ticket-list li.Used .tips {
+                display: none;
+            }
+            .ticket .ticket-list li.Expired {
+                background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/ticket-grey.png) center center no-repeat;
+                background-size: contain;
+            }
+            .ticket .ticket-list li.Expired .btn::after {
+                border-color: #939393;
+            }
+            .ticket .ticket-list li.Expired .btn::before {
+                border-color: #939393;
+            }
+            .ticket .ticket-list li.Expired .btn {
+                color: #939393;
+            }
+            .ticket .ticket-list li.Expired .tips {
+                display: none;
+            }
+            .addBtn {
+                width: 520px;
+                height: 77px;
+                margin: 60px auto 0;
+                background: url(#{facesContext.externalContext.request.contextPath}/resources/coupon/images/btn-red.png) top left no-repeat;
+                background-size: contain;
+                line-height: 77px;
+                text-align: center;
+                color: #fff;
+                font-size: 36px;
+            }
+            .ticket .grey {
+                width: 440px;
+                height: 46px;
+                position: fixed;
+                top: 320px;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                z-index: 90;
+                background: -webkit-linear-gradient(#1B1718, transparent);
+                background: linear-gradient(#1B1718, transparent);
+            }
+            .scroll_handle {
+                display: none;
+            }
+            /* add10-15 */
+            .scroll_handle {
+                width: 30px;
+                height: 525px;
+            }
+            .scroll_handle .scroll_bar {
+                width: 100%;
+                height: 80px;
+            }
+            .ticket .ticket-list .oUl {
+                min-height: 525px;
+            }
+            .no-text {
+                font-size: 30px;
+                line-height: 30px;
+                position: absolute;
+                width: 100%;
+                top: 50%;
+                color: #fff;
+                left: 50%;
+                text-align: center;
+                -webkit-transform: translate(-50%,-50%);
+                transform: translate(-50%,-50%);
+            }
+        </style>
         <h:form id="logout">
             <div class="page">
                 <div id="fri_top">
@@ -418,20 +418,20 @@
                                         </h:inputHidden>
                                         <h:outputText value ="#{loginBackingBean.accountNum}">
                                         </h:outputText>
-										<!-- 2018-03-05 去除100元代驾券领取 -->
+                                        <!-- 2018-03-05 去除100元代驾券领取 -->
                                         <!-- <h:commandButton action="#{loginBackingBean.setReceivedDidi('renew',loginBackingBean.accountInfo.accountNum)}" style="display: none">
                                             <f:passThroughAttribute name="btn" value="didiBtn"/>
                                             领取代驾礼券包
                                         </h:commandButton> -->
                                         <!-- add Btn -->
                                         <c:if test="#{not empty loginBackingBean.accountInfo.unUsedCoupons || not empty loginBackingBean.accountInfo.expiredCoupons || not empty loginBackingBean.accountInfo.usedCoupons}">
-			                            <div class="addBtn">我的优惠券</div>
-			                            </c:if>
-			                            <!-- add Btn -->
+                                            <div class="addBtn">我的优惠券</div>
+                                        </c:if>
+                                        <!-- add Btn -->
                                         <h3>我的套餐</h3>
                                         <c:if test="#{loginBackingBean.accountInfo.currentPackages.size() == 0 || loginBackingBean.accountInfo.currentPackages == null}">
                                             <div class="my_list" style="height:222px;padding-left:170px;padding-top: 82px;">
-                                                                                                                                  暂无已购买套餐
+                                                暂无已购买套餐
                                             </div>
                                         </c:if>
                                         <c:if test="#{loginBackingBean.accountInfo.currentPackages.size() != 0}">
@@ -448,11 +448,11 @@
                                                             <f:convertDateTime pattern="yyyy-MM-dd"/>
                                                         </h:outputText></span></li>
                                                         <c:if test="#{currentPkg.canBeUpgrated}">
-	                                                        <li><div class="s_btn s_btn1" style="margin-left:60px">
-	                                                        	<h:commandButton
-                                                				value="升级" action="#{orderBackingBean.toOrderUpgradeEntry(currentPkg,loginBackingBean.accountInfo,loginBackingBean.openId,1)}" style="color:white;background:none;font-size:26px;height:60px;line-height: 60px;margin:0;padding:0;text-align: center;border:none;width:100%"/>
-                                                				</div>
-	                                                        </li>
+                                                            <li><div class="s_btn s_btn1" style="margin-left:60px">
+                                                                <h:commandButton
+                                                                        value="升级" action="#{orderBackingBean.toOrderUpgradeEntry(currentPkg,loginBackingBean.accountInfo,loginBackingBean.openId,1)}" style="color:white;background:none;font-size:26px;height:60px;line-height: 60px;margin:0;padding:0;text-align: center;border:none;width:100%"/>
+                                                            </div>
+                                                            </li>
                                                         </c:if>
                                                     </ul>
                                                 </div>
@@ -463,47 +463,39 @@
                                             </c:forEach>
                                         </c:if>
                                         <c:if test="#{not empty loginBackingBean.accountInfo.mileageResponse}">
-                                        <h3>我的里程数</h3>
-                                        <div class="my_list">
-                                        <div style="margin-left: 60px">（截至<h:outputText value="#{loginBackingBean.accountInfo.mileageResponse.lastMileageDate}">
-                                        </h:outputText>）</div>
-                                            <ul>
-                                                
-                                                <li>过&#160;去&#160;十&#160;天&#160;的&#160;里&#160;程&#160;：
-                                                <span>
+                                            <h3>我的里程数</h3>
+                                            <div class="my_list">
+                                                <div style="margin-left: 60px">（截至<h:outputText value="#{loginBackingBean.accountInfo.mileageResponse.lastMileageDate}">
+                                                </h:outputText>）</div>
+                                                <ul>
+
+                                                    <li>过&#160;去&#160;十&#160;天&#160;的&#160;里&#160;程&#160;：
+                                                        <span>
 	                                                <h:outputText value="#{loginBackingBean.accountInfo.mileageResponse.mileage}">
 <!-- 	                                                    <f:converter converterId="UserNameConverter"/> -->
 	                                                </h:outputText>&#160;km
                                                 </span>
-                                                </li>
-                                                <li>总&#160;&#160;行&#160;&#160;驶&#160;&#160;里&#160;&#160;程&#160;&#160;数&#160;：
-                                                <span>
+                                                    </li>
+                                                    <li>总&#160;&#160;行&#160;&#160;驶&#160;&#160;里&#160;&#160;程&#160;&#160;数&#160;：
+                                                        <span>
                                                 <h:outputText value="#{loginBackingBean.accountInfo.mileageResponse.mileageTotal}">
 <!--                                                     <f:converter converterId="AccountNumConverter"/> -->
                                                 </h:outputText>&#160;km
                                                 </span>
-                                                </li>
-                                                <li>恭喜您，您过去十天的行驶里程已超过
-                                                <h:outputText value="#{loginBackingBean.accountInfo.mileageResponse.rankPercent}">
-                                                </h:outputText>
-                                                                                                                                         的用户！</li>
-                                            </ul>
-                                            <ul>
-                                            <h6>该数据仅供参考</h6>
-                                            </ul>
-                                        </div>
+                                                    </li>
+                                                    <li>恭喜您，您过去十天的行驶里程已超过
+                                                        <h:outputText value="#{loginBackingBean.accountInfo.mileageResponse.rankPercent}">
+                                                        </h:outputText>
+                                                        的用户！</li>
+                                                </ul>
+                                                <ul>
+                                                    <h6>该数据仅供参考</h6>
+                                                </ul>
+                                            </div>
                                         </c:if>
-                                        <!--<div id="luckDrawLink" style="font-size: 37px;color: #fff;line-height: 87px;margin-top: 23px;">-->
-                                            <!--您共有<h:outputText id="luckyNum" value="#{loginBackingBean.luckyDrawAmount}" style="color: #f57e24;"/>-->
-                                            <!--次抽奖机会-->
-                                            <!--<br/>-->
-                                            <!--<div class="s_btn s_btn2" id = "sBt" onclick="toluckDraw()">前往抽奖</div>-->
-                                            <!--<br/>-->
-                                            <!--<div style="font-size: 18px;color: #fff;line-height: 25px;margin-top: -80px;">* 此次抽奖活动截止时间为2018年7月31日23:59，请务必在抽奖截止日期前关注“梅赛德斯-奔驰 智能互联” 微信公众号，并在公众号内完成抽奖并用尽所有次数，逾期则 视为放弃相关权益。</div>-->
-                                        <!--</div>-->
                                         <!-- aaa -->
 
-<!--  -->
+                                        <!--  -->
                                         <div id="food">
                                             <img src="#{facesContext.externalContext.request.contextPath}/resources/images/img/fri_line.jpg" id="linetop2"/>
                                             <div class="s_btn s_btn1"><h:commandButton
@@ -529,164 +521,164 @@
                 </div>
             </div>
             <div class="ticket">
-    <img class="close" src="#{facesContext.externalContext.request.contextPath}/resources/coupon/images/close.png" alt=""/>
-    <img class="printer" src="#{facesContext.externalContext.request.contextPath}/resources/coupon/images/printer.png" alt=""/>
-    <div class="scroll_handle scroll_handle1">
-        <div class="scroll_bar"></div>
-    </div>
-    <div class="scroll_handle scroll_handle2">
-        <div class="scroll_bar"></div>
-    </div>
-    <div class="scroll_handle scroll_handle3">
-        <div class="scroll_bar"></div>
-    </div>
-    <div class="grey"></div>
-    <div class="ticket-list">
-        
-        <!-- 未使用 -->
-        
-        <ul class="oUl active">
-        <c:if test="#{not empty loginBackingBean.accountInfo.unUsedCoupons}">
-		        <c:forEach items="#{loginBackingBean.accountInfo.unUsedCoupons}" var="couponUnused" varStatus="loop">
-		        <!-- 代金券-->
-		        <c:if test="#{couponUnused.couponType=='3'}">
-				    <li class="Unused">
-		                <div class="center">
-		                    <div class="text reCenter">
-		                        <h3>#{couponUnused.couponName}</h3>
-		                        <div class="number">
-		                            <i>¥</i>
-		                            <em>#{couponUnused.couponContent}</em>
-		                        </div>
-		                        <p>#{couponUnused.couponDis}</p>
-		                        <p>有效期至#{couponUnused.effectEndDate}</p>
-		                    </div>
-		                    <div onclick="toUseCoupon()"  class="btn reCenter"><span>去使用</span></div>
-		                    <span class="tips">NEW</span>
-		                </div>
-		            </li>
-		            </c:if>
-		            <!-- 折扣 -->
-		           <c:if test="#{couponUnused.couponType=='1'}">
-				    <li class="Unused">
-		                <div class="center">
-		                    <div class="text reCenter">
-		                        <h3>#{couponUnused.couponName}</h3>
-		                        <div class="discount">
-		                            <em>#{couponUnused.couponContent}</em>
-		                            <i>折</i>
-		                        </div>
-		                        <p>#{couponUnused.couponDis}</p>
-		                        <p>有效期至#{couponUnused.effectEndDate}</p>
-		                    </div>
-		                    <div onclick="toUseCoupon()"  class="btn reCenter"><span>去使用</span></div>
-		                    <span class="tips">NEW</span>
-		                </div>
-		            </li>
-		           </c:if>
-		        </c:forEach>
-		        
-        </c:if>
-         <c:if test="#{empty loginBackingBean.accountInfo.unUsedCoupons}">
-             <div class="no-text" onclick="toUseCoupon()">
-				    点击前往领取优惠券
-			  </div>
-        </c:if>
-        <h:commandButton id="toOrderPackage" style="display:none" action="#{orderBackingBean.toOrderEntry('')}">
-		</h:commandButton>
-        </ul>
-        
-        <ul class="oUl">
-        <c:if test="#{not empty loginBackingBean.accountInfo.usedCoupons}">
-		        <c:forEach items="#{loginBackingBean.accountInfo.usedCoupons}" var="couponUsed" varStatus="loop">
-		        <c:if test="#{couponUsed.couponType=='3'}">
-				    <li class="Used">
-		                <div class="center">
-		                    <div class="text reCenter">
-		                        <h3>#{couponUsed.couponName}</h3>
-		                        <div class="number">
-		                            <i>¥</i>
-		                            <em>#{couponUsed.couponContent}</em>
-		                        </div>
-		                        <p>#{couponUsed.couponDis}</p>
-		                        <p>有效期至#{couponUsed.effectEndDate}</p>
-		                    </div>
-		                    <a href="javascript:void(0)" class="btn reCenter"><span>已使用</span></a>
-		                    <span class="tips">NEW</span>
-		                </div>
-		            </li>
-		            </c:if>
-		            <c:if test="#{couponUsed.couponType=='1'}">
-		             <li class="Used">
-		                <div class="center">
-		                    <div class="text reCenter">
-		                        <h3>#{couponUsed.couponName}</h3>
-		                        <div class="discount">
-		                            <em>#{couponUsed.couponContent}</em>
-		                            <i>折</i>
-		                        </div>
-		                        <p>#{couponUsed.couponDis}</p>
-		                        <p>有效期至#{couponUsed.effectEndDate}</p>
-		                    </div>
-		                    <a href="javascript:void(0)" class="btn reCenter"><span>已使用</span></a>
-		                    <span class="tips">NEW</span>
-		                </div>
-		            </li>
-		            </c:if>
-		        </c:forEach>
-        </c:if>
-        </ul>
-        <ul class="oUl">
-        <c:if test="#{not empty loginBackingBean.accountInfo.expiredCoupons}">
-            
-		        <c:forEach items="#{loginBackingBean.accountInfo.expiredCoupons}" var="couponExpired" varStatus="loop">
-		        
-		        <c:if test="#{couponExpired.couponType=='3'}">
-				    <li class="Expired">
-		                <div class="center">
-		                    <div class="text reCenter">
-		                        <h3>#{couponExpired.couponName}</h3>
-		                        <div class="number">
-		                            <i>¥</i>
-		                            <em>#{couponExpired.couponContent}</em>
-		                        </div>
-		                        <p>#{couponExpired.couponDis}</p>
-		                        <p>有效期至： #{couponExpired.effectEndDate}</p>
-		                    </div>
-		                    <a href="javascript:void(0)" class="btn reCenter"><span>已过期</span></a>
-		                    <span class="tips">NEW</span>
-		                </div>
-		            </li>
-		            </c:if>
-		            <c:if test="#{couponExpired.couponType=='1'}">
-		             <li class="Expired">
-		                <div class="center">
-		                    <div class="text reCenter">
-		                        <h3>#{couponExpired.couponName}</h3>
-		                        <div class="discount">
-		                            
-		                            <em>#{couponExpired.couponContent}</em>
-		                            <i>折</i>
-		                        </div>
-		                        <p>#{couponExpired.couponDis}</p>
-		                        <p>有效期至 ： #{couponExpired.effectEndDate}</p>
-		                    </div>
-		                    <a href="javascript:void(0)" class="btn reCenter"><span>已过期</span></a>
-		                    <span class="tips">NEW</span>
-		                </div>
-		            </li>
-		            </c:if>
-		        </c:forEach>
-        </c:if>
-        </ul>
-        
-    </div>
-    <div class="btn-wrap">
-        <div class="btn active">未使用</div>
-        <div class="btn">已使用</div>
-        <div class="btn">已过期</div>
-    </div>
-</div>
+                <img class="close" src="#{facesContext.externalContext.request.contextPath}/resources/coupon/images/close.png" alt=""/>
+                <img class="printer" src="#{facesContext.externalContext.request.contextPath}/resources/coupon/images/printer.png" alt=""/>
+                <div class="scroll_handle scroll_handle1">
+                    <div class="scroll_bar"></div>
+                </div>
+                <div class="scroll_handle scroll_handle2">
+                    <div class="scroll_bar"></div>
+                </div>
+                <div class="scroll_handle scroll_handle3">
+                    <div class="scroll_bar"></div>
+                </div>
+                <div class="grey"></div>
+                <div class="ticket-list">
+
+                    <!-- 未使用 -->
+
+                    <ul class="oUl active">
+                        <c:if test="#{not empty loginBackingBean.accountInfo.unUsedCoupons}">
+                            <c:forEach items="#{loginBackingBean.accountInfo.unUsedCoupons}" var="couponUnused" varStatus="loop">
+                                <!-- 代金券-->
+                                <c:if test="#{couponUnused.couponType=='3'}">
+                                    <li class="Unused">
+                                        <div class="center">
+                                            <div class="text reCenter">
+                                                <h3>#{couponUnused.couponName}</h3>
+                                                <div class="number">
+                                                    <i>¥</i>
+                                                    <em>#{couponUnused.couponContent}</em>
+                                                </div>
+                                                <p>#{couponUnused.couponDis}</p>
+                                                <p>有效期至#{couponUnused.effectEndDate}</p>
+                                            </div>
+                                            <div onclick="toUseCoupon()"  class="btn reCenter"><span>去使用</span></div>
+                                            <span class="tips">NEW</span>
+                                        </div>
+                                    </li>
+                                </c:if>
+                                <!-- 折扣 -->
+                                <c:if test="#{couponUnused.couponType=='1'}">
+                                    <li class="Unused">
+                                        <div class="center">
+                                            <div class="text reCenter">
+                                                <h3>#{couponUnused.couponName}</h3>
+                                                <div class="discount">
+                                                    <em>#{couponUnused.couponContent}</em>
+                                                    <i>折</i>
+                                                </div>
+                                                <p>#{couponUnused.couponDis}</p>
+                                                <p>有效期至#{couponUnused.effectEndDate}</p>
+                                            </div>
+                                            <div onclick="toUseCoupon()"  class="btn reCenter"><span>去使用</span></div>
+                                            <span class="tips">NEW</span>
+                                        </div>
+                                    </li>
+                                </c:if>
+                            </c:forEach>
+
+                        </c:if>
+                        <c:if test="#{empty loginBackingBean.accountInfo.unUsedCoupons}">
+                            <div class="no-text" onclick="toUseCoupon()">
+                                点击前往领取优惠券
+                            </div>
+                        </c:if>
+                        <h:commandButton id="toOrderPackage" style="display:none" action="#{orderBackingBean.toOrderEntry('')}">
+                        </h:commandButton>
+                    </ul>
+
+                    <ul class="oUl">
+                        <c:if test="#{not empty loginBackingBean.accountInfo.usedCoupons}">
+                            <c:forEach items="#{loginBackingBean.accountInfo.usedCoupons}" var="couponUsed" varStatus="loop">
+                                <c:if test="#{couponUsed.couponType=='3'}">
+                                    <li class="Used">
+                                        <div class="center">
+                                            <div class="text reCenter">
+                                                <h3>#{couponUsed.couponName}</h3>
+                                                <div class="number">
+                                                    <i>¥</i>
+                                                    <em>#{couponUsed.couponContent}</em>
+                                                </div>
+                                                <p>#{couponUsed.couponDis}</p>
+                                                <p>有效期至#{couponUsed.effectEndDate}</p>
+                                            </div>
+                                            <a href="javascript:void(0)" class="btn reCenter"><span>已使用</span></a>
+                                            <span class="tips">NEW</span>
+                                        </div>
+                                    </li>
+                                </c:if>
+                                <c:if test="#{couponUsed.couponType=='1'}">
+                                    <li class="Used">
+                                        <div class="center">
+                                            <div class="text reCenter">
+                                                <h3>#{couponUsed.couponName}</h3>
+                                                <div class="discount">
+                                                    <em>#{couponUsed.couponContent}</em>
+                                                    <i>折</i>
+                                                </div>
+                                                <p>#{couponUsed.couponDis}</p>
+                                                <p>有效期至#{couponUsed.effectEndDate}</p>
+                                            </div>
+                                            <a href="javascript:void(0)" class="btn reCenter"><span>已使用</span></a>
+                                            <span class="tips">NEW</span>
+                                        </div>
+                                    </li>
+                                </c:if>
+                            </c:forEach>
+                        </c:if>
+                    </ul>
+                    <ul class="oUl">
+                        <c:if test="#{not empty loginBackingBean.accountInfo.expiredCoupons}">
+
+                            <c:forEach items="#{loginBackingBean.accountInfo.expiredCoupons}" var="couponExpired" varStatus="loop">
+
+                                <c:if test="#{couponExpired.couponType=='3'}">
+                                    <li class="Expired">
+                                        <div class="center">
+                                            <div class="text reCenter">
+                                                <h3>#{couponExpired.couponName}</h3>
+                                                <div class="number">
+                                                    <i>¥</i>
+                                                    <em>#{couponExpired.couponContent}</em>
+                                                </div>
+                                                <p>#{couponExpired.couponDis}</p>
+                                                <p>有效期至： #{couponExpired.effectEndDate}</p>
+                                            </div>
+                                            <a href="javascript:void(0)" class="btn reCenter"><span>已过期</span></a>
+                                            <span class="tips">NEW</span>
+                                        </div>
+                                    </li>
+                                </c:if>
+                                <c:if test="#{couponExpired.couponType=='1'}">
+                                    <li class="Expired">
+                                        <div class="center">
+                                            <div class="text reCenter">
+                                                <h3>#{couponExpired.couponName}</h3>
+                                                <div class="discount">
+
+                                                    <em>#{couponExpired.couponContent}</em>
+                                                    <i>折</i>
+                                                </div>
+                                                <p>#{couponExpired.couponDis}</p>
+                                                <p>有效期至 ： #{couponExpired.effectEndDate}</p>
+                                            </div>
+                                            <a href="javascript:void(0)" class="btn reCenter"><span>已过期</span></a>
+                                            <span class="tips">NEW</span>
+                                        </div>
+                                    </li>
+                                </c:if>
+                            </c:forEach>
+                        </c:if>
+                    </ul>
+
+                </div>
+                <div class="btn-wrap">
+                    <div class="btn active">未使用</div>
+                    <div class="btn">已使用</div>
+                    <div class="btn">已过期</div>
+                </div>
+            </div>
             <!-- 退出登录 -->
             <div class="alert2" id="Unueer" >
                 <div class="a_txt">确认退出当前账户？</div>
@@ -705,12 +697,12 @@
             </h:inputText>
             <div class="alert" id="sn_err" style="display:none">
                 <div class="a_txt" id="perro">您的密码不正确<br/>
-			                    请重试或致电<span class="span2">400-898-0050</span><br/>
-			                    联系梅赛德斯-奔驰智能互联<br/>
-			                    服务中心寻求帮助
-			    </div>
+                    请重试或致电<span class="span2">400-898-0050</span><br/>
+                    联系梅赛德斯-奔驰智能互联<br/>
+                    服务中心寻求帮助
+                </div>
                 <div class="m_btn m_btn1">
-                	<input type="button" value="重 &#160; 试" onclick="hideLogOff()" class="csinput"/>
+                    <input type="button" value="重 &#160; 试" onclick="hideLogOff()" class="csinput"/>
                 </div>
             </div>
             <script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/v.js"></script>
@@ -719,19 +711,19 @@
             <script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/js.js"></script>
             <script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/swiper.js"></script>
             <script>
-	    $('#mybox').height($(window).height()*0.9);
-	    var swiper = new Swiper('.swiper-container', {
-	        scrollbar: '.swiper-scrollbar',
-	        direction: 'vertical',
-	        slidesPerView: 'auto',
-	        mousewheelControl: true,
-	        freeMode: true
-	    });
-	    function toUseCoupon(){
-	    	document.getElementById("logout:toOrderPackage").click();
-	    }
-	    //add JS
-	    ;(function($,jq) {
+                $('#mybox').height($(window).height()*0.9);
+                var swiper = new Swiper('.swiper-container', {
+                    scrollbar: '.swiper-scrollbar',
+                    direction: 'vertical',
+                    slidesPerView: 'auto',
+                    mousewheelControl: true,
+                    freeMode: true
+                });
+                function toUseCoupon(){
+                    document.getElementById("logout:toOrderPackage").click();
+                }
+                //add JS
+                ;(function($,jq) {
 //             // 	        活动规则 滚动条
 // 	        var detailsCommon = function( opts ) {
 // 	            opts.content.vScrollbar({'handle': opts.handle, 'bar': opts.bar});
@@ -749,80 +741,80 @@
 //                         });
 //                     }
 //                 }
-	
-	        ;(function() {
-	            var getSrc = function () {
-	                var arr = [];
-	                $('img').each(function (index, elm) {
-	                    arr.push($(elm).attr("src"));
-	                });
-	                arr.push('../resources/coupon/images/bg.jpg');
-	                arr.push('../resources/coupon/images/btn1.png');
-	                arr.push('../resources/coupon/images/btn2.png');
-	                arr.push('../resources/coupon/images/ticket.png');
-	                arr.push('../resources/coupon/images/ticket-grey.png');
-	                arr.push('../resources/coupon/images/printer.png');
-	                arr.push('../resources/coupon/images/close.png');
-	                arr.push('../resources/coupon/images/btn-red.png');
-	                return arr;
-	            };
-	            var loading = function (aSrc, loadFn, callBack) {
-	                var loadI = 0;
-	                var totalImg = aSrc.length;
-	                for (var i = 0; i &lt; totalImg; i++) {
-	                    var image = new Image();
-	                    image.onload = function () {
-	                        loadI++;
-	                        var Scale = loadI / totalImg;
-	                        var Percent = Math.floor(Scale * 100);
-	                        loadFn &amp;&amp; loadFn(Percent);
-	                        loadI == totalImg &amp;&amp; callBack &amp;&amp; callBack();
-	                    };
-	                    image.src = aSrc[i];
-	                }
-	            };
-	            loading(getSrc(), function (num) {
-	            }, function () {
-	                var welfare = $('.page');
-	
-	                welfare.addClass('active');
-	            });
-	        })();
-	
-	        //查看各状态的券
-	        ;(function() {
-	            var ticket = jq('.ticket'),
-	                addBtn = jq('.addBtn'),
-	                ticketUl = ticket.find('.ticket-list .oUl'),
-	                close = ticket.find('.close'),
-	                oBtnList = ticket.find('.btn-wrap .btn');
-	
-	            //我的优惠券
-	            addBtn.on('click',function() {
-	                ticket.fadeIn(500);
-	            });
-	
-	            //关闭浮层
-	            close.on('click',function() {
-	                ticket.fadeOut(500);
-	            });
-	
-	            oBtnList.on('click',function() {
-	                var _this = jq(this),
-	                    _index = _this.index();
-	
-	                if(_this.hasClass('active')) return;
-	
-	                oBtnList.removeClass('active').eq(_index).addClass('active');
-	                ticketUl.removeClass('active').eq(_index).addClass('active');
-	
-	            });
-	
-	        })();
-	
-	
-	    })(Zepto,jQuery);
-</script>
+
+                    ;(function() {
+                        var getSrc = function () {
+                            var arr = [];
+                            $('img').each(function (index, elm) {
+                                arr.push($(elm).attr("src"));
+                            });
+                            arr.push('../resources/coupon/images/bg.jpg');
+                            arr.push('../resources/coupon/images/btn1.png');
+                            arr.push('../resources/coupon/images/btn2.png');
+                            arr.push('../resources/coupon/images/ticket.png');
+                            arr.push('../resources/coupon/images/ticket-grey.png');
+                            arr.push('../resources/coupon/images/printer.png');
+                            arr.push('../resources/coupon/images/close.png');
+                            arr.push('../resources/coupon/images/btn-red.png');
+                            return arr;
+                        };
+                        var loading = function (aSrc, loadFn, callBack) {
+                            var loadI = 0;
+                            var totalImg = aSrc.length;
+                            for (var i = 0; i &lt; totalImg; i++) {
+                                var image = new Image();
+                                image.onload = function () {
+                                    loadI++;
+                                    var Scale = loadI / totalImg;
+                                    var Percent = Math.floor(Scale * 100);
+                                    loadFn &amp;&amp; loadFn(Percent);
+                                    loadI == totalImg &amp;&amp; callBack &amp;&amp; callBack();
+                                };
+                                image.src = aSrc[i];
+                            }
+                        };
+                        loading(getSrc(), function (num) {
+                        }, function () {
+                            var welfare = $('.page');
+
+                            welfare.addClass('active');
+                        });
+                    })();
+
+                    //查看各状态的券
+                    ;(function() {
+                        var ticket = jq('.ticket'),
+                            addBtn = jq('.addBtn'),
+                            ticketUl = ticket.find('.ticket-list .oUl'),
+                            close = ticket.find('.close'),
+                            oBtnList = ticket.find('.btn-wrap .btn');
+
+                        //我的优惠券
+                        addBtn.on('click',function() {
+                            ticket.fadeIn(500);
+                        });
+
+                        //关闭浮层
+                        close.on('click',function() {
+                            ticket.fadeOut(500);
+                        });
+
+                        oBtnList.on('click',function() {
+                            var _this = jq(this),
+                                _index = _this.index();
+
+                            if(_this.hasClass('active')) return;
+
+                            oBtnList.removeClass('active').eq(_index).addClass('active');
+                            ticketUl.removeClass('active').eq(_index).addClass('active');
+
+                        });
+
+                    })();
+
+
+                })(Zepto,jQuery);
+            </script>
             <script type="text/javascript">
                 if("1" == broserNum){
                     window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
@@ -830,12 +822,6 @@
                 function toluckDraw(){
                     window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4ca6cc680a7e0fa3&amp;redirect_uri=https%3A%2F%2Fwww.cntelematics.com%2Fhtib2c-mobile%2FwechatServlet%3Fshowwxpaytitle%3D1&amp;response_type=code&amp;scope=snsapi_userinfo&amp;state=wechatLuckDraw#wechat_redirect;";
                 }
-                $(function(){
-                    //CR428 关掉luckydraw1
-                    if($("#luckDrawLink").find("span").text()==0){
-                        $("#luckDrawLink").hide();
-                    }
-                })
                 /*判断是否弹窗提示*/
                 var myAccountPopVal = $("input[nm3='myAccountPop']").val();
                 if(myAccountPopVal == null || myAccountPopVal == ""){
@@ -854,7 +840,7 @@
                     $('#filer').hide();
                     $('#xiexie').hide();
                 }
-                
+
                 function toInvoice(){
                     window.location.href="#{facesContext.externalContext.request.contextPath}/views/invoiceEntry.xhtml";
                 }
@@ -876,12 +862,12 @@
                     freeMode: true
                 });
                 window.onload=function(){
-                 var flag = $("input[flag='renewFlag']").val();
+                    var flag = $("input[flag='renewFlag']").val();
                     if("OK" == flag){
                         $("#didiDiv").removeAttr("style");
                         window.location.href="https://dc.tt/Rhv6";
                     }
-                 }
+                }
                 function clickDidi(){
                     $("input[btn='didiBtn']").click();
                 }
@@ -898,9 +884,9 @@
                     window.addEventListener("popstate", function(e) {
                         var ua = navigator.userAgent.toLowerCase();
                         if(ua.indexOf("alipay")!=-1){
-                        	AlipayJSBridge.call('closeWebview');
-                        	//Brook,fix issue that alipay can't backwards
-                           // window.location.href = window.location.href;
+                            AlipayJSBridge.call('closeWebview');
+                            //Brook,fix issue that alipay can't backwards
+                            // window.location.href = window.location.href;
                         }
                     }, false);
                     function pushHistory() {
@@ -911,7 +897,7 @@
                         window.history.pushState(state, "title", "#");
                     }
                 });
-</script>
+            </script>
 
         </h:form>
     </ui:define>
