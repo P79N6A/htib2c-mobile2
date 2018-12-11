@@ -711,7 +711,7 @@
             <script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/js.js"></script>
             <script src="#{facesContext.externalContext.request.contextPath}/resources/coupon/js/swiper.js"></script>
             <script>
-                $('#mybox').height($(window).height()*0.9);
+                $('#mybox').height($(window).height()*0.7);
                 var swiper = new Swiper('.swiper-container', {
                     scrollbar: '.swiper-scrollbar',
                     direction: 'vertical',
@@ -863,10 +863,10 @@
                 });
                 window.onload=function(){
                     var flag = $("input[flag='renewFlag']").val();
-                    if("OK" == flag){
-                        $("#didiDiv").removeAttr("style");
-                        window.location.href="https://dc.tt/Rhv6";
-                    }
+//                    if("OK" == flag){
+//                        $("#didiDiv").removeAttr("style");
+//                        window.location.href="https://dc.tt/Rhv6";
+//                    }
                 }
                 function clickDidi(){
                     $("input[btn='didiBtn']").click();

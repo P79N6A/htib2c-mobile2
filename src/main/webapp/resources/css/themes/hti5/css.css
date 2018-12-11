@@ -126,7 +126,7 @@ html,body,p,ul,h1,h2,h3,h4{ margin: 0; padding: 0; list-style: none;}
 /*Կ��*/
 #key_{  height: 84%; background: url("../../../images/img/jp_bg3.jpg"); background-size: 100% 100%; position: relative; overflow: hidden;}
 #key_bg{ width: 347px; height: 674px; position: absolute; left: 50%; margin-left: -175px; top: 50%; margin-top:-365px; background: url("../../../images/img/key.png"); transform: scale(0.8) }
-#keytxt{ position:absolute; left:75px; bottom: 3rem; color: #fff; font-size:1.1rem;}
+#keytxt{ position:absolute; left:75px; bottom: 6rem; color: #fff; font-size:1.1rem;}
 #keytxt span{ font-size:1.5rem;}
 #top{ width: 97px; height: 83px; position: absolute; left: 128px; top: 23px; }
 #topn{ width: 97px; height: 83px;  background: url("../../../images/img/top_bg1.png") ;  }
@@ -153,12 +153,12 @@ html,body,p,ul,h1,h2,h3,h4{ margin: 0; padding: 0; list-style: none;}
 #txtlist h3{ text-align: center; color: #fff; font-style: normal; font-size: 30px; margin-top: 50px; height: 65px; background: url("../../../images/img/my_h3bg.png") center bottom no-repeat; line-height: 65px;}
 .my_list{ width: 520px; height: auto; overflow: auto; zoom: 1; background: url("../../../images/img/my_listbg.png") repeat-x; border: 2px solid rgba(255,255,255,0.45);border-top: none; margin: auto; color: #fff; font-size: 22px; line-height: 28px; margin-bottom: 20px; box-sizing: border-box; padding: 15px 0; padding-left: 100px;}
 .my_list_notice{ width: 520px; height: auto; overflow: auto; zoom: 1; border: 0px solid rgba(255,255,255,0.45);border-top: none; margin: auto; color: #f52447; font-size: 22px; line-height: 28px; margin-bottom: 20px; box-sizing: border-box; padding: 15px 0; padding-left: 100px;}
-#food{ width: 100%; position: relative; margin-top: 20px; height: 282px;}
+#food{ width: 100%; position: relative; margin-top: -30px; height: 282px;}
 #food .s_btn{ position: absolute; left: 50%; top: 70px; width: 237px;}
 #food .s_btn input{outline: none}
 #food .s_btn1{margin-left: -245px;}
 #food .s_btn2{margin-left:8px;}
-#icpoutuser{ position: absolute; right: 75px; bottom: 50px; color: #fff;height: 27px }
+#icpoutuser{ position: absolute; right: 75px; bottom: 100px; color: #fff;height: 27px }
 #icpoutuser input{background: none;height: 27px ;border-bottom: 1px solid #fff; color: #fff;  font-size: 20px;  border: none;}
 #icpoutuser .ui-input-btn{background: none;border: none;font-size: 20px; height: 28px;line-height: 28px}
 #icpoutuser .ui-focus{box-shadow: none;border: none}
