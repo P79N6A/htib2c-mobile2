@@ -59,6 +59,7 @@
 
         <!--add by liunig CR345-->
         <property name="WechatLinkLogin" value="${WechatLinkLogin}" />
+        <property name="WechatLuckDraw" value="${WechatLuckDraw}" />
 
     </bean>
 </beans>

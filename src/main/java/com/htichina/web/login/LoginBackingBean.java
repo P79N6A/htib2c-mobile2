@@ -316,8 +316,9 @@ public class LoginBackingBean implements Serializable {
             }
             
             if(ViewPage.LINK2LUCKDRAW.equals(targetPage)) {
+
                 context.getExternalContext().redirect(
-                        "/htib2c-mobile/views/luckyDraw.html");
+                        ConfigureInfo.getWechatLuckDraw());
                 return null;
             }if(ViewPage.LINK2LUCKDRAW2.equals(targetPage)) {
                 context.getExternalContext().redirect(
