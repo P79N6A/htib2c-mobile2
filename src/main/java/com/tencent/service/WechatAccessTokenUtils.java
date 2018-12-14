@@ -25,7 +25,7 @@ import com.htichina.web.common.B2CUtils;
  */
 public class WechatAccessTokenUtils{
 	static String access_token;
-	static Date generate_date;
+	public static Date generate_date;
 	static Logger logger = Logger.getLogger(WechatAccessTokenUtils.class.getName());
 	
 	public synchronized static String getWechatToken()

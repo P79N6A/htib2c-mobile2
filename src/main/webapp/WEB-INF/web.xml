@@ -209,7 +209,16 @@
 		<servlet-name>LuckyDraw2DataServlet</servlet-name>
 		<url-pattern>/servlet/LuckyDraw2DataServlet</url-pattern>
 	</servlet-mapping>
-
+	<!--微信获取accessToken接口 begin-->
+	<servlet>
+		<servlet-name>getWechatToken</servlet-name>
+		<servlet-class>com.htichina.web.wechat.GetAccessTokenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getWechatToken</servlet-name>
+		<url-pattern>/ws/getWechatToken</url-pattern>
+	</servlet-mapping>
+	<!--微信获取accessToken接口 begin-->
 	<error-page>
 		<exception-type>java.lang.RuntimeException</exception-type>
 		<location>/views/common/error.xhtml?faces-redirect=true</location>
