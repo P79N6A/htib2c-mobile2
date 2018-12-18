@@ -9,7 +9,9 @@ import java.util.Date;
 public class AccessTokenResult {
     String result;
     String message="success";
-    Date getTime;
+    String getTime;
+    String leftTimes;
+    String remainTime;
 
     public String getResult() {
         return result;
@@ -27,11 +29,27 @@ public class AccessTokenResult {
         this.message = message;
     }
 
-    public Date getGetTime() {
+    public String getGetTime() {
         return getTime;
     }
 
-    public void setGetTime(Date getTime) {
+    public void setGetTime(String getTime) {
         this.getTime = getTime;
+    }
+
+    public String getLeftTimes() {
+        return leftTimes;
+    }
+
+    public void setLeftTimes(String leftTimes) {
+        this.leftTimes = leftTimes;
+    }
+
+    public String getRemainTime() {
+        return remainTime;
+    }
+
+    public void setRemainTime(String remainTime) {
+        this.remainTime = remainTime;
     }
 }

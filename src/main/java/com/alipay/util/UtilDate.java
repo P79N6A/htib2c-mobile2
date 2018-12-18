@@ -79,5 +79,13 @@ public class UtilDate {
 		//System.out.println("from="+from+";to="+to+";minutes="+minutes);
 		return minutes;
 	}
-	
+	public static int getDayLength(Date fromDate, Date toDate) throws Exception {
+//		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+//		Date fromDate = df.parse(start_date); // 开始日期
+//		Date toDate = df.parse(end_date); // 结束日期
+		long from = fromDate.getTime();
+		long to = toDate.getTime();
+		int day = (int) ((to - from) / (24 * 60 * 60 * 1000));
+		return day;
+	}
 }

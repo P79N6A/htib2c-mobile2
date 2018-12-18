@@ -129,6 +129,10 @@ $(document).ready(function () {
         $(".finger").fadeIn();
         $(".lucky").fadeIn();
     })
+
+    $("input").blur(function() {
+        $("body").scrollTop(0);
+    })
 });
 
 function luckyDraw() {

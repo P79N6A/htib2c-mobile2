@@ -74,7 +74,7 @@ public class LuckyDraw2Servlet extends HttpServlet {
 //		String accountNum = "10631821";
         String accountNum = client.getActiveAccountByOpenId(openId);
 		String paymentPlatform = (String)req.getSession().getAttribute(Constant.PAYMENT_PLATFORM);
-		logger.info("openId============================"+openId);
+//		logger.info("openId============================"+openId);
 		logger.info("accountNum============================"+accountNum);
 		logger.info("paymentPlatform============================"+paymentPlatform);
 		//判断是否符合资格

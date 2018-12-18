@@ -1,6 +1,7 @@
 package com.htichina.web.wechat;
 
 import com.alipay.util.DESUtil;
+import com.alipay.util.UtilDate;
 import com.google.gson.Gson;
 import com.htichina.common.web.Constant;
 import com.htichina.web.PaymentServiceClient;
@@ -18,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by ln on 2018/05/24.
@@ -26,7 +29,8 @@ import java.io.PrintWriter;
 public class GetAccessTokenServlet extends HttpServlet {
 	private static Logger logger = Logger.getLogger(GetAccessTokenServlet.class.getName());
 
-private static Integer num=1000;
+private static Integer num=500;
+private static Date generate_date=new Date();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -37,15 +41,31 @@ private static Integer num=1000;
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		num=num-1;
+		Date now = new Date();
 		AccessTokenResult accessTokenResult = new AccessTokenResult();
+		try {
+			int days = UtilDate.getDayLength(generate_date,now);
+			if(days==0){
+				num=num-1;
+			}else{
+				num=500;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if(num>0) {
-			 String token = WechatAccessTokenUtils.getWechatToken();
+			accessTokenResult.setLeftTimes(num.toString());
+			String token = WechatAccessTokenUtils.getWechatToken();
 			try {
 				//加密
 				String result = DESUtil.encrypt(token);
 				accessTokenResult.setResult(result);
-				accessTokenResult.setGetTime(WechatAccessTokenUtils.generate_date);
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				String time = sdf.format(WechatAccessTokenUtils.generate_date);
+				accessTokenResult.setGetTime(time);
+				generate_date=now;
+				int gapMinutes = UtilDate.getGapMinutes(WechatAccessTokenUtils.generate_date, now);
+				accessTokenResult.setRemainTime((60-gapMinutes)+"");
 			} catch (Exception e) {
 				accessTokenResult.setMessage("error");
 			}
@@ -58,6 +78,7 @@ private static Integer num=1000;
 		Gson gson = new Gson();
 		String str = gson.toJson(accessTokenResult);
 		logger.info("locate result = "+str);
+
 		out.write(str);
 		out.flush();
 		out.close();

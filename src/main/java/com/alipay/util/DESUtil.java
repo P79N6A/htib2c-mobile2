@@ -7,6 +7,7 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
+import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
 import java.security.SecureRandom;
 
@@ -15,8 +16,9 @@ import java.security.SecureRandom;
  */
 public class DESUtil {
 
-    private final static String DES = "DES";
-    private static String key = "12345678901gssgfsgrwsd64643";
+    private final static String AES = "AES";
+    private final static String INSTANCE = "AES/ECB/PKCS5Padding";
+    private static String key = "5678901gssgfsgrw";
 
     /**
      * Description 根据键值进行加密
@@ -25,7 +27,7 @@ public class DESUtil {
      * @throws Exception
      */
     public static String encrypt(String data) throws Exception {
-        byte[] bt = encrypt(data.getBytes(), key.getBytes());
+        byte[] bt = encrypt(data.getBytes("UTF-8"), key.getBytes("UTF-8"));
         String strs = new BASE64Encoder().encode(bt);
         return strs;
     }
@@ -62,14 +64,13 @@ public class DESUtil {
         DESKeySpec dks = new DESKeySpec(key);
 
         // 创建一个密钥工厂，然后用它把DESKeySpec转换成SecretKey对象
-        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(DES);
-        SecretKey securekey = keyFactory.generateSecret(dks);
-
+//        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(AES);
+//        SecretKey securekey = keyFactory.generateSecret(dks);
         // Cipher对象实际完成加密操作
-        Cipher cipher = Cipher.getInstance(DES);
+        Cipher cipher = Cipher.getInstance(INSTANCE);
 
         // 用密钥初始化Cipher对象
-        cipher.init(Cipher.ENCRYPT_MODE, securekey, sr);
+        cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(key, AES));
 
         return cipher.doFinal(data);
     }
@@ -88,12 +89,12 @@ public class DESUtil {
         // 从原始密钥数据创建DESKeySpec对象
         DESKeySpec dks = new DESKeySpec(key);
         // 创建一个密钥工厂，然后用它把DESKeySpec转换成SecretKey对象
-        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(DES);
-        SecretKey securekey = keyFactory.generateSecret(dks);
+//        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(INSTANCE);
+//        SecretKey securekey = keyFactory.generateSecret(dks);
         // Cipher对象实际完成解密操作
-        Cipher cipher = Cipher.getInstance(DES);
+        Cipher cipher = Cipher.getInstance(AES);
         // 用密钥初始化Cipher对象
-        cipher.init(Cipher.DECRYPT_MODE, securekey, sr);
+        cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key, AES));
 
         return cipher.doFinal(data);
     }

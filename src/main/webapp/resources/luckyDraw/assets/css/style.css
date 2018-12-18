@@ -16,10 +16,15 @@ html {
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 1200px;
+  overflow-y: scroll;
 }
 
 body {
   background-color: #00004c;
+  overflow: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
 }
 
 img {
@@ -136,6 +141,7 @@ p {
   -webkit-transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99);
   -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99);
   overflow: hidden;
+  min-height: 1200px;
 }
 
 .landingPage {
@@ -322,12 +328,12 @@ a {
 }
 
 .btn_login {
-  top: 1025px;
+  top: 925px;
   left: 135px;
 }
 
 .btn_rule {
-  top: 1150px;
+  top: 1060px;
   left: 214px;
 }
 
@@ -527,7 +533,7 @@ a {
 
 .starlight {
   left: 34px;
-  top: 420px;
+  top: 370px;
   -webkit-animation: starL 2s ease-in-out infinite;
   animation: starL 2s ease-in-out infinite;
 }
@@ -535,27 +541,33 @@ a {
 .finger {
   top: 1040px;
   left: 460px;
-    -webkit-animation: ff 1.5s ease-in-out infinite;
-    animation: ff 1.5s ease-in-out infinite;
+  -webkit-animation: ff 1.5s ease-in-out infinite;
+  animation: ff 1.5s ease-in-out infinite;
 }
+
 @-webkit-keyframes ff {
   0% {
     opacity: .3;
   }
+
   60% {
     opacity: 1;
   }
+
   100% {
     opacity: .3;
   }
 }
+
 @keyframes ff {
   0% {
     opacity: .3;
   }
+
   60% {
     opacity: 1;
   }
+
   100% {
     opacity: .3;
   }
@@ -625,11 +637,43 @@ a {
   left: 129px;
   top: 417px;
 }
+
 .awardshow2 {
   left: 140px;
   top: 370px;
 }
+
 .awardshow3 {
   left: 140px;
   top: 350px;
+}
+
+.xshow {
+  display: none;
+}
+
+.page1-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+@media screen and (min-height:1300px) {
+  .xshow {
+    display: block;
+  }
+
+  .btn_login {
+    top: 1005px;
+    left: 135px;
+  }
+
+  .btn_rule {
+    top: 1148px;
+    left: 214px;
+  }
+  .starlight {
+
+    top: 430px;
+}
 }
