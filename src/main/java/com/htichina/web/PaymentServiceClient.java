@@ -482,6 +482,11 @@ public class PaymentServiceClient {
 	  return service.updateCouponHistory(orderNum,primePrice,couponId,accountNum);
   };
   
+  public CouponHistory findByCustomIdAndPromtionId(String accountNum,String couponId,String isUserd){
+	  return service.findByCustomIdAndPromtionId(accountNum,couponId,isUserd);
+	  
+  }
+  
 }
 
 
