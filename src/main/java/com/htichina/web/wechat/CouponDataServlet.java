@@ -47,20 +47,29 @@ public class CouponDataServlet extends HttpServlet {
 			PaymentServiceClient client = PaymentServiceClient.getInstance();
 			String accountNum = (String) req.getSession().getAttribute(Constant.ACCOUNT_NUM);
 			Coupon coupon=client.findCouponById(couponId);
+			CouponHistory historyRes=client.findByCustomIdAndPromtionId(accountNum, couponId, "0");
 			Integer result=0;
-			if(coupon!=null){
-	    		CouponHistory history=new CouponHistory();
-	    		history.setCouponId(coupon.getId());
-	    		history.setCoustomerId(accountNum);
-	    		history.setCreatedTime(UtilDate.getDateFormatter());
-	    		history.setIsUsed("0");
-	    		result=client.saveDrawCouponHistory(history);
-	    	}
+			String str="";
+			if(historyRes!=null){
+				//已经领取
+				result=1;
+			}else{
+				if(coupon!=null){
+		    		CouponHistory history=new CouponHistory();
+		    		history.setCouponId(coupon.getId());
+		    		history.setCoustomerId(accountNum);
+		    		history.setCreatedTime(UtilDate.getDateFormatter());
+		    		history.setIsUsed("0");
+		    		history.setCreatedBy(accountNum);
+		    		result=client.saveDrawCouponHistory(history);
+		    	}
+				
+			}
 			resp.setContentType("text/html;charset=utf-8");
 	        PrintWriter out;
             out = resp.getWriter();
             Gson gson = new Gson();
-            String str="";
+            
             if(result>0){
             	str = gson.toJson("1");
             }else{

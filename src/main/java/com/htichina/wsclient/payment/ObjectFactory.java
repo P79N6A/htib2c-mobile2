@@ -27,6 +27,7 @@ public class ObjectFactory {
     private final static QName _CreateTransactionForLuckyDrawResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createTransactionForLuckyDrawResponse");
     private final static QName _ValidateLogin_QNAME = new QName("http://payment.ws.htichina.com/", "validateLogin");
     private final static QName _CloseWechatUserProfile_QNAME = new QName("http://payment.ws.htichina.com/", "closeWechatUserProfile");
+    private final static QName _FindByCustomIdAndPromtionId_QNAME = new QName("http://payment.ws.htichina.com/", "findByCustomIdAndPromtionId");
     private final static QName _GetWechatUserDataByAccountNum_QNAME = new QName("http://payment.ws.htichina.com/", "getWechatUserDataByAccountNum");
     private final static QName _CheckPurchaseProduct_QNAME = new QName("http://payment.ws.htichina.com/", "checkPurchaseProduct");
     private final static QName _GetActiveAccountByOpenId_QNAME = new QName("http://payment.ws.htichina.com/", "getActiveAccountByOpenId");
@@ -125,6 +126,7 @@ public class ObjectFactory {
     private final static QName _UpdateWechatMessageHistoryResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateWechatMessageHistoryResponse");
     private final static QName _FindCouponById_QNAME = new QName("http://payment.ws.htichina.com/", "findCouponById");
     private final static QName _CreateWechatUserProfileResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createWechatUserProfileResponse");
+    private final static QName _FindByCustomIdAndPromtionIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "findByCustomIdAndPromtionIdResponse");
     private final static QName _SyncAccntResponse_QNAME = new QName("http://payment.ws.htichina.com/", "syncAccntResponse");
     private final static QName _FindCouponsByPromotionId_QNAME = new QName("http://payment.ws.htichina.com/", "findCouponsByPromotionId");
     private final static QName _CheckOrderPaied_QNAME = new QName("http://payment.ws.htichina.com/", "checkOrderPaied");
@@ -473,6 +475,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindByCustomIdAndPromtionIdResponse }
+     * 
+     */
+    public FindByCustomIdAndPromtionIdResponse createFindByCustomIdAndPromtionIdResponse() {
+        return new FindByCustomIdAndPromtionIdResponse();
+    }
+
+    /**
      * Create an instance of {@link SyncAccntResponse }
      * 
      */
@@ -774,6 +784,14 @@ public class ObjectFactory {
      */
     public CheckPurchaseProduct createCheckPurchaseProduct() {
         return new CheckPurchaseProduct();
+    }
+
+    /**
+     * Create an instance of {@link FindByCustomIdAndPromtionId }
+     * 
+     */
+    public FindByCustomIdAndPromtionId createFindByCustomIdAndPromtionId() {
+        return new FindByCustomIdAndPromtionId();
     }
 
     /**
@@ -1489,6 +1507,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "closeWechatUserProfile")
     public JAXBElement<CloseWechatUserProfile> createCloseWechatUserProfile(CloseWechatUserProfile value) {
         return new JAXBElement<CloseWechatUserProfile>(_CloseWechatUserProfile_QNAME, CloseWechatUserProfile.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindByCustomIdAndPromtionId }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "findByCustomIdAndPromtionId")
+    public JAXBElement<FindByCustomIdAndPromtionId> createFindByCustomIdAndPromtionId(FindByCustomIdAndPromtionId value) {
+        return new JAXBElement<FindByCustomIdAndPromtionId>(_FindByCustomIdAndPromtionId_QNAME, FindByCustomIdAndPromtionId.class, null, value);
     }
 
     /**
@@ -2371,6 +2398,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "createWechatUserProfileResponse")
     public JAXBElement<CreateWechatUserProfileResponse> createCreateWechatUserProfileResponse(CreateWechatUserProfileResponse value) {
         return new JAXBElement<CreateWechatUserProfileResponse>(_CreateWechatUserProfileResponse_QNAME, CreateWechatUserProfileResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindByCustomIdAndPromtionIdResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "findByCustomIdAndPromtionIdResponse")
+    public JAXBElement<FindByCustomIdAndPromtionIdResponse> createFindByCustomIdAndPromtionIdResponse(FindByCustomIdAndPromtionIdResponse value) {
+        return new JAXBElement<FindByCustomIdAndPromtionIdResponse>(_FindByCustomIdAndPromtionIdResponse_QNAME, FindByCustomIdAndPromtionIdResponse.class, null, value);
     }
 
     /**
