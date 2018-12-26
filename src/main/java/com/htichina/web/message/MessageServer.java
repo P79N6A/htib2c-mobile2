@@ -71,8 +71,8 @@ public class MessageServer {
                 }
                 // openId
                 String openId = requestMap.get("FromUserName");
-//                String accountNum =  PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
-                String accountNum = "10631849";
+                String accountNum =  PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
+//                String accountNum = "10631849";
                 logger.info("accountNum = " +accountNum);
                 if (Strings.isNullOrEmpty(accountNum)) {
                     respContent = Constant.SENDPOI_NULLACCOUNT;
