@@ -275,9 +275,8 @@ function checkForm() {
         "telNum": $.trim($(".luckyMobi").val()),
         "address": $.trim($(".luckyAdd").val())
     };
-
-    if (data.name == "") {
-        alert('请填写姓名');
+    if (data.name == ""||data.name.length>15) {
+        alert('请填写正确的姓名!');
         return false;
     }
 
@@ -285,8 +284,8 @@ function checkForm() {
         alert('请填写正确的手机号码');
         return false;
     }
-    if (data.address == "") {
-        alert('请填写地址');
+    if (data.address == ""||data.address>250) {
+        alert('请填写正确的地址');
         return false;
     }
     block = true;

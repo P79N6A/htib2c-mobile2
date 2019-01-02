@@ -38,6 +38,8 @@ public class ObjectFactory {
     private final static QName _UpdateParentOrderAmountResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateParentOrderAmountResponse");
     private final static QName _FindEffectCouponList_QNAME = new QName("http://payment.ws.htichina.com/", "findEffectCouponList");
     private final static QName _GetVehicleInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getVehicleInfoResponse");
+    private final static QName _UpdateAccessToken_QNAME = new QName("http://payment.ws.htichina.com/", "updateAccessToken");
+    private final static QName _SelectWechatAccessTokenResponse_QNAME = new QName("http://payment.ws.htichina.com/", "selectWechatAccessTokenResponse");
     private final static QName _GetParentOrderInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getParentOrderInfoResponse");
     private final static QName _FindCouponsByPromotionIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "findCouponsByPromotionIdResponse");
     private final static QName _GetInvoiceInformation_QNAME = new QName("http://payment.ws.htichina.com/", "getInvoiceInformation");
@@ -122,6 +124,7 @@ public class ObjectFactory {
     private final static QName _InsertHistory_QNAME = new QName("http://payment.ws.htichina.com/", "insertHistory");
     private final static QName _UpdateCouponHistory_QNAME = new QName("http://payment.ws.htichina.com/", "updateCouponHistory");
     private final static QName _DoLuckDrawResponse_QNAME = new QName("http://payment.ws.htichina.com/", "doLuckDrawResponse");
+    private final static QName _SelectWechatAccessToken_QNAME = new QName("http://payment.ws.htichina.com/", "selectWechatAccessToken");
     private final static QName _GetCurrentAccountInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getCurrentAccountInfo");
     private final static QName _UpdateWechatMessageHistoryResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateWechatMessageHistoryResponse");
     private final static QName _FindCouponById_QNAME = new QName("http://payment.ws.htichina.com/", "findCouponById");
@@ -151,6 +154,7 @@ public class ObjectFactory {
     private final static QName _UpdateOrderStatus_QNAME = new QName("http://payment.ws.htichina.com/", "updateOrderStatus");
     private final static QName _CheckPurchaseProductResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkPurchaseProductResponse");
     private final static QName _GetQuestionOptionsResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getQuestionOptionsResponse");
+    private final static QName _UpdateAccessTokenResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateAccessTokenResponse");
     private final static QName _GetTransactionByOrderNum_QNAME = new QName("http://payment.ws.htichina.com/", "getTransactionByOrderNum");
     private final static QName _CheckCustemerLuckyDrawResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkCustemerLuckyDrawResponse");
     private final static QName _GetCallPhoneByAccountNumResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getCallPhoneByAccountNumResponse");
@@ -563,6 +567,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SelectWechatAccessToken }
+     * 
+     */
+    public SelectWechatAccessToken createSelectWechatAccessToken() {
+        return new SelectWechatAccessToken();
+    }
+
+    /**
      * Create an instance of {@link CheckCustemerLuckyDrawResponse }
      * 
      */
@@ -616,6 +628,14 @@ public class ObjectFactory {
      */
     public GetQuestionOptionsResponse createGetQuestionOptionsResponse() {
         return new GetQuestionOptionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateAccessTokenResponse }
+     * 
+     */
+    public UpdateAccessTokenResponse createUpdateAccessTokenResponse() {
+        return new UpdateAccessTokenResponse();
     }
 
     /**
@@ -736,6 +756,22 @@ public class ObjectFactory {
      */
     public UpdateParentOrderAmountResponse createUpdateParentOrderAmountResponse() {
         return new UpdateParentOrderAmountResponse();
+    }
+
+    /**
+     * Create an instance of {@link SelectWechatAccessTokenResponse }
+     * 
+     */
+    public SelectWechatAccessTokenResponse createSelectWechatAccessTokenResponse() {
+        return new SelectWechatAccessTokenResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateAccessToken }
+     * 
+     */
+    public UpdateAccessToken createUpdateAccessToken() {
+        return new UpdateAccessToken();
     }
 
     /**
@@ -1243,6 +1279,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link WechatAccessToken }
+     * 
+     */
+    public WechatAccessToken createWechatAccessToken() {
+        return new WechatAccessToken();
+    }
+
+    /**
      * Create an instance of {@link LdItem }
      * 
      */
@@ -1606,6 +1650,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getVehicleInfoResponse")
     public JAXBElement<GetVehicleInfoResponse> createGetVehicleInfoResponse(GetVehicleInfoResponse value) {
         return new JAXBElement<GetVehicleInfoResponse>(_GetVehicleInfoResponse_QNAME, GetVehicleInfoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateAccessToken }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateAccessToken")
+    public JAXBElement<UpdateAccessToken> createUpdateAccessToken(UpdateAccessToken value) {
+        return new JAXBElement<UpdateAccessToken>(_UpdateAccessToken_QNAME, UpdateAccessToken.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SelectWechatAccessTokenResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "selectWechatAccessTokenResponse")
+    public JAXBElement<SelectWechatAccessTokenResponse> createSelectWechatAccessTokenResponse(SelectWechatAccessTokenResponse value) {
+        return new JAXBElement<SelectWechatAccessTokenResponse>(_SelectWechatAccessTokenResponse_QNAME, SelectWechatAccessTokenResponse.class, null, value);
     }
 
     /**
@@ -2365,6 +2427,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SelectWechatAccessToken }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "selectWechatAccessToken")
+    public JAXBElement<SelectWechatAccessToken> createSelectWechatAccessToken(SelectWechatAccessToken value) {
+        return new JAXBElement<SelectWechatAccessToken>(_SelectWechatAccessToken_QNAME, SelectWechatAccessToken.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetCurrentAccountInfo }{@code >}}
      * 
      */
@@ -2623,6 +2694,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "getQuestionOptionsResponse")
     public JAXBElement<GetQuestionOptionsResponse> createGetQuestionOptionsResponse(GetQuestionOptionsResponse value) {
         return new JAXBElement<GetQuestionOptionsResponse>(_GetQuestionOptionsResponse_QNAME, GetQuestionOptionsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateAccessTokenResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "updateAccessTokenResponse")
+    public JAXBElement<UpdateAccessTokenResponse> createUpdateAccessTokenResponse(UpdateAccessTokenResponse value) {
+        return new JAXBElement<UpdateAccessTokenResponse>(_UpdateAccessTokenResponse_QNAME, UpdateAccessTokenResponse.class, null, value);
     }
 
     /**
