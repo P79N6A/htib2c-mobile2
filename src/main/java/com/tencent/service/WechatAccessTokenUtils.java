@@ -23,7 +23,7 @@ import com.htichina.common.web.Constant;
 import com.htichina.web.common.B2CUtils;
 
 /**
- * Tommy,2018-2-28,调整微信token的获取方式
+ * liuning,2018-2-28,调整微信token的获取方式
  */
 public class WechatAccessTokenUtils{
 	static String access_token;
