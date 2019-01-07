@@ -171,6 +171,7 @@ public class Constant {
     public static final String WECHAT_LUCKYDRAW = "wechatLuckDraw";
     public static final String WECHAT_LUCKYDRAW1 = "wechatLuckDraw1";
     public static final String WECHAT_LUCKYDRAW2 = "wechatLuckDraw2";
+    public static final String WECHAT_LUCKYDRAW3 = "wechatLuckDraw3";
     public static final String UPDATE_MOBILE ="updateMobile";
     public static final String QUESTIONNAIRE = "questionnaire";
     public static final String VARIFLIGHT = "variflight";
