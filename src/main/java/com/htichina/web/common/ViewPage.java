@@ -78,10 +78,12 @@ public class ViewPage {
     //问卷调查
     public static final String LINK2QUESTIONNAIRE= "/views/questionnaire.xhtml?showwxpaytitle=1";
     //cr426
-    public static final String LINK2LUCKDRAW2 = "/views/luckyDraw2.xhtml?showwxpaytitle=1";
+    public static final String LINK2LUCKDRAW2 = "/views/luckyDraw2.html?showwxpaytitle=1";
     
     //飞常准
     public static final String LINK2VARIFLIGHT = "/views/variflight.xhtml?showwxpaytitle=1";
     //优惠券
     public static final String LINK2COUPONS = "/views/drawCoupon.xhtml?showwxpaytitle=1";
+    //CR832
+    public static final String LINK2LUCKDRAW1 = "/views/luckyDraw1.html?showwxpaytitle=1";
 }
