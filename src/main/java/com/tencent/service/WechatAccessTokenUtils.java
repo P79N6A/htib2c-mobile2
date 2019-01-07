@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.htichina.web.PaymentServiceClient;
+import com.htichina.wsclient.payment.WechatAccessToken;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -21,15 +23,19 @@ import com.htichina.common.web.Constant;
 import com.htichina.web.common.B2CUtils;
 
 /**
- * Tommy,2018-2-28,调整微信token的获取方式
+ * liuning,2018-2-28,调整微信token的获取方式
  */
 public class WechatAccessTokenUtils{
 	static String access_token;
 	public static Date generate_date;
+	public static Integer leftTimes;
 	static Logger logger = Logger.getLogger(WechatAccessTokenUtils.class.getName());
 	
 	public synchronized static String getWechatToken()
 			throws ClientProtocolException, IOException {
+		PaymentServiceClient client = PaymentServiceClient.getInstance();
+		WechatAccessToken wechatAccessToken = client.selectWechatAccessToken("1");
+		leftTimes=Integer.valueOf(wechatAccessToken.getLeftTimes());
 		//获取token生成的时间频率的配置信息
 		String token_interval = B2CUtils.getPropertyFromFile(Constant.WECHAT_TOKEN_GENERATE_INTERVAL);
 		int token_generate_interval = StringUtils.isEmpty(token_interval)?0:Integer.valueOf(token_interval);
@@ -38,13 +44,14 @@ public class WechatAccessTokenUtils{
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		logger.info("-------one request needs token，the time is:"+sf.format(newDate)+"--------");
 		//如果access_token已经生成过，而且此刻距离上次生成时间不超过指定时间，则继续使用之前的token
-		if(!StringUtils.isEmpty(access_token)){
-			logger.info("-------There is one token already generated before, and the generated time is:"+sf.format(generate_date));
+		if(!StringUtils.isEmpty(wechatAccessToken.getAccessToken())){
+//			logger.info("-------There is one token already generated before, and the generated time is:"+sf.format(generate_date));
 			logger.info("-------According to system settings, the time interval to generate new token is:"+token_generate_interval+" minutes.");
+			generate_date = wechatAccessToken.getCreateTime().toGregorianCalendar().getTime();
 			int gapMinutes = UtilDate.getGapMinutes(generate_date, newDate);
 			if(gapMinutes<token_generate_interval){
-				logger.info("-------It isn't time to generate new token, so reuse the last token:----"+access_token);
-				return access_token;
+				logger.info("-------It isn't time to generate new token, so reuse the last token:----"+wechatAccessToken.getAccessToken());
+				return wechatAccessToken.getAccessToken();
 			}else{
 				logger.info("-------It's time to generate new token.-------");
 			}
@@ -53,11 +60,12 @@ public class WechatAccessTokenUtils{
 		}
 		
 		String wechatToken = getNewToken();
+		boolean flag = client.updateAccessToken(wechatToken);
 		logger.info("----------The new token is:-------------"+wechatToken);
 		access_token = wechatToken;
 		generate_date = newDate;
 		
-		return access_token; 
+		return wechatToken;
 	}
 	
 	private static String getNewToken()

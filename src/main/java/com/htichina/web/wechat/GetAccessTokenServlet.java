@@ -29,8 +29,6 @@ import java.util.Date;
 public class GetAccessTokenServlet extends HttpServlet {
 	private static Logger logger = Logger.getLogger(GetAccessTokenServlet.class.getName());
 
-private static Integer num=500;
-private static Date generate_date=new Date();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -41,21 +39,23 @@ private static Date generate_date=new Date();
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		resp.setHeader("Access-Control-Allow-Origin", "*");
 		Date now = new Date();
 		AccessTokenResult accessTokenResult = new AccessTokenResult();
-		try {
-			int days = UtilDate.getDayLength(generate_date,now);
-			if(days==0){
-				num=num-1;
-			}else{
-				num=500;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if(num>0) {
-			accessTokenResult.setLeftTimes(num.toString());
-			String token = WechatAccessTokenUtils.getWechatToken();
+//		try {
+//			int days = UtilDate.getDayLength(generate_date,now);
+//
+//			if(days==0){
+//				num=num-1;
+//			}else{
+//				num=500;
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		String token = WechatAccessTokenUtils.getWechatToken();
+		if(WechatAccessTokenUtils.leftTimes>0) {
+			accessTokenResult.setLeftTimes(WechatAccessTokenUtils.leftTimes.toString());
 			try {
 				//加密
 				String result = DESUtil.encrypt(token);
@@ -63,7 +63,6 @@ private static Date generate_date=new Date();
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				String time = sdf.format(WechatAccessTokenUtils.generate_date);
 				accessTokenResult.setGetTime(time);
-				generate_date=now;
 				int gapMinutes = UtilDate.getGapMinutes(WechatAccessTokenUtils.generate_date, now);
 				accessTokenResult.setRemainTime((60-gapMinutes)+"");
 			} catch (Exception e) {

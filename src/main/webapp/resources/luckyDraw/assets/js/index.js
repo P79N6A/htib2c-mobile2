@@ -133,8 +133,17 @@ $(document).ready(function () {
     $("input").blur(function() {
         $("body").scrollTop(0);
     })
-});
 
+    //flag=1跳过校验
+    if(getUrlParam("flag")=="1") {
+        checkMember();
+    }
+});
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&amp;)" + name + "=([^&amp;]*)(&amp;|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}
 function luckyDraw() {
     var dtd = $.Deferred();
     $.ajax({
@@ -213,7 +222,12 @@ function checkMember() {
             dtd.resolve(res);
             var type = res.luckyDrawNoticeType;
             if (type == 1) {//未登录
-                window.location.href = "accountLogin.xhtml?flag=luckyDraw";
+                var utm_medium = getUrlParam("utm_medium");
+                if(utm_medium=="Menu") {
+                    window.location.href = "accountLogin.xhtml?flag=luckyDraw1";
+                }else{
+                    window.location.href = "accountLogin.xhtml?flag=luckyDraw2";
+                }
                 //            window.location.href="http://www.baidu.com";
             }
             else if (type == 3||type==4||type==7) {//不符合资格
@@ -266,9 +280,8 @@ function checkForm() {
         "telNum": $.trim($(".luckyMobi").val()),
         "address": $.trim($(".luckyAdd").val())
     };
-
-    if (data.name == "") {
-        alert('请填写姓名');
+    if (data.name == ""||data.name.length>15) {
+        alert('请填写正确的姓名!');
         return false;
     }
 
@@ -276,8 +289,8 @@ function checkForm() {
         alert('请填写正确的手机号码');
         return false;
     }
-    if (data.address == "") {
-        alert('请填写地址');
+    if (data.address == ""||data.address>250) {
+        alert('请填写正确的地址');
         return false;
     }
     block = true;

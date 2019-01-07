@@ -315,14 +315,14 @@ public class LoginBackingBean implements Serializable {
                 return null;
             }
             
-            if(ViewPage.LINK2LUCKDRAW.equals(targetPage)) {
+            if(ViewPage.LINK2LUCKDRAW1.equals(targetPage)) {
 
                 context.getExternalContext().redirect(
-                        ConfigureInfo.getWechatLuckDraw());
+                        ConfigureInfo.getWechatLuckDraw1());
                 return null;
             }if(ViewPage.LINK2LUCKDRAW2.equals(targetPage)) {
                 context.getExternalContext().redirect(
-                        "/htib2c-mobile/views/luckyDraw2.xhtml");
+                        ConfigureInfo.getWechatLuckDraw2());
                 return null;
             }else {
 

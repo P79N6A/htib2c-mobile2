@@ -107,9 +107,10 @@ public class ConfigureInfo {
 
     @Value("#{configProperties['WechatLinkLogin']}")
     private static String WechatLinkLogin;
-    @Value("#{configProperties['WechatLuckDraw']}")
-    private static String wechatLuckDraw;
-
+    @Value("#{configProperties['WechatLuckDraw1']}")
+    private static String wechatLuckDraw1;
+    @Value("#{configProperties['WechatLuckDraw2']}")
+    private static String wechatLuckDraw2;
     public static String getWechatLinkLogin() {
         return WechatLinkLogin;
     }
@@ -353,11 +354,19 @@ public class ConfigureInfo {
         ConfigureInfo.alipayPaymentPublicKey = alipayPaymentPublicKey;
     }
 
-    public static String getWechatLuckDraw() {
-        return wechatLuckDraw;
+    public static String getWechatLuckDraw1() {
+        return wechatLuckDraw1;
     }
 
-    public static void setWechatLuckDraw(String wechatLuckDraw) {
-        ConfigureInfo.wechatLuckDraw = wechatLuckDraw;
+    public static void setWechatLuckDraw1(String wechatLuckDraw1) {
+        ConfigureInfo.wechatLuckDraw1 = wechatLuckDraw1;
+    }
+
+    public static String getWechatLuckDraw2() {
+        return wechatLuckDraw2;
+    }
+
+    public static void setWechatLuckDraw2(String wechatLuckDraw2) {
+        ConfigureInfo.wechatLuckDraw2 = wechatLuckDraw2;
     }
 }

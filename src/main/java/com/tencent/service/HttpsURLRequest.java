@@ -457,14 +457,14 @@ public class HttpsURLRequest  {
 
     public static void main(String[] args) throws UnrecoverableKeyException, IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException, URISyntaxException {
         Map<String,String> params = new HashMap<>();
-        params.put(Constant.HTTPS_ACCOUNTNUM,"12345547");
-        params.put(Constant.HTTPS_LATITUDE,"40.00288");
-        params.put(Constant.HTTPS_LONGITUDE,"116.48836");
+        params.put(Constant.HTTPS_ACCOUNTNUM,"12599121");
+        params.put(Constant.HTTPS_LATITUDE,"40.0060882568359");
+        params.put(Constant.HTTPS_LONGITUDE,"116.49087524414062");
         params.put(Constant.HTTPS_PIN,"1234");
-        params.put(Constant.HTTPS_POINAME,"hospital");
+        params.put(Constant.HTTPS_POINAME,"昆泰酒店");
 //        params.put(Constant.HTTPS_POINAME,"hospital");
         //绕过安全验证的方法
-        new HttpsURLRequest().NoSecurityPost(Constant.HTTPS_UNLOCK ,params);
+        new HttpsURLRequest().NoSecurityPost(Constant.HTTPS_LOCK ,params);
     }
 
 

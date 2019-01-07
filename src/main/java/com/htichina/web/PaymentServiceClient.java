@@ -1,47 +1,19 @@
 package com.htichina.web;
 
+import java.lang.Exception;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
 import javax.jws.WebParam;
 
+import com.htichina.wsclient.payment.*;
 import org.apache.log4j.Logger;
 
 import com.alipay.util.UtilDate;
 import com.htichina.common.web.ConfigureInfo;
 import com.htichina.common.web.Constant;
 import com.htichina.web.common.FacesUtils;
-import com.htichina.wsclient.payment.AccountInfoResponse;
-import com.htichina.wsclient.payment.Coupon;
-import com.htichina.wsclient.payment.CouponHistory;
-import com.htichina.wsclient.payment.Exception_Exception;
-import com.htichina.wsclient.payment.InvoiceInfoRequest;
-import com.htichina.wsclient.payment.LdLtemReponse;
-import com.htichina.wsclient.payment.LuckyDrawReponse;
-import com.htichina.wsclient.payment.PackageUpgradeRequest;
-import com.htichina.wsclient.payment.PackageUpgradeResponse;
-import com.htichina.wsclient.payment.ParseException_Exception;
-import com.htichina.wsclient.payment.PaymentOrderResponse;
-import com.htichina.wsclient.payment.PaymentResponse;
-import com.htichina.wsclient.payment.PaymentResultMessage;
-import com.htichina.wsclient.payment.PaymentService;
-import com.htichina.wsclient.payment.PaymentServiceService;
-import com.htichina.wsclient.payment.ProductInfoResponse;
-import com.htichina.wsclient.payment.PromotionCoupon;
-import com.htichina.wsclient.payment.PromotionInfoResponse;
-import com.htichina.wsclient.payment.PurchaseProductResponse;
-import com.htichina.wsclient.payment.QueryChildOrdersByParentOrderNumResponse;
-import com.htichina.wsclient.payment.QueryOrderByParentOrderNumResponse;
-import com.htichina.wsclient.payment.QuestionAnswer;
-import com.htichina.wsclient.payment.QuestionOptions;
-import com.htichina.wsclient.payment.Questions;
-import com.htichina.wsclient.payment.ServiceOrder;
-import com.htichina.wsclient.payment.Transaction;
-import com.htichina.wsclient.payment.TransactionRequest;
-import com.htichina.wsclient.payment.TransactionResponse;
-import com.htichina.wsclient.payment.VehicleInfoResponse;
-import com.htichina.wsclient.payment.WechatUserDataResponse;
 
 /**
  * Created by yiming on 2015/7/1.
@@ -485,6 +457,15 @@ public class PaymentServiceClient {
   public CouponHistory findByCustomIdAndPromtionId(String accountNum,String couponId,String isUserd){
 	  return service.findByCustomIdAndPromtionId(accountNum,couponId,isUserd);
 	  
+  }
+
+  public WechatAccessToken selectWechatAccessToken(String id){
+    return service.selectWechatAccessToken(id);
+
+  }
+  public boolean updateAccessToken(String token){
+    return service.updateAccessToken(token);
+
   }
   
 }
