@@ -159,10 +159,9 @@ public class WechatServlet extends HttpServlet {
 					String str2 = convertStreamToString(instreams2);
 					logger.info(ESAPI.encoder().encodeForHTML(str2));
 					userInfo = str2;
-
 					int x = str2.indexOf("nickname");
-					int y = str2.indexOf("sex");
-					nickname = str2.substring(x + 11, y - 3);
+					int y = str2.indexOf("\"sex\"");
+					nickname = str2.substring(x + 11, y - 2);
 					logger.info("nickname: " + ESAPI.encoder().encodeForHTML(nickname));
 				}
 
