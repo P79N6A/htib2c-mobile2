@@ -135,7 +135,15 @@
 		<servlet-name>wechatMessageServlet</servlet-name>
 		<url-pattern>/wechatMessageServlet</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>wechatUser</servlet-name>
+		<servlet-class>com.htichina.web.wechat.wechatUserServlet</servlet-class>
+	</servlet>
 
+	<servlet-mapping>
+		<servlet-name>wechatUser</servlet-name>
+		<url-pattern>/wechatUser</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>mobileServlet</servlet-name>
 		<servlet-class>com.htichina.web.wechat.MobileServlet</servlet-class>

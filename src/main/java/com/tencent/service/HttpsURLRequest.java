@@ -99,7 +99,7 @@ public class HttpsURLRequest  {
      * @throws KeyStoreException
      * @throws IOException
      */
-    public JSONObject postUrl(String URL, JSONObject json, Map<String,String> headerMap) throws UnrecoverableKeyException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException, IOException, URISyntaxException {
+    public synchronized JSONObject postUrl(String URL, JSONObject json, Map<String,String> headerMap) throws UnrecoverableKeyException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException, IOException, URISyntaxException {
         if (!hasInit) {
             init();
         }
@@ -183,7 +183,7 @@ public class HttpsURLRequest  {
      * @throws KeyStoreException
      * @throws KeyManagementException
      */
-    public ResultBean NoSecurityPost(String key, Map<String,String> params) throws UnrecoverableKeyException, IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException, URISyntaxException {
+    public synchronized ResultBean NoSecurityPost(String key, Map<String,String> params) throws UnrecoverableKeyException, IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException, URISyntaxException {
         ResultBean resultBean = new ResultBean();
 
         //用户账号

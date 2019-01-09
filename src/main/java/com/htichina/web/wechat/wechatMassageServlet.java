@@ -1,7 +1,10 @@
 package com.htichina.web.wechat;
 
+import com.alibaba.fastjson.JSONArray;
 import com.htichina.web.message.MessageServer;
+import com.htichina.web.message.PoiModel;
 import com.htichina.web.util.SignUtil;
+import com.tencent.common.http.http;
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
 
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 
 /**
@@ -47,12 +51,17 @@ public class wechatMassageServlet extends HttpServlet {
     /**
      * 处理微信服务器发来的消息
      */
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.info("乱码测试luanmaceshi");
         logger.info("wechatMassageServlet--->doPost");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-
+        logger.info("String=============="+1111);
+        String String = new http().doPost("http://10.198.107.128:8000/htib2c-mobile/wechatUser");
+        logger.info("String=============="+String);
+//        JSONObject jsStr = JSONObject.parseObject(String);
+        MessageServer.user = (List<PoiModel>) JSONArray.parseArray(String, PoiModel.class);
+        logger.info("user=============="+MessageServer.user);
         // 调用核心业务类接收消息、处理消息
         MessageServer messageServer = new MessageServer();
         String respMessage = messageServer.processRequest(request);

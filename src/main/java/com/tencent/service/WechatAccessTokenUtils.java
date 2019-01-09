@@ -97,7 +97,15 @@ public class WechatAccessTokenUtils{
 		generate_date = new Date();
 		return access_token; 
 	}*/
-	
-	
+
+	public static void main(String[] args) {
+
+		try {
+			WechatAccessTokenUtils.getNewToken();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//}
+	}
 }
 

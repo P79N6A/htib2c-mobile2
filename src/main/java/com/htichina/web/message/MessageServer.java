@@ -1,14 +1,16 @@
 package com.htichina.web.message;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Strings;
-import com.htichina.common.web.ConfigureInfo;
 import com.htichina.common.web.Constant;
 import com.htichina.web.POC.ResultBean;
 import com.htichina.web.PaymentServiceClient;
 import com.htichina.web.util.MessageUtil;
+import com.tencent.common.http.http;
 import com.tencent.service.HttpsURLRequest;
 import com.tencent.service.WechatAccessTokenUtils;
-import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.owasp.esapi.ESAPI;
 
@@ -19,8 +21,7 @@ import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -28,6 +29,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class MessageServer {
     private static Logger logger = Logger.getLogger(MessageServer.class.getName());
+    public static List<PoiModel> user=new ArrayList<>();
     /**
      * 处理微信发来的请求
      *
@@ -35,6 +37,8 @@ public class MessageServer {
      * @return
      */
     public  String processRequest(HttpServletRequest request) throws UnsupportedEncodingException {
+
+
         /*request.setCharacterEncoding("UTF-8");*/
         String respMessage = "success";
         try {
@@ -51,11 +55,25 @@ public class MessageServer {
             String toUserName = requestMap.get("ToUserName");
             // 消息类型
             String msgType = requestMap.get("MsgType");
+            String CreateTime = requestMap.get("CreateTime");
             //消息
             String event = requestMap.get("Event");
             logger.info("msgType=============="+msgType);
             logger.info("event=============="+event);
-            if (event!=null&&event.equals(MessageUtil.EVENT_TYPE_LOCSELECT)&&msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_EVENT)) {
+            logger.info("fromUserName=============="+fromUserName);
+            logger.info("CreateTime=============="+CreateTime);
+            if(user.size()>5){
+
+                user = user.subList(user.size()-5,user.size());
+                logger.info("user1111=============="+user.size());
+            }
+            PoiModel pm = new PoiModel();
+            pm.setOpenId(fromUserName);
+            pm.setCreateTime(CreateTime);
+            logger.info("check(user,pm);=============="+check(user,pm));
+            logger.info("user=============="+user.size());
+            if (event!=null&&event.equals(MessageUtil.EVENT_TYPE_LOCSELECT)&&msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_EVENT)&&!check(user,pm)) {
+                user.add(pm);
                 logger.info("send poi");
                 // 经度
                 String longitude = requestMap.get("Location_Y");
@@ -107,6 +125,7 @@ public class MessageServer {
 
                 logger.info("respContent ============= " + respContent);
                 sendMessage(respContent,openId);
+
             }
 
         } catch (Exception e) {
@@ -126,7 +145,7 @@ public class MessageServer {
         HttpsURLRequest httpsURLRequest  =new HttpsURLRequest();
         try {
             httpsURLRequest.postUrl("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
-                    + access_token + "", jsobj, null);
+                    + access_token + "", net.sf.json.JSONObject.fromObject(jsobj), null);
         } catch (UnrecoverableKeyException e) {
             e.printStackTrace();
         } catch (KeyManagementException e) {
@@ -139,4 +158,27 @@ public class MessageServer {
             e.printStackTrace();
         }
 }
+public boolean check(List<PoiModel> list,PoiModel pm){
+       boolean flag =false;
+       if(list!=null&&list.size()>0) {
+           for (PoiModel poiModel : list) {
+               if (poiModel.getOpenId().equals(pm.getOpenId()) && poiModel.getCreateTime().equals(pm.getCreateTime())) {
+                   flag = true;
+                   break;
+               } else {
+                   flag = false;
+               }
+           }
+       }else{
+           flag=false;
+       }
+       return flag;
+}
+    public static void main(String[] args) {
+        String String = new http().doPost("http://10.198.107.128:8000/htib2c-mobile/wechatUser");
+        logger.info("String=============="+String);
+//        JSONObject jsStr = JSONObject.parseObject(String);
+        user = (List<PoiModel>) JSONArray.parseArray(String, PoiModel.class);
+        logger.info("user=============="+user);
+    }
 }
