@@ -79,7 +79,6 @@ public class MessageServer {
             if (event != null && event.equals(MessageUtil.EVENT_TYPE_LOCSELECT) && msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_EVENT)&&!check(poiSendHistory) ) {
 //                user.add(pm);
                 logger.info("PaymentServiceClient==============" + fromUserName);
-                PaymentServiceClient.getInstance().addPoiHistory(fromUserName, CreateTime);
                 logger.info("send poi");
                 // 经度
                 String longitude = requestMap.get("Location_Y");
@@ -89,6 +88,7 @@ public class MessageServer {
                 logger.info("poiName ================ " + poiName);
                 logger.info("latitude ================ " + latitude);
                 logger.info("longitude ================ " + longitude);
+                PaymentServiceClient.getInstance().addPoiHistory(fromUserName, CreateTime,poiName);
                 // PoiName
                 if (Strings.isNullOrEmpty(poiName)) {
                     poiName = Constant.DEFAULT_POINAME;

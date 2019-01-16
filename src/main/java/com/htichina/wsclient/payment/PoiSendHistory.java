@@ -20,6 +20,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="createTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="poiId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="poiName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,13 +32,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "poiSendHistory", propOrder = {
     "createTime",
-    "poiId"
+    "poiId",
+    "poiName"
 })
 public class PoiSendHistory {
 
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar createTime;
     protected String poiId;
+    protected String poiName;
 
     /**
      * 获取createTime属性的值。
@@ -85,6 +88,30 @@ public class PoiSendHistory {
      */
     public void setPoiId(String value) {
         this.poiId = value;
+    }
+
+    /**
+     * 获取poiName属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPoiName() {
+        return poiName;
+    }
+
+    /**
+     * 设置poiName属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPoiName(String value) {
+        this.poiName = value;
     }
 
 }

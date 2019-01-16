@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="poiId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="createTime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="poiName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,12 +30,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "addPoiHistory", propOrder = {
     "poiId",
-    "createTime"
+    "createTime",
+    "poiName"
 })
 public class AddPoiHistory {
 
     protected String poiId;
     protected String createTime;
+    protected String poiName;
 
     /**
      * 获取poiId属性的值。
@@ -82,6 +85,30 @@ public class AddPoiHistory {
      */
     public void setCreateTime(String value) {
         this.createTime = value;
+    }
+
+    /**
+     * 获取poiName属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPoiName() {
+        return poiName;
+    }
+
+    /**
+     * 设置poiName属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPoiName(String value) {
+        this.poiName = value;
     }
 
 }

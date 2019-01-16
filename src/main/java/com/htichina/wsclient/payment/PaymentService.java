@@ -47,6 +47,7 @@ public interface PaymentService {
     /**
      * 
      * @param createTime
+     * @param poiName
      * @param poiId
      * @return
      *     returns boolean
@@ -60,7 +61,9 @@ public interface PaymentService {
         @WebParam(name = "poiId", targetNamespace = "")
         String poiId,
         @WebParam(name = "createTime", targetNamespace = "")
-        String createTime);
+        String createTime,
+        @WebParam(name = "poiName", targetNamespace = "")
+        String poiName);
 
     /**
      * 
