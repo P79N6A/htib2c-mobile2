@@ -111,8 +111,8 @@ public class MessageServer {
                     param.put(Constant.HTTPS_LONGITUDE, longitude);
                     param.put(Constant.HTTPS_POINAME, poiName);
                     logger.info("param = " + ESAPI.encoder().encodeForHTML(param.toString()));
-//                    ResultBean result = req.NoSecurityPost(Constant.HTTPS_SENDPOI, param);
-                    ResultBean result =null;
+                    ResultBean result = req.NoSecurityPost(Constant.HTTPS_SENDPOI, param);
+//                    ResultBean result =null;
                     if (result != null) {
                         logger.info("result = " + result.toString());
                     }
