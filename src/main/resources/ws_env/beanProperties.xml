@@ -13,8 +13,8 @@
         <property name="locations">
             <list>
                 <!-- standard config -->
-                <!--<value>classpath*:/ws_env/Staging.URL.properties</value>-->
-                  <value>classpath*:/ws_env/Prod.URL.properties</value>
+                <value>classpath*:/ws_env/Staging.URL.properties</value>
+                  <!--<value>classpath*:/ws_env/Prod.URL.properties</value>-->
             </list>
         </property>
 

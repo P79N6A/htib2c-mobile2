@@ -51,17 +51,17 @@ public class wechatMassageServlet extends HttpServlet {
     /**
      * 处理微信服务器发来的消息
      */
-    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.info("乱码测试luanmaceshi");
         logger.info("wechatMassageServlet--->doPost");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        logger.info("String=============="+1111);
-        String String = new http().doPost("http://10.198.107.128:8000/htib2c-mobile/wechatUser");
-        logger.info("String=============="+String);
-//        JSONObject jsStr = JSONObject.parseObject(String);
-        MessageServer.user = (List<PoiModel>) JSONArray.parseArray(String, PoiModel.class);
-        logger.info("user=============="+MessageServer.user);
+//        logger.info("String=============="+1111);
+//        String String = new http().doPost("http://10.198.107.128:8000/htib2c-mobile/wechatUser");
+//        logger.info("String=============="+String);
+////        JSONObject jsStr = JSONObject.parseObject(String);
+//        MessageServer.user = (List<PoiModel>) JSONArray.parseArray(String, PoiModel.class);
+//        logger.info("user=============="+MessageServer.user);
         // 调用核心业务类接收消息、处理消息
         MessageServer messageServer = new MessageServer();
         String respMessage = messageServer.processRequest(request);

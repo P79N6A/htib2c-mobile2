@@ -467,7 +467,15 @@ public class PaymentServiceClient {
     return service.updateAccessToken(token);
 
   }
-  
+  public boolean addPoiHistory(String poiId,String createTime){
+    return service.addPoiHistory(poiId,createTime);
+
+  }
+
+  public PoiSendHistory selectPoiSendHistory(String poiId,String createTime){
+    return service.selectPoiSendHistory(poiId,createTime);
+
+  }
 }
 
 

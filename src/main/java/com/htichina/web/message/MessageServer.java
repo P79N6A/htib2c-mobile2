@@ -7,6 +7,7 @@ import com.htichina.common.web.Constant;
 import com.htichina.web.POC.ResultBean;
 import com.htichina.web.PaymentServiceClient;
 import com.htichina.web.util.MessageUtil;
+import com.htichina.wsclient.payment.PoiSendHistory;
 import com.tencent.common.http.http;
 import com.tencent.service.HttpsURLRequest;
 import com.tencent.service.WechatAccessTokenUtils;
@@ -28,22 +29,23 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class MessageServer {
     private static Logger logger = Logger.getLogger(MessageServer.class.getName());
-    public static List<PoiModel> user=new ArrayList<>();
+    public static List<PoiModel> user = new ArrayList<>();
+
     /**
      * 处理微信发来的请求
      *
      * @param request
      * @return
      */
-    public  String processRequest(HttpServletRequest request) throws UnsupportedEncodingException {
+    public String processRequest(HttpServletRequest request) throws UnsupportedEncodingException {
 
 
         /*request.setCharacterEncoding("UTF-8");*/
         String respMessage = "success";
         try {
-            String poiName="";
+            String poiName = "";
             // 默认返回的文本消息内容
-            String respContent = "";
+            String respContent = "error";
 
             // xml请求解析
             Map<String, String> requestMap = MessageUtil.parseXml(request);
@@ -57,22 +59,27 @@ public class MessageServer {
             String CreateTime = requestMap.get("CreateTime");
             //消息
             String event = requestMap.get("Event");
-            logger.info("msgType=============="+msgType);
-            logger.info("event=============="+event);
-            logger.info("fromUserName=============="+fromUserName);
-            logger.info("CreateTime=============="+CreateTime);
-            if(user.size()>5){
-
-                user = user.subList(user.size()-5,user.size());
-                logger.info("user1111=============="+user.size());
-            }
-            PoiModel pm = new PoiModel();
-            pm.setOpenId(fromUserName);
-            pm.setCreateTime(CreateTime);
-            logger.info("check(user,pm);=============="+check(user,pm));
-            logger.info("user=============="+user.size());
-            if (event!=null&&event.equals(MessageUtil.EVENT_TYPE_LOCSELECT)&&msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_EVENT)&&!check(user,pm)) {
-                user.add(pm);
+            logger.info("msgType==============" + msgType);
+            logger.info("event==============" + event);
+            logger.info("fromUserName==============" + fromUserName);
+            logger.info("CreateTime==============" + CreateTime);
+//            PaymentServiceClient client=null;
+//            try {
+//                client = PaymentServiceClient.getInstance();
+//            }catch(Exception e){
+//                logger.info("error==============" + CreateTime);
+//            }
+//            if(user.size()>5){
+//
+//                user = user.subList(user.size()-5,user.size());
+//                logger.info("user1111=============="+user.size());
+//            }
+            PoiSendHistory poiSendHistory = PaymentServiceClient.getInstance().selectPoiSendHistory(fromUserName, CreateTime);
+//            PoiSendHistory poiSendHistory = PaymentServiceClient.getInstance().selectPoiSendHistory(fromUserName, "11");
+            if (event != null && event.equals(MessageUtil.EVENT_TYPE_LOCSELECT) && msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_EVENT)&&!check(poiSendHistory) ) {
+//                user.add(pm);
+                logger.info("PaymentServiceClient==============" + fromUserName);
+                PaymentServiceClient.getInstance().addPoiHistory(fromUserName, CreateTime);
                 logger.info("send poi");
                 // 经度
                 String longitude = requestMap.get("Location_Y");
@@ -88,9 +95,9 @@ public class MessageServer {
                 }
                 // openId
                 String openId = requestMap.get("FromUserName");
-                String accountNum =  PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
+                String accountNum = PaymentServiceClient.getInstance().getActiveAccountByOpenId(openId);
 //                String accountNum = "10631849";
-                logger.info("accountNum = " +accountNum);
+                logger.info("accountNum = " + accountNum);
                 if (Strings.isNullOrEmpty(accountNum)) {
                     respContent = Constant.SENDPOI_NULLACCOUNT;
                     logger.info("get accountNum failed");
@@ -104,7 +111,8 @@ public class MessageServer {
                     param.put(Constant.HTTPS_LONGITUDE, longitude);
                     param.put(Constant.HTTPS_POINAME, poiName);
                     logger.info("param = " + ESAPI.encoder().encodeForHTML(param.toString()));
-                    ResultBean result = req.NoSecurityPost(Constant.HTTPS_SENDPOI, param);
+//                    ResultBean result = req.NoSecurityPost(Constant.HTTPS_SENDPOI, param);
+                    ResultBean result =null;
                     if (result != null) {
                         logger.info("result = " + result.toString());
                     }
@@ -123,7 +131,7 @@ public class MessageServer {
                 }
 
                 logger.info("respContent ============= " + respContent);
-                sendMessage(respContent,openId);
+                sendMessage(respContent, openId);
 
             }
 
@@ -133,7 +141,7 @@ public class MessageServer {
         return respMessage;
     }
 
-    private void sendMessage(String body , String openid) throws IOException {
+    private void sendMessage(String body, String openid) throws IOException {
         String access_token = WechatAccessTokenUtils.getWechatToken();
         JSONObject jsobj = new JSONObject();
         jsobj.put("touser", openid);
@@ -141,10 +149,9 @@ public class MessageServer {
         JSONObject jsobj2 = new JSONObject();
         jsobj2.put("content", body);
         jsobj.put("text", jsobj2);
-        HttpsURLRequest httpsURLRequest  =new HttpsURLRequest();
+        HttpsURLRequest httpsURLRequest = new HttpsURLRequest();
         try {
-            httpsURLRequest.postUrl("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
-                    + access_token + "", net.sf.json.JSONObject.fromObject(jsobj), null);
+            httpsURLRequest.postUrl("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + access_token + "", net.sf.json.JSONObject.fromObject(jsobj), null);
         } catch (UnrecoverableKeyException e) {
             e.printStackTrace();
         } catch (KeyManagementException e) {
@@ -156,28 +163,25 @@ public class MessageServer {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-}
-public boolean check(List<PoiModel> list,PoiModel pm){
-       boolean flag =false;
-       if(list!=null&&list.size()>0) {
-           for (PoiModel poiModel : list) {
-               if (poiModel.getOpenId().equals(pm.getOpenId()) && poiModel.getCreateTime().equals(pm.getCreateTime())) {
-                   flag = true;
-                   break;
-               } else {
-                   flag = false;
-               }
-           }
-       }else{
-           flag=false;
-       }
-       return flag;
-}
+    }
+
+    public boolean check(PoiSendHistory poiSendHistory) {
+        boolean flag = false;
+        if (poiSendHistory != null && poiSendHistory.getPoiId() != null) {
+            flag = true;
+        } else {
+            flag = false;
+        }
+        return flag;
+    }
+
     public static void main(String[] args) {
-        String String = new http().doPost("http://10.198.107.128:8000/htib2c-mobile/wechatUser");
-        logger.info("String=============="+String);
-//        JSONObject jsStr = JSONObject.parseObject(String);
-        user = (List<PoiModel>) JSONArray.parseArray(String, PoiModel.class);
-        logger.info("user=============="+user);
+//        String String = new http().doPost("http://10.198.107.128:8000/htib2c-mobile/wechatUser");
+//        logger.info("String==============" + String);
+////        JSONObject jsStr = JSONObject.parseObject(String);
+//        user = (List<PoiModel>) JSONArray.parseArray(String, PoiModel.class);
+//        logger.info("user==============" + user);
+        PoiSendHistory poiSendHistory = PaymentServiceClient.getInstance().selectPoiSendHistory("o8rKvs0sfsdEA5giVQ71neUqveCc", "111");
+        logger.info(poiSendHistory);
     }
 }

@@ -40,6 +40,7 @@ public class ObjectFactory {
     private final static QName _GetVehicleInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getVehicleInfoResponse");
     private final static QName _UpdateAccessToken_QNAME = new QName("http://payment.ws.htichina.com/", "updateAccessToken");
     private final static QName _SelectWechatAccessTokenResponse_QNAME = new QName("http://payment.ws.htichina.com/", "selectWechatAccessTokenResponse");
+    private final static QName _AddPoiHistory_QNAME = new QName("http://payment.ws.htichina.com/", "addPoiHistory");
     private final static QName _GetParentOrderInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getParentOrderInfoResponse");
     private final static QName _FindCouponsByPromotionIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "findCouponsByPromotionIdResponse");
     private final static QName _GetInvoiceInformation_QNAME = new QName("http://payment.ws.htichina.com/", "getInvoiceInformation");
@@ -89,6 +90,7 @@ public class ObjectFactory {
     private final static QName _CheckOrderPaiedResponse_QNAME = new QName("http://payment.ws.htichina.com/", "checkOrderPaiedResponse");
     private final static QName _GetEffectiveCouponPromotionByCustomerResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getEffectiveCouponPromotionByCustomerResponse");
     private final static QName _GetUnanswerQuestion_QNAME = new QName("http://payment.ws.htichina.com/", "getUnanswerQuestion");
+    private final static QName _SelectPoiSendHistory_QNAME = new QName("http://payment.ws.htichina.com/", "selectPoiSendHistory");
     private final static QName _CreateUpgradePaymentOrderResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createUpgradePaymentOrderResponse");
     private final static QName _GetLastLoginUserByOpenId_QNAME = new QName("http://payment.ws.htichina.com/", "getLastLoginUserByOpenId");
     private final static QName _InsertHistoryResponse_QNAME = new QName("http://payment.ws.htichina.com/", "insertHistoryResponse");
@@ -127,6 +129,7 @@ public class ObjectFactory {
     private final static QName _SelectWechatAccessToken_QNAME = new QName("http://payment.ws.htichina.com/", "selectWechatAccessToken");
     private final static QName _GetCurrentAccountInfo_QNAME = new QName("http://payment.ws.htichina.com/", "getCurrentAccountInfo");
     private final static QName _UpdateWechatMessageHistoryResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateWechatMessageHistoryResponse");
+    private final static QName _AddPoiHistoryResponse_QNAME = new QName("http://payment.ws.htichina.com/", "addPoiHistoryResponse");
     private final static QName _FindCouponById_QNAME = new QName("http://payment.ws.htichina.com/", "findCouponById");
     private final static QName _CreateWechatUserProfileResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createWechatUserProfileResponse");
     private final static QName _FindByCustomIdAndPromtionIdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "findByCustomIdAndPromtionIdResponse");
@@ -139,6 +142,7 @@ public class ObjectFactory {
     private final static QName _InsertInvoiceInfo_QNAME = new QName("http://payment.ws.htichina.com/", "insertInvoiceInfo");
     private final static QName _IsWinBackOrEarlyBirdResponse_QNAME = new QName("http://payment.ws.htichina.com/", "isWinBackOrEarlyBirdResponse");
     private final static QName _ParseException_QNAME = new QName("http://payment.ws.htichina.com/", "ParseException");
+    private final static QName _SelectPoiSendHistoryResponse_QNAME = new QName("http://payment.ws.htichina.com/", "selectPoiSendHistoryResponse");
     private final static QName _GetCurrentAccountInfoResponse_QNAME = new QName("http://payment.ws.htichina.com/", "getCurrentAccountInfoResponse");
     private final static QName _UpdateCouponHistoryResponse_QNAME = new QName("http://payment.ws.htichina.com/", "updateCouponHistoryResponse");
     private final static QName _CreateLuckyOrderResponse_QNAME = new QName("http://payment.ws.htichina.com/", "createLuckyOrderResponse");
@@ -260,6 +264,14 @@ public class ObjectFactory {
      */
     public GetUnanswerQuestion createGetUnanswerQuestion() {
         return new GetUnanswerQuestion();
+    }
+
+    /**
+     * Create an instance of {@link SelectPoiSendHistory }
+     * 
+     */
+    public SelectPoiSendHistory createSelectPoiSendHistory() {
+        return new SelectPoiSendHistory();
     }
 
     /**
@@ -468,6 +480,14 @@ public class ObjectFactory {
      */
     public IsReceiveDidi createIsReceiveDidi() {
         return new IsReceiveDidi();
+    }
+
+    /**
+     * Create an instance of {@link AddPoiHistoryResponse }
+     * 
+     */
+    public AddPoiHistoryResponse createAddPoiHistoryResponse() {
+        return new AddPoiHistoryResponse();
     }
 
     /**
@@ -719,6 +739,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SelectPoiSendHistoryResponse }
+     * 
+     */
+    public SelectPoiSendHistoryResponse createSelectPoiSendHistoryResponse() {
+        return new SelectPoiSendHistoryResponse();
+    }
+
+    /**
      * Create an instance of {@link GetActiveAccountByOpenIdResponse }
      * 
      */
@@ -956,6 +984,14 @@ public class ObjectFactory {
      */
     public UpdateLoginTimes createUpdateLoginTimes() {
         return new UpdateLoginTimes();
+    }
+
+    /**
+     * Create an instance of {@link AddPoiHistory }
+     * 
+     */
+    public AddPoiHistory createAddPoiHistory() {
+        return new AddPoiHistory();
     }
 
     /**
@@ -1511,6 +1547,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PoiSendHistory }
+     * 
+     */
+    public PoiSendHistory createPoiSendHistory() {
+        return new PoiSendHistory();
+    }
+
+    /**
      * Create an instance of {@link QueryChildOrdersByParentOrderNumResponse }
      * 
      */
@@ -1668,6 +1712,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "selectWechatAccessTokenResponse")
     public JAXBElement<SelectWechatAccessTokenResponse> createSelectWechatAccessTokenResponse(SelectWechatAccessTokenResponse value) {
         return new JAXBElement<SelectWechatAccessTokenResponse>(_SelectWechatAccessTokenResponse_QNAME, SelectWechatAccessTokenResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddPoiHistory }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "addPoiHistory")
+    public JAXBElement<AddPoiHistory> createAddPoiHistory(AddPoiHistory value) {
+        return new JAXBElement<AddPoiHistory>(_AddPoiHistory_QNAME, AddPoiHistory.class, null, value);
     }
 
     /**
@@ -2112,6 +2165,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SelectPoiSendHistory }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "selectPoiSendHistory")
+    public JAXBElement<SelectPoiSendHistory> createSelectPoiSendHistory(SelectPoiSendHistory value) {
+        return new JAXBElement<SelectPoiSendHistory>(_SelectPoiSendHistory_QNAME, SelectPoiSendHistory.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CreateUpgradePaymentOrderResponse }{@code >}}
      * 
      */
@@ -2454,6 +2516,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddPoiHistoryResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "addPoiHistoryResponse")
+    public JAXBElement<AddPoiHistoryResponse> createAddPoiHistoryResponse(AddPoiHistoryResponse value) {
+        return new JAXBElement<AddPoiHistoryResponse>(_AddPoiHistoryResponse_QNAME, AddPoiHistoryResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link FindCouponById }{@code >}}
      * 
      */
@@ -2559,6 +2630,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "ParseException")
     public JAXBElement<ParseException> createParseException(ParseException value) {
         return new JAXBElement<ParseException>(_ParseException_QNAME, ParseException.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SelectPoiSendHistoryResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://payment.ws.htichina.com/", name = "selectPoiSendHistoryResponse")
+    public JAXBElement<SelectPoiSendHistoryResponse> createSelectPoiSendHistoryResponse(SelectPoiSendHistoryResponse value) {
+        return new JAXBElement<SelectPoiSendHistoryResponse>(_SelectPoiSendHistoryResponse_QNAME, SelectPoiSendHistoryResponse.class, null, value);
     }
 
     /**
