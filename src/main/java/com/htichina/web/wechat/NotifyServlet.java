@@ -51,7 +51,7 @@ import com.tencent.service.WechatAccessTokenUtils;
 public class NotifyServlet extends HttpServlet {
 	private static Logger logger = Logger.getLogger(NotifyServlet.class.getName());
 
-	String order = "";
+
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -64,12 +64,12 @@ public class NotifyServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request,
 						  HttpServletResponse response) throws ServletException, IOException {
-
-		request.setAttribute("order", order);
-		request.getRequestDispatcher(ViewPage.LINK2OrderSuccess).forward(request,
-				response);
+		String order = "";
+//		request.setAttribute("order", order);
+//		request.getRequestDispatcher(ViewPage.LINK2OrderSuccess).forward(request,response);
+		logger.info("11111111111111111111111111111111111111111111111");
 		if(request.getContentLength()!=-1){
-		logger.info("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+			logger.info("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 			String inputLine;
 			String notifyXml = "";
 			String resXml = "";
@@ -85,7 +85,9 @@ public class NotifyServlet extends HttpServlet {
 
 //			System.out.println("Notify: " + notifyXml);
 //			logger.info("notifyXml-------------------"+notifyXml);
+			logger.info("2222222222222222222222222222222222222222");
 			if(!StringUtils.isEmpty(notifyXml)){
+				logger.info("33333333333333333333333333333333333333");
 				SortedMap<String, String> m = parseXmlToList2(notifyXml);
 				WxPayResult wpr = new WxPayResult();
 				wpr.setSign(m.get("sign").toString());
@@ -97,8 +99,8 @@ public class NotifyServlet extends HttpServlet {
 				if(wpr.getOutTradeNo().length()>13){
 					neworder = wpr.getOutTradeNo().substring(1, 14);
 				}
-//				logger.info("order======================>"+order);
-//				logger.info("neworder======================>"+neworder);
+				logger.info("order======================>"+order);
+				logger.info("neworder======================>"+neworder);
 				logger.info("client.CheckTransaction(neworder)======================================>"+client.CheckTransaction(neworder));
 				if (!order.equals(neworder)&&(!client.CheckTransaction(neworder))) {
 
@@ -189,11 +191,11 @@ public class NotifyServlet extends HttpServlet {
 						}
 
 //				System.out.println("Notify End..");
-						
+
 						this.sendMessage(body,orderNum, wpr.getOpenid());
 						//更新
 						client.updatewechatMessage(wpr.getOpenid(),wpr.getOutTradeNo().substring(14, 20));
-
+						response.reset();
 						response.setContentType("text/html;charset=UTF-8");
 						ServletOutputStream outSTr = response.getOutputStream(); // 建立
 						BufferedOutputStream out = new BufferedOutputStream(
@@ -256,33 +258,33 @@ public class NotifyServlet extends HttpServlet {
 		String access_token = jsonStr.substring(beginIndex+1,endIndex);*/
 		String access_token = WechatAccessTokenUtils.getWechatToken();
 		//2018-2-28,Tommy,调整微信access_token的获取方式，减少新token的生成以避免不够使用--------end
-		
-			String title = "订购成功\n";
 
-			String time =new SimpleDateFormat("MM月dd日").format(System.currentTimeMillis())+"\n" ;
-			String link = ConfigureInfo.getWechatLinkLogin();
-			String message = title+time+"尊敬的梅赛德斯-奔驰 智能互联客户，您选购的"+body+"订购成功，订单号"+order+"，请等待开通。点击查看详情。\n"
-					+" 有任何疑问请随时使用车内【i】按钮或者400 898 0050联系客服中心。智能互联 -- 智在安心，不止于此。\n <a href='" + link + "'>请点击前往</a>";
-			JSONObject jsobj = new JSONObject();
-			jsobj.put("touser", openid);
-			jsobj.put("msgtype", "text");
-			JSONObject jsobj2 = new JSONObject();
-			jsobj2.put("content", message);
-			jsobj.put("text", jsobj2);
-			HttpsURLRequest httpsURLRequest  =new HttpsURLRequest();
-			try {
-				httpsURLRequest.postUrl("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
-						+ access_token + "", jsobj, null);
-			} catch (UnrecoverableKeyException e) {
-				e.printStackTrace();
-			} catch (KeyManagementException e) {
-				e.printStackTrace();
-			} catch (NoSuchAlgorithmException e) {
-				e.printStackTrace();
-			} catch (KeyStoreException e) {
-				e.printStackTrace();
-			} catch (URISyntaxException e) {
-				e.printStackTrace();
+		String title = "订购成功\n";
+
+		String time =new SimpleDateFormat("MM月dd日").format(System.currentTimeMillis())+"\n" ;
+		String link = ConfigureInfo.getWechatLinkLogin();
+		String message = title+time+"尊敬的梅赛德斯-奔驰 智能互联客户，您选购的"+body+"订购成功，订单号"+order+"，请等待开通。点击查看详情。\n"
+				+" 有任何疑问请随时使用车内【i】按钮或者400 898 0050联系客服中心。智能互联 -- 智在安心，不止于此。\n <a href='" + link + "'>请点击前往</a>";
+		JSONObject jsobj = new JSONObject();
+		jsobj.put("touser", openid);
+		jsobj.put("msgtype", "text");
+		JSONObject jsobj2 = new JSONObject();
+		jsobj2.put("content", message);
+		jsobj.put("text", jsobj2);
+		HttpsURLRequest httpsURLRequest  =new HttpsURLRequest();
+		try {
+			httpsURLRequest.postUrl("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
+					+ access_token + "", jsobj, null);
+		} catch (UnrecoverableKeyException e) {
+			e.printStackTrace();
+		} catch (KeyManagementException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (KeyStoreException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
 		}
 
 	}
@@ -298,7 +300,7 @@ public class NotifyServlet extends HttpServlet {
 			while ((line = bf_reader.readLine()) != null) {
 				sb.append(line + "\n");
 			}
-		} catch (IOException e) { 
+		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {

@@ -159,11 +159,23 @@
                                 };
                                 window.history.pushState(state, "title", "#");
                             }
+//                            if(getUrlParam("flag")=="luckyDraw1") {
+//                                $("input[nm='luckyDraw']").val("/views/luckyDraw1.html?showwxpaytitle=1");
+//                            }
+//                            if(getUrlParam("flag")=="luckyDraw2") {
+//                                $("input[nm='luckyDraw']").val("/views/luckyDraw2.html?showwxpaytitle=1");
+//                            }
                             if(getUrlParam("flag")=="luckyDraw1") {
                                 $("input[nm='luckyDraw']").val("/views/luckyDraw1.html?showwxpaytitle=1");
                             }
                             if(getUrlParam("flag")=="luckyDraw2") {
                                 $("input[nm='luckyDraw']").val("/views/luckyDraw2.html?showwxpaytitle=1");
+                            }
+                            if(getUrlParam("flag")=="luckyDraw3") {
+                                $("input[nm='luckyDraw']").val("/views/luckyDraw3.html?showwxpaytitle=1");
+                            }
+                            if(getUrlParam("flag")=="luckyDraw4") {
+                                $("input[nm='luckyDraw']").val("/views/luckyDraw4.html?showwxpaytitle=1");
                             }
                             var updateNewFlag='${updateNewFlag}';
                             if(updateNewFlag=="updateNewCellPhone"){

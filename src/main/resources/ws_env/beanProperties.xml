@@ -58,9 +58,14 @@
         <property name="mobiledeviceregistrationapikey" value="${mobiledeviceregistration_apikey}" />
 
         <!--add by liunig CR345-->
+        <!--<property name="WechatLinkLogin" value="${WechatLinkLogin}" />-->
+        <!--<property name="WechatLuckDraw1" value="${WechatLuckDraw1}" />-->
+        <!--<property name="WechatLuckDraw2" value="${WechatLuckDraw2}" />-->
         <property name="WechatLinkLogin" value="${WechatLinkLogin}" />
         <property name="WechatLuckDraw1" value="${WechatLuckDraw1}" />
         <property name="WechatLuckDraw2" value="${WechatLuckDraw2}" />
+        <property name="WechatLuckDraw3" value="${WechatLuckDraw3}" />
+        <property name="WechatLuckDraw4" value="${WechatLuckDraw4}" />
 
     </bean>
 </beans>

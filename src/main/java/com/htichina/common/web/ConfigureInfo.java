@@ -10,8 +10,7 @@ public class ConfigureInfo {
     private static ApplicationContext appContext;
 
     static {
-        appContext = new ClassPathXmlApplicationContext(
-                "classpath:/ws_env/beanProperties.xml");
+        appContext = new ClassPathXmlApplicationContext("classpath:/ws_env/beanProperties.xml");
         appContext.getBean(ConfigureInfo.class);
 
     }
@@ -40,8 +39,6 @@ public class ConfigureInfo {
 
     @Value("#{configProperties['wechat.payFailedUrl']}")
     private static String wechatPayFailedUrl;
-
-
 
 
     @Value("#{configProperties['alipay.appid']}")
@@ -107,10 +104,19 @@ public class ConfigureInfo {
 
     @Value("#{configProperties['WechatLinkLogin']}")
     private static String WechatLinkLogin;
+    //    @Value("#{configProperties['WechatLuckDraw1']}")
+//    private static String wechatLuckDraw1;
+//    @Value("#{configProperties['WechatLuckDraw2']}")
+//    private static String wechatLuckDraw2;
     @Value("#{configProperties['WechatLuckDraw1']}")
     private static String wechatLuckDraw1;
     @Value("#{configProperties['WechatLuckDraw2']}")
     private static String wechatLuckDraw2;
+    @Value("#{configProperties['WechatLuckDraw3']}")
+    private static String wechatLuckDraw3;
+    @Value("#{configProperties['WechatLuckDraw4']}")
+    private static String wechatLuckDraw4;
+
     public static String getWechatLinkLogin() {
         return WechatLinkLogin;
     }
@@ -123,8 +129,7 @@ public class ConfigureInfo {
         return mobiledeviceregistrationapikey;
     }
 
-    public static void setMobiledeviceregistrationapikey(
-            String mobiledeviceregistrationapikey) {
+    public static void setMobiledeviceregistrationapikey(String mobiledeviceregistrationapikey) {
         ConfigureInfo.mobiledeviceregistrationapikey = mobiledeviceregistrationapikey;
     }
 
@@ -368,5 +373,21 @@ public class ConfigureInfo {
 
     public static void setWechatLuckDraw2(String wechatLuckDraw2) {
         ConfigureInfo.wechatLuckDraw2 = wechatLuckDraw2;
+    }
+
+    public static String getWechatLuckDraw3() {
+        return wechatLuckDraw3;
+    }
+
+    public static void setWechatLuckDraw3(String wechatLuckDraw3) {
+        ConfigureInfo.wechatLuckDraw3 = wechatLuckDraw3;
+    }
+
+    public static String getWechatLuckDraw4() {
+        return wechatLuckDraw4;
+    }
+
+    public static void setWechatLuckDraw4(String wechatLuckDraw4) {
+        ConfigureInfo.wechatLuckDraw4 = wechatLuckDraw4;
     }
 }

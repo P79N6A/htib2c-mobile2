@@ -224,10 +224,21 @@ function checkMember() {
             var type = res.luckyDrawNoticeType;
             if (type == 1) {//未登录
                 var utm_medium = getUrlParam("utm_medium");
+                // if(utm_medium=="Menu") {
+                //     window.location.href = "accountLogin.xhtml?flag=luckyDraw1";
+                // }else{
+                //     window.location.href = "accountLogin.xhtml?flag=luckyDraw2";
+                // }
                 if(utm_medium=="Menu") {
                     window.location.href = "accountLogin.xhtml?flag=luckyDraw1";
-                }else{
+                }else if(utm_medium=="Join"){
                     window.location.href = "accountLogin.xhtml?flag=luckyDraw2";
+                }
+                else if(utm_medium=="Article"){
+                    window.location.href = "accountLogin.xhtml?flag=luckyDraw3";
+                }
+                else {
+                    window.location.href = "accountLogin.xhtml?flag=luckyDraw4";
                 }
                 //            window.location.href="http://www.baidu.com";
             }

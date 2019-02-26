@@ -86,4 +86,6 @@ public class ViewPage {
     public static final String LINK2COUPONS = "/views/drawCoupon.xhtml?showwxpaytitle=1";
     //CR832
     public static final String LINK2LUCKDRAW1 = "/views/luckyDraw1.html?showwxpaytitle=1";
+    public static final String LINK2LUCKDRAW3 = "/views/luckyDraw3.html?showwxpaytitle=1";
+    public static final String LINK2LUCKDRAW4 = "/views/luckyDraw4.html?showwxpaytitle=1";
 }

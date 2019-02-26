@@ -525,7 +525,8 @@
                 var response = "{"+document.getElementById("wechatForm:wechatResponse").innerText+"}";
                 WeixinJSBridge.invoke("getBrandWCPayRequest", JSON.parse(response), function (res) {
                             if (res.err_msg == "get_brand_wcpay_request:ok") {
-                                window.location.href = '<h:outputText value="#{orderBackingBean.wechatNotifyUrl}"/>';
+//                                window.location.href = '<h:outputText value="#{orderBackingBean.wechatNotifyUrl}"/>';
+                                window.location.href = '/htib2c-mobile/views/orderSuccess.xhtml?showwxpaytitle=1';
                             } else {
                                 window.location.href = '<h:outputText value="#{orderBackingBean.wechatPayFailedUrl}"/>';
                             }

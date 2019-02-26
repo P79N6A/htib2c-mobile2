@@ -315,6 +315,19 @@ public class LoginBackingBean implements Serializable {
                 return null;
             }
             
+//            if(ViewPage.LINK2LUCKDRAW1.equals(targetPage)) {
+//
+//                context.getExternalContext().redirect(
+//                        ConfigureInfo.getWechatLuckDraw1());
+//                return null;
+//            }if(ViewPage.LINK2LUCKDRAW2.equals(targetPage)) {
+//                context.getExternalContext().redirect(
+//                        ConfigureInfo.getWechatLuckDraw2());
+//                return null;
+//            }else {
+//
+//                return targetPage;
+//            }
             if(ViewPage.LINK2LUCKDRAW1.equals(targetPage)) {
 
                 context.getExternalContext().redirect(
@@ -323,6 +336,14 @@ public class LoginBackingBean implements Serializable {
             }if(ViewPage.LINK2LUCKDRAW2.equals(targetPage)) {
                 context.getExternalContext().redirect(
                         ConfigureInfo.getWechatLuckDraw2());
+                return null;
+            }if(ViewPage.LINK2LUCKDRAW3.equals(targetPage)) {
+                context.getExternalContext().redirect(
+                        ConfigureInfo.getWechatLuckDraw3());
+                return null;
+            }if(ViewPage.LINK2LUCKDRAW4.equals(targetPage)) {
+                context.getExternalContext().redirect(
+                        ConfigureInfo.getWechatLuckDraw4());
                 return null;
             }else {
 

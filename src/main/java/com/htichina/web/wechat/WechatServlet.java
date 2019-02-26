@@ -247,15 +247,23 @@ public class WechatServlet extends HttpServlet {
 				LoginBackingBean loginBackingBean = (LoginBackingBean)context.getBean("loginBackingBean" );
 				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2UPDATEPHONE)).forward(req, resp);	
 			}
-			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAW1)){
+			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAWFORMENU)){
 				resp.sendRedirect("/htib2c-mobile/views/luckyDraw.html?utm_source=WeChat&utm_medium=Menu&openId="+oId);
 
 			}
-			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAW2)){
+			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAWFORJOIN)){
 				resp.sendRedirect("/htib2c-mobile/views/luckyDraw.html?utm_source=WeChat&utm_medium=Join&openId="+oId);
 
 			}
-			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAW3)){
+			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAWFORARTICLE)){
+				resp.sendRedirect("/htib2c-mobile/views/luckyDraw.html?utm_source=WeChat&utm_medium=Article&openId="+oId);
+
+			}
+			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAWFORSUBHEAD)){
+				resp.sendRedirect("/htib2c-mobile/views/luckyDraw.html?utm_source=WeChat&utm_medium=Subhead&openId="+oId);
+
+			}
+			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAW1)){
 //				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW)).redirect(req, resp);
 //				logger.info("======================"+loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW));
 //				LoginBackingBean loginBackingBean = new LoginBackingBean();
@@ -263,12 +271,28 @@ public class WechatServlet extends HttpServlet {
 				resp.sendRedirect("/htib2c-mobile/views/luckyDraw.html?flag=1&utm_source=WeChat&utm_medium=Menu&openId="+oId);
 
 			}
-			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAW4)){
+			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAW2)){
 //				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW)).redirect(req, resp);
 //				logger.info("======================"+loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW));
 //				LoginBackingBean loginBackingBean = new LoginBackingBean();
 //				resp.sendRedirect("/htib2c-mobile/views/luckyDraw2.xhtml?openId="+oId+"&utm_source="+oId);
 				resp.sendRedirect("/htib2c-mobile/views/luckyDraw.html?flag=1&utm_source=WeChat&utm_medium=Join&openId="+oId);
+
+			}
+			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAW3)){
+//				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW)).redirect(req, resp);
+//				logger.info("======================"+loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW));
+//				LoginBackingBean loginBackingBean = new LoginBackingBean();
+//				resp.sendRedirect("/htib2c-mobile/views/luckyDraw2.xhtml?openId="+oId+"&utm_source="+oId);
+				resp.sendRedirect("/htib2c-mobile/views/luckyDraw.html?flag=1&utm_source=WeChat&utm_medium=Article&openId="+oId);
+
+			}
+			else if(state.equalsIgnoreCase(Constant.WECHAT_LUCKYDRAW4)){
+//				req.getRequestDispatcher(loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW)).redirect(req, resp);
+//				logger.info("======================"+loginBackingBean.login(req.getSession(), accessToken,oId,ViewPage.LINK2LUCKDRAW));
+//				LoginBackingBean loginBackingBean = new LoginBackingBean();
+//				resp.sendRedirect("/htib2c-mobile/views/luckyDraw2.xhtml?openId="+oId+"&utm_source="+oId);
+				resp.sendRedirect("/htib2c-mobile/views/luckyDraw.html?flag=1&utm_source=WeChat&utm_medium=Subhead&openId="+oId);
 
 			}
 			else if(state.equalsIgnoreCase(Constant.QUESTIONNAIRE)){

@@ -77,7 +77,7 @@ public class Constant {
     public static final String DB_INVOICE_TYPE_PERSONAL = "1";
     public static final String DB_INVOICE_TYPE_COMPANY = "2";
 
-    public static final String WEB_PAYMENT_CHANNEL_CHINAPAY    = "ChinaPay";
+    public static final String WEB_PAYMENT_CHANNEL_CHINAPAY = "ChinaPay";
 
     public static final String WEB_PAYMENT_INTEGRATION_MODE_CALLBACK = "01";
     public static final String WEB_PAYMENT_INTEGRATION_MODE_TRANSFER = "02";
@@ -94,7 +94,7 @@ public class Constant {
     public static final String DB_ORDER_PAYMENT_TYPE_CHINAPAY = "111003";
     public static final String DB_ORDER_PAYMENT_TYPE_WIRETRANSFER = "111004";
     public static final String DB_ORDER_PAYMENT_TYPE_WEIXINPAY = "111005";
-    public static final String DB_ORDER_PAYMENT_TYPE_ALIPAY    = "111006";
+    public static final String DB_ORDER_PAYMENT_TYPE_ALIPAY = "111006";
 
 
     public static final String DB_ORDER_CHANNEL_CALLCENTER = "109001";
@@ -169,11 +169,19 @@ public class Constant {
     public static final String VIOLATION_INQUIRY = "violationInquiry";
     public static final String WECHAT_PAYMENT = "wechatPayment";
     public static final String WECHAT_LUCKYDRAW = "wechatLuckDraw";
+    //    public static final String WECHAT_LUCKYDRAW1 = "wechatLuckDraw1";
+//    public static final String WECHAT_LUCKYDRAW2 = "wechatLuckDraw2";
+//    public static final String WECHAT_LUCKYDRAW3 = "wechatLuckDraw3";
+//    public static final String WECHAT_LUCKYDRAW4 = "wechatLuckDraw4";
+    public static final String WECHAT_LUCKYDRAWFORMENU = "wechatLuckDrawForMenu";
+    public static final String WECHAT_LUCKYDRAWFORJOIN = "wechatLuckDrawForJoin";
+    public static final String WECHAT_LUCKYDRAWFORARTICLE = "wechatLuckDrawForArticle";
+    public static final String WECHAT_LUCKYDRAWFORSUBHEAD = "wechatLuckDrawForSubhead";
     public static final String WECHAT_LUCKYDRAW1 = "wechatLuckDraw1";
     public static final String WECHAT_LUCKYDRAW2 = "wechatLuckDraw2";
     public static final String WECHAT_LUCKYDRAW3 = "wechatLuckDraw3";
     public static final String WECHAT_LUCKYDRAW4 = "wechatLuckDraw4";
-    public static final String UPDATE_MOBILE ="updateMobile";
+    public static final String UPDATE_MOBILE = "updateMobile";
     public static final String QUESTIONNAIRE = "questionnaire";
     public static final String VARIFLIGHT = "variflight";
 
@@ -207,22 +215,22 @@ public class Constant {
 
 
     //定位
-    public static  final String HTTPS_LOCATEVEHICLE = "locatevehicle";
+    public static final String HTTPS_LOCATEVEHICLE = "locatevehicle";
     //闪灯鸣笛表示
-    public static  final String HTTPS_HORNLIGHT = "hornlight";
+    public static final String HTTPS_HORNLIGHT = "hornlight";
     //上锁
-    public static  final String HTTPS_LOCK = "lock";
+    public static final String HTTPS_LOCK = "lock";
     //解锁
-    public static  final String HTTPS_UNLOCK = "unlock";
+    public static final String HTTPS_UNLOCK = "unlock";
     //发送POI
-    public static  final String HTTPS_SENDPOI = "sendpoi";
+    public static final String HTTPS_SENDPOI = "sendpoi";
 
 
-    public static final String HTTPS_ACCOUNTNUM="accountNum";//必须有
-    public static final String HTTPS_LATITUDE="latitude";//locate用
-    public static final String HTTPS_LONGITUDE="longitude";//locate用
-    public static final String HTTPS_PIN="pin";//开锁解锁用
-    public static final String HTTPS_POINAME="poiName";
+    public static final String HTTPS_ACCOUNTNUM = "accountNum";//必须有
+    public static final String HTTPS_LATITUDE = "latitude";//locate用
+    public static final String HTTPS_LONGITUDE = "longitude";//locate用
+    public static final String HTTPS_PIN = "pin";//开锁解锁用
+    public static final String HTTPS_POINAME = "poiName";
 
 
     public static final int FLASHTIME = 5;
@@ -233,42 +241,37 @@ public class Constant {
     public static final String SOURCE_NAME = "WECHAT";//WECHAT
     public static final String WEBSITE = "MAPP";//MAPP
 
-    public static final String HTTPS_TRANSACTIONID="transactionId";
-    public static final String HTTPS_TIMESTAMP="timeStamp";
-    public static final String HTTPS_TCUTYPE="tcuType";
-    public static final String HTTPS_TCUID="tcuId";
+    public static final String HTTPS_TRANSACTIONID = "transactionId";
+    public static final String HTTPS_TIMESTAMP = "timeStamp";
+    public static final String HTTPS_TCUTYPE = "tcuType";
+    public static final String HTTPS_TCUID = "tcuId";
     public static final String LOCATEPARAMTERKEY = "LOCATEPARAMTERKEY";
 
     //新增空字符串静态变量
     public static final String EMPTY_STRING = "";
 
-    public static final String PROMOTION_CATEGERY1="1";
-    public static final String PROMOTION_CATEGERY3="3";
-    
-	public static final List<String> TOKENLIST = Arrays.asList("psqhew8bc4taht6mbr3a", "sits9w2xb0wjilsyhdz1",
-			"dvy7h158r254jcybndiv", "us7rnbkscrhmx0nwypj7", "pd1pn8lt7qrl2n5n43so", "0q5yiq0b6n9lepgbcrar",
-			"ixkh0ugn93ispbdzqokq", "vrl319w6g3mvxdv8uv2i", "xwgdtteki4if47ubts6j", "l1z8jzz19ph3lzfwmptj",
-			"ondn7jiyz8zfzoi4g4dn", "0kn1ii07o12sgypmhbig", "8z7uauk7nb5md1ki143n", "reuduzkqf2dlamqs8e7i",
-			"v3tds6r8bqgn4vfa31eq", "9k8p60n2p50fs0i0ftua", "77c9lf5p8mkbdec8eceq", "c7fhudvebltwm6xp9ho3",
-			"pyrgds12ixrgxx0a1k6i", "5joa07tue9tggn0jr10w");
-	
-	
-	public static final String CSRFTOKEN = "csrftoken";
+    public static final String PROMOTION_CATEGERY1 = "1";
+    public static final String PROMOTION_CATEGERY3 = "3";
+
+    public static final List<String> TOKENLIST = Arrays.asList("psqhew8bc4taht6mbr3a", "sits9w2xb0wjilsyhdz1", "dvy7h158r254jcybndiv", "us7rnbkscrhmx0nwypj7", "pd1pn8lt7qrl2n5n43so", "0q5yiq0b6n9lepgbcrar", "ixkh0ugn93ispbdzqokq", "vrl319w6g3mvxdv8uv2i", "xwgdtteki4if47ubts6j", "l1z8jzz19ph3lzfwmptj", "ondn7jiyz8zfzoi4g4dn", "0kn1ii07o12sgypmhbig", "8z7uauk7nb5md1ki143n", "reuduzkqf2dlamqs8e7i", "v3tds6r8bqgn4vfa31eq", "9k8p60n2p50fs0i0ftua", "77c9lf5p8mkbdec8eceq", "c7fhudvebltwm6xp9ho3", "pyrgds12ixrgxx0a1k6i", "5joa07tue9tggn0jr10w");
+
+
+    public static final String CSRFTOKEN = "csrftoken";
 
     //CR389 礼物类型
-    public static final String ITEM_TYPE_0 ="Thanks";
-    public static final String ITEM_TYPE_1 ="1"; //基础
-    public static final String ITEM_TYPE_2 ="2"; //wifi
-    public static final String ITEM_TYPE_3 ="3"; //礼物
+    public static final String ITEM_TYPE_0 = "Thanks";
+    public static final String ITEM_TYPE_1 = "1"; //基础
+    public static final String ITEM_TYPE_2 = "2"; //wifi
+    public static final String ITEM_TYPE_3 = "3"; //礼物
 
     //CR389  用户四个状态
-    public static final String USERLUCKYDRAWFLAG_1 ="winnings";
-    public static final String USERLUCKYDRAWFLAG_2 ="winning";
-    public static final String USERLUCKYDRAWFLAG_3 ="notWinnings";
-    public static final String USERLUCKYDRAWFLAG_4 ="notWinning";
-    
+    public static final String USERLUCKYDRAWFLAG_1 = "winnings";
+    public static final String USERLUCKYDRAWFLAG_2 = "winning";
+    public static final String USERLUCKYDRAWFLAG_3 = "notWinnings";
+    public static final String USERLUCKYDRAWFLAG_4 = "notWinning";
+
     //微信token生成的时间频率设置
-    public static final String WECHAT_TOKEN_GENERATE_INTERVAL = "WECHAT.TOKEN.GENERATE.INTERVAL";   
+    public static final String WECHAT_TOKEN_GENERATE_INTERVAL = "WECHAT.TOKEN.GENERATE.INTERVAL";
 
 
     //CR426
