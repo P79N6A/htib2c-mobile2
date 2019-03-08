@@ -406,7 +406,15 @@ public class OrderBackingBean implements Serializable {
             String prodsStr= JSON.toJSONString(prods);
             System.out.println("prodsStr================"+prodsStr);
             //1判断当前用户是否是目标客户群2判断当前时间是否在优惠券活动范围内
-            promotionCoup=client.findPromotionCoupon(accountNum,"2");
+            List<PromotionCoupon> promotionCoups=client.findPromotionCoupon(accountNum,"2");
+            if(promotionCoups!=null&&promotionCoups.size()>0){
+                for(PromotionCoupon promotionCoupon:promotionCoups){
+                    List<Coupon> getCoupons=client.findCouponsByPromotionId(accountNum, promotionCoupon.getId());
+                    if(getCoupons.size()!=0){
+                        promotionCoup.add(promotionCoupon);
+                    }
+                }
+            }
             logger.info("promotionCoup数量========"+promotionCoup.size());
             return ViewPage.LINK2OrderPackage0;
 
