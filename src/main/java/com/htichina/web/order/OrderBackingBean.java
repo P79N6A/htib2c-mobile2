@@ -408,6 +408,7 @@ public class OrderBackingBean implements Serializable {
             //1判断当前用户是否是目标客户群2判断当前时间是否在优惠券活动范围内
             List<PromotionCoupon> promotionCoups=client.findPromotionCoupon(accountNum,"2");
             if(promotionCoups!=null&&promotionCoups.size()>0){
+            	promotionCoup.clear();
                 for(PromotionCoupon promotionCoupon:promotionCoups){
                     List<Coupon> getCoupons=client.findCouponsByPromotionId(accountNum, promotionCoupon.getId());
                     if(getCoupons.size()!=0){
