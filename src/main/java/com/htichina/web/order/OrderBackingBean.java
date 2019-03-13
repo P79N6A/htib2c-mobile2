@@ -151,7 +151,7 @@ public class OrderBackingBean implements Serializable {
     //CR389 是否出现抽奖按钮
 //    private int hasLuckyDrawLink;
     //CR435 目标客户群显示活动
-    private List<PromotionCoupon>  promotionCoup;
+    private List<PromotionCoupon>  promotionCoup=new ArrayList<>();
     //CR435 显示可用优惠券list
     private List<Coupon> coupons;
     //CR435 couponList Sitrng json;
