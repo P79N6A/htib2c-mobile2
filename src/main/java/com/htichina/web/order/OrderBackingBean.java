@@ -370,13 +370,7 @@ public class OrderBackingBean implements Serializable {
                 return ViewPage.LINK2OrderEntry;
             }
             logger.info("createRenewalServiceUserProfileFlag:"+accountNum+openId+userInfo+vin);
-            //根据账户绑定openid
-            //openId="o8rKvs6BZi-LQzX_UdNL0X0TL6T4";
-            //vin="WWCHINAMBTEST0661";
-            boolean flag = PaymentServiceClient.getInstance().createWechatUserProfile(accountNum,"", openId, userInfo,accountInfo.getVin());//保存绑定信息accountInfo.getvin
-            if(flag){
-            	logger.info("createRenewalServiceUserProfileFlag == true");
-            }
+
 
             /*logger.info("selectedVehicle = " + selectedVehicle.getVin())*/;
             int baseServiceStatus = selectedVehicle.getBaseSeviceStatus();
@@ -415,8 +409,8 @@ public class OrderBackingBean implements Serializable {
                         promotionCoup.add(promotionCoupon);
                     }
                 }
+//                logger.info("promotionCoup数量========"+promotionCoup.size());
             }
-            logger.info("promotionCoup数量========"+promotionCoup.size());
             return ViewPage.LINK2OrderPackage0;
 
         }
@@ -563,6 +557,7 @@ public class OrderBackingBean implements Serializable {
     }
 
     public String toOrderPayment() {
+
         logger.debug("in toOrderPayment...");
         FacesContext context = FacesContext.getCurrentInstance();
 
@@ -609,6 +604,14 @@ public class OrderBackingBean implements Serializable {
             /*return ViewPage.LINK2OrderAccountInfo;*/
             orderPackagePop = "创建订单失败，原因："+paymentOrderResponse.getRespMsg()+"请重试或致电<span style=\"text-decoration: underline;\" class=\"span2\">400-898-0050</span>联系梅赛德斯-奔驰智能互联服务中心寻求帮助";
             return ViewPage.LINK2OrderPackage0;
+        }
+        //根据账户绑定openid
+        //openId="o8rKvs6BZi-LQzX_UdNL0X0TL6T4";
+        //vin="WWCHINAMBTEST0661";
+        String userInfo = (String) FacesUtils.getManagedBeanInSession(Constant.WECHAT_USER_INFO);
+        boolean flag = PaymentServiceClient.getInstance().createWechatUserProfile(accountNum,"", openId, userInfo,accountInfo.getVin());//保存绑定信息accountInfo.getvin
+        if(flag){
+            logger.info("createRenewalServiceUserProfileFlag == true");
         }
         orderNumber=paymentOrderResponse.getOrderNum();
         // create transaction
