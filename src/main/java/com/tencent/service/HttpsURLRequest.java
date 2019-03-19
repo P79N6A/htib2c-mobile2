@@ -464,7 +464,7 @@ public class HttpsURLRequest  {
         params.put(Constant.HTTPS_POINAME,"昆泰酒店");
 //        params.put(Constant.HTTPS_POINAME,"hospital");
         //绕过安全验证的方法
-        new HttpsURLRequest().NoSecurityPost(Constant.HTTPS_LOCK ,params);
+        new HttpsURLRequest().NoSecurityPost(Constant.HTTPS_LOCATEVEHICLE ,params);
     }
 
 
