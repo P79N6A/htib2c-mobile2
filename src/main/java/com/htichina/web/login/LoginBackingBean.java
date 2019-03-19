@@ -199,6 +199,7 @@ public class LoginBackingBean implements Serializable {
     }
 
     public String validateLogin(String targetPage) throws IOException, ParseException {
+        PaymentServiceClient client = PaymentServiceClient.getInstance();
         targetPg = targetPage;
 //        luckyDrawAmount = PaymentServiceClient.getInstance().hasLuckyDrawLinkByAccountNum(accountNum);
 
@@ -217,7 +218,7 @@ public class LoginBackingBean implements Serializable {
 
         String userInfo = (String) FacesUtils.getManagedBeanInSession(Constant.WECHAT_USER_INFO);
 
-        accountInfo = PaymentServiceClient.getInstance().getCurrentAccountInfo(accountNum);
+        accountInfo = client.getCurrentAccountInfo(accountNum);
         logger.info("validateLogin accountNum="+ESAPI.encoder().encodeForHTML(accountNum));
         if(accountInfo != null){
             logger.info("validateLogin accountInfo="+ESAPI.encoder().encodeForHTML(accountInfo.toString()));
@@ -260,24 +261,27 @@ public class LoginBackingBean implements Serializable {
             return ViewPage.LINK2Login;
         }
 
-        boolean valid = PaymentServiceClient.getInstance().validateLogin(accountNum, pin, openId, userInfo);
+        boolean valid = client.validateLogin(accountNum, pin, openId, userInfo);
         if(valid) {
         	logger.info("put account into session");
             context.getExternalContext().getSessionMap()
                     .put(LoginFilter.CURRENT_USER, accountNum);
             logger.info("openId======================"+openId);
-            if(!ViewPage.LINK2CHECKTEL.equals(targetPage)){
-                boolean flag = PaymentServiceClient.getInstance().createWechatUserProfile(accountNum, pin, openId, userInfo,"");//保存绑定信息
+            logger.info("accountNum======================"+accountNum);
+            logger.info("pin======================"+pin);
+            logger.info("client======================"+client);
+            if(targetPage!=null&&!ViewPage.LINK2CHECKTEL.equals(targetPage)){
+                boolean flag = client.createWechatUserProfile(accountNum, pin, openId, userInfo,"");//保存绑定信息
                 if(flag){
                     logger.info("createWechatUserProfileFlag = true");
                 }
             }
             logger.info("validateLogin targetPage"+ESAPI.encoder().encodeForHTML(targetPage));
-            WechatUserDataResponse rep = PaymentServiceClient.getInstance().getWechatUserDataByAcccountNum(accountNum);
+            WechatUserDataResponse rep = client.getWechatUserDataByAcccountNum(accountNum);
             setTagtoWechatUser(rep,openId);
             logger.info("setTagtoWechatUser done");
             // 更新登陆成功次数
-            PaymentServiceClient.getInstance().updateLoginTimes(accountNum);
+            client.updateLoginTimes(accountNum);
             if (!Strings.isNullOrEmpty(openId) && openId.matches(".*[a-zA-z].*")){
                 renewFlag = accountInfo.getIsReceiveDidiForRenew();
                 firstLoginFlag = accountInfo.getIsReceiveDidiForFirstLogin();
