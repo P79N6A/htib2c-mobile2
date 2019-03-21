@@ -24,7 +24,7 @@
 			    overflow:visible  !important;
 			}
         </style>
-        <h:form id="condition" onsubmit="sub();">
+        <h:form id="condition" >
             <script type="text/javascript">
                 if("1" == broserNum){
                     window.location.href="#{facesContext.externalContext.request.contextPath}/views/wrongBrowser.xhtml";
@@ -186,7 +186,7 @@
                     </c:if>
                     <div class="empty" id="service">
                         <c:if test="#{not empty orderBackingBean.accountNum || not empty orderBackingBean.mobilePhone || not empty orderBackingBean.vin}">
-                            <div class="s_btn s_btn1 "  ><h:commandButton value="下一步" action="#{orderBackingBean.toOrderPackage}" /></div>
+                            <div class="s_btn s_btn1 "  ><h:commandButton value="下一步" action="#{orderBackingBean.toOrderPackage}" onclick="sub()" /></div>
                             <div class="s_btn s_btn2 "  >
                                 <!--<c:if test="#{orderBackingBean.accountNum != null || orderBackingBean.mobilePhone != null || orderBackingBean.vin != null}">-->
                                 <!--<input type="button" onclick="clearInput()" value="为其他账户续订" />-->
@@ -195,7 +195,7 @@
                             </div>
                         </c:if>
                         <c:if test="#{!(not empty orderBackingBean.accountNum || not empty orderBackingBean.mobilePhone || not empty orderBackingBean.vin)}">
-                            <div class="long_btn " style="margin-top:90px;"><h:commandButton value="下一步" action="#{orderBackingBean.toOrderPackage}" style="margin-left:0%;"/></div>
+                            <div class="long_btn " style="margin-top:90px;"><h:commandButton value="下一步" action="#{orderBackingBean.toOrderPackage}" style="margin-left:0%;" onclick="sub()"/></div>
                         </c:if>
                     </div>
                     <div id="keytxt">网站备案号：京ICP备11011340号</div>
