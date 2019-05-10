@@ -182,7 +182,7 @@ public class TagBean implements Serializable {
         String fhtToken = Constant.WMAN_FHT_TOKEN;
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httpost = new HttpPost(
-                "http://api.parllay.cn/v1.1/user/"+fhtToken+"/get?access_token="+wManToken+"");
+                "http://api.ifenghuotai.cn/v1.1/user/"+fhtToken+"/get?access_token="+wManToken+"");
         String param = "[\""+oId+"\"]";
         httpost.setEntity(new StringEntity(param, "UTF-8"));
         HttpResponse resp = httpclient.execute(httpost);
@@ -201,7 +201,7 @@ public class TagBean implements Serializable {
         String secret = Constant.WMAN_APP_SECRET;
         HttpClient httpclient = new DefaultHttpClient();
         HttpGet httpgets = new HttpGet(
-                "http://api.parllay.cn/v1.1/token/get?app_id="+id+"&app_secret="+secret+"");
+                "http://api.ifenghuotai.cn/v1.1/token/get?app_id="+id+"&app_secret="+secret+"");
         HttpResponse response = httpclient.execute(httpgets);
         String jsonStr = EntityUtils.toString(response.getEntity(), "UTF-8");
         if(jsonStr.indexOf("errors") > -1){
@@ -280,7 +280,7 @@ public class TagBean implements Serializable {
         String token = getWManAccessToken();
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httpost = new HttpPost(
-                "http://api.parllay.cn/v1.1/tag/"+fhtToken+"/"+tagName+"?access_token="+token+"&group=");
+                "http://api.ifenghuotai.cn/v1.1/tag/"+fhtToken+"/"+tagName+"?access_token="+token+"&group=");
         String param1 = "[\""+openId+"\"]";
         httpost.setEntity(new StringEntity(param1, "UTF-8"));
         HttpResponse response = httpclient.execute(httpost);
@@ -302,7 +302,7 @@ public class TagBean implements Serializable {
         logger.info("set WManTag tName="+ESAPI.encoder().encodeForHTML(tNane));
         try {
             HttpGet httpget = new HttpGet(
-                    "http://api.parllay.cn/v1.1/tag/" + fhtToken + "/" + tNane + "?access_token=" + token +"&group="+groupName+ "&openid=" + oId + "");
+                    "http://api.ifenghuotai.cn/v1.1/tag/" + fhtToken + "/" + tNane + "?access_token=" + token +"&group="+groupName+ "&openid=" + oId + "");
             HttpResponse response = httpclient.execute(httpget);
             logger.info("httpGet ="+ESAPI.encoder().encodeForHTML(httpget.getURI().toString()));
             String jsonStr = EntityUtils.toString(response.getEntity(), "UTF-8");
@@ -384,7 +384,7 @@ public class TagBean implements Serializable {
         String token = getWManAccessToken();
         HttpClient httpclient = new DefaultHttpClient();
         HttpGet httpget = new HttpGet(
-                "http://api.parllay.cn/v1.1/untag/"+fhtToken+"/"+tName+"?access_token="+token+"&group"+groupName+"&openid="+oId+"");
+                "http://api.ifenghuotai.cn/v1.1/untag/"+fhtToken+"/"+tName+"?access_token="+token+"&group"+groupName+"&openid="+oId+"");
         HttpResponse response = httpclient.execute(httpget);
         String jsonStr = EntityUtils.toString(response.getEntity(), "UTF-8");
         if (!(jsonStr.indexOf("errors") > -1)){
